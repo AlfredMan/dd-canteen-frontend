@@ -1,12 +1,9 @@
 <template>
   <div>
-    <div class="">
-      hello
-    </div>
     <!-- render data of the person -->
-    <h1 v-if="person">
+    <!-- <h1 v-if="person">
       {{ person }}
-    </h1>
+    </h1> -->
     <!-- render blog posts -->
     <ul v-if="assets" class="d-flex flex-wrap">
       <li v-for="asset in assets" class="col-1">
@@ -33,7 +30,6 @@ export default {
   },
   // `env` is available in the context object
   asyncData ({ env }) {
-    console.log('asyncData')
     return Promise.all([
       // fetch the owner of the blog
       // client.getEntries({

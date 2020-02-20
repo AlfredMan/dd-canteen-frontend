@@ -6,9 +6,20 @@
           <h1>Contact</h1>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12 col-md-5">
+      <div class="row mb-5">
+        <div class="col-12 col-md-6">
           <h4>The Design District is at the heart of Greenwich Peninsula, a new type of London created specifically for the creative community.</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-3">
+          <h5>Drop us a line using the details below</h5>
+          <p><b>Front office</b><br><a href="#">hello@designdistrict.co.uk</a></p>
+          <p><b>Alex Howard, <em>Sales</em><br></b><a href="#">alex@designdistrict.co.uk</a><br>020 3981 2426</p>
+        </div>
+        <div class="col-12 col-md-3">
+          <h5>Press</h5>
+          <p>For information, images and interviews, contact our press team at <a href="#">press@designdistrict.co.uk</a></p>
         </div>
       </div>
     </div>
@@ -23,8 +34,8 @@
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-6">
+          <div class="row d-flex">
+            <div class="col-12 col-lg-6">
               <div class="row">
                 <div class="col-12 col-md-12 mb-5">
                   <h4>Design District will be a new permanent home for the creative industries in the heart of Greenwich Peninsula. One minute from North Greenwich underground station.</h4>
@@ -50,8 +61,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-6">
-              <div class="embed-responsive embed-responsive-4by3 bg-dark" />
+            <div class="col-12 col-lg-6">
+              <!-- <div class="embed-responsive embed-responsive-4by3 bg-dark" /> -->
+              <img src="http://images.ctfassets.net/7p1ysxjarsp5/2ktZJktAQov9qqmv48aHV3/7bded41c83ea309edff8ce029932ce90/DD-location-map-1350x831.png" alt="" class="img-fluid">
             </div>
           </div>
         </div>
