@@ -7,7 +7,7 @@
         </router-link>
 
         <router-link class="d-none d-md-inline" to="/join">
-          Home for Makers
+          Workspace
         </router-link>
         <router-link class="d-none d-md-inline" to="/the-club">
           The Club

@@ -1,3 +1,5 @@
+const config = require('./.contentful.json')
+
 export default {
   head: {
     titleTemplate: 'Design District | %s',
@@ -21,7 +23,7 @@ export default {
       { name: 'twitter:image', content: 'https://designdistrict.co.uk/wp-content/themes/dd/assets/images/DD_Banner.jpg" ' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/png', href: '/assets/images/icon-120.png' },
       { rel: 'dns-prefetch', href: 'https://api.designdistrict.co.uk' },
       { rel: 'preconnect', href: 'https://api.designdistrict.co.uk' }
     ]
@@ -64,5 +66,13 @@ export default {
         }
       }
     }
+  },
+
+  env: {
+    CTF_SPACE_ID: config.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
+    CTF_CPA_ACCESS_TOKEN: config.CTF_CPA_ACCESS_TOKEN,
+    CTF_PERSON_ID: config.CTF_PERSON_ID,
+    CTF_BLOG_POST_TYPE_ID: config.CTF_BLOG_POST_TYPE_ID
   }
 }
