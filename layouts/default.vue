@@ -53,25 +53,74 @@
       </div>
     </div>
 
-    <footer class="bg-light">
+    <footer class="bg-grey">
       <div class="container">
-        <div class="row">
-          <div class="col pt-5 pb-5">
+        <div class="row pt-5 pb-5">
+          <div class="col-12 col-md-3 col-lg-2">
             <img src="~/assets/images/gp-logo.svg" alt="">
           </div>
+          <div class="col-12 col-md-3 col-lg-4">
+            <h5>Design District</h5>
+            <a class="">Delta Wharf, Tunnel Ave, Greenwich,<br>London SE10 0QE</a><br>
+            <a class="">hello@designdistrict.co.uk</a><br>
+            <a class="">020 3981 2426</a><br>
+          </div>
+          <div class="col-12 col-md-3 col-lg-2">
+            <h5>Connect</h5>
+            <a class="" href="https://twitter.com/Design_District">Twitter</a><br>
+            <a class="" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br>
+            <a class="" href="http://www.instagram.com/designdistrictlondon">Instagram</a><br>
+          </div>
+
+          <div class="col-12 col-md-3 col-lg-2">
+            <h5>Join</h5>
+            <router-link class="" to="/workspace">
+              Workspace
+            </router-link>
+            <br>
+            <router-link class="" to="/the-club">
+              The Club
+            </router-link>
+            <br>
+            <router-link class="" to="/about-us">
+              About
+            </router-link>
+            <br>
+            <router-link class="" to="/contact">
+              Contact Us
+            </router-link>
+          </div>
+
+          <div class="col-12 col-md-3 col-lg-2">
+            <h5>Policies</h5>
+            <router-link class="" to="/privacy-policy">
+              Privacy Policy
+            </router-link>
+            <br>
+            <router-link class="" to="/terms-and-conditions">
+              Terms & Conditions
+            </router-link>
+          </div>
         </div>
-        <nav class="inner d-flex row align-items-center py-2 text-light-">
-          <span class="nav-link">© 2020 GREENWICH PENINSULA</span>
-          <router-link class="d-none d-md-inline nav-link" to="/privacy-policy">
+
+        <nav class="inner d-flex row align-items-end justify-content-start mt-5 pb-5">
+          <!-- <div class="p-3 mr-auto">
+            <img src="~/assets/images/gp-logo.svg" alt="">
+          </div> -->
+
+          <small class="nav-link mr-auto">
+            Copyright © 2020 GREENWICH PENINSULA
+          </small>
+          <!-- <router-link class="d-none d-md-inline nav-link" to="/privacy-policy">
             Privacy Policy
           </router-link>
           <router-link class="d-none d-md-inline nav-link" to="/terms-and-conditions">
             Terms & Conditions
-          </router-link>
+          </router-link> -->
 
-          <a class="d-none d-md-inline nav-link ml-auto" href="https://twitter.com/Design_District">Twitter</a>
+          <!-- <a class="d-none d-md-inline nav-link ml-auto" href="https://twitter.com/Design_District">Twitter</a>
           <a class="d-none d-md-inline nav-link" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a>
-          <a class="d-none d-md-inline nav-link" href="http://www.instagram.com/designdistrictlondon">Instagram</a>
+          <a class="d-none d-md-inline nav-link" href="http://www.instagram.com/designdistrictlondon">Instagram</a> -->
         </nav>
       </div>
     </footer>
