@@ -6,9 +6,9 @@
     </h1> -->
     <!-- render blog posts -->
     <ul v-if="assets" class="d-flex flex-wrap">
-      <li v-for="asset in assets" class="col-1">
-        <a :href="asset.fields.file.url" target="_blank">
-          <img :src="asset.fields.file.url" alt="">
+      <li v-for="asset in assets" class="col-2">
+        <a :href="`${asset.fields.file.url}?w=2000&h=2000&fm=webp&q=80`" target="_blank">
+          <img :src="`${asset.fields.file.url}?w=200&h=200&fm=webp&q=70`" alt="">
         </a>
       </li>
     </ul>

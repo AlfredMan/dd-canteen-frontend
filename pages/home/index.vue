@@ -1,21 +1,23 @@
 <template lang="html">
   <div class="">
-    <div class="container pb-5" style="z-index:9; position: relative;">
+    <div class="container pb-5 pt-5" style="z-index:9; position: relative;">
       <div class="row">
-        <div class="col-12 col-md-6">
-          <h1>Keep London Creative</h1>
+        <div class="col-12 col-md-4">
+          <h1>Keep London creative</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-5">
           <h4>Welcome to the Design District. London’s new district for the creative industries. Opening September 2020.</h4>
-          <a href="#" class="btn btn btn-lg btn-primary mt-3">Join Design District</a>
+          <router-link to="/workspace" class="btn btn btn-lg btn-primary mt-3">
+            Join Design District
+          </router-link>
         </div>
       </div>
     </div>
 
     <div class="" style="overflow: hidden;margin-top: -30rem;">
-      <div style=";z-index:99; width: 100vw; height: 40rem; background: #aaa; transform: translateX(35vw);">
+      <div style=";z-index:99; width: 100vw; height: 40rem; background: #aaa; transform: translateX(51vw);">
         <img src="http://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=webp&q=80" alt="">
       </div>
     </div>
@@ -25,10 +27,10 @@
       <div class="row bg-light pb-5 pt-3">
         <div class="container py-5">
           <div class="row d-flex">
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-3">
               <h2>Join Design District</h2>
             </div>
-            <div class="col-12 col-md-5 ml-auto">
+            <div class="col-12 col-md-6 ml-auto">
               <h4>The Design District is a collection of 16 buildings designed by eight architects, set in the heart of the Greenwich Peninsula. From September 2020, it will offer a new permanent home for the creative industries in London. With affordable rents, flexible leases and purpose-designed workspaces to help creative businesses thrive.</h4>
               <a href="#" class="text-primary h5">Find your workspace &rarr;</a>
             </div>
@@ -53,7 +55,7 @@
               <div class="">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/3BLpiM1CFIa3C7IShio4iL/29094ce9840beab6c83711c6c434ed07/KDN_Design_District_D1_LR.jpeg?w=2000&fm=webp&q=80" alt="">
               </div>
-              <h3>small studios</h3>
+              <h3>Small studios</h3>
               <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
@@ -84,8 +86,8 @@
         <!-- <div class="col-4">
           <img src="http://images.ctfassets.net/7p1ysxjarsp5/5O8MZdUvzEq9ZwkNEDG7tr/c5bd4835a154182f51b1008e77019ff6/AdamKahn-1D-Architect.jpg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
         </div> -->
-        <div class="col-4">
-          <img src="http://images.ctfassets.net/7p1ysxjarsp5/64OjUmEoOvUZh7W0EdQTfe/cbd8c37727a7c54be182da4f6d1deeb1/MarketHall.jpg?w=1000&h=1500&fm=webp&q=80&fit=thumb" alt="">
+        <div class="col-6">
+          <img src="http://images.ctfassets.net/7p1ysxjarsp5/64OjUmEoOvUZh7W0EdQTfe/cbd8c37727a7c54be182da4f6d1deeb1/MarketHall.jpg?w=1000&h=1200&fm=webp&q=80&fit=thumb" alt="">
         </div>
       </div>
     </div>

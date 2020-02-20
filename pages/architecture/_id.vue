@@ -6,9 +6,9 @@
           <div class="row">
             <div class="col-12 col-md-10">
               <h2>Architecture 00</h2>
-              <h2 class="text-black-50">
+              <!-- <h2 class="text-black-50">
                 C1, D1
-              </h2>
+              </h2> -->
             </div>
             <!-- <div class="col-12 col-md-2 text-right">
               <h2>C1, D1</h2>
@@ -16,9 +16,11 @@
           </div>
           <div class="row d-flex align-items-start justify-content-between">
             <div class="col-12 col-md-6">
+              <h5>The Building</h5>
               <p>
                 Both of Architecture 00’s buildings invite tenants to get creative with the use of their internal and external spaces. The roof is a multi-sport court but could also be a pop-up bar and event space. The terraces can be places for relaxation or become outdoor work areas. A robust structure means that the internal layouts can be flexible, encouraging adaptations to suit tenants’ changing needs. Sociable spaces run throughout the two buildings. C1 will be fitted out to suit fashion businesses, while D1 is currently under offer.
               </p>
+              <h5>About the practie</h5>
               <p>
                 Architecture 00 was founded in London in 2005. It’s a collaborative design studio where creatives from a wide range of disciplines work alongside architects to make places that empower people. The studio has a particular track record of innovative workspace projects, including the Foundry in Vauxhall, which was RIBA London’s Building of the Year in 2015. Architecture 00’s work often rethinks the status quo, through open source projects like Wikihouse (a two storey CNC cut house) and local making platform Opendesk or groundbreaking publications Compendium for the Civic Economy and A Right to Build.
               </p>

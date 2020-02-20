@@ -55,8 +55,9 @@ button, input[type="submit"] {
 }
 
 button, .btn, input[type="submit"] {
-  text-transform: uppercase;
-  border-radius: 1px
+  // text-transform: uppercase;
+  border-radius: 2px;
+	letter-spacing: 0.05em;
 }
 
 .btn-lg {
@@ -65,9 +66,9 @@ button, .btn, input[type="submit"] {
 }
 
 .btn-primary {
-	color: #000;
+	// color: #000;
 	&:hover {
-		color: #000;
+		// color: #000;
 	}
 }
 

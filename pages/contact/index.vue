@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="">
-    <div class="container pb-5">
+    <div class="container pb-5  pt-5">
       <div class="row">
         <div class="col-12 col-md-7">
           <h1>Contact</h1>
@@ -13,9 +13,12 @@
       </div>
       <div class="row">
         <div class="col-12 col-md-3">
-          <h5>Drop us a line using the details below</h5>
-          <p><b>Front office</b><br><a href="#">hello@designdistrict.co.uk</a></p>
-          <p><b>Alex Howard, <em>Sales</em><br></b><a href="#">alex@designdistrict.co.uk</a><br>020 3981 2426</p>
+          <h5>Front office</h5>
+          <p><a href="#">hello@designdistrict.co.uk</a></p>
+        </div>
+        <div class="col-12 col-md-3">
+          <h5>Alex Howard, <em>Sales</em><br></h5>
+          <p><a href="#">alex@designdistrict.co.uk</a><br>020 3981 2426</p>
         </div>
         <div class="col-12 col-md-3">
           <h5>Press</h5>
@@ -79,8 +82,8 @@
     <div class="py-5">
       <div class="container my-5">
         <div class="row">
-          <div class="col-4">
-            <h2>Register Your Interest</h2>
+          <div class="col-6">
+            <h2>Register your interest</h2>
           </div>
           <div class="col-12" />
           <div class="col-12 col-md-7">

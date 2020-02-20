@@ -6,21 +6,21 @@
           <img class="logo" src="~/assets/images/logo@1x.png" alt="logo">
         </router-link>
 
-        <router-link class="d-none d-md-inline" to="/join">
+        <router-link class="menu-link d-none d-md-inline" to="/workspace">
           Workspace
         </router-link>
-        <router-link class="d-none d-md-inline" to="/the-club">
+        <router-link class="menu-link d-none d-md-inline" to="/the-club">
           The Club
         </router-link>
-        <!-- <router-link class="d-none d-md-inline" to="/">Architecture</router-link> -->
-        <!-- <router-link class="d-none d-md-inline" to="/news-and-events">News & Events</router-link> -->
-        <router-link class="d-none d-md-inline" to="/about-us">
+        <!-- <router-link class="menu-link d-none d-md-inline" to="/">Architecture</router-link> -->
+        <!-- <router-link class="menu-link d-none d-md-inline" to="/news-and-events">News & Events</router-link> -->
+        <router-link class="menu-link d-none d-md-inline" to="/about-us">
           About
         </router-link>
-        <router-link class="d-none d-md-inline" to="/contact">
+        <router-link class="menu-link d-none d-md-inline" to="/contact">
           Contact Us
         </router-link>
-        <router-link to="/contact" class="btn btn-outline-dark ml-auto mr-0">
+        <router-link to="/contact" class="btn text-black btn-outline-primary ml-auto mr-0">
           <span>Join <span class="d-none d-md-inline">design district</span></span>
         </router-link>
       </nav>

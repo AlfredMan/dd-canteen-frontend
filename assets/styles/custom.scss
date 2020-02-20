@@ -2,17 +2,41 @@
 // Option B: Include parts of Bootstrap
 
 // Your variable overrides
-$body-bg: #000;
-$body-color: #111;
-$pink: #f0f;
+$body-bg: #fafafa;
+$body-color: #000;
+//
+$yellow: #ffe600;
+$green: #33cf6e;
+$orange: #ff5d38;
+
+$clay: #c43e18;
+$ink: #64738A;
+$graphite: #363D45;
+
+$blueprint: #EAF1F5;
+$leather: #FDE3CC;
+$paper: #ECE8E0;
+$paper-light: #ECE8E0;
+// $paper: #f6f6f6;
+
+$black: #000000;
+
+
+$primary: $green;
+$secondary: $orange;
+$warning: $yellow;
+$danger: $clay;
+$light: $paper-light;
+$dark: $black;
+
 
 $theme-colors: (
-  "primary": #33CF6E,
-  "secondary": #FF5D38,
-  "warning": #FFE600,
-  "danger": #C43E18,
-  "light": #ECE8E0,
-  "dark": #111
+  "primary": $primary,
+  "secondary": $secondary,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark
 );
 
 $grid-breakpoints: (
