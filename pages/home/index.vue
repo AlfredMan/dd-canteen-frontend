@@ -1,23 +1,33 @@
 <template lang="html">
   <div class="">
-    <div class="container pb-5 pt-5" style="z-index:9; position: relative;">
-      <div class="row">
-        <div class="col-12 col-md-4">
-          <h1>Keep London creative</h1>
+    <div
+      class="hero"
+    >
+      <div
+        class="container pb-5 pt-5"
+        style="z-index:9; position: relative;"
+      >
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <h1 class="-text-white">
+              Keep London creative
+              <!-- Design District -->
+            </h1>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-md-5">
-          <h4>Welcome to the Design District. London’s new district for the creative industries. Opening September 2020.</h4>
-          <router-link to="/workspace" class="btn btn btn-lg btn-primary mt-3">
-            Join Design District
-          </router-link>
+        <div class="row">
+          <div class="col-12 col-md-5 -text-white">
+            <h4>Welcome to the Design District. London’s new district for the creative industries. Opening September 2020.</h4>
+            <router-link to="/workspace" class="btn btn btn-lg btn-primary mt-3">
+              Join Design District
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="" style="overflow: hidden;margin-top: -30rem;">
-      <div style=";z-index:99; width: 100vw; height: 40rem; background: #aaa; transform: translateX(51vw);">
+      <div style=";z-index:99; width: 100vw; height: 40rem; background: #aaa; transform: translateX(45vw);">
         <img src="http://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=webp&q=80" alt="">
       </div>
     </div>
@@ -246,4 +256,16 @@ export default {
 </script>
 
 <style lang="scss">
+.hero {
+  background-size: cover;
+  background-repeat: no-repeat;
+  // height: 60rem;
+  // max-height: 800px;
+  // background-image: url(http://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=webp&q=80);
+
+  // h1 {
+  //   text-shadow: 0px 0px 10px rgba(0,0,0, 0.5);
+  // }
+}
+
 </style>
