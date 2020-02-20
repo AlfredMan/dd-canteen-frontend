@@ -60,8 +60,8 @@
             <img src="~/assets/images/gp-logo.svg" alt="">
           </div>
           <div class="col-12 col-md-3 col-lg-4">
-            <h5>Design District</h5>
-            <a class="">Delta Wharf, Tunnel Ave, Greenwich,<br>London SE10 0QE</a><br>
+            <h5>DESIGN DISTRICT</h5>
+            <a class="">Delta Wharf, Tunnel Ave, Greenwich,<br>London SE10 0QE<br>United Kingdom</a><br><br>
             <a class="">hello@designdistrict.co.uk</a><br>
             <a class="">020 3981 2426</a><br>
           </div>
