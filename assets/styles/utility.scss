@@ -64,6 +64,13 @@ button, .btn, input[type="submit"] {
   font-size: 1rem;
 }
 
+.btn-primary {
+	color: #000;
+	&:hover {
+		color: #000;
+	}
+}
+
 .chip {
 	border-radius: 2rem;
 	font-size: .8em;
@@ -137,4 +144,13 @@ select {
 	-webkit-transform: rotate(45deg);
 	transform: rotate(45deg);
 	width: 2px;
+}
+
+.bw {
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+
+.multiply {
+	mix-blend-mode: multiply;
 }

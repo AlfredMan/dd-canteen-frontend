@@ -28,15 +28,16 @@
     font-size: .8rem;
 
 		&:hover {
+			text-decoration: inherit;
 			// color: #fff;
 		}
 		&:nth-child(7) {
 			margin-right: 0;
 		}
 	}
-	a.router-link-active {
+	a.nuxt-link-exact-active:not(.btn) {
 		// color: #fff;
-    // color: $primary;
+    color: #33CF6E;
 		// font-weight: 400;
 	}
 }
@@ -50,6 +51,11 @@
 	// max-width: 1200px;
 	margin: 0 auto;
 	position: relative;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
 }
 
 // .fade-enter-active {
