@@ -49,7 +49,7 @@
     </div>
 
     <!--  -->
-    <div class="container-fluid">
+    <div id="architecture" class="container-fluid">
       <div class="row bg-white pb-5 pt-3">
         <div class="container py-5">
           <div class="row">

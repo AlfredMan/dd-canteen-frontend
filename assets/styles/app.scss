@@ -36,7 +36,8 @@
 				border-bottom: 2px solid $primary;
 				// color: #fff;
 			}
-			&.nuxt-link-exact-active {
+			&.nuxt-link-exact-active,
+			&.nuxt-link-active {
 				border-bottom: 2px solid $primary;
 			}
 			&:nth-child(7) {

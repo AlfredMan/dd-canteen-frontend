@@ -18,7 +18,7 @@
         <div class="row">
           <div class="col-12 col-md-5 -text-white">
             <h4>Welcome to the Design District. London’s new district for the creative industries. Opening September 2020.</h4>
-            <router-link to="/workspace" class="btn btn btn-lg btn-primary mt-3">
+            <router-link to="/contact/#register-interest" class="btn btn btn-lg btn-primary mt-3">
               Join Design District
             </router-link>
           </div>
@@ -42,7 +42,9 @@
             </div>
             <div class="col-12 col-md-6 ml-auto">
               <h4>The Design District is a collection of 16 buildings designed by eight architects, set in the heart of the Greenwich Peninsula. From September 2020, it will offer a new permanent home for the creative industries in London. With affordable rents, flexible leases and purpose-designed workspaces to help creative businesses thrive.</h4>
-              <a href="#" class="text-primary h5">Find your workspace &rarr;</a>
+              <router-link to="/workspace" class="text-primary h5">
+                Find your workspace &rarr;
+              </router-link>
             </div>
           </div>
 
@@ -89,7 +91,9 @@
       <div class="row">
         <div class="col-12 col-md-5">
           <h4>Just starting out or trying something new? The Club is an affordable and low-commitment way to be part of the Design District community.</h4>
-          <a href="#" class="text-primary h5">View membership &rarr;</a>
+          <router-link to="/the-club" class="text-primary h5">
+            View membership &rarr;
+          </router-link>
         </div>
       </div>
       <div class="row d-flex justify-content-end align-items-end mt-0 mt-lg-n5" style="margin-top: -30rem!important">
@@ -160,7 +164,7 @@
           </div>
           <div class="row">
             <div class="col-12 col-md-5">
-              <router-link to="/about-us" class="text-primary">
+              <router-link to="/about-us/#architecture" class="text-primary">
                 View all architects &rarr;
               </router-link>
             </div>

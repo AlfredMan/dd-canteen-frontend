@@ -52,7 +52,7 @@
           </div>
           <div class="row">
             <div class="col-12 col-md-5">
-              <router-link to="/about-us" class="text-primary">
+              <router-link to="/about-us/#architecture" class="text-primary">
                 View all architects &rarr;
               </router-link>
             </div>

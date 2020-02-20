@@ -11,7 +11,7 @@
           <div class="row d-flex align-items-start justify-content-between">
             <div class="col-12 col-md-5">
               <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering affordable rent, flexible leases and workspaces purpose-built for creative disciplines.</h4>
-              <a href="#" class="btn btn btn-lg btn-primary mt-3">Book a viewing</a>
+              <a href="#become-a-tenant" class="btn btn btn-lg btn-primary mt-3">Book a viewing</a>
             </div>
             <div class="col-12 col-md-6">
               <div class="row d-flex align-items-end justify-content-end">
@@ -49,7 +49,9 @@
                 <li>Available with rental subsidy </li>
               </ul>
               <p>Want something smaller?</p>
-              <a href="#" class="h5 text-primary">Join The Club &rarr;</a>
+              <router-link to="/the-club" class="h5 text-primary">
+                Join The Club &rarr;
+              </router-link>
             </div>
             <div class="col-12 col-md-1" />
             <div class="col-12 col-md-5">
@@ -502,7 +504,7 @@
       </div>
     </div> -->
 
-    <div class="py-5 bg-white">
+    <div id="become-a-tenant" class="py-5 bg-white">
       <div class="container my-5">
         <div class="row">
           <div class="col-12 col-md-4">

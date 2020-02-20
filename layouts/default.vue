@@ -20,7 +20,7 @@
         <router-link class="menu-link d-none d-md-inline" to="/contact">
           Contact Us
         </router-link>
-        <router-link to="/contact" class="btn text-black btn-outline-primary ml-auto mr-0">
+        <router-link to="/contact#register-interest" class="btn text-black btn-outline-primary ml-auto mr-0">
           <span>Join <span class="d-none d-md-inline">design district</span></span>
         </router-link>
       </nav>
