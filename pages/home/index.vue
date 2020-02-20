@@ -62,7 +62,7 @@
               <div class="">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=2000&fm=webp&q=80" alt="">
               </div>
-              <h3>Private Offices</h3>
+              <h3>Private offices</h3>
               <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
             </div>
           </div>

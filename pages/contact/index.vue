@@ -38,7 +38,7 @@
           </div>
 
           <div class="row d-flex">
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-4">
               <div class="row">
                 <div class="col-12 col-md-12 mb-5">
                   <h4>Design District will be a new permanent home for the creative industries in the heart of Greenwich Peninsula. One minute from North Greenwich underground station.</h4>
@@ -64,7 +64,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-8">
               <!-- <div class="embed-responsive embed-responsive-4by3 bg-dark" /> -->
               <img src="http://images.ctfassets.net/7p1ysxjarsp5/2ktZJktAQov9qqmv48aHV3/7bded41c83ea309edff8ce029932ce90/DD-location-map-1350x831.png" alt="" class="img-fluid">
             </div>

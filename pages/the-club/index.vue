@@ -2,12 +2,12 @@
   <div class="">
     <div class="container pb-5  pt-5">
       <div class="row">
-        <div class="col-12 col-md-2">
+        <div class="col-12 col-md-5">
           <h1>The Club</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-5">
           <h4>Just starting out or trying something new? The Club is an affordable and low-commitment way to be part of the Design District community.</h4>
           <!-- <a href="#" class="btn btn btn-lg btn-primary">Book a viewing</a> -->
         </div>
@@ -27,23 +27,23 @@
         <div class="container">
           <div class="row d-flex justify-content-between mb-5">
             <div class="col-12 mb-5">
-              <h3>What's in the Club</h3>
+              <h2>What's in the Club</h2>
               <p>The Club is an entry level co-working space for creative freelancers and entrepreneurs but also the social hub of Design District</p>
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
               <img src="http://images.ctfassets.net/7p1ysxjarsp5/1E9dyD5cbyoG8OVAIJG9BJ/7ad80cb2eef001808fe7739647254c3f/6aArchitects-2D-Architect.jpg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
-              <h4>Membership</h4>
+              <h3>Membership</h3>
               <p>The Club is an entry level co-working space for creative freelancers and entrepreneurs who want to be part of Design District but aren’t ready to be a tenant. There are four membership tiers: Lounge, Hot desk, Fixed desk and Micro-studio. </p>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
               <img src="http://images.ctfassets.net/7p1ysxjarsp5/7DifsFTlzI7vzhBUouVQGf/77edcddc87c2531fd53898440f016035/AdamKahn-1C-Architect.jpg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
-              <h4>Programme</h4>
+              <h3>Programme</h3>
               <p>The Club is also Design District’s hub for ideas sharing and collaboration. It will host a year-round programme of events and workshops, where club members and tenants can meet likeminded creatives and innovate together.</p>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
               <img src="http://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
-              <h4>Location</h4>
+              <h3>Location</h3>
               <p>The Club is located in the heart of the Design District, in a light-filled building designed by ASSEMBLAGE. It’s also where the Design District team is based, so drop by and say hello.</p>
             </div>
           </div>
@@ -102,17 +102,19 @@
         <div class="container">
           <div class="row py-5">
             <div class="col-12 col-md-6 col-lg-6">
-              <h4>Club membership benefits</h4>
-              <ul class="p">
+              <h2>Members access</h2>
+              <h4>The Design District is at the heart of Greenwich Peninsula, a new type of London created specifically for the creative community.</h4>
+              <br>
+              <h3>Club membership benefits</h3>
+              <ul class="h6">
                 <li>Exclusive members-only events and&nbsp;mixers</li>
                 <li>Access to industry specific events and&nbsp;workshops </li>
                 <li>Complimentary teas and coffees in The Club&nbsp;lounge </li>
                 <li>Year round start-up and business&nbsp;support </li>
               </ul>
-              <br>
               <!-- </div>
             <div class="col-12 col-md-6 col-lg-4"> -->
-              <h4>Club opening hours</h4>
+              <h3>Club opening hours</h3>
               <p>Serviced opening hours are between 08:00—18:00 with 24hr access via a fob.</p>
             </div>
             <div class="col-12 col-md-6 col-lg-6">

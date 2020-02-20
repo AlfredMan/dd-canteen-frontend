@@ -340,7 +340,7 @@
                   <!-- <h5>Onsite Tools</h5> -->
 
                   <h5>Wood workshop </h5>
-                  <ul>
+                  <ul class="h6">
                     <li>Axminster bandsaw</li>
                     <li>Festool chop saw</li>
                     <li>CNC router </li>
@@ -354,7 +354,7 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 mb-4">
                   <h5>Digital workshop </h5>
-                  <ul>
+                  <ul class="h6">
                     <li>1300x900 bed laser cutter </li>
                     <li>Roland GS-24 vinyl cutter </li>
                     <li>Vacuum former</li>
@@ -502,7 +502,7 @@
       </div>
     </div> -->
 
-    <div class="py-5">
+    <div class="py-5 bg-white">
       <div class="container my-5">
         <div class="row">
           <div class="col-12 col-md-4">
