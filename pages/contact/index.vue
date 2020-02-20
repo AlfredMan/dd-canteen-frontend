@@ -79,27 +79,27 @@
     <div class="py-5">
       <div class="container my-5">
         <div class="row">
-          <div class="col-6">
-            <h2>Contact</h2>
+          <div class="col-4">
+            <h2>Register Your Interest</h2>
           </div>
           <div class="col-12" />
           <div class="col-12 col-md-7">
             <enquire-form :show-business="false" />
           </div>
-          <div class="col-12 col-md-1" />
+          <!-- <div class="col-12 col-md-1" />
           <div class="col-12 col-md-4">
             <h5>Drop us a line using the details below</h5>
 
             <p><b>Front office</b><br><a href="#">hello@designdistrict.co.uk</a></p>
 
             <p><b>Alex Howard<br>Sales<br></b><a href="#">alex@designdistrict.co.uk</a><br>020 3981 2426</p>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
 
     <!--  -->
-    <div class="container-fluid">
+    <!-- <div class="container-fluid">
       <div class="row bg-light pb-5 pt-3">
         <div class="container py-5">
           <div class="row">
@@ -115,9 +115,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="py-5">
+    <!-- <div class="py-5">
       <div class="container my-5">
         <div class="row">
           <div class="col-12">
@@ -137,7 +137,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- <div class="bg-light">
       <div class="container mt-10">
