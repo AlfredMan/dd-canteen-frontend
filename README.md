@@ -1,14 +1,6 @@
-# Nuxt.js Hacker News
+# Nuxt.js Design District
 
-HackerNews clone built with [Nuxt.js](https://nuxtjs.org).
-
-<p align="center">
-  <a href="https://hn.nuxtjs.org" target="_blank">
-    <img width="1090" alt="Screenshot 2019-06-04 at 13 27 51" src="https://user-images.githubusercontent.com/904724/58875721-97382400-86cc-11e9-94c6-af21544817bb.png">
-    <br>
-    Live Demo
-  </a>
-</p>
+Design District built with [Nuxt.js](https://nuxtjs.org).
 
 ## Modes
 
@@ -77,6 +69,6 @@ For the communiy typescript fork please see [nuxt-community/hackernews-nuxt-ts](
 
 MIT
 
-## Credits 
+## Credits
 
 This repository is originally ported from [vue-hackernews-2.0](https://github.com/vuejs/vue-hackernews-2.0)

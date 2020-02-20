@@ -20,9 +20,6 @@
         <router-link class="d-none d-md-inline" to="/contact">
           Contact Us
         </router-link>
-        <!-- <a class="github" href="https://github.com/vuejs/vue-hackernews-2.0" target="_blank" rel="noopener">
-          Menu
-        </a> -->
         <router-link to="/contact" class="btn btn-outline-dark ml-auto mr-0">
           <span>Join <span class="d-none d-md-inline">design district</span></span>
         </router-link>
