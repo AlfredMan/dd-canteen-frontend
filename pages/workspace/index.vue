@@ -513,7 +513,8 @@
             <h4>The Design District is at the heart of Greenwich Peninsula, a new type of London created specifically for the creative community.</h4>
             <p>Located on Greenwich Peninsula and 1 minute's walk to North Greenwich tube station. With links to central and East London in 15 minutes or less, you can spend less time commuting and more time doing what you do best.</p>
           </div>
-          <div class="col-12 col-md-8 col-lg-6">
+          <div class="col-12 col-lg-1" />
+          <div class="col-12 col-md-8 col-lg-7">
             <enquire-form />
           </div>
         </div>
