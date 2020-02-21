@@ -23,6 +23,7 @@
 
         <router-link to="/contact#register-interest" class="btn text-black btn-outline-primary ml-auto mr-0" :class="{'btn-outline-dark': menuActive}">
           <span>Join <span class="d-none d-lg-inline">design district</span></span>
+          <!-- <span>Join design district</span> -->
         </router-link>
 
         <div class="d-block d-lg-none pl-3">
@@ -67,7 +68,7 @@
           </div>
 
           <div class="col-12" />
-          <div class="col-12 col-md-5">
+          <div class="col-12 col-md-5 d-none d-md-block">
             <p>The Design District is at the heart of Greenwich Peninsula, a new type of London created specifically for the creative community.</p>
             <p>From September 2020, Design District will offer a new permanent home for the creative industries in London. With affordable rents, flexible leases and purpose-designed workspaces to help creative businesses thrive.</p>
             <!-- <p>Located on Greenwich Peninsula and 1 minute's walk to North Greenwich tube station. With links to central and East London in 15 minutes or less, you can spend less time commuting and more time doing what you do best.</p> -->

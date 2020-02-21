@@ -9,7 +9,7 @@
             </div>
           </div>
           <div class="row d-flex align-items-start justify-content-between">
-            <div class="col-12 col-md-5">
+            <div class="col-12 col-md-5 mb-5">
               <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering affordable rent, flexible leases and workspaces purpose-built for creative disciplines.</h4>
               <a href="#become-a-tenant" class="btn btn btn-lg btn-primary mt-3">Book a viewing</a>
             </div>
@@ -30,7 +30,7 @@
       <div class="row pt-3">
         <div class="container py-5">
           <div class="row mb-5">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 mb-5">
               <h2>Find a space</h2>
               <h4>Rent a desk, a workshop, or an entire building. With simple access to high-speed wi-fi, clean and dirty workshops, integrated security and a host of events.</h4>
               <br><br>
@@ -333,6 +333,16 @@
             <!-- <div class="col-12">
               <h3>Workshops</h3>
             </div> -->
+            <div class="col-12 col-md-5 mb-3 order-md-2">
+              <div class="row d-flex align-items-end justify-content-end">
+                <div class="col-12 col-md-12">
+                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/21RQ1kgWpGexfUKMtcdKTm/1e47bf755d78145ee1eb547be44c627d/Hartley-Cycles_1.jpg?w=2000&h=2000&fm=webp&q=80" alt="">
+                  <!-- <small>Caren Hartley</small> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-1 order-md-2" />
+
             <div class="col-12 col-md-6">
               <h3>Workshops</h3>
               <p>Often creative businesses need more than a desk. In the Design District you can access a range of workshops suited to your specialism. There’s a wood workshop, digital workshop, textile workshop, engineering workshop and an assembly space. Prototype or produce a new collection.</p>
@@ -369,25 +379,19 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 col-md-6">
-              <div class="row d-flex align-items-end justify-content-end">
-                <div class="col-12 col-md-12">
-                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/21RQ1kgWpGexfUKMtcdKTm/1e47bf755d78145ee1eb547be44c627d/Hartley-Cycles_1.jpg?w=2000&h=2000&fm=webp&q=80" alt="">
-                  <!-- <small>Caren Hartley</small> -->
-                </div>
-              </div>
-            </div>
           </div>
 
           <div class="row d-flex align-items-start justify-content-between py-5">
             <!-- <div class="col-12 col-md-6" /> -->
-            <div class="col-12 col-md-5">
+            <div class="col-12 col-md-5 mb-3">
               <div class="row d-flex align-items-end justify-content-end">
                 <div class="col-12 col-md-12">
                   <img src="http://images.ctfassets.net/7p1ysxjarsp5/2KQ913hiCMPeZFVYGQTDZR/51632e614fe29a553364b69990f89ad0/Design-District-Matthew-Thompson-8457-LOW-RES.jpg?w=2000&h=2000&fm=webp&q=80" alt="">
                 </div>
               </div>
             </div>
+            <div class="col-12 col-md-1" />
+
             <div class="col-12 col-md-6">
               <h3>Meeting rooms</h3>
               <p>In building C3 you’ll five rooms ideal for small to medium-sized meetings. Meeting rooms can be rented out between 8am and 6pm, either by the hour or for the entire day. Each room features Superfast wi-fi, a Smart TV and AV equipment, wall spade for scribbles and post-it notes and unlimited coffee, tea and water. We can set-up the room boardroom or theatre depending on what you need. </p>
@@ -401,19 +405,68 @@
             </div> -->
           </div>
 
-          <div class="row d-flex align-items-start py-5">
-            <div class="col-12 col-md-5">
-              <h3>Food Hall and Kitchen</h3>
-              <p>Open to the public and filled with a wide range of food partners, the Food Hall will become a key meeting place in the Design District. It is located in SelgasCano’s caterpillar-like building at the entrance to district, immediately visible to visitors. <br><br>The Kitchen is a fully equipped industrial kitchen situated in C2, the Food and Technology building. It will cater for The Club and any onsite events. C2 Tenants working in the food and beverage industries can use the test kitchen.</p>
-            </div>
-
-            <div class="col-12 col-md-1" />
-            <div class="col-12 col-md-6">
+          <div class="row d-flex align-items-start justify-content-between py-5">
+            <div class="col-12 col-md-5 mb-3 order-md-2">
               <div class="row d-flex align-items-end justify-content-end">
                 <div class="col-12 col-md-12">
                   <img src="http://images.ctfassets.net/7p1ysxjarsp5/64OjUmEoOvUZh7W0EdQTfe/cbd8c37727a7c54be182da4f6d1deeb1/MarketHall.jpg?w=1000&h=1000&fm=webp&q=80&fit=thumb" alt="">
                 </div>
               </div>
+            </div>
+            <div class="col-12 col-md-1 order-md-2" />
+
+            <div class="col-12 col-md-6">
+              <h3>Food Hall and Kitchen</h3>
+              <p>Open to the public and filled with a wide range of food partners, the Food Hall will become a key meeting place in the Design District. It is located in SelgasCano’s caterpillar-like building at the entrance to district, immediately visible to visitors. <br><br>The Kitchen is a fully equipped industrial kitchen situated in C2, the Food and Technology building. It will cater for The Club and any onsite events. C2 Tenants working in the food and beverage industries can use the test kitchen.</p>
+            </div>
+
+            <!-- <div class="col-12 col-md-1" />
+            <div class="col-12 col-md-6" /> -->
+            <!-- <div class="col-12 col-md-6">
+              <div class="row d-flex align-items-end justify-content-end">
+                <div class="col-12 col-md-10">
+                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/2YkGmNe7vtf12308xsP0J1/7f043a0b6845187e4c66952b334c7a5c/KDN_Design_District_B4_190603_LR.jpeg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
+                </div>
+              </div>
+            </div> -->
+          </div>
+
+          <div class="row d-flex align-items-start justify-content-between py-5">
+            <!-- <div class="col-12 col-md-6" /> -->
+            <div class="col-12 col-md-5 mb-3">
+              <div class="row d-flex align-items-end">
+                <div class="col-12 col-md-12">
+                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/7DifsFTlzI7vzhBUouVQGf/77edcddc87c2531fd53898440f016035/AdamKahn-1C-Architect.jpg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-1" />
+            <div class="col-12 col-md-6">
+              <h3>Book and design supply shop </h3>
+              <p>Located in building D2, the shop will be a place for the design community and the public to buy art materials, design tools, magazines and books. Tenants can also host book launches and events within the space. </p>
+            </div>
+            <!-- <div class="col-12 col-md-6">
+              <div class="row d-flex align-items-end justify-content-end">
+                <div class="col-12 col-md-10">
+                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/2YkGmNe7vtf12308xsP0J1/7f043a0b6845187e4c66952b334c7a5c/KDN_Design_District_B4_190603_LR.jpeg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
+                </div>
+              </div>
+            </div> -->
+          </div>
+
+          <div class="row d-flex align-items-start justify-content-between py-5">
+            <div class="col-12 col-md-5 mb-3 order-md-2">
+              <div class="row d-flex align-items-end justify-content-end">
+                <div class="col-12 col-md-12">
+                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/2YkGmNe7vtf12308xsP0J1/7f043a0b6845187e4c66952b334c7a5c/KDN_Design_District_B4_190603_LR.jpeg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-1 order-md-2" />
+
+            <div class="col-12 col-md-6">
+              <h3>Pop-up space </h3>
+              <p>Suitable for retail or small art exhibitions, a white box pop-up space will be located on the ground floor or building A2. It can be hired by members of the public, with discounted rates for the Design District community. You’ll find a gallery lighting system, built in till point and EFTPOS Payment System, and the hire includes cleaning and security. At an additional cost, we can provide an installation and de-installation service or bespoke catering.</p>
             </div>
             <!-- <div class="col-12 col-md-1" />
             <div class="col-12 col-md-6" /> -->
@@ -428,53 +481,7 @@
 
           <div class="row d-flex align-items-start justify-content-between py-5">
             <!-- <div class="col-12 col-md-6" /> -->
-            <div class="col-12 col-md-5">
-              <div class="row d-flex align-items-end">
-                <div class="col-12 col-md-12">
-                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/7DifsFTlzI7vzhBUouVQGf/77edcddc87c2531fd53898440f016035/AdamKahn-1C-Architect.jpg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6">
-              <h3>Book and design supply shop </h3>
-              <p>Located in building D2, the shop will be a place for the design community and the public to buy art materials, design tools, magazines and books. Tenants can also host book launches and events within the space. </p>
-            </div>
-            <!-- <div class="col-12 col-md-6">
-              <div class="row d-flex align-items-end justify-content-end">
-                <div class="col-12 col-md-10">
-                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/2YkGmNe7vtf12308xsP0J1/7f043a0b6845187e4c66952b334c7a5c/KDN_Design_District_B4_190603_LR.jpeg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
-                </div>
-              </div>
-            </div> -->
-          </div>
-
-          <div class="row d-flex align-items-start py-5">
-            <div class="col-12 col-md-5">
-              <h3>Pop-up space </h3>
-              <p>Suitable for retail or small art exhibitions, a white box pop-up space will be located on the ground floor or building A2. It can be hired by members of the public, with discounted rates for the Design District community. You’ll find a gallery lighting system, built in till point and EFTPOS Payment System, and the hire includes cleaning and security. At an additional cost, we can provide an installation and de-installation service or bespoke catering.</p>
-            </div>
-            <div class="col-12 col-md-1" />
-            <div class="col-12 col-md-6">
-              <div class="row d-flex align-items-end justify-content-end">
-                <div class="col-12 col-md-12">
-                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/2YkGmNe7vtf12308xsP0J1/7f043a0b6845187e4c66952b334c7a5c/KDN_Design_District_B4_190603_LR.jpeg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
-                </div>
-              </div>
-            </div>
-            <!-- <div class="col-12 col-md-1" />
-            <div class="col-12 col-md-6" /> -->
-            <!-- <div class="col-12 col-md-6">
-              <div class="row d-flex align-items-end justify-content-end">
-                <div class="col-12 col-md-10">
-                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/2YkGmNe7vtf12308xsP0J1/7f043a0b6845187e4c66952b334c7a5c/KDN_Design_District_B4_190603_LR.jpeg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
-                </div>
-              </div>
-            </div> -->
-          </div>
-
-          <div class="row d-flex align-items-start py-5">
-            <!-- <div class="col-12 col-md-6" /> -->
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-5 mb-3">
               <div class="row d-flex align-items-end justify-content-end">
                 <div class="col-12 col-md-12">
                   <img src="http://images.ctfassets.net/7p1ysxjarsp5/3aSHHWF58a3lz1wLhodNS3/d7bf1c2dd9c8e04abd2057194b16ace7/bb.jpg?w=1000&h=800&fm=webp&q=80" alt="">
@@ -482,7 +489,7 @@
               </div>
             </div>
 
-            <div class="col-12 col-md-5">
+            <div class="col-12 col-md-6">
               <h3>Multi-sports rooftop court </h3>
               <p>A versatile multi-sports rooftop court will sit on top of the Fashion and Technology building. The rooftop will host a range of sports and wellness activities, including basketball, HIIT and yoga. The Design District community and members of the public can hire the court on an hourly basis.</p>
             </div>

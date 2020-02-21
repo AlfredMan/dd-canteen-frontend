@@ -107,9 +107,9 @@ h6,
 	line-height: 1.4;
 	margin: 1rem 0;
 
-	font-size: 1.25rem;
+	font-size: 1rem;
 	@include media-breakpoint-up(sm) {
-			font-size: 1.25rem;
+			font-size: 1rem;
 	}
 }
 
@@ -122,9 +122,30 @@ p {
 	font-size: 1.25rem;
 
 	@include media-breakpoint-up(sm) {
-			max-width: 40rem;
+			max-width: 38rem;
 			font-size: 1.25rem;
 	}
+}
+
+ul, li {
+	line-height: 1.4;
+	font-size: 1.25rem;
+	@include media-breakpoint-up(sm) {
+			font-size: 1.25rem;
+	}
+}
+ul {
+  padding-left: 1.75em;
+  li {
+    margin-left: 0;
+    list-style: circle;
+    margin-bottom: .25em
+  }
+}
+
+small {
+	font-weight: 300;
+	line-height: 1.4;
 }
 
 
@@ -177,14 +198,5 @@ h3,
 .h3 {
 	&:first-child {
     margin-top: -0.03em
-  }
-}
-
-ul {
-  padding-left: 1.25em;
-  li {
-    margin-left: 0;
-    list-style: circle;
-    margin-bottom: .25em
   }
 }

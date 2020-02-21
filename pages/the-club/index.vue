@@ -4,44 +4,42 @@
       <div class="row">
         <div class="col-12 col-md-5">
           <h1>The Club</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-md-5">
           <h4>Just starting out or trying something new? The Club is an affordable and low-commitment way to be part of the Design District community.</h4>
           <!-- <a href="#" class="btn btn btn-lg btn-primary">Book a viewing</a> -->
         </div>
-      </div>
-      <div class="row d-flex justify-content-end align-items-end mt-0 mt-lg-n5" style="margin-top: -20rem!important">
-        <div class="col-3">
-          <img src="http://images.ctfassets.net/7p1ysxjarsp5/5O8MZdUvzEq9ZwkNEDG7tr/c5bd4835a154182f51b1008e77019ff6/AdamKahn-1D-Architect.jpg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
-        </div>
-        <div class="col-5">
-          <img src="http://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=1000&h=1200&fm=webp&q=80&fit=thumb" alt="">
+        <div class="col-12 col-md-7">
+          <div class="row d-flex justify-content-end align-items-end mt-0">
+            <div class="col-5 col-md-4">
+              <img src="http://images.ctfassets.net/7p1ysxjarsp5/5O8MZdUvzEq9ZwkNEDG7tr/c5bd4835a154182f51b1008e77019ff6/AdamKahn-1D-Architect.jpg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
+            </div>
+            <div class="col-7 col-md-8">
+              <img src="http://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=1000&h=1200&fm=webp&q=80&fit=thumb" alt="">
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="container-fluid bg-light py-5">
+    <div class="container-fluid bg-light py-lg-5 py-4">
       <div class="row">
         <div class="container">
           <div class="row d-flex justify-content-between mb-5">
             <div class="col-12 mb-5">
               <h2>What's in the Club</h2>
-              <p>The Club is an entry level co-working space for creative freelancers and entrepreneurs but also the social hub of Design District</p>
+              <h4>The Club is an entry level co-working space for creative freelancers and entrepreneurs but also the social hub of Design District</h4>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
               <img src="http://images.ctfassets.net/7p1ysxjarsp5/1E9dyD5cbyoG8OVAIJG9BJ/7ad80cb2eef001808fe7739647254c3f/6aArchitects-2D-Architect.jpg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
               <h3>Membership</h3>
               <p>The Club is an entry level co-working space for creative freelancers and entrepreneurs who want to be part of Design District but aren’t ready to be a tenant. There are four membership tiers: Lounge, Hot desk, Fixed desk and Micro-studio. </p>
             </div>
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
               <img src="http://images.ctfassets.net/7p1ysxjarsp5/7DifsFTlzI7vzhBUouVQGf/77edcddc87c2531fd53898440f016035/AdamKahn-1C-Architect.jpg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
               <h3>Programme</h3>
               <p>The Club is also Design District’s hub for ideas sharing and collaboration. It will host a year-round programme of events and workshops, where club members and tenants can meet likeminded creatives and innovate together.</p>
             </div>
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
               <img src="http://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
               <h3>Location</h3>
               <p>The Club is located in the heart of the Design District, in a light-filled building designed by ASSEMBLAGE. It’s also where the Design District team is based, so drop by and say hello.</p>
@@ -133,7 +131,7 @@
       <div class="row">
         <div class="container my-5">
           <div class="row">
-            <div class="col-6">
+            <div class="col-12 col-md-6">
               <h2>Join the club</h2>
             </div>
             <div class="col-12" />
