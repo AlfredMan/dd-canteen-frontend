@@ -1,36 +1,79 @@
 <template lang="html">
   <div class="">
     <div
-      class="hero"
+      class="hero position-relative"
     >
       <div
         class="container pb-5 pt-5"
         style="z-index:9; position: relative;"
       >
         <div class="row">
-          <div class="col-12 col-md-4">
+          <div class="col-12 col-md-5">
             <h1 class="-text-white">
               Keep London creative
               <!-- Design District -->
             </h1>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-5 -text-white">
-            <h4>Welcome to the Design District. London’s new district for the creative industries. Opening September 2020.</h4>
+            <h4>
+              Welcome to the Design District. London’s new district for the creative industries. Opening September 2020.
+            </h4>
             <router-link to="/contact/#register-interest" class="btn btn btn-lg btn-primary mt-3">
               Join Design District
             </router-link>
+          </div>
+          <!-- <div class="col-12 col-md-1" />
+          <div class="col-12 col-md-6" style="">
+            <div class="w-100 h-100 bg-primary d-flex ">
+              <img
+                style="width: 50vw;max-width: 50vw;"
+                src="http://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=webp&q=80"
+                alt=""
+              >
+            </div>
+          </div> -->
+        </div>
+        <!-- <div class="row"> -->
+        <!-- <div class="col-12 col-md-5 -text-white"> -->
+        <!-- <h4>Welcome to the Design District. London’s new district for the creative industries. Opening September 2020.</h4>
+            <router-link to="/contact/#register-interest" class="btn btn btn-lg btn-primary mt-3">
+              Join Design District
+            </router-link> -->
+        <!-- </div> -->
+        <!-- </div> -->
+      </div>
+
+      <div class="d-none d-md-block position-absolute" style="bottom: 0; left:0; right: 0;">
+        <div class="row">
+          <div class="col-12 col-md-6" />
+          <div class="col-12 col-md-6">
+            <div>
+              <img
+                style="max-width: 50vw; width: 50vw; min-width: 1000px"
+                src="http://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=webp&q=80"
+                alt=""
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-block d-md-none" style="bottom: 0; left:0; right: 0;">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              style=""
+              src="http://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=webp&q=80"
+              alt=""
+            >
           </div>
         </div>
       </div>
     </div>
 
-    <div class="" style="overflow: hidden;margin-top: -30rem;">
+    <!-- <div class="" style="overflow: hidden;margin-top: -30rem;">
       <div style=";z-index:99; width: 100vw; height: 40rem; background: #aaa; transform: translateX(45vw);">
         <img src="http://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=webp&q=80" alt="">
       </div>
-    </div>
+    </div> -->
 
     <!--  -->
     <div class="container-fluid">
@@ -49,28 +92,28 @@
           </div>
 
           <div class="row d-flex align-items-end mt-5 pt-5">
-            <div class="col-12 col-md-6 col-lg-3">
+            <div class="col-12 col-md-6 col-lg-3 mb-5">
               <div class="">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=2000&fm=webp&q=80" alt="">
               </div>
               <h3>The Club</h3>
               <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
             </div>
-            <div class="col-12 col-md-6 col-lg-3">
+            <div class="col-12 col-md-6 col-lg-3 mb-5">
               <div class="">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/3aSHHWF58a3lz1wLhodNS3/d7bf1c2dd9c8e04abd2057194b16ace7/bb.jpg?w=2000&fm=webp&q=80" alt="">
               </div>
               <h3>Facilities</h3>
               <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
             </div>
-            <div class="col-12 col-md-6 col-lg-3">
+            <div class="col-12 col-md-6 col-lg-3 mb-5">
               <div class="">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/3BLpiM1CFIa3C7IShio4iL/29094ce9840beab6c83711c6c434ed07/KDN_Design_District_D1_LR.jpeg?w=2000&fm=webp&q=80" alt="">
               </div>
               <h3>Small studios</h3>
               <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
             </div>
-            <div class="col-12 col-md-6 col-lg-3">
+            <div class="col-12 col-md-6 col-lg-3 mb-5">
               <div class="">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=2000&fm=webp&q=80" alt="">
               </div>
@@ -84,26 +127,22 @@
 
     <div class="container py-5">
       <div class="row">
-        <div class="col-12 col-md-2">
+        <div class="col-12 col-md-6 pr-md-5 mb-5">
           <h1>The Club</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-md-5">
           <h4>Just starting out or trying something new? The Club is an affordable and low-commitment way to be part of the Design District community.</h4>
           <router-link to="/the-club" class="text-primary h5">
             View membership &rarr;
           </router-link>
         </div>
-      </div>
-      <div class="row d-flex justify-content-end align-items-end mt-0 mt-lg-n5" style="margin-top: -30rem!important">
-        <!-- <div class="col-4">
-          <img src="http://images.ctfassets.net/7p1ysxjarsp5/5O8MZdUvzEq9ZwkNEDG7tr/c5bd4835a154182f51b1008e77019ff6/AdamKahn-1D-Architect.jpg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
-        </div> -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <img src="http://images.ctfassets.net/7p1ysxjarsp5/64OjUmEoOvUZh7W0EdQTfe/cbd8c37727a7c54be182da4f6d1deeb1/MarketHall.jpg?w=1000&h=1200&fm=webp&q=80&fit=thumb" alt="">
         </div>
       </div>
+      <!-- <div class="row d-flex justify-content-end align-items-end mt-0 mt-lg-n5" style="margin-top: -30rem!important">
+        <div class="col-6">
+          <img src="http://images.ctfassets.net/7p1ysxjarsp5/64OjUmEoOvUZh7W0EdQTfe/cbd8c37727a7c54be182da4f6d1deeb1/MarketHall.jpg?w=1000&h=1200&fm=webp&q=80&fit=thumb" alt="">
+        </div>
+      </div> -->
     </div>
 
     <!--  -->

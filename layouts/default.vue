@@ -36,17 +36,15 @@
           <div class="col-12">
             <h3>Newsletter</h3>
           </div>
-          <div class="col-12" />
 
-          <div class="col col-md-5">
+          <div class="col-12" />
+          <div class="col-12 col-md-5">
             <p>The Design District is at the heart of Greenwich Peninsula, a new type of London created specifically for the creative community.</p>
             <p>From September 2020, Design District will offer a new permanent home for the creative industries in London. With affordable rents, flexible leases and purpose-designed workspaces to help creative businesses thrive.</p>
             <!-- <p>Located on Greenwich Peninsula and 1 minute's walk to North Greenwich tube station. With links to central and East London in 15 minutes or less, you can spend less time commuting and more time doing what you do best.</p> -->
           </div>
-
-          <div class="col col-md-1" />
-
-          <div class="col col-md-5">
+          <div class="col-12 col-md-1" />
+          <div class="col-12 col-md-5">
             <newsletter-form />
           </div>
         </div>
@@ -56,23 +54,23 @@
     <footer class="bg-grey">
       <div class="container">
         <div class="row pt-5 pb-5">
-          <div class="col-12 col-md-3 col-lg-2">
+          <div class="col-12 col-md-3 col-lg-2 mb-5">
             <img src="~/assets/images/gp-logo.svg" alt="">
           </div>
-          <div class="col-12 col-md-3 col-lg-4">
+          <div class="col-12 col-md-3 col-lg-4  mb-5">
             <h5>DESIGN DISTRICT</h5>
             <a class="">Delta Wharf, Tunnel Ave, Greenwich,<br>London SE10 0QE<br>United Kingdom</a><br><br>
             <a class="">hello@designdistrict.co.uk</a><br>
             <a class="">020 3981 2426</a><br>
           </div>
-          <div class="col-12 col-md-3 col-lg-2">
+          <div class="col-6 col-md-3 col-lg-2 mb-5">
             <h5>Connect</h5>
             <a class="" href="https://twitter.com/Design_District">Twitter</a><br>
             <a class="" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br>
             <a class="" href="http://www.instagram.com/designdistrictlondon">Instagram</a><br>
           </div>
 
-          <div class="col-12 col-md-3 col-lg-2">
+          <div class="col-6 col-md-3 col-lg-2 mb-5">
             <h5>Join</h5>
             <router-link class="" to="/workspace">
               Workspace
@@ -91,8 +89,8 @@
             </router-link>
           </div>
 
-          <div class="col-12 col-md-3 col-lg-2">
-            <h5>Policies</h5>
+          <div class="col-6 col-md-3 col-lg-2 mb-5">
+            <h5>Legal</h5>
             <router-link class="" to="/privacy-policy">
               Privacy Policy
             </router-link>

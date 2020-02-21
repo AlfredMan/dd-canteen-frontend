@@ -4,17 +4,9 @@
       <div class="row">
         <div class="container py-5">
           <div class="row">
-            <div class="col-12 col-md-10">
+            <div class="col-12 col-md-12">
               <h2>Architecture 00</h2>
-              <!-- <h2 class="text-black-50">
-                C1, D1
-              </h2> -->
             </div>
-            <!-- <div class="col-12 col-md-2 text-right">
-              <h2>C1, D1</h2>
-            </div> -->
-          </div>
-          <div class="row d-flex align-items-start justify-content-between">
             <div class="col-12 col-md-6">
               <h5>The Building</h5>
               <p>
@@ -25,14 +17,12 @@
                 Architecture 00 was founded in London in 2005. It’s a collaborative design studio where creatives from a wide range of disciplines work alongside architects to make places that empower people. The studio has a particular track record of innovative workspace projects, including the Foundry in Vauxhall, which was RIBA London’s Building of the Year in 2015. Architecture 00’s work often rethinks the status quo, through open source projects like Wikihouse (a two storey CNC cut house) and local making platform Opendesk or groundbreaking publications Compendium for the Civic Economy and A Right to Build.
               </p>
             </div>
-          </div>
-          <div class="row d-flex align-items-start justify-content-between">
-            <div class="col-12 col-md-12">
-              <div class="row d-flex align-items-end justify-content-end">
-                <div class="col-12 col-md-4">
+            <div class="col-12 col-md-6">
+              <div class="row d-flex align-items-start justify-content-end">
+                <div class="col-12 col-md-5">
                   <img src="http://images.ctfassets.net/7p1ysxjarsp5/4wwMRjzluVJ7zf67yR4PrR/96a7d23c5fbd40afe8df58db0588ed24/Architecture00-2A-Architect.jpg?w=1000&h=1000&fm=webp&q=80" alt="">
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-7">
                   <img src="http://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=2000&fm=webp&q=80" alt="">
                 </div>
               </div>

@@ -17,7 +17,7 @@
 
       <div>
         <div class="form-row">
-          <div :class="[{'col-8': !active}, {'col-12': active}]">
+          <div :class="[{'col-7 col-md-8': !active}, {'col-12': active}]">
             <input
               class="form-control input-text form-field-reset"
               type="email"
@@ -27,7 +27,7 @@
               required
             >
           </div>
-          <div v-show="!active" class="col-4">
+          <div v-show="!active" class="col">
             <div class="form-group">
               <button class="btn btn-outline-dark btn-lg mt-0" @click="active = true">
                 Next &rarr;
