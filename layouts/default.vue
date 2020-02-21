@@ -1,29 +1,58 @@
 <template>
   <div id="app">
-    <header class="header">
-      <nav class="inner d-flex flex-row align-items-center container">
+    <header class="header" :class="{'bg-primary': menuActive}">
+      <nav class="inner d-flex flex-row align-items-center container z-index--">
         <router-link to="/" exact>
           <img class="logo" src="~/assets/images/logo@1x.png" alt="logo">
         </router-link>
 
-        <router-link class="menu-link d-none d-md-inline" to="/workspace">
+        <router-link class="menu-link d-none d-lg-inline" to="/workspace">
           Workspace
         </router-link>
-        <router-link class="menu-link d-none d-md-inline" to="/the-club">
+        <router-link class="menu-link d-none d-lg-inline" to="/the-club">
           The Club
         </router-link>
-        <!-- <router-link class="menu-link d-none d-md-inline" to="/">Architecture</router-link> -->
-        <!-- <router-link class="menu-link d-none d-md-inline" to="/news-and-events">News & Events</router-link> -->
-        <router-link class="menu-link d-none d-md-inline" to="/about-us">
+        <!-- <router-link class="menu-link d-none d-lg-inline" to="/">Architecture</router-link> -->
+        <!-- <router-link class="menu-link d-none d-lg-inline" to="/news-and-events">News & Events</router-link> -->
+        <router-link class="menu-link d-none d-lg-inline" to="/about-us">
           About
         </router-link>
-        <router-link class="menu-link d-none d-md-inline" to="/contact">
+        <router-link class="menu-link d-none d-lg-inline" to="/contact">
           Contact Us
         </router-link>
-        <router-link to="/contact#register-interest" class="btn text-black btn-outline-primary ml-auto mr-0">
-          <span>Join <span class="d-none d-md-inline">design district</span></span>
+
+        <router-link to="/contact#register-interest" class="btn text-black btn-outline-primary ml-auto mr-0" :class="{'btn-outline-dark': menuActive}">
+          <span>Join <span class="d-none d-lg-inline">design district</span></span>
         </router-link>
+
+        <div class="d-block d-lg-none pl-3">
+          <button class="form-field-reset btn cursor-pointer p0 mt-1" type="button" @click="menuActive = !menuActive">
+            <span class="accessible-hide">Menu</span>
+            <div class="icon-burger" style="color: rgb(43, 43, 43);" :class="{'icon-burger--is-active': menuActive}">
+              <div class="icon-burger__inner" />
+            </div>
+          </button>
+        </div>
       </nav>
+
+      <div v-show="menuActive" class="position-fixed w-100 h-100 bg-primary">
+        <div class="row p-4">
+          <div class="col">
+            <router-link class="mobile-menu-link" to="/workspace">
+              Workspace
+            </router-link><br>
+            <router-link class="mobile-menu-link" to="/the-club">
+              The Club
+            </router-link><br>
+            <router-link class="mobile-menu-link" to="/about-us">
+              About
+            </router-link><br>
+            <router-link class="mobile-menu-link" to="/contact">
+              Contact Us
+            </router-link><br>
+          </div>
+        </div>
+      </div>
     </header>
     <!-- <transition name="fade" mode="out-in">
       <router-view class="view" />
@@ -130,6 +159,19 @@ import NewsletterForm from '../components/forms/Newsletter.vue'
 export default {
   components: {
     NewsletterForm
+  },
+  data () {
+    return {
+      menuActive: false
+    }
+  },
+  watch: {
+    '$route' (to, from) {
+      console.log(this)
+      if (to.fullPath !== from.fullPath) {
+        this.menuActive = false
+      }
+    }
   }
 }
 </script>
