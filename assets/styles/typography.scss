@@ -33,6 +33,9 @@ h1,
 
 	font-size: 5rem;
 	@include media-breakpoint-up(sm) {
+		font-size: 7.5rem;
+	}
+	@include media-breakpoint-up(lg) {
 		font-size: 10rem;
 	}
 }
