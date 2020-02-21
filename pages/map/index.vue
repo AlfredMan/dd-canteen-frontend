@@ -9,54 +9,105 @@
               <h2>Map</h2>
               <!-- <h4>Design District will be a new permanent home for the creative industries in the heart of Greenwich Peninsula. One minute from North Greenwich underground station.</h4> -->
               <p>Design District will be a new permanent home for the creative industries in the heart of Greenwich Peninsula. One minute from North Greenwich underground station.</p>
-              <div class="row building-selector p-3">
-                <div class="col-3 p-3">
-                  <a class="h3 text-primary" @click="state=1">A1</a>
+
+              <input type="text" name="" value="" placeholder="Search">
+
+              <div class="row building-selector p-3" @click="state=1">
+                <div class="col-6 p-1">
+                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/2HL8GANzeD5FCGnIiwyuYv/6540b3644c75df2f92622267c0f7b3f7/KDN_Design_District_A3_LR.jpeg?w=200&h=200&fm=webp&q=80&fit=thumb" alt="">
+                  <!-- <a class="h3 text-primary" @click="state=1">
+                    A1
+                  </a> -->
                 </div>
-                <div class="col-3 p-3">
-                  <a class="h3 text-primary" @click="state=1">A2</a>
+                <div class="col-6 p-1">
+                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/76oMTikwq10V5msrjFiyQP/5afee788cec1120e4aced0f90783b43f/KDN_Design_District_B2_190603_LR.jpeg?w=200&h=200&fm=webp&q=80&fit=thumb" alt="">
+                  <!-- <a class="h3 text-primary" @click="state=1">
+                    A2
+                  </a> -->
                 </div>
-                <div class="col-3 p-3">
-                  <a class="h3 text-primary" @click="state=1">A3</a>
+                <div class="col-6 p-1">
+                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=200&h=200&fm=webp&q=80&fit=thumb" alt="">
+                  <!-- <a class="h3 text-primary" @click="state=1">
+                    A3
+                  </a> -->
                 </div>
-                <div class="col-3 p-3">
-                  <a class="h3 text-primary" @click="state=1">A4</a>
+                <div class="col-6 p-1">
+                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/3h1FOyo7AAzLegWryEY9u5/d2ce2d111ead17baf358e471cb1d3d76/KDN_Design_District_C2_LR.jpeg?w=200&h=200&fm=webp&q=80&fit=thumb" alt="">
+                  <!-- <a class="h3 text-primary" @click="state=1">
+                    A4
+                  </a> -->
                 </div>
-                <div class="col-3 p-3">
-                  <a class="h3 text-primary" @click="state=1">B1</a>
+                <div class="col-6 p-1">
+                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/2HL8GANzeD5FCGnIiwyuYv/6540b3644c75df2f92622267c0f7b3f7/KDN_Design_District_A3_LR.jpeg?w=200&h=200&fm=webp&q=80&fit=thumb" alt="">
+                  <!-- <a class="h3 text-primary" @click="state=1">
+                    B1
+                  </a> -->
                 </div>
-                <div class="col-3 p-3">
-                  <a class="h3 text-primary" @click="state=1">B2</a>
+                <div class="col-6 p-1">
+                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/76oMTikwq10V5msrjFiyQP/5afee788cec1120e4aced0f90783b43f/KDN_Design_District_B2_190603_LR.jpeg?w=200&h=200&fm=webp&q=80&fit=thumb" alt="">
+                  <!-- <a class="h3 text-primary" @click="state=1">
+                    B2
+                  </a> -->
                 </div>
-                <div class="col-3 p-3">
-                  <a class="h3 text-primary" @click="state=1">B3</a>
+                <div class="col-6 p-1">
+                  <img src="" alt="">
+                  <!-- <a class="h3 text-primary" @click="state=1">
+                    B3
+                  </a> -->
                 </div>
-                <div class="col-3 p-3">
-                  <a class="h3 text-primary" @click="state=1">B4</a>
+                <div class="col-6 p-1">
+                  <img src="" alt="">
+                  <!-- <a class="h3 text-primary" @click="state=1">
+                    B4
+                  </a> -->
                 </div>
-                <div class="col-3 p-3">
-                  <a class="h3 text-primary" @click="state=1">C1</a>
+                <div class="col-6 p-1">
+                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=200&h=200&fm=webp&q=80&fit=thumb" alt="">
+                  <!-- <a class="h3 text-primary" @click="state=1">
+                    C1
+                  </a> -->
                 </div>
-                <div class="col-3 p-3">
-                  <a class="h3 text-primary" @click="state=1">C2</a>
+                <div class="col-6 p-1">
+                  <img src="http://images.ctfassets.net/7p1ysxjarsp5/3h1FOyo7AAzLegWryEY9u5/d2ce2d111ead17baf358e471cb1d3d76/KDN_Design_District_C2_LR.jpeg?w=200&h=200&fm=webp&q=80&fit=thumb" alt="">
+                  <!-- <a class="h3 text-primary" @click="state=1">
+                    C2
+                  </a> -->
                 </div>
-                <div class="col-3 p-3">
-                  <a class="h3 text-primary" @click="state=1">C3</a>
+                <div class="col-6 p-1">
+                  <img src="" alt="">
+                  <!-- <a class="h3 text-primary" @click="state=1">
+                    C3
+                  </a> -->
                 </div>
-                <div class="col-3 p-3">
-                  <a class="h3 text-primary" @click="state=1">C4</a>
+                <div class="col-6 p-1">
+                  <img src="" alt="">
+                  <!-- <a class="h3 text-primary" @click="state=1">
+                    C4
+                  </a> -->
                 </div>
-                <div class="col-3 p-3">
-                  <a class="h3 text-primary" @click="state=1">D1</a>
+                <div class="col-6 p-1">
+                  <img src="" alt="">
+                  <!-- <a class="h3 text-primary" @click="state=1">
+                    D1
+                  </a> -->
                 </div>
-                <div class="col-3 p-3">
-                  <a class="h3 text-primary" @click="state=1">D2</a>
+                <div class="col-6 p-1">
+                  <img src="" alt="">
+                  <!-- <a class="h3 text-primary" @click="state=1">
+                    D2
+                  </a> -->
                 </div>
-                <div class="col-3 p-3">
-                  <a class="h3 text-primary" @click="state=1">D3</a>
+                <div class="col-6 p-1">
+                  <img src="" alt="">
+                  <!-- <a class="h3 text-primary" @click="state=1">
+                    D3
+                  </a> -->
                 </div>
-                <div class="col-3 p-3">
-                  <a class="h3 text-primary" @click="state=1">D4</a>
+                <div class="col-6 p-1">
+                  <img src="" alt="">
+                  <!-- <a class="h3 text-primary" @click="state=1">
+                    D4
+                  </a> -->
                 </div>
               </div>
               <br>
@@ -64,7 +115,7 @@
           </div>
         </div>
         <div class="col-12 col-lg-9 map-view">
-          <input type="text" name="" value="" placeholder="Search">
+          <!-- <input type="text" name="" value="" placeholder="Search"> -->
           <img class="site-plan multiply" src="~/assets/images/map.png" alt="" @click="state = 1">
         </div>
       </div>
@@ -81,6 +132,8 @@
               <h2>
                 C1
               </h2>
+
+              <img src="http://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=2000&h=2000&fm=webp&q=80" alt="">
 
               <p>Design District will be a new permanent home for the creative industries in the heart of Greenwich Peninsula. One minute from North Greenwich underground station.</p>
               <div class="">
@@ -108,7 +161,7 @@
           <img class="building-plan multiply" src="~/assets/images/map-building.png" alt="" @click="state=2">
         </div>
         <div class="col-12 col-lg-6 map-view">
-          <input type="text" name="" value="" placeholder="Search">
+          <!-- <input type="text" name="" value="" placeholder="Search"> -->
           <img class="site-plan multiply" src="~/assets/images/map-selected.png" alt="" @click="state = 0">
         </div>
       </div>
@@ -122,30 +175,32 @@
               <!-- <a @click="state = 0">
                 &larr; close
               </a> -->
-              <h4>
+              <h3>
                 Rooftop Baseketball Court
-              </h4>
+              </h3>
               <h5>
                 C1, Rooftop Level
               </h5>
+
+              <div class="my-4">
+                <img src="http://images.ctfassets.net/7p1ysxjarsp5/3aSHHWF58a3lz1wLhodNS3/d7bf1c2dd9c8e04abd2057194b16ace7/bb.jpg?w=2000&h=2000&fm=webp&q=80&f=bottom&fit=thumb" alt="">
+              </div>
+
               <!-- <h5>Building: C1</h5> -->
               <p>Design District will be a new permanent home for the creative industries in the heart of Greenwich Peninsula. One minute from North Greenwich underground station.</p>
-
-              <br>
-              <h5>Information</h5>
               <p>Opening hour: 9:00—20:00</p>
               <a href="#" class="text-primary">View booking information &rarr;</a>
             </div>
           </div>
         </div>
-        <div class="col-12 col-lg-3 building-view p-5">
+        <div class="col-12 col-lg-3 building-view p-5" @click="state=1">
           <h3>
             C1
           </h3>
           <img class="building-plan multiply" src="~/assets/images/map-building-selected.png" alt="">
         </div>
         <div class="col-12 col-lg-6 map-view">
-          <input type="text" name="" value="" placeholder="Search">
+          <!-- <input type="text" name="" value="" placeholder="Search"> -->
           <img class="site-plan multiply" src="~/assets/images/map-selected.png" alt="" @click="state = 0">
         </div>
       </div>
@@ -157,7 +212,7 @@
 export default {
   data () {
     return {
-      state: 1,
+      state: 0,
       map: '~/assets/images/map.png',
       mapSelected: '~/assets/images/map-selected.png',
       mapSelectedDot: '~/assets/images/map-selected-dot.png'
@@ -196,11 +251,11 @@ export default {
   position: relative;
 }
 input {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  width: 20rem;
-  z-index: 99
+  // position: absolute;
+  // top: 2rem;
+  // right: 2rem;
+  // width: 20rem;
+  // z-index: 99
 }
 .building-plan {
   margin-top: 5rem;
