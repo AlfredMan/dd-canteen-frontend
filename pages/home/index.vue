@@ -17,7 +17,7 @@
               Welcome to the Design District. London’s new district for the creative industries. Opening autumn 2020.
             </h4>
             <router-link to="/contact/#register-interest" class="btn btn btn-lg btn-primary mt-3">
-              Join Design District
+              Express interest
             </router-link>
           </div>
           <!-- <div class="col-12 col-md-1" />
