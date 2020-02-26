@@ -136,6 +136,13 @@
           <!-- Our <a href="/privacy-policy/">Privacy Policy</a> outlines how we use and store your data. You can manage your preferences or opt out of communications at any time. -->
           Our <a href="/privacy-policy/">Privacy Policy</a> outlines how we use and store your data. You can manage your preferences or opt out of communications at any time.
         </h6>
+        <div class="mt-4">
+          <small class="text-black-50">
+            This site is protected by reCAPTCHA and the Google
+                <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and
+                <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.
+          </small>
+        </div>
       </div>
 
       <input type="hidden" name="captcha_settings" value="{&quot;keyname&quot;:&quot;GoogleAPIKeyV2&quot;,&quot;fallback&quot;:&quot;true&quot;,&quot;orgId&quot;:&quot;00D20000000nxym&quot;,&quot;ts&quot;:&quot;&quot;}">

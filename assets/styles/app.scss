@@ -140,6 +140,8 @@ img {
     transition: top 70ms ease, opacity 70ms ease 120s
 }
 
+.grecaptcha-badge { visibility: hidden; }
+
 @media (max-width: 860px) {
 	.header {
 		.inner {

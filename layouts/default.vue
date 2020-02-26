@@ -172,7 +172,7 @@ export default {
   },
   watch: {
     '$route' (to, from) {
-      console.log(this)
+      // console.log(this)
       if (to.fullPath !== from.fullPath) {
         this.menuActive = false
       }

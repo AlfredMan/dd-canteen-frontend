@@ -400,6 +400,14 @@
           @expired="onExpired"
         />
 
+        <div class="mt-4">
+          <small class="text-black-50">
+            This site is protected by reCAPTCHA and the Google
+                <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and
+                <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.
+          </small>
+        </div>
+
         <!-- <div v-if="formAlert.type === 'loading'" class="alert alert-light mt-4" role="alert">
           {{ formAlert.text }}
         </div>

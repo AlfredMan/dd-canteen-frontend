@@ -48,7 +48,7 @@
                 <li>Access to creative industry events</li>
                 <li>Bookable workshop spaces and meeting rooms</li>
               </ul>
-              <a href="#become-a-tenant" class="btn btn btn-lg btn-primary mt-3">Book a viewing</a>
+              <a href="#become-a-tenant" class="btn btn btn-lg btn-primary mt-3">Join Design District</a>
               <!-- <p>Want something smaller?</p>
               <router-link to="/the-club" class="h5 text-primary">
                 Join The Club &rarr;

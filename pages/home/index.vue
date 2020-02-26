@@ -16,7 +16,7 @@
             <h4>
               Welcome to the Design District. London’s new district for the creative industries. Opening autumn 2020.
             </h4>
-            <router-link to="/contact/#register-interest" class="btn btn btn-lg btn-primary mt-3">
+            <router-link to="/contact#register-interest" class="btn btn btn-lg btn-primary mt-3">
               Join Design District
             </router-link>
           </div>
@@ -92,33 +92,45 @@
           </div>
 
           <div class="row d-flex align-items-end mt-5 pt-5">
-            <div class="col-12 col-md-6 col-lg-3 mb-5">
+            <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
               <div class="">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=2000&fm=webp&q=80" alt="">
               </div>
-              <h3>Creative workspace</h3>
-              <p>Rent a studio, a floor, or an entire building. Spaces kitted out to suit your industry and flexible tenancies for growing teams.</p>
+              <div class="" style="min-height: 18em">
+                <span></span>
+                <h3>Creative workspace</h3>
+                <p>Rent a studio, a floor, or an entire building. Spaces kitted out to suit your industry and flexible tenancies for growing teams.</p>
+              </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-5">
+            <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
               <div class="">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/3aSHHWF58a3lz1wLhodNS3/d7bf1c2dd9c8e04abd2057194b16ace7/bb.jpg?w=2000&fm=webp&q=80" alt="">
               </div>
-              <h3>The Club</h3>
-              <p>Aimed at freelancers, entrepreneurs and start-ups, The Club offers a place to work but also talks, events and business support. <router-link to="/the-club" class="-text-primary -h5">Express your interest</router-link>.</p>
+              <div class="" style="min-height: 18em">
+                <span></span>
+                <h3>The Club</h3>
+                <p>Aimed at freelancers, entrepreneurs and start-ups, The Club offers a place to work but also talks, events and business support. <router-link to="/the-club" class="-text-primary -h5">Express your interest</router-link>.</p>
+              </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-5">
+            <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
               <div class="">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/3BLpiM1CFIa3C7IShio4iL/29094ce9840beab6c83711c6c434ed07/KDN_Design_District_D1_LR.jpeg?w=2000&fm=webp&q=80" alt="">
               </div>
-              <h3>Workshops</h3>
-              <p>Need a 3D-printer or a test kitchen, a pattern-cutting table or a coding lab? There’s space to make in our on-site workshops. <router-link to="/workspace#service-and-facilities" class="-text-primary -h5">Find out more</router-link>.</p>
+              <div class="" style="min-height: 18em">
+                <span></span>
+                <h3>Workshops</h3>
+                <p>Need a 3D-printer or a test kitchen, a pattern-cutting table or a coding lab? There’s space to make in our on-site workshops. <router-link to="/workspace#service-and-facilities" class="-text-primary -h5">Find out more</router-link>.</p>
+              </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-5">
+            <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
               <div class="">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=2000&fm=webp&q=80" alt="">
               </div>
-              <h3>For hire</h3>
-              <p>Book a recording and broadcast studio, meeting rooms, events spaces, a pop-up retail space and even a multi-sport rooftop court.</p>
+              <div class="" style="min-height: 18em">
+                <span></span>
+                <h3>For hire</h3>
+                <p>Book a recording and broadcast studio, meeting rooms, events spaces, a pop-up retail space and even a multi-sport rooftop court.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -219,7 +231,7 @@
             </div>
 
             <div class="col-12 col-md-6 col-lg-3 mb-5">
-              <router-link to="/architecture/6-a-architects">
+              <router-link to="/architecture/6a-architects">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/4PPO5LoteF6CWrT30TUBKO/6fc95dbe5e49e0f81e1fc748ef11fb09/6aArchictects-2A-Architect.jpg?w=1000&h=1200&fm=webp&q=80" alt="">
                 <h5>6A Architects</h5>
               </router-link>

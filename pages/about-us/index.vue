@@ -28,7 +28,7 @@
             <div class="col-12" />
             <div class="col-12 col-md-6 mb-4">
               <h3>A thriving home for ideas</h3>
-              <p>Design District is much more than just buildings though. It will provide a new space for creatives of all kinds to come and work together. A magnetic centre of activity with a vibrant and engaged community of free thinkers – from architects, artists and makers to graphic, fashion and digital designers, gaming professionals, musicians and many more.</p>
+              <p>Design District will provide a new space for creatives of all kinds to come and work together. A magnetic centre of activity with a vibrant and engaged community of free thinkers – from architects, artists and makers to graphic, fashion and digital designers, gaming professionals, musicians and many more.</p>
             </div>
             <div class="col-12 col-md-6 mb-4">
               <h3>Here to keep London creative</h3>
@@ -77,7 +77,7 @@
             </div>
 
             <div class="col-12 col-md-6 col-lg-4 mb-5">
-              <router-link to="/architecture/6-a-architects">
+              <router-link to="/architecture/6a-architects">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/4PPO5LoteF6CWrT30TUBKO/6fc95dbe5e49e0f81e1fc748ef11fb09/6aArchictects-2A-Architect.jpg?w=1000&h=1200&fm=webp&q=80" alt="">
                 <h5>6A Architects</h5>
               </router-link>
