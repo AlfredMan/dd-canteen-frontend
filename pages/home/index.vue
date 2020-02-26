@@ -16,7 +16,7 @@
             <h4>
               Welcome to the Design District. London’s new district for the creative industries. Opening autumn 2020.
             </h4>
-            <router-link to="/contact#register-interest" class="btn btn btn-lg btn-primary mt-3">
+            <router-link to="/contact/#register-interest" class="btn btn btn-lg btn-primary mt-3">
               Join Design District
             </router-link>
           </div>
@@ -223,9 +223,9 @@
 
           <div class="row d-flex align-items-end mt-5 pt-5">
             <div class="col-12 col-md-6 col-lg-3 mb-5">
-              <router-link to="/architecture/assemblage">
-                <img src="http://images.ctfassets.net/7p1ysxjarsp5/4H7LD6UdKbLKXTBqYH7wv3/cb9c690b567f1a7768158e9c80def96b/Assemblage-Architect000.jpg?w=1000&h=1200&fm=webp&q=80" alt="">
-                <h5>Assemblage</h5>
+              <router-link to="/architecture/ASSEMBLAGE">
+                <img src="http://images.ctfassets.net/7p1ysxjarsp5/4H7LD6UdKbLKXTBqYH7wv3/cb9c690b567f1a7768158e9c80def96b/ASSEMBLAGE-Architect000.jpg?w=1000&h=1200&fm=webp&q=80" alt="">
+                <h5>ASSEMBLAGE</h5>
               </router-link>
               <!-- <p>C3 and D3</p> -->
             </div>
