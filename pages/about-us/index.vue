@@ -8,7 +8,7 @@
       </div>
       <div class="row">
         <div class="col-12 col-md-6">
-          <h4>The Design District is a collection of 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. From September 2020 it will offer a permanent and purpose-designed home for the creative&nbsp;industries.</h4>
+          <h4>Design District is a collection of 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. From autumn 2020 it will offer a permanent and purpose-designed home for the creative&nbsp;industries.</h4>
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
         <div class="container pt-2 pb-5">
           <div class="row">
             <div class="col-12 mb-4">
-              <h2>The Design District</h2>
+              <h2>Design District</h2>
             </div>
             <div class="col-12" />
             <div class="col-12 col-md-6 mb-4">
@@ -58,9 +58,12 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-12 col-md-5">
+            <div class="col-12 col-md-4">
               <h4>World-class buildings. The needs of creatives put front and centre. Design District is an offer that’s entirely new for London. Meet the architects.</h4>
               <!-- <a href="#" class="text-primary">View all architects &rarr;</a> -->
+            </div>
+            <div class="col-12 col-md-6">
+              <p>The 16 buildings in the district have been designed by creatives, for creatives. Incorporating biophilic design, we prioritised natural ventilation, high ceilings, north-facing lights and pedestrian movement for a healthy and happy workplace. The brief to the architects was to create a space that they would like to work in themselves. The project’s novel and exciting approach involved each practice working in a silo, overseen by ASSEMBLAGE founder Hannah Corlett.</p>
             </div>
           </div>
 
@@ -68,7 +71,7 @@
             <div class="col-12 col-md-6 col-lg-4 mb-5">
               <router-link to="/architecture/assemblage">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/4H7LD6UdKbLKXTBqYH7wv3/cb9c690b567f1a7768158e9c80def96b/Assemblage-Architect000.jpg?w=1000&h=1200&fm=webp&q=80" alt="">
-                <h5>Assemblage</h5>
+                <h5>ASSEMBLAGE</h5>
               </router-link>
               <!-- <p>C3 and D3</p> -->
             </div>
@@ -98,7 +101,7 @@
             <div class="col-12 col-md-6 col-lg-4 mb-5">
               <router-link to="/architecture/barozzi-veiga">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/3HiQG1XaJ2pfkYLLq6Yyyi/b0b5d7f11232fe4a0fdcbe97557e33ed/Barozzi-Veiga-1A-Architect.jpg?w=1000&h=1200&fm=webp&q=80" alt="">
-                <h5>Barozzi/Veiga</h5>
+                <h5>Barozzi Veiga</h5>
               </router-link>
               <!-- <p>C3 and D3</p> -->
             </div>

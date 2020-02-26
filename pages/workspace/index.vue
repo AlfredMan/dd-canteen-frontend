@@ -10,8 +10,9 @@
           </div>
           <div class="row d-flex align-items-start justify-content-between">
             <div class="col-12 col-md-5 mb-5">
-              <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering affordable rent, flexible leases and workspaces purpose-built for creative disciplines.</h4>
-              <a href="#become-a-tenant" class="btn btn btn-lg btn-primary mt-3">Book a viewing</a>
+              <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering affordable rent, flexible leases and workspaces purpose-built for creative disciplines.</h4> -->
+              <h4>Design District will provide 150,000 sq ft of permanent workspace for everyone in the creative industries. A thriving home for ideas, offering accessible rents, flexible leases and workspaces purpose-built for creatives.</h4>
+              <a href="#become-a-tenant" class="btn btn btn-lg btn-primary mt-3">Get in touch</a>
             </div>
             <div class="col-12 col-md-6">
               <div class="row d-flex align-items-end justify-content-end">
@@ -31,7 +32,7 @@
         <div class="container py-5">
           <div class="row mb-5">
             <div class="col-12 col-md-6 mb-5">
-              <h2>Find a space</h2>
+              <h2>Find a workspace</h2>
               <h4>Rent a desk, a workshop, or an entire building. With simple access to high-speed wi-fi, clean and dirty workshops, integrated security and a host of events.</h4>
               <br><br>
               <h3>Flexible tenancies</h3>
@@ -39,19 +40,20 @@
 
               <h3>What we offer: </h3>
               <ul class="h6">
-                <li>200 to 1,500 sq. ft studio space</li>
-                <li>High speed wi-fi connection</li>
-                <li>Integrated security across the district and in your building</li>
-                <li>24-hour access to your building with your fob </li>
-                <li>Access to three free events per year</li>
-                <li>Year round start-up and business support</li>
+                <li>A desk to 1,500 sq. ft studio space</li>
                 <li>Flexible tenancy agreements</li>
-                <li>Available with rental subsidy </li>
+                <li>High speed wi-fi connection</li>
+                <li>Integrated security across the district and in your building </li>
+                <li>24-hour access to your building with your fob</li>
+                <li>Access to creative industry events</li>
+                <li>Bookable workshop spaces and meeting rooms</li>
               </ul>
-              <p>Want something smaller?</p>
+              <a href="#become-a-tenant" class="btn btn btn-lg btn-primary mt-3">Book a viewing</a>
+              <!-- <p>Want something smaller?</p>
               <router-link to="/the-club" class="h5 text-primary">
                 Join The Club &rarr;
-              </router-link>
+              </router-link> -->
+
             </div>
             <div class="col-12 col-md-1" />
             <div class="col-12 col-md-5">
@@ -377,6 +379,27 @@
                     <li>Arduino and Raspberry Pi coding</li>
                   </ul>
                 </div>
+                <div class="col-12 col-md-6 col-lg-6 mb-4">
+                  <h5>Textile workshop</h5>
+                  <ul>
+                    <li>Cutting table</li>
+                    <li>Roland vinyl cutter</li>
+                    <li>Industrial and domestic sewing machines</li>
+                    <li>Overlocker</li>
+                    <li>Embroidery machine</li>
+                    <li>Heat press</li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-6 col-lg-6 mb-4">
+                  <h5>Engineering workshop</h5>
+                  <ul>
+                    <li>Forco Start pillar drill</li>
+                    <li>Baileigh metal bender</li>
+                    <li>10 ton pneumatic press</li>
+                    <li>Clarke CL430 metal lathe</li>
+                    <li>Silverline grinding wheel      </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -394,7 +417,7 @@
 
             <div class="col-12 col-md-6">
               <h3>Meeting rooms</h3>
-              <p>In building C3 you’ll five rooms ideal for small to medium-sized meetings. Meeting rooms can be rented out between 8am and 6pm, either by the hour or for the entire day. Each room features Superfast wi-fi, a Smart TV and AV equipment, wall spade for scribbles and post-it notes and unlimited coffee, tea and water. We can set-up the room boardroom or theatre depending on what you need. </p>
+              <p>At Design District you’ll have five rooms ideal for small to medium-sized meetings. Meeting rooms can be rented out between 8am and 7pm, either by the hour or for the entire day. Each room features Superfast wi-fi, a Smart TV and AV equipment and wall space for scribbles and post-it notes.</p>
             </div>
             <!-- <div class="col-12 col-md-6">
               <div class="row d-flex align-items-end justify-content-end">
@@ -416,8 +439,9 @@
             <div class="col-12 col-md-1 order-md-2" />
 
             <div class="col-12 col-md-6">
-              <h3>Food Hall and Kitchen</h3>
-              <p>Open to the public and filled with a wide range of food partners, the Food Hall will become a key meeting place in the Design District. It is located in SelgasCano’s caterpillar-like building at the entrance to district, immediately visible to visitors. <br><br>The Kitchen is a fully equipped industrial kitchen situated in C2, the Food and Technology building. It will cater for The Club and any onsite events. C2 Tenants working in the food and beverage industries can use the test kitchen.</p>
+              <h3>Food hall and kitchen</h3>
+              <p>Open to the public and filled with a wide range of food partners, the food hall will become a key meeting place in the district. It is located in SelgasCano’s caterpillar-like building at the entrance to district, immediately visible to visitors. </p>
+              <p>Design District is equipped with an industrial kitchen that will cater for The Club and any onsite events. Tenants working in the food and beverage industries will have access to the kitchen by prior arrangement.</p>
             </div>
 
             <!-- <div class="col-12 col-md-1" />
@@ -442,8 +466,8 @@
             </div>
             <div class="col-12 col-md-1" />
             <div class="col-12 col-md-6">
-              <h3>Book and design supply shop </h3>
-              <p>Located in building D2, the shop will be a place for the design community and the public to buy art materials, design tools, magazines and books. Tenants can also host book launches and events within the space. </p>
+              <h3>Book and design supply shop</h3>
+              <p>At Design District a book and supplies shop will open to the public. The shop will be a place for the design community to purchase art materials and design tools, as well as magazines and books. The space will allow the tenants to host events, such as book launches.</p>
             </div>
             <!-- <div class="col-12 col-md-6">
               <div class="row d-flex align-items-end justify-content-end">
@@ -466,7 +490,7 @@
 
             <div class="col-12 col-md-6">
               <h3>Pop-up space </h3>
-              <p>Suitable for retail or small art exhibitions, a white box pop-up space will be located on the ground floor or building A2. It can be hired by members of the public, with discounted rates for the Design District community. You’ll find a gallery lighting system, built in till point and EFTPOS Payment System, and the hire includes cleaning and security. At an additional cost, we can provide an installation and de-installation service or bespoke catering.</p>
+              <p>Suitable for retail or small art exhibitions, a pop-up space will be located on the ground floor or building A2. It can be hired by members of the public, with discounted rates for the Design District community. You’ll find a flexible lighting system, built in till point and EFTPOS Payment System, and the hire includes cleaning and security. At an additional cost, we can provide an installation and de-installation service and catering.</p>
             </div>
             <!-- <div class="col-12 col-md-1" />
             <div class="col-12 col-md-6" /> -->
@@ -491,7 +515,7 @@
 
             <div class="col-12 col-md-6">
               <h3>Multi-sports rooftop court </h3>
-              <p>A versatile multi-sports rooftop court will sit on top of the Fashion and Technology building. The rooftop will host a range of sports and wellness activities, including basketball, HIIT and yoga. The Design District community and members of the public can hire the court on an hourly basis.</p>
+              <p>A versatile multi-sports rooftop court will sit on top of building C1. The rooftop will host a range of sports and wellness activities, including basketball, HIIT and yoga. The Design District community and members of the public can hire the court for private events space such as pop-up cinema and photoshoots.</p>
             </div>
             <!-- <div class="col-12 col-md-6">
                         <div class="row d-flex align-items-end justify-content-end">

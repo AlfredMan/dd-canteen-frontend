@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 mb-3">
                   <h5>Boat</h5>
-                  <p>Travel along the Thames to Tate Modern, Tate Britain or Putney.</p>
+                  <p>Travel along the Thames to Tate Modern, Tate Britain or Woolwich.</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 mb-3">
                   <h5>Emirates Air Line Cable Car</h5>
