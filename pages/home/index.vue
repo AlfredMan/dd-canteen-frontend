@@ -14,7 +14,7 @@
               <!-- Design District -->
             </h1>
             <h4>
-              Welcome to the Design District. London’s new district for the creative industries. Opening September 2020.
+              Welcome to the Design District. London’s new district for the creative industries. Opening autumn 2020.
             </h4>
             <router-link to="/contact/#register-interest" class="btn btn btn-lg btn-primary mt-3">
               Join Design District
@@ -80,11 +80,11 @@
       <div class="row bg-light pb-5 pt-3">
         <div class="container py-5">
           <div class="row d-flex">
-            <div class="col-12 col-md-3">
-              <h2>Join Design District</h2>
+            <div class="col-12 col-md-4">
+              <h2>London’s new design district</h2>
             </div>
             <div class="col-12 col-md-6 ml-auto">
-              <h4>The Design District is a collection of 16 buildings designed by eight architects, set in the heart of the Greenwich Peninsula. From September 2020, it will offer a new permanent home for the creative industries in London. With affordable rents, flexible leases and purpose-designed workspaces to help creative businesses thrive.</h4>
+              <h4>Design District is a new permanent home for the creative industries. With purpose-designed workspaces, workshops, accessible rents and flexible leases. It comprises 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. Each is tailored to the needs of makers, to help creative businesses thrive.</h4>
               <router-link to="/workspace" class="text-primary h5">
                 Find your workspace &rarr;
               </router-link>
@@ -96,29 +96,29 @@
               <div class="">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=2000&fm=webp&q=80" alt="">
               </div>
-              <h3>The Club</h3>
-              <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
+              <h3>Creative workspace</h3>
+              <p>Rent a studio, a floor, or an entire building. Spaces kitted out to suit your industry and flexible tenancies for growing teams.</p>
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-5">
               <div class="">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/3aSHHWF58a3lz1wLhodNS3/d7bf1c2dd9c8e04abd2057194b16ace7/bb.jpg?w=2000&fm=webp&q=80" alt="">
               </div>
-              <h3>Facilities</h3>
-              <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
+              <h3>The Club</h3>
+              <p>Aimed at freelancers, entrepreneurs and start-ups, The Club offers a place to work but also talks, events and business support. <router-link to="/the-club" class="-text-primary -h5">Express your interest</router-link>.</p>
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-5">
               <div class="">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/3BLpiM1CFIa3C7IShio4iL/29094ce9840beab6c83711c6c434ed07/KDN_Design_District_D1_LR.jpeg?w=2000&fm=webp&q=80" alt="">
               </div>
-              <h3>Small studios</h3>
-              <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
+              <h3>Workshops</h3>
+              <p>Need a 3D-printer or a test kitchen, a pattern-cutting table or a coding lab? There’s space to make in our on-site workshops. <router-link to="/workspace#service-and-facilities" class="-text-primary -h5">Find out more</router-link>.</p>
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-5">
               <div class="">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=2000&fm=webp&q=80" alt="">
               </div>
-              <h3>Private offices</h3>
-              <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
+              <h3>For hire</h3>
+              <p>Book a recording and broadcast studio, meeting rooms, events spaces, a pop-up retail space and even a multi-sport rooftop court.</p>
             </div>
           </div>
         </div>
@@ -129,13 +129,13 @@
       <div class="row">
         <div class="col-12 col-md-6 pr-md-5 mb-5">
           <h1>The Club</h1>
-          <h4>Just starting out or trying something new? The Club is an affordable and low-commitment way to be part of the Design District community.</h4>
+          <h4>Just starting out or trying something new? The Club is an accessible and low-commitment way to be part of the Design District community.</h4>
           <router-link to="/the-club" class="text-primary h5">
-            View membership &rarr;
+            Find our more &rarr;
           </router-link>
         </div>
         <div class="col-12 col-md-6">
-          <img src="http://images.ctfassets.net/7p1ysxjarsp5/64OjUmEoOvUZh7W0EdQTfe/cbd8c37727a7c54be182da4f6d1deeb1/MarketHall.jpg?w=1000&h=1200&fm=webp&q=80&fit=thumb" alt="">
+          <img src="http://images.ctfassets.net/7p1ysxjarsp5/64OjUmEoOvUZh7W0EdQTfe/cbd8c37727a7c54be182da4f6d1deeb1/MarketHall.jpg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
         </div>
       </div>
       <!-- <div class="row d-flex justify-content-end align-items-end mt-0 mt-lg-n5" style="margin-top: -30rem!important">
@@ -235,7 +235,7 @@
             <div class="col-12 col-md-6 col-lg-3 mb-5">
               <router-link to="/architecture/barozzi-veiga">
                 <img src="http://images.ctfassets.net/7p1ysxjarsp5/3HiQG1XaJ2pfkYLLq6Yyyi/b0b5d7f11232fe4a0fdcbe97557e33ed/Barozzi-Veiga-1A-Architect.jpg?w=1000&h=1200&fm=webp&q=80" alt="">
-                <h5>Barozzi/Veiga</h5>
+                <h5>Barozzi Veiga</h5>
               </router-link>
               <!-- <p>C3 and D3</p> -->
             </div>
