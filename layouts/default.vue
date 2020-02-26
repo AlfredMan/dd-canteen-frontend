@@ -22,7 +22,8 @@
         </router-link>
 
         <router-link to="/contact#register-interest" class="btn text-black btn-outline-primary ml-auto mr-0" :class="{'btn-outline-dark': menuActive}">
-          <span>Join <span class="d-none d-lg-inline">design district</span></span>
+          <span class="d-inline d-lg-none">Join Now</span>
+          <span class="d-none d-lg-inline">Join design district</span>
           <!-- <span>Join design district</span> -->
         </router-link>
 
@@ -84,23 +85,21 @@
     <footer class="bg-grey">
       <div class="container">
         <div class="row pt-5 pb-5">
-          <div class="col-12 col-md-3 col-lg-2 mb-5">
-            <img src="~/assets/images/gp-logo.svg" alt="">
-          </div>
-          <div class="col-12 col-md-3 col-lg-4  mb-5">
+          <div class="col-12 col-md-3 col-lg-3 mb-5">
             <h5>DESIGN DISTRICT</h5>
             <a class="">Delta Wharf, Tunnel Ave, Greenwich,<br>London SE10 0QE<br>United Kingdom</a><br><br>
             <a class="">hello@designdistrict.co.uk</a><br>
             <a class="">020 3981 2426</a><br>
           </div>
-          <div class="col-6 col-md-3 col-lg-2 mb-5">
+          <div class="col-6 col-md-3 col-lg-3 mb-5">
             <h5>Connect</h5>
             <a class="" href="https://twitter.com/Design_District">Twitter</a><br>
             <a class="" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br>
-            <a class="" href="http://www.instagram.com/designdistrictlondon">Instagram</a><br>
+            <a class="" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
+            <a class="" href="https://www.linkedin.com/company/designdistrictlondon">LinkedIn</a>
           </div>
 
-          <div class="col-6 col-md-3 col-lg-2 mb-5">
+          <div class="col-6 col-md-3 col-lg-3 mb-5">
             <h5>Join</h5>
             <router-link class="" to="/workspace">
               Workspace
@@ -119,7 +118,7 @@
             </router-link>
           </div>
 
-          <div class="col-6 col-md-3 col-lg-2 mb-5">
+          <div class="col-6 col-md-3 col-lg-3 mb-5">
             <h5>Legal</h5>
             <router-link class="" to="/privacy-policy">
               Privacy Policy
@@ -129,14 +128,19 @@
               Terms & Conditions
             </router-link>
           </div>
+
+          <!-- <div class="col-12 d-block d-md-none" />
+          <div class="col-6 col-md-3 col-lg-2 mb-5 ml-md-auto text-md-right text-left">
+            <img src="~/assets/images/gp-logo.svg" alt="Greenwich Peninsula" class="w-100 w-md-75" style="max-width: 100px">
+          </div> -->
         </div>
 
         <nav class="inner d-flex row align-items-end justify-content-start mt-5 pb-5">
-          <!-- <div class="p-3 mr-auto">
-            <img src="~/assets/images/gp-logo.svg" alt="">
-          </div> -->
+          <div class="p-3 mr-auto-mr-md-0-ml-md-auto-order-md-2">
+            <img src="~/assets/images/gp-logo.svg" alt="" style="max-width: 80px">
+          </div>
 
-          <small class="nav-link mr-auto">
+          <small class="nav-link ml-auto">
             Copyright © 2020 GREENWICH PENINSULA
           </small>
           <!-- <router-link class="d-none d-md-inline nav-link" to="/privacy-policy">
