@@ -87,7 +87,7 @@
         <div class="row pt-5 pb-5">
           <div class="col-12 col-md-3 col-lg-3 mb-5">
             <h5>DESIGN DISTRICT</h5>
-            <a class="">The Gateway Pavilions,<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a><br><br>
+            <a class="">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a><br><br>
             <a class="">hello@designdistrict.co.uk</a><br>
             <a class="">020 3981 2426</a><br>
           </div>

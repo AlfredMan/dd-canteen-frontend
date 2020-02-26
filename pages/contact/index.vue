@@ -8,21 +8,21 @@
       </div>
       <div class="row mb-5">
         <div class="col-12 col-md-6">
-          <h4>The Design District is at the heart of Greenwich Peninsula, a new type of London created specifically for the creative community.</h4>
+          <h4>Ask a question or book a viewing. Comment or collaborate. We want to hear from you.</h4>
         </div>
       </div>
       <div class="row">
         <div class="col-12 col-md-3">
-          <h5>Front office</h5>
+          <h5>General enquiries</h5>
           <p><a href="#">hello@designdistrict.co.uk</a></p>
         </div>
         <div class="col-12 col-md-3">
-          <h5>Alex Howard, <em>Sales</em><br></h5>
-          <p><a href="#">alex@designdistrict.co.uk</a><br>020 3981 2426</p>
+          <h5>Sales</h5>
+          <p><a href="#">sales@designdistrict.co.uk</a><br>020 3981 2426</p>
         </div>
         <div class="col-12 col-md-3">
           <h5>Press</h5>
-          <p>For information, images and interviews, contact our press team at <a href="#">press@designdistrict.co.uk</a></p>
+          <p><a href="#">press@designdistrict.co.uk</a></p>
         </div>
       </div>
     </div>

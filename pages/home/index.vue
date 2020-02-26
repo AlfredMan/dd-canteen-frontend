@@ -131,7 +131,7 @@
           <h1>The Club</h1>
           <h4>Just starting out or trying something new? The Club is an accessible and low-commitment way to be part of the Design District community.</h4>
           <router-link to="/the-club" class="text-primary h5">
-            Find our more &rarr;
+            Find out more &rarr;
           </router-link>
         </div>
         <div class="col-12 col-md-6">
