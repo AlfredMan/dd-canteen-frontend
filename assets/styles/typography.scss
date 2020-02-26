@@ -192,6 +192,12 @@ p {
 	}
 }
 
+h1,
+.h1 {
+	&:first-child {
+    margin-top: -0.15em
+  }
+}
 h2,
 .h2,
 h3,

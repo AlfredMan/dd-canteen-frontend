@@ -2,7 +2,14 @@
   <div class="">
     <p>Sign up now to stay in the loop with the latest happenings on the&nbsp;Peninsula.</p>
 
-    <form ref="subscribeForm" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" name="subscribeForm" method="post" @submit="checkForm">
+    <form
+      ref="subscribeForm"
+      action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"
+      name="subscribeForm"
+      method="post"
+      :class="{disabled: formState === 'loading'}"
+      @submit.prevent="onFormSubmit"
+    >
       <div>
         <div class="form-row">
           <div :class="[{'col-7 col-md-8': !active}, {'col-12': active}]">
@@ -93,10 +100,28 @@
         <!-- <button onclick="submitDEManagerForm(); return false;" class="btn btn-primary btn-lg">
           Signup
         </button> -->
-        <button class="btn btn-primary btn-lg mt-0">
+        <!-- <button class="btn btn-primary btn-lg mt-0" type="submit">
           Signup
-        </button>
+        </button> -->
+        <!-- <input id="submit" type="submit" value="Signup" style="display: none;"> -->
         <input id="submit" type="submit" value="Signup" style="display: none;">
+
+        <button
+          class="btn btn-primary btn-lg mt-0"
+          type="submit"
+          :class="{disabled: formState === 'loading'}"
+        >
+          {{ formAction }}
+        </button>
+
+        <vue-recaptcha
+          ref="invisibleRecaptcha"
+          :sitekey="recaptchaKey"
+          :load-recaptcha-script="true"
+          size="invisible"
+          @verify="onVerify"
+          @expired="onExpired"
+        />
       </div>
       <div v-show="active" class="">
         <h6>
@@ -121,11 +146,23 @@
 </template>
 
 <script>
+import VueRecaptcha from 'vue-recaptcha'
+
+const KEY = '6LeyatwUAAAAAHWHaZuq8aq0GAZj21SxmI4fCgPk'
+
 export default {
   name: 'NewsletterForm',
+  components: { VueRecaptcha },
   data () {
     return {
-      active: false
+      recaptchaKey: KEY,
+      active: false,
+      formAlert: {
+        type: '',
+        text: ''
+      },
+      formAction: 'Submit',
+      formState: 'idle'
     }
   },
   computed: {},
@@ -143,7 +180,14 @@ export default {
     init () {
 
     },
-    checkForm (e) {
+    onFormSubmit (e) {
+      this.formState = 'loading'
+      this.formAlert.type = 'loading'
+      this.formAlert.text = 'Processing...'
+      this.formAction = 'Loading'
+
+      this.$refs.invisibleRecaptcha.execute()
+
       if (this.submitDEManagerForm() && this.handleRecap()) {
         return true
       }
@@ -160,6 +204,42 @@ export default {
 
       // do some checking
       return true
+    },
+    onVerify (response) {
+      console.log('Verify: ' + response)
+
+      // this.formState = 'idle'
+      // this.formAlert.type = 'success'
+      // this.formAlert.text = 'Complete.'
+
+      setTimeout(() => {
+        this.formState = 'idle'
+        this.formAlert.type = 'success'
+        this.formAlert.text = 'Complete.'
+        this.formAction = 'Complete'
+
+        alert('done')
+        // this.$refs.enquireForm.submit()
+
+        setTimeout(() => {
+          this.formState = 'idle'
+          this.formAlert.type = ''
+          this.formAlert.text = ''
+          this.formAction = 'Submit'
+        }, 3000)
+      }, 1000)
+    },
+    onExpired () {
+      console.error('reCAPTCHA has expired')
+      // this.formState = 'idle'
+      // this.formAlert.type = 'error'
+      // this.formAlert.text = 'reCAPTCHA has expired. Please try again.'
+      setTimeout(() => {
+        this.resetRecaptcha()
+      }, 3000)
+    },
+    resetRecaptcha () {
+      this.$refs.invisibleRecaptcha.reset() // Direct call reset method
     },
     submitDEManagerForm () {
       // const form = document.forms.subscribeForm

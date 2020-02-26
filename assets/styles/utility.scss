@@ -30,6 +30,17 @@ form {
 	// margin-left: auto;
 	// margin-right: auto;
 	// padding-bottom: 10rem;
+	&.disabled {
+		input,
+		label,
+		button,
+		textarea,
+		select,
+		h1,h2,h3,h4,h5,h6,p {
+			opacity: 0.3;
+			pointer-events: none;
+		}
+	}
 }
 
 @media screen and (max-width: 768px) {
@@ -111,6 +122,23 @@ select {
 	width: 100%;
 	margin-bottom: 1rem;
   @extend .form-border;
+}
+
+.custom-control {
+	padding-left: 2rem;
+
+	.custom-control-label::before {
+		width: 1.25rem;
+		height: 1.25rem;
+		border-radius: 0;
+		left: -2rem;
+		border-color: $black;
+	}
+	.custom-control-label::after {
+		width: 1.25rem;
+		height: 1.25rem;
+		left: -2rem;
+	}
 }
 
 .checkbox + label {

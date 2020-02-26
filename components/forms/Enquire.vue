@@ -8,7 +8,8 @@
       action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"
       name="enquireForm"
       method="post"
-      @submit="checkForm"
+      :class="{disabled: formState === 'loading'}"
+      @submit.prevent="onFormSubmit"
     >
       <div class="mb-4">
         <h5>Your Details</h5>
@@ -305,6 +306,22 @@
         <h5>Staying in touch</h5>
         <div class="form-row">
           <div class="col-12 col-md-8">
+            <!-- <div class="custom-control custom-checkbox">
+              <input
+                id="customCheck1"
+                type="checkbox"
+                class="custom-control-input"
+              >
+              <label class="custom-control-label" for="customCheck1">
+                I agree to the terms of your <a href="/privacy-policy/">Privacy Policy</a>*
+              </label>
+              <div class="invalid-feedback">
+                You must agree before submitting.
+              </div>
+              <div class="valid-feedback">
+                All good.
+              </div>
+            </div> -->
             <div class="checkbox-wrapper">
               <input
                 id="enquirePrivacyOptIn"
@@ -314,10 +331,17 @@
                 name="00N0O00000GRrXc"
                 value="1"
                 required
+                :class="{'is-invalid': true, 'is-valid': true}"
               >
               <label class="cb" for="enquirePrivacyOptIn">
-                <span>I agree to the terms of your <a href="/privacy-policy/">Privacy Policy</a></span>
+                <span>I agree to the terms of your <a href="/privacy-policy/">Privacy Policy</a>*</span>
               </label>
+              <!-- <div class="invalid-feedback">
+                You must agree before submitting.
+              </div>
+              <div class="valid-feedback">
+                You must agree before submitting.
+              </div> -->
             </div>
             <div class="checkbox-wrapper">
               <input
@@ -358,9 +382,36 @@
       <div class=" my-4">
         <!-- <div class="form-row form-row--submit">
           <div class="col"> -->
-        <button onclick="submitEnquireForm(); return false;" class="btn btn-primary btn-lg mt-0">
-          Submit
+
+        <button
+          class="btn btn-primary btn-lg mt-0"
+          type="submit"
+          :class="{disabled: formState === 'loading'}"
+        >
+          {{ formAction }}
         </button>
+
+        <vue-recaptcha
+          ref="invisibleRecaptcha"
+          :sitekey="recaptchaKey"
+          :load-recaptcha-script="true"
+          size="invisible"
+          @verify="onVerify"
+          @expired="onExpired"
+        />
+
+        <!-- <div v-if="formAlert.type === 'loading'" class="alert alert-light mt-4" role="alert">
+          {{ formAlert.text }}
+        </div>
+
+        <div v-if="formAlert.type === 'success'" class="alert alert-success mt-4" role="alert">
+          {{ formAlert.text }}
+        </div>
+
+        <div v-if="formAlert.type === 'error'" class="alert alert-danger mt-4" role="alert">
+          {{ formAlert.text }}
+        </div> -->
+
         <input id="enquireSubmit" ref="enquireSubmit" type="submit" value="Enquire" style="display: none;">
         <!-- </div>
         </div> -->
@@ -386,8 +437,13 @@
 </template>
 
 <script>
+import VueRecaptcha from 'vue-recaptcha'
+
+const KEY = '6LeyatwUAAAAAHWHaZuq8aq0GAZj21SxmI4fCgPk'
+
 export default {
   name: 'EnquireForm',
+  components: { VueRecaptcha },
   props: {
     showBusiness: {
       type: Boolean,
@@ -396,7 +452,14 @@ export default {
   },
   data () {
     return {
-      typeOfSpace: ''
+      recaptchaKey: KEY,
+      typeOfSpace: '',
+      formAlert: {
+        type: '',
+        text: ''
+      },
+      formAction: 'Submit',
+      formState: 'idle'
     }
   },
   computed: {},
@@ -422,8 +485,17 @@ export default {
       //   })
       // })(jQuery)
     },
-    checkForm (e) {
+    onFormSubmit (e) {
+      this.formState = 'loading'
+      this.formAlert.type = 'loading'
+      this.formAlert.text = 'Processing...'
+      this.formAction = 'Loading'
+
+      this.$refs.invisibleRecaptcha.execute()
+
+      // console.log('checkForm')
       if (this.submitEnquireForm() && this.handleRecap()) {
+        // console.log('checked!')
         return true
       }
 
@@ -438,7 +510,43 @@ export default {
       // }
 
       // do some checking
-      return false
+      return true
+    },
+    onVerify (response) {
+      console.log('Verify: ' + response)
+
+      // this.formState = 'idle'
+      // this.formAlert.type = 'success'
+      // this.formAlert.text = 'Complete.'
+
+      setTimeout(() => {
+        this.formState = 'idle'
+        this.formAlert.type = 'success'
+        this.formAlert.text = 'Complete.'
+        this.formAction = 'Complete'
+
+        alert('done')
+        // this.$refs.enquireForm.submit()
+
+        setTimeout(() => {
+          this.formState = 'idle'
+          this.formAlert.type = ''
+          this.formAlert.text = ''
+          this.formAction = 'Submit'
+        }, 3000)
+      }, 1000)
+    },
+    onExpired () {
+      console.error('reCAPTCHA has expired')
+      // this.formState = 'idle'
+      // this.formAlert.type = 'error'
+      // this.formAlert.text = 'reCAPTCHA has expired. Please try again.'
+      setTimeout(() => {
+        this.resetRecaptcha()
+      }, 3000)
+    },
+    resetRecaptcha () {
+      this.$refs.invisibleRecaptcha.reset() // Direct call reset method
     },
     submitEnquireForm () {
       // const form = document.forms.enquireForm
