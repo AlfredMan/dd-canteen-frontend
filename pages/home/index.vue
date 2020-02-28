@@ -25,7 +25,7 @@
             <div class="w-100 h-100 bg-primary d-flex ">
               <img
                 style="width: 50vw;max-width: 50vw;"
-                src="//images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=webp&q=80"
+                src="https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=webp&q=80"
                 alt=""
               >
             </div>
@@ -49,7 +49,7 @@
               <img
                 style="max-width: 50vw; width: 50vw; min-width: 1000px"
                 class="lazyload"
-                data-src="//images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=webp&q=80"
+                data-src="https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=webp&q=80"
                 alt=""
               >
             </div>
@@ -63,7 +63,7 @@
             <img
               style=""
               class="lazyload"
-              data-src="//images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=webp&q=80"
+              data-src="https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=webp&q=80"
               alt=""
             >
           </div>
@@ -73,8 +73,8 @@
 
     <!-- <div class="" style="overflow: hidden;margin-top: -30rem;">
       <div style=";z-index:99; width: 100vw; height: 40rem; background: #aaa; transform: translateX(45vw);">
-      mg class="lazyload" data-src="//images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=wep&q=80" alt2"">
-        <img class="lazyload" data-src="//images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=webp&q=80" alt="">
+      mg class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=wep&q=80" alt2"">
+        <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=webp&q=80" alt="">
       </div>
     </div> -->
 
@@ -98,7 +98,7 @@
             <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
               <div class="">
                 <img class="lazyload"
-                data-src="//images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=2000&fm=webp&q=80"
+                data-src="https://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=2000&fm=webp&q=80"
                 alt="">
               </div>
               <div class="" style="min-height: x18em">
@@ -110,7 +110,7 @@
             <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
               <div class="">
                 <img class="lazyload"
-                data-src="//images.ctfassets.net/7p1ysxjarsp5/3aSHHWF58a3lz1wLhodNS3/d7bf1c2dd9c8e04abd2057194b16ace7/bb.jpg?w=2000&fm=webp&q=80"
+                data-src="https://images.ctfassets.net/7p1ysxjarsp5/3aSHHWF58a3lz1wLhodNS3/d7bf1c2dd9c8e04abd2057194b16ace7/bb.jpg?w=2000&fm=webp&q=80"
                 alt="">
               </div>
               <div class="" style="min-height: x18em">
@@ -122,7 +122,7 @@
             <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
               <div class="">
                 <img class="lazyload"
-                data-src="//images.ctfassets.net/7p1ysxjarsp5/3BLpiM1CFIa3C7IShio4iL/29094ce9840beab6c83711c6c434ed07/KDN_Design_District_D1_LR.jpeg?w=2000&fm=webp&q=80"
+                data-src="https://images.ctfassets.net/7p1ysxjarsp5/3BLpiM1CFIa3C7IShio4iL/29094ce9840beab6c83711c6c434ed07/KDN_Design_District_D1_LR.jpeg?w=2000&fm=webp&q=80"
                 alt="">
               </div>
               <div class="" style="min-height: x18em">
@@ -134,7 +134,7 @@
             <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
               <div class="">
                 <img class="lazyload"
-                data-src="//images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=2000&fm=webp&q=80"
+                data-src="https://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=2000&fm=webp&q=80"
                 alt="">
               </div>
               <div class="" style="min-height: x18em">
@@ -158,12 +158,12 @@
           </router-link>
         </div>
         <div class="col-12 col-md-6">
-          <img class="lazyload" data-src="//images.ctfassets.net/7p1ysxjarsp5/64OjUmEoOvUZh7W0EdQTfe/cbd8c37727a7c54be182da4f6d1deeb1/MarketHall.jpg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
+          <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/64OjUmEoOvUZh7W0EdQTfe/cbd8c37727a7c54be182da4f6d1deeb1/MarketHall.jpg?w=1000&h=800&fm=webp&q=80&fit=thumb" alt="">
         </div>
       </div>
       <!-- <div class="row d-flex justify-content-end align-items-end mt-0 mt-lg-n5" style="margin-top: -30rem!important">
         <div class="col-6">
-          <img class="lazyload" data-src="//images.ctfassets.net/7p1ysxjarsp5/64OjUmEoOvUZh7W0EdQTfe/cbd8c37727a7c54be182da4f6d1deeb1/MarketHall.jpg?w=1000&h=1200&fm=webp&q=80&fit=thumb" alt="">
+          <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/64OjUmEoOvUZh7W0EdQTfe/cbd8c37727a7c54be182da4f6d1deeb1/MarketHall.jpg?w=1000&h=1200&fm=webp&q=80&fit=thumb" alt="">
         </div>
       </div> -->
     </div>
@@ -235,7 +235,7 @@
           <div class="row d-flex align-items-end mt-5 pt-5">
             <div class="col-12 col-md-6 col-lg-3 mb-5">
               <router-link to="/architecture/assemblage">
-                <img class="lazyload" data-src="//images.ctfassets.net/7p1ysxjarsp5/4H7LD6UdKbLKXTBqYH7wv3/cb9c690b567f1a7768158e9c80def96b/ASSEMBLAGE-Architect000.jpg?w=1000&h=1200&fm=webp&q=80" alt="">
+                <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/4H7LD6UdKbLKXTBqYH7wv3/cb9c690b567f1a7768158e9c80def96b/ASSEMBLAGE-Architect000.jpg?w=1000&h=1200&fm=webp&q=80" alt="">
                 <h5>ASSEMBLAGE</h5>
               </router-link>
               <!-- <p>C3 and D3</p> -->
@@ -243,21 +243,21 @@
 
             <div class="col-12 col-md-6 col-lg-3 mb-5">
               <router-link to="/architecture/6a-architects">
-                <img class="lazyload" data-src="//images.ctfassets.net/7p1ysxjarsp5/4PPO5LoteF6CWrT30TUBKO/6fc95dbe5e49e0f81e1fc748ef11fb09/6aArchictects-2A-Architect.jpg?w=1000&h=1200&fm=webp&q=80" alt="">
+                <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/4PPO5LoteF6CWrT30TUBKO/6fc95dbe5e49e0f81e1fc748ef11fb09/6aArchictects-2A-Architect.jpg?w=1000&h=1200&fm=webp&q=80" alt="">
                 <h5>6A Architects</h5>
               </router-link>
               <!-- <p>A2 and B2</p> -->
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-5">
               <router-link to="/architecture/adam-khan-architects">
-                <img class="lazyload" data-src="//images.ctfassets.net/7p1ysxjarsp5/5Qu2qJOxKsVJyq14IByYXQ/eb84ad1acc0500e3946e6bea0f905bd1/AdamKahn-1A-Architect.jpg?w=1000&h=1000&fm=webp&q=80&fit=thumb" alt="">
+                <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/5Qu2qJOxKsVJyq14IByYXQ/eb84ad1acc0500e3946e6bea0f905bd1/AdamKahn-1A-Architect.jpg?w=1000&h=1000&fm=webp&q=80&fit=thumb" alt="">
                 <h5>Adam Khan Architects</h5>
               </router-link>
               <!-- <p>C3 and D3</p> -->
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-5">
               <router-link to="/architecture/barozzi-veiga">
-                <img class="lazyload" data-src="//images.ctfassets.net/7p1ysxjarsp5/3HiQG1XaJ2pfkYLLq6Yyyi/b0b5d7f11232fe4a0fdcbe97557e33ed/Barozzi-Veiga-1A-Architect.jpg?w=1000&h=1200&fm=webp&q=80" alt="">
+                <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/3HiQG1XaJ2pfkYLLq6Yyyi/b0b5d7f11232fe4a0fdcbe97557e33ed/Barozzi-Veiga-1A-Architect.jpg?w=1000&h=1200&fm=webp&q=80" alt="">
                 <h5>Barozzi Veiga</h5>
               </router-link>
               <!-- <p>C3 and D3</p> -->
