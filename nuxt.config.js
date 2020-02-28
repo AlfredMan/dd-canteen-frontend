@@ -52,7 +52,7 @@ export default {
 
   plugins: [
     '~/plugins/filters',
-    '~/plugins/vue-lazysizes.client.js'
+    '~/plugins/vue-lazysizes.js'
   ],
 
   render: {
