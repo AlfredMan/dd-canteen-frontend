@@ -14,7 +14,9 @@
     </div>
 
     <div class="row">
-      <img class="img-fluid col-12 lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=4000&fm=jpg&q=80" alt="">
+      <div class="col-12 ">
+        <img class="img-fluid lazyload w-100" data-src="https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=4000&fm=jpg&q=80" alt="">        
+      </div>
     </div>
 
     <!--  -->
