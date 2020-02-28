@@ -66,7 +66,7 @@
             </div>
             <div class="col-12 col-lg-8">
               <!-- <div class="embed-responsive embed-responsive-4by3 bg-dark" /> -->
-              <img src="http://images.ctfassets.net/7p1ysxjarsp5/2ktZJktAQov9qqmv48aHV3/7bded41c83ea309edff8ce029932ce90/DD-location-map-1350x831.png" alt="" class="img-fluid">
+              <img class="lazyload" data-src="//images.ctfassets.net/7p1ysxjarsp5/2ktZJktAQov9qqmv48aHV3/7bded41c83ea309edff8ce029932ce90/DD-location-map-1350x831.png" alt="" class="img-fluid">
             </div>
           </div>
         </div>

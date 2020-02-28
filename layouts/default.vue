@@ -93,10 +93,10 @@
           </div>
           <div class="col-6 col-md-3 col-lg-3 mb-5">
             <h5>Connect</h5>
-            <a class="" target="_blank" href="https://twitter.com/Design_District">Twitter</a><br>
-            <a class="" target="_blank" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br>
-            <a class="" target="_blank" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
-            <a class="" target="_blank" href="https://www.linkedin.com/company/designdistrictlondon">LinkedIn</a>
+            <a class="" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
+            <a class="" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br>
+            <a class="" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
+            <a class="" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/designdistrictlondon">LinkedIn</a>
           </div>
 
           <div class="col-6 col-md-3 col-lg-3 mb-5">
@@ -197,4 +197,5 @@ export default {
 // @import "custom"
 
 @import '~/assets/styles/app.scss';
+@import '~/assets/styles/lazy.scss';
 </style>

@@ -14,14 +14,14 @@
     <hr>
     <div class="bg-light">
       <div class="container mt-10">
-        <enquire-form></enquire-form>
+        <!-- <enquire-form></enquire-form> -->
       </div>
     </div>
 
     <hr>
     <div class="bg-light">
       <div class="container mt-10">
-        <newsletter-form></newsletter-form>
+        <!-- <newsletter-form></newsletter-form> -->
       </div>
     </div>
 
@@ -29,14 +29,14 @@
 </template>
 
 <script>
-import EnquireForm from '../components/forms/Enquire.vue'
-import NewsletterForm from '../components/forms/Newsletter.vue'
+// import EnquireForm from '../components/forms/Enquire.vue'
+// import NewsletterForm from '../components/forms/Newsletter.vue'
 
 export default {
   name: 'helper-typography',
   components: {
-    EnquireForm,
-    NewsletterForm
+    // EnquireForm,
+    // NewsletterForm
   },
   data () {
     return {
