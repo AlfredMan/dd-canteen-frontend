@@ -7,8 +7,8 @@
     <!-- render blog posts -->
     <ul v-if="assets" class="d-flex flex-wrap">
       <li v-for="asset in assets" class="col-2">
-        <a :href="`${asset.fields.file.url}?w=2000&h=2000&fm=webp&q=80`" target="_blank">
-          <img :src="`${asset.fields.file.url}?w=200&h=200&fm=webp&q=70`" alt="">
+        <a :href="`${asset.fields.file.url}?w=2000&h=2000&fm=jpg&q=80`" target="_blank">
+          <img :src="`${asset.fields.file.url}?w=200&h=200&fm=jpg&q=70`" alt="">
           {{asset.fields.title}}
         </a>
       </li>
