@@ -38,7 +38,7 @@
       </nav>
 
       <div v-show="menuActive" class="position-fixed w-100 h-100 bg-primary">
-        <div class="row p-4">
+        <div class="row p-4 mobile-nav">
           <div class="col">
             <nuxt-link class="mobile-menu-link" to="/workspace">
               Workspace
@@ -52,6 +52,26 @@
             <nuxt-link class="mobile-menu-link" to="/contact">
               Contact Us
             </nuxt-link><br>
+          </div>
+        </div>
+        <div class="row p-4 mobile-footer">
+          <div class="col-12">
+            <!-- <h5>DESIGN DISTRICT</h5> -->
+            <a class="">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a>
+
+            <br><br>
+
+            <a class="">hello@designdistrict.co.uk</a><br>
+            <a class="">020 3981 2426</a>
+
+            <br><br>
+          <!-- </div>
+          <div class="col-5"> -->
+            <!-- <h5>Connect</h5> -->
+            <a class="" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
+            <a class="" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br>
+            <a class="" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
+            <a class="" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/designdistrictlondon">LinkedIn</a>
           </div>
         </div>
       </div>
