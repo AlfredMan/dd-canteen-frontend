@@ -10,8 +10,8 @@
           </div>
           <div class="row d-flex align-items-start justify-content-between">
             <div class="col-12 col-md-5 mb-5">
-              <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering affordable rent, flexible leases and workspaces purpose-built for creative disciplines.</h4> -->
-              <h4>Design District will provide 150,000 sq ft of permanent workspace for everyone in the creative industries. A thriving home for ideas, offering accessible rents, flexible leases and workspaces purpose-built for creatives.</h4>
+              <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering affordable rent, flexible leases and work spaces purpose-built for creative disciplines.</h4> -->
+              <h4>Design District will provide 150,000 sq ft of permanent work space for everyone in the creative industries. A thriving home for ideas, offering accessible rents, flexible leases and work spaces purpose-built for creatives.</h4>
               <a href="#become-a-tenant" class="btn btn btn-lg btn-primary mt-3">Get in touch</a>
             </div>
             <div class="col-12 col-md-6">
@@ -32,7 +32,7 @@
         <div class="container py-5">
           <div class="row mb-5">
             <div class="col-12 col-md-6 mb-5">
-              <h2>Find a workspace</h2>
+              <h2>Find a work space</h2>
               <h4>Rent a desk, a workshop, or an entire building. With simple access to high-speed wi-fi, clean and dirty workshops, integrated security and a host of events.</h4>
               <br><br>
               <h3>Flexible tenancies</h3>
@@ -543,7 +543,7 @@
           </div>
           <div class="col-12" />
           <div class="col-12 col-md-4">
-            <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering affordable rent, flexible leases and workspace purpose-built for creative disciplines.</h4>
+            <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering affordable rent, flexible leases and work space purpose-built for creative disciplines.</h4>
             <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Tell us about your requirements and we’ll drop you a line. You can book a viewing here too.</p>
           </div>
           <div class="col-12 col-lg-1" />

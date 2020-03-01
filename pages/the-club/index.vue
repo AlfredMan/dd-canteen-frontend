@@ -107,7 +107,7 @@
               <ul class="h6">
                 <li>Exclusive members events and mixers</li>
                 <li>Access to industry specific workshops</li>
-                <li>On demand workspaces</li>
+                <li>On demand work spaces</li>
                 <li>Complimentary teas and coffees for fixed and micro studio club members</li>
                 <li>Onsite members cafe and bar</li>
                 <li>Year round start-up and business support</li>

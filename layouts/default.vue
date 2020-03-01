@@ -7,7 +7,7 @@
         </nuxt-link>
 
         <nuxt-link class="menu-link d-none d-lg-inline" to="/workspace">
-          Workspace
+          Work space
         </nuxt-link>
         <nuxt-link class="menu-link d-none d-lg-inline" to="/the-club">
           The Club
@@ -71,7 +71,7 @@
             <a class="" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
             <a class="" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br>
             <a class="" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
-            <a class="" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/designdistrictlondon">LinkedIn</a>
+            <!-- <a class="" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/designdistrictlondon">LinkedIn</a> -->
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@
     </transition> -->
     <nuxt nuxt-child-key="none" role="main" />
 
-    <div class="py-5 bg-light">
+    <div class="py-5 bg-light" id="newsletter">
       <div class="container">
         <div class="row">
           <div class="col-12">
@@ -161,7 +161,7 @@
           </div>
 
           <small class="nav-link ml-auto">
-            Copyright © 2020 GREENWICH PENINSULA
+            Copyright © 2020 Design District Limited
           </small>
           <!-- <nuxt-link class="d-none d-md-inline nav-link" to="/privacy-policy">
             Privacy Policy

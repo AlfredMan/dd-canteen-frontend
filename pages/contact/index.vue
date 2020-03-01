@@ -87,6 +87,10 @@
           </div>
           <div class="col-12" />
           <div class="col-12 col-md-7">
+            <h4>
+              Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.
+            </h4>
+            <br>
             <enquire-form :show-business="false" />
           </div>
           <!-- <div class="col-12 col-md-1" />

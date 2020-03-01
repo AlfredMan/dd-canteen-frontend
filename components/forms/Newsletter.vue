@@ -71,8 +71,8 @@
           >
           <label for="designOptIn">
             <span>
-              <!-- The Design District including information on workspaces, offices and commercial opportunities -->
-              Design District news and information about workspaces, workshops and events
+              <!-- The Design District including information on work spaces, offices and commercial opportunities -->
+              Design District news and information about work spaces, workshops and events
             </span>
           </label>
         </div>

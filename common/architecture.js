@@ -1,6 +1,7 @@
 export const studios = {
   'assemblage': {
     title: 'ASSEMBLAGE',
+    slug: 'assemblage',
     buildings: 'C3 and D3',
     buildingsCopy: 'The two buildings by ASSEMBLAGE are distinct cousins. Each has a clean, white exterior that is interrupted by large windows of different sizes. The Club is located in C3, which has an undulating shape that creates informal pockets of space inside. The windows in its irregular facade provide many different views of the Design District and the surrounding park. The top floor has an inward falling roof that creates two small courtyards for members to enjoy. D3 will be completed after the Silvertown Tunnel has been built.',
     practiceCopy: 'ASSEMBLAGE is a London-based studio of architects and urban designers that was founded by Hannah Corlett in 2004. It works at a number of scales but specialises in rethinking how we design cities. ASSEMBLAGE has won a string of major international design competitions and was recently commissioned to design the Iraq Parliament and sustainable, human-centric housing for The United Nations Human Settlements Programme (UN-Habitat). Having worked on the Peninsula-wide masterplan here in North Greenwich, ASSEMBLAGE designed and developed the masterplan for the Design District and is also its design coordinator.',
@@ -29,6 +30,7 @@ export const studios = {
   },
   '6a-architects': {
     title: '6A Architects',
+    slug: '6a-architects',
     buildings: 'A2 and B2',
     buildingsCopy: '6a’s buildings are a pair of non-identical twins, with all the similarities and contrasts of two siblings. The pair was inspired by American artist Richard Artschwager’s Formica sculptures. Each is sloped on one side, creating deep warehouse-like halls on the lower levels, which lead to tall, narrow studio spaces higher up. Huge diamond windows create a harlequin pattern on the building’s facade. Here you can find studios, the pop-up space and a recording and broadcast studio.',
     practiceCopy: '6a architects was founded by Tom Emerson and Stephanie Macdonald in 2001. The London-based practice recently completed the new MK Gallery in Milton Keynes and a studio complex for artist Juergen Teller, which was nominated for the 2017 Stirling Prize and received the RIBA London Building of the Year 2017 Award. The practice has been nominated five times for the Mies Van der Rohe Award for European Architecture.',
@@ -57,6 +59,7 @@ export const studios = {
   },
   'adam-khan-architects': {
     title: 'Adam Khan Architects',
+    slug: 'adam-khan-architects',
     buildings: 'A3 and B3',
     buildingsCopy: 'Both of the buildings by Adam Khan Architects celebrate raw construction and nod to the emerging sites elsewhere on the Peninsula. A3 is a monolith of concrete in the centre of the site, while B3 is a lightweight building with an Op Art-inspired facade. Both will provide studio spaces. The development of building B3 is on hold as the council finalises plans for the Silvertown Tunnel. ',
     practiceCopy: 'London-based Adam Khan Architects has a reputation for sensitivity and elegant buildings that address key issues of our time like social inclusion, sustainability and public space. In 2010 it won the RIBA National award for its renovation of a day centre for young homeless people in London’s Somers Town and it is currently working on a much larger project in the area, which will include 10 social homes, community playgrounds, a youth club and rooftop multi-use games area.',
@@ -85,6 +88,7 @@ export const studios = {
   },
   'architecture-00': {
     title: 'Architecture 00',
+    slug: 'architecture-00',
     buildings: 'C1 and D1',
     buildingsCopy: 'Both of Architecture 00’s buildings invite tenants to get creative with the use of their internal and external spaces. The roof is a multi-sport court but could also be a pop-up bar and event space. The terraces can be places for relaxation or become outdoor work areas. A robust structure means that the internal layouts can be flexible, encouraging adaptations to suit tenants’ changing needs. Sociable spaces run throughout the two buildings. C1 will be fitted out to suit fashion businesses, while D1 is currently under offer.',
     practiceCopy: 'Architecture 00 was founded in London in 2005. It’s a collaborative design studio where creatives from a wide range of disciplines work alongside architects to make places that empower people. The studio has a particular track record of innovative workspace projects, including the Foundry in Vauxhall, which was RIBA London’s Building of the Year in 2015. Architecture 00’s work often rethinks the status quo, through open source projects like Wikihouse (a two storey CNC cut house) and local making platform Opendesk or groundbreaking publications Compendium for the Civic Economy and A Right to Build.',
@@ -113,6 +117,7 @@ export const studios = {
   },
   'barozzi-veiga': {
     title: 'Barozzi Veiga',
+    slug: 'barozzi-veiga',
     buildings: 'A1 and D4',
     buildingsCopy: 'The polished aluminium facades of Barozzi Veiga’s two buildings reflect the sun in a way that changes throughout the day and appears different in each season. All year round, they light up the surrounding courtyards and alleys. Both buildings have been designed with photographers, artists and sculptors in mind. They have large windows, external staircases and high ceilings. The Institute of Creativity and Technology will move into building A1 in September 2020 and D4 is currently under offer.',
     practiceCopy: 'Barozzi Veiga is an architectural firm founded in 2004 in Barcelona by Fabrizio Barozzi and Alberto Veiga. Its work is characterised by buildings that are rooted in a place, change over time and have an emotional resonance. Creating atmosphere is at the heart of what the practice does. Barozzi Veiga has won many international awards, including the Mies van der Rohe European Union Prize for Contemporary Architecture in 2015 for its translucent Philharmonic Hall in Szczecin, Poland.',
@@ -139,8 +144,9 @@ export const studios = {
       }
     ]
   },
-  'david-kohn': {
+  'david-kohn-architects': {
     title: 'David Kohn Architects',
+    slug: 'david-kohn-architects',
     buildings: 'A4 and B4',
     buildingsCopy: 'Buildings A4 and B4 look like a pair of miniature glowing palazzi. Both have heavy red masonry bases and green glazed facades with a grid pattern. An illuminated rooftop sign on A4 announces your arrival at Design District. The architecture is classically-inspired but makes reference to other periods and ideas too. There’s the heavily adorned palazzi of the Venetian guild houses, but also the roadside architecture of the American Midwest loved by architects Robert Venturi and Denise Scott-Brown. You might even spot a nod to the late works of British architect James Stirling. The buildings speak of making rules and breaking them, and hope to inspire that approach in their tenants. A4 will offer a range of studio spaces, while B4 will contain workshops and studios and is currently under offer. ',
     practiceCopy: 'David Kohn Architects is a London-based practice established in 2007, which works internationally on arts, education and residential projects. Londoners will best know it for A Room for London, a boat-shaped one-bedroom hotel conceived with artist Fiona Banner that temporarily perched on top of the Queen Elizabeth Hall on the Southbank. The practice is currently working on a new quad for New College Oxford, an architecture faculty for the University of Hasselt in Belgium and recently completed the Photography Centre at the Victoria and Albert Museum.',
@@ -169,6 +175,7 @@ export const studios = {
   },
   'mole-architects': {
     title: 'Mole Architects',
+    slug: 'mole-architects',
     buildings: 'C2 and D2',
     buildingsCopy: 'These two buildings have their own identities. One is compact with an exterior that changes colour like a burning gas flame, while the other is stacked like a ziggurat. They were inspired by an old photograph of male and female forms. Both buildings are clad in metal: C2 in a striking CorTen weathered steel, D2 with an iridescent painted finish that changes colour with the light. Internally timber was chosen for its renewable low-carbon properties, and the exposed beams and wooden ceiling emit warmth. External shutters keep each building cool in summer, and top-lit studio spaces capture natural light. C2 will be fitted out with a test kitchen and studios for those working in the food and beverage industry, while D2 will offer studio and office space. ',
     practiceCopy: 'Founded by Meredith Bowles, Mole Architects combines innovation and individuality with a commitment to cutting-edge sustainability. It created the iconic Balancing Barn in Suffolk for Living Architecture and the first developer-led co-housing scheme in Cambridge, Marmalade Lane. The practice has a reputation for ‘green and gorgeous’ buildings, which you can see in its buildings for The University of Cambridge’s new Eddington site and in its masterplan for a new hillside village in Hsinchu, Taiwan. It was awarded the RIBA Manser Medal and the British Homes Award.',
@@ -197,6 +204,7 @@ export const studios = {
   },
   'schulze-grassov': {
     title: 'Schulze+Grassov',
+    slug: 'schulze-grassov',
     buildings: 'Landscape',
     buildingsCopy: 'The public spaces of Design District are inspired by the dinner table. It’s a place at the heart of the home where family and friends’ lives intersect with warmth. Just as people chat over the table, the design of the public realm encourages communication. Natural stone paving ties the neighbourhood’s 16 buildings together, with areas of public seating and clusters of new trees which will be at their prime during different seasons. Co-working yards for makers are a modern take on the traditional London working yard.',
     practiceCopy: 'Schulze+Grassov is a growing Copenhagen-based studio of architects and landscape architects established by Louise Grassov and Oliver Schulze in 2013. The practice has worked on public urban design projects in Denmark, Germany, the United Kingdom and the United States, from rooftop gardens to a scheme in former mining towns.',
@@ -225,6 +233,7 @@ export const studios = {
   },
   'selgascano': {
     title: 'SelgasCano',
+    slug: 'selgascano',
     buildings: 'B1 and C4',
     buildingsCopy: ' SelgasCano has used clear and translucent materials to create two light, transparent buildings. The Food Hall is a caterpillar-shaped metal structure that glows at night, becoming a focal point for the whole neighbourhood. Stalls on the ground floor will serve food from around the world. Trees run through the building and people eat upstairs in the canopy. The second building, B1, will provide workspaces to suit fast-growing businesses. This building has a winter garden, with tenants entering their working space through the calm of the foliage. ',
     practiceCopy: 'SelgasCano was founded in 1998 in Madrid. In the UK the practice is perhaps best known for its iridescent Serpentine Pavilion that was installed in Hyde Park in 2015. Worldwide, they have exhibited at the Museum of Modern Art in New York, the Guggenheim, New York and Design Museum in London.',
