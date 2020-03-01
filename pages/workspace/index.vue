@@ -5,13 +5,13 @@
         <div class="container py-5">
           <div class="row">
             <div class="col-12 col-md-8">
-              <h1>A home<br>for makers</h1>
+              <h1>A home<br>for creators</h1>
             </div>
           </div>
           <div class="row d-flex align-items-start justify-content-between">
             <div class="col-12 col-md-5 mb-5">
               <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering affordable rent, flexible leases and work spaces purpose-built for creative disciplines.</h4> -->
-              <h4>Design District will provide 150,000 sq ft of permanent work space for everyone in the creative industries. A thriving home for ideas, offering accessible rents, flexible leases and work spaces purpose-built for creatives.</h4>
+              <h4>Design District will provide 150,000 sq ft of permanent workspace for everyone for London’s designers makers and creators. A place for total focus, shared stories and resources, new connections and collaboration. </h4>
               <a href="#become-a-tenant" class="btn btn btn-lg btn-primary mt-3">Get in touch</a>
             </div>
             <div class="col-12 col-md-6">
@@ -33,12 +33,12 @@
           <div class="row mb-5">
             <div class="col-12 col-md-6 mb-5">
               <h2>Find a work space</h2>
-              <h4>Rent a desk, a workshop, or an entire building. With simple access to high-speed wi-fi, clean and dirty workshops, integrated security and a host of events.</h4>
-              <br><br>
+              <h4>Rent a desk, a studio,  a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</h4>
+              <br>
               <h3>Flexible tenancies</h3>
-              <p>Rent an office or workshop studio for three months or a year. Our studio tenancy agreements are made to be flexible. Grow the size of your studio along with your business. </p>
-
-              <h3>What we offer: </h3>
+              <p>Rent an office or workshop studio on short or long leases made to be flexible. Grow the size of your studio along with your business.</p>
+              <br>
+              <!-- <h3>What we offer: </h3>
               <ul class="h6">
                 <li>A desk to 1,500 sq. ft studio space</li>
                 <li>Flexible tenancy agreements</li>
@@ -47,7 +47,7 @@
                 <li>24-hour access to your building with your fob</li>
                 <li>Access to creative industry events</li>
                 <li>Bookable workshop spaces and meeting rooms</li>
-              </ul>
+              </ul> -->
               <a href="#become-a-tenant" class="btn btn btn-lg btn-primary mt-3">Join Design District</a>
               <!-- <p>Want something smaller?</p>
               <router-link to="/the-club" class="h5 text-primary">
@@ -349,7 +349,7 @@
               <h3>Workshops</h3>
               <p>Often creative businesses need more than a desk. In the Design District you can access a range of workshops suited to your specialism. There’s a wood workshop, digital workshop, textile workshop, engineering workshop and an assembly space. Prototype or produce a new collection.</p>
 
-              <div class="row mt-5">
+              <div class="row mt-5" v-if="false">
                 <div class="col-12 col-md-6 col-lg-6 mb-4">
                   <!-- <h5>Onsite Tools</h5> -->
 
@@ -417,7 +417,7 @@
 
             <div class="col-12 col-md-6">
               <h3>Meeting rooms</h3>
-              <p>At Design District you’ll have five rooms ideal for small to medium-sized meetings. Meeting rooms can be rented out between 8am and 7pm, either by the hour or for the entire day. Each room features Superfast wi-fi, a Smart TV and AV equipment and wall space for scribbles and post-it notes.</p>
+              <p>At Design District you’ll have five rooms ideal for small to medium-sized meetings. Meeting rooms can be rented out between 8am and 7pm, either by the hour or for the entire day. Each room features Superfast wi-fi, a Smart TV and wall space for scribbles and post-it notes. </p>
             </div>
             <!-- <div class="col-12 col-md-6">
               <div class="row d-flex align-items-end justify-content-end">
@@ -440,7 +440,7 @@
 
             <div class="col-12 col-md-6">
               <h3>Food hall and kitchen</h3>
-              <p>Open to the public and filled with a wide range of food partners, the food hall will become a key meeting place in the district. It is located in SelgasCano’s caterpillar-like building at the entrance to district, immediately visible to visitors. </p>
+              <p>Open to the public and filled with six independent food partners, the food hall will become a key meeting place in the district. It is located in SelgasCano’s luminescent building at the entrance to the district, immediately visible to visitors.</p>
               <p>Design District is equipped with an industrial kitchen that will cater for The Club and any onsite events. Tenants working in the food and beverage industries will have access to the kitchen by prior arrangement.</p>
             </div>
 
@@ -455,7 +455,7 @@
             </div> -->
           </div>
 
-          <div class="row d-flex align-items-start justify-content-between py-5">
+          <div class="row d-flex align-items-start justify-content-between py-5" v-if="false">
             <!-- <div class="col-12 col-md-6" /> -->
             <div class="col-12 col-md-5 mb-3">
               <div class="row d-flex align-items-end">
@@ -479,18 +479,18 @@
           </div>
 
           <div class="row d-flex align-items-start justify-content-between py-5">
-            <div class="col-12 col-md-5 mb-3 order-md-2">
+            <div class="col-12 col-md-5 mb-3">
               <div class="row d-flex align-items-end justify-content-end">
                 <div class="col-12 col-md-12">
-                  <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/2YkGmNe7vtf12308xsP0J1/7f043a0b6845187e4c66952b334c7a5c/KDN_Design_District_B4_190603_LR.jpeg?w=1000&h=800&fm=jpg&q=80&fit=thumb" alt="">
+                  <img class="lazyload" data-src="http://images.ctfassets.net/7p1ysxjarsp5/HZdjU0R1Fsm5E43GN0IvT/5d14e50e33add1aeff3939b18060c641/KDN_Design_District_A2_190603_LR.jpeg?w=2000&h=2000&fm=jpg&q=80" alt="">
                 </div>
               </div>
             </div>
-            <div class="col-12 col-md-1 order-md-2" />
+
 
             <div class="col-12 col-md-6">
               <h3>Pop-up space </h3>
-              <p>Suitable for retail or small art exhibitions, a pop-up space will be located on the ground floor or building A2. It can be hired by members of the public, with discounted rates for the Design District community. You’ll find a flexible lighting system, built in till point and EFTPOS Payment System, and the hire includes cleaning and security. At an additional cost, we can provide an installation and de-installation service and catering.</p>
+              <p>Suitable for retail or small art exhibitions, a pop-up space will be located on the ground floor or building A2. It can be hired by members of the public, with discounted rates for the Design District community. You’ll find a flexible lighting system, built in till point and EPOS Payment System, and the hire includes cleaning and security. At an additional cost, we can provide an installation and de-installation service and catering.</p>
             </div>
             <!-- <div class="col-12 col-md-1" />
             <div class="col-12 col-md-6" /> -->
@@ -505,13 +505,14 @@
 
           <div class="row d-flex align-items-start justify-content-between py-5">
             <!-- <div class="col-12 col-md-6" /> -->
-            <div class="col-12 col-md-5 mb-3">
+            <div class="col-12 col-md-5 mb-3  order-md-2">
               <div class="row d-flex align-items-end justify-content-end">
                 <div class="col-12 col-md-12">
                   <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/3aSHHWF58a3lz1wLhodNS3/d7bf1c2dd9c8e04abd2057194b16ace7/bb.jpg?w=1000&h=800&fm=jpg&q=80" alt="">
                 </div>
               </div>
             </div>
+            <div class="col-12 col-md-1 order-md-2" />
 
             <div class="col-12 col-md-6">
               <h3>Multi-sports rooftop court </h3>
@@ -535,7 +536,7 @@
       </div>
     </div> -->
 
-    <div id="become-a-tenant" class="py-5 bg-white">
+    <div id="become-a-tenant" class="py-5 bg-white- bg-primary">
       <div class="container my-5">
         <div class="row">
           <div class="col-12 col-md-4">
@@ -543,12 +544,12 @@
           </div>
           <div class="col-12" />
           <div class="col-12 col-md-4">
-            <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering affordable rent, flexible leases and work space purpose-built for creative disciplines.</h4>
+            <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering accessible rent, flexible leases and workspace purpose-built for creative disciplines.</h4>
             <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Tell us about your requirements and we’ll drop you a line. You can book a viewing here too.</p>
           </div>
           <div class="col-12 col-lg-1" />
           <div class="col-12 col-md-8 col-lg-7">
-            <enquire-form />
+            <enquire-form :color="'outline-dark'" />
           </div>
         </div>
       </div>
