@@ -525,8 +525,8 @@ export default {
         this.formAlert.text = 'Complete.'
         this.formAction = 'Complete'
 
-        alert('done')
-        // this.$refs.enquireForm.submit()
+        // alert('done')
+        this.$refs.enquireForm.submit()
 
         setTimeout(() => {
           this.formState = 'idle'
