@@ -132,7 +132,7 @@
       </div> -->
     </div>
 
-    <div class="container-fluid bg-secondary py-5">
+    <div class="container-fluid -bg-light bg-secondary py-5">
       <div class="row">
         <div class="container my-5">
           <div class="row">
@@ -142,9 +142,12 @@
             <div class="col-12" />
             <div class="col-12 col-md-6">
               <h4>The Club is a space for creative freelancers and entrepreneurs but also the social hub of Design District. Join The Club for members-only events and mixers and year-round start-up and business support.</h4>
+              <nuxt-link to="/the-club/apply" class="btn btn btn-lg btn-dark mt-3">
+                Apply now
+              </nuxt-link>
             </div>
             <div class="col-12 col-md-5">
-              <club-form></club-form>
+              <!-- <club-form /> -->
             </div>
           </div>
         </div>

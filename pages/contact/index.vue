@@ -91,7 +91,8 @@
               Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.
             </h4>
             <br>
-            <enquire-form :show-business="false" />
+            <!-- <enquire-form :show-business="false" /> -->
+            <enquire-form />
           </div>
           <!-- <div class="col-12 col-md-1" />
           <div class="col-12 col-md-4">
@@ -162,7 +163,7 @@
 </template>
 
 <script>
-import EnquireForm from '../../components/forms/Enquire.vue'
+import EnquireForm from '../../components/forms/Enquire2.vue'
 // import EnquireFormCondensed from '../../components/forms/EnquireCondensed.vue'
 import NewsletterForm from '../../components/forms/Newsletter.vue'
 export default {
