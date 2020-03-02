@@ -140,7 +140,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 h5 {
   &:not(:first-child) {
     margin-top: 4rem

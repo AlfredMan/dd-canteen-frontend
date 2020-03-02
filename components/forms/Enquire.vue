@@ -58,31 +58,6 @@
         </div>
       </div>
 
-      <div v-if="showBusiness" class="my-4">
-        <h5>Work Specifics</h5>
-
-        <div class="form-row">
-          <div class="col-12 col-md-6">
-            <label class="accessible-hide" for="00N20000009fVtE">Business name</label>
-            <input type="text" name="00N20000009fVtE" placeholder="Business name" class="input-text form-field-reset" value="">
-          </div>
-          <div class="col-12 col-md-6">
-            <label class="accessible-hide" for="00N0O00000AAdtS">Website</label>
-            <input type="text" name="00N0O00000AAdtS" placeholder="Website" class="input-text form-field-reset" value="">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="col-12 col-md-6">
-            <label for="00N0O00000AAdtr" class="accessible-hide">
-              Describe your business
-              <!-- Tell us a little bit about your business or idea and how you see it working at the Design District -->
-            </label>
-            <textarea name="00N0O00000AAdtr" rows="3" class="input-text form-field-reset" placeholder="Describe your business" />
-          </div>
-        </div>
-      </div>
-
       <div class="my-4">
         <h5>What type of space suits you? *</h5>
 
@@ -130,7 +105,32 @@
         </div>
       </div>
 
-      <div class="my-4">
+
+      <div v-if="showBusiness" v-show="typeOfSpace" class="my-4">
+        <h5>Work Specifics</h5>
+
+        <div class="form-row">
+          <div class="col-12 col-md-6">
+            <label class="accessible-hide" for="00N20000009fVtE">Business name</label>
+            <input type="text" name="00N20000009fVtE" placeholder="Business name" class="input-text form-field-reset" value="">
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="accessible-hide" for="00N0O00000AAdtS">Website</label>
+            <input type="text" name="00N0O00000AAdtS" placeholder="Website" class="input-text form-field-reset" value="">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-12 col-md-6">
+            <label for="00N0O00000AAdtr" class="accessible-hide">
+              Describe your business
+              <!-- Tell us a little bit about your business or idea and how you see it working at the Design District -->
+            </label>
+            <textarea name="00N0O00000AAdtr" rows="3" class="input-text form-field-reset" placeholder="Describe your business" />
+          </div>
+        </div>
+      </div>
+      <div class="my-4" v-show="typeOfSpace">
         <div>
           <h5>Select the amenities that are important to you:</h5>
 
@@ -262,7 +262,7 @@
         </div>
       </div>
 
-      <div class="my-4">
+      <div class="my-4" v-show="typeOfSpace">
         <h5>Why do you want to move from your current location?</h5>
         <div class="form-row">
           <div class="col-12 col-md-6">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <div class="my-4">
+      <div class="my-4" v-show="typeOfSpace">
         <h5>Staying in touch</h5>
         <div class="form-row">
           <div class="col-12 col-md-8">
@@ -379,14 +379,14 @@
         </div>
       </div>
 
-      <div class=" my-4">
+      <div class=" my-4" v-show="typeOfSpace">
         <!-- <div class="form-row form-row--submit">
           <div class="col"> -->
 
         <button
-          class="btn btn-primary btn-lg mt-0"
+          class="btn -btn-primary btn-lg mt-0"
           type="submit"
-          :class="{disabled: formState === 'loading'}"
+          :class="[{disabled: formState === 'loading'}, `btn-${color}`]"
         >
           {{ formAction }}
         </button>
@@ -399,6 +399,14 @@
           @verify="onVerify"
           @expired="onExpired"
         />
+
+        <div class="mt-4">
+          <small class="text-black-50">
+            This site is protected by reCAPTCHA and the Google
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy Policy</a> and
+                <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer">Terms of Service</a> apply.
+          </small>
+        </div>
 
         <!-- <div v-if="formAlert.type === 'loading'" class="alert alert-light mt-4" role="alert">
           {{ formAlert.text }}
@@ -448,12 +456,17 @@ export default {
     showBusiness: {
       type: Boolean,
       default: true
+    },
+    color: {
+      type: String,
+      default: 'primary'
     }
   },
   data () {
     return {
       recaptchaKey: KEY,
       typeOfSpace: '',
+      showPart2: false,
       formAlert: {
         type: '',
         text: ''

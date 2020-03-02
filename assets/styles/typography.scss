@@ -84,7 +84,7 @@ h2,
 h3,
 .h3 {
 	font-weight: 500;
-	line-height: 1.25;
+	line-height: 1.125;
 	// text-transform: uppercase;
 	letter-spacing: 0em;
 	margin: 1rem 0;
@@ -150,7 +150,7 @@ p {
 	font-size: 1.25rem;
 
 	@include media-breakpoint-up(sm) {
-			max-width: 38rem;
+			max-width: 40rem;
 			font-size: 1.25rem;
 	}
 }
@@ -236,5 +236,11 @@ h3,
 .h3 {
 	&:first-child {
     margin-top: -0.35em
+  }
+}
+h4,
+.h4 {
+	&:first-child {
+    margin-top: -0.1em
   }
 }

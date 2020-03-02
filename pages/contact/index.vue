@@ -8,21 +8,21 @@
       </div>
       <div class="row mb-5">
         <div class="col-12 col-md-6">
-          <h4>The Design District is at the heart of Greenwich Peninsula, a new type of London created specifically for the creative community.</h4>
+          <h4>Ask a question or book a viewing. Comment or collaborate. We want to hear from you.</h4>
         </div>
       </div>
       <div class="row">
         <div class="col-12 col-md-3">
-          <h5>Front office</h5>
+          <h5>General enquiries</h5>
           <p><a href="#">hello@designdistrict.co.uk</a></p>
         </div>
         <div class="col-12 col-md-3">
-          <h5>Alex Howard, <em>Sales</em><br></h5>
-          <p><a href="#">alex@designdistrict.co.uk</a><br>020 3981 2426</p>
+          <h5>Sales</h5>
+          <p><a href="#">sales@designdistrict.co.uk</a><br>020 3981 2426</p>
         </div>
         <div class="col-12 col-md-3">
           <h5>Press</h5>
-          <p>For information, images and interviews, contact our press team at <a href="#">press@designdistrict.co.uk</a></p>
+          <p><a href="#">press@designdistrict.co.uk</a></p>
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 mb-3">
                   <h5>Boat</h5>
-                  <p>Travel along the Thames to Tate Modern, Tate Britain or Putney.</p>
+                  <p>Travel along the Thames to Tate Modern, Tate Britain or Woolwich.</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 mb-3">
                   <h5>Emirates Air Line Cable Car</h5>
@@ -66,7 +66,7 @@
             </div>
             <div class="col-12 col-lg-8">
               <!-- <div class="embed-responsive embed-responsive-4by3 bg-dark" /> -->
-              <img src="http://images.ctfassets.net/7p1ysxjarsp5/2ktZJktAQov9qqmv48aHV3/7bded41c83ea309edff8ce029932ce90/DD-location-map-1350x831.png" alt="" class="img-fluid">
+              <img class="img-fluid lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/2ktZJktAQov9qqmv48aHV3/7bded41c83ea309edff8ce029932ce90/DD-location-map-1350x831.png" alt="">
             </div>
           </div>
         </div>
@@ -87,6 +87,10 @@
           </div>
           <div class="col-12" />
           <div class="col-12 col-md-7">
+            <h4>
+              Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.
+            </h4>
+            <br>
             <enquire-form :show-business="false" />
           </div>
           <!-- <div class="col-12 col-md-1" />

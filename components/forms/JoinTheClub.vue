@@ -1,6 +1,5 @@
 <template>
   <div class="">
-    <p>Sign up now to stay in the loop with the latest happenings on the&nbsp;Peninsula.</p>
 
     <form
       ref="subscribeForm"
@@ -11,7 +10,7 @@
       @submit.prevent="onFormSubmit"
     >
       <div>
-        <div class="form-row">
+        <!-- <div class="form-row">
           <div :class="[{'col-7 col-md-8': !active}, {'col-12': active}]">
             <input
               class="form-control input-text form-field-reset"
@@ -29,10 +28,19 @@
               </button>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <input
-          v-show="active"
+          class="form-control input-text form-field-reset"
+          type="email"
+          name="email"
+          placeholder="Email Address"
+          value=""
+          required
+        >
+
+        <input
+          v-show="active||true"
           id="first_name"
           ref="first_name"
           class="form-control input-text form-field-reset"
@@ -43,7 +51,7 @@
           required
         >
         <input
-          v-show="active"
+          v-show="active||true"
           id="last_name"
           ref="last_name"
           class="form-control input-text form-field-reset"
@@ -55,7 +63,7 @@
         >
       </div>
 
-      <div v-show="active" class="">
+      <div v-show="active||true" class="">
         <h6>
           I agree to the terms of your <a href="/privacy-policy/">Privacy Policy</a> and I want to receive:
         </h6>
@@ -96,7 +104,7 @@
       </div>
 
       <div class="g-recaptcha" data-sitekey="6LdPFNEUAAAAAKdvqOAD4Dq1MeL0WoGWzxZFj92t" />
-      <div v-show="active" class="form-group form-submit my-4">
+      <div v-show="active||true" class="form-group form-submit my-4">
         <!-- <button onclick="submitDEManagerForm(); return false;" class="btn btn-primary btn-lg">
           Signup
         </button> -->
@@ -107,7 +115,7 @@
         <input id="submit" type="submit" value="Signup" style="display: none;">
 
         <button
-          class="btn btn-primary btn-lg mt-0"
+          class="btn btn-dark btn-lg mt-0"
           type="submit"
           :class="{disabled: formState === 'loading'}"
         >
@@ -123,7 +131,7 @@
           @expired="onExpired"
         />
       </div>
-      <div v-show="active" class="">
+      <div v-show="active||true" class="">
         <h6>
           <!-- Our <a href="/privacy-policy/">Privacy Policy</a> outlines how we use and store your data. You can manage your preferences or opt out of communications at any time. -->
           Our <a href="/privacy-policy/">Privacy Policy</a> outlines how we use and store your data. You can manage your preferences or opt out of communications at any time.
@@ -225,8 +233,8 @@ export default {
         this.formAlert.text = 'Complete.'
         this.formAction = 'Complete'
 
-        // alert('done')
-        this.$refs.enquireForm.submit()
+        alert('done')
+        // this.$refs.enquireForm.submit()
 
         setTimeout(() => {
           this.formState = 'idle'

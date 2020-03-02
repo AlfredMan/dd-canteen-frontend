@@ -51,7 +51,8 @@ export default {
   },
 
   plugins: [
-    '~/plugins/filters'
+    '~/plugins/filters',
+    '~/plugins/vue-lazysizes.js'
   ],
 
   render: {
@@ -59,11 +60,20 @@ export default {
       push: true
     },
     static: {
-      maxAge: '1y',
+      maxAge: '1d',
       setHeaders (res, path) {
         if (path.includes('sw.js')) {
           res.setHeader('Cache-Control', `public, max-age=${15 * 60}`)
         }
+      }
+    }
+  },
+
+  build: {
+    extend (config, { isDev, isClient, loaders: { vue } }) {
+      if (isClient) {
+        vue.transformAssetUrls.img = ['data-src', 'src']
+        vue.transformAssetUrls.source = ['data-srcset', 'srcset']
       }
     }
   }
