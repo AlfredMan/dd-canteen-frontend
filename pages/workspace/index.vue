@@ -53,7 +53,6 @@
               <router-link to="/the-club" class="h5 text-primary">
                 Join The Club &rarr;
               </router-link> -->
-
             </div>
             <div class="col-12 col-md-1" />
             <div class="col-12 col-md-5">
@@ -316,7 +315,7 @@
     </div> -->
 
     <!--  -->
-    <div class="container-fluid" id="service-and-facilities">
+    <div id="service-and-facilities" class="container-fluid">
       <div class="row pb-5 pt-3">
         <div class="container py-5">
           <div class="row">
@@ -349,7 +348,7 @@
               <h3>Workshops</h3>
               <p>Often creative businesses need more than a desk. In the Design District you can access a range of workshops suited to your specialism. There’s a wood workshop, digital workshop, textile workshop, engineering workshop and an assembly space. Prototype or produce a new collection.</p>
 
-              <div class="row mt-5" v-if="false">
+              <div v-if="false" class="row mt-5">
                 <div class="col-12 col-md-6 col-lg-6 mb-4">
                   <!-- <h5>Onsite Tools</h5> -->
 
@@ -455,7 +454,7 @@
             </div> -->
           </div>
 
-          <div class="row d-flex align-items-start justify-content-between py-5" v-if="false">
+          <div v-if="false" class="row d-flex align-items-start justify-content-between py-5">
             <!-- <div class="col-12 col-md-6" /> -->
             <div class="col-12 col-md-5 mb-3">
               <div class="row d-flex align-items-end">
@@ -486,7 +485,6 @@
                 </div>
               </div>
             </div>
-
 
             <div class="col-12 col-md-6">
               <h3>Pop-up space </h3>
@@ -571,7 +569,8 @@
 </template>
 
 <script>
-import EnquireForm from '../../components/forms/Enquire.vue'
+// import EnquireForm from '../../components/forms/Enquire.vue'
+import EnquireForm from '../../components/forms/Enquire2.vue'
 import NewsletterForm from '../../components/forms/Newsletter.vue'
 export default {
   components: {
