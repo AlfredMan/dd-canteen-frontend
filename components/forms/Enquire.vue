@@ -105,7 +105,6 @@
         </div>
       </div>
 
-
       <div v-if="showBusiness" v-show="typeOfSpace" class="my-4">
         <h5>Work Specifics</h5>
 
@@ -130,7 +129,7 @@
           </div>
         </div>
       </div>
-      <div class="my-4" v-show="typeOfSpace">
+      <div v-show="typeOfSpace" class="my-4">
         <div>
           <h5>Select the amenities that are important to you:</h5>
 
@@ -262,7 +261,7 @@
         </div>
       </div>
 
-      <div class="my-4" v-show="typeOfSpace">
+      <div v-show="typeOfSpace" class="my-4">
         <h5>Why do you want to move from your current location?</h5>
         <div class="form-row">
           <div class="col-12 col-md-6">
@@ -302,7 +301,7 @@
         </div>
       </div>
 
-      <div class="my-4" v-show="typeOfSpace">
+      <div v-show="typeOfSpace" class="my-4">
         <h5>Staying in touch</h5>
         <div class="form-row">
           <div class="col-12 col-md-8">
@@ -379,7 +378,7 @@
         </div>
       </div>
 
-      <div class=" my-4" v-show="typeOfSpace">
+      <div v-show="typeOfSpace" class=" my-4">
         <!-- <div class="form-row form-row--submit">
           <div class="col"> -->
 
@@ -403,8 +402,8 @@
         <div class="mt-4">
           <small class="text-black-50">
             This site is protected by reCAPTCHA and the Google
-                <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy Policy</a> and
-                <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer">Terms of Service</a> apply.
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy Policy</a> and
+            <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer">Terms of Service</a> apply.
           </small>
         </div>
 
@@ -440,6 +439,8 @@
       <input id="utm_source" ref="utm_source" type="hidden" name="00N0O00000AB5iR" value="">
       <input id="utm_term" ref="utm_term" type="hidden" name="00N0O00000AB5iS" value="">
       <input id="utm_content" ref="utm_content" type="hidden" name="00N0O00000AB5iP" value="">
+
+      <input id="recordType" type="hidden" name="recordType" value="0123Y0000007v91">
     </form>
   </div>
 </template>

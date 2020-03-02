@@ -691,6 +691,8 @@
       <input id="utm_source" ref="utm_source" type="hidden" name="00N0O00000AB5iR" value="">
       <input id="utm_term" ref="utm_term" type="hidden" name="00N0O00000AB5iS" value="">
       <input id="utm_content" ref="utm_content" type="hidden" name="00N0O00000AB5iP" value="">
+
+      <input id="recordType" type="hidden" name="recordType" value="0123Y0000007v91">
     </form>
   </div>
 </template>

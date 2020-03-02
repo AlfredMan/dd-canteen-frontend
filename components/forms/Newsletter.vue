@@ -131,8 +131,8 @@
         <div class="mt-4">
           <small class="text-black-50">
             This site is protected by reCAPTCHA and the Google
-                <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy Policy</a> and
-                <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer">Terms of Service</a> apply.
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy Policy</a> and
+            <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer">Terms of Service</a> apply.
           </small>
         </div>
       </div>
@@ -148,6 +148,8 @@
       <input id="marketingOptInDate" ref="marketingOptInDate" type="hidden" name="00N0O00000GRZbC" value="">
       <input id="privacyOptIn" ref="privacyOptIn" type="hidden" name="00N0O00000GRrXc" value="1">
       <input id="privacyOptInDate" ref="privacyOptInDate" type="hidden" name="00N0O00000GRrXh" value="">
+
+      <input id="recordType" type="hidden" name="recordType" value="0123Y0000007v91">
     </form>
   </div>
 </template>
