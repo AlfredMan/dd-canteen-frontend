@@ -9,9 +9,9 @@
         <nuxt-link class="menu-link d-none d-lg-inline" to="/workspace">
           Work space
         </nuxt-link>
-        <nuxt-link class="menu-link d-none d-lg-inline" to="/the-club">
+        <!-- <nuxt-link class="menu-link d-none d-lg-inline" to="/the-club">
           The Club
-        </nuxt-link>
+        </nuxt-link> -->
         <!-- <nuxt-link class="menu-link d-none d-lg-inline" to="/">Architecture</nuxt-link> -->
         <!-- <nuxt-link class="menu-link d-none d-lg-inline" to="/news-and-events">News & Events</nuxt-link> -->
         <nuxt-link class="menu-link d-none d-lg-inline" to="/about-us">
@@ -43,9 +43,9 @@
             <nuxt-link class="mobile-menu-link" to="/workspace">
               Workspace
             </nuxt-link><br>
-            <nuxt-link class="mobile-menu-link" to="/the-club">
+            <!-- <nuxt-link class="mobile-menu-link" to="/the-club">
               The Club
-            </nuxt-link><br>
+            </nuxt-link><br> -->
             <nuxt-link class="mobile-menu-link" to="/about-us">
               About
             </nuxt-link><br>

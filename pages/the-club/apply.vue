@@ -14,7 +14,7 @@
             <!-- <div class="col-12" /> -->
             <div class="col-12 col-lg-1" />
             <div class="col-12 col-md-8 col-lg-7">
-              <club-form />
+              <!-- <club-form /> -->
             </div>
           </div>
         </div>

@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div class="container-fluid bg-light py-lg-5 py-4">
+    <div class="container-fluid bg-secondary py-lg-5 py-4">
       <div class="row">
         <div class="container">
           <div class="row d-flex justify-content-between mb-5">
@@ -95,7 +95,7 @@
       </div>
     </div> -->
 
-    <div class="container-fluid py-5">
+    <div class="container-fluid bg-light py-5">
       <div class="row">
         <div class="container">
           <div class="row py-5">
@@ -132,7 +132,7 @@
       </div> -->
     </div>
 
-    <div class="container-fluid -bg-light bg-secondary py-5">
+    <div class="container-fluid -bg-light bg-white py-5">
       <div class="row">
         <div class="container my-5">
           <div class="row">
@@ -140,14 +140,15 @@
               <h2>Join the club</h2>
             </div>
             <div class="col-12" />
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-4">
               <h4>The Club is a space for creative freelancers and entrepreneurs but also the social hub of Design District. Join The Club for members-only events and mixers and year-round start-up and business support.</h4>
-              <nuxt-link to="/the-club/apply" class="btn btn btn-lg btn-dark mt-3">
+              <!-- <nuxt-link to="/the-club/apply" class="btn btn btn-lg btn-dark mt-3">
                 Apply now
-              </nuxt-link>
+              </nuxt-link> -->
             </div>
-            <div class="col-12 col-md-5">
-              <!-- <club-form /> -->
+            <div class="col-12 col-lg-1" />
+            <div class="col-12 col-md-8 col-lg-7">
+              <club-form />
             </div>
           </div>
         </div>

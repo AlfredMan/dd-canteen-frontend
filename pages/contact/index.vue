@@ -90,6 +90,9 @@
             <h4>
               Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.
             </h4>
+            <h4>
+              Register your interest to become a tenant. Tell us about your requirements and we’ll drop you a line.
+            </h4>
             <br>
             <!-- <enquire-form :show-business="false" /> -->
             <enquire-form />

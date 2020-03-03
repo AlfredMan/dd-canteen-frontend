@@ -52,7 +52,8 @@ export default {
 
   plugins: [
     '~/plugins/filters',
-    '~/plugins/vue-lazysizes.js'
+    '~/plugins/vue-lazysizes.js',
+    '~/plugins/ga.js'
   ],
 
   render: {

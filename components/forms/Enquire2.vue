@@ -16,8 +16,9 @@
 
         <div class="form-row">
           <div class="col-12 col-md-6">
-            <label class="accessible-hide" for="first_name">First name<sup>*</sup></label>
+            <label class="-accessible-hide" for="first_name">First name<sup>*</sup></label>
             <input
+              id="first_name"
               type="text"
               name="first_name"
               placeholder="First name"
@@ -27,8 +28,9 @@
             >
           </div>
           <div class="col-12 col-md-6">
-            <label class="accessible-hide" for="last_name">Last name<sup>*</sup></label>
+            <label class="-accessible-hide" for="last_name">Last name<sup>*</sup></label>
             <input
+              id="last_name"
               type="text"
               name="last_name"
               placeholder="Last name"
@@ -41,8 +43,9 @@
 
         <div class="form-row">
           <div class="col-12 col-md-6">
-            <label class="accessible-hide" for="email">Email address<sup>*</sup></label>
+            <label class="-accessible-hide" for="email">Email address<sup>*</sup></label>
             <input
+              id="email"
               type="email"
               name="email"
               placeholder="Email address"
@@ -52,20 +55,253 @@
             >
           </div>
           <div class="col-12 col-md-6">
-            <label class="accessible-hide" for="phone">Phone</label>
+            <label class="-accessible-hide" for="phone">Phone</label>
             <input type="text" name="phone" placeholder="Phone" class="input-text form-field-reset" value="">
           </div>
         </div>
+
+        <div class="form-row">
+
+          <div class="col-12 col-md-8">
+
+            <label>I would like to be contacted by:</label>
+            <div class="checkbox-wrapper">
+              <input
+                id="Email__c"
+                ref="Email__c"
+                class="form-field-reset checkbox"
+                type="checkbox"
+                name="00N20000009fVlo"
+                value="1"
+              >
+              <label class="cb" for="Email__c">
+                <span>
+                  Email
+                </span>
+              </label>
+            </div>
+
+            <div class="checkbox-wrapper">
+              <input
+                id="Telephone__c"
+                ref="Telephone__c"
+                class="form-field-reset checkbox"
+                type="checkbox"
+                name="00N20000009fVle"
+                value="1"
+              >
+              <label class="cb" for="Telephone__c">
+                <span>
+                  Phone
+                </span>
+              </label>
+            </div>
+
+            <div class="checkbox-wrapper">
+              <input
+                id="SMS__c"
+                ref="SMS__c"
+                class="form-field-reset checkbox"
+                type="checkbox"
+                name="00N20000009fVlj"
+                value="1"
+              >
+              <label class="cb" for="SMS__c">
+                <span>
+                  SMS
+                </span>
+              </label>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-12">
+            <button type="button" name="button" @click="step = 2" class="btn btn-lg" :class="{'btn-dark': step === 1, 'btn-outline-dark disabled': step === 2}">Next &rarr;</button>
+          </div>
+        </div>
+
       </div>
 
-      <div class="my-4">
-        <h5>What type of space suits you? *</h5>
+      <div v-if="showBusiness" v-show="step === 2" class="my-4 mt-5">
+        <h5>Your work</h5>
+        <div class="form-row">
+          <div class="col-12 col-md-6">
+            <label class="-accessible-hide" for="00N3Y00000H10Ce">I am a:</label>
+            <select
+              id="00N3Y00000H10Ce"
+              ref="00N3Y00000H10Ce"
+              v-model="roleType"
+              class="custom-select form-control form-field-reset"
+              name="00N3Y00000H10Ce"
+            >
+              <option value="" disabled selected>
+                Choose your role
+              </option>
+              <option value="Freelancer">
+                Freelancer
+              </option>
+              <option value="Digital nomad">
+                Digital nomad
+              </option>
+              <option value="Entrepreneur">
+                Entrepreneur
+              </option>
+              <option value="Business owner">
+                Business owner
+              </option>
+              <option value="Employee">
+                Employee
+              </option>
+              <option value="Other">
+                Other
+              </option>
+            </select>
+          </div>
+          <div v-show="arrayIncludesString(roleType,'Other')" class="col-12 col-md-6">
+            <label class="-accessible-hide" for="00N3Y00000H10Cj">Please specify your role</label>
+            <input
+              id="00N3Y00000H10Cj"
+              ref="00N3Y00000H10Cj"
+              class="input-text form-field-reset"
+              type="text"
+              name="00N3Y00000H10Cj"
+              placeholder="Please specify"
+              maxlength="254"
+            >
+          </div>
+        <!-- </div>
+
+        <div class="form-row"> -->
+          <div class="col-12 col-md-6">
+            <label class="-accessible-hide" for="00N3Y00000H10Ea">Industry:</label>
+            <select
+              id="00N3Y00000H10Ea"
+              ref="00N3Y00000H10Ea"
+              v-model="industry"
+              class="custom-select form-control form-field-reset"
+              name="00N3Y00000H10Ea"
+            >
+              <option value="" disabled selected>
+                Choose your industry
+              </option>
+              <option value="Advertising and marketing">
+                Advertising and marketing
+              </option>
+              <option value="Architecture">
+                Architecture
+              </option>
+              <option value="Animation and VFX (visual effects)">
+                Animation and VFX (visual effects)
+              </option>
+              <option value="Crafts">
+                Crafts
+              </option>
+              <option value="Fashion">
+                Fashion
+              </option>
+              <option value="Film, TV, video, radio, podcasts">
+                Film, TV, video, radio, podcasts
+              </option>
+              <option value="Graphic Design">
+                Graphic Design
+              </option>
+              <option value="IT, software, computer services and UX Design(‘creative tech’)">
+                IT, software, computer services and UX Design(‘creative tech’)
+              </option>
+              <option value="Museums, galleries, libraries, and heritage">
+                Museums, galleries, libraries, and heritage
+              </option>
+              <option value="Music, performing and visual arts">
+                Music, performing and visual arts
+              </option>
+              <option value="Photography">
+                Photography
+              </option>
+              <option value="Product Design">
+                Product Design
+              </option>
+              <option value="Publishing">
+                Publishing
+              </option>
+              <option value="Video games">
+                Video games
+              </option>
+              <option value="Other">
+                Other
+              </option>
+            </select>
+          </div>
+          <div v-show="arrayIncludesString(industry,'Other')" class="col-12 col-md-6">
+            <label class="-accessible-hide" for="00N3Y00000H10Ef">Please specify your industry</label>
+            <input
+              id="00N3Y00000H10Ef"
+              ref="00N3Y00000H10Ef"
+              class="input-text form-field-reset"
+              type="text"
+              name="00N3Y00000H10Ef"
+              placeholder="Please specify"
+              maxlength="254"
+            >
+          </div>
+        </div>
+
+
 
         <div class="form-row">
           <div class="col-12 col-md-6">
+            <label class="-accessible-hide" for="00N20000009fVtE">Business name</label>
+            <input type="text" id="00N20000009fVtE" name="00N20000009fVtE" placeholder="Business name" class="input-text form-field-reset" value="">
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="-accessible-hide" for="00N0O00000AAdtS">Website or social media handle</label>
+            <input type="text" id="00N0O00000AAdtS" name="00N0O00000AAdtS" placeholder="Website or social media handle" class="input-text form-field-reset" value="">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-12 col-md-6">
+            <label class="-accessible-hide" for="00N0O00000GRkIk">Number of employees:</label>
             <select
-              id="typeOfSpace"
-              ref="typeOfSpace"
+            id="00N0O00000GRkIk"
+            name="00N0O00000GRkIk"
+            title="Work Space Requirement"
+            class="custom-select form-control form-field-reset"
+            >
+              <option value="" disabled selected>
+                Select
+              </option>
+              <option value="1">1</option>
+  						<option value="2-4">2-4</option>
+  						<option value="5-10">5-10</option>
+  						<option value="11-20">11-20</option>
+  						<option value="21 or more">21 or more</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-12 col-md-12">
+            <label for="00N0O00000AAdtr" class="-accessible-hide">
+              Describe your business
+              <!-- Tell us a little bit about your business or idea and how you see it working at the Design District -->
+            </label>
+            <textarea id="00N0O00000AAdtr" name="00N0O00000AAdtr" rows="4" class="input-text form-field-reset" placeholder="Describe your business" />
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="my-4" v-show="step === 2">
+
+        <div class="form-row">
+          <div class="col-12 col-md-6">
+            <label for="00N0O00000AAdth">What type of space suits you? *</label>
+            <select
+              id="00N0O00000AAdth"
+              ref="00N0O00000AAdth"
               v-model="typeOfSpace"
               class="custom-select form-control form-field-reset"
               name="00N0O00000AAdth"
@@ -92,9 +328,10 @@
             </select>
           </div>
           <div v-show="typeOfSpace==='Other'" class="col-12 col-md-6">
+            <label for="00N0O00000AAoDP">Please specify the type of space</label>
             <input
-              id="typeOfSpaceOther"
-              ref="typeOfSpaceOther"
+              id="00N0O00000AAoDP"
+              ref="00N0O00000AAoDP"
               class="input-text form-field-reset"
               type="text"
               name="00N0O00000AAoDP"
@@ -103,86 +340,12 @@
             >
           </div>
         </div>
-      </div>
-
-      <div v-if="showBusiness" v-show="typeOfSpace" class="my-4">
-        <h5>Work Specifics</h5>
-
-        <div class="form-row">
-          <div class="col-12 col-md-6">
-            <label class="accessible-hide" for="00N20000009fVtE">Business name</label>
-            <input type="text" name="00N20000009fVtE" placeholder="Business name" class="input-text form-field-reset" value="">
-          </div>
-          <div class="col-12 col-md-6">
-            <label class="accessible-hide" for="00N0O00000AAdtS">Website</label>
-            <input type="text" name="00N0O00000AAdtS" placeholder="Website" class="input-text form-field-reset" value="">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="col-12 col-md-6">
-            <label for="00N0O00000AAdtr" class="accessible-hide">
-              Describe your business
-              <!-- Tell us a little bit about your business or idea and how you see it working at the Design District -->
-            </label>
-            <textarea name="00N0O00000AAdtr" rows="3" class="input-text form-field-reset" placeholder="Describe your business" />
-          </div>
-        </div>
-      </div>
-
-      <div v-if="showBusiness" v-show="typeOfSpace" class="my-4">
-        <h5>What is your role?</h5>
-        <div class="form-row">
-          <div class="col-12 col-md-6">
-            <select
-              id="00N3Y00000H10Ce"
-              ref="00N3Y00000H10Ce"
-              v-model="roleType"
-              class="custom-select form-control form-field-reset"
-              name="00N3Y00000H10Ce"
-            >
-              <option value="" disabled selected>
-                Select an option
-              </option>
-              <option value="Freelancer">
-                Freelancer
-              </option>
-              <option value="Digital nomad">
-                Digital nomad
-              </option>
-              <option value="Entrepreneur">
-                Entrepreneur
-              </option>
-              <option value="Business owner">
-                Business owner
-              </option>
-              <option value="Employee">
-                Employee
-              </option>
-              <option value="Other">
-                Other
-              </option>
-            </select>
-          </div>
-          <div v-show="arrayIncludesString(roleType,'Other')" class="col-12 col-md-6">
-            <input
-              id="roleTypeOther"
-              ref="roleTypeOther"
-              class="input-text form-field-reset"
-              type="text"
-              name="00N3Y00000H10Cj"
-              placeholder="Please specify"
-              maxlength="254"
-            >
-          </div>
-        </div>
-      </div>
-
-      <div v-show="typeOfSpace" class="my-4">
+        <!-- </div>
+        <div v-show="step === 2" class="my-4"> -->
         <div>
-          <h5>Select the amenities that are important to you:</h5>
-          <div class="form-row">
+          <div class="form-row" >
             <div class="col-12 col-md-6">
+              <label for="00N3Y00000H10Ep">What services and amenities are important to you ?</label>
               <select
                 id="00N3Y00000H10Ep"
                 ref="00N3Y00000H10Ep"
@@ -246,9 +409,10 @@
               </select>
             </div>
             <div v-show="arrayIncludesString(workspaceAmenities, 'Other')" class="col-12 col-md-6">
+              <label for="00N3Y00000H10Eu"></label>
               <input
-                id="workspaceAmenitiesOther"
-                ref="workspaceAmenitiesOther"
+                id="00N3Y00000H10Eu"
+                ref="00N3Y00000H10Eu"
                 class="input-text form-field-reset"
                 type="text"
                 name="00N3Y00000H10Eu"
@@ -381,96 +545,21 @@
             </div>
           </div> -->
         </div>
-      </div>
-
-      <div v-show="typeOfSpace" class="my-4">
-        <h5>What industry are you in?</h5>
+        <!-- </div>
+        <div v-show="step === 2" class="my-4"> -->
         <div class="form-row">
           <div class="col-12 col-md-6">
-            <select
-              id="00N3Y00000H10Ea"
-              ref="00N3Y00000H10Ea"
-              v-model="industry"
-              multiple
-              class="custom-select form-control form-field-reset"
-              name="00N3Y00000H10Ea"
-            >
-              <option value="Advertising and marketing">
-                Advertising and marketing
-              </option>
-              <option value="Architecture">
-                Architecture
-              </option>
-              <option value="Animation and VFX (visual effects)">
-                Animation and VFX (visual effects)
-              </option>
-              <option value="Crafts">
-                Crafts
-              </option>
-              <option value="Fashion">
-                Fashion
-              </option>
-              <option value="Film, TV, video, radio, podcasts">
-                Film, TV, video, radio, podcasts
-              </option>
-              <option value="Graphic Design">
-                Graphic Design
-              </option>
-              <option value="IT, software, computer services and UX Design(‘creative tech’)">
-                IT, software, computer services and UX Design(‘creative tech’)
-              </option>
-              <option value="Museums, galleries, libraries, and heritage">
-                Museums, galleries, libraries, and heritage
-              </option>
-              <option value="Music, performing and visual arts">
-                Music, performing and visual arts
-              </option>
-              <option value="Photography">
-                Photography
-              </option>
-              <option value="Product Design">
-                Product Design
-              </option>
-              <option value="Publishing">
-                Publishing
-              </option>
-              <option value="Video games">
-                Video games
-              </option>
-              <option value="Other">
-                Other
-              </option>
-            </select>
-          </div>
-          <div v-show="arrayIncludesString(industry,'Other')" class="col-12 col-md-6">
-            <input
-              id="industryOther"
-              ref="industryOther"
-              class="input-text form-field-reset"
-              type="text"
-              name="00N3Y00000H10Ef"
-              placeholder="Please specify"
-              maxlength="254"
-            >
-          </div>
-        </div>
-      </div>
-
-      <div v-show="typeOfSpace" class="my-4">
-        <h5>Why do you want to move from your current location?</h5>
-        <div class="form-row">
-          <div class="col-12 col-md-6">
+            <label for="00N0O00000AAdtw">Why are you looking for a new workspace?</label>
             <select
               id="00N0O00000AAdtw"
               ref="00N0O00000AAdtw"
               v-model="reasonOfMove"
-              multiple
               class="custom-select form-control form-field-reset"
               name="00N0O00000AAdtw"
             >
-              <!-- <option value="" disabled selected>
+              <option value="" disabled selected>
                 Choose an option
-              </option> -->
+              </option>
               <option value="Support a better work-life balance">
                 Support a better work-life balance
               </option>
@@ -492,9 +581,10 @@
             </select>
           </div>
           <div v-show="arrayIncludesString(reasonOfMove,'Other')" class="col-12 col-md-6">
+            <label for="00N3Y00000H10Ek">Specify your reason</label>
             <input
-              id="reasonForMoveOther"
-              ref="reasonForMoveOther"
+              id="00N3Y00000H10Ek"
+              ref="00N3Y00000H10Ek"
               class="input-text form-field-reset"
               type="text"
               name="00N3Y00000H10Ek"
@@ -505,7 +595,7 @@
         </div>
       </div>
 
-      <div v-show="typeOfSpace" class="my-4">
+      <div v-show="step === 2" class="my-4">
         <h5>Staying in touch</h5>
         <div class="form-row">
           <div class="col-12 col-md-8">
@@ -579,18 +669,18 @@
               </label>
             </div>
 
-            <div class="checkbox-wrapper">
+            <!-- <div class="checkbox-wrapper">
               <input
-                id="SMS__c"
-                ref="SMS__c"
+                id="Email__c"
+                ref="Email__c"
                 class="form-field-reset checkbox"
                 type="checkbox"
-                name="00N20000009fVlj"
+                name="00N20000009fVlo"
                 value="1"
               >
-              <label class="cb" for="SMS__c">
+              <label class="cb" for="Email__c">
                 <span>
-                  I am happy to be contacted via SMS
+                  Email
                 </span>
               </label>
             </div>
@@ -606,31 +696,32 @@
               >
               <label class="cb" for="Telephone__c">
                 <span>
-                  I am happy to be contacted via telephone
+                  Telephone
                 </span>
               </label>
             </div>
 
             <div class="checkbox-wrapper">
               <input
-                id="Email__c"
-                ref="Email__c"
+                id="SMS__c"
+                ref="SMS__c"
                 class="form-field-reset checkbox"
                 type="checkbox"
-                name="00N20000009fVlo"
+                name="00N20000009fVlj"
                 value="1"
               >
-              <label class="cb" for="Email__c">
+              <label class="cb" for="SMS__c">
                 <span>
-                  I am happy to be contacted via email
+                  SMS
                 </span>
               </label>
-            </div>
+            </div> -->
+
           </div>
         </div>
       </div>
 
-      <div v-show="typeOfSpace" class=" my-4">
+      <div v-show="step === 2" class=" my-4">
         <!-- <div class="form-row form-row--submit">
           <div class="col"> -->
 
@@ -718,11 +809,12 @@ export default {
   },
   data () {
     return {
+      step: 1,
       recaptchaKey: KEY,
       typeOfSpace: '',
-      reasonOfMove: [],
+      reasonOfMove: '',
       workspaceAmenities: [],
-      industry: [],
+      industry: '',
       roleType: '',
       showPart2: false,
       formAlert: {

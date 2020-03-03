@@ -27,7 +27,7 @@
     </div>
 
     <!--  -->
-    <div class="container-fluid bg-light">
+    <div class="container-fluid bg-primary bg-primary">
       <div class="row pt-3">
         <div class="container py-5">
           <div class="row mb-5">
@@ -48,7 +48,7 @@
                 <li>Access to creative industry events</li>
                 <li>Bookable workshop spaces and meeting rooms</li>
               </ul> -->
-              <a href="#become-a-tenant" class="btn btn btn-lg btn-primary mt-3">Join Design District</a>
+              <a href="#become-a-tenant" class="btn btn btn-lg btn-dark mt-3">Join Design District</a>
               <!-- <p>Want something smaller?</p>
               <router-link to="/the-club" class="h5 text-primary">
                 Join The Club &rarr;
@@ -316,7 +316,7 @@
 
     <!--  -->
     <div id="service-and-facilities" class="container-fluid">
-      <div class="row pb-5 pt-3">
+      <div class="row pb-5 pt-3 bg-light">
         <div class="container py-5">
           <div class="row">
             <div class="col-12 col-md-6">
@@ -488,7 +488,7 @@
 
             <div class="col-12 col-md-6">
               <h3>Pop-up space </h3>
-              <p>Suitable for retail or small art exhibitions, a pop-up space will be located on the ground floor or building A2. It can be hired by members of the public, with discounted rates for the Design District community. You’ll find a flexible lighting system, built in till point and EPOS Payment System, and the hire includes cleaning and security. At an additional cost, we can provide an installation and de-installation service and catering.</p>
+              <p>Suitable for retail or small art exhibitions, a pop-up space will be located on the ground floor, opposite the food hall, in a 6A Architects building. It can be hired by members of the public, with discounted rates for the Design District community. You’ll find a flexible lighting system, built in till point and EPOS Payment System, and the hire includes cleaning and security. At an additional cost, we can provide an installation and de-installation service and catering.</p>
             </div>
             <!-- <div class="col-12 col-md-1" />
             <div class="col-12 col-md-6" /> -->
@@ -514,7 +514,8 @@
 
             <div class="col-12 col-md-6">
               <h3>Multi-sports rooftop court </h3>
-              <p>A versatile multi-sports rooftop court will sit on top of building C1. The rooftop will host a range of sports and wellness activities, including basketball, HIIT and yoga. The Design District community and members of the public can hire the court for private events space such as pop-up cinema and photoshoots.</p>
+              <!-- <p>A versatile multi-sports rooftop court will sit on top of building C1. The rooftop will host a range of sports and wellness activities, including basketball, HIIT and yoga. The Design District community and members of the public can hire the court for private events space such as pop-up cinema and photoshoots.</p> -->
+              <p>A versatile multi-sports rooftop court will host a range of sports and wellness activities, including basketball, HIIT and yoga. The Design District community and members of the public can hire the court for private events space such as pop-up cinema and photoshoots.</p>
             </div>
             <!-- <div class="col-12 col-md-6">
                         <div class="row d-flex align-items-end justify-content-end">
@@ -534,7 +535,7 @@
       </div>
     </div> -->
 
-    <div id="become-a-tenant" class="py-5 bg-white- bg-primary">
+    <div id="become-a-tenant" class="py-5 bg-white">
       <div class="container my-5">
         <div class="row">
           <div class="col-12 col-md-4">
@@ -547,7 +548,7 @@
           </div>
           <div class="col-12 col-lg-1" />
           <div class="col-12 col-md-8 col-lg-7">
-            <enquire-form :color="'outline-dark'" />
+            <enquire-form />
           </div>
         </div>
       </div>

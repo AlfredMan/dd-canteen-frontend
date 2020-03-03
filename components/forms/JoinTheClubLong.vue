@@ -7,13 +7,56 @@
       :class="{disabled: formState === 'loading'}"
       @submit.prevent="onFormSubmit"
     >
+      <h4>1: Basic details</h4>
+      <div class="mb-4">
+        <h5>Membership Type</h5>
+        <div class="form-row">
+          <div class="col-12 col-md-6">
+            <select
+              id=""
+              ref=""
+              v-model="form.membership"
+              class="custom-select form-control form-field-reset"
+              name=""
+            >
+              <option value="" disabled selected>
+                Choose an option
+              </option>
+              <option value="Lounge">
+                Lounge
+              </option>
+              <option value="Hot desk">
+                Hot desk
+              </option>
+              <option value="Fixed desk">
+                Fixed desk
+              </option>
+              <option value="Micro-studio">
+                Micro-studio
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
 
       <div class="mt-0">
-        <h5>Register your interest</h5>
+        <h5>Your details</h5>
 
         <div class="form-row">
           <div class="col-12 col-md-6">
-            <label class="-accessible-hide" for="first_name">First name<sup>*</sup></label>
+            <label class="accessible-hide" for="first_name">Title<sup>*</sup></label>
+            <input
+              type="text"
+              name="title"
+              placeholder="Title"
+              value=""
+              class="input-text form-field-reset"
+              required
+            >
+          </div>
+          <div class="col-12" />
+          <div class="col-12 col-md-6">
+            <label class="accessible-hide" for="first_name">First name<sup>*</sup></label>
             <input
               type="text"
               name="first_name"
@@ -24,7 +67,7 @@
             >
           </div>
           <div class="col-12 col-md-6">
-            <label class="-accessible-hide" for="last_name">Last name<sup>*</sup></label>
+            <label class="accessible-hide" for="last_name">Last name<sup>*</sup></label>
             <input
               type="text"
               name="last_name"
@@ -35,11 +78,160 @@
             >
           </div>
         </div>
+      </div>
+
+      <div class="mt-0 mb-4">
+        <h5>Date of birth</h5>
+
         <div class="form-row">
           <div class="col-12 col-md-6">
-            <label class="-accessible-hide" for="email">Email address<sup>*</sup></label>
+            <label class="accessible-hide" for="last_name">Date of birth</label>
             <input
-              id="email"
+              type="date"
+              name="date_of_birth"
+              placeholder="Date of birth"
+              value=""
+              class="input-text form-field-reset"
+              required
+            >
+          </div>
+          <!-- <div class="col-12 col-md-2">
+            <select
+              id=""
+              ref=""
+              v-model="form.dob.dd"
+              class="custom-select form-control form-field-reset"
+              name=""
+            >
+              <option value="" disabled selected>
+                DD
+              </option>
+              <option v-for="item in formDD">
+                {{ item }}
+              </option>
+            </select>
+          </div>
+          <div class="col-12 col-md-2">
+            <select
+              id=""
+              ref=""
+              v-model="form.dob.mmm"
+              class="custom-select form-control form-field-reset"
+              name=""
+            >
+              <option value="" disabled selected>
+                MMM
+              </option>
+              <option v-for="item in formMMM">
+                {{ item }}
+              </option>
+            </select>
+          </div>
+          <div class="col-12 col-md-2">
+            <select
+              id=""
+              ref=""
+              v-model="form.dob.yyyy"
+              class="custom-select form-control form-field-reset"
+              name=""
+            >
+              <option value="" disabled selected>
+                YYYY
+              </option>
+              <option v-for="item in formYYYY">
+                {{ item }}
+              </option>
+            </select>
+          </div> -->
+        </div>
+
+        <h5>Address</h5>
+
+        <div class="form-row">
+          <div class="col-12 col-md-6">
+            <label class="accessible-hide" for="address1">Address line 1</label>
+            <input
+              type="text"
+              name="address1"
+              placeholder="Adress line 1"
+              value=""
+              class="input-text form-field-reset"
+              required
+            >
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="accessible-hide" for="address2">Address line 2</label>
+            <input
+              type="text"
+              name="address2"
+              placeholder="Adress line 2"
+              value=""
+              class="input-text form-field-reset"
+              required
+            >
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="accessible-hide" for="town">Town/City</label>
+            <input
+              type="text"
+              name="town"
+              placeholder="Town/City"
+              value=""
+              class="input-text form-field-reset"
+              required
+            >
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="accessible-hide" for="postcode">Postcode</label>
+            <input
+              type="text"
+              name="postcode"
+              placeholder="Postcode"
+              value=""
+              class="input-text form-field-reset"
+              required
+            >
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="accessible-hide" for="country">Country</label>
+            <input
+              type="text"
+              name="country"
+              placeholder="Country"
+              value=""
+              class="input-text form-field-reset"
+              required
+            >
+          </div>
+          <div class="col-12" />
+          <div class="col-12">
+            <input
+              id="isBusinessAddress"
+              ref="isBusinessAddress"
+              class="form-field-reset checkbox"
+              type="checkbox"
+              value="1"
+            >
+            <label for="isBusinessAddress">
+              <span>
+                This is my business address
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <h5>Contact</h5>
+
+        <div class="form-row">
+          <div class="col-12 col-md-6">
+            <label class="accessible-hide" for="phone">Phone</label>
+            <input type="text" name="phone" placeholder="Phone" class="input-text form-field-reset" value="">
+          </div>
+          <div class="col-12" />
+          <div class="col-12 col-md-6">
+            <label class="accessible-hide" for="email">Email address<sup>*</sup></label>
+            <input
+              v-model="form.email"
               type="email"
               name="email"
               placeholder="Email address"
@@ -49,23 +241,36 @@
             >
           </div>
           <div class="col-12 col-md-6">
-            <label class="-accessible-hide" for="website">Website or social media handle</label>
-            <input type="text" id="website" name="website" placeholder="Website or social media handle" class="input-text form-field-reset" value="">
+            <label class="accessible-hide" :class="{'is-invalid': !formEmailMatched}" for="email_confirm">Confrim email address<sup>*</sup></label>
+            <input
+              v-model="form.emailConfirm"
+              type="email"
+              name="email_confirm"
+              placeholder="Confirm email address"
+              value=""
+              class="input-text form-field-reset"
+              required
+            >
+            <div class="invalid-feedback">
+              Please enter a correct email address.
+            </div>
           </div>
         </div>
+      </div>
+
+      <div class="my-5">
+        <h4>2: Your work</h4>
+        <h5>What industry are you in?</h5>
         <div class="form-row">
           <div class="col-12 col-md-6">
-            <label class="-accessible-hide" for="industry">Industry:</label>
             <select
-              id="industry"
-              ref="industry"
+              id=""
+              ref=""
               v-model="form.industry"
+              multiple
               class="custom-select form-control form-field-reset"
-              name="industry"
+              name=""
             >
-              <option value="" disabled selected>
-                Choose your industry
-              </option>
               <option value="Advertising and marketing">
                 Advertising and marketing
               </option>
@@ -114,22 +319,165 @@
             </select>
           </div>
           <div v-show="arrayIncludesString(form.industry,'Other')" class="col-12 col-md-6">
-            <label class="-accessible-hide" for="industry_other">Please specify your industry</label>
             <input
-              id="industry_other"
-              ref="industry_other"
+              id="industryOther"
+              ref="industryOther"
               class="input-text form-field-reset"
               type="text"
-              name="industry_other"
+              name=""
               placeholder="Please specify"
               maxlength="254"
             >
           </div>
         </div>
+        <h5>What is your role?</h5>
+        <div class="form-row">
+          <div class="col-12 col-md-6">
+            <select
+              id=""
+              ref=""
+              v-model="form.roleType"
+              class="custom-select form-control form-field-reset"
+              name=""
+            >
+              <option value="" disabled selected>
+                Select an option
+              </option>
+              <option value="Freelancer">
+                Freelancer
+              </option>
+              <option value="Digital nomad">
+                Digital nomad
+              </option>
+              <option value="Entrepreneur">
+                Entrepreneur
+              </option>
+              <option value="Business owner">
+                Business owner
+              </option>
+              <option value="Employee">
+                Employee
+              </option>
+              <option value="Other">
+                Other
+              </option>
+            </select>
+          </div>
+          <div v-show="arrayIncludesString(form.roleType,'Other')" class="col-12 col-md-6">
+            <input
+              id="roleTypeOther"
+              ref="roleTypeOther"
+              class="input-text form-field-reset"
+              type="text"
+              name=""
+              placeholder="Please specify"
+              maxlength="254"
+            >
+          </div>
+        </div>
+
+        <h5>Employees</h5>
+        <div class="form-row">
+          <div class="col-12 col-md-6">
+            <select
+              id=""
+              ref=""
+              v-model="form.employee"
+              class="custom-select form-control form-field-reset"
+              name=""
+            >
+              <option value="1">
+                1
+              </option>
+              <option value="2-4">
+                2-4
+              </option>
+              <option value="5-10">
+                5-10
+              </option>
+              <option value="11-20">
+                11-20
+              </option>
+              <option value="21 or more">
+                21 or more
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <h5>Your business: </h5>
+        <div class="form-row">
+          <div class="col-12 col-md-6">
+            <textarea name="" rows="3" class="input-text form-field-reset" placeholder="Please explain to us what your business does" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-12 col-md-6">
+            <h5>Company turnover</h5>
+            <select
+              id=""
+              ref=""
+              v-model="form.turnover"
+              class="custom-select form-control form-field-reset"
+              name=""
+            >
+              <option value="" disabled selected>
+                Select an option
+              </option>
+              <option value="50">
+                50k
+              </option>
+              <option value="100k">
+                100k
+              </option>
+              <option value="200k">
+                200k
+              </option>
+              <option value="500k">
+                500k
+              </option>
+              <option value="1M">
+                1M
+              </option>
+            </select>
+          </div>
+          <div class="col-12 col-md-6">
+            <h5>Website</h5>
+            <label class="accessible-hide" for="country">Company website</label>
+            <input
+              type="text"
+              name="company_website"
+              placeholder="Company website"
+              value=""
+              class="input-text form-field-reset"
+              required
+            >
+          </div>
+        </div>
       </div>
 
-      <div class="my-4">
-        <h5>Staying in touch</h5>
+      <div class="my-5">
+        <h4>3: Why you</h4>
+        <div class="form-row">
+          <div class="col-12">
+            <p>Please tell us why in 250 words you are interested in becoming a member of the Design District community.</p>
+            <textarea name="" rows="6" class="input-text form-field-reset" placeholder="Please explain to us why you are interested" />
+          </div>
+        </div>
+      </div>
+
+      <div class="my-5">
+        <h4>4: Pay</h4>
+        <div class="form-row">
+          <div class="col-12">
+            [PAYMENY GOES HERE]
+          </div>
+        </div>
+      </div>
+
+      <div class="my-4 my-5">
+        <h4>5: Submit</h4>
         <div class="form-row">
           <div class="col-12">
             <div>
@@ -219,7 +567,6 @@
       <div v-show="active||true" class="" />
 
       <div class="g-recaptcha" data-sitekey="6LdPFNEUAAAAAKdvqOAD4Dq1MeL0WoGWzxZFj92t" />
-
       <div v-show="active||true" class="form-group form-submit my-4">
         <!-- <button onclick="submitDEManagerForm(); return false;" class="btn btn-primary btn-lg">
           Signup
@@ -260,7 +607,7 @@
           </small>
         </div>
       </div>
-      <input id="recordType" type="hidden" name="recordType" value="0123Y0000007v91">
+
       <input id="designOptInDate" ref="designOptInDate" type="hidden" name="" value="">
       <input id="marketingOptInDate" ref="marketingOptInDate" type="hidden" name="" value="">
       <input id="privacyOptInDate" ref="privacyOptInDate" type="hidden" name="" value="">
@@ -282,7 +629,7 @@ export default {
       recaptchaKey: KEY,
       active: false,
       form: {
-        industry: '',
+        industry: [],
         roleType: '',
         membership: '',
         employee: 1,
