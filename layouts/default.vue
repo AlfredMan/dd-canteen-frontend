@@ -144,6 +144,10 @@
               Privacy Policy
             </nuxt-link>
             <br>
+            <nuxt-link class="" to="/cookies-policy">
+              Cookies Policy
+            </nuxt-link>
+            <br>
             <nuxt-link class="" to="/terms-and-conditions">
               Terms & Conditions
             </nuxt-link>
