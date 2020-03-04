@@ -97,17 +97,23 @@
           <div class="row d-flex align-items-end mt-5 pt-5">
             <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
               <div class="">
-                <img class="lazyload"
-                data-src="https://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=2000&fm=jpg&q=80"
-                alt="">
+                <img
+                  class="lazyload"
+                  data-src="https://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=2000&fm=jpg&q=80"
+                  alt=""
+                >
               </div>
               <div class="" style="min-height: x18em">
-                <span></span>
+                <span />
                 <h3>Creative work space</h3>
-                <p>Rent a studio, a floor, or an entire building. Spaces kitted out to suit your industry and flexible tenancies for growing teams. <router-link to="/workspace" class="">Become a tenant</router-link>.</p>
+                <p>
+                  Rent a studio, a floor, or an entire building. Spaces kitted out to suit your industry and flexible tenancies for growing teams. <router-link to="/workspace" class="">
+                    Become a tenant
+                  </router-link>.
+                </p>
               </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
+            <!-- <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
               <div class="">
                 <img class="lazyload"
                 data-src="http://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=1600&h=2000&fm=jpg&q=80&fit=thumb"
@@ -118,29 +124,57 @@
                 <h3>The Club</h3>
                 <p>Aimed at freelancers, entrepreneurs and start-ups, The Club offers a place to work but also talks, events and business support. <router-link to="/the-club" class="">Express your interest</router-link>.</p>
               </div>
+            </div> -->
+            <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
+              <div class="">
+                <img
+                  class="lazyload"
+                  data-src="http://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=1600&h=2000&fm=jpg&q=80&fit=thumb"
+                  alt=""
+                >
+              </div>
+              <div class="" style="min-height: x18em">
+                <span />
+                <h3>Food & Beverages</h3>
+                <p>
+                  [new copy required]
+                </p>
+              </div>
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
               <div class="">
-                <img class="lazyload"
-                data-src="http://images.ctfassets.net/7p1ysxjarsp5/1E9dyD5cbyoG8OVAIJG9BJ/7ad80cb2eef001808fe7739647254c3f/6aArchitects-2D-Architect.jpg?w=2000&h=2000&fm=jpg&q=80"
-                alt="">
+                <img
+                  class="lazyload"
+                  data-src="http://images.ctfassets.net/7p1ysxjarsp5/1E9dyD5cbyoG8OVAIJG9BJ/7ad80cb2eef001808fe7739647254c3f/6aArchitects-2D-Architect.jpg?w=2000&h=2000&fm=jpg&q=80"
+                  alt=""
+                >
               </div>
               <div class="" style="min-height: x18em">
-                <span></span>
+                <span />
                 <h3>Workshops</h3>
-                <p>Need a 3D-printer or a test kitchen, a pattern-cutting table or a coding lab? There’s space to make in our on-site workshops. <router-link to="/workspace#service-and-facilities" class="">Find out more</router-link>.</p>
+                <p>
+                  Need a 3D-printer or a test kitchen, a pattern-cutting table or a coding lab? There’s space to make in our on-site workshops. <router-link to="/workspace#service-and-facilities" class="">
+                    Find out more
+                  </router-link>.
+                </p>
               </div>
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
               <div class="">
-                <img class="lazyload"
-                data-src="https://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=2000&fm=jpg&q=80"
-                alt="">
+                <img
+                  class="lazyload"
+                  data-src="https://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=2000&fm=jpg&q=80"
+                  alt=""
+                >
               </div>
               <div class="" style="min-height: x18em">
-                <span></span>
+                <span />
                 <h3>For hire</h3>
-                <p>Book a recording and broadcast studio, meeting rooms, events spaces, a pop-up retail space and even a multi-sport rooftop court. <router-link to="/#newsletter" class="">Coming soon</router-link></p>
+                <p>
+                  Book a recording and broadcast studio, meeting rooms, events spaces, a pop-up retail space and even a multi-sport rooftop court. <router-link to="/#newsletter" class="">
+                    Coming soon
+                  </router-link>
+                </p>
               </div>
             </div>
           </div>
@@ -150,14 +184,17 @@
 
     <div class="container py-5">
       <div class="row">
-        <div class="col-12 col-md-6 pr-md-5 mb-5">
-          <h1>The Club</h1>
-          <h4>Just starting out or trying something new? The Club is an accessible way to be part of the Design District community.</h4>
-          <router-link to="/the-club" class="text-primary h5">
+        <div class="col-12 col-md-7 pr-md-5 mb-5">
+          <h1>Creative work space</h1>
+          <!-- <h4>Just starting out or trying something new? The Club is an accessible way to be part of the Design District community.</h4> -->
+          <h4 class="mb-4">
+            Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.
+          </h4>
+          <router-link to="/workspace" class="text-primary h5">
             Find out more &rarr;
           </router-link>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-5">
           <img class="lazyload" data-src="http://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=2000&h=1800&fm=jpg&q=80&fit=thumb" alt="">
         </div>
       </div>
@@ -226,18 +263,17 @@
           </div>
           <div class="row">
             <div class="col-12 col-md-5">
-              <router-link to="/about-us/#architecture" class="text-primary">
+              <router-link to="/about-us/#architecture" class="h5 text-primary">
                 View all architects &rarr;
               </router-link>
             </div>
           </div>
 
-          <div class="row d-flex align-items-end mt-5 pt-5" v-if="randomStudios">
-
-            <div class="col-12 col-md-6 col-lg-3 mb-5" v-for="studio in randomStudios">
+          <div v-if="randomStudios" class="row d-flex align-items-end mt-5 pt-5">
+            <div v-for="studio in randomStudios" class="col-12 col-md-6 col-lg-3 mb-5">
               <router-link :to="`/architecture/${studio.slug}`">
                 <img class="lazyload" :data-src="studio.imagesPractice[0].url" alt="">
-                <h5>{{studio.title}}</h5>
+                <h5>{{ studio.title }}</h5>
               </router-link>
             </div>
 
@@ -265,7 +301,6 @@
                 <h5>Barozzi Veiga</h5>
               </router-link>
             </div> -->
-
           </div>
         </div>
       </div>
@@ -315,10 +350,10 @@
 </template>
 
 <script>
-import { studios, validStudios } from '~/common/architecture'
+import _ from 'lodash'
 import EnquireForm from '../../components/forms/Enquire.vue'
 import NewsletterForm from '../../components/forms/Newsletter.vue'
-import _ from 'lodash'
+import { studios, validStudios } from '~/common/architecture'
 export default {
   components: {
     EnquireForm,

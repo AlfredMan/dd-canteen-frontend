@@ -65,7 +65,7 @@
             <a class="">020 3981 2426</a>
 
             <br><br>
-          <!-- </div>
+            <!-- </div>
           <div class="col-5"> -->
             <!-- <h5>Connect</h5> -->
             <a class="" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
@@ -81,7 +81,7 @@
     </transition> -->
     <nuxt nuxt-child-key="none" role="main" />
 
-    <div class="py-5 bg-light" id="newsletter">
+    <div id="newsletter" class="py-5 bg-light">
       <div class="container">
         <div class="row">
           <div class="col-12">
@@ -156,8 +156,9 @@
         </div>
 
         <nav class="inner d-flex row align-items-end justify-content-start mt-5 pb-5">
-          <div class="p-3 mr-auto-mr-md-0-ml-md-auto-order-md-2">
-            <img src="~/assets/images/gp-logo.svg" alt="" style="max-width: 80px">
+          <div class="p-3 mr-auto-mr-md-0-ml-md-auto-order-md-2 d-flex align-items-end">
+            <img src="~/assets/images/logo-ver.svg" alt="Design District logo" style="max-width: 40px" class="mr-5">
+            <img src="~/assets/images/gp-logo.svg" alt="Greenwich Peninsula logo" style="max-width: 100px">
           </div>
 
           <small class="nav-link ml-auto">
