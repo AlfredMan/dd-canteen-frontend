@@ -1,6 +1,11 @@
 <template>
   <div class="">
+    <div v-show="formState === 'complete'" class="">
+      <h5>Thank you for your interest!</h5>
+      <p>We'll be in touch soon. Meanwhile, follow our <a href="https://www.instagram.com/designdistrictlondon/" target="_blank" rel="noreferrer">Instagram</a> and <a href="https://twitter.com/Design_District" target="_blank" rel="noreferrer">Twitter</a> for more news and updates.</p>
+    </div>
     <form
+      v-show="formState !== 'complete'"
       ref="subscribeForm"
       name="subscribeForm"
       method="post"
@@ -14,6 +19,7 @@
           <div class="col-12 col-md-6">
             <label class="-accessible-hide" for="first_name">First name<sup>*</sup></label>
             <input
+              v-model="form.userFirstName"
               type="text"
               name="first_name"
               placeholder="First name"
@@ -25,6 +31,7 @@
           <div class="col-12 col-md-6">
             <label class="-accessible-hide" for="last_name">Last name<sup>*</sup></label>
             <input
+              v-model="form.userLastName"
               type="text"
               name="last_name"
               placeholder="Last name"
@@ -39,6 +46,7 @@
             <label class="-accessible-hide" for="email">Email address<sup>*</sup></label>
             <input
               id="email"
+              v-model="form.email"
               type="email"
               name="email"
               placeholder="Email address"
@@ -51,6 +59,7 @@
             <label class="-accessible-hide" for="website">Website or social media handle</label>
             <input
               id="website"
+              v-model="form.website"
               type="text"
               name="website"
               placeholder="Website or social media handle"
@@ -65,7 +74,7 @@
             <select
               id="industry"
               ref="industry"
-              v-model="form.industry"
+              v-model="form.userIndustry"
               class="custom-select form-control form-field-reset"
               name="industry"
             >
@@ -119,11 +128,12 @@
               </option>
             </select>
           </div>
-          <div v-show="arrayIncludesString(form.industry,'Other')" class="col-12 col-md-6">
+          <div v-show="arrayIncludesString(form.userIndustry,'Other')" class="col-12 col-md-6">
             <label class="-accessible-hide" for="industry_other">Please specify your industry</label>
             <input
               id="industry_other"
               ref="industry_other"
+              v-model="form.userIndustryOther"
               class="input-text form-field-reset"
               type="text"
               name="industry_other"
@@ -142,6 +152,7 @@
               <input
                 id="designOptIn"
                 ref="designOptIn"
+                v-model="form.userDesignOptIn"
                 class="form-field-reset checkbox"
                 type="checkbox"
                 name=""
@@ -159,6 +170,7 @@
               <input
                 id="marketingOptIn"
                 ref="marketingOptIn"
+                v-model="form.userMarketingOptIn"
                 class="form-field-reset checkbox"
                 type="checkbox"
                 name=""
@@ -176,6 +188,7 @@
               <input
                 id="agreePolicy"
                 ref="agreePolicy"
+                v-model="form.userAgreePolicy"
                 class="form-field-reset checkbox"
                 type="checkbox"
                 name=""
@@ -288,6 +301,15 @@ export default {
       recaptchaKey: KEY,
       active: false,
       form: {
+        email: '',
+        userFirstName: '',
+        userLastName: '',
+        userWebsite: '',
+        userIndustry: '',
+        userIndustryOther: '',
+        userDesignOptIn: '',
+        userMarketingOptIn: '',
+        userAgreePolicy: '',
         industry: '',
         roleType: '',
         membership: '',
@@ -383,20 +405,43 @@ export default {
       // this.formAlert.text = 'Complete.'
 
       setTimeout(() => {
-        this.formState = 'idle'
-        this.formAlert.type = 'success'
-        this.formAlert.text = 'Complete.'
-        this.formAction = 'Complete'
+        // this.formState = 'idle'
+        // this.formAlert.type = 'success'
+        // this.formAlert.text = 'Complete.'
+        // this.formAction = 'Complete'
 
-        alert('test form submission completed. no data is saved.')
+        // alert('test form submission completed. no data is saved.')
 
-        const postBody = { 'email': 'jason@hato.co', 'userFirstName': 'Jason', 'userLastName': 'Chow', 'userWebsite': '@hello', 'userIndustry': 'IT' }
-        this.$axios.$post('https://us-central1-designdistrict-2b9e1.cloudfunctions.net/sendMail', {
-          body: postBody
-        }).then((response) => {
+        const postBody = {
+          'email': _.take(_.escape(this.form.email), 64).join(''),
+          'userFirstName': _.take(_.escape(this.form.userFirstName), 64).join(''),
+          'userLastName': _.take(_.escape(this.form.userLastName), 64).join(''),
+          'userWebsite': _.take(_.escape(this.form.userWebsite), 64).join(''),
+          'userIndustry': _.take(_.escape(this.form.userIndustry), 64).join(''),
+          'userIndustryOther': _.take(_.escape(this.form.userIndustryOther), 64).join(''),
+          'userDesignOptIn': _.take(_.escape(this.form.userDesignOptIn), 64).join(''),
+          'userMarketingOptIn': _.take(_.escape(this.form.userMarketingOptIn), 64).join(''),
+          'userAgreePolicy': _.take(_.escape(this.form.userAgreePolicy), 64).join('')
+        }
+        this.$axios.$post('https://us-central1-designdistrict-2b9e1.cloudfunctions.net/sendMail', postBody).then((response) => {
           console.log(response)
+          this.formState = 'complete'
+          this.formAlert.type = 'success'
+          this.formAlert.text = 'Complete.'
+          this.formAction = 'Complete'
         }).catch((error) => {
           console.log(error)
+          this.formState = 'loading'
+          this.formAlert.type = 'error'
+          this.formAlert.text = 'Error'
+          this.formAction = 'Please try again'
+
+          setTimeout(() => {
+            this.formState = 'idle'
+            this.formAlert.type = ''
+            this.formAlert.text = ''
+            this.formAction = 'Submit'
+          }, 3000)
         })
 
         // setTimeout(() => {
@@ -417,7 +462,9 @@ export default {
       }, 3000)
     },
     resetRecaptcha () {
-      this.$refs.invisibleRecaptcha.reset() // Direct call reset method
+      if (this.$refs.invisibleRecaptcha) {
+        this.$refs.invisibleRecaptcha.reset() // Direct call reset method
+      }
     },
     submitDEManagerForm () {
       // const form = document.forms.subscribeForm

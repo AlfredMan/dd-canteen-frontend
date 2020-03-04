@@ -189,7 +189,8 @@ h5 a,
 .h5 a,
 h6 a,
 .h6 a,
-p a {
+p a,
+label a {
 	text-decoration: underline;
   color: inherit;
 	&:hover {
