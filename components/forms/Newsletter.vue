@@ -228,7 +228,7 @@ export default {
         this.formAction = 'Complete'
 
         // alert('done')
-        this.$refs.enquireForm.submit()
+        this.$refs.subscribeForm.submit()
 
         setTimeout(() => {
           this.formState = 'idle'

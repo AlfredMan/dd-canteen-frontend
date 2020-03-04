@@ -77,5 +77,9 @@ export default {
         vue.transformAssetUrls.source = ['data-srcset', 'srcset']
       }
     }
-  }
+  },
+
+  modules: [
+    '@nuxtjs/axios'
+  ]
 }

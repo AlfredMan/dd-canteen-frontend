@@ -7,7 +7,6 @@
       :class="{disabled: formState === 'loading'}"
       @submit.prevent="onFormSubmit"
     >
-
       <div class="mt-0">
         <h5>Register your interest</h5>
 
@@ -50,7 +49,14 @@
           </div>
           <div class="col-12 col-md-6">
             <label class="-accessible-hide" for="website">Website or social media handle</label>
-            <input type="text" id="website" name="website" placeholder="Website or social media handle" class="input-text form-field-reset" value="">
+            <input
+              id="website"
+              type="text"
+              name="website"
+              placeholder="Website or social media handle"
+              class="input-text form-field-reset"
+              value=""
+            >
           </div>
         </div>
         <div class="form-row">
@@ -383,14 +389,22 @@ export default {
         this.formAction = 'Complete'
 
         alert('test form submission completed. no data is saved.')
-        // this.$refs.enquireForm.submit()
 
-        setTimeout(() => {
-          this.formState = 'idle'
-          this.formAlert.type = ''
-          this.formAlert.text = ''
-          this.formAction = 'Submit'
-        }, 3000)
+        const postBody = { 'email': 'jason@hato.co', 'userFirstName': 'Jason', 'userLastName': 'Chow', 'userWebsite': '@hello', 'userIndustry': 'IT' }
+        this.$axios.$post('https://us-central1-designdistrict-2b9e1.cloudfunctions.net/sendMail', {
+          body: postBody
+        }).then((response) => {
+          console.log(response)
+        }).catch((error) => {
+          console.log(error)
+        })
+
+        // setTimeout(() => {
+        //   this.formState = 'idle'
+        //   this.formAlert.type = ''
+        //   this.formAlert.text = ''
+        //   this.formAction = 'Submit'
+        // }, 3000)
       }, 1000)
     },
     onExpired () {
