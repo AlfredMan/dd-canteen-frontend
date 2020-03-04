@@ -103,9 +103,9 @@
               <!-- <h2>Members access</h2>
               <h4>The Design District is at the heart of Greenwich Peninsula, a new type of London created specifically for the creative community.</h4>
               <br> -->
-              <h3>Pricing starting at £60 per month</h3>
+              <h3>Pricing starting at<br>£60 per month</h3>
               <br>
-              <h3>Club membership benefits</h3>
+              <h4>Club membership benefits</h4>
               <ul class="h6">
                 <li>Exclusive member’s events and mixers</li>
                 <li>Access to industry specific workshops</li>

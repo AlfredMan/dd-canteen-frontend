@@ -59,7 +59,7 @@
             <label class="-accessible-hide" for="website">Website or social media handle</label>
             <input
               id="website"
-              v-model="form.website"
+              v-model="form.userWebsite"
               type="text"
               name="website"
               placeholder="Website or social media handle"
