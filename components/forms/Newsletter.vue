@@ -104,7 +104,7 @@
           Signup
         </button> -->
         <!-- <input id="submit" type="submit" value="Signup" style="display: none;"> -->
-        <input id="submit" type="submit" value="Signup" style="display: none;">
+        <input id="subscribeSubmit" ref="subscribeSubmit" type="submit" value="Signup" style="display: none;">
 
         <button
           class="btn btn-primary btn-lg mt-0"
