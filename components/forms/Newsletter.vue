@@ -57,19 +57,19 @@
 
       <div v-show="active" class="">
         <h6>
-          I agree to the terms of your <a href="/privacy-policy/">Privacy Policy</a> and I want to receive:
+          I agree to the terms of your <a href="/privacy-policy/" target="_blank">Privacy Policy</a> and I want to receive:
         </h6>
 
         <div>
           <input
-            id="designOptIn"
-            ref="designOptIn"
+            id="subscribeDesignOptIn"
+            ref="subscribeDesignOptIn"
             class="form-field-reset checkbox"
             type="checkbox"
             name="00N0O00000GRkIa"
             value="1"
           >
-          <label for="designOptIn">
+          <label for="subscribeDesignOptIn">
             <span>
               <!-- The Design District including information on work spaces, offices and commercial opportunities -->
               Design District news and information about work spaces, workshops and events
@@ -79,14 +79,14 @@
 
         <div>
           <input
-            id="marketingOptIn"
-            ref="marketingOptIn"
+            id="subscribeMarketingOptIn"
+            ref="subscribeMarketingOptIn"
             class="form-field-reset checkbox"
             type="checkbox"
             name="00N0O00000GRZb7"
             value="1"
           >
-          <label for="marketingOptIn">
+          <label for="subscribeMarketingOptIn">
             <span>
               <!-- The latest happenings on Greenwich Peninsula including cultural events and the latest news -->
               News from Greenwich Peninsula including cultural events and announcements
@@ -126,7 +126,7 @@
       <div v-show="active" class="">
         <h6>
           <!-- Our <a href="/privacy-policy/">Privacy Policy</a> outlines how we use and store your data. You can manage your preferences or opt out of communications at any time. -->
-          Our <a href="/privacy-policy/">Privacy Policy</a> outlines how we use and store your data. You can manage your preferences or opt out of communications at any time.
+          Our <a href="/privacy-policy/" target="_blank">Privacy Policy</a> outlines how we use and store your data. You can manage your preferences or opt out of communications at any time.
         </h6>
         <div class="mt-4">
           <small class="text-black-50">
@@ -242,54 +242,92 @@ export default {
       // this.formAlert.type = 'success'
       // this.formAlert.text = 'Complete.'
 
-      setTimeout(() => {
-        this.formState = 'idle'
-        this.formAlert.type = 'success'
-        this.formAlert.text = 'Complete.'
-        this.formAction = 'Complete'
+      // setTimeout(() => {
+      //   this.formState = 'idle'
+      //   this.formAlert.type = 'success'
+      //   this.formAlert.text = 'Complete.'
+      //   this.formAction = 'Complete'
+      //
+      //   // alert('done')
+      //   // this.$refs.subscribeForm.submit()
+      //   const postBody = {
+      //     'email': 'testtestjason@hato.co',
+      //     'first_name': 'Jason TEST',
+      //     'last_name': 'Chow TEST',
+      //     'oid': '00D20000000nxym',
+      //     '00N0O00000GRkIa': '1',
+      //     '00N0O00000GRZb7': '1',
+      //     '00N0O00000AB5j2': 'Web Form',
+      //     '00N0O00000AB5j1': 'Design District',
+      //     '00N0O00000AB5iY': 'Design District Subscription',
+      //     '00N0O00000AB5iN': '7010O00000153NQQAY',
+      //     '00N0O00000GRkIf': this.getNow(),
+      //     '00N0O00000GRZbC': this.getNow(),
+      //     '00N0O00000GRrXc': '1',
+      //     '00N0O00000GRrXh': this.getNow()
+      //   }
+      //
+      //   const formUrlEncoded = (x) => {
+      //     return Object.keys(x).reduce((p, c) => p + `&${c}=${encodeURIComponent(x[c])}`, '')
+      //   }
+      //
+      //   this.$axios.$post({
+      //     url: 'https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8',
+      //     data: formUrlEncoded(postBody),
+      //     headers: {
+      //       'Content-type': 'application/x-www-form-urlencoded'
+      //     }
+      //   }).then((response) => {
+      //     console.log(response)
+      //   }).catch((error) => {
+      //     console.log(error)
+      //   })
+      //
+      //   // setTimeout(() => {
+      //   //   this.formState = 'idle'
+      //   //   this.formAlert.type = ''
+      //   //   this.formAlert.text = ''
+      //   //   this.formAction = 'Submit'
+      //   // }, 3000)
+      // }, 1000)
+      const postBody = {
+        'email': 'testtestjason@hato.co',
+        'first_name': 'Jason TEST',
+        'last_name': 'Chow TEST',
+        'oid': '00D20000000nxym',
+        '00N0O00000GRkIa': '1',
+        '00N0O00000GRZb7': '1',
+        '00N0O00000AB5j2': 'Web Form',
+        '00N0O00000AB5j1': 'Design District',
+        '00N0O00000AB5iY': 'Design District Subscription',
+        '00N0O00000AB5iN': '7010O00000153NQQAY',
+        '00N0O00000GRkIf': this.getNow(),
+        '00N0O00000GRZbC': this.getNow(),
+        '00N0O00000GRrXc': '1',
+        '00N0O00000GRrXh': this.getNow()
+      }
 
-        // alert('done')
-        this.$refs.subscribeForm.submit()
-        // const postBody = {
-        //   'email': 'testtestjason@hato.co',
-        //   'first_name': 'Jason TEST',
-        //   'last_name': 'Chow TEST',
-        //   'oid': '00D20000000nxym',
-        //   '00N0O00000GRkIa': '1',
-        //   '00N0O00000GRZb7': '1',
-        //   '00N0O00000AB5j2': 'Web Form',
-        //   '00N0O00000AB5j1': 'Design District',
-        //   '00N0O00000AB5iY': 'Design District Subscription',
-        //   '00N0O00000AB5iN': '7010O00000153NQQAY',
-        //   '00N0O00000GRkIf': this.getNow(),
-        //   '00N0O00000GRZbC': this.getNow(),
-        //   '00N0O00000GRrXc': '1',
-        //   '00N0O00000GRrXh': this.getNow()
-        // }
-        //
-        // const formUrlEncoded = (x) => {
-        //   return Object.keys(x).reduce((p, c) => p + `&${c}=${encodeURIComponent(x[c])}`, '')
-        // }
-        //
-        // this.$axios.$post({
-        //   url: 'https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8',
-        //   data: formUrlEncoded(postBody),
-        //   headers: {
-        //     'Content-type': 'application/x-www-form-urlencoded'
-        //   }
-        // }).then((response) => {
-        //   console.log(response)
-        // }).catch((error) => {
-        //   console.log(error)
-        // })
+      const formUrlEncoded = (x) => {
+        return Object.keys(x).reduce((p, c) => p + `&${c}=${encodeURIComponent(x[c])}`, '')
+      }
 
-        setTimeout(() => {
-          this.formState = 'idle'
-          this.formAlert.type = ''
-          this.formAlert.text = ''
-          this.formAction = 'Submit'
-        }, 3000)
-      }, 1000)
+      const dataFromForm = formUrlEncoded(postBody)
+
+      this.$axios({
+        method: 'post',
+        url: 'https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8',
+        data: dataFromForm,
+        config: {
+          headers: { 'Content-type': 'application/x-www-form-urlencoded' }
+        }
+        // headers: {
+        //   'Content-type': 'application/x-www-form-urlencoded'
+        // }
+      }).then((response) => {
+        console.log(response)
+      }).catch((error) => {
+        console.log(error)
+      })
     },
     onExpired () {
       console.error('reCAPTCHA has expired')
@@ -327,11 +365,11 @@ export default {
 
       this.$refs.privacyOptInDate.value = now
 
-      if (this.$refs.designOptIn.checked) {
+      if (this.$refs.subscribeDesignOptIn.checked) {
         this.$refs.designOptInDate.value = now
       }
 
-      if (this.$refs.marketingOptIn.checked) {
+      if (this.$refs.subscribeMarketingOptIn.checked) {
         this.$refs.marketingOptInDate.value = now
       }
 

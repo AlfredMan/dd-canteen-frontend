@@ -47,7 +47,6 @@ export default {
   ],
 
   axios: {
-    baseURL: 'https://api.designdistrict.co.uk'
   },
 
   plugins: [
