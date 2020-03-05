@@ -359,87 +359,25 @@
         </div>
         <!-- </div>
         <div v-show="step === 2" class="my-4"> -->
-        <div>
-          <div class="form-row">
-            <div class="col-12 col-md-6">
-              <label for="00N3Y00000H10Ep">What services and amenities are important to you ?</label>
-              <select
-                id="00N3Y00000H10Ep"
-                ref="00N3Y00000H10Ep"
-                v-model="workspaceAmenities"
-                multiple
-                class="custom-select form-control form-field-reset"
-                name="00N3Y00000H10Ep"
-              >
-                <!-- <option value="" disabled selected>
-                  Select one or more options
-                </option> -->
+        <div class="my-4">
+          <label for="">What services and amenities are important to you ?</label>
+          <div class="form-row mt-3">
+            <!-- <div class="row"> -->
 
-                <option value="High-speed internet">
-                  High-speed internet
-                </option>
-                <option value="Meeting rooms with AV">
-                  Meeting rooms with AV
-                </option>
-                <option value="Hirable event space">
-                  Hirable event space
-                </option>
-                <option value="Private phone booths">
-                  Private phone booths
-                </option>
-                <option value="Communal space">
-                  Communal space
-                </option>
-                <option value="Community events programme">
-                  Community events programme
-                </option>
-                <option value="Food Cafe">
-                  Food Cafe
-                </option>
-                <option value="Prototyping service">
-                  Prototyping service
-                </option>
-                <option value="Print shop (including 3D, canvas, vinyl)">
-                  Print shop (including 3D, canvas, vinyl)
-                </option>
-                <option value="Wood workshop">
-                  Wood workshop
-                </option>
-                <option value="Digital workshop">
-                  Digital workshop
-                </option>
-                <option value="Textile workshop">
-                  Textile workshop
-                </option>
-                <option value="Engineering workshop">
-                  Engineering workshop
-                </option>
-                <option value="24-hr building access">
-                  24-hr building access
-                </option>
-                <option value="Hirable event space">
-                  Hirable event space
-                </option>
-                <option value="Other">
-                  Other
-                </option>
-              </select>
-            </div>
-            <div v-show="arrayIncludesString(workspaceAmenities, 'Other')" class="col-12 col-md-6">
-              <label for="00N3Y00000H10Eu" />
-              <input
-                id="00N3Y00000H10Eu"
-                ref="00N3Y00000H10Eu"
-                class="input-text form-field-reset"
-                type="text"
-                name="00N3Y00000H10Eu"
-                placeholder="Please specify"
-                maxlength="254"
-              >
-            </div>
-          </div>
-          <!-- <div class="row">
-            <div class="col-12 col-lg">
+            <div class="col-6 col-lg">
+              <div class="checkbox-wrapper">
+                <input
+                  id="00N0O00000AAmXD"
+                  ref="00N0O00000AAmXD"
+                  class="form-field-reset checkbox"
+                  type="checkbox"
+                  name="00N0O00000AAmXD"
+                  value="1"
+                >
+                <label for="00N0O00000AAmXD">
+                  <span>Communal space</span>
+                </label>
+              </div>
               <div class="checkbox-wrapper">
                 <input
                   id="00N0O00000AAmWy"
@@ -453,43 +391,17 @@
                   <span>High-speed internet</span>
                 </label>
               </div>
-              <div class="checkbox checkbox--wide">
-                <input
-                  id="00N0O00000AAmX3"
-                  ref="00N0O00000AAmX3"
-                  class="form-field-reset checkbox"
-                  type="checkbox"
-                  name="00N0O00000AAmX3"
-                  value="1"
-                >
-                <label for="00N0O00000AAmX3">
-                  <span>Printing (including 3D, canvas, vinyl)</span>
-                </label>
-              </div>
               <div class="checkbox-wrapper">
                 <input
-                  id="00N0O00000AAmXh"
-                  ref="00N0O00000AAmXh"
+                  id="00N0O00000AAmXc"
+                  ref="00N0O00000AAmXc"
                   class="form-field-reset checkbox"
                   type="checkbox"
-                  name="00N0O00000AAmXh"
+                  name="00N0O00000AAmXc"
                   value="1"
                 >
-                <label for="00N0O00000AAmXh">
-                  <span>Prototyping</span>
-                </label>
-              </div>
-              <div class="checkbox-wrapper">
-                <input
-                  id="00N0O00000AAmX8"
-                  ref="00N0O00000AAmX8"
-                  class="form-field-reset checkbox"
-                  type="checkbox"
-                  name="00N0O00000AAmX8"
-                  value="1"
-                >
-                <label for="00N0O00000AAmX8">
-                  <span>Private phone booths</span>
+                <label for="00N0O00000AAmXc">
+                  <span>Hirable Event Space</span>
                 </label>
               </div>
               <div class="checkbox checkbox--wide">
@@ -505,8 +417,19 @@
                   <span>Meeting rooms with AV</span>
                 </label>
               </div>
-            </div>
-            <div class="col-12 col-lg">
+              <div class="checkbox checkbox--wide">
+                <input
+                  id="00N3Y00000H11CL"
+                  ref="00N3Y00000H11CL"
+                  class="form-field-reset checkbox"
+                  type="checkbox"
+                  name="00N3Y00000H11CL"
+                  value="1"
+                >
+                <label for="00N3Y00000H11CL">
+                  <span>Food Cafe</span>
+                </label>
+              </div>
               <div class="checkbox-wrapper">
                 <input
                   id="00N0O00000AAmXI"
@@ -517,50 +440,146 @@
                   value="1"
                 >
                 <label for="00N0O00000AAmXI">
-                  <span>Social events</span>
+                  <span>Community event programme</span>
                 </label>
               </div>
               <div class="checkbox-wrapper">
                 <input
-                  id="00N0O00000AAmXc"
-                  ref="00N0O00000AAmXc"
+                  id="00N0O00000AAmX8"
+                  ref="00N0O00000AAmX8"
                   class="form-field-reset checkbox"
                   type="checkbox"
-                  name="00N0O00000AAmXc"
+                  name="00N0O00000AAmX8"
                   value="1"
                 >
-                <label for="00N0O00000AAmXc">
-                  <span>Event space</span>
+                <label for="00N0O00000AAmX8">
+                  <span>Private phone booth</span>
                 </label>
               </div>
               <div class="checkbox checkbox--wide">
                 <input
-                  id="00N0O00000AAmXS"
-                  ref="00N0O00000AAmXS"
+                  id="00N0O00000AAmX3"
+                  ref="00N0O00000AAmX3"
                   class="form-field-reset checkbox"
                   type="checkbox"
-                  name="00N0O00000AAmXS"
+                  name="00N0O00000AAmX3"
                   value="1"
                 >
-                <label for="00N0O00000AAmXS">
-                  <span>Access to multiple office locations</span>
+                <label for="00N0O00000AAmX3">
+                  <span>Print shop (including 3D, canvas, vinyl)</span>
+                </label>
+              </div>
+            </div>
+            <div class="col-6 col-lg">
+              <!-- </div>
+            <div class="col-12 col-lg"> -->
+              <div class="checkbox-wrapper">
+                <input
+                  id="00N3Y00000H11CQ"
+                  ref="00N3Y00000H11CQ"
+                  class="form-field-reset checkbox"
+                  type="checkbox"
+                  name="00N3Y00000H11CQ"
+                  value="1"
+                >
+                <label for="00N3Y00000H11CQ">
+                  <span>Wood workshop</span>
                 </label>
               </div>
               <div class="checkbox-wrapper">
                 <input
-                  id="00N0O00000AAmXD"
-                  ref="00N0O00000AAmXD"
+                  id="00N3Y00000H11CV"
+                  ref="00N3Y00000H11CV"
                   class="form-field-reset checkbox"
                   type="checkbox"
-                  name="00N0O00000AAmXD"
+                  name="00N3Y00000H11CV"
                   value="1"
                 >
-                <label for="00N0O00000AAmXD">
-                  <span>Unique common areas</span>
+                <label for="00N3Y00000H11CV">
+                  <span>Digital workshop</span>
+                </label>
+              </div>
+              <div class="checkbox-wrapper">
+                <input
+                  id="00N3Y00000H11Cf"
+                  ref="00N3Y00000H11Cf"
+                  class="form-field-reset checkbox"
+                  type="checkbox"
+                  name="00N3Y00000H11Cf"
+                  value="1"
+                >
+                <label for="00N3Y00000H11Cf">
+                  <span>Engineering workshop</span>
+                </label>
+              </div>
+              <div class="checkbox-wrapper">
+                <input
+                  id="00N3Y00000H11Ca"
+                  ref="00N3Y00000H11Ca"
+                  class="form-field-reset checkbox"
+                  type="checkbox"
+                  name="00N3Y00000H11Ca"
+                  value="1"
+                >
+                <label for="00N3Y00000H11Ca">
+                  <span>Textile Workshop</span>
+                </label>
+              </div>
+              <div class="checkbox-wrapper">
+                <input
+                  id="00N3Y00000H11Ck"
+                  ref="00N3Y00000H11Ck"
+                  class="form-field-reset checkbox"
+                  type="checkbox"
+                  name="00N3Y00000H11Ck"
+                  value="1"
+                >
+                <label for="00N3Y00000H11Ck">
+                  <span>24hr Security</span>
+                </label>
+              </div>
+              <div class="checkbox-wrapper">
+                <input
+                  id="00N0O00000AAmXh"
+                  ref="00N0O00000AAmXh"
+                  class="form-field-reset checkbox"
+                  type="checkbox"
+                  name="00N0O00000AAmXh"
+                  value="1"
+                >
+                <label for="00N0O00000AAmXh">
+                  <span>Prototyping Service</span>
+                </label>
+              </div>
+              <div class="checkbox-wrapper">
+                <input
+                  id="00N0O00000AAmXX"
+                  ref="00N0O00000AAmXX"
+                  v-model="workspaceAmenitiesOther"
+                  class="form-field-reset checkbox"
+                  type="checkbox"
+                  name="00N0O00000AAmXX"
+                  value="1"
+                >
+                <label for="00N0O00000AAmXX">
+                  <span>Other</span>
                 </label>
               </div>
             </div>
-          </div> -->
+            <!-- </div> -->
+            <div v-show="workspaceAmenitiesOther" class="col-12 col-md-6">
+              <label for="00N3Y00000H10Eu" />
+              <input
+                id="00N3Y00000H10Eu"
+                ref="00N3Y00000H10Eu"
+                class="input-text form-field-reset"
+                type="text"
+                name="00N3Y00000H10Eu"
+                placeholder="Please specify"
+                maxlength="254"
+              >
+            </div>
+          </div>
         </div>
         <!-- </div>
         <div v-show="step === 2" class="my-4"> -->
@@ -830,6 +849,7 @@ export default {
       typeOfSpace: '',
       reasonOfMove: '',
       workspaceAmenities: [],
+      workspaceAmenitiesOther: false,
       industry: '',
       roleType: '',
       showPart2: false,

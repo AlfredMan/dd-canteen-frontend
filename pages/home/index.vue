@@ -135,9 +135,9 @@
               </div>
               <div class="" style="min-height: x18em">
                 <span />
-                <h3>Food & Beverages</h3>
+                <h3>Membership</h3>
                 <p>
-                  [new copy required]
+                  Just starting out or trying something new? Our membership initiative will be an accessible way to be part of the Design District community, without the commitment of renting a workspace.  Register your interest. [link to sign-up form]
                 </p>
               </div>
             </div>
