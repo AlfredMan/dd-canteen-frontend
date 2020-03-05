@@ -567,6 +567,7 @@
               </div>
             </div>
             <!-- </div> -->
+            <div class="col-12" />
             <div v-show="workspaceAmenitiesOther" class="col-12 col-md-6">
               <label for="00N3Y00000H10Eu" />
               <input

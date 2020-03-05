@@ -109,7 +109,7 @@
                 <p>
                   Rent a studio, a floor, or an entire building. Spaces kitted out to suit your industry and flexible tenancies for growing teams. <router-link to="/workspace" class="">
                     Become a tenant
-                  </router-link>.
+                  </router-link>
                 </p>
               </div>
             </div>
@@ -129,22 +129,6 @@
               <div class="">
                 <img
                   class="lazyload"
-                  data-src="http://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=1600&h=2000&fm=jpg&q=80&fit=thumb"
-                  alt=""
-                >
-              </div>
-              <div class="" style="min-height: x18em">
-                <span />
-                <h3>Membership</h3>
-                <p>
-                  Just starting out or trying something new? Our membership initiative will be an accessible way to be part of the Design District community, without the commitment of renting a workspace.  Register your interest. [link to sign-up form]
-                </p>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
-              <div class="">
-                <img
-                  class="lazyload"
                   data-src="http://images.ctfassets.net/7p1ysxjarsp5/1E9dyD5cbyoG8OVAIJG9BJ/7ad80cb2eef001808fe7739647254c3f/6aArchitects-2D-Architect.jpg?w=2000&h=2000&fm=jpg&q=80"
                   alt=""
                 >
@@ -155,7 +139,7 @@
                 <p>
                   Need a 3D-printer or a test kitchen, a pattern-cutting table or a coding lab? There’s space to make in our on-site workshops. <router-link to="/workspace#service-and-facilities" class="">
                     Find out more
-                  </router-link>.
+                  </router-link>
                 </p>
               </div>
             </div>
@@ -173,6 +157,24 @@
                 <p>
                   Book a recording and broadcast studio, meeting rooms, events spaces, a pop-up retail space and even a multi-sport rooftop court. <router-link to="/#newsletter" class="">
                     Coming soon
+                  </router-link>
+                </p>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
+              <div class="">
+                <img
+                  class="lazyload"
+                  data-src="http://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=1600&h=2000&fm=jpg&q=80&fit=thumb"
+                  alt=""
+                >
+              </div>
+              <div class="" style="min-height: x18em">
+                <span />
+                <h3>Membership</h3>
+                <p>
+                  Just starting out or trying something new? Our membership initiative will be an accessible way to be part of the Design District community, without the commitment of renting a workspace.  <router-link to="/the-club" class="">
+                    Register your interest
                   </router-link>
                 </p>
               </div>

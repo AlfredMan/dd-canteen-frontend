@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="">
-    <div class="container pb-5  pt-5">
+    <div v-if="false" class="container pb-5  pt-5">
       <div class="row">
         <div class="col-12 col-md-5">
           <h1>The Club</h1>
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div class="container-fluid bg-secondary py-lg-5 py-4">
+    <div v-if="false" class="container-fluid bg-secondary py-lg-5 py-4">
       <div class="row">
         <div class="container">
           <div class="row d-flex justify-content-between mb-5">
@@ -95,7 +95,7 @@
       </div>
     </div> -->
 
-    <div class="container-fluid bg-light py-5">
+    <div v-if="false" class="container-fluid bg-light py-5">
       <div class="row">
         <div class="container">
           <div class="row py-5">
@@ -137,11 +137,11 @@
         <div class="container my-5">
           <div class="row">
             <div class="col-12 col-md-6">
-              <h2>Join the club</h2>
+              <h2>Become a member</h2>
             </div>
             <div class="col-12" />
             <div class="col-12 col-md-4">
-              <h4>The Club is a space for creative freelancers and entrepreneurs but also the social hub of Design District. Join The Club for members-only events and mixers and year-round start-up and business support.</h4>
+              <h4>Register your interest to become a member of the Design District community in autumn 2020. Aimed at freelancers, consultants and small enterprises, our membership initiative will offer a place to work but also enjoy talks, events, mixers and business support.</h4>
               <!-- <nuxt-link to="/the-club/apply" class="btn btn btn-lg btn-dark mt-3">
                 Apply now
               </nuxt-link> -->
