@@ -89,13 +89,13 @@
           </div>
 
           <div class="col-12" />
-          <div class="col-12 col-md-5 d-none d-md-block">
+          <div class="col-12 col-md-4 d-none d-md-block">
             <p>The Design District is at the heart of Greenwich Peninsula, a new type of London created specifically for the creative community.</p>
             <p>From autumn 2020, Design District will offer a new permanent home for the creative industries in east London. With affordable rents, flexible leases and purpose-designed workspaces to help creative businesses thrive.</p>
             <!-- <p>Located on Greenwich Peninsula and 1 minute's walk to North Greenwich tube station. With links to central and East London in 15 minutes or less, you can spend less time commuting and more time doing what you do best.</p> -->
           </div>
           <div class="col-12 col-md-1" />
-          <div class="col-12 col-md-5">
+          <div class="col-12 col-md-4">
             <newsletter-form />
           </div>
         </div>

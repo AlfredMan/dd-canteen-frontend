@@ -404,55 +404,57 @@ export default {
       // this.formAlert.type = 'success'
       // this.formAlert.text = 'Complete.'
 
-      setTimeout(() => {
-        // this.formState = 'idle'
-        // this.formAlert.type = 'success'
-        // this.formAlert.text = 'Complete.'
-        // this.formAction = 'Complete'
+      // setTimeout(() => {
+      // this.formState = 'idle'
+      // this.formAlert.type = 'success'
+      // this.formAlert.text = 'Complete.'
+      // this.formAction = 'Complete'
 
-        // alert('test form submission completed. no data is saved.')
+      // alert('test form submission completed. no data is saved.')
 
-        const postBody = {
-          'email': _.take(_.escape(this.form.email), 64).join(''),
-          'userFirstName': _.take(_.escape(this.form.userFirstName), 64).join(''),
-          'userLastName': _.take(_.escape(this.form.userLastName), 64).join(''),
-          'userWebsite': _.take(_.escape(this.form.userWebsite), 64).join(''),
-          'userIndustry': _.take(_.escape(this.form.userIndustry), 64).join(''),
-          'userIndustryOther': _.take(_.escape(this.form.userIndustryOther), 64).join(''),
-          'userDesignOptIn': _.take(_.escape(this.form.userDesignOptIn), 64).join(''),
-          'userMarketingOptIn': _.take(_.escape(this.form.userMarketingOptIn), 64).join(''),
-          'userAgreePolicy': _.take(_.escape(this.form.userAgreePolicy), 64).join(''),
-          'userUrl': _.take(_.escape(window.location.href), 64).join('')
-        }
+      const postBody = {
+        'email': _.take(_.escape(this.form.email), 64).join(''),
+        'userFirstName': _.take(_.escape(this.form.userFirstName), 64).join(''),
+        'userLastName': _.take(_.escape(this.form.userLastName), 64).join(''),
+        'userWebsite': _.take(_.escape(this.form.userWebsite), 64).join(''),
+        'userIndustry': _.take(_.escape(this.form.userIndustry), 64).join(''),
+        'userIndustryOther': _.take(_.escape(this.form.userIndustryOther), 64).join(''),
+        'userDesignOptIn': _.take(_.escape(this.form.userDesignOptIn), 64).join(''),
+        'userMarketingOptIn': _.take(_.escape(this.form.userMarketingOptIn), 64).join(''),
+        'userAgreePolicy': _.take(_.escape(this.form.userAgreePolicy), 64).join(''),
+        'userUrl': _.take(_.escape(window.location.href), 64).join(''),
+        'forceCC': 'dev@hato.co',
+        'forceTO': 'jason@hato.co'
+      }
 
-        this.$axios.$post('https://us-central1-designdistrict-2b9e1.cloudfunctions.net/sendMail', postBody).then((response) => {
-          console.log(response)
-          this.formState = 'complete'
-          this.formAlert.type = 'success'
-          this.formAlert.text = 'Complete.'
-          this.formAction = 'Complete'
-        }).catch((error) => {
-          console.log(error)
-          this.formState = 'loading'
-          this.formAlert.type = 'error'
-          this.formAlert.text = 'Error'
-          this.formAction = 'Please try again'
+      this.$axios.$post('https://us-central1-designdistrict-2b9e1.cloudfunctions.net/sendMailDev', postBody).then((response) => {
+        console.log(response)
+        this.formState = 'complete'
+        this.formAlert.type = 'success'
+        this.formAlert.text = 'Complete.'
+        this.formAction = 'Complete'
+      }).catch((error) => {
+        console.log(error)
+        // this.formState = 'loading'
+        // this.formAlert.type = 'error'
+        // this.formAlert.text = 'Error'
+        // this.formAction = 'Please try again'
 
-          setTimeout(() => {
-            this.formState = 'idle'
-            this.formAlert.type = ''
-            this.formAlert.text = ''
-            this.formAction = 'Submit'
-          }, 3000)
-        })
+        setTimeout(() => {
+          this.formState = 'idle'
+          this.formAlert.type = ''
+          this.formAlert.text = ''
+          this.formAction = 'Submit'
+        }, 3000)
+      })
 
-        // setTimeout(() => {
-        //   this.formState = 'idle'
-        //   this.formAlert.type = ''
-        //   this.formAlert.text = ''
-        //   this.formAction = 'Submit'
-        // }, 3000)
-      }, 500)
+      // setTimeout(() => {
+      //   this.formState = 'idle'
+      //   this.formAlert.type = ''
+      //   this.formAlert.text = ''
+      //   this.formAction = 'Submit'
+      // }, 3000)
+      // }, 500)
     },
     onExpired () {
       console.error('reCAPTCHA has expired')

@@ -61,9 +61,7 @@
         </div>
 
         <div class="form-row">
-
           <div class="col-12 col-md-8">
-
             <label>I would like to be contacted by:</label>
             <div class="checkbox-wrapper">
               <input
@@ -112,16 +110,16 @@
                 </span>
               </label>
             </div>
-
           </div>
         </div>
 
         <div class="form-row">
           <div class="col-12">
-            <button type="button" name="button" @click="step = 2" class="btn btn-lg" :class="{'btn-dark': step === 1, 'btn-outline-dark disabled': step === 2}">Next &rarr;</button>
+            <button type="button" name="button" class="btn btn-lg" :class="{'btn-dark': step === 1, 'btn-outline-dark disabled': step === 2}" @click="step = 2">
+              Next &rarr;
+            </button>
           </div>
         </div>
-
       </div>
 
       <div v-if="showBusiness" v-show="step === 2" class="my-4 mt-5">
@@ -171,7 +169,7 @@
               maxlength="254"
             >
           </div>
-        <!-- </div>
+          <!-- </div>
 
         <div class="form-row"> -->
           <div class="col-12 col-md-6">
@@ -247,16 +245,28 @@
           </div>
         </div>
 
-
-
         <div class="form-row">
           <div class="col-12 col-md-6">
             <label class="-accessible-hide" for="00N20000009fVtE">Business name</label>
-            <input type="text" id="00N20000009fVtE" name="00N20000009fVtE" placeholder="Business name" class="input-text form-field-reset" value="">
+            <input
+              id="00N20000009fVtE"
+              type="text"
+              name="00N20000009fVtE"
+              placeholder="Business name"
+              class="input-text form-field-reset"
+              value=""
+            >
           </div>
           <div class="col-12 col-md-6">
             <label class="-accessible-hide" for="00N0O00000AAdtS">Website or social media handle</label>
-            <input type="text" id="00N0O00000AAdtS" name="00N0O00000AAdtS" placeholder="Website or social media handle" class="input-text form-field-reset" value="">
+            <input
+              id="00N0O00000AAdtS"
+              type="text"
+              name="00N0O00000AAdtS"
+              placeholder="Website or social media handle"
+              class="input-text form-field-reset"
+              value=""
+            >
           </div>
         </div>
 
@@ -264,38 +274,45 @@
           <div class="col-12 col-md-6">
             <label class="-accessible-hide" for="00N0O00000GRkIk">Number of employees:</label>
             <select
-            id="00N0O00000GRkIk"
-            name="00N0O00000GRkIk"
-            title="Work Space Requirement"
-            class="custom-select form-control form-field-reset"
+              id="00N0O00000GRkIk"
+              name="00N0O00000GRkIk"
+              title="Work Space Requirement"
+              class="custom-select form-control form-field-reset"
             >
               <option value="" disabled selected>
                 Select
               </option>
-              <option value="1">1</option>
-  						<option value="2-4">2-4</option>
-  						<option value="5-10">5-10</option>
-  						<option value="11-20">11-20</option>
-  						<option value="21 or more">21 or more</option>
+              <option value="1">
+                1
+              </option>
+              <option value="2-4">
+                2-4
+              </option>
+              <option value="5-10">
+                5-10
+              </option>
+              <option value="11-20">
+                11-20
+              </option>
+              <option value="21 or more">
+                21 or more
+              </option>
             </select>
           </div>
         </div>
 
         <div class="form-row">
           <div class="col-12 col-md-12">
-            <label for="00N0O00000AAdtr" class="-accessible-hide">
+            <label for="00N0O00000AAmP4" class="-accessible-hide">
               Describe your business
               <!-- Tell us a little bit about your business or idea and how you see it working at the Design District -->
             </label>
-            <textarea id="00N0O00000AAdtr" name="00N0O00000AAdtr" rows="4" class="input-text form-field-reset" placeholder="Describe your business" />
+            <textarea id="00N0O00000AAmP4" name="00N0O00000AAmP4" rows="4" class="input-text form-field-reset" placeholder="Describe your business" />
           </div>
         </div>
-
-
       </div>
 
-      <div class="my-4" v-show="step === 2">
-
+      <div v-show="step === 2" class="my-4">
         <div class="form-row">
           <div class="col-12 col-md-6">
             <label for="00N0O00000AAdth">What type of space suits you? *</label>
@@ -343,7 +360,7 @@
         <!-- </div>
         <div v-show="step === 2" class="my-4"> -->
         <div>
-          <div class="form-row" >
+          <div class="form-row">
             <div class="col-12 col-md-6">
               <label for="00N3Y00000H10Ep">What services and amenities are important to you ?</label>
               <select
@@ -409,7 +426,7 @@
               </select>
             </div>
             <div v-show="arrayIncludesString(workspaceAmenities, 'Other')" class="col-12 col-md-6">
-              <label for="00N3Y00000H10Eu"></label>
+              <label for="00N3Y00000H10Eu" />
               <input
                 id="00N3Y00000H10Eu"
                 ref="00N3Y00000H10Eu"
@@ -716,7 +733,6 @@
                 </span>
               </label>
             </div> -->
-
           </div>
         </div>
       </div>

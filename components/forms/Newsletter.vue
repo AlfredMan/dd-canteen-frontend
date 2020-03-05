@@ -137,7 +137,7 @@
         </div>
       </div>
 
-      <input type="hidden" name="captcha_settings" value="{&quot;keyname&quot;:&quot;GoogleAPIKeyV2&quot;,&quot;fallback&quot;:&quot;true&quot;,&quot;orgId&quot;:&quot;00D20000000nxym&quot;,&quot;ts&quot;:&quot;&quot;}">
+      <!-- <input type="hidden" name="captcha_settings" value="{&quot;keyname&quot;:&quot;GoogleAPIKeyV2&quot;,&quot;fallback&quot;:&quot;true&quot;,&quot;orgId&quot;:&quot;00D20000000nxym&quot;,&quot;ts&quot;:&quot;&quot;}"> -->
       <input type="hidden" name="oid" value="00D20000000nxym">
       <input type="hidden" name="retURL" value="https://designdistrict.co.uk/success/">
       <input id="00N0O00000AB5j2" ref="00N0O00000AB5j2" type="hidden" name="00N0O00000AB5j2" value="Web Form">
@@ -214,6 +214,27 @@ export default {
       // do some checking
       return true
     },
+    getNow () {
+      const today = new Date()
+      let dd = today.getDate()
+      let mm = today.getMonth() + 1
+      const yyyy = today.getFullYear()
+      // const hours = today.getHours()
+      // const mins = today.getMinutes()
+      let now = ''
+
+      if (dd < 10) {
+        dd = '0' + dd
+      }
+
+      if (mm < 10) {
+        mm = '0' + mm
+      }
+
+      // now = mm+'/'+dd+'/'+yyyy+' '+hours+':'+mins;
+      now = dd + '/' + mm + '/' + yyyy
+      return now
+    },
     onVerify (response) {
       console.log('Verify: ' + response)
 
@@ -229,6 +250,38 @@ export default {
 
         // alert('done')
         this.$refs.subscribeForm.submit()
+        // const postBody = {
+        //   'email': 'testtestjason@hato.co',
+        //   'first_name': 'Jason TEST',
+        //   'last_name': 'Chow TEST',
+        //   'oid': '00D20000000nxym',
+        //   '00N0O00000GRkIa': '1',
+        //   '00N0O00000GRZb7': '1',
+        //   '00N0O00000AB5j2': 'Web Form',
+        //   '00N0O00000AB5j1': 'Design District',
+        //   '00N0O00000AB5iY': 'Design District Subscription',
+        //   '00N0O00000AB5iN': '7010O00000153NQQAY',
+        //   '00N0O00000GRkIf': this.getNow(),
+        //   '00N0O00000GRZbC': this.getNow(),
+        //   '00N0O00000GRrXc': '1',
+        //   '00N0O00000GRrXh': this.getNow()
+        // }
+        //
+        // const formUrlEncoded = (x) => {
+        //   return Object.keys(x).reduce((p, c) => p + `&${c}=${encodeURIComponent(x[c])}`, '')
+        // }
+        //
+        // this.$axios.$post({
+        //   url: 'https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8',
+        //   data: formUrlEncoded(postBody),
+        //   headers: {
+        //     'Content-type': 'application/x-www-form-urlencoded'
+        //   }
+        // }).then((response) => {
+        //   console.log(response)
+        // }).catch((error) => {
+        //   console.log(error)
+        // })
 
         setTimeout(() => {
           this.formState = 'idle'
