@@ -421,8 +421,10 @@ export default {
           'userIndustryOther': _.take(_.escape(this.form.userIndustryOther), 64).join(''),
           'userDesignOptIn': _.take(_.escape(this.form.userDesignOptIn), 64).join(''),
           'userMarketingOptIn': _.take(_.escape(this.form.userMarketingOptIn), 64).join(''),
-          'userAgreePolicy': _.take(_.escape(this.form.userAgreePolicy), 64).join('')
+          'userAgreePolicy': _.take(_.escape(this.form.userAgreePolicy), 64).join(''),
+          'userUrl': _.take(_.escape(window.location.href), 64).join('')
         }
+
         this.$axios.$post('https://us-central1-designdistrict-2b9e1.cloudfunctions.net/sendMail', postBody).then((response) => {
           console.log(response)
           this.formState = 'complete'
