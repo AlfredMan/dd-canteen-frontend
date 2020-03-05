@@ -450,7 +450,7 @@ export default {
         //   this.formAlert.text = ''
         //   this.formAction = 'Submit'
         // }, 3000)
-      }, 1000)
+      }, 500)
     },
     onExpired () {
       console.error('reCAPTCHA has expired')
