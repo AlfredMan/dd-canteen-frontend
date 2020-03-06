@@ -41,7 +41,7 @@
         <div class="row p-4 mobile-nav">
           <div class="col">
             <nuxt-link class="mobile-menu-link" to="/workspace">
-              Workspace
+              Work space
             </nuxt-link><br>
             <!-- <nuxt-link class="mobile-menu-link" to="/the-club">
               The Club
@@ -117,13 +117,13 @@
           <div class="col-6 col-md-3 col-lg-3 mb-5">
             <h5>Join</h5>
             <nuxt-link class="" to="/workspace">
-              Workspace
+              Work space
             </nuxt-link>
             <br>
-            <nuxt-link class="" to="/the-club">
+            <!-- <nuxt-link class="" to="/the-club">
               The Club
             </nuxt-link>
-            <br>
+            <br> -->
             <nuxt-link class="" to="/about-us">
               About
             </nuxt-link>

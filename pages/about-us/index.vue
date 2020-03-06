@@ -39,7 +39,7 @@
             </div>
             <div class="col-12 col-md-6 mb-4">
               <h3>Purpose-made space for creative&nbsp;work</h3>
-              <p>Everything about the district is designed to help creative businesses thrive. A choice of permanent buildings to provide security, certainty and flexible leases to enable change.</p>
+              <p>Everything about the district is designed to help creative businesses thrive. That includes permanent buildings to provide security and certainty, plus flexible leases to enable businesses to grow or shrink in one place. Our work spaces are naturally ventilated with huge north-light windows. There are options from co-working space to clean studios and dirty workshops, along with a materials library, photographic studio, recording studio and places to eat and do sport for all to share.</p>
             </div>
             <div class="col-12 col-md-6 mb-4">
               <h3>The services creatives really&nbsp;need</h3>
