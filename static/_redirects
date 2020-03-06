@@ -1,2 +1,11 @@
+# redirect netlify sitename to your sitename for SEO purposes,
+# to avoid duplicate content.  Do this for http and https
+https://designdistrict.netlify.com/* https://designdistrict.co.uk/:splat 301!
+http://designdistrict.netlify.com/* https://designdistrict.co.uk/:splat 301!
+
+# also redirect http to https for your custom domain.
+# Note that netlify automatically redirects to your custom domain from the bare domain (or vice versa), so you only need one rule here.
+http://designdistrict.co.uk/* https://designdistrict.co.uk/:splat 301!
+
 # For Netlify SPA fallback, will be copied to dist/_redirects
 /*    /index.html   200
