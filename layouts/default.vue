@@ -157,7 +157,7 @@
           </div> -->
         </div>
 
-        <nav class="inner d-flex row align-items-end justify-content-start mt-5 pb-5">
+        <nav class="inner d-flex row align-items-end justify-content-start mt-5 pb-2">
           <div class="p-3 mr-auto-mr-md-0-ml-md-auto-order-md-2 d-flex align-items-end">
             <img src="~/assets/images/logo-ver.svg" alt="Design District logo" style="max-width: 40px" class="mr-5">
             <img src="~/assets/images/gp-logo.svg" alt="Greenwich Peninsula logo" style="max-width: 100px">

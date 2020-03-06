@@ -61,6 +61,7 @@ button, input, optgroup, select, textarea {
 	font-family: inherit;
 	font-size: inherit;
 	line-height: inherit;
+	font-weight: 200;
 }
 
 button, input[type="submit"] {
@@ -74,6 +75,7 @@ button, .btn, input[type="submit"] {
   // text-transform: uppercase;
   border-radius: 2px;
 	letter-spacing: 0.05em;
+	font-weight: 200;
 }
 
 .btn-lg {
@@ -171,15 +173,24 @@ select {
 }
 
 .checkbox:checked + label:after {
-	box-shadow: 2px 0 0 black,4px 0 0 black,4px -2px 0 black,4px -4px 0 black,4px -6px 0 black,4px -8px 0 black;
-	content: "";
-	height: 2px;
-	left: 5px;
+	// box-shadow: 2px 0 0 black,4px 0 0 black,4px -2px 0 black,4px -4px 0 black,4px -6px 0 black,4px -8px 0 black;
+	// content: "";
+	// height: 2px;
+	// left: 5px;
+	// position: absolute;
+	// top: 9px;
+	// -webkit-transform: rotate(45deg);
+	// transform: rotate(45deg);
+	// width: 2px;
+	content: "✓";
+	height: 10px;
+	line-height: 20px;
 	position: absolute;
-	top: 9px;
-	-webkit-transform: rotate(45deg);
-	transform: rotate(45deg);
-	width: 2px;
+	left: 0;
+	top: 2px;
+	width: 18px;
+	font-size: 1rem;
+	text-align: center;
 }
 
 .bw {
