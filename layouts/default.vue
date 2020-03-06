@@ -57,12 +57,9 @@
         <div class="row p-4 mobile-footer">
           <div class="col-12">
             <a class="">The Gateway Pavilion<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a>
-
             <br><br>
-
             <a class="">hello@designdistrict.co.uk</a><br>
             <a class="">020 3981 2426</a>
-
             <br><br>
             <!-- </div>
           <div class="col-5"> -->
@@ -70,7 +67,7 @@
             <a class="" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
             <a class="" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
             <a class="" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br>
-            <a class="" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london/">LinkedIn</a>
+            <a class="" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london">LinkedIn</a>
           </div>
         </div>
       </div>
