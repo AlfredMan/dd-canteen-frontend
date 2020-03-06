@@ -99,7 +99,7 @@
               <div class="">
                 <img
                   class="lazyload"
-                  data-src="https://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=2000&fm=jpg&q=80"
+                  data-src="https://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=2000&fm=jpg&q=80"
                   alt=""
                 >
               </div>
@@ -129,7 +129,7 @@
               <div class="">
                 <img
                   class="lazyload"
-                  data-src="http://images.ctfassets.net/7p1ysxjarsp5/1E9dyD5cbyoG8OVAIJG9BJ/7ad80cb2eef001808fe7739647254c3f/6aArchitects-2D-Architect.jpg?w=2000&h=2000&fm=jpg&q=80"
+                  data-src="http://images.ctfassets.net/7p1ysxjarsp5/33wkoRXjjbWuilpEmwjaRl/b44134581716be6e4fcf4c3846a5b46d/Design-District-Matthew-Thompson-0205-LOW-RES.jpg?w=2000&h=2000&fm=jpg&q=80&fit=thumb"
                   alt=""
                 >
               </div>
@@ -147,7 +147,7 @@
               <div class="">
                 <img
                   class="lazyload"
-                  data-src="https://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=2000&fm=jpg&q=80"
+                  data-src="https://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=2000&fm=jpg&q=80"
                   alt=""
                 >
               </div>
@@ -187,7 +187,7 @@
     <div class="container py-5">
       <div class="row">
         <div class="col-12 col-md-7 pr-md-5 mb-5">
-          <h1>Creative work space</h1>
+          <h1>Creative work&nbsp;space</h1>
           <!-- <h4>Just starting out or trying something new? The Club is an accessible way to be part of the Design District community.</h4> -->
           <h4 class="mb-4">
             Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.
@@ -197,7 +197,11 @@
           </router-link>
         </div>
         <div class="col-12 col-md-5">
-          <img class="lazyload" data-src="http://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=2000&h=1800&fm=jpg&q=80&fit=thumb" alt="">
+          <img
+            class="lazyload"
+            data-src="http://images.ctfassets.net/7p1ysxjarsp5/22w4CLfcQCe1mdF3zH64Dy/89f59d445e25ae91085e0aa8e5b8bbd0/Design-District-Matthew-Thompson-2226-LOW-RES.jpg?w=2000&h=2000&fm=jpg&q=80&fit=thumb"
+            alt=""
+          >
         </div>
       </div>
       <!-- <div class="row d-flex justify-content-end align-items-end mt-0 mt-lg-n5" style="margin-top: -30rem!important">
@@ -273,10 +277,14 @@
 
           <div v-if="randomStudios" class="row d-flex align-items-end mt-5 pt-5">
             <div v-for="studio in randomStudios" class="col-12 col-md-6 col-lg-3 mb-5">
-              <router-link :to="`/architecture/${studio.slug}`">
+              <!-- <router-link :to="`/architecture/${studio.slug}`">
                 <img class="lazyload" :data-src="studio.imagesPractice[0].url" alt="">
                 <h5>{{ studio.title }}</h5>
-              </router-link>
+              </router-link> -->
+              <!-- <router-link :to="`/architecture/${studio.slug}`"> -->
+              <img class="lazyload" :data-src="studio.imagesPractice[0].url" alt="">
+              <h5>{{ studio.title }}</h5>
+              <!-- </router-link>               -->
             </div>
 
             <!-- <div class="col-12 col-md-6 col-lg-3 mb-5">
@@ -357,6 +365,15 @@ import EnquireForm from '../../components/forms/Enquire.vue'
 import NewsletterForm from '../../components/forms/Newsletter.vue'
 import { studios, validStudios } from '~/common/architecture'
 export default {
+  head () {
+    return {
+      title: 'Keep London creative',
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'description', name: 'description', content: 'Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.' }
+      ]
+    }
+  },
   components: {
     EnquireForm,
     NewsletterForm

@@ -67,10 +67,10 @@
             <!-- </div>
           <div class="col-5"> -->
             <!-- <h5>Connect</h5> -->
+            <a class="" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
             <a class="" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
             <a class="" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br>
-            <a class="" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
-            <!-- <a class="" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/designdistrictlondon">LinkedIn</a> -->
+            <a class="" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london/">LinkedIn</a>
           </div>
         </div>
       </div>

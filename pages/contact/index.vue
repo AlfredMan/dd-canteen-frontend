@@ -170,6 +170,15 @@ import EnquireForm from '../../components/forms/Enquire2.vue'
 // import EnquireFormCondensed from '../../components/forms/EnquireCondensed.vue'
 import NewsletterForm from '../../components/forms/Newsletter.vue'
 export default {
+  head () {
+    return {
+      title: 'Contact',
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'description', name: 'description', content: 'Ask a question or book a viewing. Comment or collaborate. We want to hear from you.' }
+      ]
+    }
+  },
   components: {
     EnquireForm,
     // EnquireFormCondensed,

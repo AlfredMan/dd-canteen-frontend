@@ -9,7 +9,7 @@
       <li v-for="asset in assets" class="col-2">
         <a :href="`${asset.fields.file.url}?w=2000&h=2000&fm=jpg&q=80`" target="_blank">
           <img :src="`${asset.fields.file.url}?w=200&h=200&fm=jpg&q=70`" alt="">
-          {{asset.fields.title}}
+          {{ asset.fields.title }}
         </a>
       </li>
     </ul>
@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import { createClient } from '~/plugins/contentful.js'
 import _ from 'lodash'
+import { createClient } from '~/plugins/contentful.js'
 
 const client = createClient()
 
@@ -52,7 +52,8 @@ export default {
       return {
         // person: entries.items[0],
         // posts: posts.items
-        assets: _.filter(assets.items, (a)=>(a.fields.title.indexOf('KDN') >= 0 || a.fields.title.indexOf('-Architect') >= 0 || a.fields.title.indexOf('Building') >= 0 || a.fields.title.indexOf('Laneway') >= 0))
+        // assets: _.filter(assets.items, (a)=>(a.fields.title.indexOf('KDN') >= 0 || a.fields.title.indexOf('-Architect') >= 0 || a.fields.title.indexOf('Building') >= 0 || a.fields.title.indexOf('Laneway') >= 0))
+        assets: assets.items
       }
     }).catch(console.error)
   }

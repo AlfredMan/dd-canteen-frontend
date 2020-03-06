@@ -577,6 +577,15 @@ export default {
   components: {
     EnquireForm,
     NewsletterForm
+  },
+  head () {
+    return {
+      title: 'Work space',
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'description', name: 'description', content: 'Design District will provide 150,000 sq ft of permanent workspace for everyone for London’s designers makers and creators. A place for total focus, shared stories and resources, new connections and collaboration.' }
+      ]
+    }
   }
 }
 </script>

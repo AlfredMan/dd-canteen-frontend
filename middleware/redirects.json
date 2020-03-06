@@ -1,0 +1,10 @@
+[
+  {
+    "from": "/about",
+    "to": "/about-us"
+  },
+  {
+    "from": "/contact-us",
+    "to": "/contact"
+  }
+]

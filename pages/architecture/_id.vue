@@ -5,21 +5,25 @@
         <div class="container py-5">
           <div class="row">
             <div class="col-12 col-md-6">
-              <h2>{{studioData.title}}</h2>
+              <h2>{{ studioData.title }}</h2>
               <!-- <h4>{{studioData.buildings}}</h4> -->
             </div>
             <div class="col-12 col-md-3">
-              <h5 v-if="studioData.buildings == 'Landscape'">The landscape</h5>
-              <h5 v-else>The buildings</h5>
+              <h5 v-if="studioData.buildings == 'Landscape'">
+                The landscape
+              </h5>
+              <h5 v-else>
+                The buildings
+              </h5>
               <p>
-                {{studioData.buildingsCopy}}
+                {{ studioData.buildingsCopy }}
               </p>
             </div>
 
             <div class="col-12 col-md-3">
               <h5>The practice</h5>
               <p>
-                {{studioData.practiceCopy}}
+                {{ studioData.practiceCopy }}
               </p>
             </div>
 
@@ -43,10 +47,10 @@
 
             <div class="col-12 col-md-12 mt-md-n5 mt-5">
               <div class="row d-flex align-items-end justify-content-end">
-                <div class="col-12 mb-3" :class="[`col-md-${img.size}`]" v-for="img in studioData.images" :key="img.url">
+                <div v-for="img in studioData.images" :key="img.url" class="col-12 mb-3" :class="[`col-md-${img.size}`]">
                   <img class="lazyload" :data-src="img.url" :alt="img.alt">
                 </div>
-                <div class="col-12 mb-3" :class="[`col-md-${img.size}`]" v-for="img in studioData.imagesPractice" :key="img.url">
+                <div v-for="img in studioData.imagesPractice" :key="img.url" class="col-12 mb-3" :class="[`col-md-${img.size}`]">
                   <img class="lazyload" :data-src="img.url" :alt="img.alt">
                 </div>
               </div>
@@ -63,7 +67,6 @@
             </div> -->
 
             <div class="col-12" />
-
 
             <!-- <div class="col-12 mb-3" :class="[`col-md-${img.size}`]" v-for="img in studioData.imagesPractice" :key="img.url">
               <img :src="img.url" :alt="img.alt">
@@ -98,11 +101,10 @@
           </div>
 
           <div class="row d-flex align-items-end mt-5 pt-5">
-
-            <div class="col-12 col-md-6 col-lg-3 mb-5" v-for="nextStudio in nextFour" :key="nextStudio.slug">
+            <div v-for="nextStudio in nextFour" :key="nextStudio.slug" class="col-12 col-md-6 col-lg-3 mb-5">
               <router-link :to="`/architecture/${nextStudio.slug}`">
                 <img class="lazyload" :data-src="nextStudio.imagesPractice[0].url" alt="">
-                <h5>{{nextStudio.title}}</h5>
+                <h5>{{ nextStudio.title }}</h5>
               </router-link>
             </div>
 
@@ -131,9 +133,7 @@
                 <h5>Barozzi Veiga</h5>
               </router-link>
             </div> -->
-
           </div>
-
         </div>
       </div>
     </div>
@@ -141,11 +141,18 @@
 </template>
 
 <script>
-import { studios, validStudios } from '~/common/architecture'
 import _ from 'lodash'
+import { studios, validStudios } from '~/common/architecture'
 
 export default {
   components: {
+  },
+
+  middleware ({ store, redirect }) {
+    // If the user is not authenticated
+    // if (!store.state.authenticated) {
+    return redirect('/about-us/#architecture')
+    // }
   },
 
   validate ({ params: { id } }) {
@@ -165,11 +172,11 @@ export default {
       return studios[this.studio]
     },
     nextFour () {
-      let studioArray = _.toArray(studios)
-      let studiosstudios = _.concat(studioArray, studioArray)
-      let currentStudioIndex = _.indexOf(studioArray, this.studioData)
+      const studioArray = _.toArray(studios)
+      const studiosstudios = _.concat(studioArray, studioArray)
+      const currentStudioIndex = _.indexOf(studioArray, this.studioData)
       console.log('currentStudioIndex', currentStudioIndex)
-      return _.takeRight(_.take(studiosstudios, currentStudioIndex+5),4)
+      return _.takeRight(_.take(studiosstudios, currentStudioIndex + 5), 4)
     }
   },
 
