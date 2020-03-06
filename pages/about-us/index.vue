@@ -30,7 +30,7 @@
             <div class="col-12" />
             <div class="col-12 col-md-6 mb-4">
               <h3>A thriving home for ideas</h3>
-              <p>Design District will provide a new space for creatives of all kinds to come and work together. A magnetic centre of activity with a vibrant and engaged community of free thinkers – from architects, artists and makers to graphic, fashion and digital designers, gaming professionals, musicians and many more.</p>
+              <p>Design District will provide a new space for London’s creatives of all kinds to come and work together. A magnetic centre of activity with a vibrant and engaged community of free thinkers – from architects, artists and makers to graphic, fashion and digital designers, gaming professionals, musicians and many more.</p>
             </div>
             <div class="col-12 col-md-6 mb-4">
               <h3>Here to keep London creative</h3>
@@ -38,7 +38,7 @@
             </div>
             <div class="col-12 col-md-6 mb-4">
               <h3>Purpose-made space for creative&nbsp;work</h3>
-              <p>Everything about the district is designed to help creative businesses thrive. That includes affordable rents and permanent buildings to provide security and certainty, plus flexible leases to enable businesses to grow or shrink in one place. Our work spaces are naturally ventilated with huge north-light windows. There are options from co-working space to clean studios and dirty workshops, along with a materials library, photographic studio, recording studio and places to eat and do sport for all to share.</p>
+              <p>Everything about the district is designed to help creative businesses thrive. That includes permanent building to provide security and certainty, plus flexible leases to enable businesses to grow or shrink in one place. Our work spaces are naturally ventilated with huge north-light windows. There are options from co-working space to clean studios and dirty workshops, along with a materials library, photographic studio, recording studio and places to eat and do sport for all to share.</p>
             </div>
             <div class="col-12 col-md-6 mb-4">
               <h3>The services creatives really&nbsp;need</h3>
@@ -61,20 +61,19 @@
           </div>
           <div class="row">
             <div class="col-12 col-md-4">
-              <h4>World-class buildings. The needs of creatives put front and centre. Design District is an offer that’s entirely new for London. Meet the architects.</h4>
+              <h4>Extraordinary buildings. The needs of creatives put front and centre. Design District is an offer that’s entirely new for London. Meet the architects.</h4>
               <!-- <a href="#" class="text-primary">View all architects &rarr;</a> -->
             </div>
             <div class="col-12 col-md-6">
-              <p>The 16 buildings in the district have been designed by creatives, for creatives. Incorporating biophilic design, we prioritised natural ventilation, high ceilings, north-facing lights and pedestrian movement for a healthy and happy workplace. The brief to the architects was to create a space that they would like to work in themselves. The project’s novel and exciting approach involved each practice working in a silo, overseen by ASSEMBLAGE founder Hannah Corlett.</p>
+              <p>The 16 buildings in the district have been designed by creatives, for creatives. The architects prioritised natural ventilation, high ceilings, north-facing lights and pedestrian movement for a healthy and happy workplace. The brief to the architects was to create a space that they would like to work in themselves. The project’s novel and exciting approach involved each practice working in a silo, overseen by ASSEMBLAGE founder Hannah Corlett.</p>
             </div>
           </div>
 
           <div class="row d-flex align-items-end mt-5 pt-5">
-
-            <div class="col-12 col-md-6 col-lg-4 mb-5" v-for="studio in studios" :key="studio.slug">
+            <div v-for="studio in studios" :key="studio.slug" class="col-12 col-md-6 col-lg-4 mb-5">
               <router-link :to="`/architecture/${studio.slug}`">
                 <img class="lazyload" :data-src="studio.imagesPractice[0].url" alt="">
-                <h5>{{studio.title}}</h5>
+                <h5>{{ studio.title }}</h5>
               </router-link>
             </div>
 
@@ -132,7 +131,6 @@
               <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/5hjrqA6j9HzAhWQe60b4l/053cb70d38428f1e3c00874c57852c71/SelgasCano-1A-Architect.jpg?w=1000&h=1200&fm=jpg&q=80" alt="">
               <h5>Selgascano</h5>
             </div> -->
-
           </div>
         </div>
       </div>

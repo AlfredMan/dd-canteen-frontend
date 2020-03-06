@@ -304,7 +304,7 @@
         <div class="form-row">
           <div class="col-12 col-md-12">
             <label for="00N0O00000AAmP4" class="-accessible-hide">
-              Describe your business
+              Describe your business in 250 words
               <!-- Tell us a little bit about your business or idea and how you see it working at the Design District -->
             </label>
             <textarea id="00N0O00000AAmP4" name="00N0O00000AAmP4" rows="4" class="input-text form-field-reset" placeholder="Describe your business" />
@@ -330,14 +330,20 @@
               <option value="Desk">
                 Desk
               </option>
-              <option value="Office">
-                Office
+              <option value="Studio">
+                Studio
               </option>
               <option value="Workshop">
                 Workshop
               </option>
-              <option value="Artist studio">
-                Artist studio
+              <option value="Office">
+                Office
+              </option>
+              <option value="Food Kiosk">
+                Food Kiosk
+              </option>
+              <option value="Showroom">
+                Showroom
               </option>
               <option value="Other">
                 Other
@@ -427,7 +433,7 @@
                   value="1"
                 >
                 <label for="00N3Y00000H11CL">
-                  <span>Food Cafe</span>
+                  <span>Bar and café</span>
                 </label>
               </div>
               <div class="checkbox-wrapper">
@@ -565,9 +571,21 @@
                   <span>Other</span>
                 </label>
               </div>
+              <div v-show="workspaceAmenitiesOther">
+                <label for="00N3Y00000H10Eu" />
+                <input
+                  id="00N3Y00000H10Eu"
+                  ref="00N3Y00000H10Eu"
+                  class="input-text form-field-reset"
+                  type="text"
+                  name="00N3Y00000H10Eu"
+                  placeholder="Please specify"
+                  maxlength="254"
+                >
+              </div>
             </div>
             <!-- </div> -->
-            <div class="col-12" />
+            <!-- <div class="col-12" />
             <div v-show="workspaceAmenitiesOther" class="col-12 col-md-6">
               <label for="00N3Y00000H10Eu" />
               <input
@@ -579,7 +597,7 @@
                 placeholder="Please specify"
                 maxlength="254"
               >
-            </div>
+            </div> -->
           </div>
         </div>
         <!-- </div>
@@ -605,6 +623,9 @@
               </option>
               <option value="Attract new clients and partners">
                 Attract new clients and partners
+              </option>
+              <option value="Work alongside other creatives">
+                Work alongside other creatives
               </option>
               <option value="Have a change of scenery">
                 Have a change of scenery
@@ -804,7 +825,8 @@
       </div>
 
       <input type="hidden" name="oid" value="00D20000000nxym">
-      <input type="hidden" name="retURL" value="https://designdistrict.co.uk/success/">
+      <!-- <input type="hidden" name="retURL" value="https://designdistrict.co.uk/success/"> -->
+      <input type="hidden" name="retURL" :value="retURL">
       <input id="00N0O00000AB5j2" ref="00N0O00000AB5j2" type="hidden" name="00N0O00000AB5j2" value="Web Form">
       <input id="00N0O00000AB5j1" ref="00N0O00000AB5j1" type="hidden" name="00N0O00000AB5j1" value="Design District">
       <input id="00N0O00000AB5iY" ref="00N0O00000AB5iY" type="hidden" name="00N0O00000AB5iY" value="Design District Sales Enquiry">
@@ -862,7 +884,16 @@ export default {
       formState: 'idle'
     }
   },
-  computed: {},
+  computed: {
+    retURL () {
+      // return 'https://designdistrict.co.uk/success/'
+      if (process.browser) {
+        return `${window.location.href}?form=success`
+      } else {
+        return `https://designdistrict.co.uk/success`
+      }
+    }
+  },
   monuted () {
     this.init()
   },

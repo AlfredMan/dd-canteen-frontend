@@ -14,15 +14,15 @@
       <div class="row">
         <div class="col-12 col-md-3">
           <h5>General enquiries</h5>
-          <p><a href="#">hello@designdistrict.co.uk</a></p>
+          <p><a href="mailto:hello@designdistrict.co.uk">hello@designdistrict.co.uk</a></p>
         </div>
         <div class="col-12 col-md-3">
           <h5>Sales</h5>
-          <p><a href="#">sales@designdistrict.co.uk</a><br>020 3981 2426</p>
+          <p><a href="mailto:sales@designdistrict.co.uk">sales@designdistrict.co.uk</a><br>+44 (0)20 3981 2426</p>
         </div>
         <div class="col-12 col-md-3">
           <h5>Press</h5>
-          <p><a href="#">press@designdistrict.co.uk</a></p>
+          <p><a href="mailto:designdistrict@zetteler.co.uk">designdistrict@zetteler.co.uk</a><br>+44 (0)20 3735 5855</p>
         </div>
       </div>
     </div>
@@ -87,11 +87,11 @@
           </div>
           <div class="col-12" />
           <div class="col-12 col-md-7">
-            <h4>
+            <!-- <h4>
               Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.
-            </h4>
+            </h4> -->
             <h4>
-              Register your interest to become a tenant. Tell us about your requirements and we’ll drop you a line.
+              Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch. For general enquiries, please email us at <a href="mailto:hello@designdistrict.co.uk">hello@designdistrict.co.uk</a>
             </h4>
             <br>
             <!-- <enquire-form :show-business="false" /> -->

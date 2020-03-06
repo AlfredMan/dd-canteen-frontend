@@ -2,7 +2,7 @@
   <div class="">
     <div v-show="formState === 'complete'" class="">
       <h5>Thank you for your interest!</h5>
-      <p>We'll be in touch soon. Meanwhile, follow our <a href="https://www.instagram.com/designdistrictlondon/" target="_blank" rel="noreferrer">Instagram</a> and <a href="https://twitter.com/Design_District" target="_blank" rel="noreferrer">Twitter</a> for more news and updates.</p>
+      <p>We'll be in touch soon. Meanwhile, follow our <a href="https://www.instagram.com/designdistrictlondon/" target="_blank" rel="noreferrer">Instagram</a> for more news and updates.</p>
     </div>
     <form
       v-show="formState !== 'complete'"

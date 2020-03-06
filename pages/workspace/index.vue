@@ -36,7 +36,7 @@
               <h4>Rent a desk, a studio,  a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</h4>
               <br>
               <h3>Flexible tenancies</h3>
-              <p>Rent an office or workshop studio on short or long leases made to be flexible. Grow the size of your studio along with your business.</p>
+              <p>Rent work spaces on short or long leases made to be flexible. Grow the size of your studio along with your business.</p>
               <br>
               <!-- <h3>What we offer: </h3>
               <ul class="h6">
@@ -440,7 +440,7 @@
             <div class="col-12 col-md-6">
               <h3>Food hall and kitchen</h3>
               <p>Open to the public and filled with six independent food partners, the food hall will become a key meeting place in the district. It is located in SelgasCano’s luminescent building at the entrance to the district, immediately visible to visitors.</p>
-              <p>Design District is equipped with an industrial kitchen that will cater for The Club and any onsite events. Tenants working in the food and beverage industries will have access to the kitchen by prior arrangement.</p>
+              <p>Design District is equipped with an industrial kitchen that will service the food hall and cater for any onsite events. Tenants working in the food and beverage industries will have access to the kitchen by prior arrangement.</p>
             </div>
 
             <!-- <div class="col-12 col-md-1" />
@@ -544,7 +544,7 @@
           <div class="col-12" />
           <div class="col-12 col-md-4">
             <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering accessible rent, flexible leases and workspace purpose-built for creative disciplines.</h4>
-            <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Tell us about your requirements and we’ll drop you a line. You can book a viewing here too.</p>
+            <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</p>
           </div>
           <div class="col-12 col-lg-1" />
           <div class="col-12 col-md-8 col-lg-7">
