@@ -30,7 +30,8 @@
             <div class="col-12" />
             <div class="col-12 col-md-6 mb-4">
               <h3>A thriving home for ideas</h3>
-              <p>Design District will provide a new space for London’s creatives of all kinds to come and work together. A magnetic centre of activity with a vibrant and engaged community of free thinkers – from architects, artists and makers to graphic, fashion and digital designers, gaming professionals, musicians and many more.</p>
+              <!-- <p>Design District will provide a new space for London’s creatives of all kinds to come and work together. A magnetic centre of activity with a vibrant and engaged community of free thinkers – from architects, artists and makers to graphic, fashion and digital designers, gaming professionals, musicians and many more.</p> -->
+              <p>Design District will provide a new space for London’s creatives to come and work together. A magnetic centre of activity with a vibrant and engaged community of designers, makers and creators – from architects and artists to graphic, fashion and digital designers, gaming professionals, musicians and many more.</p>
             </div>
             <div class="col-12 col-md-6 mb-4">
               <h3>Here to keep London creative</h3>
@@ -38,7 +39,7 @@
             </div>
             <div class="col-12 col-md-6 mb-4">
               <h3>Purpose-made space for creative&nbsp;work</h3>
-              <p>Everything about the district is designed to help creative businesses thrive. That includes permanent building to provide security and certainty, plus flexible leases to enable businesses to grow or shrink in one place. Our work spaces are naturally ventilated with huge north-light windows. There are options from co-working space to clean studios and dirty workshops, along with a materials library, photographic studio, recording studio and places to eat and do sport for all to share.</p>
+              <p>Everything about the district is designed to help creative businesses thrive. A choice of permanent buildings to provide security, certainty and flexible leases to enable change.</p>
             </div>
             <div class="col-12 col-md-6 mb-4">
               <h3>The services creatives really&nbsp;need</h3>

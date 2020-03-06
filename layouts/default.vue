@@ -87,7 +87,7 @@
           <div class="col-12" />
           <div class="col-12 col-md-4 d-none d-md-block">
             <p>The Design District is at the heart of Greenwich Peninsula, a new type of London created specifically for the creative community.</p>
-            <p>From autumn 2020, Design District will offer a new permanent home for the creative industries in east London. With flexible leases and purpose-designed workspaces to help creative businesses thrive.</p>
+            <p>From autumn 2020, Design District will offer a new permanent home for the creative industries in south east London. With flexible leases and purpose-designed workspaces to help creative businesses thrive.</p>
           </div>
           <div class="col-12 col-md-1" />
           <div class="col-12 col-md-4">
@@ -108,9 +108,9 @@
           </div>
           <div class="col-6 col-md-3 col-lg-3 mb-5">
             <h5>Connect</h5>
+            <a class="" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
             <a class="" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
             <a class="" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br>
-            <a class="" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
             <a class="" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london">LinkedIn</a>
           </div>
 
@@ -196,6 +196,17 @@ export default {
       if (to.fullPath !== from.fullPath) {
         this.menuActive = false
       }
+    }
+  },
+  mounted () {
+    // From testing, without a brief timeout, it won't work.
+    if (this.$route.hash) {
+      this.$nextTick(() => {
+        // This could be configured to use a smooth scroll, etc.
+        // window.scrollTo(0, scrollBehavior(this.$route).y)
+        console.log(document.querySelector(this.$route.hash).offsetTop - 50)
+        window.scrollTo({ top: document.querySelector(this.$route.hash).offsetTop - 50, behavior: 'smooth' })
+      })
     }
   }
 }

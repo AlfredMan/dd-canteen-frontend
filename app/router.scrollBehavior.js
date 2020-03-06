@@ -45,6 +45,8 @@ export default async function (to, from, savedPosition) {
   //
   // return { x: 0, y: 0 }
 
+  console.log('scrollBehavior called', to, from)
+
   const defaultPosition = false
   const scrollTopPosition = { x: 0, y: 0 }
 
@@ -60,8 +62,12 @@ export default async function (to, from, savedPosition) {
 
   return new Promise((resolve) => {
     window.$nuxt.$once('triggerScroll', () => {
+      // debugger
       if (to.hash && document.querySelector(to.hash)) {
-        position = { selector: to.hash }
+        position = {
+          selector: to.hash,
+          offset: { x: 0, y: 50 }
+        }
       }
 
       resolve(position)

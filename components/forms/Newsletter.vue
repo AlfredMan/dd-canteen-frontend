@@ -5,7 +5,8 @@
       <p>We'll be in touch soon. Meanwhile, follow our <a href="https://www.instagram.com/designdistrictlondon/" target="_blank" rel="noreferrer">Instagram</a> for more news and updates.</p>
     </div>
     <p v-if="!isSuccess">
-      Sign up now to stay in the loop with the latest happenings on the&nbsp;Peninsula.
+      <!-- Sign up now to stay in the loop with the latest happenings on the&nbsp;Peninsula. -->
+      Sign-up today for the latest Design District news, updates and&nbsp;events.
     </p>
     <form
       v-if="!isSuccess"
