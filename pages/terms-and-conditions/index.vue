@@ -39,7 +39,7 @@
           </p>
           <h5>Privacy</h5>
           <p>
-            <span>To read our Privacy Statement please&nbsp;<a href="http://greenwich-dev.uniformstaging.net/privacy-policy/" target="_blank"><span class="s2">click this link</span></a>.</span>
+            <span>To read our Privacy Statement please&nbsp;<a href="/privacy-policy/"><span class="s2">click this link</span></a>.</span>
           </p>
           <h5>General</h5>
           <p>

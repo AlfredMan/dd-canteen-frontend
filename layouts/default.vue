@@ -56,8 +56,7 @@
         </div>
         <div class="row p-4 mobile-footer">
           <div class="col-12">
-            <!-- <h5>DESIGN DISTRICT</h5> -->
-            <a class="">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a>
+            <a class="">The Gateway Pavilion<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a>
 
             <br><br>
 

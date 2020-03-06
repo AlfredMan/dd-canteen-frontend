@@ -2,7 +2,12 @@
   <!-- <div class="bg-light container-fluid">
 <div class="container"> -->
   <div class="">
+    <div v-if="formState === 'complete'">
+      <h5>Thank you for your interest!</h5>
+      <p>We'll be in touch soon. Meanwhile, follow our <a href="https://www.instagram.com/designdistrictlondon/" target="_blank" rel="noreferrer">Instagram</a> for more news and updates.</p>
+    </div>
     <form
+      v-if="formState !== 'complete'"
       ref="enquireForm"
       class="page-form"
       action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"
@@ -685,7 +690,7 @@
                 :class="{'is-invalid': true, 'is-valid': true}"
               >
               <label class="cb" for="enquirePrivacyOptIn">
-                <span>I agree to the terms of your <a href="/privacy-policy/">Privacy Policy</a>*</span>
+                <span>I agree to the terms of your <a href="/privacy-policy/" target="_blank">Privacy Policy</a>*</span>
               </label>
               <!-- <div class="invalid-feedback">
                 You must agree before submitting.
@@ -825,8 +830,8 @@
       </div>
 
       <input type="hidden" name="oid" value="00D20000000nxym">
-      <!-- <input type="hidden" name="retURL" value="https://designdistrict.co.uk/success/"> -->
-      <input type="hidden" name="retURL" :value="retURL">
+      <input type="hidden" name="retURL" value="https://designdistrict.co.uk/success/">
+      <!-- <input type="hidden" name="retURL" :value="retURL"> -->
       <input id="00N0O00000AB5j2" ref="00N0O00000AB5j2" type="hidden" name="00N0O00000AB5j2" value="Web Form">
       <input id="00N0O00000AB5j1" ref="00N0O00000AB5j1" type="hidden" name="00N0O00000AB5j1" value="Design District">
       <input id="00N0O00000AB5iY" ref="00N0O00000AB5iY" type="hidden" name="00N0O00000AB5iY" value="Design District Sales Enquiry">
@@ -843,6 +848,13 @@
 
       <input id="recordType" type="hidden" name="recordType" value="0123Y0000007v91">
     </form>
+    <!-- <iframe
+      id="enquireRet"
+      ref="enquireRet"
+      name="enquireRet"
+      style="display:none"
+      @load="retOnload"
+    /> -->
   </div>
 </template>
 
@@ -876,6 +888,7 @@ export default {
       industry: '',
       roleType: '',
       showPart2: false,
+      formTarget: '',
       formAlert: {
         type: '',
         text: ''
@@ -916,6 +929,15 @@ export default {
       //   })
       // })(jQuery)
     },
+    retOnload (e) {
+      console.log('retOnload', e)
+      // debugger
+      // this.formState = 'complete'
+      // this.formAlert.type = 'success'
+      // this.formAlert.text = 'Complete.'
+      // this.formAction = 'Complete'
+      // this.$router.push({ query: { enquire: 'success' } })
+    },
     arrayIncludesString (arr, string) {
       return _.includes(arr, string)
     },
@@ -946,41 +968,63 @@ export default {
       // do some checking
       return true
     },
-    onVerify (response) {
-      console.log('Verify: ' + response)
+    onVerify (recaptchaToken) {
+      console.log('Verify: ' + recaptchaToken)
 
       // this.formState = 'idle'
       // this.formAlert.type = 'success'
       // this.formAlert.text = 'Complete.'
+      // const url = 'https://us-central1-designdistrict-2b9e1.cloudfunctions.net/verify'
+      // const url = 'http://localhost:5001/designdistrict-2b9e1/us-central1/verify'
+      // // let url = 'https://www.google.com/recaptcha/api/siteverify'
+      // this.$axios.$post(url, {
+      //   token: recaptchaToken
+      // }).then((response) => {
+      //   console.log(response)
+      //   this.formState = 'loading'
+      //   this.formTarget = 'enquireRet'
+      //   this.$refs.enquireForm.submit()
+      // }).catch((error) => {
+      //   console.log(error.message)
+      // })
+      this.$refs.enquireForm.submit()
 
-      setTimeout(() => {
-        this.formState = 'idle'
-        this.formAlert.type = 'success'
-        this.formAlert.text = 'Complete.'
-        this.formAction = 'Complete'
+      debugger
 
-        // alert('done')
-        this.$refs.enquireForm.submit()
+      // this.$refs.enquireForm.submit()
+      //
+      // setTimeout(() => {
+      //   this.formState = 'idle'
+      //   this.formAlert.type = 'success'
+      //   this.formAlert.text = 'Complete.'
+      //   this.formAction = 'Complete'
+      // }, 1000)
 
-        setTimeout(() => {
-          this.formState = 'idle'
-          this.formAlert.type = ''
-          this.formAlert.text = ''
-          this.formAction = 'Submit'
-        }, 3000)
-      }, 1000)
+      // setTimeout(() => {
+      //   // alert('done')
+      //   this.$refs.enquireForm.submit()
+      //
+      //   setTimeout(() => {
+      //     this.formState = 'idle'
+      //     this.formAlert.type = ''
+      //     this.formAlert.text = ''
+      //     this.formAction = 'Submit'
+      //   }, 3000)
+      // }, 1000)
     },
     onExpired () {
-      console.error('reCAPTCHA has expired')
+      // console.error('reCAPTCHA has expired')
       // this.formState = 'idle'
       // this.formAlert.type = 'error'
       // this.formAlert.text = 'reCAPTCHA has expired. Please try again.'
-      setTimeout(() => {
-        this.resetRecaptcha()
-      }, 3000)
+      // setTimeout(() => {
+      this.resetRecaptcha()
+      // }, 2000)
     },
     resetRecaptcha () {
-      this.$refs.invisibleRecaptcha.reset() // Direct call reset method
+      if (this.$refs.invisibleRecaptcha) {
+        this.$refs.invisibleRecaptcha.reset() // Direct call reset method
+      }
     },
     submitEnquireForm () {
       // const form = document.forms.enquireForm

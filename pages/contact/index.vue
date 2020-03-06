@@ -48,19 +48,19 @@
               <div class="row d-flex align-items-end mt-5 pt-5"> -->
                 <div class="col-12 col-md-6 col-lg-6 mb-3">
                   <h5>Tube</h5>
-                  <p>The closest tube station in North Greenwich (30 metres). On the 24-hour Jubilee line, it gets you to London Bridge in 8 minutes and Waterloo in 11 minutes.</p>
+                  <p>The closest tube station in North Greenwich (30 metres). On the 24-hour Jubilee line, it gets you to London Bridge in 8 minutes and Waterloo in 11&nbsp;minutes.</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 mb-3">
                   <h5>Boat</h5>
-                  <p>Travel along the Thames to Tate Modern, Tate Britain or Woolwich.</p>
+                  <p>Travel along the Thames to Tate Modern, Tate Britain or&nbsp;Woolwich.</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 mb-3">
-                  <h5>Emirates Air Line Cable Car</h5>
-                  <p>Connecting the Design District to the Royal Docks (near ExCel London) and the DLR.</p>
+                  <h5>Emirates Air Line Cable&nbsp;Car</h5>
+                  <p>Connecting the Design District to the Royal Docks (near ExCel London) and the&nbsp;DLR.</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 mb-3">
                   <h5>Bus </h5>
-                  <p>North Greenwich bus station is a major hub providing direct links across the city.</p>
+                  <p>North Greenwich bus station is a major hub providing direct links across the&nbsp;city.</p>
                 </div>
               </div>
             </div>
