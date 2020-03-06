@@ -4,7 +4,7 @@ export default {
   head: {
     titleTemplate: 'Design District | %s',
     meta: [
-      { property: 'og:image', content: 'https://designdistrict.co.uk/wp-content/themes/dd/assets/images/DD_Banner.jpg' },
+      { property: 'og:image', content: 'https://designdistrict.co.uk/DD_Banner.jpg' },
       { property: 'twitter:card', content: 'summary_large_image' },
       { property: 'twitter:site', content: '@design_district' },
 
@@ -13,14 +13,14 @@ export default {
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: 'Design District' },
       { property: 'og:description', content: 'Greenwich Peninsula, London' },
-      { property: 'og:image', content: 'https://designdistrict.co.uk/wp-content/themes/dd/assets/images/DD_Banner.jpg' },
+      { property: 'og:image', content: 'https://designdistrict.co.uk/DD_Banner.jpg' },
 
       { name: 'twitter:card', content: 'Design District' },
       { name: 'twitter:site', content: '@thepeninsulist' },
       { name: 'twitter:creator', content: '@thepeninsulist' },
       { name: 'twitter:title', content: 'Design District' },
       { name: 'twitter:description', content: 'Greenwich Peninsula, London' },
-      { name: 'twitter:image', content: 'https://designdistrict.co.uk/wp-content/themes/dd/assets/images/DD_Banner.jpg" ' }
+      { name: 'twitter:image', content: 'https://designdistrict.co.uk/DD_Banner.jpg" ' }
     ],
     link: [
       { rel: 'icon', type: 'image/png', href: '/assets/images/icon-120.png' }
