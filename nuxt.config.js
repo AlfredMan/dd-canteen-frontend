@@ -12,14 +12,14 @@ export default {
       { property: 'og:url', content: 'https://designdistrict.co.uk' },
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: 'Design District' },
-      { property: 'og:description', content: 'Greenwich Peninsula, London' },
+      { property: 'og:description', content: 'London’s new work space for the creative industries. Opening autumn 2020.' },
       { property: 'og:image', content: 'https://designdistrict.co.uk/DD_Banner.jpg' },
 
       { name: 'twitter:card', content: 'Design District' },
       { name: 'twitter:site', content: '@thepeninsulist' },
       { name: 'twitter:creator', content: '@thepeninsulist' },
       { name: 'twitter:title', content: 'Design District' },
-      { name: 'twitter:description', content: 'Greenwich Peninsula, London' },
+      { name: 'twitter:description', content: 'London’s new work space for the creative industries. Opening autumn 2020.' },
       { name: 'twitter:image', content: 'https://designdistrict.co.uk/DD_Banner.jpg" ' }
     ],
     link: [
