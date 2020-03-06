@@ -12,14 +12,14 @@ export default {
       { property: 'og:url', content: 'https://designdistrict.co.uk' },
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: 'Design District' },
-      { property: 'og:description', content: 'London’s new work space for the creative industries. Opening autumn 2020.' },
+      { property: 'og:description', content: 'A new permanent home for the creative industries. With purpose-designed workspaces, workshops, accessible rents and flexible leases. It comprises 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. Each is tailored to the needs of creative businesses to help them thrive.' },
       { property: 'og:image', content: 'https://designdistrict.co.uk/DD_Banner.jpg' },
 
       { name: 'twitter:card', content: 'Design District' },
-      { name: 'twitter:site', content: '@thepeninsulist' },
-      { name: 'twitter:creator', content: '@thepeninsulist' },
+      { name: 'twitter:site', content: '@Design_District' },
+      { name: 'twitter:creator', content: '@Design_District' },
       { name: 'twitter:title', content: 'Design District' },
-      { name: 'twitter:description', content: 'London’s new work space for the creative industries. Opening autumn 2020.' },
+      { name: 'twitter:description', content: 'A new permanent home for the creative industries. With purpose-designed workspaces, workshops, accessible rents and flexible leases. It comprises 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. Each is tailored to the needs of creative businesses to help them thrive.' },
       { name: 'twitter:image', content: 'https://designdistrict.co.uk/DD_Banner.jpg" ' }
     ],
     link: [
