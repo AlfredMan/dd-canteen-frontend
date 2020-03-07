@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="">
-    <div class="container pb-5  pt-5">
+    <div class="container pb-5 pt-5">
       <div class="row">
         <div class="col-12 col-md-6">
           <h1>
@@ -28,5 +28,8 @@ h5 {
   &:not(:first-child) {
     margin-top: 4rem
   }
+}
+p {
+  max-width: 100%
 }
 </style>

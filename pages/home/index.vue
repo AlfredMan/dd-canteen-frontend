@@ -63,7 +63,7 @@
             <img
               style=""
               class="lazyload"
-              data-src="https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=jpg&q=80"
+              data-src="https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=800&fm=jpg&q=80"
               alt=""
             >
           </div>
@@ -80,7 +80,7 @@
 
     <!--  -->
     <div class="container-fluid">
-      <div class="row bg-light pb-5 pt-3">
+      <div class="row bg-light pb-5-pt-3">
         <div class="container py-5">
           <div class="row d-flex">
             <div class="col-12 col-md-4">
@@ -95,15 +95,21 @@
           </div>
 
           <div class="row d-flex align-items-end mt-5 pt-5">
-            <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
-              <div class="">
+            <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+              <!-- <div class="">
                 <img
                   class="lazyload"
                   data-src="https://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=2000&fm=jpg&q=80"
                   alt=""
                 >
-              </div>
-              <div class="" style="min-height: x18em">
+              </div> -->
+              <lazy-image
+              :src="'https://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg'"
+              :w="2000"
+              :h="2000"
+              :xcustom="'fit=thumb&f=bottom'"
+              />
+              <div class="">
                 <span />
                 <h3>Creative work&nbsp;space</h3>
                 <p>
@@ -119,21 +125,27 @@
                 data-src="http://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=1600&h=2000&fm=jpg&q=80&fit=thumb"
                 alt="">
               </div>
-              <div class="" style="min-height: x18em">
+              <div class="">
                 <span></span>
                 <h3>The Club</h3>
                 <p>Aimed at freelancers, entrepreneurs and start-ups, The Club offers a place to work but also talks, events and business support. <router-link to="/the-club" class="">Express your interest</router-link>.</p>
               </div>
             </div> -->
-            <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
-              <div class="">
+            <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+              <!-- <div class="">
                 <img
                   class="lazyload"
                   data-src="http://images.ctfassets.net/7p1ysxjarsp5/33wkoRXjjbWuilpEmwjaRl/b44134581716be6e4fcf4c3846a5b46d/Design-District-Matthew-Thompson-0205-LOW-RES.jpg?w=2000&h=2000&fm=jpg&q=80&fit=thumb"
                   alt=""
                 >
-              </div>
-              <div class="" style="min-height: x18em">
+              </div> -->
+              <lazy-image
+              :src="'http://images.ctfassets.net/7p1ysxjarsp5/33wkoRXjjbWuilpEmwjaRl/b44134581716be6e4fcf4c3846a5b46d/Design-District-Matthew-Thompson-0205-LOW-RES.jpg'"
+              :w="2000"
+              :h="2000"
+              :custom="'fit=thumb'"
+              />
+              <div class="">
                 <span />
                 <h3>Workshops</h3>
                 <p>
@@ -143,15 +155,19 @@
                 </p>
               </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
-              <div class="">
+            <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+              <!-- <div class="">
                 <img
                   class="lazyload"
                   data-src="https://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=2000&fm=jpg&q=80"
                   alt=""
                 >
-              </div>
-              <div class="" style="min-height: x18em">
+              </div> -->
+              <lazy-image
+              :src="'https://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg'"
+              :w="2000"
+              />
+              <div class="">
                 <span />
                 <h3>For hire</h3>
                 <p>
@@ -161,15 +177,20 @@
                 </p>
               </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
-              <div class="">
+            <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+              <!-- <div class="">
                 <img
                   class="lazyload"
                   data-src="http://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=1600&h=2000&fm=jpg&q=80&fit=thumb"
                   alt=""
                 >
-              </div>
-              <div class="" style="min-height: x18em">
+              </div> -->
+              <lazy-image
+              :src="'http://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg'"
+              :w="1600"
+              :h="2000"
+              />
+              <div class="">
                 <span />
                 <h3>Membership</h3>
                 <p>
@@ -197,11 +218,17 @@
           </router-link>
         </div>
         <div class="col-12 col-md-5">
-          <img
+          <!-- <img
             class="lazyload"
             data-src="http://images.ctfassets.net/7p1ysxjarsp5/22w4CLfcQCe1mdF3zH64Dy/89f59d445e25ae91085e0aa8e5b8bbd0/Design-District-Matthew-Thompson-2226-LOW-RES.jpg?w=2000&h=2000&fm=jpg&q=80&fit=thumb"
             alt=""
-          >
+          > -->
+          <lazy-image
+          :src="'http://images.ctfassets.net/7p1ysxjarsp5/22w4CLfcQCe1mdF3zH64Dy/89f59d445e25ae91085e0aa8e5b8bbd0/Design-District-Matthew-Thompson-2226-LOW-RES.jpg'"
+          :w="2000"
+          :h="2000"
+          :custom="'fit=thumb'"
+          />
         </div>
       </div>
       <!-- <div class="row d-flex justify-content-end align-items-end mt-0 mt-lg-n5" style="margin-top: -30rem!important">
@@ -259,7 +286,7 @@
 
     <!--  -->
     <div class="container-fluid">
-      <div class="row bg-dark text-light pb-5 pt-3">
+      <div class="row bg-dark text-light pb-5-pt-3">
         <div class="container py-5">
           <div class="row">
             <div class="col-12 col-md-6">
@@ -276,13 +303,18 @@
           </div>
 
           <div v-if="randomStudios" class="row d-flex align-items-end mt-5 pt-5">
-            <div v-for="studio in randomStudios" class="col-12 col-md-6 col-lg-3 mb-5">
+            <div v-for="studio in randomStudios" class="col-12 col-md-6 col-lg-3 mb-5 mb-lg-0">
               <!-- <router-link :to="`/architecture/${studio.slug}`">
                 <img class="lazyload" :data-src="studio.imagesPractice[0].url" alt="">
                 <h5>{{ studio.title }}</h5>
               </router-link> -->
               <!-- <router-link :to="`/architecture/${studio.slug}`"> -->
-              <img class="lazyload" :data-src="studio.imagesPractice[0].url" alt="">
+              <!-- <img class="lazyload" :data-src="studio.imagesPractice[0].url" alt=""> -->
+                <lazy-image
+                :src="studio.imagesPractice[0].url"
+                :w="2000"
+                :h="2000"
+                />
               <h5>{{ studio.title }}</h5>
               <!-- </router-link>               -->
             </div>

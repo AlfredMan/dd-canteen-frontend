@@ -146,4 +146,7 @@ h5 {
     margin-top: 4rem
   }
 }
+p {
+  max-width: 100%
+}
 </style>

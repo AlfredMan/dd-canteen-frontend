@@ -40,9 +40,11 @@ h1,
 .h1 {
 	font-weight: 500;
 	line-height: 0.8;
-	margin: 2rem 0;
-	line-height: 0.925;
+	margin: 2rem 0 2.5rem;
+	// line-height: 0.925;
+  line-height: 0.8;
 	letter-spacing: -0.05em;
+  margin-left: -.035em;
 
 	font-size: 5rem;
 	@include media-breakpoint-up(md) {
@@ -64,6 +66,7 @@ h2,
 	line-height: 0.925;
 	letter-spacing: -0.05em;
 	margin: 2rem 0;
+  margin-left: -.035em;
 
 	&:first-child {
 		margin-top: -0.1em;
@@ -243,5 +246,13 @@ h4,
 .h4 {
 	&:first-child {
     margin-top: -0.1em
+  }
+}
+h5,
+.h5,
+p,
+.p {
+	&:last-child {
+    margin-bottom: 0
   }
 }

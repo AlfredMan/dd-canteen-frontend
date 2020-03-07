@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="">
-    <div v-if="false" class="container pb-5  pt-5">
+    <div v-if="false" class="container py-5">
       <div class="row">
         <div class="col-12 col-md-5">
           <h1>The Club</h1>
@@ -132,9 +132,9 @@
       </div> -->
     </div>
 
-    <div class="container-fluid -bg-light bg-white py-5">
+    <div class="container-fluid -bg-light bg-white">
       <div class="row">
-        <div class="container my-5">
+        <div class="container py-5">
           <div class="row">
             <div class="col-12 col-md-6">
               <h2>Become a member</h2>
