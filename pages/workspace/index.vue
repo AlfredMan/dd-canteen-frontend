@@ -31,13 +31,13 @@
       <div class="row -pt-3">
         <div class="container py-5">
           <div class="row -mb-5">
-            <div class="col-12 col-md-6 -mb-5">
+            <div class="col-12 col-md-6 mb-5">
               <h2>Find a work space</h2>
               <h4>Rent a desk, a studio,  a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</h4>
-              <br>
+              <!-- <br> -->
               <h3>Flexible tenancies</h3>
               <p>Rent work spaces on short or long leases made to be flexible. Grow the size of your studio along with your business.</p>
-              <br>
+              <!-- <br> -->
               <!-- <h3>What we offer: </h3>
               <ul class="h6">
                 <li>A desk to 1,500 sq. ft studio space</li>

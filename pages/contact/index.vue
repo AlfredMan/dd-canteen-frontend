@@ -12,17 +12,23 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-12 col-md-3">
-          <h5>General enquiries</h5>
-          <p><a href="mailto:hello@designdistrict.co.uk">hello@designdistrict.co.uk</a></p>
+        <div class="col-12 col-md-3 mb-4 mb-lg-0">
+          <p>
+            <strong>General enquiries</strong><br>
+            <a href="mailto:hello@designdistrict.co.uk">hello@designdistrict.co.uk</a>
+          </p>
         </div>
-        <div class="col-12 col-md-3">
-          <h5>Sales</h5>
-          <p><a href="mailto:sales@designdistrict.co.uk">sales@designdistrict.co.uk</a><br>+44 (0)20 3981 2426</p>
+        <div class="col-12 col-md-3 mb-4 mb-lg-0">
+          <p>
+            <strong>Sales</strong><br>
+            <a href="mailto:sales@designdistrict.co.uk">sales@designdistrict.co.uk</a><br>+44 (0)20 3981 2426
+          </p>
         </div>
-        <div class="col-12 col-md-3">
-          <h5>Press</h5>
-          <p><a href="mailto:designdistrict@zetteler.co.uk">designdistrict@zetteler.co.uk</a><br>+44 (0)20 3735 5855</p>
+        <div class="col-12 col-md-3 mb-4 mb-lg-0">
+          <p>
+            <strong>Press</strong><br>
+            <a href="mailto:designdistrict@zetteler.co.uk">designdistrict@zetteler.co.uk</a><br>+44 (0)20 3735 5855
+          </p>
         </div>
       </div>
     </div>
