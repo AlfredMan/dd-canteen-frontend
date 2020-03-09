@@ -223,7 +223,7 @@ export default {
       this.formAlert.type = 'success'
       this.formAlert.text = 'Complete.'
       this.formAction = 'Complete'
-      this.$router.push({ query: { subscription: 'success' } })
+      // this.$router.push({ query: { subscription: 'success' } })
     },
     onFormSubmit (e) {
       this.formState = 'loading'
@@ -281,13 +281,13 @@ export default {
         token: recaptchaToken
       }).then((response) => {
         console.log(response)
-        this.formTarget = 'subscribRet'
+        // this.formTarget = 'subscribRet'
         this.$refs.subscribeForm.submit()
       }).catch((error) => {
         console.log(error)
       })
 
-      debugger
+      // debugger
       // this.$refs.subscribeForm.submit()
 
       // setTimeout(() => {
