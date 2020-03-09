@@ -425,7 +425,7 @@ export default {
         'userUrl': _.take(_.escape(window.location.href), 64).join('')
       }
 
-      this.$axios.$post('https://us-central1-designdistrict-2b9e1.cloudfunctions.net/sendMailDev', postBody).then((response) => {
+      this.$axios.$post('https://us-central1-designdistrict-2b9e1.cloudfunctions.net/sendMail', postBody).then((response) => {
         console.log(response)
         this.formState = 'complete'
         this.formAlert.type = 'success'
