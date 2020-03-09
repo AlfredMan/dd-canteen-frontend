@@ -14,6 +14,11 @@ export default async function (to, from, savedPosition) {
   // } else {
   //   return { x: 0, y: 0 }
   // }
+  // debugger
+
+  if (to.query && to.query.subscription && to.query.subscription === 'success') {
+    return
+  }
 
   if (savedPosition) {
     return savedPosition

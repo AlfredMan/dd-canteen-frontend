@@ -207,7 +207,7 @@ export default {
     this.init()
   },
   updated () {
-    console.log(this.$route.path)
+    // console.log(this.$route.path)
   },
   methods: {
     init () {
