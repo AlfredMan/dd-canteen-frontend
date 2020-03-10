@@ -17,17 +17,17 @@ export default async function (to, from, savedPosition) {
   // debugger
 
   if (to.query && to.query.subscription && to.query.subscription === 'success') {
-    console.log('to')
+    // console.log('to')
     return
   }
 
   if (savedPosition) {
-    console.log(savedPosition)
+    // console.log(savedPosition)
     return savedPosition
   }
 
   const findEl = async (hash, x = 0) => {
-    console.log('findEl')
+    // console.log('findEl')
     return (
       document.querySelector(hash) ||
       new Promise((resolve) => {
@@ -36,16 +36,16 @@ export default async function (to, from, savedPosition) {
         }
         setTimeout(() => {
           resolve(findEl(hash, ++x || 1))
-        }, 50)
+        }, 200)
       })
     )
   }
 
   if (to.hash) {
-    console.log(to.hash)
+    // console.log(to.hash)
     const el = await findEl(to.hash)
     const offset = 0
-    console.log(el.offsetTop)
+    // console.log(el.offsetTop)
     if ('scrollBehavior' in document.documentElement.style) {
       // return window.scrollTo({ top: el.offsetTop, behavior: 'smooth' })
       return window.scrollTo({ top: el.offsetTop - offset, behavior: 'auto' })
