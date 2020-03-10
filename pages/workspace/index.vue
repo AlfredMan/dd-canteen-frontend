@@ -324,7 +324,7 @@
     </div> -->
 
     <!--  -->
-    <span class="anchor" id="service-and-facilities"></span>    
+    <span class="anchor" id="service-and-facilities"></span>
     <div class="container-fluid anchor-target">
       <div class="row pb-5-pt-3 bg-light">
         <div class="container py-5">
@@ -570,9 +570,8 @@
         <enquire-form></enquire-form>
       </div>
     </div> -->
-
+    <span class="anchor" id="become-a-tenant" ></span>
     <div class="py-5 bg-white anchor-target">
-      <span class="anchor" id="become-a-tenant" ></span>
       <div class="container -my-5">
         <div class="row">
           <div class="col-12 col-md-4">
