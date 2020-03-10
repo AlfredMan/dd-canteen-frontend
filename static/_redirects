@@ -8,4 +8,12 @@ http://designdistrict.netlify.com/* https://designdistrict.co.uk/:splat 301!
 http://designdistrict.co.uk/* https://designdistrict.co.uk/:splat 301!
 
 # For Netlify SPA fallback, will be copied to dist/_redirects
-/*    /index.html   200
+/location       /contact
+/enquire        /contact
+/look-inside    /workspace
+/creatives      /about-us
+/author/*       /about-us
+/architects/*   /about-us
+/architects     /about-us
+/architecture   /about-us
+/*              /index.html   200

@@ -23,9 +23,9 @@ export default {
       { name: 'twitter:image', content: 'https://designdistrict.co.uk/DD_Banner.jpg" ' }
     ],
     link: [
-      { rel: 'icon', type: 'image/png', href: '/assets/images/icon-120.png' }
+      { rel: 'icon', type: 'image/png', href: '/assets/images/icon-120.png' },
       // { rel: 'dns-prefetch', href: 'https://api.designdistrict.co.uk' },
-      // { rel: 'preconnect', href: 'https://api.designdistrict.co.uk' }
+      { rel: 'preconnect', href: 'https://images.ctfassets.net' }
     ]
   },
 
