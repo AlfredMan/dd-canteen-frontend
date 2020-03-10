@@ -4,9 +4,9 @@
       <div class="row pt-5 pb-5">
         <div class="col-12 col-md-3 col-lg-3 mb-5">
           <h5>DESIGN DISTRICT</h5>
-          <a class="">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a><br><br>
-          <a class="">hello@designdistrict.co.uk</a><br>
-          <a class="">020 3981 2426</a><br>
+          <a target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/The+Gateway+Pavilions,+Peninsula+Square,+Greenwich+Peninsula,+London+SE10+0SQ/@51.5003894,0.0041197,18.67z?hl=en">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a><br><br>
+          <email :address="'hello@designdistrict.co.uk'"></email><br>
+          <a class="">+44 (0)20 3981 2426</a><br>
         </div>
         <div class="col-6 col-md-3 col-lg-3 mb-5">
           <h5>Connect</h5>

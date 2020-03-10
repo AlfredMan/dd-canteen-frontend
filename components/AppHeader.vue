@@ -21,11 +21,14 @@
           Contact Us
         </nuxt-link>
 
-        <nuxt-link :to="{ path: '/contact', hash: '#register-interest' }" class="btn text-black btn-outline-primary ml-auto mr-0" :class="{'btn-outline-dark': menuActive}">
+        <a href="/contact#register-interest" class="btn text-black btn-outline-primary ml-auto mr-0" :class="{'btn-outline-dark': menuActive}">
           <span class="d-inline d-lg-none">Join Now</span>
           <span class="d-none d-lg-inline">Join design district</span>
-          <!-- <span>Join design district</span> -->
-        </nuxt-link>
+        </a>
+        <!-- <nuxt-link :to="{ path: '/contact', hash: '#register-interest' }" class="btn text-black btn-outline-primary ml-auto mr-0" :class="{'btn-outline-dark': menuActive}">
+          <span class="d-inline d-lg-none">Join Now</span>
+          <span class="d-none d-lg-inline">Join design district</span>
+        </nuxt-link> -->
 
         <div class="d-block d-lg-none pl-3">
           <button class="form-field-reset btn cursor-pointer p0 mt-1" type="button" @click="menuActive = !menuActive">
@@ -59,7 +62,7 @@
         <div class="col-12">
           <a class="">The Gateway Pavilion<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a>
           <br><br>
-          <a class="">hello@designdistrict.co.uk</a><br>
+          <email :address="'hello@designdistrict.co.uk'"></email><br>
           <a class="">020 3981 2426</a>
           <br><br>
           <!-- </div>

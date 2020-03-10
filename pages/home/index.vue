@@ -16,9 +16,13 @@
             <h4>
               Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.
             </h4>
-            <router-link to="/contact/#register-interest" class="btn btn btn-lg btn-primary mt-3">
+            <!-- <router-link to="/contact#register-interest" class="btn btn btn-lg btn-primary mt-3">
+              Express interest rl
+            </router-link> -->
+            <a href="/contact#register-interest" class="btn btn btn-lg btn-primary mt-3">
               Express interest
-            </router-link>
+            </a>
+            <!-- <nuxt-link :to="{ path: '/contact',hash:'#register-interest'}" class="btn btn btn-lg btn-primary mt-3">Express interest ei</nuxt-link> -->
           </div>
           <!-- <div class="col-12 col-md-1" />
           <div class="col-12 col-md-6" style="">
@@ -149,9 +153,9 @@
                 <span />
                 <h3>Workshops</h3>
                 <p>
-                  Need a 3D-printer or a test kitchen, a pattern-cutting table or a coding lab? There’s space to make in our on-site workshops. <router-link to="/workspace#service-and-facilities" class="">
+                  Need a 3D-printer or a test kitchen, a pattern-cutting table or a coding lab? There’s space to make in our on-site workshops. <a href="/workspace#service-and-facilities" class="">
                     Find out more
-                  </router-link>
+                  </a>
                 </p>
               </div>
             </div>
@@ -171,9 +175,9 @@
                 <span />
                 <h3>For hire</h3>
                 <p>
-                  Book a recording and broadcast studio, meeting rooms, events spaces, a pop-up retail space and even a multi-sport rooftop court. <router-link to="/#newsletter" class="">
+                  Book a recording and broadcast studio, meeting rooms, events spaces, a pop-up retail space and even a multi-sport rooftop court. <a href="#newsletter" class="">
                     Coming soon
-                  </router-link>
+                  </a>
                 </p>
               </div>
             </div>
@@ -296,9 +300,9 @@
           </div>
           <div class="row">
             <div class="col-12 col-md-5">
-              <router-link to="/about-us/#architecture" class="h5 text-primary">
+              <a href="/about-us#architecture" class="h5 text-primary">
                 View all architects &rarr;
-              </router-link>
+              </a>
             </div>
           </div>
 

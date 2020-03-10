@@ -15,19 +15,21 @@
         <div class="col-12 col-md-3 mb-4 mb-lg-0">
           <p>
             <strong>General enquiries</strong><br>
-            <a href="mailto:hello@designdistrict.co.uk">hello@designdistrict.co.uk</a>
+            <email :address="'hello@designdistrict.co.uk'"></email>
           </p>
         </div>
         <div class="col-12 col-md-3 mb-4 mb-lg-0">
           <p>
             <strong>Sales</strong><br>
-            <a href="mailto:sales@designdistrict.co.uk">sales@designdistrict.co.uk</a><br>+44 (0)20 3981 2426
+            <email :address="'sales@designdistrict.co.uk'"></email>
+            <br>+44 (0)20 3981 2426
           </p>
         </div>
         <div class="col-12 col-md-3 mb-4 mb-lg-0">
           <p>
             <strong>Press</strong><br>
-            <a href="mailto:designdistrict@zetteler.co.uk">designdistrict@zetteler.co.uk</a><br>+44 (0)20 3735 5855
+            <email :address="'designdistrict@zetteler.co.uk'"></email>
+            <br>+44 (0)20 3735 5855
           </p>
         </div>
       </div>
@@ -85,7 +87,8 @@
       </div>
     </div> -->
 
-    <div id="register-interest" class="py-5">
+    <div class="py-5 anchor-target">
+      <span class="anchor" id="register-interest"></span>
       <div class="container">
         <div class="row">
           <div class="col-6">
@@ -97,20 +100,12 @@
               Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.
             </h4> -->
             <h4>
-              Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch. For general enquiries, please email us at <a href="mailto:hello@designdistrict.co.uk">hello@designdistrict.co.uk</a>
+              Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch. For general enquiries, please email us at <email :address="'hello@designdistrict.co.uk'"></email>
             </h4>
             <br>
             <!-- <enquire-form :show-business="false" /> -->
             <enquire-form />
           </div>
-          <!-- <div class="col-12 col-md-1" />
-          <div class="col-12 col-md-4">
-            <h5>Drop us a line using the details below</h5>
-
-            <p><b>Front office</b><br><a href="#">hello@designdistrict.co.uk</a></p>
-
-            <p><b>Alex Howard<br>Sales<br></b><a href="#">alex@designdistrict.co.uk</a><br>020 3981 2426</p>
-          </div> -->
         </div>
       </div>
     </div>

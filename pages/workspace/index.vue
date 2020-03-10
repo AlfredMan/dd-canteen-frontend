@@ -17,7 +17,11 @@
             <div class="col-12 col-md-6">
               <div class="row d-flex align-items-end justify-content-end">
                 <div class="col-12 col-md-12">
-                  <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/1vccdswWfzojf7HUFt3t2w/8fb6455dafc6632094801439d0c791f0/Design-District-Matthew-Thompson-1505-LOW-RES.jpg?w=2000&h=2000&fm=jpg&q=80" alt="">
+                  <lazy-image
+                  :src="'https://images.ctfassets.net/7p1ysxjarsp5/1vccdswWfzojf7HUFt3t2w/8fb6455dafc6632094801439d0c791f0/Design-District-Matthew-Thompson-1505-LOW-RES.jpg'"
+                  :w="1000"
+                  :h="1000"
+                  />
                 </div>
               </div>
             </div>
@@ -56,7 +60,12 @@
             </div>
             <div class="col-12 col-md-1" />
             <div class="col-12 col-md-5">
-              <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/6rHoxeVj26VyAX2odQiUB7/d0b8111acc6b6e4123d4ab8c6ebcf1ab/RoofTerrace.jpg?w=1000&h=1200&fm=jpg&q=80&fit=thumb" alt="">
+              <lazy-image
+              :src="'https://images.ctfassets.net/7p1ysxjarsp5/6rHoxeVj26VyAX2odQiUB7/d0b8111acc6b6e4123d4ab8c6ebcf1ab/RoofTerrace.jpg'"
+              :w="1000"
+              :h="1200"
+              :custom="'fit=thumb'"
+              />
             </div>
           </div>
 
@@ -315,7 +324,8 @@
     </div> -->
 
     <!--  -->
-    <div id="service-and-facilities" class="container-fluid">
+    <div class="container-fluid anchor-target">
+      <span class="anchor" id="service-and-facilities"></span>
       <div class="row pb-5-pt-3 bg-light">
         <div class="container py-5">
           <div class="row">
@@ -337,8 +347,11 @@
             <div class="col-12 col-md-5 mb-3 order-md-2">
               <div class="row d-flex align-items-end justify-content-end">
                 <div class="col-12 col-md-12">
-                  <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/21RQ1kgWpGexfUKMtcdKTm/1e47bf755d78145ee1eb547be44c627d/Hartley-Cycles_1.jpg?w=2000&h=2000&fm=jpg&q=80" alt="">
-                  <!-- <small>Caren Hartley</small> -->
+                  <lazy-image
+                  :src="'https://images.ctfassets.net/7p1ysxjarsp5/21RQ1kgWpGexfUKMtcdKTm/1e47bf755d78145ee1eb547be44c627d/Hartley-Cycles_1.jpg'"
+                  :w="1000"
+                  :h="1000"
+                  />
                 </div>
               </div>
             </div>
@@ -408,7 +421,11 @@
             <div class="col-12 col-md-5 mb-3">
               <div class="row d-flex align-items-end justify-content-end">
                 <div class="col-12 col-md-12">
-                  <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/2KQ913hiCMPeZFVYGQTDZR/51632e614fe29a553364b69990f89ad0/Design-District-Matthew-Thompson-8457-LOW-RES.jpg?w=2000&h=2000&fm=jpg&q=80" alt="">
+                  <lazy-image
+                  :src="'https://images.ctfassets.net/7p1ysxjarsp5/2KQ913hiCMPeZFVYGQTDZR/51632e614fe29a553364b69990f89ad0/Design-District-Matthew-Thompson-8457-LOW-RES.jpg'"
+                  :w="1000"
+                  :h="1000"
+                  />
                 </div>
               </div>
             </div>
@@ -431,7 +448,12 @@
             <div class="col-12 col-md-5 mb-3 order-md-2">
               <div class="row d-flex align-items-end justify-content-end">
                 <div class="col-12 col-md-12">
-                  <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/64OjUmEoOvUZh7W0EdQTfe/cbd8c37727a7c54be182da4f6d1deeb1/MarketHall.jpg?w=1000&h=1000&fm=jpg&q=80&fit=thumb" alt="">
+                  <lazy-image
+                  :src="'https://images.ctfassets.net/7p1ysxjarsp5/64OjUmEoOvUZh7W0EdQTfe/cbd8c37727a7c54be182da4f6d1deeb1/MarketHall.jpg'"
+                  :w="1000"
+                  :h="1000"
+                  :custom="'fit=thumb'"
+                  />
                 </div>
               </div>
             </div>
@@ -459,7 +481,12 @@
             <div class="col-12 col-md-5 mb-3">
               <div class="row d-flex align-items-end">
                 <div class="col-12 col-md-12">
-                  <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/7DifsFTlzI7vzhBUouVQGf/77edcddc87c2531fd53898440f016035/AdamKahn-1C-Architect.jpg?w=1000&h=800&fm=jpg&q=80&fit=thumb" alt="">
+                  <lazy-image
+                  :src="'https://images.ctfassets.net/7p1ysxjarsp5/7DifsFTlzI7vzhBUouVQGf/77edcddc87c2531fd53898440f016035/AdamKahn-1C-Architect.jpg'"
+                  :w="1000"
+                  :h="800"
+                  :custom="'fit=thumb'"
+                  />
                 </div>
               </div>
             </div>
@@ -481,7 +508,11 @@
             <div class="col-12 col-md-5 mb-3">
               <div class="row d-flex align-items-end justify-content-end">
                 <div class="col-12 col-md-12">
-                  <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/HZdjU0R1Fsm5E43GN0IvT/5d14e50e33add1aeff3939b18060c641/KDN_Design_District_A2_190603_LR.jpeg?w=2000&h=2000&fm=jpg&q=80" alt="">
+                  <lazy-image
+                  :src="'https://images.ctfassets.net/7p1ysxjarsp5/HZdjU0R1Fsm5E43GN0IvT/5d14e50e33add1aeff3939b18060c641/KDN_Design_District_A2_190603_LR.jpeg'"
+                  :w="1000"
+                  :h="1000"
+                  />
                 </div>
               </div>
             </div>
@@ -506,7 +537,12 @@
             <div class="col-12 col-md-5 mb-3  order-md-2">
               <div class="row d-flex align-items-end justify-content-end">
                 <div class="col-12 col-md-12">
-                  <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/3aSHHWF58a3lz1wLhodNS3/d7bf1c2dd9c8e04abd2057194b16ace7/bb.jpg?w=1000&h=800&fm=jpg&q=80&fit=thumb&f=bottom" alt="">
+                  <lazy-image
+                  :src="'https://images.ctfassets.net/7p1ysxjarsp5/3aSHHWF58a3lz1wLhodNS3/d7bf1c2dd9c8e04abd2057194b16ace7/bb.jpg'"
+                  :w="1000"
+                  :h="800"
+                  :custom="'fit=thumb&f=bottom'"
+                  />
                 </div>
               </div>
             </div>
@@ -535,7 +571,8 @@
       </div>
     </div> -->
 
-    <div id="become-a-tenant" class="py-5 bg-white">
+    <div class="py-5 bg-white anchor-target">
+      <span class="anchor" id="become-a-tenant" ></span>
       <div class="container -my-5">
         <div class="row">
           <div class="col-12 col-md-4">
