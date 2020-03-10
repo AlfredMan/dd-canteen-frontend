@@ -122,7 +122,7 @@
             <!-- <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
               <div class="">
                 <img class="lazyload"
-                data-src="http://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=1600&h=2000&fm=jpg&q=80&fit=thumb"
+                data-src="https://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=1600&h=2000&fm=jpg&q=80&fit=thumb"
                 alt="">
               </div>
               <div class="">
@@ -135,7 +135,7 @@
               <!-- <div class="">
                 <img
                   class="lazyload"
-                  data-src="http://images.ctfassets.net/7p1ysxjarsp5/33wkoRXjjbWuilpEmwjaRl/b44134581716be6e4fcf4c3846a5b46d/Design-District-Matthew-Thompson-0205-LOW-RES.jpg?w=2000&h=2000&fm=jpg&q=80&fit=thumb"
+                  data-src="https://images.ctfassets.net/7p1ysxjarsp5/33wkoRXjjbWuilpEmwjaRl/b44134581716be6e4fcf4c3846a5b46d/Design-District-Matthew-Thompson-0205-LOW-RES.jpg?w=2000&h=2000&fm=jpg&q=80&fit=thumb"
                   alt=""
                 >
               </div> -->
@@ -181,7 +181,7 @@
               <!-- <div class="">
                 <img
                   class="lazyload"
-                  data-src="http://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=1600&h=2000&fm=jpg&q=80&fit=thumb"
+                  data-src="https://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=1600&h=2000&fm=jpg&q=80&fit=thumb"
                   alt=""
                 >
               </div> -->
@@ -220,7 +220,7 @@
         <div class="col-12 col-md-5">
           <!-- <img
             class="lazyload"
-            data-src="http://images.ctfassets.net/7p1ysxjarsp5/22w4CLfcQCe1mdF3zH64Dy/89f59d445e25ae91085e0aa8e5b8bbd0/Design-District-Matthew-Thompson-2226-LOW-RES.jpg?w=2000&h=2000&fm=jpg&q=80&fit=thumb"
+            data-src="https://images.ctfassets.net/7p1ysxjarsp5/22w4CLfcQCe1mdF3zH64Dy/89f59d445e25ae91085e0aa8e5b8bbd0/Design-District-Matthew-Thompson-2226-LOW-RES.jpg?w=2000&h=2000&fm=jpg&q=80&fit=thumb"
             alt=""
           > -->
           <lazy-image

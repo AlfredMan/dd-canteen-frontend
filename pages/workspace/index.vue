@@ -481,7 +481,7 @@
             <div class="col-12 col-md-5 mb-3">
               <div class="row d-flex align-items-end justify-content-end">
                 <div class="col-12 col-md-12">
-                  <img class="lazyload" data-src="http://images.ctfassets.net/7p1ysxjarsp5/HZdjU0R1Fsm5E43GN0IvT/5d14e50e33add1aeff3939b18060c641/KDN_Design_District_A2_190603_LR.jpeg?w=2000&h=2000&fm=jpg&q=80" alt="">
+                  <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/HZdjU0R1Fsm5E43GN0IvT/5d14e50e33add1aeff3939b18060c641/KDN_Design_District_A2_190603_LR.jpeg?w=2000&h=2000&fm=jpg&q=80" alt="">
                 </div>
               </div>
             </div>
