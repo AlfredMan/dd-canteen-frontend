@@ -324,8 +324,8 @@
     </div> -->
 
     <!--  -->
+    <span class="anchor" id="service-and-facilities"></span>    
     <div class="container-fluid anchor-target">
-      <span class="anchor" id="service-and-facilities"></span>
       <div class="row pb-5-pt-3 bg-light">
         <div class="container py-5">
           <div class="row">

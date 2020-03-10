@@ -17,12 +17,14 @@
               Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.
             </h4>
             <!-- <router-link to="/contact#register-interest" class="btn btn btn-lg btn-primary mt-3">
-              Express interest rl
-            </router-link> -->
-            <a href="/contact#register-interest" class="btn btn btn-lg btn-primary mt-3">
               Express interest
-            </a>
-            <!-- <nuxt-link :to="{ path: '/contact',hash:'#register-interest'}" class="btn btn btn-lg btn-primary mt-3">Express interest ei</nuxt-link> -->
+            </router-link> -->
+            <!-- <a href="/contact#register-interest" class="btn btn btn-lg btn-primary mt-3">
+              Express interest
+            </a> -->
+            <nuxt-link :to="{ path: '/contact',hash:'#register-interest'}" class="btn btn btn-lg btn-primary mt-3">
+              Express interest
+            </nuxt-link>
           </div>
           <!-- <div class="col-12 col-md-1" />
           <div class="col-12 col-md-6" style="">
@@ -92,9 +94,9 @@
             </div>
             <div class="col-12 col-md-6 ml-auto">
               <h4>Design District is a new permanent home for the creative industries. With purpose-designed workspaces, workshops, accessible rents and flexible leases. It comprises 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. Each is tailored to the needs of creative businesses to help them thrive.</h4>
-              <router-link to="/workspace" class="text-primary h5">
+              <nuxt-link :to="{ path: '/workspace'}" class="text-primary h5">
                 Find your work space &rarr;
-              </router-link>
+              </nuxt-link>
             </div>
           </div>
 
@@ -117,9 +119,10 @@
                 <span />
                 <h3>Creative work&nbsp;space</h3>
                 <p>
-                  Rent a studio, a floor, or an entire building. Spaces kitted out to suit your industry and flexible tenancies for growing teams. <router-link to="/workspace" class="">
+                  Rent a studio, a floor, or an entire building. Spaces kitted out to suit your industry and flexible tenancies for growing teams.
+                  <nuxt-link :to="{ path: '/workspace'}">
                     Become a tenant
-                  </router-link>
+                  </nuxt-link>
                 </p>
               </div>
             </div>
@@ -153,9 +156,10 @@
                 <span />
                 <h3>Workshops</h3>
                 <p>
-                  Need a 3D-printer or a test kitchen, a pattern-cutting table or a coding lab? There’s space to make in our on-site workshops. <a href="/workspace#service-and-facilities" class="">
+                  Need a 3D-printer or a test kitchen, a pattern-cutting table or a coding lab? There’s space to make in our on-site workshops.
+                  <nuxt-link :to="{ path: '/workspace', hash: '#service-and-facilities'}">
                     Find out more
-                  </a>
+                  </nuxt-link>
                 </p>
               </div>
             </div>
@@ -175,7 +179,8 @@
                 <span />
                 <h3>For hire</h3>
                 <p>
-                  Book a recording and broadcast studio, meeting rooms, events spaces, a pop-up retail space and even a multi-sport rooftop court. <a href="#newsletter" class="">
+                  Book a recording and broadcast studio, meeting rooms, events spaces, a pop-up retail space and even a multi-sport rooftop court.
+                  <a href="#newsletter" class="">
                     Coming soon
                   </a>
                 </p>
@@ -198,7 +203,8 @@
                 <span />
                 <h3>Membership</h3>
                 <p>
-                  Just starting out or trying something new? Our membership initiative will be an accessible way to be part of the Design District community, without the commitment of renting a workspace.  <router-link to="/the-club" class="">
+                  Just starting out or trying something new? Our membership initiative will be an accessible way to be part of the Design District community, without the commitment of renting a workspace.
+                  <router-link to="/the-club" class="">
                     Register your interest
                   </router-link>
                 </p>

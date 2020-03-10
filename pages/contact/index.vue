@@ -87,8 +87,8 @@
       </div>
     </div> -->
 
+    <span class="anchor" id="register-interest"></span>
     <div class="py-5 anchor-target">
-      <span class="anchor" id="register-interest"></span>
       <div class="container">
         <div class="row">
           <div class="col-6">
