@@ -60,7 +60,7 @@
       </div>
       <div class="row p-4 mobile-footer">
         <div class="col-12">
-          <a class="">The Gateway Pavilion<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a>
+          <a class="">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a>
           <br><br>
           <email :address="'hello@designdistrict.co.uk'"></email><br>
           <a class="">020 3981 2426</a>
