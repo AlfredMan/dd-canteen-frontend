@@ -7,7 +7,7 @@
           <p style="max-width: 40em;">Thank you for visiting the Design District website. In light of the current situation, we have taken the decision to suspend all site visits&nbsp;temporarily.</p>
         </div>
         <div class="col-12 col-md-6">
-          <p style="max-width: 40em;">The safety of our visitors and the community is our priority so while it would be good to meet in person, if you are interested in more information on becoming a tenant, please get in touch and we will happily arrange a digital&nbsp;walk-through.</p>
+          <p style="max-width: 40em;">The safety of our visitors and the community is our priority so while it would be good to meet in person, if you are interested in more information on becoming a tenant, please <a href="/contact">get in touch<a> and we will happily arrange a digital&nbsp;walk-through.</p>
         </div>
       </div>
     </div>
