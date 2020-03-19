@@ -148,7 +148,7 @@
       <!-- <input type="hidden" name="captcha_settings" value="{&quot;keyname&quot;:&quot;GoogleAPIKeyV2&quot;,&quot;fallback&quot;:&quot;true&quot;,&quot;orgId&quot;:&quot;00D20000000nxym&quot;,&quot;ts&quot;:&quot;&quot;}"> -->
       <input type="hidden" name="oid" value="00D20000000nxym">
       <!-- <input type="hidden" name="retURL" value="https://designdistrict.co.uk/success/"> -->
-      <input ref="retURL" type="hidden" name="retURL" value="https://designdistrict.co.uk/success/">
+      <input ref="retURL" type="hidden" name="retURL" value="https://designdistrict.co.uk/success?source=newsletter">
       <input id="00N0O00000AB5j2" ref="00N0O00000AB5j2" type="hidden" name="00N0O00000AB5j2" value="Web Form">
       <input id="00N0O00000AB5j1" ref="00N0O00000AB5j1" type="hidden" name="00N0O00000AB5j1" value="Design District">
       <input id="00N0O00000AB5iY" ref="00N0O00000AB5iY" type="hidden" name="00N0O00000AB5iY" value="Design District Subscription">

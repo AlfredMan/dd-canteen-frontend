@@ -830,8 +830,8 @@
       </div>
 
       <input type="hidden" name="oid" value="00D20000000nxym">
-      <input type="hidden" name="retURL" value="https://designdistrict.co.uk/success/">
-      <!-- <input type="hidden" name="retURL" :value="retURL"> -->
+      <!-- <input type="hidden" name="retURL" value="https://designdistrict.co.uk/success"> -->
+      <input type="hidden" name="retURL" :value="retURL">
       <input id="00N0O00000AB5j2" ref="00N0O00000AB5j2" type="hidden" name="00N0O00000AB5j2" value="Web Form">
       <input id="00N0O00000AB5j1" ref="00N0O00000AB5j1" type="hidden" name="00N0O00000AB5j1" value="Design District">
       <input id="00N0O00000AB5iY" ref="00N0O00000AB5iY" type="hidden" name="00N0O00000AB5iY" value="Design District Sales Enquiry">
@@ -875,6 +875,10 @@ export default {
     color: {
       type: String,
       default: 'primary'
+    },
+    source: {
+      type: String,
+      default: ''
     }
   },
   data () {
@@ -899,12 +903,12 @@ export default {
   },
   computed: {
     retURL () {
-      // return 'https://designdistrict.co.uk/success/'
-      if (process.browser) {
-        return `${window.location.href}?form=success`
-      } else {
-        return `https://designdistrict.co.uk/success`
-      }
+      return `https://designdistrict.co.uk/success?source=${this.source}`
+      // if (process.browser) {
+      //   return `${window.location.href}?form=success`
+      // } else {
+      //   return `https://designdistrict.co.uk/success`
+      // }
     }
   },
   monuted () {

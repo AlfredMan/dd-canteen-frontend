@@ -584,7 +584,7 @@
           </div>
           <div class="col-12 col-lg-1" />
           <div class="col-12 col-md-8 col-lg-7">
-            <enquire-form />
+            <enquire-form source="workspace"/>
           </div>
         </div>
       </div>

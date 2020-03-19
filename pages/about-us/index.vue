@@ -72,12 +72,17 @@
 
           <div class="row d-flex align-items-end mt-5 pt-5">
             <div v-for="studio in studios" :key="studio.slug" class="col-12 col-md-6 col-lg-4 mb-5">
-              <!-- <router-link :to="`/architecture/${studio.slug}`">
-                <img class="lazyload" :data-src="studio.imagesPractice[0].url" alt="">
+              <router-link :to="`/architecture/${studio.slug}`">
+                <!-- <img class="lazyload" :data-src="studio.imagesPractice[0].url" alt=""> -->
+                <lazy-image
+                :src="studio.imagesPractice[0].url"
+                :w="2000"
+                :h="2000"
+                />
                 <h5>{{ studio.title }}</h5>
-              </router-link> -->
-              <img class="lazyload" :data-src="studio.imagesPractice[0].url" alt="">
-              <h5>{{ studio.title }}</h5>
+              </router-link>
+              <!-- <img class="lazyload" :data-src="studio.imagesPractice[0].url" alt="">
+              <h5>{{ studio.title }}</h5> -->
             </div>
 
             <!-- <div class="col-12 col-md-6 col-lg-4 mb-5">

@@ -151,7 +151,7 @@ export default {
   middleware ({ store, redirect }) {
     // If the user is not authenticated
     // if (!store.state.authenticated) {
-    return redirect('/about-us#architecture')
+    // return redirect('/about-us#architecture')
     // }
   },
 
