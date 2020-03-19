@@ -100,7 +100,7 @@
               Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.
             </h4> -->
             <h4>
-              Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch. For general enquiries, please email us at <email :address="'hello@designdistrict.co.uk'"></email>
+              Register your interest to become a tenant and schedule a digital walk-through. Tell us about your requirements, and we’ll be in touch. For general enquiries, please email us at <email :address="'hello@designdistrict.co.uk'"></email>
             </h4>
             <br>
             <!-- <enquire-form :show-business="false" /> -->
