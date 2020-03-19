@@ -1,5 +1,13 @@
 <template lang="html">
   <div class="">
+
+    <div class="container p-5 bg-light my-5">
+      <div>
+        <h4 style="max-width: 30em;">Thank you for visiting the Design District website. In light of the current situation, we have taken the decision to suspend all site visits&nbsp;temporarily.</h4>
+        <h4 style="max-width: 30em;">The safety of our visitors and the community is our priority so while it would be good to meet in person, if you are interested in more information on becoming a tenant, please get in touch and we will happily arrange a digital&nbsp;walk-through.</h4>
+      </div>
+    </div>
+
     <div
       class="hero position-relative"
     >
