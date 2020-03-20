@@ -32,10 +32,10 @@ export default {
   },
 
   middleware ({ store, redirect }) {
-    if (process.env.NODE_ENV!=='development') {
+    // if (process.env.NODE_ENV!=='development') {
       return redirect('/')
-    }
-  },  
+    // }
+  },
   // `env` is available in the context object
   asyncData ({ env }) {
     return Promise.all([

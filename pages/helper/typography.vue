@@ -11,9 +11,9 @@ export default {
     Typography
   },
   middleware ({ store, redirect }) {
-    if (process.env.NODE_ENV!=='development') {
-      return redirect('/')
-    }
+    // if (process.env.NODE_ENV!=='development') {
+    return redirect('/')
+    // }
   }
 }
 </script>
