@@ -85,7 +85,7 @@
           <div class="row py-5 d-flex justify-content-between">
             <div class="col-12 col-md-6 col-lg-5">
               <h3>Location</h3>
-              <h4>The Club is located in the heart of the Design District, in a light-filled building designed by ASSEMBLAGE. It’s also where the Design District team is based, so drop by and say hello.</h4>
+              <h4>The Club is located in the heart of the Design District, in a light-filled building designed by HNNA. It’s also where the Design District team is based, so drop by and say hello.</h4>
             </div>
             <div class="col-12 col-md-6 col-lg-6">
               <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=1000&h=800&fm=jpg&q=80&fit=thumb" alt="">
@@ -176,7 +176,7 @@
           <div class="row py-5">
             <div class="col-12 col-md-6 col-lg-4">
               <h2>Location</h2>
-              <h4>The Club is located in the heart of the Design District, in a light-filled building designed by ASSEMBLAGE. It’s also where the Design District team is based, so drop by and say hello.</h4>
+              <h4>The Club is located in the heart of the Design District, in a light-filled building designed by HNNA. It’s also where the Design District team is based, so drop by and say hello.</h4>
             </div>
           </div>
         </div>

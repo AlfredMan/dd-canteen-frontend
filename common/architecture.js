@@ -1,20 +1,20 @@
 export const studios = {
-  'assemblage': {
-    title: 'ASSEMBLAGE',
-    slug: 'assemblage',
+  'hnna': {
+    title: 'HNNA',
+    slug: 'hnna',
     buildings: 'C3 and D3',
-    buildingsCopy: 'The two buildings by ASSEMBLAGE are distinct cousins. Each has a clean, white exterior that is interrupted by large windows of different sizes. The Club is located in C3, which has an undulating shape that creates informal pockets of space inside. The windows in its irregular facade provide many different views of the Design District and the surrounding park. The top floor has an inward falling roof that creates two small courtyards for members to enjoy. D3 will be completed after the Silvertown Tunnel has been built.',
-    practiceCopy: 'ASSEMBLAGE is a London-based studio of architects and urban designers that was founded by Hannah Corlett in 2004. It works at a number of scales but specialises in rethinking how we design cities. ASSEMBLAGE has won a string of major international design competitions and was recently commissioned to design the Iraq Parliament and sustainable, human-centric housing for The United Nations Human Settlements Programme (UN-Habitat). Having worked on the Peninsula-wide masterplan here in North Greenwich, ASSEMBLAGE designed and developed the masterplan for the Design District and is also its design coordinator.',
+    buildingsCopy: 'The two buildings by HNNA are distinct cousins. Each has a clean, white exterior that is interrupted by large windows of different sizes. The Club is located in C3, which has an undulating shape that creates informal pockets of space inside. The windows in its irregular facade provide many different views of the Design District and the surrounding park. The top floor has an inward falling roof that creates two small courtyards for members to enjoy. D3 will be completed after the Silvertown Tunnel has been built.',
+    practiceCopy: 'HNNA (formerly ASSEMBLAGE) is a London-based studio of architects and urban designers that was founded by Hannah Corlett in 2004. It works at a number of scales but specialises in rethinking how we design cities. HNNA has won a string of major international design competitions and was recently commissioned to design the Iraq Parliament and sustainable, human-centric housing for The United Nations Human Settlements Programme (UN-Habitat). Having worked on the Peninsula-wide masterplan here in North Greenwich, HNNA designed and developed the masterplan for the Design District and is also its design coordinator.',
     images: [
       {
         url: 'https://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=2000&h=2000&fm=jpg&q=80',
-        alt: 'Design District building C3 by ASSEMBLAGE',
+        alt: 'Design District building C3 by HNNA',
         type: 'building',
         size: '5'
       },
       {
         url: 'https://images.ctfassets.net/7p1ysxjarsp5/2orsbijTvZ2CAyG6cPlq3n/890ad80c8f7d368a49983386caefa1c5/KDN_Design_District_D3_190603_LR.jpeg?w=2000&h=2000&fm=jpg&q=80',
-        alt: 'Design District building D3 by ASSEMBLAGE',
+        alt: 'Design District building D3 by HNNA',
         type: 'building',
         size: '4'
       }
@@ -22,7 +22,7 @@ export const studios = {
     imagesPractice:[
       {
         url: 'https://images.ctfassets.net/7p1ysxjarsp5/4H7LD6UdKbLKXTBqYH7wv3/cb9c690b567f1a7768158e9c80def96b/Assemblage-Architect000.jpg?w=2000&h=2000&fm=jpg&q=80',
-        alt: 'ASSEMBLAGE',
+        alt: 'HNNA',
         type: 'practice',
         size: '3'
       }
@@ -254,7 +254,7 @@ export const studios = {
     imagesPractice:[
       {
         url: 'https://images.ctfassets.net/7p1ysxjarsp5/5hjrqA6j9HzAhWQe60b4l/053cb70d38428f1e3c00874c57852c71/SelgasCano-1A-Architect.jpg?w=2000&h=2000&fm=jpg&q=80',
-        alt: 'ASSEMBLAGE',
+        alt: 'SelgasCano',
         type: 'practice',
         size: '3'
       }

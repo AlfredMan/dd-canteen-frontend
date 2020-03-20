@@ -109,9 +109,9 @@
             </div>
 
             <!-- <div class="col-12 col-md-6 col-lg-3 mb-5">
-              <router-link to="/architecture/assemblage">
+              <router-link to="/architecture/hnna">
                 <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/4H7LD6UdKbLKXTBqYH7wv3/cb9c690b567f1a7768158e9c80def96b/ASSEMBLAGE-Architect000.jpg?w=1000&h=1200&fm=jpg&q=80" alt="">
-                <h5>ASSEMBLAGE</h5>
+                <h5>HNNA</h5>
               </router-link>
             </div>
 
