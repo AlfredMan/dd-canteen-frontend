@@ -80,8 +80,37 @@ export default {
   },
 
   modules: [
-    '@nuxtjs/axios'
-  ]
+    '@nuxtjs/axios',
+    '@nuxtjs/sitemap'
+  ],
+
+  sitemap: {
+    hostname: 'https://designdistrict.co.uk/',
+    gzip: true,
+    exclude: [
+      '/helper/**',
+      '/helper',
+      '/privacy-policy',
+      '/terms-and-conditions',
+      '/cookies-policy',
+      '/success',
+      '/map',
+      '/item',
+      '/item/**',
+      '/home'
+    ],
+    routes: [
+      '/architecture/hnna',
+      '/architecture/6a-architects',
+      '/architecture/adam-khan-architects',
+      '/architecture/architecture-00',
+      '/architecture/barozzi-veiga',
+      '/architecture/david-kohn-architects',
+      '/architecture/mole-architects',
+      '/architecture/schulze-grassov',
+      '/architecture/selgascano'
+    ]
+  }
   //
   // router: {
   //   middleware: ['redirect']

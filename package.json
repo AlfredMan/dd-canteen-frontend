@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.9.5",
+    "@nuxtjs/google-gtag": "^1.0.4",
+    "@nuxtjs/sitemap": "^2.1.0",
     "contentful": "^7.13.1",
     "lazysizes": "^5.2.0",
     "nuxt": "^2.10.2",
