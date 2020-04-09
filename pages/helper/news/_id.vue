@@ -167,13 +167,13 @@
           </div>
           <div class="row">
             <div class="col-12 col-md-5">
-              <router-link :to="{ path:'/helper/news' }" class="h5 text-primary">
+              <router-link :to="{ path:'/helper/news' }" class="h5 text-black">
                 View all news & events &rarr;
               </router-link>
             </div>
           </div>
 
-          <div v-if="entries" class="row d-flex align-items-end mt-5 pt-5">
+          <div v-if="entries" class="row d-flex align-items-start mt-5 pt-5">
             <div v-for="ent in entries" v-if="ent.sys.id !== entry.sys.id" class="news-card col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
 
               <news-card :entry="ent"></news-card>
