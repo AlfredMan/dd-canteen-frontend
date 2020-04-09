@@ -13,7 +13,7 @@
           The Club
         </nuxt-link> -->
         <!-- <nuxt-link class="menu-link d-none d-lg-inline" to="/">Architecture</nuxt-link> -->
-        <!-- <nuxt-link class="menu-link d-none d-lg-inline" to="/news-and-events">News & Events</nuxt-link> -->
+        <nuxt-link class="menu-link d-none d-lg-inline" to="/helper/news">News & Events</nuxt-link>
         <nuxt-link class="menu-link d-none d-lg-inline" to="/about-us">
           About
         </nuxt-link>

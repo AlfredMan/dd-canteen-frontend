@@ -121,7 +121,7 @@
           </div>
 
           <div v-if="entries" class="row d-flex align-items-end mt-5 pt-5">
-            <div v-for="ent in entries" class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
+            <div v-for="ent in entries" v-if="ent.sys.id !== entry.sys.id" class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
 
               <router-link :to="`/helper/news/${ent.fields.slug}`">
                 <lazy-image
