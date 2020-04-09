@@ -19,8 +19,9 @@
 
     <div class="container my-3 mt-4">
       <div class="row d-flex flex-wrap wrap">
-        <div :class="{'col-12 col-md-8': index==0, 'col-6 col-md-4': index>0}" v-for="(entry, index) in entries" :key="entry.sys.id" class="mb-5 news-card">
-          <router-link :to="{ path: `/helper/news/${entry.fields.slug}` }">
+        <div :class="{'col-12 col-md-8': index==0, 'col-12 col-md-4': index>0}" v-for="(entry, index) in entries" :key="entry.sys.id" class="mb-5">
+          <news-card :entry="entry"></news-card>
+          <!-- <router-link :to="{ path: `/helper/news/${entry.fields.slug}` }">
             <img class="news-thumbnail" :src="entry.fields.thumbnailImage.fields.file.url" alt="">
             <div class="news-info mt-3">
               <h4 class="mt-2 mb-2" v-if="entry.fields.title">
@@ -51,7 +52,7 @@
               </div>
 
             </div>
-          </router-link>
+          </router-link> -->
         </div>
       </div>
     </div>
@@ -76,12 +77,16 @@
 
 <script>
 import _ from 'lodash'
-import moment from 'moment'
 import { createClient } from '~/plugins/contentful.js'
+import NewsCard from '~/components/NewsCard'
 
 const client = createClient()
 
 export default {
+
+  components: {
+    NewsCard
+  },
 
   data () {
     return {
@@ -128,24 +133,6 @@ export default {
         // assets: assets.items
       }
     }).catch(console.error)
-  },
-
-  methods: {
-    getDataTime (date, endDate) {
-      // let default = '12:00:00'
-      let format = 'D MMM'
-      if (date && !endDate) {
-        return `${moment(date).format(format)}`
-      } else
-      if (!date && endDate) {
-        return `${moment(endDate).format(format)}`
-      } else
-      if (date && endDate) {
-        return `${moment(date).format(format)}—${moment(endDate).format(format)}`
-      } else {
-        return ``
-      }
-    }
   }
 }
 </script>
@@ -158,28 +145,4 @@ export default {
   ul
     li
       list-style: none
-
-  .news-card
-
-    // &:hover
-    //   h4, h5
-        //
-
-    .news-thumbnail,
-    .news-info
-      h4
-        font-weight: 400
-      h5
-        font-weight: 500
-      .badge
-        font-weight: 400
-        font-size: 0.35em
-        line-height: 1
-        letter-spacing: 0.1em
-        text-transform: uppercase
-        padding: .4em .7em
-        vertical-align: super
-
-      .new-meta
-        opacity: 0.5
 </style>

@@ -176,51 +176,14 @@
           <div v-if="entries" class="row d-flex align-items-end mt-5 pt-5">
             <div v-for="ent in entries" v-if="ent.sys.id !== entry.sys.id" class="news-card col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
 
-                <router-link :to="{ path: `/helper/news/${ent.fields.slug}` }">
-                  <lazy-image
-                  class="news-thumbnail"
-                  :src="ent.fields.thumbnailImage.fields.file.url"
-                  :w="2000"
-                  :h="2000"
-                  />
-                  <div class="news-info mt-3">
-                    <h4 class="mt-2 mb-2" v-if="ent.fields.title">
-                      {{ent.fields.title}}
-
-                      <span class="badge badge-pill" :class="{
-                        'badge-secondary': ent.fields.contentType == 'Event',
-                        'badge-success': ent.fields.contentType == 'Podcast',
-                        'badge-dark': ent.fields.contentType == 'Video',
-                        'badge-light': ent.fields.contentType == 'Article',
-                      }">{{ent.fields.contentType}}</span>
-                    </h4>
-                    <h5 class="mt-2" v-if="ent.fields.date">
-                      {{getDataTime(ent.fields.date, ent.fields.endDate)}}
-                    </h5>
-                    <div class="new-meta d-flex mt-3">
-                      <h6 class="-text-uppercase my-0 mr-1" v-if="ent.fields.contentType">
-                        {{ent.fields.contentType}}
-                      </h6>
-                      <h6 class="-text-uppercase my-0 mr-3" v-if="ent.fields.author">
-                        by {{ent.fields.author[0].fields.name}}
-                      </h6>
-                      <h6 class="-text-uppercase my-0 mr-3" v-if="ent.fields.creditText">
-                        {{ent.fields.creditText}}
-                      </h6>
-                    </div>
-                    <div class="d-flex">
-                    </div>
-
-                  </div>
-                </router-link>
+              <news-card :entry="ent"></news-card>
 
             </div>
-
           </div>
+
         </div>
       </div>
     </div>
-
 
     <!-- render data of the person -->
     <!-- <h1 v-if="person">
@@ -286,20 +249,9 @@ import { createClient } from '~/plugins/contentful.js'
 
 import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import NewsCard from '~/components/NewsCard'
 
 const client = createClient()
-
-// failed
-// const customComponentRenderer = (node) => {
-//   console.log(node)
-//   if (node.data.target.sys.contentType.sys.id === 'embed') {
-//     return node.data.target.fields.embedCode.content[0]
-//   }
-//   if (node.data.target.sys.contentType.sys.id === 'embed') {
-//
-//   }
-//   return ''
-// }
 
 const options = {
   renderMark: {
@@ -321,6 +273,7 @@ export default {
   },
 
   components: {
+    NewsCard
     // RichTextRenderer
   },
 
@@ -531,26 +484,4 @@ export default {
           text-transform: uppercase
           // background: white
           // color: black
-  .news-card
-    // &:hover
-    //   h4, h5
-        //
-
-    .news-thumbnail,
-    .news-info
-      h4
-        font-weight: 400
-      h5
-        font-weight: 500
-      .badge
-        font-weight: 400
-        font-size: 0.35em
-        line-height: 1
-        letter-spacing: 0.1em
-        text-transform: uppercase
-        padding: .4em .7em
-        vertical-align: super
-
-      .new-meta
-        opacity: 0.5
 </style>
