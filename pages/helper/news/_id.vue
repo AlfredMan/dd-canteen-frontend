@@ -99,14 +99,14 @@
       </aside> -->
       <article class="content mt-5" v-if="entry.fields.contentReferences">
         <!-- <RichTextRenderer :document="entry.fields.richText" /> -->
-        <div class="row d-flex justify-content-center" v-for="content in entry.fields.contentReferences">
+        <div class="row row-flex justify-content-center" v-for="content in entry.fields.contentReferences">
 
           <!-- text -->
-          <div class="col-12 col-md-6 my-4" v-if="content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
+          <div class="col-12 col-md-6 my-4 px-5" v-if="content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
           </div>
 
           <!-- embed -->
-          <div class="col-12 col-md-7 my-5" v-if="content.sys.contentType.sys.id === 'embed'">
+          <div class="col-12 col-md-7 my-5 px-5" v-if="content.sys.contentType.sys.id === 'embed'">
             <div class=""  v-html="content.fields.embedCode.content[0].content[0].value">
 
             </div>
