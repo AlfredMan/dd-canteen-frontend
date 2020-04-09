@@ -19,22 +19,32 @@
 
     <div class="container my-3 mt-4">
       <div class="row d-flex flex-wrap wrap">
-        <div :class="{'col-8': index==0, 'col-4': index>0}" v-for="(entry, index) in entries" :key="entry.sys.id">
+        <div :class="{'col-12 col-md-8': index==0, 'col-6 col-md-4': index>0}" v-for="(entry, index) in entries" :key="entry.sys.id" class="mb-5 news-card">
           <router-link :to="{ path: `/helper/news/${entry.fields.slug}` }">
-            <img :src="entry.fields.thumbnailImage.fields.file.url" alt="">
-            <div class="mt-4">
-              <h3 class="strong mt-2" v-if="entry.fields.title">
+            <img class="news-thumbnail" :src="entry.fields.thumbnailImage.fields.file.url" alt="">
+            <div class="news-info mt-3">
+              <h4 class="mt-2 mb-2" v-if="entry.fields.title">
                 {{entry.fields.title}}
-              </h3>
-              <h4 class="" v-if="entry.fields.date">
-                {{getDataTime(entry.fields.date, entry.fields.endDate)}}
+
+                <span class="badge badge-pill" :class="{
+                  'badge-secondary': entry.fields.contentType == 'Event',
+                  'badge-success': entry.fields.contentType == 'Podcast',
+                  'badge-dark': entry.fields.contentType == 'Video',
+                  'badge-light': entry.fields.contentType == 'Article',
+                }">{{entry.fields.contentType}}</span>
               </h4>
-              <div class="d-flex mt-3">
-                <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
+              <h5 class="mt-2" v-if="entry.fields.date">
+                {{getDataTime(entry.fields.date, entry.fields.endDate)}}
+              </h5>
+              <div class="new-meta d-flex mt-3">
+                <h6 class="-text-uppercase my-0 mr-1" v-if="entry.fields.contentType">
                   {{entry.fields.contentType}}
                 </h6>
-                <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+                <h6 class="-text-uppercase my-0 mr-3" v-if="entry.fields.author">
                   by {{entry.fields.author[0].fields.name}}
+                </h6>
+                <h6 class="-text-uppercase my-0 mr-3" v-if="entry.fields.creditText">
+                  {{entry.fields.creditText}}
                 </h6>
               </div>
               <div class="d-flex">
@@ -141,10 +151,35 @@ export default {
 </script>
 
 <style media="screen" scoped lang="sass">
+
   img
     display: block
     width: 100%
   ul
     li
       list-style: none
+
+  .news-card
+
+    // &:hover
+    //   h4, h5
+        //
+
+    .news-thumbnail,
+    .news-info
+      h4
+        font-weight: 400
+      h5
+        font-weight: 500
+      .badge
+        font-weight: 400
+        font-size: 0.35em
+        line-height: 1
+        letter-spacing: 0.1em
+        text-transform: uppercase
+        padding: .4em .7em
+        vertical-align: super
+
+      .new-meta
+        opacity: 0.5
 </style>

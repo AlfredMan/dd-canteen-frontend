@@ -1,8 +1,8 @@
 <template>
-  <div class="mt-5">
+  <div class="">
     <!-- <pre>{{entry}}</pre> -->
-    <div class="container my-3 mt-4">
-      <header class="">
+    <div class="">
+      <header class="container my-3 mt-4" v-if="entry.fields.contentType !== 'Event'">
         <div class="row d-flex justify-content-start">
           <div class="col-12 col-md-6">
             <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
@@ -30,6 +30,56 @@
           </div>
         </div>
       </header>
+      <header class="event-header" v-if="entry.fields.contentType === 'Event'">
+        <div class="event-info p-5">
+          <div class="d-flex flex-column justify-content-between ">
+            <div class="event-title">
+              <h1 class="strong mt-2 mb-4 pl-0 h2 col-12 col-md-6" v-if="entry.fields.title">
+                {{entry.fields.title}}
+              </h1>
+              <h3 class="mb-4" v-if="entry.fields.date">
+                {{getDataTime(entry.fields.date, entry.fields.endDate)}}
+              </h3>
+              <div class="d-flex mb-5">
+                <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
+                  {{entry.fields.contentType}}
+                </h6>
+                <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+                  by {{entry.fields.author[0].fields.name}}
+                </h6>
+                <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+
+                </h6>
+              </div>
+            </div>
+            <!-- <div class="event-summary">
+              <div class="strong mt-2 mb-4 h4" v-if="entry.fields.summary">
+                {{entry.fields.summary.content[0].content[0].value}}
+              </div>
+            </div> -->
+          </div>
+          </div>
+          <div class="event-action">
+            <div class="d-flex flex-column flex-lg-column justify-content-around" v-if="entry.fields.actionLabel && entry.fields.actionUrl">
+              <!-- <div class="col-8"> -->
+              <div class="">
+                <div class="event-action-title">{{entry.fields.actionTitle}}</div>
+                <div class="event-action-info">{{entry.fields.actionInfo}}</div>
+              </div>
+              <!-- </div>
+              <div class="col-4"> -->
+              <div class="mt-3 mt-lg-0 ml-lg-auto">
+                <a target="_blank" class="btn btn-lg btn-secondary" :href="entry.fields.actionUrl">{{entry.fields.actionLabel}}</a>
+              </div>
+              <!-- </div> -->
+            </div>
+        </div>
+        <img class="event-image" :src="entry.fields.mainImage.fields.file.url" alt="" v-if="entry.fields.mainImage">
+      </header>
+
+    </div>
+    <div class="">
+
       <!-- <aside class="row d-flex justify-content-center">
         <div class="col-6">
           <div class="my-5">
@@ -67,9 +117,12 @@
 
           <!-- gallery -->
           <div class="col-12 col-lg-8 my-5 px-5 px-lg-0" v-if="content.sys.contentType.sys.id === 'gallery'">
-            <div class="row row-flex justify-content-center">
-              <div class="col-6 col-lg-6" v-for="image in content.fields.image">
-                <img :src="image.fields.file.url" alt="">
+            <div class="row row-flex flex-wrap justify-content-center align-items-center gallery">
+              <div class="gallery-item mb-4" v-for="image in content.fields.image" :class="getGalleryImageClass(content.fields.image)">
+                <img :src="image.fields.file.url" alt="" class="image">
+                <div class="caption" v-if="image.fields.description">
+                  {{image.fields.description}}
+                </div>
               </div>
             </div>
           </div>
@@ -121,16 +174,46 @@
           </div>
 
           <div v-if="entries" class="row d-flex align-items-end mt-5 pt-5">
-            <div v-for="ent in entries" v-if="ent.sys.id !== entry.sys.id" class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
+            <div v-for="ent in entries" v-if="ent.sys.id !== entry.sys.id" class="news-card col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
 
-              <router-link :to="`/helper/news/${ent.fields.slug}`">
-                <lazy-image
-                :src="ent.fields.thumbnailImage.fields.file.url"
-                :w="2000"
-                :h="2000"
-                />
-              <h3>{{ ent.fields.title }}</h3>
-              </router-link>
+                <router-link :to="{ path: `/helper/news/${ent.fields.slug}` }">
+                  <lazy-image
+                  class="news-thumbnail"
+                  :src="ent.fields.thumbnailImage.fields.file.url"
+                  :w="2000"
+                  :h="2000"
+                  />
+                  <div class="news-info mt-3">
+                    <h4 class="mt-2 mb-2" v-if="ent.fields.title">
+                      {{ent.fields.title}}
+
+                      <span class="badge badge-pill" :class="{
+                        'badge-secondary': ent.fields.contentType == 'Event',
+                        'badge-success': ent.fields.contentType == 'Podcast',
+                        'badge-dark': ent.fields.contentType == 'Video',
+                        'badge-light': ent.fields.contentType == 'Article',
+                      }">{{ent.fields.contentType}}</span>
+                    </h4>
+                    <h5 class="mt-2" v-if="ent.fields.date">
+                      {{getDataTime(ent.fields.date, ent.fields.endDate)}}
+                    </h5>
+                    <div class="new-meta d-flex mt-3">
+                      <h6 class="-text-uppercase my-0 mr-1" v-if="ent.fields.contentType">
+                        {{ent.fields.contentType}}
+                      </h6>
+                      <h6 class="-text-uppercase my-0 mr-3" v-if="ent.fields.author">
+                        by {{ent.fields.author[0].fields.name}}
+                      </h6>
+                      <h6 class="-text-uppercase my-0 mr-3" v-if="ent.fields.creditText">
+                        {{ent.fields.creditText}}
+                      </h6>
+                    </div>
+                    <div class="d-flex">
+                    </div>
+
+                  </div>
+                </router-link>
+
             </div>
 
           </div>
@@ -335,6 +418,26 @@ export default {
       } else {
         return ``
       }
+    },
+
+    getGalleryImageClass (images) {
+      if (!images || images.length < 1) return
+
+      if (images.length == 1) {
+        return "col-12"
+      } else if (images.length == 2) {
+        return "col-12 col-md-6"
+      } else if (images.length == 3) {
+        return "col-12 col-md-4"
+      } else if (images.length == 4) {
+        return "col-12 col-md-3"
+      } else if (images.length == 5) {
+        return "col-12 col-md-4"
+      } else if (images.length == 6) {
+        return "col-12 col-md-3"
+      } else {
+        return "col-12 col-md-3"
+      }
     }
   }
 }
@@ -364,4 +467,90 @@ export default {
         height: 100%
     .name
     .bio
+
+  .gallery
+    .gallery-item
+      .image
+
+      .caption
+        margin-top: .75rem
+        font-size: .8rem
+
+  header
+    &.event-header
+      position: relative
+      min-height: 80vh
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+
+      .event-info
+        position: relative
+        z-index: 9
+        height: 100%
+
+      .event-image
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        width: 100%
+        height: 100%
+        position: absolute
+        z-index: 1
+        object-fit: cover
+
+      .event-action
+        position: absolute
+        right: 2rem
+        bottom: 2rem
+        width: 30rem
+
+        @media screen and (max-width: 768px)
+          position: relative
+          right: 0
+          left: 0
+          bottom: 0
+          width: 90%
+          margin: 0 auto 2rem
+
+        z-index: 9
+        background: black
+        padding: 1.5rem
+        color: white
+
+        .event-action-title
+          font-size: 1.25rem
+          font-weight: bold
+          line-height: 1.2
+          margin-bottom: .5rem
+        .event-action-info
+          font-size: 1.25rem
+        a
+          text-decoration: none
+          text-transform: uppercase
+          // background: white
+          // color: black
+  .news-card
+    // &:hover
+    //   h4, h5
+        //
+
+    .news-thumbnail,
+    .news-info
+      h4
+        font-weight: 400
+      h5
+        font-weight: 500
+      .badge
+        font-weight: 400
+        font-size: 0.35em
+        line-height: 1
+        letter-spacing: 0.1em
+        text-transform: uppercase
+        padding: .4em .7em
+        vertical-align: super
+
+      .new-meta
+        opacity: 0.5
 </style>
