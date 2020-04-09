@@ -36,7 +36,8 @@ a {
   }
 }
 
-strong, b {
+strong, b,
+.strong, .b {
   font-weight: 600
 }
 
@@ -185,6 +186,29 @@ ul {
 small {
 	font-weight: 200;
 	line-height: 1.4;
+}
+
+blockquote {
+  @extend .h3
+}
+
+.content,
+article {
+  p, h4 {
+    font-weight: 200;
+    line-height: 1.4;
+    letter-spacing: 0em;
+    margin: 1rem 0;
+    font-size: 1.5rem;
+    max-width: 20em;
+
+    @include media-breakpoint-up(sm) {
+        font-size: 1.5rem;
+    }
+
+    max-width: 100%;
+    margin-bottom: 1.5em;
+  }
 }
 
 
