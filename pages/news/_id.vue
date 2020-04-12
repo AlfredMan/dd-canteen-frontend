@@ -2,34 +2,7 @@
   <div class="">
     <!-- <pre>{{entry}}</pre> -->
     <div class="">
-      <header class="container my-3 mt-4" v-if="entry.fields.contentType !== 'Event'">
-        <div class="row d-flex justify-content-start">
-          <div class="col-12 col-md-6">
-            <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
-              {{entry.fields.title}}
-            </h1>
-            <h3 class="mb-4" v-if="entry.fields.date">
-              {{getDataTime(entry.fields.date, entry.fields.endDate)}}
-            </h3>
-            <div class="d-flex mb-5">
-              <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
-                {{entry.fields.contentType}}
-              </h6>
-              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
-                by {{entry.fields.author[0].fields.name}}
-              </h6>
-              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
 
-              </h6>
-            </div>
-          </div>
-        </div>
-        <div class="row d-flex justify-content-center" v-if="entry.fields.mainImage">
-          <div class="col-12 col-md-10">
-            <img :src="entry.fields.mainImage.fields.file.url" alt="">
-          </div>
-        </div>
-      </header>
       <header class="event-header" v-if="entry.fields.contentType === 'Event'">
         <div class="event-info p-5">
           <div class="d-flex flex-column justify-content-between ">
@@ -60,7 +33,7 @@
           </div>
           </div>
           <div class="event-action">
-            <div class="d-flex flex-column flex-lg-column justify-content-around" v-if="entry.fields.actionLabel && entry.fields.actionUrl">
+            <div class="d-flex flex-column flex-lg-row justify-content-around" v-if="entry.fields.actionLabel && entry.fields.actionUrl">
               <!-- <div class="col-8"> -->
               <div class="">
                 <div class="event-action-title">{{entry.fields.actionTitle}}</div>
@@ -75,6 +48,145 @@
             </div>
         </div>
         <img class="event-image" :src="entry.fields.mainImage.fields.file.url" alt="" v-if="entry.fields.mainImage">
+      </header>
+
+      <header class="container my-3 mt-4" v-else-if="entry.fields.contentType === 'Podcast'">
+        <div class="row d-flex justify-content-start">
+          <div class="col-12 col-md-12 d-flex px-5"  v-if="entry.fields.embedContent" :style="{ backgroundColor: entry.fields.colour}">
+            <div class="">
+
+            </div>
+            <div class="d-flex flex-column justify-content-center w-100 py-5" v-for="content in entry.fields.embedContent" v-if="content.sys.contentType.sys.id === 'embed'">
+                <div class=""  v-html="content.fields.embedCode.content[0].content[0].value">
+                </div>
+                <div class="">
+                  {{ content.fields.description}}
+                </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
+              {{entry.fields.title}}
+            </h1>
+            <h3 class="mb-4" v-if="entry.fields.date">
+              {{getDataTime(entry.fields.date, entry.fields.endDate)}}
+            </h3>
+            <div class="d-flex mb-5">
+              <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
+                {{entry.fields.contentType}}
+              </h6>
+              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+                by {{entry.fields.author[0].fields.name}}
+              </h6>
+              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+
+              </h6>
+            </div>
+          </div>
+          <div class="col-12 col-md-6"  v-if="entry.fields.mainImage">
+            <img :src="entry.fields.mainImage.fields.file.url" alt="">
+          </div>
+        </div>
+      </header>
+      <!-- <header class="container my-3 mt-4" v-else-if="entry.fields.contentType === 'Podcast'">
+        <div class="row d-flex justify-content-start">
+          <div class="col-12 col-md-6">
+            <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
+              {{entry.fields.title}}
+            </h1>
+            <h3 class="mb-4" v-if="entry.fields.date">
+              {{getDataTime(entry.fields.date, entry.fields.endDate)}}
+            </h3>
+            <div class="d-flex mb-5">
+              <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
+                {{entry.fields.contentType}}
+              </h6>
+              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+                by {{entry.fields.author[0].fields.name}}
+              </h6>
+              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+
+              </h6>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 d-flex px-5"  v-if="entry.fields.embedContent" :style="{ backgroundColor: entry.fields.colour}">
+            <div class="d-flex flex-column justify-content-center w-100 py-5" v-for="content in entry.fields.embedContent" v-if="content.sys.contentType.sys.id === 'embed'">
+                <div class=""  v-html="content.fields.embedCode.content[0].content[0].value">
+                </div>
+                <div class="">
+                  {{ content.fields.description}}
+                </div>
+            </div>
+          </div>
+        </div>
+      </header> -->
+
+      <header class="container my-3 mt-4" v-else-if="entry.fields.contentType === 'Video'">
+        <div class="row d-flex justify-content-start">
+          <div class="col-12 col-md-7">
+            <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
+              {{entry.fields.title}}
+            </h1>
+            <h3 class="mb-4" v-if="entry.fields.date">
+              {{getDataTime(entry.fields.date, entry.fields.endDate)}}
+            </h3>
+            <div class="d-flex mb-5">
+              <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
+                {{entry.fields.contentType}}
+              </h6>
+              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+                by {{entry.fields.author[0].fields.name}}
+              </h6>
+              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+
+              </h6>
+            </div>
+          </div>
+          <div class="col-12 col-md-6"  v-if="entry.fields.mainImage">
+            <img :src="entry.fields.mainImage.fields.file.url" alt="">
+          </div>
+          <div class="col-12 col-md-12 d-flex px-5"  v-if="entry.fields.embedContent" :style="{ backgroundColor: entry.fields.colour}">
+            <div class="">
+
+            </div>
+            <div class="d-flex flex-column justify-content-center w-100" v-for="content in entry.fields.embedContent" v-if="content.sys.contentType.sys.id === 'embed'">
+                <div class="video-wrapper"  v-html="content.fields.embedCode.content[0].content[0].value">
+                </div>
+                <div class="">
+                  {{ content.fields.description}}
+                </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <header class="container my-3 mt-4" v-else>
+        <div class="row d-flex justify-content-start">
+          <div class="col-12 col-md-7">
+            <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
+              {{entry.fields.title}}
+            </h1>
+            <h3 class="mb-4" v-if="entry.fields.date">
+              {{getDataTime(entry.fields.date, entry.fields.endDate)}}
+            </h3>
+            <div class="d-flex mb-5">
+              <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
+                {{entry.fields.contentType}}
+              </h6>
+              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+                by {{entry.fields.author[0].fields.name}}
+              </h6>
+              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+
+              </h6>
+            </div>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center" v-if="entry.fields.mainImage">
+          <div class="col-12 col-md-10">
+            <img :src="entry.fields.mainImage.fields.file.url" alt="">
+          </div>
+        </div>
       </header>
 
     </div>
@@ -102,16 +214,28 @@
         <div class="row row-flex justify-content-center" v-for="content in entry.fields.contentReferences">
 
           <!-- text -->
-          <div class="col-12 col-md-6 my-4 px-5" v-if="content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
+          <div class="col-12">
+            <div class="container ">
+              <div class="row justify-content-center">
+                <div class="col-12 col-md-6 my-4 -px-lg-5" v-if="content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- embed -->
-          <div class="col-12 col-md-7 my-5 px-5" v-if="content.sys.contentType.sys.id === 'embed'">
-            <div class=""  v-html="content.fields.embedCode.content[0].content[0].value">
+          <div class="col-12">
+            <div class="container ">
+              <div class="row justify-content-center">
+                <div class="col-12 col-md-7 my-5 -px-lg-5" v-if="content.sys.contentType.sys.id === 'embed'">
+                  <div class=""  v-html="content.fields.embedCode.content[0].content[0].value">
 
-            </div>
-            <div class="">
-              {{ content.fields.description}}
+                  </div>
+                  <div class="">
+                    {{ content.fields.description}}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -134,7 +258,7 @@
       <footer class="mt-5 mb-5 py-5">
         <div class="row justify-content-center" v-if="entry.fields.author">
 
-          <div class="col-10 col-md-5 p-5 author" v-for="author in entry.fields.author">
+          <div class="col-10 col-md-6 p-5 author" v-for="author in entry.fields.author">
             <div class="row align-items-center no-gutters px-2">
               <!-- <div class="col-3">
                 <div class="thumb">
@@ -143,7 +267,7 @@
               </div> -->
               <div class="col-12">
 
-                <h6>About the author</h6>
+                <h6>About the <span v-if="!author.fields.role">author</span><span v-if="author.fields.role">{{author.fields.role}}</span></h6>
 
                 <h4 class="name mb-5">
                   {{author.fields.name}}
@@ -167,14 +291,18 @@
           </div>
           <div class="row">
             <div class="col-12 col-md-5">
-              <router-link :to="{ path:'/helper/news' }" class="h5 text-black">
+              <router-link :to="{ path:'/news' }" class="h5 text-black">
                 View all news & events &rarr;
               </router-link>
             </div>
           </div>
 
           <div v-if="entries" class="row d-flex align-items-start mt-5 pt-5">
-            <div v-for="ent in entries" v-if="ent.sys.id !== entry.sys.id" class="news-card col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
+            <div
+            v-for="ent in entries"
+            v-if="ent.sys.id !== entry.sys.id"
+            :key="ent.sys.id"
+            class="news-card col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
 
               <news-card :entry="ent"></news-card>
 
@@ -484,4 +612,7 @@ export default {
           text-transform: uppercase
           // background: white
           // color: black
+  iframe
+    display: block
+    width: 100%
 </style>

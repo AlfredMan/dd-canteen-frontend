@@ -13,7 +13,9 @@
           The Club
         </nuxt-link> -->
         <!-- <nuxt-link class="menu-link d-none d-lg-inline" to="/">Architecture</nuxt-link> -->
-        <nuxt-link class="menu-link d-none d-lg-inline" to="/helper/news">News & Events</nuxt-link>
+        <nuxt-link class="menu-link d-none d-lg-inline" to="/news">
+          News & Events
+        </nuxt-link>
         <nuxt-link class="menu-link d-none d-lg-inline" to="/about-us">
           About
         </nuxt-link>
@@ -50,6 +52,9 @@
           <!-- <nuxt-link class="mobile-menu-link" to="/the-club">
             The Club
           </nuxt-link><br> -->
+          <nuxt-link class="mobile-menu-link" to="/news">
+            News & Events
+          </nuxt-link><br>
           <nuxt-link class="mobile-menu-link" to="/about-us">
             About
           </nuxt-link><br>

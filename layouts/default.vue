@@ -71,5 +71,6 @@ export default {
 // @import "custom"
 
 @import '~/assets/styles/app.scss';
+@import '~/assets/styles/news.scss';
 @import '~/assets/styles/lazy.scss';
 </style>

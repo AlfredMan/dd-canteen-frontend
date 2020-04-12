@@ -19,7 +19,7 @@
 
     <div class="container my-3 mt-4">
       <div class="row d-flex flex-wrap wrap">
-        <div :class="{'col-12 col-md-8': index==0, 'col-12 col-md-4': index>0}" v-for="(entry, index) in entries" :key="entry.sys.id" class="mb-5">
+        <div :class="{'col-12 col-md-6': index==0, 'col-12 col-md-3': index>0}" v-for="(entry, index) in entries" :key="entry.sys.id" class="mb-5">
           <news-card :entry="entry"></news-card>
           <!-- <router-link :to="{ path: `/helper/news/${entry.fields.slug}` }">
             <img class="news-thumbnail" :src="entry.fields.thumbnailImage.fields.file.url" alt="">
