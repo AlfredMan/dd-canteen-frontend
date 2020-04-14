@@ -127,7 +127,7 @@ export default {
 
       return {
         // person: entries.items[0],
-        entries: entries.items,
+        entries: _.sortBy(_.sortBy(entries.items, (entry) => entry.fields.featured), (entry) => entry ),
         tags: tags.items
         // assets: _.filter(assets.items, (a)=>(a.fields.title.indexOf('KDN') >= 0 || a.fields.title.indexOf('-Architect') >= 0 || a.fields.title.indexOf('Building') >= 0 || a.fields.title.indexOf('Laneway') >= 0))
         // assets: assets.items

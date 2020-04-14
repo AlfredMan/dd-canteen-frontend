@@ -23,6 +23,8 @@
         <h5 class="mt-2" v-if="entry.fields.date">
           {{getDataTime(entry.fields.date, entry.fields.endDate)}}
         </h5>
+        <h5 class="mt-2" v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)">
+        </h5>
         <div class="new-meta d-flex mt-3 flex-wrap">
           <!-- <h6 class="-text-uppercase my-0 mr-1" v-if="entry.fields.contentType">
             {{entry.fields.contentType}}
@@ -44,6 +46,8 @@
 
 <script>
 import moment from 'moment'
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+
 export default {
   props: ['entry'],
   data () {
@@ -52,6 +56,10 @@ export default {
     }
   },
   methods: {
+    getRichText (document) {
+      return documentToHtmlString(document);
+    },
+
     getDataTime (date, endDate) {
       // let default = '12:00:00'
       let format = 'D MMM'

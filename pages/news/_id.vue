@@ -13,7 +13,7 @@
               <h3 class="mb-4" v-if="entry.fields.date">
                 {{getDataTime(entry.fields.date, entry.fields.endDate)}}
               </h3>
-              <div class="d-flex mb-5">
+              <div class="d-flex- mb-5 d-none">
                 <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
                   {{entry.fields.contentType}}
                 </h6>
@@ -64,14 +64,14 @@
                 </div>
             </div>
           </div>
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-6 mb-4">
             <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
               {{entry.fields.title}}
             </h1>
             <h3 class="mb-4" v-if="entry.fields.date">
               {{getDataTime(entry.fields.date, entry.fields.endDate)}}
             </h3>
-            <div class="d-flex mb-5">
+            <div class="d-flex- mb-5 d-none">
               <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
                 {{entry.fields.contentType}}
               </h6>
@@ -123,14 +123,14 @@
 
       <header class="container my-3 mt-4" v-else-if="entry.fields.contentType === 'Video'">
         <div class="row d-flex justify-content-start">
-          <div class="col-12 col-md-7">
+          <div class="col-12 col-md-7 mb-4">
             <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
               {{entry.fields.title}}
             </h1>
             <h3 class="mb-4" v-if="entry.fields.date">
               {{getDataTime(entry.fields.date, entry.fields.endDate)}}
             </h3>
-            <div class="d-flex mb-5">
+            <div class="d-flex- mb-5 d-none">
               <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
                 {{entry.fields.contentType}}
               </h6>
@@ -162,14 +162,14 @@
 
       <header class="container my-3 mt-4" v-else>
         <div class="row d-flex justify-content-start">
-          <div class="col-12 col-md-7">
+          <div class="col-12 col-md-7 mb-4">
             <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
               {{entry.fields.title}}
             </h1>
             <h3 class="mb-4" v-if="entry.fields.date">
               {{getDataTime(entry.fields.date, entry.fields.endDate)}}
             </h3>
-            <div class="d-flex mb-5">
+            <div class="d-flex- mb-5 d-none">
               <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
                 {{entry.fields.contentType}}
               </h6>
@@ -209,7 +209,31 @@
           </div>
         </div>
       </aside> -->
+
       <article class="content mt-5" v-if="entry.fields.contentReferences">
+
+        <aside class="row row-flex justify-content-center mb-4">
+          <div class="col-12">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-12 col-md-6 my-4">
+                  <div class="new-meta d-flex mb-3 flex-wrap" v-if="entry.fields.creditText">
+                    <!-- <h6 class="-text-uppercase my-0 mr-1" v-if="entry.fields.contentType">
+                      {{entry.fields.contentType}}
+                    </h6> -->
+                    <!-- <h6 class="-text-uppercase my-0 mr-3" v-if="entry.fields.author">
+                      By {{entry.fields.author[0].fields.name}}
+                    </h6> -->
+                    <h6 class="-text-uppercase my-0 mr-3" v-if="entry.fields.creditText">
+                      {{entry.fields.creditText}}
+                    </h6>
+                  </div>
+                  <div v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
         <!-- <RichTextRenderer :document="entry.fields.richText" /> -->
         <div class="row row-flex justify-content-center" v-for="content in entry.fields.contentReferences">
 
