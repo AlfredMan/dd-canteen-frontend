@@ -257,6 +257,7 @@
 
               </h6>
             </div>
+            <div class="summary" v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)"></div>
           </div>
         </div>
         <div class="row d-flex justify-content-center" v-if="entry.fields.mainImage">
@@ -289,7 +290,7 @@
 
       <article class="content mt-0" v-if="entry.fields.contentReferences">
 
-        <aside class="row row-flex justify-content-center mb-4" v-if="entry.fields.contentType === 'Article'">
+        <!-- <aside class="row row-flex justify-content-center mb-4" v-if="entry.fields.contentType === 'Article'">
           <div class="col-12">
             <div class="container">
               <div class="row justify-content-center">
@@ -304,7 +305,7 @@
               </div>
             </div>
           </div>
-        </aside>
+        </aside> -->
 
         <!-- <aside class="row row-flex justify-content-center mb-4" v-if="entry.fields.contentType === 'Video'">
           <div class="col-12">
