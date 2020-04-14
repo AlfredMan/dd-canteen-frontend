@@ -123,7 +123,7 @@
           <div class="col-12 col-md-6 order-1 order-lg-2 mb-4"  v-if="entry.fields.mainImage">
             <img :src="entry.fields.mainImage.fields.file.url" alt="">
           </div>
-          <div class="col-12 col-md-8 d-flex px-5 pt-2 order-3 order-lg-3 text-black-50"  v-if="entry.fields.embedContent">
+          <div class="col-12 d-flex px-5 pt-2 order-3 order-lg-3 text-black-50"  v-if="entry.fields.embedContent" :class="{'col-md-6 bg-grey': !entry.fields.mainImage, 'col-md-8': entry.fields.mainImage}">
             <div class="">
 
             </div>
@@ -170,7 +170,7 @@
         </div>
       </header> -->
 
-      <header class="container-fluid my-3 mt-0 py-5 bg-dark" v-else-if="entry.fields.contentType === 'Video'">
+      <header class="container-fluid my-3 mt-0 py-5 bg-dark text-white" v-else-if="entry.fields.contentType === 'Video'">
         <div class="row d-flex justify-content-start ">
           <!-- <div class="col-12 col-md-7 mb-4">
             <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
@@ -194,6 +194,34 @@
           <div class="col-12 col-md-6"  v-if="entry.fields.mainImage">
             <img :src="entry.fields.mainImage.fields.file.url" alt="">
           </div> -->
+          <div class="container mb-5">
+            <div class="row">
+              <div class="col-12 col-lg-6">
+                <div class="mb-4">
+                  <h1 class="strong mt-2 mb-4 h2 col-12 col-lg-8 px-0" v-if="entry.fields.title">
+                    {{entry.fields.title}}
+                  </h1>
+                  <h3 class="mb-4" v-if="entry.fields.date">
+                    {{getDataTime(entry.fields.date, entry.fields.endDate)}}
+                  </h3>
+                  <div class="d-flex- mb-5 d-none">
+                    <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
+                      {{entry.fields.contentType}}
+                    </h6>
+                    <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+                      by {{entry.fields.author[0].fields.name}}
+                    </h6>
+                  </div>
+                </div>
+                <div class="new-meta d-flex mb-3 flex-wrap" v-if="entry.fields.creditText">
+                  <h6 class="-text-uppercase my-0 mr-3" v-if="entry.fields.creditText">
+                    {{entry.fields.creditText}}
+                  </h6>
+                </div>
+                <div class="summary" v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)"></div>
+              </div>
+            </div>
+          </div>
           <div class="col-12 col-md-12 d-flex px-0 px-lg-5"  v-if="entry.fields.embedContent" :style="{ backgroundColor: entry.fields.colour}">
             <div class="">
 
@@ -278,7 +306,7 @@
           </div>
         </aside>
 
-        <aside class="row row-flex justify-content-center mb-4" v-if="entry.fields.contentType === 'Video'">
+        <!-- <aside class="row row-flex justify-content-center mb-4" v-if="entry.fields.contentType === 'Video'">
           <div class="col-12">
             <div class="container">
               <div class="row justify-content-center">
@@ -309,7 +337,7 @@
               </div>
             </div>
           </div>
-        </aside>
+        </aside> -->
 
         <!-- <RichTextRenderer :document="entry.fields.richText" /> -->
         <div class="row row-flex justify-content-center" v-for="content in entry.fields.contentReferences">
