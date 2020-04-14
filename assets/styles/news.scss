@@ -1,8 +1,15 @@
 .news {
+  header {
+    h1 {
+      &.h2 {
+        margin-top: 0 !important;
+      }
+    }
+  }
   &.type-video {
     h1 {
       &.h2 {
-        font-size: 3rem
+        font-size: 3rem;
       }
     }
   }
