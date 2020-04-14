@@ -385,7 +385,7 @@
 
       </article>
 
-      <footer class="mt-5 mb-5 py-5">
+      <footer class="mt-5 mb-5 py-5 container">
         <div class="row justify-content-center" v-if="entry.fields.author">
 
           <div class="col-10 col-md-6 p-5 author" v-for="author in entry.fields.author">
