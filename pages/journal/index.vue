@@ -2,7 +2,7 @@
   <div class="mt-5 mb-5">
     <div class="container mt-5">
 
-      <h1>News and Events</h1>
+      <h1>Journal</h1>
 
     </div>
 

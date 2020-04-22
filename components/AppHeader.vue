@@ -13,8 +13,9 @@
           The Club
         </nuxt-link> -->
         <!-- <nuxt-link class="menu-link d-none d-lg-inline" to="/">Architecture</nuxt-link> -->
-        <nuxt-link class="menu-link d-none d-lg-inline" to="/news">
-          News & Events
+        <nuxt-link class="menu-link d-none d-lg-inline" to="/journal">
+          <!-- News & Events -->
+          Journal
         </nuxt-link>
         <nuxt-link class="menu-link d-none d-lg-inline" to="/about-us">
           About
