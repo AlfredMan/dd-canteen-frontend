@@ -53,8 +53,8 @@
           <!-- <nuxt-link class="mobile-menu-link" to="/the-club">
             The Club
           </nuxt-link><br> -->
-          <nuxt-link class="mobile-menu-link" to="/news">
-            News & Events
+          <nuxt-link class="mobile-menu-link" to="/journal">
+            Journal
           </nuxt-link><br>
           <nuxt-link class="mobile-menu-link" to="/about-us">
             About
