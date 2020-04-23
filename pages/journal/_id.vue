@@ -1,7 +1,7 @@
 <template>
   <div class="news" :class="getContentClass(entry.fields.contentType)">
     <!-- <pre>{{entry}}</pre> -->
-    <div class="">
+    <div class="" v-if="entry">
 
       <!-- <header class="event-header" v-if="entry.fields.contentType === 'Event'">
         <div class="event-info p-5">
@@ -268,7 +268,7 @@
       </header>
 
     </div>
-    <div class="">
+    <div class="" v-if="entry">
 
       <!-- <aside class="row d-flex justify-content-center">
         <div class="col-6">
@@ -411,18 +411,18 @@
       </footer>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" v-if="entries">
       <div class="row bg-grey text-black pb-5-pt-3">
         <div class="container py-5">
           <div class="row">
             <div class="col-12 col-md-6">
-              <h2>News & Events</h2>
+              <h2>Journal</h2>
             </div>
           </div>
           <div class="row">
             <div class="col-12 col-md-5">
               <router-link :to="{ path:'/news' }" class="h5 text-black">
-                View all news & events &rarr;
+                View all &rarr;
               </router-link>
             </div>
           </div>
@@ -526,6 +526,7 @@ export default {
   data () {
     return {
       entries: null,
+      entry: null,
       tags: null
     }
   },
@@ -541,39 +542,40 @@ export default {
     // }
   },
 
-  fetch ({ route }) {
-    return Promise.all([
-      // fetch the owner of the blog
-      // client.getEntries({
-      //   'sys.id': env.CTF_PERSON_ID
-      // }),
-      // fetch all blog posts sorted by creation date
-      client.getEntries({
-        'content_type': 'news',
-        order: '-sys.createdAt'
-      }),
-
-      client.getEntries({
-        'content_type': 'news',
-        'fields.slug': route.params.id
-      })
-
-      // client.getAssets()
-
-    ]).then(([entries, entry]) => {
-    // ]).then(([assets]) => {
-      // return data that should be available
-      // in the template
-
-      return {
-        // person: entries.items[0],
-        entries: entries.items,
-        entry: entry.items[0]
-        // assets: _.filter(assets.items, (a)=>(a.fields.title.indexOf('KDN') >= 0 || a.fields.title.indexOf('-Architect') >= 0 || a.fields.title.indexOf('Building') >= 0 || a.fields.title.indexOf('Laneway') >= 0))
-        // assets: assets.items
-      }
-    }).catch(console.error)
-  },
+  // fetch ({ route }) {
+  //   return Promise.all([
+  //     // fetch the owner of the blog
+  //     // client.getEntries({
+  //     //   'sys.id': env.CTF_PERSON_ID
+  //     // }),
+  //     // fetch all blog posts sorted by creation date
+  //     client.getEntries({
+  //       'content_type': 'news',
+  //       order: '-sys.createdAt'
+  //     }),
+  //
+  //     client.getEntries({
+  //       'content_type': 'news',
+  //       'fields.slug': route.params.id
+  //     })
+  //
+  //     // client.getAssets()
+  //
+  //   ]).then(([entries, entry]) => {
+  //   // ]).then(([assets]) => {
+  //     // return data that should be available
+  //     // in the template
+  //     console.log('fetch', [entries, entry])
+  //
+  //     return {
+  //       // person: entries.items[0],
+  //       entries: entries.items,
+  //       entry: entry.items[0]
+  //       // assets: _.filter(assets.items, (a)=>(a.fields.title.indexOf('KDN') >= 0 || a.fields.title.indexOf('-Architect') >= 0 || a.fields.title.indexOf('Building') >= 0 || a.fields.title.indexOf('Laneway') >= 0))
+  //       // assets: assets.items
+  //     }
+  //   }).catch(console.error)
+  // },
   // `env` is available in the context object
   asyncData ({ route }) {
     return Promise.all([
@@ -598,6 +600,7 @@ export default {
     // ]).then(([assets]) => {
       // return data that should be available
       // in the template
+      console.log('asyncData', [entries, entry])
 
       return {
         // person: entries.items[0],

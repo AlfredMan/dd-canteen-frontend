@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="news-card">
-    <router-link :to="{ path: `/news/${entry.fields.slug}` }">
+    <router-link :to="{ path: `/journal/${entry.fields.slug}` }">
       <!-- <img class="news-thumbnail" :src="entry.fields.thumbnailImage.fields.file.url" alt=""> -->
       <lazy-image
       class="news-thumbnail"

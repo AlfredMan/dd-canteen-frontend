@@ -1,10 +1,10 @@
 <template>
   <div class="container error">
     <div class="py-5">
-      <h3 v-if="error.statusCode === 404">
+      <h2 v-if="error.statusCode === 404">
         Page not found
-      </h3>
-      <h3 v-else>An error occurred</h3>
+      </h2>
+      <h2 v-else>An error occurred...</h2>
       <nuxt-link to="/">&larr; return to home page</nuxt-link>
     </div>
   </div>
