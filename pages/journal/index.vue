@@ -125,9 +125,16 @@ export default {
       // return data that should be available
       // in the template
 
+      // let unsorted = entries.items
+      // let sorted = _.orderBy(entries.items, ['fields.featured'])
+      //
+      // debugger
+
       return {
         // person: entries.items[0],
-        entries: _.sortBy(_.sortBy(entries.items, (entry) => entry.fields.featured), (entry) => entry ),
+        // entries: _.sortBy(_.sortBy(entries.items, (entry) => entry.fields.featured), (entry) => entry ),
+        // entries: _.sortBy(entries.items, (entry) => entry.fields.featured),
+        entries: _.orderBy(entries.items, ['fields.featured'], ['desc']),
         tags: tags.items
         // assets: _.filter(assets.items, (a)=>(a.fields.title.indexOf('KDN') >= 0 || a.fields.title.indexOf('-Architect') >= 0 || a.fields.title.indexOf('Building') >= 0 || a.fields.title.indexOf('Laneway') >= 0))
         // assets: assets.items
