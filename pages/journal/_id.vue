@@ -421,7 +421,7 @@
           </div>
           <div class="row">
             <div class="col-12 col-md-5">
-              <router-link :to="{ path:'/news' }" class="h5 text-black">
+              <router-link :to="{ path:'/journal' }" class="h5 text-black">
                 View all &rarr;
               </router-link>
             </div>
