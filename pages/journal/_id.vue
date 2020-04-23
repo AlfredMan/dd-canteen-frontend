@@ -505,7 +505,7 @@ import { createClient } from '~/plugins/contentful.js'
   // UNDERLINE
   // CODE
 
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import NewsCard from '~/components/NewsCard'
 
@@ -518,8 +518,49 @@ const options = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, next) =>
       `<p class="">${next(node.content)}</p>`
-  }
+  },
+  renderNode: {
+    [INLINES.HYPERLINK]: (node, next) => {
+      let origin = window ? window.location.origin : 'https://designdistrict.co.uk'
+      return `<a href="${node.data.uri}"${node.data.uri.startsWith(origin) ? '' : ' target="_blank"'}>${next(node.content)}</a>`;
+    }
+  },
+  // renderNode: {
+  //   [INLINES.ENTRY_HYPERLINK]: (node, children) => {
+  //     // If you are using contenful.js sdk, the referenced entry is resolved
+  //     // automatically and is available at `node.data.target`.
+  //     // const referencedEntry = getEntryWithId(node.data.target.sys.id);
+  //     console.log('node', node);
+  //     console.log('node.data.target', node.data.target);
+  //
+  //     let promise = client.getEntry(node.data.target.sys.id)
+  //     .then((entry) => {
+  //       // logs the entry metadata
+  //       console.log(entry)
+  //       // console.log('id entry', node.data.target.sys.id,  entry)
+  //       return `<a href="/pages/${entry.fields.slug}">${node.content[0].value}</a>`;
+  //     })
+  //
+  //     let result = await promise
+  //     console.log('result from INLINES.ENTRY_HYPERLINK', result)
+  //     return result
+  //     // return `<a href="/pages/${node.data.target.fields.slug}">${children}</a>`;
+  //   }
+  // }
 };
+
+// async getEntryWithId = function (id) {
+//   console.log('getEntryWithId', id)
+//   let entryWithId = null
+//   await client.getEntries({
+//     'content_type': 'news',
+//     'fields.id': id
+//   }).then((entry) => {
+//     console.log('id entry', id,  entry)
+//     entryWithId = entry
+//   })
+//   return entryWithId
+// }
 
 export default {
 
@@ -613,6 +654,15 @@ export default {
   },
 
   methods: {
+
+    // getEntryWithId (id) {
+    //   client.getEntries({
+    //     'content_type': 'news',
+    //     'fields.id': id
+    //   }).then((entry) => {
+    //     return entry
+    //   })
+    // },
 
     getRichText (document) {
       return documentToHtmlString(document, options);
