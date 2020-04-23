@@ -54,9 +54,9 @@
         <div class="col-6 col-md-3 col-lg-1" />
 
         <div class="col-6 col-md-3 col-lg-2 mb-5">
-          <img src="~/assets/images/logo-hor.svg" alt="Design District logo" style="" class="mb-4 w-75">
+          <img src="~/assets/images/logo-hor.svg" alt="Design District logo" style="" class="mb-5 w-75">
           <img src="~/assets/images/gp-logo.svg" alt="Greenwich Peninsula logo" style="" class=" w-75 pr-5 mb-4">
-          <img src="~/assets/images/mayor-of-london-logo.jpg" alt="Mayor of London" style="" class=" w-75">
+          <img src="~/assets/images/mayor-of-london-logo-3.png" alt="Mayor of London" style="" class=" w-75">
         </div>
 
         <!-- <div class="col-12 d-block d-md-none" />
