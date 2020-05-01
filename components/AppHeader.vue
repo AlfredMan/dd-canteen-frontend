@@ -1,9 +1,10 @@
 <template lang="html">
   <header class="header" :class="{'bg-primary': menuActive}">
-    <div class="container">
-      <nav class="inner d-flex flex-row align-items-center row z-index-- ">
-        <nuxt-link to="/" exact class="ml-1 mr-0">
-          <img class="logo" src="~/assets/images/logo-hor.svg" alt="logo">
+    <div class="container-fluid px-0">
+      <nav class="inner d-flex flex-row align-items-center row z-index-- text-white">
+        <nuxt-link to="/" exact class="ml-1 mr-0 ml-3">
+          <!-- <img class="logo" src="~/assets/images/logo-hor.svg" alt="logo"> -->
+          <img class="logo" src="~/assets/images/logo-hor-white.svg" alt="logo">
         </nuxt-link>
 
         <nuxt-link class="menu-link d-none d-lg-inline" to="/workspace">
@@ -28,12 +29,12 @@
           <span class="d-inline d-lg-none">Join Now</span>
           <span class="d-none d-lg-inline">Join design district</span>
         </a> -->
-        <nuxt-link :to="{ path: '/contact', hash: '#register-interest' }" class="btn text-black btn-outline-primary ml-auto mr-0" :class="{'btn-outline-dark': menuActive}">
+        <nuxt-link :to="{ path: '/contact', hash: '#register-interest' }" class="btn btn-lg btn-dark text-white ml-auto mr-0" :class="{'btn-outline-dark': menuActive}">
           <span class="d-inline d-lg-none">Join Now</span>
           <span class="d-none d-lg-inline">Join design district</span>
         </nuxt-link>
 
-        <div class="d-block d-lg-none pl-3">
+        <div class="d-block d-lg-none pl-0 bg-white">
           <button class="form-field-reset btn cursor-pointer p0 mt-1" type="button" @click="menuActive = !menuActive">
             <span class="accessible-hide">Menu</span>
             <div class="icon-burger" style="color: rgb(43, 43, 43);" :class="{'icon-burger--is-active': menuActive}">
@@ -41,6 +42,7 @@
             </div>
           </button>
         </div>
+
       </nav>
     </div>
 

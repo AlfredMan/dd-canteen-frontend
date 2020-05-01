@@ -1,11 +1,17 @@
+body {
+  padding-top: 0;
+}
+
 #app {
 	overflow-x: hidden;
 }
 
 .header {
 	// background-color: #fff;
-	background: $body-bg;
+	// background: $body-bg;
+  background: transparent;
 	position: fixed;
+  position: absolute;
 	z-index: 999;
 	height: auto;
 	top: 0;
@@ -16,11 +22,12 @@
 		// max-width: 1200px;
 		box-sizing: border-box;
 		margin: 0px auto;
-		padding-top: 15px;
-    padding-bottom: 15px;
+		// padding-top: 15px;
+    // padding-bottom: 15px;
+    // border: 1px solid red;
 	}
 	a {
-		color: #000;
+		// color: #000;
 		// line-height: 24px;
 		// transition: color 0.15s ease;
 		display: inline-block;
@@ -31,6 +38,8 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-size: 1rem;
+    border-radius: 0;
+    // border: 1px solid red;
 
 		&.menu-link {
 			border-bottom: 2px solid transparent;
@@ -168,8 +177,8 @@ img {
 @media (max-width: 860px) {
 	.header {
 		.inner {
-      padding-top: 15px;
-      padding-bottom: 15px;
+      // padding-top: 15px;
+      // padding-bottom: 15px;
 		}
 	}
 }
@@ -180,8 +189,8 @@ img {
       margin-right: 0px;
     }
 		.inner {
-      padding-top: 15px;
-      padding-bottom: 15px;
+      // padding-top: 15px;
+      // padding-bottom: 15px;
 		}
 		a {
 			margin-right: 1em;

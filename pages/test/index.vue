@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="">
 
-    <!-- <div class="container p-5 bg-light my-5">
+    <div class="container p-5 bg-light my-5">
       <div class="row">
         <div class="col-12 col-md-6 mb-4 mb-md-0">
           <p style="max-width: 40em;">Thank you for visiting the Design District website. In light of the current situation, we have taken the decision to suspend all site visits&nbsp;temporarily.</p>
@@ -10,29 +10,57 @@
           <p style="max-width: 40em;">The safety of our visitors and the community is our priority so while it would be good to meet in person, if you are interested in more information on becoming a tenant, please <a href="/contact">get in touch</a> and we will happily arrange a digital&nbsp;walk-through.</p>
         </div>
       </div>
-    </div> -->
+    </div>
 
     <div
       class="hero position-relative"
     >
-
-      <div class="d-none d-sm-block position-relative" style="bottom: 0; left:0; right: 0;">
-        <div
-          class="container-fluid pb-5 pt-5 position-absolute"
-          style="bottom: 0; left:0; right: 0;"
-        >
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-sm-6">
-                <h1 class="text-white mb-0 " style="">
-                  Keep London creative
-                  <!-- Design District -->
-                </h1>
-              </div>
-            </div>
+      <div
+        class="container pb-5 pt-5"
+        style="z-index:9; position: relative;"
+      >
+        <div class="row">
+          <div class="col-12 col-md-5">
+            <h1 class="-text-white">
+              Keep London creative
+              <!-- Design District -->
+            </h1>
+            <h4>
+              Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.
+            </h4>
+            <!-- <router-link to="/contact#register-interest" class="btn btn btn-lg btn-primary mt-3">
+              Express interest
+            </router-link> -->
+            <!-- <a href="/contact#register-interest" class="btn btn btn-lg btn-primary mt-3">
+              Express interest
+            </a> -->
+            <nuxt-link :to="{ path: '/contact',hash:'#register-interest'}" class="btn btn btn-lg btn-primary mt-3">
+              Express interest
+            </nuxt-link>
           </div>
+          <!-- <div class="col-12 col-md-1" />
+          <div class="col-12 col-md-6" style="">
+            <div class="w-100 h-100 bg-primary d-flex ">
+              <img
+                style="width: 50vw;max-width: 50vw;"
+                src="https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=jpg&q=80"
+                alt=""
+              >
+            </div>
+          </div> -->
         </div>
-        <!-- <div class="row">
+        <!-- <div class="row"> -->
+        <!-- <div class="col-12 col-md-5 -text-white"> -->
+        <!-- <h4>Welcome to the Design District. London’s new district for the creative industries. Opening September 2020.</h4>
+            <router-link to="/contact/#register-interest" class="btn btn btn-lg btn-primary mt-3">
+              Join Design District
+            </router-link> -->
+        <!-- </div> -->
+        <!-- </div> -->
+      </div>
+
+      <div class="d-none d-md-block position-absolute" style="bottom: 0; left:0; right: 0;">
+        <div class="row">
           <div class="col-12 col-md-6" />
           <div class="col-12 col-md-6">
             <div>
@@ -44,32 +72,18 @@
               >
             </div>
           </div>
-        </div> -->
-        <img
-          style="max-width: 100vw; width: 100vw; min-width: 1000px"
-          class="lazyload"
-          data-src="https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=jpg&q=80"
-          alt=""
-        >
+        </div>
       </div>
-    </div>
 
-    <div class="d-block d-sm-none" style="bottom: 0; left:0; right: 0; width: 100%; height: 100vw; background-size: cover; background-image: url(https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=800&fm=jpg&q=80)">
-
-    </div>
-
-    <div class="container-fluid">
-      <div class="row bg-dark text-light pb-5-pt-3">
-        <div class="container py-5">
-          <div class="row d-flex">
-            <div class="col-12 col-md-4">
-              <h4>
-                Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.
-              </h4>
-              <nuxt-link :to="{ path: '/contact',hash:'#register-interest'}" class="btn btn btn-lg btn-primary mt-3">
-                Express interest
-              </nuxt-link>
-            </div>
+      <div class="d-block d-md-none" style="bottom: 0; left:0; right: 0;">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              style=""
+              class="lazyload"
+              data-src="https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=800&fm=jpg&q=80"
+              alt=""
+            >
           </div>
         </div>
       </div>
@@ -405,7 +419,6 @@ import EnquireForm from '../../components/forms/Enquire.vue'
 import NewsletterForm from '../../components/forms/Newsletter.vue'
 import { studios, validStudios } from '~/common/architecture'
 export default {
-  layout: 'v2',
   head () {
     return {
       title: 'Keep London creative',
