@@ -1,6 +1,6 @@
 <template>
   <div class="mt-5 mb-5">
-    <div class="container mt-5">
+    <div class="container mt-5 py-5">
 
       <h1>Journal</h1>
 
@@ -86,6 +86,10 @@ export default {
 
   components: {
     NewsCard
+  },
+
+  created () {
+    this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
   },
 
   data () {

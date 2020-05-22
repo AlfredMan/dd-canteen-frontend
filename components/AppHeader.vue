@@ -1,18 +1,27 @@
 <template lang="html">
-  <header class="header" :class="{'bg-primary': menuActive}">
+  <header class="header" :class="[{'bg-primary': menuActive}, headerClass]">
     <div class="container-fluid px-0">
-      <nav class="inner d-flex flex-row align-items-center row z-index-- text-white">
+      <nav class="inner d-flex flex-row align-items-center row z-index--" :class="{
+          'text-white': isDark,
+          'text-black': !isDark
+        }">
         <nuxt-link to="/" exact class="ml-1 mr-0 ml-3">
-          <!-- <img class="logo" src="~/assets/images/logo-hor.svg" alt="logo"> -->
-          <img class="logo" src="~/assets/images/logo-hor-white.svg" alt="logo">
+          <img class="logo" src="~/assets/images/logo-hor.svg" alt="logo" v-if="!isDark">
+          <img class="logo" src="~/assets/images/logo-hor-white.svg" alt="logo" v-if="isDark">
         </nuxt-link>
 
         <nuxt-link class="menu-link d-none d-lg-inline" to="/workspace">
           Work space
         </nuxt-link>
-        <!-- <nuxt-link class="menu-link d-none d-lg-inline" to="/the-club">
+        <nuxt-link class="menu-link d-none d-lg-inline" to="/hire">
+          Hire a Space
+        </nuxt-link>
+        <nuxt-link class="menu-link d-none d-lg-inline" to="/the-club">
           The Club
-        </nuxt-link> -->
+        </nuxt-link>
+        <nuxt-link class="menu-link d-none d-lg-inline" to="/community">
+          Community
+        </nuxt-link>
         <!-- <nuxt-link class="menu-link d-none d-lg-inline" to="/">Architecture</nuxt-link> -->
         <nuxt-link class="menu-link d-none d-lg-inline" to="/journal">
           <!-- News & Events -->
@@ -91,6 +100,14 @@ export default {
   data () {
     return {
       menuActive: false
+    }
+  },
+  computed: {
+    headerClass () {
+      return this.$store.state.navigation.theme
+    },
+    isDark () {
+      return this.$store.state.navigation.theme == 'dark'
     }
   },
   watch: {

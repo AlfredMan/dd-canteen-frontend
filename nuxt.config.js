@@ -46,6 +46,28 @@ export default {
     '@nuxtjs/axios'
   ],
 
+  styleResources: {
+    css: [
+      './node_modules/normalize.css/normalize.css',
+      '~/assets/fonts/fonts.css'
+    ],
+    scss: [
+      '~/assets/styles/custom.scss',
+      '~/node_modules/bootstrap/scss/_functions.scss',
+      '~/node_modules/bootstrap/scss/_variables.scss',
+      '~/node_modules/bootstrap/scss/_mixins.scss'
+      // '~/assets/styles/custom.scss',
+      // './node_modules/bootstrap/scss/bootstrap.scss',
+      // '~/assets/styles/reset.scss',
+      // '~/assets/styles/typography.scss',
+      // '~/assets/styles/utility.scss',
+      // '~/assets/styles/blocks.scss',
+      // '~/assets/styles/transitions.scss',
+      // '~/assets/styles/development.scss',
+      // '~/assets/styles/app.scss'
+    ]
+  },
+
   axios: {
   },
 
@@ -53,7 +75,15 @@ export default {
     '~/plugins/filters',
     '~/plugins/vue-lazysizes.js',
     '~/plugins/ga.js',
-    '~/plugins/global.js'
+    '~/plugins/global.js',
+    {
+      src: '~/plugins/vue-waypoint.js',
+      mode: 'client'
+    },
+    {
+      src: '~/plugins/vue-flickity.js',
+      mode: 'client'
+    }
   ],
 
   render: {

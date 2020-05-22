@@ -1,6 +1,6 @@
 <template lang="html">
-  <div class="">
-    <div v-if="false" class="container py-5">
+  <div class="mt-5">
+    <div v-if="true" class="container py-5">
       <div class="row">
         <div class="col-12 col-md-5">
           <h1>The Club</h1>
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div v-if="false" class="container-fluid bg-secondary py-lg-5 py-4">
+    <div v-if="true" class="container-fluid bg-secondary py-lg-5 py-4">
       <div class="row">
         <div class="container">
           <div class="row d-flex justify-content-between mb-5">
@@ -95,7 +95,7 @@
       </div>
     </div> -->
 
-    <div v-if="false" class="container-fluid bg-light py-5">
+    <div v-if="true" class="container-fluid bg-light py-5">
       <div class="row">
         <div class="container">
           <div class="row py-5">

@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="mt-5">
     <div class="container py-5">
       <div class="row">
         <div class="col-12 col-md-7">
@@ -171,6 +171,9 @@ export default {
         { hid: 'description', name: 'description', content: 'Design District is a collection of 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. From autumn 2020 it will offer a permanent and purpose-designed work space for the creative industries.' }
       ]
     }
+  },
+  created () {
+    this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
   },
   components: {
     EnquireForm,

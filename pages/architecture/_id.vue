@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="mt-5">
     <div class="container-fluid">
       <div class="row">
         <div class="container py-5">
@@ -184,6 +184,10 @@ export default {
     return {
       title: studios[this.$route.params.id].title
     }
+  },
+
+  created () {
+    this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
   },
 
   mounted () {

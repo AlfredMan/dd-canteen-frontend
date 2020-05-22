@@ -19,6 +19,16 @@ body {
 	}
 }
 
+::-moz-selection { /* Code for Firefox */
+  color: black;
+  background: lighten($primary, 20%);
+}
+
+::selection {
+  color: black;
+  background: lighten($primary, 20%);
+}
+
 body {
 	// background-color: #f2f3f5;
   background: #fff;
@@ -121,7 +131,7 @@ h4,
 	margin: 1rem 0;
 
 	font-size: 1.5rem;
-	max-width: 20em;
+	// max-width: 20em;
 
 	@include media-breakpoint-up(sm) {
 			font-size: 2rem;
@@ -287,4 +297,45 @@ p,
 	&:last-child {
     margin-bottom: 0
   }
+}
+
+.column {
+  column-count: 1;
+  column-gap: 2rem;
+
+  &.column-count-2 { column-count: 2; }
+  &.column-count-3 { column-count: 3; }
+  &.column-count-4 { column-count: 4; }
+  &.column-count-5 { column-count: 5; }
+  &.column-count-6 { column-count: 6; }
+
+  &.column-count-xs-2 { @include media-breakpoint-up(xs) { column-count: 2; } }
+  &.column-count-xs-3 { @include media-breakpoint-up(xs) { column-count: 3; } }
+  &.column-count-xs-4 { @include media-breakpoint-up(xs) { column-count: 4; } }
+  &.column-count-xs-5 { @include media-breakpoint-up(xs) { column-count: 5; } }
+  &.column-count-xs-6 { @include media-breakpoint-up(xs) { column-count: 6; } }
+
+  &.column-count-sm-2 { @include media-breakpoint-up(sm) { column-count: 2; } }
+  &.column-count-sm-3 { @include media-breakpoint-up(sm) { column-count: 3; } }
+  &.column-count-sm-4 { @include media-breakpoint-up(sm) { column-count: 4; } }
+  &.column-count-sm-5 { @include media-breakpoint-up(sm) { column-count: 5; } }
+  &.column-count-sm-6 { @include media-breakpoint-up(sm) { column-count: 6; } }
+
+  &.column-count-md-2 { @include media-breakpoint-up(md) { column-count: 2; } }
+  &.column-count-md-3 { @include media-breakpoint-up(md) { column-count: 3; } }
+  &.column-count-md-4 { @include media-breakpoint-up(md) { column-count: 4; } }
+  &.column-count-md-5 { @include media-breakpoint-up(md) { column-count: 5; } }
+  &.column-count-md-6 { @include media-breakpoint-up(md) { column-count: 6; } }
+
+  &.column-count-lg-2 { @include media-breakpoint-up(lg) { column-count: 2; } }
+  &.column-count-lg-3 { @include media-breakpoint-up(lg) { column-count: 3; } }
+  &.column-count-lg-4 { @include media-breakpoint-up(lg) { column-count: 4; } }
+  &.column-count-lg-5 { @include media-breakpoint-up(lg) { column-count: 5; } }
+  &.column-count-lg-6 { @include media-breakpoint-up(lg) { column-count: 6; } }
+
+  &.column-count-xl-2 { @include media-breakpoint-up(xl) { column-count: 2; } }
+  &.column-count-xl-3 { @include media-breakpoint-up(xl) { column-count: 3; } }
+  &.column-count-xl-4 { @include media-breakpoint-up(xl) { column-count: 4; } }
+  &.column-count-xl-5 { @include media-breakpoint-up(xl) { column-count: 5; } }
+  &.column-count-xl-6 { @include media-breakpoint-up(xl) { column-count: 6; } }
 }

@@ -91,10 +91,17 @@ button, .btn, input[type="submit"] {
 }
 
 .chip {
-	border-radius: 2rem;
+  min-width: 2.5em;
+	border-radius: 2em;
 	font-size: .8em;
-	padding-left: .75rem;
-	padding-right: .75rem;
+	padding-left: .75em;
+	padding-right: .75em;
+  &.chip-lg {
+    font-size: 1em;
+  }
+  &.chip-xl {
+    font-size: 1.25em;
+  }
 }
 
 input {
@@ -200,6 +207,36 @@ select {
 
 .multiply {
 	mix-blend-mode: multiply;
+}
+
+.hover-bw {
+  &:hover {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+  }
+}
+
+.hover-multiply {
+  &:hover {
+    mix-blend-mode: multiply;
+  }
+}
+
+.reset-grayscale {
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+}
+.reset-blend-mode {
+  mix-blend-mode: none;
+}
+
+.bw-hoverable {
+  @extend .bw;
+  @extend .multiply;
+  transition: .3s linear all;
+  &:hover {
+    @extend .reset-grayscale;
+  }
 }
 
 .bg-grey {

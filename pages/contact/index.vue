@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="mt-5">
     <div class="container py-5">
       <div class="row">
         <div class="col-12 col-md-7">
@@ -179,6 +179,9 @@ export default {
         { hid: 'description', name: 'description', content: 'Ask a question or book a viewing. Comment or collaborate. We want to hear from you.' }
       ]
     }
+  },
+  created () {
+    this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
   },
   components: {
     EnquireForm,

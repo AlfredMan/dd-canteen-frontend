@@ -1,0 +1,34 @@
+.carousel {
+  .flickity {
+    &:active,
+    &:focus {
+      outline: none
+    }
+    &.dragging {
+      // border: 5px solid red;
+      a, .item {
+        pointer-events: none;
+        // opacity: 0.5;
+        // border: 5px solid blue;
+      }
+    }
+  }
+  .item {
+    align-self: baseline;
+  }
+
+  &.carousel-uniform-height {
+    .item {
+      width: auto;
+      max-width: 100%;
+      margin-right: 2rem;
+
+      img {
+        max-height: 30vw;
+        height: 30vw !important;
+        max-width: initial;
+        width: initial !important;
+      }
+    }
+  }
+}

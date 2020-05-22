@@ -45,16 +45,15 @@ body {
 			border-bottom: 2px solid transparent;
 
 			&:hover:not(.btn) {
-				text-decoration: inherit;
-				border-bottom: 2px solid $primary;
+				// text-decoration: inherit;
+				// border-bottom: 2px solid $primary;
 				// color: #fff;
+        color: $primary
 			}
 			&.nuxt-link-exact-active,
 			&.nuxt-link-active {
-				border-bottom: 2px solid $primary;
-			}
-			&:nth-child(7) {
-				margin-right: 0;
+        color: $primary
+				// border-bottom: 2px solid $primary;
 			}
 		}
 

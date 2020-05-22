@@ -24,6 +24,8 @@
     "@nuxtjs/sitemap": "^2.1.0",
     "contentful": "^7.14.2",
     "contentful-rich-text-vue-renderer": "^1.1.5",
+    "flickity-imagesloaded": "^2.0.0",
+    "gsap": "^3.2.6",
     "lazysizes": "^5.2.0",
     "moment": "^2.24.0",
     "nuxt": "^2.10.2",
@@ -49,6 +51,8 @@
     "sass-loader": "^8.0.2",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
-    "vue-loader": "^15.9.0"
+    "vue-loader": "^15.9.0",
+    "vue-flickity": "^1.2.1",
+    "vue-waypoint": "^3.4.1"
   }
 }
