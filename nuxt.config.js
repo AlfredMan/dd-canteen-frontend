@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import { createClient } from './plugins/contentful.js'
 
 export default {
@@ -7,7 +8,6 @@ export default {
   head: {
     titleTemplate: 'Design District | %s',
     meta: [
-      { property: 'og:image', content: 'https://designdistrict.co.uk/DD_Banner.jpg' },
       { property: 'twitter:card', content: 'summary_large_image' },
       { property: 'twitter:site', content: '@design_district' },
 
@@ -145,7 +145,7 @@ export default {
           'content_type': 'news'
         })
       ]).then(([entries]) => {
-        return entries.items
+        return _.map(entries.items, entry => `/journal/${entry.fields.slug}`)
       }).catch(console.error)
     },
     exclude: [

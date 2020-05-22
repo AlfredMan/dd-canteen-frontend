@@ -1,7 +1,7 @@
 <template>
   <div class="news" :class="getContentClass(entry.fields.contentType)">
     <!-- <pre>{{entry}}</pre> -->
-    <div class="" v-if="entry">
+    <div class="" v-if="entry" :key="entry">
 
       <!-- <header class="event-header" v-if="entry.fields.contentType === 'Event'">
         <div class="event-info p-5">
@@ -222,16 +222,23 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-12 d-flex px-0 px-lg-5"  v-if="entry.fields.embedContent" :style="{ backgroundColor: entry.fields.colour}">
-            <div class="">
+          <div class="container">
+            <div class="col-12 col-md-12 d-flex px-0 -px-lg-5"  v-if="entry.fields.embedContent" :style="{ backgroundColor: entry.fields.colour}">
+              <div class="">
 
-            </div>
-            <div class="d-flex flex-column justify-content-center w-100" v-for="content in entry.fields.embedContent" v-if="content.sys.contentType.sys.id === 'embed'">
-                <div class="video-wrapper"  v-html="content.fields.embedCode.content[0].content[0].value">
-                </div>
-                <div class="">
-                  {{ content.fields.description}}
-                </div>
+              </div>
+              <div class="d-flex flex-column justify-content-center w-100" v-for="content in entry.fields.embedContent" v-if="content.sys.contentType.sys.id === 'embed'">
+                  <div class="video-wrapper" >
+                    <div class="iframe-wrapper" v-html="content.fields.embedCode.content[0].content[0].value">
+
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <div class="col-12 col-md-6 px-3 px-md-0">
+                      {{ content.fields.description}}
+                    </div>
+                  </div>
+              </div>
             </div>
           </div>
         </div>
@@ -344,7 +351,7 @@
         <div class="row row-flex justify-content-center" v-for="content in entry.fields.contentReferences">
 
           <!-- text -->
-          <div class="col-12">
+          <div class="col-12  type-text">
             <div class="container ">
               <div class="row justify-content-center">
                 <div class="col-12 col-md-6 my-4 -px-lg-5" v-if="content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
@@ -354,7 +361,7 @@
           </div>
 
           <!-- embed -->
-          <div class="col-12">
+          <div class="col-12 type-embed">
             <div class="container ">
               <div class="row justify-content-center">
                 <div class="col-12 col-md-7 my-5 -px-lg-5" v-if="content.sys.contentType.sys.id === 'embed'">
@@ -370,7 +377,7 @@
           </div>
 
           <!-- gallery -->
-          <div class="col-12 col-lg-8 my-5 px-5 px-lg-0" v-if="content.sys.contentType.sys.id === 'gallery'">
+          <div class="col-12 col-lg-8 my-5 px-5 px-lg-0  type-gallery" v-if="content.sys.contentType.sys.id === 'gallery'">
             <div class="row row-flex flex-wrap justify-content-center align-items-center gallery">
               <div class="gallery-item mb-4" v-for="image in content.fields.image" :class="getGalleryImageClass(content.fields.image)">
                 <img :src="image.fields.file.url" alt="" class="image">
@@ -521,7 +528,10 @@ const options = {
   },
   renderNode: {
     [INLINES.HYPERLINK]: (node, next) => {
-      let origin = window ? window.location.origin : 'https://designdistrict.co.uk'
+      let origin = 'https://designdistrict.co.uk'
+      if (process.client) {
+        origin = window ? window.location.origin : 'https://designdistrict.co.uk'
+      }
       return `<a href="${node.data.uri}"${node.data.uri.startsWith(origin) ? '' : ' target="_blank"'}>${next(node.content)}</a>`;
     }
   },
@@ -563,6 +573,24 @@ const options = {
 // }
 
 export default {
+
+  head () {
+    return {
+      title: this.entry.fields.seoTitle,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'description', name: 'description', content: this.entry.fields.seoDescription },
+        { property: 'og:image', content: this.entry.fields.thumbnailImage.fields.file.url },
+        { property: 'og:url', content: `https://designdistrict.co.uk/journal/${this.entry.fields.slug}` },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:title', content: this.entry.fields.seoTitle },
+        { property: 'og:description', content: this.entry.fields.seoDescription },
+
+        { name: 'twitter:description', content: this.entry.fields.seoDescription },
+        { name: 'twitter:image', content: 'https://designdistrict.co.uk/DD_Banner.jpg" ' },
+      ]
+    }
+  },
 
   data () {
     return {
@@ -641,7 +669,7 @@ export default {
     // ]).then(([assets]) => {
       // return data that should be available
       // in the template
-      console.log('asyncData', [entries, entry])
+      // console.log('asyncData', [entries, entry])
 
       return {
         // person: entries.items[0],
