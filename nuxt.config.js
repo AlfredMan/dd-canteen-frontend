@@ -1,6 +1,9 @@
-const config = require('./.contentful.json')
+import { createClient } from './plugins/contentful.js'
 
 export default {
+
+  mode: 'universal',
+
   head: {
     titleTemplate: 'Design District | %s',
     meta: [
@@ -20,7 +23,9 @@ export default {
       { name: 'twitter:creator', content: '@Design_District' },
       { name: 'twitter:title', content: 'Design District' },
       { name: 'twitter:description', content: 'A new permanent home for the creative industries. With purpose-designed workspaces, workshops, accessible rents and flexible leases. It comprises 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. Each is tailored to the needs of creative businesses to help them thrive.' },
-      { name: 'twitter:image', content: 'https://designdistrict.co.uk/DD_Banner.jpg" ' }
+      { name: 'twitter:image', content: 'https://designdistrict.co.uk/DD_Banner.jpg" ' },
+
+      { name: 'p:domain_verify', content: 'b5004249d0531cbc68a424d426ec9a6a' }
     ],
     link: [
       { rel: 'icon', type: 'image/png', href: '/assets/images/icon-120.png' },
@@ -42,7 +47,7 @@ export default {
   },
 
   devModules: [
-    '@nuxtjs/pwa',
+    // '@nuxtjs/pwa',
     '@nuxtjs/axios'
   ],
 
@@ -52,7 +57,7 @@ export default {
   plugins: [
     '~/plugins/filters',
     '~/plugins/vue-lazysizes.js',
-    '~/plugins/ga.js',
+    // '~/plugins/ga.js',
     '~/plugins/global.js'
   ],
 
@@ -81,8 +86,25 @@ export default {
 
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/google-gtag'
   ],
+
+  'google-gtag': {
+    id: 'GTM-5PF87Z8',
+    config: {
+      anonymize_ip: true, // anonymize IP
+      send_page_view: false // might be necessary to avoid duplicated page track on page reload
+    },
+    debug: false, // enable to track in dev mode
+    disableAutoPageTrack: false // disable if you don't want to track each page route with router.afterEach(...).
+    // additionalAccounts: [{
+    //   id: 'AW-XXXX-XX', // required if you are adding additional accounts
+    //   config: {
+    //     send_page_view: false // optional configurations
+    //   }
+    // }]
+  },
 
   sitemap: {
     hostname: 'https://designdistrict.co.uk/',
@@ -109,6 +131,25 @@ export default {
       '/architecture/mole-architects',
       '/architecture/schulze-grassov',
       '/architecture/selgascano'
+    ]
+  },
+
+  generate: {
+    interval: 100,
+    concurrency: 100,
+    devtools: true,
+    routes () {
+      const client = createClient()
+      return Promise.all([
+        client.getEntries({
+          'content_type': 'news'
+        })
+      ]).then(([entries]) => {
+        return entries.items
+      }).catch(console.error)
+    },
+    exclude: [
+      /^(?=.*\bhelper\b).*$/
     ]
   }
   //
