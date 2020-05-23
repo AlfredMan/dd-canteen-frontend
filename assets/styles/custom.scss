@@ -55,10 +55,15 @@ $grid-breakpoints: (
   // md: 768px,
   // lg: 992px,
   // xl: 1200px
+  // xs: 0,
+  // sm: 576px,
+  // md: 992px,
+  // lg: 1200px,
+  // xl: 1400px
   xs: 0,
-  sm: 576px,
-  md: 992px,
-  lg: 1200px,
+  sm: 880px,
+  md: 1080px,
+  lg: 1240px,
   xl: 1400px
 );
 
@@ -67,33 +72,92 @@ $container-max-widths: (
   // md: 720px,
   // lg: 960px,
   // xl: 1240px
-  sm: 990px,
-  md: 1199px,
-  lg: 1399px,
-  xl: 1400px
+  // sm: 990px,
+  // md: 1199px,
+  // lg: 1399px,
+  // xl: 1400px
+  sm: map-get($grid-breakpoints, sm) - 40,
+  md: map-get($grid-breakpoints, md) - 40,
+  lg: map-get($grid-breakpoints, lg) - 40,
+  xl: map-get($grid-breakpoints, xl) - 40
 );
 
-// Required
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
+$grid-gutter-width: 30px;
 
-// Optional
-@import "../node_modules/bootstrap/scss/reboot";
-@import "../node_modules/bootstrap/scss/type";
-@import "../node_modules/bootstrap/scss/code";
-@import "../node_modules/bootstrap/scss/grid";
-@import "../node_modules/bootstrap/scss/utilities";
-
-// html {
-//   // background: $body-bg
-//   &:after {
-//     content: "custom.scss";
-//     position: fixed;
-//     bottom: 0;
-//     left: 0;
-//     z-index: 9999;
-//     background: #ff0;
-//     background: gray("100");
-//   }
-// }
+@media (min-width: map-get($grid-breakpoints, xl)){
+    .row:not(.no-gutters) {
+        // border: 1px solid #f00;
+    }
+    .row:not(.no-gutters) > .col,
+    .row:not(.no-gutters) > [class*="col-"] {
+        // border: 1px solid #f00;
+    }
+}
+@media (max-width: map-get($grid-breakpoints, xl)){
+    .row:not(.no-gutters) {
+        margin-right: -$grid-gutter-width / 2;
+        margin-left: -$grid-gutter-width / 2;
+        // border: 1px solid #f90;
+    }
+    .row:not(.no-gutters) > .col,
+    .row:not(.no-gutters) > [class*="col-"] {
+        padding-right: $grid-gutter-width / 2;
+        padding-left: $grid-gutter-width / 2;
+        // border: 1px solid #f90;
+    }
+}
+@media (max-width: map-get($grid-breakpoints, lg)){
+    .row:not(.no-gutters) {
+        margin-right: -$grid-gutter-width / 2;
+        margin-left: -$grid-gutter-width / 2;
+        // border: 1px solid #ff0;
+    }
+    .row:not(.no-gutters) > .col,
+    .row:not(.no-gutters) > [class*="col-"] {
+        padding-right: $grid-gutter-width / 2;
+        padding-left: $grid-gutter-width / 2;
+        // border: 1px solid #ff0;
+    }
+}
+@media (max-width: map-get($grid-breakpoints, md)){
+    .row:not(.no-gutters) {
+        // border: 1px solid #0f0;
+    }
+    .row:not(.no-gutters) > .col,
+    .row:not(.no-gutters) > [class*="col-"] {
+        // border: 1px solid #0f0;
+    }
+}
+@media (max-width: map-get($grid-breakpoints, sm)){
+    .row:not(.no-gutters) {
+        // border: 1px solid #00f;
+    }
+    .row:not(.no-gutters) > .col,
+    .row:not(.no-gutters) > [class*="col-"] {
+        // border: 1px solid #00f;
+    }
+}
+// // Required
+// @import "../node_modules/bootstrap/scss/functions";
+// @import "../node_modules/bootstrap/scss/variables";
+// @import "../node_modules/bootstrap/scss/mixins";
+//
+// // Optional
+// @import "../node_modules/bootstrap/scss/reboot";
+// @import "../node_modules/bootstrap/scss/type";
+// @import "../node_modules/bootstrap/scss/code";
+// @import "../node_modules/bootstrap/scss/grid";
+// @import "../node_modules/bootstrap/scss/utilities";
+//
+// // html {
+// //   // background: $body-bg
+// //   &:after {
+// //     content: "custom.scss";
+// //     position: fixed;
+// //     bottom: 0;
+// //     left: 0;
+// //     z-index: 9999;
+// //     background: #ff0;
+// //     background: gray("100");
+// //   }
+// // }

@@ -17,19 +17,18 @@
     >
 
       <div class="d-none d-sm-block position-relative pt-0" style="bottom: 0; left:0; right: 0;">
-        <div class="position-relative">
+        <!-- <div class="position-relative">
           <img
             style="max-width: 100vw; width: 100vw; min-width: 1000px"
             class="lazyload"
             data-src="https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=jpg&q=80"
             alt=""
           >
-          <!-- <div
-            class="container-fluid pb-5-my-5 pb-2 position-absolute text-white"
-            style="bottom: 0; left:0; right: 0;"
-          >
-            <h1>Keep<br>London<br>Creative</h1>
-          </div> -->
+        </div> -->
+        <div class="video-wrapper">
+          <div class="iframe-wrapper">
+            <iframe style="" src="https://player.vimeo.com/video/421875361?autoplay=1&loop=1&color=ffffff&title=0&byline=0&portrait=0&background=1" width="640" height="299" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+          </div>
         </div>
         <div
           class="container-fluid pb-5 pt-5 -position-absolute bg-white"
@@ -436,8 +435,8 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('updateNavigationTheme', { theme: 'dark' })
-    // this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
+    // this.$store.dispatch('updateNavigationTheme', { theme: 'dark' })
+    this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
   },
   methods: {
 
@@ -449,13 +448,27 @@ export default {
 .hero {
   background-size: cover;
   background-repeat: no-repeat;
-  // height: 60rem;
-  // max-height: 800px;
-  // background-image: url(//images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=2000&fm=jpg&q=80);
-
-  // h1 {
-  //   text-shadow: 0px 0px 10px rgba(0,0,0, 0.5);
-  // }
 }
+.video-wrapper {
+  width: 100%;
+  // height: 80vh;
+  // height: 50vw;
+  // max-height: 600px;
+  height: 0;
+  padding-bottom: 46.75%;
+  position: relative;
+}
+.iframe-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+iframe {
+  width: 100%;
+  height: 100%;
+}
+
 
 </style>

@@ -6,6 +6,9 @@
         :data-srcset="getLazySrcSet()"
         :data-src="getLazySrc()"
         class="lazyload" />
+    <div class="curtain">
+
+    </div>
   </div>
 </template>
 
@@ -113,13 +116,32 @@ export default {
     // height: 100%;
     display: block;
 }
+.curtain {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: .5s ease opacity .7s;
+  background: $secondary;
+}
 img {
+  position: relative;
+  z-index: 1;
   &.lazyload {
-    -webkit-filter: blur(30px);
-    opacity: 0.5;
+    // -webkit-filter: blur(30px);
+    // opacity: 0.5;
+    ~ .curtain {
+      // background: $secondary;
+      opacity: 1;
+    }
   }
   &.lazyloaded {
-    -webkit-filter: none
+    // -webkit-filter: none
+    ~ .curtain {
+      opacity: 0;
+    }
   }
   &[data-sizes="auto"] {
     display: block;

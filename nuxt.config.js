@@ -1,6 +1,9 @@
 const config = require('./.contentful.json')
 
 export default {
+
+  mode: 'universal',
+
   head: {
     titleTemplate: 'Design District | %s',
     meta: [
@@ -41,9 +44,15 @@ export default {
     start_url: '/'
   },
 
-  devModules: [
-    '@nuxtjs/pwa',
-    '@nuxtjs/axios'
+  buildModules: [
+    // '@nuxtjs/pwa',
+    '@nuxtjs/axios',
+    '@nuxtjs/style-resources'
+  ],
+
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/sitemap'
   ],
 
   styleResources: {
@@ -101,18 +110,21 @@ export default {
   },
 
   build: {
-    extend (config, { isDev, isClient, loaders: { vue } }) {
-      if (isClient) {
-        vue.transformAssetUrls.img = ['data-src', 'src']
-        vue.transformAssetUrls.source = ['data-srcset', 'srcset']
+    // extend (config, { isDev, isClient, loaders: { vue } }) {
+    //   if (isClient) {
+    //     vue.transformAssetUrls.img = ['data-src', 'src']
+    //     vue.transformAssetUrls.source = ['data-srcset', 'srcset']
+    //   }
+    // }
+    extend (config, ctx) {},
+    loaders: {
+      cssModules: {
+        localIdentName: '[local]_[hash:base64:4]', // Work
+        modules: true, // Not work
+        hashPrefix: 'my-custom-hash' // Not work
       }
     }
   },
-
-  modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/sitemap'
-  ],
 
   sitemap: {
     hostname: 'https://designdistrict.co.uk/',

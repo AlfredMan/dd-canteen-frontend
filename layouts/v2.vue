@@ -28,6 +28,8 @@
 
     <app-footer />
 
+    <app-transition />
+
   </div>
 </template>
 
@@ -35,11 +37,14 @@
 import NewsletterForm from '../components/forms/Newsletter.vue'
 import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
+import AppTransition from '../components/AppTransition.vue'
+
 export default {
   components: {
     NewsletterForm,
     AppHeader,
-    AppFooter
+    AppFooter,
+    AppTransition
   },
   mounted () {
     // From testing, without a brief timeout, it won't work.
@@ -57,17 +62,18 @@ export default {
 
 <style lang="scss">
 // custom boostrap overrides
-@import '~/assets/styles/custom.scss';
+// @import '~/assets/styles/custom.scss';
 // boostrap
 @import "../node_modules/bootstrap/scss/bootstrap";
 // normalize
-@import '../node_modules/normalize.css/normalize.css';
+// @import '../node_modules/normalize.css/normalize.css';
 // brand type
-@import '~/assets/fonts/fonts.css';
+// @import '~/assets/fonts/fonts.css';
 
 @import '~/assets/styles/typography.scss';
 @import '~/assets/styles/reset.scss';
 @import '~/assets/styles/utility.scss';
+@import '~/assets/styles/slideshow.scss';
 // @import "custom"
 
 @import '~/assets/styles/app.scss';
