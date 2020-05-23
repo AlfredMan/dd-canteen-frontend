@@ -62,7 +62,6 @@ export default {
       const srcRect = this.$store.state.transition.sourceElementRect || null
 
       console.log('srcRect', srcRect)
-
       // this.resetBoxStyle ()
       this.tl = gsap.timeline()
       this.tl.pause()
