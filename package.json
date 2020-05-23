@@ -28,6 +28,7 @@
     "lazysizes": "^5.2.0",
     "moment": "^2.24.0",
     "nuxt": "^2.10.2",
+    "nuxt-purgecss": "^1.0.0",
     "vue-recaptcha": "^1.3.0",
     "vue-recaptcha-v3": "^1.8.0"
   },

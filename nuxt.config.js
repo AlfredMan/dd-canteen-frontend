@@ -46,11 +46,6 @@ export default {
     start_url: '/'
   },
 
-  devModules: [
-    // '@nuxtjs/pwa',
-    '@nuxtjs/axios'
-  ],
-
   axios: {
   },
 
@@ -76,6 +71,31 @@ export default {
   },
 
   build: {
+    analyze: true,
+    extractCSS: true,
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          styles: {
+            name: 'styles',
+            test: /\.(css|vue)$/,
+            chunks: 'all',
+            enforce: true
+          }
+        }
+      }
+    },
+    loaders: {
+      cssModules: {
+        modules: true,
+        localIdentName: '[local]_[hash:base64:5]'
+        // modules: {
+        //   localIdentName: '[local]--[Frida]_[hash:base64:4]',
+        //   modules: true,
+        //   hashPrefix: 'my-hash'
+        // }
+      }
+    },
     extend (config, { isDev, isClient, loaders: { vue } }) {
       if (isClient) {
         vue.transformAssetUrls.img = ['data-src', 'src']
@@ -83,6 +103,12 @@ export default {
       }
     }
   },
+
+  buildModules: [
+    // '@nuxtjs/pwa',
+    '@nuxtjs/axios',
+    'nuxt-purgecss'
+  ],
 
   modules: [
     '@nuxtjs/axios',
