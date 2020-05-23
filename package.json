@@ -9,6 +9,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "dev-spa": "nuxt dev --spa",
+    "generate": "nuxt generate",
     "build-spa": "nuxt build --spa",
     "start-spa": "nuxt start --spa",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
