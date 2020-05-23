@@ -137,6 +137,11 @@
 
 <script>
 export default {
+  head () {
+    return {
+      title: 'Privacy policy',
+    }
+  }
 }
 </script>
 

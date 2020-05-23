@@ -226,6 +226,11 @@
 <script>
 import ClubForm from '../../components/forms/JoinTheClub.vue'
 export default {
+  head () {
+    return {
+      title: 'The Club',
+    }
+  },
   components: {
     ClubForm
   }

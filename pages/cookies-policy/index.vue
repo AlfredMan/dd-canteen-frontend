@@ -20,6 +20,11 @@
 
 <script>
 export default {
+  head () {
+    return {
+      title: 'Cookies Policy',
+    }
+  },
 }
 </script>
 

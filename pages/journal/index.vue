@@ -84,6 +84,12 @@ const client = createClient()
 
 export default {
 
+  head () {
+    return {
+      title: 'Journal',
+    }
+  },
+
   components: {
     NewsCard
   },
