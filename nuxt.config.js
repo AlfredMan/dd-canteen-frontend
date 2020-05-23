@@ -46,11 +46,6 @@ export default {
     start_url: '/'
   },
 
-  devModules: [
-    // '@nuxtjs/pwa',
-    '@nuxtjs/axios'
-  ],
-
   styleResources: {
     css: [
       './node_modules/normalize.css/normalize.css',
@@ -110,7 +105,7 @@ export default {
   },
 
   build: {
-    analyze: true,
+    analyze: false,
     extractCSS: true,
     optimization: {
       splitChunks: {
@@ -152,7 +147,8 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/sitemap',
-    '@nuxtjs/google-gtag'
+    '@nuxtjs/google-gtag',
+    '@nuxtjs/style-resources'
   ],
 
   'google-gtag': {

@@ -56,7 +56,7 @@ export default {
           console.log(document.querySelector(this.$route.hash).offsetTop - 50)
           window.scrollTo({ top: document.querySelector(this.$route.hash).offsetTop - 50, behavior: 'smooth' })
         })
-      }  
+      }
     }
   }
 }
