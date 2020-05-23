@@ -73,20 +73,17 @@ export default {
 
   plugins: [
     {
-      src: '~/plugins/filters',
-      mode: 'client'
+      src: '~/plugins/filters'
     },
     {
-      src: '~/plugins/vue-lazysizes.js',
-      mode: 'client'
+      src: '~/plugins/vue-lazysizes.js'
     },
+    // use gtag module instead
+    // {
+    //   src: '~/plugins/ga.js'
+    // },
     {
-      src: '~/plugins/ga.js',
-      mode: 'client'
-    },
-    {
-      src: '~/plugins/global.js',
-      mode: 'client'
+      src: '~/plugins/global.js'
     },
     {
       src: '~/plugins/route.js',
