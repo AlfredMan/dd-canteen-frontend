@@ -110,21 +110,44 @@ export default {
   },
 
   build: {
-    // extend (config, { isDev, isClient, loaders: { vue } }) {
-    //   if (isClient) {
-    //     vue.transformAssetUrls.img = ['data-src', 'src']
-    //     vue.transformAssetUrls.source = ['data-srcset', 'srcset']
-    //   }
-    // }
-    extend (config, ctx) {},
+    analyze: true,
+    extractCSS: true,
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          styles: {
+            name: 'styles',
+            test: /\.(css|vue)$/,
+            chunks: 'all',
+            enforce: true
+          }
+        }
+      }
+    },
     loaders: {
       cssModules: {
-        localIdentName: '[local]_[hash:base64:4]', // Work
-        modules: true, // Not work
-        hashPrefix: 'my-custom-hash' // Not work
+        modules: true,
+        localIdentName: '[local]_[hash:base64:5]'
+        // modules: {
+        //   localIdentName: '[local]--[Frida]_[hash:base64:4]',
+        //   modules: true,
+        //   hashPrefix: 'my-hash'
+        // }
+      }
+    },
+    extend (config, { isDev, isClient, loaders: { vue } }) {
+      if (isClient) {
+        vue.transformAssetUrls.img = ['data-src', 'src']
+        vue.transformAssetUrls.source = ['data-srcset', 'srcset']
       }
     }
   },
+
+  buildModules: [
+    // '@nuxtjs/pwa',
+    '@nuxtjs/axios',
+    'nuxt-purgecss'
+  ],
 
   modules: [
     '@nuxtjs/axios',
