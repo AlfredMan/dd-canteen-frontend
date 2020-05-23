@@ -411,6 +411,10 @@ export default {
       // this.formAction = 'Complete'
 
       // alert('test form submission completed. no data is saved.')
+      let url = ''
+      if (process.client) {
+        url = _.take(_.escape(window.location.href), 128).join('')
+      }
 
       const postBody = {
         'email': _.take(_.escape(this.form.email), 64).join(''),
@@ -422,7 +426,7 @@ export default {
         'userDesignOptIn': _.take(_.escape(this.form.userDesignOptIn), 64).join(''),
         'userMarketingOptIn': _.take(_.escape(this.form.userMarketingOptIn), 64).join(''),
         'userAgreePolicy': _.take(_.escape(this.form.userAgreePolicy), 64).join(''),
-        'userUrl': _.take(_.escape(window.location.href), 64).join('')
+        'userUrl': url
       }
 
       this.$axios.$post('https://us-central1-designdistrict-2b9e1.cloudfunctions.net/sendMail', postBody).then((response) => {
