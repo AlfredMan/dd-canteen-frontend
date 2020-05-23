@@ -102,10 +102,14 @@
 
           <div class="row d-flex align-items-end mt-5 pt-5">
             <div v-for="nextStudio in nextFour" :key="nextStudio.slug" class="col-12 col-md-6 col-lg-3 mb-5">
-              <router-link :to="`/architecture/${nextStudio.slug}`">
-                <img class="lazyload" :data-src="nextStudio.imagesPractice[0].url" alt="">
+              <nuxt-link :to="`/architecture/${nextStudio.slug}`" @click.native="setTransitionSource">
+                <img class="lazyload transition-source" :data-src="nextStudio.imagesPractice[0].url" alt="">
                 <h5>{{ nextStudio.title }}</h5>
-              </router-link>
+              </nuxt-link>
+              <a :href="`/architecture/${nextStudio.slug}`" @click.prevent="setTransitionSource(`/architecture/${nextStudio.slug}`, $event)">
+                <img class="lazyload transition-source" :data-src="nextStudio.imagesPractice[0].url" alt="">
+                <h5>{{ nextStudio.title }}</h5>
+              </a>
             </div>
 
             <!-- <div class="col-12 col-md-6 col-lg-3 mb-5">
@@ -195,6 +199,15 @@ export default {
   },
 
   methods: {
+    setTransitionSource (path, ev) {
+      console.log('setTransitionSource +++++++++++++ 1', ev)
+      if (ev.srcElement.classList.contains('transition-source')) {
+        console.log('setTransitionSource +++++++++++++ 2', ev.srcElement)
+        this.$store.dispatch('setRouteTransitionSource', { sourceElement: ev.srcElement })
+        this.$store.dispatch('setRouteTransitionSourceRect', { boundingClientRect: ev.srcElement.getBoundingClientRect() })
+      }
+      this.$router.push({path: path})
+    }
     // pageChanged (to, from = -1) {
     //   if (to <= 0 || to > this.maxPage) {
     //     this.$router.replace(`/${this.feed}/1`)

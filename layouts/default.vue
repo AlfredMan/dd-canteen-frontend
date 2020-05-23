@@ -68,12 +68,13 @@ export default {
 // normalize
 // @import '../node_modules/normalize.css/normalize.css';
 // brand type
-// @import '~/assets/fonts/fonts.css';
+@import '~/assets/fonts/fonts.css';
 
 @import '~/assets/styles/typography.scss';
 @import '~/assets/styles/reset.scss';
 @import '~/assets/styles/utility.scss';
 @import '~/assets/styles/slideshow.scss';
+@import '~/assets/styles/transitions.scss';
 // @import "custom"
 
 @import '~/assets/styles/app.scss';

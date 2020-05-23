@@ -44,7 +44,7 @@ export default {
     start_url: '/'
   },
 
-  buildModules: [
+  devModules: [
     // '@nuxtjs/pwa',
     '@nuxtjs/axios',
     '@nuxtjs/style-resources'
@@ -52,7 +52,8 @@ export default {
 
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/style-resources'
   ],
 
   styleResources: {
@@ -85,6 +86,10 @@ export default {
     '~/plugins/vue-lazysizes.js',
     '~/plugins/ga.js',
     '~/plugins/global.js',
+    {
+      src: '~/plugins/route.js',
+      mode: 'client'
+    },
     {
       src: '~/plugins/vue-waypoint.js',
       mode: 'client'
@@ -152,6 +157,32 @@ export default {
       '/architecture/schulze-grassov',
       '/architecture/selgascano'
     ]
+  },
+
+  /* Page Transitions */
+  layoutTransition: {
+    name: 'layout',
+    // name: 'default',
+    mode: ''
+  },
+  /* Page Transitions */
+  pageTransition: {
+    // name: 'page',
+    name: 'default',
+    mode: ''
+  },
+
+  router: {
+    middleware: 'transition'
+    // extendRoutes (routes, resolve) {
+    //   routes.push({
+    //     beforeEnter: (to, from, next) => {
+    //       console.log('log from router')
+    //       console.log(to)
+    //       next()
+    //     }
+    //   })
+    // }
   }
   //
   // router: {
