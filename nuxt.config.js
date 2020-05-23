@@ -72,10 +72,22 @@ export default {
   },
 
   plugins: [
-    '~/plugins/filters',
-    '~/plugins/vue-lazysizes.js',
-    '~/plugins/ga.js',
-    '~/plugins/global.js',
+    {
+      src: '~/plugins/filters',
+      mode: 'client'
+    },
+    {
+      src: '~/plugins/vue-lazysizes.js',
+      mode: 'client'
+    },
+    {
+      src: '~/plugins/ga.js',
+      mode: 'client'
+    },
+    {
+      src: '~/plugins/global.js',
+      mode: 'client'
+    },
     {
       src: '~/plugins/route.js',
       mode: 'client'
@@ -182,17 +194,27 @@ export default {
       '/item/**',
       '/home'
     ],
-    routes: [
-      '/architecture/hnna',
-      '/architecture/6a-architects',
-      '/architecture/adam-khan-architects',
-      '/architecture/architecture-00',
-      '/architecture/barozzi-veiga',
-      '/architecture/david-kohn-architects',
-      '/architecture/mole-architects',
-      '/architecture/schulze-grassov',
-      '/architecture/selgascano'
-    ]
+    // routes: [
+    //   '/architecture/hnna',
+    //   '/architecture/6a-architects',
+    //   '/architecture/adam-khan-architects',
+    //   '/architecture/architecture-00',
+    //   '/architecture/barozzi-veiga',
+    //   '/architecture/david-kohn-architects',
+    //   '/architecture/mole-architects',
+    //   '/architecture/schulze-grassov',
+    //   '/architecture/selgascano'
+    // ],
+    routes () {
+      const client = createClient()
+      return Promise.all([
+        client.getEntries({
+          'content_type': 'news'
+        })
+      ]).then(([entries]) => {
+        return _.map(entries.items, entry => `/journal/${entry.fields.slug}`)
+      }).catch(console.error)
+    }
   },
 
   /* Page Transitions */

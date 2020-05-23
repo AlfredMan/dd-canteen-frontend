@@ -254,7 +254,7 @@ export default {
   },
   computed: {
     formattedBuildings () {
-      console.log('buildings', buildings)
+      // console.log('buildings', buildings)
       return _.map(buildings, (b) => {
         b.type = _.sample(['Meeting Room', 'Popup', 'Photo Studio', 'Roof Top'])
         return b

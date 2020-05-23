@@ -904,11 +904,6 @@ export default {
   computed: {
     retURL () {
       return `https://designdistrict.co.uk/success?source=${this.source}`
-      // if (process.browser) {
-      //   return `${window.location.href}?form=success`
-      // } else {
-      //   return `https://designdistrict.co.uk/success`
-      // }
     }
   },
   monuted () {

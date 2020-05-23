@@ -107,6 +107,8 @@
 import ClubForm from '../../components/forms/JoinTheClub.vue'
 import { directory } from '~/common/directory.js'
 import { vendors } from '~/common/vendors.js'
+import _ from 'lodash'
+
 export default {
   components: {
     ClubForm
@@ -121,7 +123,7 @@ export default {
       return vendors
     },
     formattedDirectory () {
-      console.log('directory', directory)
+      // console.log('directory', directory)
       let dWithType = _.map(directory, (d) => {
         d.type = _.sample(this.sampleType)
         return d

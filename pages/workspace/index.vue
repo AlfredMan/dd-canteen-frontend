@@ -509,6 +509,7 @@
 import EnquireForm from '../../components/forms/Enquire2.vue'
 import NewsletterForm from '../../components/forms/Newsletter.vue'
 import { buildings } from '~/common/buildings.js'
+import _ from 'lodash'
 export default {
   components: {
     EnquireForm,
@@ -528,7 +529,7 @@ export default {
   },
   computed: {
     formattedBuildings () {
-      console.log('buildings', buildings)
+      // console.log('buildings', buildings)
       return _.map(buildings, (b) => {
         b.type = _.sample(['Meeting Room', 'Popup', 'Photo Studio', 'Roof Top'])
         return b

@@ -46,11 +46,13 @@ export default async function (to, from, savedPosition) {
     const el = await findEl(to.hash)
     const offset = 0
     // console.log(el.offsetTop)
-    if ('scrollBehavior' in document.documentElement.style) {
-      // return window.scrollTo({ top: el.offsetTop, behavior: 'smooth' })
-      return window.scrollTo({ top: el.offsetTop - offset, behavior: 'auto' })
-    } else {
-      return window.scrollTo(0, el.offsetTop - offset)
+    if (process.client) {
+      if ('scrollBehavior' in document.documentElement.style) {
+        // return window.scrollTo({ top: el.offsetTop, behavior: 'smooth' })
+        return window.scrollTo({ top: el.offsetTop - offset, behavior: 'auto' })
+      } else {
+        return window.scrollTo(0, el.offsetTop - offset)
+      }
     }
   }
 
