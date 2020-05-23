@@ -1,6 +1,6 @@
 <template lang="html">
   <header class="header" :class="[{'bg-primary': menuActive}, headerClass]">
-    <div class="container-fluid px-0">
+    <div data-x="a" class="container-fluid px-xl-0 -px-lg-0">
       <nav class="inner d-flex flex-row align-items-center row z-index--" :class="{
           'text-white': isDark,
           'text-black': !isDark

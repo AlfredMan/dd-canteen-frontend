@@ -72,7 +72,8 @@ export default {
         root: null,
         rootMargin: '0px 0px 0px 0px',
         threshold: [.6, .8] // [0.25, 0.75] if you want a 25% offset!
-      }
+      },
+      hasAnimated: false
     }
   },
   computed: {
@@ -88,6 +89,9 @@ export default {
         wrapAround: true, // true
         freeScroll: true,
         imagesLoaded: true,
+        autoPlay: 6000,
+        selectedAttraction: 0.01,
+        friction: 0.15,
         // adaptiveHeight: true,
         arrowShape: {
           x0: 10,
@@ -128,35 +132,43 @@ export default {
       // going: in, out
       // direction: top, right, bottom, left
       if (going === this.$waypointMap.GOING_IN) {
-        console.log('waypoint going in!')
+        // console.log('waypoint going in!')
       }
       if (direction === this.$waypointMap.DIRECTION_TOP) {
-        console.log('waypoint going top!')
+        // console.log('waypoint going top!')
       }
       // this.log(`#${el.getAttribute('id')} is ${this.wrapSpan(going)} viewport, direction: ${this.wrapSpan(direction)}`)
       el.classList.toggle('active', this.$waypointMap.GOING_IN === going)
       this.animate()
     },
     animate () {
-      let flkty = this.$refs.flkty
-      // debugger
-      // let items = flkty.querySelectorAll('.item')
-      let items = flkty.cells()
-      // this.reset ()
-      this.tl = gsap.timeline()
-      this.tl.pause()
-      this.tl.set('.item', {
-        y:'-10%'
-      })
-      this.tl.to('.item', {
-        duration: .75,
-        ease: "power1.inOut",
-        stagger: {
-          amount: 0.1
-        },
-        y:'0%'
-      })
-      this.tl.play()
+      if (process.client) {
+        if (!this.hasAnimated) {
+          this.hasAnimated = true
+          let flkty = this.$refs.flkty
+          // debugger
+          // let items = flkty.querySelectorAll('.item')
+          let items = flkty.cells()
+          let cells = _.map(items, (item) => item.element)
+          // this.reset ()
+          this.tl = gsap.timeline()
+          this.tl.pause()
+          this.tl.set(cells, {
+            y:'10%',
+            autoAlpha: 0.5
+          })
+          this.tl.to(cells, {
+            autoAlpha: 1,
+            y:'0%',
+            duration: 3,
+            ease: "power3.out",
+            stagger: {
+              amount: 0.5
+            },
+          })
+          this.tl.play()
+        }
+      }
     }
   }
 }

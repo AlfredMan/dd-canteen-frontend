@@ -252,6 +252,9 @@ export default {
   components: {
     ClubForm
   },
+  created () {
+    this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
+  },
   computed: {
     formattedBuildings () {
       // console.log('buildings', buildings)

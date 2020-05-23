@@ -16,7 +16,7 @@
       class="hero position-relative"
     >
 
-      <div class="d-none d-sm-block position-relative pt-0" style="bottom: 0; left:0; right: 0;">
+      <div class="-d-none d-sm-block position-relative pt-0" style="bottom: 0; left:0; right: 0;">
         <!-- <div class="position-relative">
           <img
             style="max-width: 100vw; width: 100vw; min-width: 1000px"
@@ -31,12 +31,12 @@
           </div>
         </div>
         <div
-          class="container-fluid pb-5 pt-5 -position-absolute bg-white"
+          class="container-fluid pb-5 pt-5 px-0 -position-absolute bg-white"
           style="bottom: 0; left:0; right: 0;"
         >
           <div class="container">
             <div class="row">
-              <div class="col-12 col-sm-10 col-xl-7">
+              <div class="col-12 col-sm-10 col-xl-7 px-3">
                 <h1 class="text-white- mb-0 " style="">
                   Keep London creative
                 </h1>
@@ -74,9 +74,9 @@
       </div>
     </div>
 
-    <div class="d-block d-sm-none" style="bottom: 0; left:0; right: 0; width: 100%; height: 100vw; background-size: cover; background-image: url(https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=800&fm=jpg&q=80)">
+    <!-- <div class="-d-block d-sm-none" style="bottom: 0; left:0; right: 0; width: 100%; height: 100vw; background-size: cover; background-image: url(https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=800&fm=jpg&q=80)">
 
-    </div>
+    </div> -->
 
     <!-- <div class="container-fluid">
       <div class="row bg-white text-dark pb-5-pt-3 pb-5">
@@ -455,19 +455,31 @@ export default {
   // height: 50vw;
   // max-height: 600px;
   height: 0;
-  padding-bottom: 46.75%;
+  padding-bottom: 100%;
   position: relative;
-}
-.iframe-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-iframe {
-  width: 100%;
-  height: 100%;
+
+  @include media-breakpoint-up(sm) {
+    padding-bottom: 46.5%;
+  }
+
+  .iframe-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      transform: scale(2.15);
+
+      @include media-breakpoint-up(sm) {
+        transform: scale(1.01)
+      }
+    }
+  }
+
 }
 
 

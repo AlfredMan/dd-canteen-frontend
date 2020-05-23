@@ -1,7 +1,7 @@
 <template>
   <div class="news" :class="getContentClass(entry.fields.contentType)">
     <!-- <pre>{{entry}}</pre> -->
-    <div class="" v-if="entry" :key="entry">
+    <div class="" v-if="entry" :key="entry.sys.id">
 
       <!-- <header class="event-header" v-if="entry.fields.contentType === 'Event'">
         <div class="event-info p-5">
@@ -41,7 +41,7 @@
         <img class="event-image" :src="entry.fields.mainImage.fields.file.url" alt="" v-if="entry.fields.mainImage">
       </header> -->
 
-      <header class="container event-header my-3 mb-5" v-if="entry.fields.contentType === 'Event'">
+      <header class="container event-header my-3 mb-5 pt-5" v-if="entry.fields.contentType === 'Event'">
         <div class="event-info">
           <div class="row row-flex justify-content-between ">
             <div class="col-12 col-md-6 order-2 order-lg-1">
@@ -91,7 +91,7 @@
         <!-- <img class="event-image" :src="entry.fields.mainImage.fields.file.url" alt="" v-if="entry.fields.mainImage"> -->
       </header>
 
-      <header class="container my-3 mt-4" v-else-if="entry.fields.contentType === 'Podcast'">
+      <header class="container my-3 mt-4 pt-5" v-else-if="entry.fields.contentType === 'Podcast'">
         <div class="row d-flex justify-content-center">
           <div class="col-12 col-md-6 mb-4  order-2 order-lg-1">
             <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
@@ -170,8 +170,8 @@
         </div>
       </header> -->
 
-      <header class="container-fluid my-3 mt-0 py-5 bg-dark text-white" v-else-if="entry.fields.contentType === 'Video'">
-        <div class="row d-flex justify-content-start ">
+      <header class="container-fluid mb-0 mt-0 py-5 bg-dark text-white" v-else-if="entry.fields.contentType === 'Video'">
+        <div class="row d-flex justify-content-start pt-5">
           <!-- <div class="col-12 col-md-7 mb-4">
             <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
               {{entry.fields.title}}
@@ -244,7 +244,7 @@
         </div>
       </header>
 
-      <header class="container my-3 mt-4" v-else>
+      <header class="container my-3 mt-4 pt-5" v-else>
         <div class="row d-flex justify-content-start">
           <div class="col-12 col-md-7 mb-4">
             <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
@@ -392,8 +392,8 @@
 
       </article>
 
-      <footer class="mt-5 mb-5 py-5 container">
-        <div class="row justify-content-center" v-if="entry.fields.author">
+      <footer class="mt-5 mb-5 py-5 container" v-if="entry.fields.author">
+        <div class="row justify-content-center">
 
           <div class="col-10 col-md-6 p-5 author" v-for="author in entry.fields.author">
             <div class="row align-items-center no-gutters px-2">
@@ -600,9 +600,26 @@ export default {
     }
   },
 
+  watch: {
+    'contentType' (newVal, oldVal) {
+      console.log('contentType', newVal, oldVal)
+      if (newVal == 'Video') {
+        this.$store.dispatch('updateNavigationTheme', { theme: 'dark' })
+      } else {
+        this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
+      }
+    }
+  },
+
   components: {
     NewsCard
     // RichTextRenderer
+  },
+
+  computed: {
+    contentType () {
+      return this.entry?.fields?.contentType || ''
+    }
   },
 
   middleware ({ store, redirect }) {
@@ -646,7 +663,7 @@ export default {
   //   }).catch(console.error)
   // },
   // `env` is available in the context object
-  asyncData ({ route }) {
+  asyncData ({ route, store }) {
     return Promise.all([
       // fetch the owner of the blog
       // client.getEntries({
@@ -670,6 +687,12 @@ export default {
       // return data that should be available
       // in the template
       // console.log('asyncData', [entries, entry])
+
+      if (entry && entry.items[0] && entry.items[0].fields.contentType == 'Video') {
+        store.dispatch('updateNavigationTheme', { theme: 'dark' })
+      } else {
+        store.dispatch('updateNavigationTheme', { theme: 'light' })
+      }
 
       return {
         // person: entries.items[0],
