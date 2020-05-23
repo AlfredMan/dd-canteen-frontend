@@ -3,38 +3,40 @@
   v-waypoint="{ active: true, callback: onWaypoint, options: intersectionOptions }"
   class="flickity-wrapper"
   >
-    <Flickity :options="flickityOptions" class="flickity" ref="flkty" :class="{
-      'dragging': isDragging
-      }">
-      <div v-for="item in items" class="item">
-        <router-link :to="`/architecture/${item.slug}`">
-          <lazy-image
-          :src="item.imagesPractice[0].url"
-          :h="2000"
-          />
-          <h5>{{ item.title }}</h5>
-        </router-link>
-      </div>
-      <!-- <div
-      class="flickity-item container"
-      v-for="(item, index) in carousel"
-      :key="item.id"
-      >
-        <figure>
-          <lazy-image
-          :src="item.image"
-          :w="1000"
-          :h="1000"
-          />
-          <figcaption
-          v-if="item.caption"
-          >
-            {{item.caption}}
-          </figcaption>
-        </figure>
-      </div> -->
-      <slot></slot>
-    </Flickity>
+    <no-ssr>
+      <Flickity :options="flickityOptions" class="flickity" ref="flkty" :class="{
+        'dragging': isDragging
+        }">
+        <div v-for="item in items" class="item">
+          <router-link :to="`/architecture/${item.slug}`">
+            <lazy-image
+            :src="item.imagesPractice[0].url"
+            :h="2000"
+            />
+            <h5>{{ item.title }}</h5>
+          </router-link>
+        </div>
+        <!-- <div
+        class="flickity-item container"
+        v-for="(item, index) in carousel"
+        :key="item.id"
+        >
+          <figure>
+            <lazy-image
+            :src="item.image"
+            :w="1000"
+            :h="1000"
+            />
+            <figcaption
+            v-if="item.caption"
+            >
+              {{item.caption}}
+            </figcaption>
+          </figure>
+        </div> -->
+        <slot></slot>
+      </Flickity>
+    </no-ssr>
   </div>
 </template>
 
@@ -105,25 +107,31 @@ export default {
     }
   },
   mounted () {
-    this.initFlickityControl()
+    if (process.client) {
+      this.initFlickityControl()
+    }
   },
   methods: {
     openCarousel (block, index) {
       this.$store.dispatch('openCarousel', { block, index })
     },
     initFlickityControl () {
-      let flkty = this.$refs.flkty
-      flkty.on('dragStart', () => this.isDragging = true);
-      flkty.on('dragEnd', () => this.isDragging = false);
-      flkty.on( 'staticClick', ( event, pointer, cellElement, cellIndex ) => {
-        // console.log(event, pointer, cellElement, cellIndex)
-        console.log(flkty.selectedIndex(), cellIndex)
-        // if (flkty.selectedIndex() == cellIndex) {
-        //   this.openCarousel(this.block, cellIndex)
-        // } else {
-        //   flkty.select( cellIndex )
-        // }
-      });
+      if (process.client) {
+        let flkty = this.$refs.flkty
+        console.log('flkty', flkty)
+        flkty.on('dragStart', () => this.isDragging = true);
+        flkty.on('dragEnd', () => this.isDragging = false);
+        flkty.on( 'staticClick', ( event, pointer, cellElement, cellIndex ) => {
+          // console.log(event, pointer, cellElement, cellIndex)
+          console.log(flkty.selectedIndex(), cellIndex)
+          // if (flkty.selectedIndex() == cellIndex) {
+          //   this.openCarousel(this.block, cellIndex)
+          // } else {
+          //   flkty.select( cellIndex )
+          // }
+        });
+      }
+      // flkty.reloadCells()
     },
     getFlickityItemImageWrapperClass () {
       return ['col-12', 'col-sm-6', 'col-lg-6', 'px-sm-2']
@@ -139,6 +147,7 @@ export default {
       }
       // this.log(`#${el.getAttribute('id')} is ${this.wrapSpan(going)} viewport, direction: ${this.wrapSpan(direction)}`)
       el.classList.toggle('active', this.$waypointMap.GOING_IN === going)
+
       this.animate()
     },
     animate () {
@@ -147,6 +156,11 @@ export default {
           this.hasAnimated = true
           let flkty = this.$refs.flkty
           // debugger
+          console.log(flkty)
+
+          // flkty.destroy()
+          // flkty = new Flickity(this.$refs.flkty)
+
           // let items = flkty.querySelectorAll('.item')
           let items = flkty.cells()
           let cells = _.map(items, (item) => item.element)

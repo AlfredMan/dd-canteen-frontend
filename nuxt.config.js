@@ -95,7 +95,7 @@ export default {
     },
     {
       src: '~/plugins/vue-flickity.js',
-      mode: 'client'
+      ssr: false
     }
   ],
 
@@ -147,10 +147,16 @@ export default {
     }
   },
 
+  // purgeCSS: {
+  //   // your settings here
+  //   whitelistPatterns: [/flickity$/],
+  //   whitelistPatternsChildren: [/flickity/]
+  // },
+
   buildModules: [
     // '@nuxtjs/pwa',
-    '@nuxtjs/axios',
-    'nuxt-purgecss'
+    '@nuxtjs/axios'
+    // 'nuxt-purgecss'
   ],
 
   modules: [

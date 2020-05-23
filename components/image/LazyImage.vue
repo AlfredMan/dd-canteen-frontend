@@ -126,6 +126,7 @@ export default {
   transition: .5s ease opacity .7s;
   background: $secondary;
 }
+/*! purgecss start ignore */
 img {
   position: relative;
   z-index: 1;
@@ -149,4 +150,6 @@ img {
     height: auto;
   }
 }
+/*! purgecss end ignore */
+
 </style>
