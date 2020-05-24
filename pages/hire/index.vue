@@ -1,23 +1,27 @@
 <template lang="html">
   <div class="mt-5">
-    <div v-if="true" class="container py-5">
-      <div class="row">
-        <div class="col-12 col-md-6">
-          <h1>Hire a Space</h1>
-          <!-- <h4>Just starting out or trying something new? The Club is an accessible and low-commitment way to be part of the Design District community.</h4> -->
-          <h4>Book a recording and broadcast studio, meeting rooms, events spaces, a pop-up retail space and even a multi-sport rooftop court.</h4>
-          <!-- <a href="#" class="btn btn btn-lg btn-primary">Book a viewing</a> -->
-        </div>
-        <!-- <div class="col-12 col-md-7">
-          <div class="row d-flex justify-content-end align-items-end mt-0">
-            <div class="col-5 col-md-4">
-              <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/5O8MZdUvzEq9ZwkNEDG7tr/c5bd4835a154182f51b1008e77019ff6/AdamKahn-1D-Architect.jpg?w=1000&h=800&fm=jpg&q=80&fit=thumb" alt="">
+    <div v-if="true" class="-container-fluid py-5">
+      <div class="px-4">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <h1>Hire a Space</h1>
+              <!-- <h4>Just starting out or trying something new? The Club is an accessible and low-commitment way to be part of the Design District community.</h4> -->
+              <h4>Book a recording and broadcast studio, meeting rooms, events spaces, a pop-up retail space and even a multi-sport rooftop court.</h4>
+              <!-- <a href="#" class="btn btn btn-lg btn-primary">Book a viewing</a> -->
             </div>
-            <div class="col-7 col-md-8">
-              <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=1000&h=1200&fm=jpg&q=80&fit=thumb" alt="">
-            </div>
+            <!-- <div class="col-12 col-md-7">
+              <div class="row d-flex justify-content-end align-items-end mt-0">
+                <div class="col-5 col-md-4">
+                  <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/5O8MZdUvzEq9ZwkNEDG7tr/c5bd4835a154182f51b1008e77019ff6/AdamKahn-1D-Architect.jpg?w=1000&h=800&fm=jpg&q=80&fit=thumb" alt="">
+                </div>
+                <div class="col-7 col-md-8">
+                  <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=1000&h=1200&fm=jpg&q=80&fit=thumb" alt="">
+                </div>
+              </div>
+            </div> -->
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
 
@@ -113,9 +117,9 @@
       </div>
     </div> -->
 
-    <div class="container-fluid">
-      <div class="row bg-white text-black pb-5-pt-3">
-        <div class="container py-5">
+    <div class="">
+      <div class="-row bg-white text-black pb-5-pt-3 px-4">
+        <div class="container-fluid py-5">
           <div class="row d-flex">
             <!-- <div class="col-12 col-md-6 px-4 mb-5">
               <h2>Spaces</h2>
@@ -178,11 +182,11 @@
       </div>
     </div>
 
-    <div v-if="true" class="container-fluid bg-dark text-white py-5 position-relative"
+    <div v-if="true" class="-container-fluid bg-dark text-white py-5 position-relative"
     >
-      <div class="row position-relative" style="z-index:1">
-        <div class="container">
-          <div class="row py-5">
+      <div class="row- position-relative px-4" style="z-index:1">
+        <div class="container-fluid">
+          <div class="row pb-5">
             <div class="col-12 col-md-6 col-lg-6">
               <!-- <h2>Members access</h2>
               <h4>The Design District is at the heart of Greenwich Peninsula, a new type of London created specifically for the creative community.</h4>
@@ -218,9 +222,9 @@
       </div> -->
     </div>
 
-    <div class="container-fluid -bg-light bg-white">
-      <div class="row">
-        <div class="container py-5">
+    <div class="container-fluid- -bg-light bg-white">
+      <div class="row- px-4">
+        <div class="container-fluid py-5">
           <div class="row">
             <div class="col-12 col-md-6">
               <h2>Hire</h2>

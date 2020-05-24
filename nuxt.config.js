@@ -95,7 +95,7 @@ export default {
     },
     {
       src: '~/plugins/vue-flickity.js',
-      ssr: false
+      mode: 'client'
     }
   ],
 

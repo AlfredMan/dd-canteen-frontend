@@ -41,7 +41,9 @@
               <div class="column column-count-lg-5 column-count-md-3">
                 <div class="business" v-for="business in formattedDirectory">
                   <div class="d-flex">
-                    {{business.title}} <span class="text-black-50 d-inline-block ml-auto text-right" style="min-width: 50px">{{business.location}}</span>
+                    <nuxt-link :to="`/directory/my-design-studio`">
+                      {{business.title}} <span class="text-black-50 d-inline-block ml-auto text-right" style="min-width: 50px">{{business.location}}</span>
+                    </nuxt-link>
                   </div>
                 </div>
               </div>
@@ -63,7 +65,9 @@
             <div class="col-12 col-md-6 px-4 ml-auto ">
               <div class="column column-count-lg-2 vendors">
                 <div class="d-flex vendor" v-for="vendor in formattedVendors">
-                  {{vendor.title}} <span class="text-black-50 d-inline-block ml-auto text-right" style="min-width: 50px">{{vendor.location}}</span>
+                  <nuxt-link :to="`/directory/my-design-studio`">
+                    {{vendor.title}} <span class="text-black-50 d-inline-block ml-auto text-right" style="min-width: 50px">{{vendor.location}}</span>
+                  </nuxt-link>
                 </div>
               </div>
             </div>

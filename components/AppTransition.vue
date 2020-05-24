@@ -61,6 +61,9 @@ export default {
       const outDur = (inDur + outDelay)
       const srcRect = this.$store.state.transition.sourceElementRect || null
 
+      // clear the store's
+      this.$store.dispatch('resetRouteTransitionSourceRect')
+
       console.log('srcRect', srcRect)
       // this.resetBoxStyle ()
       this.tl = gsap.timeline()
@@ -106,7 +109,7 @@ export default {
         height: '100%',
         force3D: true,
         // background: 'yellow',
-        ease: "power2.inOut"
+        ease: "power3.inOut"
       }, "boxEnter")
       this.tl.to('.box', {
         // autoAlpha:0,
@@ -116,7 +119,7 @@ export default {
         left: '100%',
         force3D: true,
         // background: 'blue',
-        ease: "power2.in"
+        ease: "power3.in"
       }, "boxLeave")
       // this.tl.set('.box', {
       //   autoAlpha:0

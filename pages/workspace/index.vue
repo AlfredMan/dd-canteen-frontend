@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="mt-5">
     <div class="container-fluid">
-      <div class="row">
-        <div class="container py-5">
+      <div class="row- px-4">
+        <div class="container-fluid py-5">
           <div class="row">
             <div class="col-12 col-md-8">
               <h1>A home<br>for creators</h1>
@@ -33,8 +33,8 @@
 
     <!--  -->
     <div class="container-fluid bg-primary bg-primary d-none">
-      <div class="row -pt-3">
-        <div class="container py-5">
+      <div class="row- -pt-3 px-4">
+        <div class="container-fluid py-5">
           <div class="row -mb-5">
             <div class="col-12 col-md-6 mb-5">
               <h2>Find a work space</h2>
@@ -123,8 +123,8 @@
     </div>
     <!--  -->
     <div class="container-fluid bg-white">
-      <div class="row pb-5 pt-3">
-        <div class="container py-5">
+      <div class="-row pb-5 pt-3 px-4">
+        <div class="container-fluid py-5">
 
           <div class="row mb-4">
             <div class="col-12 col-md-6">
@@ -202,7 +202,7 @@
           </div> -->
           <div class="row mt-5 flex-row align-items-baseline">
 
-                <div class="col-12 col-md-6 col-lg-3 mb-5" v-for="building in formattedBuildings">
+                <div class="col-12 col-md-6 col-lg-3 mb-5 building" v-for="building in formattedBuildings" @click="openSpace">
                   <div class="">
                     <lazy-image
                     :src="building.url"
@@ -470,8 +470,8 @@
       </div>
     </div> -->
     <span class="anchor" id="become-a-tenant" ></span>
-    <div class="py-5 bg-white anchor-target">
-      <div class="container -my-5">
+    <div class="py-5 bg-white anchor-target px-4">
+      <div class="container-fluid -my-5">
         <div class="row">
           <div class="col-12 col-md-4">
             <h2>Become a tenant</h2>
@@ -501,6 +501,53 @@
         </div>
       </div>
     </div> -->
+    <div
+    class="drawer"
+    :class="{
+      'space-active': spaceActive,
+      'map-active': mapActive
+      }"
+    >
+      <div class="space">
+        <!-- <div class="close-cross">
+          <span @click="openMap" v-if="!mapActive">Open map</span>
+          <span @click="closeMap" v-if="mapActive">Hide map</span>
+        </div> -->
+        <div class="scroller">
+          <div class="">
+            <div class="d-flex justify-content-between">
+              <div class="toggle-map" @click="closeSpace">
+                &larr; View all spaces
+              </div>
+              <div class="close-cross">
+                <span @click="openMap" v-if="!mapActive">Open map</span>
+                <span @click="closeMap" v-if="mapActive">Hide map</span>
+              </div>
+            </div>
+            <h1 class="mt-0">A301</h1>
+            <div class="-col-lg-8 px-0">
+              <lazy-image
+              :src="formattedBuildings[0].url"
+              :w="2000"
+              :h="2000"
+              class=""
+              :xcustom="'fit=thumb&f=bottom'"
+              />
+            </div>
+            <h5 class="mt-4">{{formattedBuildings[0].alt}}</h5>
+            <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
+          </div>
+        </div>
+      </div>
+      <div class="map">
+        <div class="">
+          <!-- <div class="close" @click="closeMap">
+            &times;
+          </div> -->
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -524,9 +571,18 @@ export default {
       ]
     }
   },
+
+  data () {
+    return {
+      spaceActive: false,
+      mapActive: false
+    }
+  },
+
   created () {
     this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
   },
+
   computed: {
     formattedBuildings () {
       // console.log('buildings', buildings)
@@ -535,9 +591,102 @@ export default {
         return b
       })
     }
+  },
+
+  methods: {
+    openSpace () {
+      this.spaceActive = true
+    },
+    closeSpace () {
+      this.spaceActive = false
+      this.closeMap()
+    },
+    openMap () {
+      this.mapActive = true
+    },
+    closeMap () {
+      this.mapActive = false
+    },
   }
 }
 </script>
 
 <style lang="scss">
+.building {
+  cursor: pointer;
+
+  &:hover {
+    color: $primary
+  }
+}
+.drawer {
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  transform: translate3d(100%, 0, 0);
+  transition: .3s ease-in-out all;
+  z-index: 9999;
+  box-shadow: 0px 0px 20px 0 rgba(0,0,0,0.5);
+
+  &.space-active {
+    transform: translate3d(66.6667%, 0, 0);
+  }
+  &.map-active {
+    transform: translate3d(0%, 0, 0);
+  }
+  .space {
+    width: 33.3333%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    .toggle-map {
+      font-size: 1.5rem;
+      position: relative;
+      // width: 50%;
+      z-index: 999;
+      cursor: pointer;
+    }
+
+    .scroller {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 2rem;
+      overflow: auto;
+    }
+  }
+  .close-cross {
+    // position: absolute;
+    cursor: pointer;
+    // right: 2rem;
+    // top: 2.5rem;
+    // width: 50%;
+    // // height: 2rem;
+    // text-align: right;
+    // font-weight: 100;
+    // font-size: 1.5rem;
+    // line-height: 1.5rem;
+    // // font-family: sans-serif;
+    // z-index: 999;
+  }
+  .map {
+    width: 66.66667%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.2)
+  }
+}
 </style>

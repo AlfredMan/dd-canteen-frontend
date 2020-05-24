@@ -3,7 +3,7 @@
   v-waypoint="{ active: true, callback: onWaypoint, options: intersectionOptions }"
   class="flickity-wrapper"
   >
-    <no-ssr>
+    <client-only>
       <Flickity :options="flickityOptions" class="flickity" ref="flkty" :class="{
         'dragging': isDragging
         }">
@@ -36,7 +36,7 @@
         </div> -->
         <slot></slot>
       </Flickity>
-    </no-ssr>
+    </client-only>
   </div>
 </template>
 
@@ -118,6 +118,10 @@ export default {
     initFlickityControl () {
       if (process.client) {
         let flkty = this.$refs.flkty
+        if (!flkty) {
+          console.log('flkty not found')
+          return
+        }
         console.log('flkty', flkty)
         flkty.on('dragStart', () => this.isDragging = true);
         flkty.on('dragEnd', () => this.isDragging = false);

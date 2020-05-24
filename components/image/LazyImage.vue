@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="ratio-container" :style="getContainerStyle()">
+  <div class="lazy-image ratio-container" :style="getContainerStyle()">
     <img
         data-sizes="auto"
         :src="getSrc()"
@@ -123,8 +123,10 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: .5s ease opacity .7s;
-  background: $secondary;
+  transition: .75s ease opacity .3s;
+  // background: $secondary;
+  background: $primary;
+  pointer-events: none;
 }
 /*! purgecss start ignore */
 img {

@@ -64,5 +64,8 @@ export const actions = {
       const boundingClientRect = context.boundingClientRect
       commit('setRouteTransitionSourceElementRect', { boundingClientRect })
     }
+  },
+  resetRouteTransitionSourceRect ({ commit }) {
+    commit('clearRouteTransitionSourceElementRect')
   }
 }

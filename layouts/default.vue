@@ -6,8 +6,8 @@
     <nuxt nuxt-child-key="none" role="main" />
 
     <span class="anchor" id="newsletter"></span>
-    <div class="py-5 bg-light">
-      <div class="container">
+    <div class="py-5 bg-light px-4">
+      <div class="container-fluid">
         <div class="row">
           <div class="col-12">
             <h3>Newsletter</h3>

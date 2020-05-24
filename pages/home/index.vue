@@ -34,26 +34,20 @@
           class="container-fluid pb-5 pt-5 px-0 -position-absolute bg-white"
           style="bottom: 0; left:0; right: 0;"
         >
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-sm-10 col-xl-7 px-3">
-                <h1 class="text-white- mb-0 " style="">
-                  Keep London creative
-                </h1>
-                <!-- <h2>
-                  London’s new work space for the creative industries. Opening autumn 2020.
-                </h2> -->
-              </div>
-              <div class="col-12">
-
-              </div>
-              <div class="col-12 col-md-6 mt-4">
-                <h4>
-                  Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.
-                </h4>
-                <nuxt-link :to="{ path: '/contact',hash:'#register-interest'}" class="btn btn btn-lg btn-primary mt-3">
-                  Express interest
-                </nuxt-link>
+          <div class="px-4">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12 col-sm-10 col-xl-7">
+                  <h1 class="text-white- -mb-0 " style="">
+                    Keep London creative
+                  </h1>
+                  <h4>
+                    Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.
+                  </h4>
+                  <nuxt-link :to="{ path: '/contact',hash:'#register-interest'}" class="btn btn btn-lg btn-primary mt-3">
+                    <strong>Express interest</strong>
+                  </nuxt-link>
+                </div>
               </div>
             </div>
           </div>
@@ -102,137 +96,178 @@
       </div>
     </div> -->
 
+    <div class="w-100 d-flex bg-white py-5">
+      <div class="container-fluid px-0">
+        <div class="row no-gutters">
+          <div class="col-3">
+            <lazy-image
+            :src="'https://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg'"
+            :w="2000"
+            :h="2000"
+            :custom="'fit=thumb&f=top'"
+            />
+          </div>
+          <div class="col-3">
+            <lazy-image
+            :src="'https://images.ctfassets.net/7p1ysxjarsp5/33wkoRXjjbWuilpEmwjaRl/b44134581716be6e4fcf4c3846a5b46d/Design-District-Matthew-Thompson-0205-LOW-RES.jpg'"
+            :w="2000"
+            :h="2000"
+            :custom="'fit=thumb'"
+            />
+          </div>
+          <div class="col-3">
+            <lazy-image
+            :src="'https://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg'"
+            :w="2000"
+            :h="2000"
+            :custom="'fit=thumb'"
+            />
+          </div>
+          <div class="col-3">
+            <lazy-image
+            :src="'https://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg'"
+            :w="2000"
+            :h="2000"
+            :custom="'fit=thumb'"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!--  -->
     <div class="container-fluid">
       <div class="row bg-white text-black pb-5-pt-3">
-        <div class="container py-5">
-          <div class="row d-flex">
-            <div class="col-12 col-md-6 px-3">
-              <h2>London’s new design district</h2>
+        <div class="px-4">
+          <div class="container-fluid py-5">
+            <div class="row d-flex">
+              <div class="col-12 col-md-6 px-3">
+                <h2>London’s new design district</h2>
+              </div>
+              <div class="col-12 col-md-6 px-3 ml-auto">
+                <h4>Design District is a new permanent home for the creative industries. With purpose-designed workspaces, workshops, accessible rents and flexible leases. It comprises 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. Each is tailored to the needs of creative businesses to help them thrive.</h4>
+                <nuxt-link :to="{ path: '/workspace'}" class="text-orange h5">
+                  Find your work space &rarr;
+                </nuxt-link>
+              </div>
             </div>
-            <div class="col-12 col-md-6 px-3 ml-auto">
-              <h4>Design District is a new permanent home for the creative industries. With purpose-designed workspaces, workshops, accessible rents and flexible leases. It comprises 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. Each is tailored to the needs of creative businesses to help them thrive.</h4>
-              <nuxt-link :to="{ path: '/workspace'}" class="text-orange h5">
-                Find your work space &rarr;
-              </nuxt-link>
-            </div>
-          </div>
 
-          <div class="row d-flex align-items-end align-items-baseline mt-5 pt-5 text-dark">
-            <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-              <!-- <div class="">
-                <img
-                  class="lazyload"
-                  data-src="https://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=2000&fm=jpg&q=80"
-                  alt=""
-                >
-              </div> -->
-              <lazy-image
-              :src="'https://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg'"
-              :w="2000"
-              :h="2000"
-              class="-bw-multiply"
-              :xcustom="'fit=thumb&f=bottom'"
-              />
-              <div class="">
-                <span />
-                <h3>Creative work&nbsp;space</h3>
-                <p>
-                  Rent a studio, a floor, or an entire building. Spaces kitted out to suit your industry and flexible tenancies for growing teams.
-                  <br>
-                  <nuxt-link :to="{ path: '/workspace'}">
-                    Become a tenant &rarr;
-                  </nuxt-link>
-                </p>
+            <div class="row d-flex align-items-end align-items-baseline mt-5 pt-5 text-dark">
+              <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+                <!-- <div class="">
+                  <img
+                    class="lazyload"
+                    data-src="https://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=2000&fm=jpg&q=80"
+                    alt=""
+                  >
+                </div> -->
+                <lazy-image
+                :src="'https://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg'"
+                :w="2000"
+                :h="2000"
+                class="-bw-multiply"
+                :xcustom="'fit=thumb&f=bottom'"
+                />
+                <div class="">
+                  <span />
+                  <h3>Creative work&nbsp;space</h3>
+                  <p>
+                    Rent a studio, a floor, or an entire building. Spaces kitted out to suit your industry and flexible tenancies for growing teams.
+                    <br>
+                    <nuxt-link :to="{ path: '/workspace'}">
+                      Become a tenant &rarr;
+                    </nuxt-link>
+                  </p>
+                </div>
               </div>
-            </div>
-            <!-- <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
-              <div class="">
-                <img class="lazyload"
-                data-src="https://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=1600&h=2000&fm=jpg&q=80&fit=thumb"
-                alt="">
-              </div>
-              <div class="">
-                <span></span>
-                <h3>The Club</h3>
-                <p>Aimed at freelancers, entrepreneurs and start-ups, The Club offers a place to work but also talks, events and business support. <router-link to="/the-club" class="">Express your interest</router-link>.</p>
-              </div>
-            </div> -->
-            <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-              <!-- <div class="">
-                <img
-                  class="lazyload"
-                  data-src="https://images.ctfassets.net/7p1ysxjarsp5/33wkoRXjjbWuilpEmwjaRl/b44134581716be6e4fcf4c3846a5b46d/Design-District-Matthew-Thompson-0205-LOW-RES.jpg?w=2000&h=2000&fm=jpg&q=80&fit=thumb"
-                  alt=""
-                >
-              </div> -->
-              <lazy-image
-              :src="'https://images.ctfassets.net/7p1ysxjarsp5/33wkoRXjjbWuilpEmwjaRl/b44134581716be6e4fcf4c3846a5b46d/Design-District-Matthew-Thompson-0205-LOW-RES.jpg'"
-              :w="2000"
-              :h="2000"
-              class="-bw-multiply"
-              :custom="'fit=thumb'"
-              />
-              <div class="">
-                <span />
-                <h3>Workshops</h3>
-                <p>
-                  Need a 3D-printer or a test kitchen, a pattern-cutting table or a coding lab? There’s space to make in our on-site workshops.
-                  <br>
-                  <nuxt-link :to="{ path: '/workspace', hash: '#service-and-facilities'}">
-                    Find out more &rarr;
-                  </nuxt-link>
-                </p>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-              <!-- <div class="">
-                <img
-                  class="lazyload"
-                  data-src="https://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=2000&fm=jpg&q=80"
-                  alt=""
-                >
-              </div> -->
-              <lazy-image
-              :src="'https://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg'"
-              :w="2000"
-              class="-bw-multiply"
-              />
-              <div class="">
-                <span />
-                <h3>For hire</h3>
-                <p>
-                  Book a recording and broadcast studio, meeting rooms, events spaces, a pop-up retail space and even a multi-sport rooftop court.
-                  <br>
-                  <a href="#newsletter" class="">
-                    Coming soon
-                  </a>
-                </p>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-              <!-- <div class="">
-                <img
-                  class="lazyload"
+              <!-- <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
+                <div class="">
+                  <img class="lazyload"
                   data-src="https://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=1600&h=2000&fm=jpg&q=80&fit=thumb"
-                  alt=""
-                >
+                  alt="">
+                </div>
+                <div class="">
+                  <span></span>
+                  <h3>The Club</h3>
+                  <p>Aimed at freelancers, entrepreneurs and start-ups, The Club offers a place to work but also talks, events and business support. <router-link to="/the-club" class="">Express your interest</router-link>.</p>
+                </div>
               </div> -->
-              <lazy-image
-              :src="'https://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg'"
-              :w="1600"
-              :h="2000"
-              class="-bw-multiply"
-              />
-              <div class="">
-                <span />
-                <h3>Membership</h3>
-                <p>
-                  Just starting out or trying something new? Our membership initiative will be an accessible way to be part of the Design District community, without the commitment of renting a workspace.
-                  <router-link to="/the-club" class="">
-                    Register your interest &rarr;
-                  </router-link>
-                </p>
+              <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+                <!-- <div class="">
+                  <img
+                    class="lazyload"
+                    data-src="https://images.ctfassets.net/7p1ysxjarsp5/33wkoRXjjbWuilpEmwjaRl/b44134581716be6e4fcf4c3846a5b46d/Design-District-Matthew-Thompson-0205-LOW-RES.jpg?w=2000&h=2000&fm=jpg&q=80&fit=thumb"
+                    alt=""
+                  >
+                </div> -->
+                <lazy-image
+                :src="'https://images.ctfassets.net/7p1ysxjarsp5/33wkoRXjjbWuilpEmwjaRl/b44134581716be6e4fcf4c3846a5b46d/Design-District-Matthew-Thompson-0205-LOW-RES.jpg'"
+                :w="2000"
+                :h="2000"
+                class="-bw-multiply"
+                :custom="'fit=thumb'"
+                />
+                <div class="">
+                  <span />
+                  <h3>Workshops</h3>
+                  <p>
+                    Need a 3D-printer or a test kitchen, a pattern-cutting table or a coding lab? There’s space to make in our on-site workshops.
+                    <br>
+                    <nuxt-link :to="{ path: '/workspace', hash: '#service-and-facilities'}">
+                      Find out more &rarr;
+                    </nuxt-link>
+                  </p>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+                <!-- <div class="">
+                  <img
+                    class="lazyload"
+                    data-src="https://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=2000&fm=jpg&q=80"
+                    alt=""
+                  >
+                </div> -->
+                <lazy-image
+                :src="'https://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg'"
+                :w="2000"
+                class="-bw-multiply"
+                />
+                <div class="">
+                  <span />
+                  <h3>For hire</h3>
+                  <p>
+                    Book a recording and broadcast studio, meeting rooms, events spaces, a pop-up retail space and even a multi-sport rooftop court.
+                    <br>
+                    <a href="#newsletter" class="">
+                      Coming soon
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+                <!-- <div class="">
+                  <img
+                    class="lazyload"
+                    data-src="https://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=1600&h=2000&fm=jpg&q=80&fit=thumb"
+                    alt=""
+                  >
+                </div> -->
+                <lazy-image
+                :src="'https://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg'"
+                :w="1600"
+                :h="2000"
+                class="-bw-multiply"
+                />
+                <div class="">
+                  <span />
+                  <h3>Membership</h3>
+                  <p>
+                    Just starting out or trying something new? Our membership initiative will be an accessible way to be part of the Design District community, without the commitment of renting a workspace.
+                    <router-link to="/the-club" class="">
+                      Register your interest &rarr;
+                    </router-link>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -244,7 +279,7 @@
       <div class="" style="background-size:cover; background-size:cover; opacity: 0.5; z-index: 0; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-image:url(https://images.ctfassets.net/7p1ysxjarsp5/1vccdswWfzojf7HUFt3t2w/8fb6455dafc6632094801439d0c791f0/Design-District-Matthew-Thompson-1505-LOW-RES.jpg?fm=jpg&q=80&w=1200&h=1200&)">
 
       </div>
-      <div class="container py-5" style="z-index:1">
+      <div class="container-fluid py-5" style="z-index:1">
         <div class="row">
           <div class="col-12 col-md-7 pr-md-5 mb-5 px-4">
             <h2>Creative work&nbsp;space</h2>
@@ -281,43 +316,45 @@
     <!--  -->
     <div class="container-fluid -d-none">
       <div class="row pb-5 pt-3">
-        <div class="container py-5">
-          <div class="row">
-            <div class="col-12 col-md-4">
-              <h2>Community</h2>
+        <div class="px-4">
+          <div class="container-fluid py-5">
+            <div class="row">
+              <div class="col-12 col-md-4">
+                <h2>Community</h2>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-12 col-md-6">
-              <h4>Ground floor open workshops provide a glimpse of creative processes. Through picture windows see making spill out onto working courtyards. Precision hand-craft. The noise and dirt of heavy machinery. Works in progress. A rare insight into artists’ lives. An exhilarating, glorious mess.</h4>
-              <a href="#" class="text-primary">Explore our community &rarr;</a>
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <h4>Ground floor open workshops provide a glimpse of creative processes. Through picture windows see making spill out onto working courtyards. Precision hand-craft. The noise and dirt of heavy machinery. Works in progress. A rare insight into artists’ lives. An exhilarating, glorious mess.</h4>
+                <a href="#" class="text-primary">Explore our community &rarr;</a>
+              </div>
             </div>
-          </div>
 
-          <div class="row d-flex align-items-end mt-5 pt-5">
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="">
-                <div class="embed-responsive embed-responsive-4by3 bg-light">
-                <!-- <iframe class="embed-responsive-item" src="..."></iframe> -->
+            <div class="row d-flex align-items-end mt-5 pt-5">
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="">
+                  <div class="embed-responsive embed-responsive-4by3 bg-light">
+                  <!-- <iframe class="embed-responsive-item" src="..."></iframe> -->
+                  </div>
                 </div>
+                <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
               </div>
-              <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="">
-                <div class="embed-responsive embed-responsive-1by1 bg-light">
-                <!-- <iframe class="embed-responsive-item" src="..."></iframe> -->
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="">
+                  <div class="embed-responsive embed-responsive-1by1 bg-light">
+                  <!-- <iframe class="embed-responsive-item" src="..."></iframe> -->
+                  </div>
                 </div>
+                <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
               </div>
-              <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="">
-                <div class="embed-responsive embed-responsive-4by3 bg-light">
-                <!-- <iframe class="embed-responsive-item" src="..."></iframe> -->
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="">
+                  <div class="embed-responsive embed-responsive-4by3 bg-light">
+                  <!-- <iframe class="embed-responsive-item" src="..."></iframe> -->
+                  </div>
                 </div>
+                <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
               </div>
-              <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
             </div>
           </div>
         </div>
@@ -327,20 +364,22 @@
     <!--  -->
     <div class="container-fluid">
       <div class="row bg-dark text-light pb-5-pt-3">
-        <div class="container-fluid py-5">
+        <div class="container-fluid py-5 px-0">
 
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-6 px-4">
-                <h2>Architecture</h2>
-                <h4>World-class buildings. The needs of creatives put front and centre. Design District is an offer that’s entirely new for London. Meet the architects.</h4>
+          <div class="px-4">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12 col-md-6 px-3">
+                  <h2>Architecture</h2>
+                  <h4>World-class buildings. The needs of creatives put front and centre. Design District is an offer that’s entirely new for London. Meet the architects.</h4>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-12 col-md-6 px-4">
-                <a href="/about-us#architecture" class="h5 text-primary">
-                  View all architects &rarr;
-                </a>
+              <div class="row">
+                <div class="col-12 col-md-6 px-3">
+                  <a href="/about-us#architecture" class="h5 text-primary">
+                    View all architects &rarr;
+                  </a>
+                </div>
               </div>
             </div>
           </div>

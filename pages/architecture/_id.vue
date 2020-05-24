@@ -106,10 +106,20 @@
                 <img class="lazyload transition-source" :data-src="nextStudio.imagesPractice[0].url" alt="">
                 <h5>{{ nextStudio.title }}</h5>
               </nuxt-link> -->
-              <a :href="`/architecture/${nextStudio.slug}`" @click.prevent="setTransitionSource(`/architecture/${nextStudio.slug}`, $event)">
+              <!-- <a :href="`/architecture/${nextStudio.slug}`" @click.prevent="setTransitionSource(`/architecture/${nextStudio.slug}`, $event)">
                 <img class="lazyload transition-source" :data-src="nextStudio.imagesPractice[0].url" alt="">
                 <h5>{{ nextStudio.title }}</h5>
-              </a>
+              </a> -->
+              <transition-link :to="`/architecture/${nextStudio.slug}`">
+                <!-- <img class="lazyload transition-source" :data-src="nextStudio.imagesPractice[0].url" alt=""> -->
+                <lazy-image
+                class="transition-source"
+                :src="nextStudio.imagesPractice[0].url"
+                :w="2000"
+                :h="2000"
+                />
+                <h5>{{ nextStudio.title }}</h5>
+              </transition-link>
             </div>
 
             <!-- <div class="col-12 col-md-6 col-lg-3 mb-5">
@@ -199,15 +209,15 @@ export default {
   },
 
   methods: {
-    setTransitionSource (path, ev) {
-      console.log('setTransitionSource +++++++++++++ 1', ev)
-      if (ev.srcElement.classList.contains('transition-source')) {
-        console.log('setTransitionSource +++++++++++++ 2', ev.srcElement)
-        this.$store.dispatch('setRouteTransitionSource', { sourceElement: ev.srcElement })
-        this.$store.dispatch('setRouteTransitionSourceRect', { boundingClientRect: ev.srcElement.getBoundingClientRect() })
-      }
-      this.$router.push({path: path})
-    }
+    // setTransitionSource (path, ev) {
+    //   console.log('setTransitionSource +++++++++++++ 1', ev)
+    //   if (ev.srcElement.classList.contains('transition-source')) {
+    //     console.log('setTransitionSource +++++++++++++ 2', ev.srcElement)
+    //     this.$store.dispatch('setRouteTransitionSource', { sourceElement: ev.srcElement })
+    //     this.$store.dispatch('setRouteTransitionSourceRect', { boundingClientRect: ev.srcElement.getBoundingClientRect() })
+    //   }
+    //   this.$router.push({path: path})
+    // }
     // pageChanged (to, from = -1) {
     //   if (to <= 0 || to > this.maxPage) {
     //     this.$router.replace(`/${this.feed}/1`)
