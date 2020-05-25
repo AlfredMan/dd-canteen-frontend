@@ -139,24 +139,25 @@ export default {
         // }
       }
     },
-    extend (config, { isDev, isClient, loaders: { vue } }) {
-      if (isClient) {
-        vue.transformAssetUrls.img = ['data-src', 'src']
-        vue.transformAssetUrls.source = ['data-srcset', 'srcset']
+    terser: {
+      terserOptions: {
+        compress: {
+          drop_console: true
+        }
       }
     }
+    // extend (config, { isDev, isClient, loaders: { vue } }) {
+    //   if (isClient) {
+    //     vue.transformAssetUrls.img = ['data-src', 'src']
+    //     vue.transformAssetUrls.source = ['data-srcset', 'srcset']
+    //   }
+    // }
   },
-
-  // purgeCSS: {
-  //   // your settings here
-  //   whitelistPatterns: [/flickity$/],
-  //   whitelistPatternsChildren: [/flickity/]
-  // },
 
   buildModules: [
     // '@nuxtjs/pwa',
-    '@nuxtjs/axios'
-    // 'nuxt-purgecss'
+    '@nuxtjs/axios',
+    'nuxt-purgecss'
   ],
 
   modules: [
@@ -244,6 +245,25 @@ export default {
     //     }
     //   })
     // }
+  },
+
+  generate: {
+    interval: 100,
+    concurrency: 100,
+    devtools: true,
+    routes () {
+      const client = createClient()
+      return Promise.all([
+        client.getEntries({
+          'content_type': 'news'
+        })
+      ]).then(([entries]) => {
+        return _.map(entries.items, entry => `/journal/${entry.fields.slug}`)
+      }).catch(console.error)
+    },
+    exclude: [
+      /^(?=.*\bhelper\b).*$/
+    ]
   },
 
   generate: {
