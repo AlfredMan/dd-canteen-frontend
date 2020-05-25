@@ -516,10 +516,10 @@
         <div class="scroller">
           <div class="">
             <div class="d-flex justify-content-between">
-              <div class="toggle-map" @click="closeSpace">
+              <div class="close-space" @click="closeSpace">
                 &larr; View all spaces
               </div>
-              <div class="close-cross">
+              <div class="toggle-map">
                 <span @click="openMap" v-if="!mapActive">Open map</span>
                 <span @click="closeMap" v-if="mapActive">Hide map</span>
               </div>
@@ -646,12 +646,17 @@ export default {
     left: 0;
     bottom: 0;
 
+    .close-space,
     .toggle-map {
       font-size: 1.5rem;
       position: relative;
       // width: 50%;
       z-index: 999;
       cursor: pointer;
+    }
+
+    .close-space {
+      opacity: 0.5
     }
 
     .scroller {
