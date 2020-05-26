@@ -8,6 +8,9 @@
             <a target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/The+Gateway+Pavilions,+Peninsula+Square,+Greenwich+Peninsula,+London+SE10+0SQ/@51.5003894,0.0041197,18.67z?hl=en">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a><br><br>
             <email :address="'hello@designdistrict.co.uk'" /><br>
             <a class="">+44 (0)20 3981 2426</a><br>
+            <small class="mt-4 d-block">
+              Copyright © 2020 Design District Limited
+            </small>
           </div>
 
         <div class="col-6 col-md-3 col-lg-2 mb-5">
@@ -67,7 +70,7 @@
           </div> -->
         </div>
 
-        <div class="inner d-flex row align-items-end justify-content-start mt-0 pb-4">
+        <div class="inner d-flex row align-items-end justify-content-start mt-0 pb-0">
           <!-- <div class="p-3 mr-auto-mr-md-0-ml-md-auto-order-md-2 d-flex align-items-end">
             <img src="~/assets/images/logo-hor.svg" alt="Design District logo" style="max-width: 40px" class="mr-5">
             <img src="~/assets/images/gp-logo.svg" alt="Greenwich Peninsula logo" style="max-width: 100px">
@@ -77,9 +80,9 @@
             <img src="~/assets/images/gp-logo.svg" alt="Greenwich Peninsula logo" style="" class=" w-75 pr-5"> -->
           </div>
 
-          <small class="col-12 col-md-6 text-left text-md-right ml-auto mt-2">
+          <!-- <small class="col-12 col-md-6 text-left text-md-right ml-auto mt-2">
             Copyright © 2020 Design District Limited
-          </small>
+          </small> -->
           <!-- <nuxt-link class="d-none d-md-inline nav-link" to="/privacy-policy">
             Privacy Policy
           </nuxt-link>

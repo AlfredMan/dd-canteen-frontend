@@ -4,8 +4,8 @@
       <div class="row- px-4">
         <div class="container-fluid py-5">
           <div class="row">
-            <div class="col-12 col-md-8">
-              <h1>A home<br>for creators</h1>
+            <div class="col-12 col-md-12">
+              <h1>A home for creators</h1>
             </div>
           </div>
           <div class="row d-flex align-items-start justify-content-between">
@@ -226,11 +226,11 @@
 
     <!--  -->
     <span class="anchor" id="service-and-facilities"></span>
-    <div class="container-fluid anchor-target">
+    <div class="container-fluid anchor-target bg-white">
       <div class="row pb-5-pt-3">
         <div class="container-fluid p-5">
           <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <h2>Services & Facilities</h2>
             </div>
           </div>
@@ -243,7 +243,7 @@
         </div>
       </div>
 
-      <div class="row d-flex align-items-start justify-content-between bg-light text-black">
+      <div class="row d-flex align-items-start justify-content-between bg-white text-black">
         <!-- <div class="col-12">
           <h3>Workshops</h3>
         </div> -->
@@ -348,7 +348,7 @@
         </div> -->
       </div>
 
-      <div class="row d-flex align-items-start justify-content-between bg-light text-black">
+      <div class="row d-flex align-items-start justify-content-between bg-white text-black">
         <div class="col-12 col-md-5 mb order-md-2">
           <div class="row d-flex align-items-end justify-content-end">
             <div class="col-12 col-md-12 px-0">
@@ -434,7 +434,7 @@
         </div> -->
       </div>
 
-      <div class="row d-flex align-items-start justify-content-between pt-5- bg-light">
+      <div class="row d-flex align-items-start justify-content-between pt-5- bg-white">
         <!-- <div class="col-12 col-md-6" /> -->
         <div class="col-12 col-md-5 mb-  order-md-2">
           <div class="row d-flex align-items-end justify-content-end">
@@ -443,7 +443,7 @@
               :src="'https://images.ctfassets.net/7p1ysxjarsp5/3aSHHWF58a3lz1wLhodNS3/d7bf1c2dd9c8e04abd2057194b16ace7/bb.jpg'"
               :w="1500"
               :h="1000"
-              :custom="'fit=thumb'"
+              :custom="'fit=thumb&f=bottom'"
               />
             </div>
           </div>
@@ -475,7 +475,7 @@
     <div class="py-5 bg-white anchor-target px-4">
       <div class="container-fluid -my-5">
         <div class="row">
-          <div class="col-12 col-md-4">
+          <div class="col-12 col-md-8">
             <h2>Become a tenant</h2>
           </div>
           <div class="col-12" />
