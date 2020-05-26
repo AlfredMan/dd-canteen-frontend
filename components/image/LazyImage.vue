@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 export default {
   props: {
     w: {
@@ -78,11 +79,11 @@ export default {
     getDimParam (width) {
       let dim = ''
       if (this.w && this.h) {
-        dim += `&w=${width}`
-        dim += `&h=${this.ratio*width}`
+        dim += `&w=${_.round(width)}`
+        dim += `&h=${_.round(this.ratio*width)}`
       } else {
         if (this.w) {
-          dim += `&w=${width}`
+          dim += `&w=${_.round(width)}`
         }
         // if (this.h) {
         //   dim += `&h=${this.h}`

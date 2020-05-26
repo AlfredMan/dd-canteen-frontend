@@ -203,17 +203,19 @@
           <div class="row mt-5 flex-row align-items-baseline">
 
                 <div class="col-12 col-md-6 col-lg-3 mb-5 building" v-for="building in formattedBuildings">
-                  <div class="">
-                    <lazy-image
-                    :src="building.url"
-                    :w="2000"
-                    :h="2000"
-                    class=""
-                    :xcustom="'fit=thumb&f=bottom'"
-                    />
-                  </div>
-                  <h5 class="mt-4">{{building.alt}}</h5>
-                  <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
+                  <transition-link :to="`/workspace/placeholder`">
+                    <div class="">
+                      <lazy-image
+                      :src="building.url"
+                      :w="2000"
+                      :h="2000"
+                      class=""
+                      :xcustom="'fit=thumb&f=bottom'"
+                      />
+                    </div>
+                    <h5 class="mt-4">{{building.alt}}</h5>
+                    <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
+                  </transition-link>
                 </div>
 
           </div>

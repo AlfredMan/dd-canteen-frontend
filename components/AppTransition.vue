@@ -69,13 +69,12 @@ export default {
       this.tl = gsap.timeline()
       this.tl.pause()
 
-      let rect = {
+      let rect = srcRect ? srcRect : {
         top: 0,
         left: 0,
         width: '0%',
         height: '100%'
       }
-      rect = srcRect
       let boxPos = {
         top: rect.top || 0,
         left: rect.left || 0,

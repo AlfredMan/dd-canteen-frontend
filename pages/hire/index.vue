@@ -164,17 +164,19 @@
 
           <div class="row d-flex align-items-end align-items-baseline mt-5 pt-5 text-dark">
             <div class="col-12 col-md-6 col-lg-2 mb-5 mb-md-4" v-for="building in formattedBuildings">
-              <lazy-image
-              :src="building.url"
-              :w="2000"
-              :h="2000"
-              class=""
-              :xcustom="'fit=thumb&f=bottom'"
-              />
-              <div class="my-3">
-                <h5 class="mb-0">{{building.type}}</h5>
-                <p class="mt-0"><small>{{building.alt}}</small></p>
-              </div>
+              <transition-link :to="`/hire/meeting-room`">
+                <lazy-image
+                :src="building.url"
+                :w="2000"
+                :h="2000"
+                class=""
+                :xcustom="'fit=thumb&f=bottom'"
+                />
+                <div class="my-3">
+                  <h5 class="mb-0">{{building.type}}</h5>
+                  <p class="mt-0"><small>{{building.alt}}</small></p>
+                </div>
+              </transition-link>
             </div>
           </div>
 
