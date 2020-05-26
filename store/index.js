@@ -1,3 +1,6 @@
+import spaces from '~/common/spaces'
+import buildings from '~/common/buildings'
+
 export const state = () => ({
   navigation: {
     theme: 'light'
@@ -7,7 +10,9 @@ export const state = () => ({
     delay: 500,
     count: 0,
     sourceElement: null,
-    sourceElementRect: null
+    sourceElementRect: null,
+    spaces: [],
+    buildings: []
   }
 })
 
@@ -32,6 +37,12 @@ export const mutations = {
   },
   clearRouteTransitionSourceElementRect (state) {
     state.transition.sourceElementRect = null
+  },
+  setSpaces (state, payload) {
+    state.spaces = payload.spaces
+  },
+  setBuildings (state, payload) {
+    state.buildings = payload.buildings
   }
 }
 
@@ -67,5 +78,23 @@ export const actions = {
   },
   resetRouteTransitionSourceRect ({ commit }) {
     commit('clearRouteTransitionSourceElementRect')
+  },
+  getMapSpaces ({ commit }) {
+    return Promise((resolve, reject) => {
+      setTimeout(() => {
+        const demoSpaces = spaces
+        resolve(demoSpaces)
+        commit('setSpaces', { spaces })
+      }, 500)
+    })
+  },
+  getMapBuildings ({ commit }) {
+    return Promise((resolve, reject) => {
+      setTimeout(() => {
+        const demoBuildings = buildings
+        resolve(demoBuildings)
+        commit('setBuildings', { buildings })
+      }, 500)
+    })
   }
 }

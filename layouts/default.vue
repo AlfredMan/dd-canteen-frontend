@@ -30,6 +30,8 @@
 
     <app-transition />
 
+    <app-map />
+
   </div>
 </template>
 
@@ -38,13 +40,15 @@ import NewsletterForm from '../components/forms/Newsletter.vue'
 import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
 import AppTransition from '../components/AppTransition.vue'
+import AppMap from '../components/map/Map.vue'
 
 export default {
   components: {
     NewsletterForm,
     AppHeader,
     AppFooter,
-    AppTransition
+    AppTransition,
+    AppMap
   },
   mounted () {
     // From testing, without a brief timeout, it won't work.
