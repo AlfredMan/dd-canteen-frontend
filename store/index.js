@@ -1,5 +1,5 @@
-import spaces from '~/common/spaces'
-import buildings from '~/common/buildings'
+import { spaces } from '~/common/spaces'
+import { buildings } from '~/common/buildings'
 
 export const state = () => ({
   navigation: {
