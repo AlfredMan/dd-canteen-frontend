@@ -33,11 +33,3 @@ npm run lint
 # validate and fix with ESLint (with Prettier)
 npm run lintfix
 ```
-
-## License
-
-MIT
-
-## Credits
-
-This repository is based on [vue-hackernews-2.0](https://github.com/vuejs/vue-hackernews-2.0)
