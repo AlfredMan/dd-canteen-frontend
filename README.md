@@ -1,6 +1,8 @@
-# Nuxt.js Design District
+# Design District
 
 Design District built with [Nuxt.js](https://nuxtjs.org).
+
+Currently using universal mode with generate. Deploy on Netlify serving static files.
 
 ## Build Setup
 
