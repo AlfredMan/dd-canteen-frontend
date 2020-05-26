@@ -30,7 +30,7 @@
 
     <app-transition />
 
-    <app-map />
+    <!-- <app-map /> -->
 
   </div>
 </template>

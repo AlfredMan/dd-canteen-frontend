@@ -202,7 +202,7 @@
           </div> -->
           <div class="row mt-5 flex-row align-items-baseline">
 
-                <div class="col-12 col-md-6 col-lg-3 mb-5 building" v-for="building in formattedBuildings" @click="openSpace">
+                <div class="col-12 col-md-6 col-lg-3 mb-5 building" v-for="building in formattedBuildings">
                   <div class="">
                     <lazy-image
                     :src="building.url"
