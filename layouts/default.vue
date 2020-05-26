@@ -29,7 +29,6 @@
     <app-footer />
 
     <app-transition />
-
     <!-- <app-map /> -->
 
   </div>
