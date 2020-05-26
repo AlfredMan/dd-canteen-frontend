@@ -152,16 +152,17 @@
 
   }
   &.panel-right {
-
+    display: none;
   }
   &.panel-bottom {
-
+    display: none;
   }
 }
 
 
 .list {
   position: absolute;
+  display: none;
   z-index: 99;
   top: 0;
   right: 0;

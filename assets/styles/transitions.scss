@@ -24,6 +24,14 @@
   overflow: hidden;
   // border: 1px solid yellow;
 
+  div[class^="on-hover-fade-"] {
+    transition: .2s ease all;
+  }
+
+  .disable-click {
+    pointer-events: none
+  }
+
   .lazy-image {
     overflow: hidden;
 
@@ -37,6 +45,26 @@
       img {
         transform: scale(1.04)
       }
+    }
+
+    .on-hover-fade-0 {
+      opacity: 0 !important;
+    }
+
+    .on-hover-fade-25 {
+      opacity: .25 !important;
+    }
+
+    .on-hover-fade-50 {
+      opacity: .5 !important;
+    }
+
+    .on-hover-fade-75 {
+      opacity: .75 !important;
+    }
+
+    .on-hover-fade-100 {
+      opacity: 1 !important;
     }
   }
 
