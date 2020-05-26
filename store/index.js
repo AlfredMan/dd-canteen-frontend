@@ -1,4 +1,6 @@
+import _ from 'lodash'
 import { spaces } from '~/common/spaces'
+import { hire } from '~/common/hire'
 import { buildings } from '~/common/buildings'
 
 export const state = () => ({
@@ -10,10 +12,11 @@ export const state = () => ({
     delay: 500,
     count: 0,
     sourceElement: null,
-    sourceElementRect: null,
-    spaces: [],
-    buildings: []
-  }
+    sourceElementRect: null
+  },
+  hire: [],
+  spaces: [],
+  buildings: []
 })
 
 export const mutations = {
@@ -41,12 +44,30 @@ export const mutations = {
   setSpaces (state, payload) {
     state.spaces = payload.spaces
   },
+  setHire (state, payload) {
+    state.hire = payload.hire
+  },
   setBuildings (state, payload) {
     state.buildings = payload.buildings
   }
 }
 
+export const getters = {
+  getSpaceBySlug: state => (slug) => {
+    return state.spaces.length > 0 ? state.spaces.find(space => space.slug === slug) : null
+  },
+  getHireBySlug: state => (slug) => {
+    return state.hire.length > 0 ? state.hire.find(hire => hire.slug === slug) : null
+  }
+}
+
 export const actions = {
+  async nuxtServerInit ({ dispatch }) {
+    console.log('nuxtServerInit ++++++++++++++++++++++++++++++=')
+    await dispatch('getMapSpaces')
+    await dispatch('getMapHire')
+    await dispatch('getMapBuildings')
+  },
   updateNavigationTheme ({ commit }, context) {
     const theme = context.theme
     commit('setNavigationTheme', { theme })
@@ -80,7 +101,7 @@ export const actions = {
     commit('clearRouteTransitionSourceElementRect')
   },
   getMapSpaces ({ commit }) {
-    return Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
         const demoSpaces = spaces
         resolve(demoSpaces)
@@ -88,8 +109,17 @@ export const actions = {
       }, 500)
     })
   },
+  getMapHire ({ commit }) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const demoHire = hire
+        resolve(demoHire)
+        commit('setHire', { hire })
+      }, 500)
+    })
+  },
   getMapBuildings ({ commit }) {
-    return Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
         const demoBuildings = buildings
         resolve(demoBuildings)

@@ -403,7 +403,8 @@
               </div>
               <div class="row">
                 <div class="col-12 col-md-6 px-3">
-                  <a href="/about-us#architecture" class="h5 text-primary">
+                  <!-- <a href="/about-us#architecture" class="h5 text-primary"> -->
+                  <a href="/architecture" class="h5 text-primary">
                     View all architects &rarr;
                   </a>
                 </div>

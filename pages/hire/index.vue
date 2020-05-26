@@ -162,19 +162,22 @@
             </div>
           </div>
 
-          <div class="row d-flex align-items-end align-items-baseline mt-5 pt-5 text-dark">
-            <div class="col-12 col-md-6 col-lg-2 mb-5 mb-md-4" v-for="building in formattedBuildings">
-              <transition-link :to="`/hire/meeting-room`">
+          <div class="row d-flex align-items-end align-items-baseline mt-5 pt-5 text-dark" v-for="(spaceHireTypeValue, spaceHireTypeNameKey) in allHireSpacesByType">
+            <div class="col-12 mb-3">
+              <h3 class="text-capitalize">{{spaceHireTypeNameKey}}</h3>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-4" v-for="hire in spaceHireTypeValue">
+              <transition-link :to="`/hire/${hire.slug}`">
                 <lazy-image
-                :src="building.url"
+                :src="hire.url"
                 :w="2000"
                 :h="2000"
                 class=""
                 :xcustom="'fit=thumb&f=bottom'"
                 />
                 <div class="my-3">
-                  <h5 class="mb-0">{{building.type}}</h5>
-                  <p class="mt-0"><small>{{building.alt}}</small></p>
+                  <h5 class="mb-0">{{hire.title}}</h5>
+                  <p class="mt-0"><small>{{hire.alt}}</small></p>
                 </div>
               </transition-link>
             </div>
@@ -252,7 +255,7 @@
 
 <script>
 import ClubForm from '../../components/forms/JoinTheClub.vue'
-import { buildings } from '~/common/buildings.js'
+// import { buildings } from '~/common/buildings.js'
 import _ from 'lodash'
 export default {
   components: {
@@ -262,13 +265,19 @@ export default {
     this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
   },
   computed: {
-    formattedBuildings () {
-      // console.log('buildings', buildings)
-      return _.map(buildings, (b) => {
-        b.type = _.sample(['Meeting Room', 'Popup', 'Photo Studio', 'Roof Top'])
-        return b
-      })
-    }
+    allHireSpaces () {
+      return this.$store.state.hire
+    },
+    allHireSpacesByType () {
+      return _.groupBy(this.allHireSpaces, 'type')
+    },
+    // formattedBuildings () {
+    //   // console.log('buildings', buildings)
+    //   return _.map(buildings, (b) => {
+    //     b.type = _.sample(['Meeting Room', 'Popup', 'Photo Studio', 'Roof Top'])
+    //     return b
+    //   })
+    // }
   }
 }
 </script>

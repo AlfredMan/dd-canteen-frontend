@@ -4,7 +4,7 @@
       <div class="row- px-4">
         <div class="container-fluid py-5">
           <div class="row">
-            <div class="col-12 col-md-12">
+            <div class="col-12 col-md-6">
               <h1>A home for creators</h1>
             </div>
           </div>
@@ -200,23 +200,26 @@
               <h3>Buildings</h3>
             </div>
           </div> -->
-          <div class="row mt-5 flex-row align-items-baseline">
+          <div class="row mt-5 flex-row align-items-baseline" v-for="(spaceTypeValue, spaceTypeNameKey) in allSpacesByType ">
 
-                <div class="col-12 col-md-6 col-lg-3 mb-5 building" v-for="building in formattedBuildings">
-                  <transition-link :to="`/workspace/placeholder`">
-                    <div class="">
-                      <lazy-image
-                      :src="building.url"
-                      :w="2000"
-                      :h="2000"
-                      class=""
-                      :xcustom="'fit=thumb&f=bottom'"
-                      />
-                    </div>
-                    <h5 class="mt-4">{{building.alt}}</h5>
-                    <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
-                  </transition-link>
+            <div class="col-12 mb-3">
+              <h3 class="text-capitalize">{{spaceTypeNameKey}}</h3>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-5 building" v-for="space in spaceTypeValue">
+              <transition-link :to="`/workspace/${space.slug}`">
+                <div class="">
+                  <lazy-image
+                  :src="space.url"
+                  :w="2000"
+                  :h="2000"
+                  class=""
+                  :xcustom="'fit=thumb&f=bottom'"
+                  />
                 </div>
+                <h5 class="mt-4">{{space.title}}</h5>
+                <p>{{space.description}}</p>
+              </transition-link>
+            </div>
 
           </div>
 
@@ -503,52 +506,6 @@
         </div>
       </div>
     </div> -->
-    <div
-    class="drawer"
-    :class="{
-      'space-active': spaceActive,
-      'map-active': mapActive
-      }"
-    >
-      <div class="space">
-        <!-- <div class="close-cross">
-          <span @click="openMap" v-if="!mapActive">Open map</span>
-          <span @click="closeMap" v-if="mapActive">Hide map</span>
-        </div> -->
-        <div class="scroller">
-          <div class="">
-            <div class="d-flex justify-content-between">
-              <div class="close-space" @click="closeSpace">
-                &larr; View all spaces
-              </div>
-              <div class="toggle-map">
-                <span @click="openMap" v-if="!mapActive">Open map</span>
-                <span @click="closeMap" v-if="mapActive">Hide map</span>
-              </div>
-            </div>
-            <h1 class="mt-0">A301</h1>
-            <div class="-col-lg-8 px-0">
-              <lazy-image
-              :src="formattedBuildings[0].url"
-              :w="2000"
-              :h="2000"
-              class=""
-              :xcustom="'fit=thumb&f=bottom'"
-              />
-            </div>
-            <h5 class="mt-4">{{formattedBuildings[0].alt}}</h5>
-            <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
-          </div>
-        </div>
-      </div>
-      <div class="map">
-        <div class="">
-          <!-- <div class="close" @click="closeMap">
-            &times;
-          </div> -->
-        </div>
-      </div>
-    </div>
 
   </div>
 </template>
@@ -557,7 +514,8 @@
 // import EnquireForm from '../../components/forms/Enquire.vue'
 import EnquireForm from '../../components/forms/Enquire2.vue'
 import NewsletterForm from '../../components/forms/Newsletter.vue'
-import { buildings } from '~/common/buildings.js'
+// import { buildings } from '~/common/buildings.js'
+// import { spaces } from '~/common/spaces.js'
 import _ from 'lodash'
 export default {
   components: {
@@ -586,12 +544,26 @@ export default {
   },
 
   computed: {
-    formattedBuildings () {
-      // console.log('buildings', buildings)
-      return _.map(buildings, (b) => {
-        b.type = _.sample(['Meeting Room', 'Popup', 'Photo Studio', 'Roof Top'])
-        return b
-      })
+    // formattedBuildings () {
+    //   // console.log('buildings', buildings)
+    //   return _.map(buildings, (b) => {
+    //     b.type = _.sample(['Meeting Room', 'Popup', 'Photo Studio', 'Roof Top'])
+    //     return b
+    //   })
+    // },
+    // formattedSpaces () {
+    //   return _.map(spaces, (b) => {
+    //     return b
+    //   })
+    // },
+    allSpaces () {
+      return this.$store.state.spaces
+    },
+    allSpacesByType () {
+      return _.groupBy(this.allSpaces, 'type')
+    },
+    allBuildings () {
+      return this.$store.state.buildings
     }
   },
 

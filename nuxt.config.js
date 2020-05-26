@@ -96,6 +96,10 @@ export default {
     {
       src: '~/plugins/vue-flickity.js',
       mode: 'client'
+    },
+    {
+      src: '~/plugins/nuxt-client-init.js',
+      mode: 'client'
     }
   ],
 

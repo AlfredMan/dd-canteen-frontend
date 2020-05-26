@@ -92,14 +92,17 @@ button, .btn, input[type="submit"] {
 
 .tags, .chips {
   display: flex;
+  flex-wrap: wrap;
 
   .tag {
     padding: .5rem 1.25rem;
     margin-right: .3rem;
     margin-left: 0;
+    margin-bottom: .2rem;
     font-size: 1.2rem;
     border-radius: 2rem;
-    border: 1.5px solid;
+    border: 1.2px solid;
+    white-space: nowrap;
     cursor: pointer;
     &:first-child {
       margin-left: -0.05rem;

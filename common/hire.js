@@ -70,7 +70,7 @@ export const hire = [
     slug: 'popup-c',
     url: 'https://images.ctfassets.net/7p1ysxjarsp5/3BLpiM1CFIa3C7IShio4iL/29094ce9840beab6c83711c6c434ed07/KDN_Design_District_D1_LR.jpeg?w=2000&h=2000&fm=jpg&q=80',
     building: 'D1',
-    type: 'rooftop',
+    type: 'popup',
     status: 'available',
     floorarea: 1000,
     level: 0,

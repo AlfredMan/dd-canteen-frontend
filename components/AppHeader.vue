@@ -22,7 +22,9 @@
         <nuxt-link class="menu-link d-none d-lg-inline" to="/community">
           Community
         </nuxt-link>
-        <!-- <nuxt-link class="menu-link d-none d-lg-inline" to="/">Architecture</nuxt-link> -->
+        <nuxt-link class="menu-link d-none d-lg-inline" to="/architecture">
+          Architecture
+        </nuxt-link>
         <nuxt-link class="menu-link d-none d-lg-inline" to="/journal">
           <!-- News & Events -->
           Journal
