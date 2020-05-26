@@ -24,6 +24,7 @@
             <label class="-accessible-hide" for="first_name">First name<sup>*</sup></label>
             <input
               id="first_name"
+              ref="first_name"
               type="text"
               name="first_name"
               placeholder="First name"
@@ -36,6 +37,7 @@
             <label class="-accessible-hide" for="last_name">Last name<sup>*</sup></label>
             <input
               id="last_name"
+              ref="last_name"
               type="text"
               name="last_name"
               placeholder="Last name"
@@ -970,6 +972,18 @@ export default {
     onVerify (recaptchaToken) {
       console.log('Verify: ' + recaptchaToken)
 
+      const url = 'https://us-central1-designdistrict-2b9e1.cloudfunctions.net/verify'
+      // let url = 'https://www.google.com/recaptcha/api/siteverify'
+      this.$axios.$post(url, {
+        token: recaptchaToken
+      }).then((response) => {
+        console.log(response)
+        // this.formTarget = 'subscribRet'
+        this.$refs.enquireForm.submit()
+      }).catch((error) => {
+        return false;
+        console.log(error)
+      })
       // this.formState = 'idle'
       // this.formAlert.type = 'success'
       // this.formAlert.text = 'Complete.'
@@ -986,9 +1000,14 @@ export default {
       // }).catch((error) => {
       //   console.log(error.message)
       // })
-      this.$refs.enquireForm.submit()
 
-      debugger
+
+
+      // this.$refs.enquireForm.submit()
+      //
+      // debugger
+
+
 
       // this.$refs.enquireForm.submit()
       //
@@ -1057,6 +1076,12 @@ export default {
       // if (document.getElementById('enquireMarketingOptIn').checked) {
       //   document.getElementById('enquireMarketingOptInDate').value = now
       // }
+
+      if ((this.$refs.first_name.value && this.$refs.first_name.value.toLowerCase() == 'james') && (this.$refs.first_name.value && this.$refs.last_name.value.toLowerCase() == 'smith')) {
+        alert("Sorry, something went wrong!");
+        return false
+      }
+
       if (this.$refs.enquirePrivacyOptIn.checked) {
         this.$refs.enquirePrivacyOptInDate.value = now
       }
