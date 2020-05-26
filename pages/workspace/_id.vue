@@ -1,242 +1,107 @@
 <template lang="html">
-  <div class="mt-5 bg-white" v-if="space">
+  <div class="mt-5 bg-white" v-if="spaceType" :key="slug">
 
-      <!--  -->
-      <div class="container-fluid">
-        <div class="row- px-3">
-          <div class="container-fluid pt-5">
-            <div class="row">
-              <div class="col-12 col-md-8">
-                <h1>{{space.title}}</h1>
+      <div class="container-fluid bg-white">
+        <div class="-row pb-5 pt-3 px-4">
+          <div class="container-fluid py-5">
+
+            <div class="row mb-4">
+              <div class="col-12 col-md-6">
+                <h1>{{spaceTypeTitle}}</h1>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="space-information">
-
-      <aside class="container-fluid">
-        <div class="sticky-wrapper px-3 mb-4">
-          <div class="container-fluid">
             <div class="row">
-              <div class="col-12 offset-md-8 col-md-4">
-                <div class="p-4 bg-grey">
-                  <div class="py-2">
-                    <h2>{{space.title}}</h2>
-                    <p>Building: {{space.building}}<br>
-                    Level: {{space.level}}</p>
+              <!-- <div class="col-12">
+                <h4>Filter Spaces</h4>
+              </div> -->
+              <div class="col-12 row d-flex justify-content-start">
+                <div class="col-12 col-md mb-3">
+                  <div class="mb-2">
+                    <h5>Team Size</h5>
                   </div>
-                  <div class="mt-4">
-                    <space-form></space-form>
+                  <div class="">
+                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                      1
+                    </div>
+                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                      2–4
+                    </div>
+                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                      5–10
+                    </div>
+                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                      11–30
+                    </div>
+                    <div class="btn btn-outline-dark chip chip-lg mb-2">
+                      30+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md mb-3">
+                  <div class="mb-2">
+                    <h5>Features</h5>
+                  </div>
+                  <div class="">
+                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                      South Facing
+                    </div>
+                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                      Ground Floor
+                    </div>
+                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                      Step Free
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md mb-3">
+                  <div class="mb-2">
+                    <h5>Option</h5>
+                  </div>
+                  <div class="">
+                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                      Shared Space
+                    </div>
+                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                      Private Room
+                    </div>
+                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                      Permenant
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </aside>
 
-      <div class="container-fluid">
-        <div class="row- px-3">
-          <div class="container-fluid pb-5">
-            <div class="row d-flex align-items-start justify-content-between">
-              <div class="col-12 col-md-8">
-                <div class="row d-flex align-items-end justify-content-end">
-                  <div class="col-12 col-md-12">
+            </div>
+
+            <!-- <div class="row mt-5">
+              <div class="col-12">
+                <h3>Buildings</h3>
+              </div>
+            </div> -->
+            <div class="row mt-5 flex-row align-items-baseline">
+
+              <div class="col-12 col-md-6 col-lg-3 mb-5 building" v-for="space in spaceType">
+                <transition-link :to="`/space/${space.slug}`">
+                  <div class="">
                     <lazy-image
                     :src="space.url"
-                    :w="3000"
+                    :w="2000"
                     :h="2000"
+                    class=""
+                    :xcustom="'fit=thumb&f=bottom'"
                     />
                   </div>
-                </div>
+                  <h5 class="mt-4">{{space.title}}</h5>
+                  <p>{{space.description}}</p>
+                </transition-link>
               </div>
-              <div class="col-12">
 
-              </div>
-              <div class="col-12 col-md-6 my-4">
-                <h4>{{space.description}}</h4>
-              </div>
             </div>
+
           </div>
         </div>
       </div>
-
-      <div class="container-fluid bg-white">
-        <div class="row- px-3">
-          <div class="container-fluid py-5">
-            <div class="row mb-4">
-              <div class="col-12 col-md-8">
-                <h3>Specifications</h3>
-              </div>
-            </div>
-            <div class="row d-flex align-items-start justify-content-start">
-              <div class="col-12 col-md-3 mb-4">
-                <h6 class="mb-1">Team size</h6>
-                <div class="tags">
-                  <div class="tag">
-                    2–4
-                  </div>
-                  <div class="tag">
-                    5–10
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-3 mb-4">
-                <h6 class="mb-1">Option</h6>
-                <div class="tags">
-                  <div class="tag">
-                    Private Space
-                  </div>
-                  <div class="tag">
-                    Permenant
-                  </div>
-                </div>
-              </div>
-              <div class="col-12">
-
-              </div>
-              <div class="col-12 col-md-3 mb-4">
-                <h6 class="mb-1">Features</h6>
-                <div class="tags">
-                  <div class="tag">
-                    Step Free
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-3 mb-4">
-                <h6 class="mb-1">Facilities</h6>
-                <div class="tags">
-                  <div class="tag">
-                    Material Lab
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="container-fluid bg-white">
-        <div class="row- px-3">
-          <div class="container-fluid py-5">
-            <div class="row mb-4">
-              <div class="col-12 col-md-8">
-                <h3>Services & Facilities</h3>
-              </div>
-            </div>
-            <div class="row d-flex align-items-start justify-content-start">
-              <div class="col-12 col-md-3 mb-4">
-                <h5 class="mb-1">Bike Storage</h5>
-                <p>Rows of hooks and racks keep your prized bicycle safe on the premises.</p>
-              </div>
-              <div class="col-12 col-md-3 mb-4">
-                <h5 class="mb-1">Event space</h5>
-                <p>With a projector, sound system and lighting controls, lounges are easily converted for members’ meet-ups.</p>
-              </div>
-              <div class="col-12">
-
-              </div>
-              <div class="col-12 col-md-3 mb-4">
-                <h5 class="mb-1">Dog friendly</h5>
-                <p>Rows of hooks and racks keep your prized bicycle safe on the premises.</p>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container-fluid bg-white">
-        <div class="row- px-3">
-          <div class="container-fluid py-5">
-            <div class="row">
-              <div class="col-12 col-md-8">
-                <h3>Architecture</h3>
-              </div>
-            </div>
-            <div class="row d-flex align-items-start justify-content-between">
-              <div class="col-12 col-md-6 my-4">
-                <h4>The heart and soul of our locations, these lounges are living room-style spaces designed for creativity, comfort and productivity.</h4>
-              </div>
-              <div class="col-12">
-
-              </div>
-              <div class="col-12 col-md-6 mb-4">
-                <div class="row d-flex align-items-end justify-content-end">
-                  <div class="col-12 col-md-12">
-                    <lazy-image
-                    :src="'https://images.ctfassets.net/7p1ysxjarsp5/4D5VxGyVWyk1CZZ8DAoaF6/75189eeb8ae136cdb136d566b648d589/KDN_Design_District_B3_LR.jpeg'"
-                    :w="3000"
-                    :h="2000"
-                    :custom="'fit=thumb'"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="col-12">
-
-              </div>
-              <div class="col-12 col-md-6">
-                <lazy-image
-                class=""
-                :src="'https://images.ctfassets.net/7p1ysxjarsp5/5Qu2qJOxKsVJyq14IByYXQ/eb84ad1acc0500e3946e6bea0f905bd1/AdamKahn-1A-Architect.jpg'"
-                :w="2000"
-                :h="2000"
-                />
-                <h5>Adam Khan Architect &rarr;</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!--  -->
-      </div>
-
-    </div>
-
-
-    <!-- <div class="bg-light">
-      <div class="container mt-10">
-        <enquire-form></enquire-form>
-      </div>
-    </div> -->
-    <!-- <span class="anchor" id="become-a-tenant" ></span>
-    <div class="py-5 bg-white anchor-target px-4">
-      <div class="container-fluid -my-5">
-        <div class="row">
-          <div class="col-12 col-md-4">
-            <h2>Become a tenant</h2>
-          </div>
-          <div class="col-12" />
-          <div class="col-12 col-md-4">
-            <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering accessible rent, flexible leases and workspace purpose-built for creative disciplines.</h4>
-            <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</p>
-          </div>
-          <div class="col-12 col-lg-1" />
-          <div class="col-12 col-md-8 col-lg-7">
-            <enquire-form source="workspace"/>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-
-
-    <!-- <div class="bg-light">
-      <div class="container mt-10">
-        <div class="row">
-          <div class="col">
-
-          </div>
-          <div class="col">
-            <enquire-form></enquire-form>
-          </div>
-        </div>
-      </div>
-    </div> -->
 
   </div>
 </template>
@@ -282,7 +147,19 @@ export default {
     },
     space () {
       return this.$store.getters.getSpaceBySlug(this.slug)
-    }
+    },
+    allSpaces () {
+      return this.$store.state.spaces
+    },
+    allSpacesByType () {
+      return _.groupBy(this.allSpaces, 'type')
+    },
+    spaceTypeTitle () {
+      return _.startCase(this.slug)
+    },
+    spaceType () {
+      return this.allSpacesByType[_.lowerCase(_.startCase(this.slug))]
+    },
     // space () {
     //   if (this.$store.spaces && this.slug) {
     //     return _.find(this.$store.spaces, (space) => space.slug === this.slug)

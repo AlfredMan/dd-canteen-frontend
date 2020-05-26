@@ -200,13 +200,16 @@
               <h3>Buildings</h3>
             </div>
           </div> -->
-          <div class="row mt-5 flex-row align-items-baseline" v-for="(spaceTypeValue, spaceTypeNameKey) in allSpacesByType ">
+          <div class="row mt-5 flex-row align-items-baseline" v-for="(spaceTypeValue, spaceTypeNameKey) in allSpacesByType " :key="spaceTypeNameKey">
 
-            <div class="col-12 mb-3">
+            <div class="col-12 mb-3 d-flex justify-content-between">
               <h3 class="text-capitalize">{{spaceTypeNameKey}}</h3>
+              <nuxt-link class="h5 text-primary"
+              :to="`/workspace/${getSlug(spaceTypeNameKey)}`"
+              >View all {{spaceTypeNameKey}} &rarr;</nuxt-link>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-5 building" v-for="space in spaceTypeValue">
-              <transition-link :to="`/workspace/${space.slug}`">
+            <div class="col-12 col-md-6 col-lg-3 mb-5 building" v-for="(space, index) in spaceTypeValue" v-if="index < 4" :key="space.slug">
+              <transition-link :to="`/space/${space.slug}`">
                 <div class="">
                   <lazy-image
                   :src="space.url"
@@ -568,6 +571,9 @@ export default {
   },
 
   methods: {
+    getSlug (string) {
+      return _.kebabCase(string)
+    },
     openSpace () {
       this.spaceActive = true
     },
