@@ -1,5 +1,9 @@
 <template lang="html">
-  <header class="header" :class="[{'bg-primary': menuActive}, headerClass]">
+  <header class="header" :class="[
+    {'bg-primary': menuActive},
+    headerClass,
+    {'mobile-menu-active': menuActive}
+  ]">
     <div data-x="a" class="container-fluid px-xl-0 -px-lg-0">
       <nav class="inner d-flex flex-row align-items-center row z-index--" :class="{
           'text-white': isDark,
@@ -26,7 +30,6 @@
           Architecture
         </nuxt-link>
         <nuxt-link class="menu-link d-none d-lg-inline" to="/journal">
-          <!-- News & Events -->
           Journal
         </nuxt-link>
         <nuxt-link class="menu-link d-none d-lg-inline" to="/about-us">
@@ -60,12 +63,9 @@
     <div v-show="menuActive" class="position-fixed w-100 h-100 bg-primary">
       <div class="row p-4 mobile-nav">
         <div class="col">
-          <nuxt-link class="mobile-menu-link" to="/workspace">
+          <!-- <nuxt-link class="mobile-menu-link" to="/workspace">
             Work space
           </nuxt-link><br>
-          <!-- <nuxt-link class="mobile-menu-link" to="/the-club">
-            The Club
-          </nuxt-link><br> -->
           <nuxt-link class="mobile-menu-link" to="/journal">
             Journal
           </nuxt-link><br>
@@ -74,7 +74,32 @@
           </nuxt-link><br>
           <nuxt-link class="mobile-menu-link" to="/contact">
             Contact Us
-          </nuxt-link><br>
+          </nuxt-link><br> -->
+
+          <nuxt-link class="d-block mobile-menu-link" to="/workspace">
+            Work space
+          </nuxt-link>
+          <nuxt-link class="d-block mobile-menu-link" to="/hire">
+            Hire a Space
+          </nuxt-link>
+          <nuxt-link class="d-block mobile-menu-link" to="/the-club">
+            The Club
+          </nuxt-link>
+          <nuxt-link class="d-block mobile-menu-link" to="/community">
+            Community
+          </nuxt-link>
+          <nuxt-link class="d-block mobile-menu-link" to="/architecture">
+            Architecture
+          </nuxt-link>
+          <nuxt-link class="d-block mobile-menu-link" to="/journal">
+            Journal
+          </nuxt-link>
+          <nuxt-link class="d-block mobile-menu-link" to="/about-us">
+            About
+          </nuxt-link>
+          <nuxt-link class="d-block mobile-menu-link" to="/contact">
+            Contact Us
+          </nuxt-link>
         </div>
       </div>
       <div class="row p-4 mobile-footer">
