@@ -950,10 +950,14 @@ export default {
 
       this.$refs.invisibleRecaptcha.execute()
 
-      // console.log('checkForm')
+      // debugger
       if (this.submitEnquireForm() && this.handleRecap()) {
-        // console.log('checked!')
+        // alert('checked!')
         return true
+      } else {
+        // alert('failed')
+        e.preventDefault()
+        return false
       }
 
       e.preventDefault()
@@ -1076,6 +1080,11 @@ export default {
       // if (document.getElementById('enquireMarketingOptIn').checked) {
       //   document.getElementById('enquireMarketingOptInDate').value = now
       // }
+
+      if ((this.$refs.first_name.value && this.$refs.first_name.value.toLowerCase() == 'test 123')) {
+        alert("Sorry, something went wrong!!");
+        return false
+      }
 
       if ((this.$refs.first_name.value && this.$refs.first_name.value.toLowerCase() == 'james') && (this.$refs.first_name.value && this.$refs.last_name.value.toLowerCase() == 'smith')) {
         alert("Sorry, something went wrong!");
