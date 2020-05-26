@@ -1,4 +1,4 @@
-# Design District
+# Design District website frontend
 
 Design District built with [Nuxt.js](https://nuxtjs.org).
 
