@@ -618,7 +618,10 @@ export default {
 
   computed: {
     contentType () {
-      return this.entry?.fields?.contentType || ''
+      if (this.entry && this.entry.fields && this.entry.fields.contentType) {
+        return this.entry.fields.contentType
+      }
+      return ''
     }
   },
 
