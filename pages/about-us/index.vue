@@ -20,7 +20,7 @@
     </div>
 
     <!--  -->
-    <div class="container-fluid bg-secondary">
+    <div class="container-fluid bg-white">
       <div class="row pt-5">
         <div class="container pt-2 pb-5">
           <div class="row">
@@ -61,7 +61,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-6">
               <h4>Extraordinary buildings. The needs of creatives put front and centre. Design District is an offer that’s entirely new for London. Meet the architects.</h4>
               <!-- <a href="#" class="text-primary">View all architects &rarr;</a> -->
             </div>

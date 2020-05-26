@@ -8,7 +8,7 @@
               <h2>{{ studioData.title }}</h2>
               <!-- <h4>{{studioData.buildings}}</h4> -->
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 mt-5">
               <h5 v-if="studioData.buildings == 'Landscape'">
                 The landscape
               </h5>
@@ -20,7 +20,7 @@
               </p>
             </div>
 
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 mt-5">
               <h5>The practice</h5>
               <p>
                 {{ studioData.practiceCopy }}
