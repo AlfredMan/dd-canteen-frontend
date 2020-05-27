@@ -31,7 +31,8 @@ export default {
         container: null,
         raf: null,
         canAdd: false,
-        targetMesh: null
+        targetMesh: null,
+        rayTarget: []
       }
     }
   },
@@ -75,7 +76,7 @@ export default {
       this.sceneState.cameraDefaultPosition.y = 30
       this.sceneState.cameraDefaultPosition.z = 25
 
-      this.sceneState.camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.01, 1000000)
+      this.sceneState.camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.01, 10000)
       this.sceneState.camera.position.x = this.sceneState.cameraDefaultPosition.x
       this.sceneState.camera.position.z = this.sceneState.cameraDefaultPosition.z
       this.sceneState.camera.position.y = this.sceneState.cameraDefaultPosition.y
@@ -85,7 +86,7 @@ export default {
       const light = new THREE.AmbientLight(0xFFFFFF, 0.5) // soft white light
       this.sceneState.scene.add(light)
 
-      const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0)
+      const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.2)
       directionalLight.position.set(4, 10, 4)
       directionalLight.target.position.set(0, 0, 0)
       directionalLight.castShadow = true

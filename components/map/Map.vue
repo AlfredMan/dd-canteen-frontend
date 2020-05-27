@@ -1,13 +1,12 @@
 <template>
   <div class="map" :class="{
-    'active': mapActive
+    'active': mapActive,
+    'has-intersect': mapIntersectActive
     }">
 
     <div class="info">
       <div class="" v-if="sceneState.intersect">
-        <div class="" v-for="int in sceneState.intersect">
-          Name: {{int.object.name}}
-        </div>
+        {{sceneState.intersect.object.name}}
       </div>
     </div>
 

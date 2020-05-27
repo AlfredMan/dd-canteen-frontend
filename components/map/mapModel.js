@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import _ from 'lodash'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
@@ -53,7 +54,7 @@ export default {
           //   }
           // })
           console.log(gltf)
-          resolve([gltf.scene])
+          resolve(gltf.scene)
           // scene.add(gltf.scene)
           // roughnessMipmapper.dispose()
           // render()
@@ -80,29 +81,49 @@ export default {
         // }
       })
     },
-    addModels (gltfScenes) {
-      for (let i = 0; i < gltfScenes.length; i++) {
-        this.addModel(gltfScenes[i])
+    addModels (gltfScene) {
+      // for (let i = 0; i < gltfScenes.length; i++) {
+      //   this.addModel(gltfScenes[i])
+      // }
+      for (let i = 0; i < gltfScene.children.length; i++) {
+        const child = gltfScene.children[i]
+        if (!_.lowerCase(child.name).includes('plane')) {
+          if (child.type === 'Mesh') {
+            this.sceneState.rayTarget.push(child)
+          } else
+          if (child.type === 'Object3D') {
+            for (let iC = 0; iC < child.children.length; iC++) {
+              const grandchild = child.children[iC]
+              if (grandchild.type == 'Mesh') {
+                this.sceneState.rayTarget.push(grandchild)
+              }
+            }
+          }
+        }
       }
+
+      console.log(this.sceneState.rayTarget)
+
+      this.addModel(gltfScene)
     },
     addModel (object) {
       if (!object) { return }
+
+      this.sceneState.activeMaterial = new THREE.MeshStandardMaterial({ color: 0x666666, side: THREE.DoubleSide })
+      this.sceneState.defaultMaterial = new THREE.MeshStandardMaterial({ color: 0xEEEEEE, side: THREE.DoubleSide })
 
       // for (let i = 0; i < object.children.length; i++) {
       //   object.children[i].castShadow = true
       //   object.children[i].receiveShadow = true
       // }
       // console.log(object.children)
-
-      this.sceneState.activeMaterial = new THREE.MeshStandardMaterial({ color: 0x666666, side: THREE.DoubleSide })
-      this.sceneState.defaultMaterial = new THREE.MeshStandardMaterial({ color: 0xEEEEEE, side: THREE.DoubleSide })
       // this.sceneState.defaultBuildingMaterial = new THREE.MeshStandardMaterial( {color: 0xeeeeee, side: THREE.DoubleSide, map: buildingTexture} );
       // this.sceneState.defaultRoofMaterial = new THREE.MeshStandardMaterial( {color: 0xeeeeee, side: THREE.DoubleSide, map: roofTexture} );
 
       object.scale.set(0.01, 0.01, 0.01)
       // object.position.x = 1.0
       // object.position.z = 2.5
-      this.sceneState.targetMesh = object
+      // this.sceneState.targetMesh = object
       this.sceneState.scene.add(object)
     }
   }
