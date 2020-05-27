@@ -34,7 +34,7 @@
           class="container-fluid pb-5 pt-5 px-0 -position-absolute bg-white"
           style="bottom: 0; left:0; right: 0;"
         >
-          <div class="px-4">
+          <div class="px-4 py-2">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-12 col-sm-10 col-xl-7">
@@ -98,23 +98,22 @@
 
     <transition-link :to='`/workspace`'>
       <div class="container-fluid position-relative bg-dark text-white" style="min-height: 25vw;">
+        <div class="on-hover-fade-0" style="background-size:cover; background-size:cover; opacity: 0.5; z-index: 0; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-image:url(https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=4000&fm=jpg&q=80)">
 
-          <div class="on-hover-fade-0" style="background-size:cover; background-size:cover; opacity: 0.5; z-index: 0; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-image:url(https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=4000&fm=jpg&q=80)">
-
-          </div>
-          <div class="disable-click container-fluid py-5" style="z-index:1">
-            <div class="row">
-              <div class="col-12 col-md-7 pr-md-5 mb-5 px-4">
-                <h2>Explore available<br>work spaces</h2>
-                <h4 class="mb-4">
-                  Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.
-                </h4>
-                <h5>Find out more &rarr;</h5>
-              </div>
-              <div class="col-12 col-md-5 px-4">
-              </div>
+        </div>
+        <div class="disable-click container-fluid py-5" style="z-index:1">
+          <div class="row">
+            <div class="col-12 col-md-7 pr-md-5 mb-5 px-4 py-2">
+              <h2>Explore available<br>work spaces</h2>
+              <h4 class="mb-4">
+                Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.
+              </h4>
+              <h5>Find out more &rarr;</h5>
+            </div>
+            <div class="col-12 col-md-5 px-4">
             </div>
           </div>
+        </div>
       </div>
     </transition-link>
 
@@ -158,9 +157,9 @@
     </div> -->
 
     <!--  -->
-    <div class="container-fluid">
-      <div class="row bg-white text-black pb-5-pt-3">
-        <div class="px-4">
+    <div class="">
+      <div class="bg-white text-black pb-5-pt-3">
+        <div class="px-4 py-2">
           <div class="container-fluid py-5">
             <div class="row d-flex">
               <div class="col-12 col-md-6 px-3">
@@ -304,7 +303,7 @@
         </div>
         <div class="disable-click container-fluid py-5" style="z-index:1">
           <div class="row">
-            <div class="col-12 col-md-7 pr-md-5 mb-5 px-4">
+            <div class="col-12 col-md-7 pr-md-5 mb-5 px-4 py-2">
               <h2>Creative work&nbsp;space</h2>
               <!-- <h4>Just starting out or trying something new? The Club is an accessible way to be part of the Design District community.</h4> -->
               <h4 class="mb-4">
@@ -341,10 +340,10 @@
     </transition-link>
 
     <!--  -->
-    <div class="container-fluid -d-none">
-      <div class="row pb-5 pt-3">
-        <div class="px-4">
-          <div class="container-fluid py-5">
+    <div class="-container-fluid -d-none">
+      <div class="-row pb-5 pt-3">
+        <div class="px-4 py-0">
+          <div class="container-fluid py-4">
             <div class="row">
               <div class="col-12 col-md-4">
                 <h2>Community</h2>
@@ -389,11 +388,11 @@
     </div>
 
     <!--  -->
-    <div class="container-fluid">
-      <div class="row bg-dark text-light pb-5-pt-3">
+    <div class="-container-fluid">
+      <div class="-row bg-dark text-light pb-5-pt-3">
         <div class="container-fluid py-5 px-0">
 
-          <div class="px-4">
+          <div class="px-4 py-2">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-12 col-md-6 px-3">

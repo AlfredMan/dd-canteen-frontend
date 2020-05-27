@@ -1,44 +1,48 @@
 <template lang="html">
   <div class="mt-5">
-    <div class="container py-5">
-      <div class="row">
-        <div class="col-12 col-md-7">
-          <h1>Contact</h1>
-        </div>
-      </div>
-      <div class="row mb-5">
-        <div class="col-12 col-md-6">
-          <h4>Ask a question or book a viewing. Comment or collaborate. We want to hear from you.</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-md-3 mb-4 mb-lg-0">
-          <p>
-            <strong>General enquiries</strong><br>
-            <email :address="'hello@designdistrict.co.uk'"></email>
-          </p>
-        </div>
-        <div class="col-12 col-md-3 mb-4 mb-lg-0">
-          <p>
-            <strong>Sales</strong><br>
-            <email :address="'sales@designdistrict.co.uk'"></email>
-            <br>+44 (0)20 3981 2426
-          </p>
-        </div>
-        <div class="col-12 col-md-3 mb-4 mb-lg-0">
-          <p>
-            <strong>Press</strong><br>
-            <email :address="'designdistrict@zetteler.co.uk'"></email>
-            <br>+44 (0)20 3735 5855
-          </p>
+    <div class="">
+      <div class="px-4">
+        <div class="container-fluid py-5">
+          <div class="row">
+            <div class="col-12 col-md-7">
+              <h1>Contact</h1>
+            </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col-12 col-md-6">
+              <h4>Ask a question or book a viewing. Comment or collaborate. We want to hear from you.</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-3 mb-4 mb-lg-0">
+              <p>
+                <strong>General enquiries</strong><br>
+                <email :address="'hello@designdistrict.co.uk'"></email>
+              </p>
+            </div>
+            <div class="col-12 col-md-3 mb-4 mb-lg-0">
+              <p>
+                <strong>Sales</strong><br>
+                <email :address="'sales@designdistrict.co.uk'"></email>
+                <br>+44 (0)20 3981 2426
+              </p>
+            </div>
+            <div class="col-12 col-md-3 mb-4 mb-lg-0">
+              <p>
+                <strong>Press</strong><br>
+                <email :address="'designdistrict@zetteler.co.uk'"></email>
+                <br>+44 (0)20 3735 5855
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
     <!--  -->
-    <div class="container-fluid">
-      <div class="row bg-light">
-        <div class="container py-5">
+    <div class="">
+      <div class="px-4 bg-light">
+        <div class="container-fluid py-5">
           <div class="row">
             <div class="col-12 col-md-6">
               <h2>Visit</h2>
@@ -88,8 +92,8 @@
     </div> -->
 
     <span class="anchor" id="register-interest"></span>
-    <div class="py-5 anchor-target">
-      <div class="container">
+    <div class="px-4 py-5 anchor-target">
+      <div class="container-fluid">
         <div class="row">
           <div class="col-6">
             <h2>Register your interest</h2>

@@ -2,8 +2,8 @@
   <div class="mt-5">
     <!--  -->
     <div id="architecture" class="container-fluid">
-      <div class="row bg-white pb-5 pt-3">
-        <div class="container py-5">
+      <div class="-row -bg-white py-5 pt-3 px-4">
+        <div class="container-fluid">
           <div class="row">
             <div class="col-12 col-md-6">
               <h1>Architecture</h1>
@@ -18,6 +18,12 @@
               <p>The 16 buildings in the district have been designed by creatives, for creatives. The architects prioritised natural ventilation, high ceilings, north-facing lights and pedestrian movement for a healthy and happy workplace. The brief to the architects was to create a space that they would like to work in themselves. The project’s novel and exciting approach involved each practice working in a silo, overseen by HNNA founder Hannah Corlett.</p>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid bg-white">
+      <div class="px-4">
+        <div class="container-fluid">
 
           <div class="row d-flex align-items-end mt-5 pt-5">
             <div v-for="studio in studios" :key="studio.slug" class="col-12 col-md-6 col-lg-4 mb-5">
@@ -30,7 +36,7 @@
                 :w="2000"
                 :h="2000"
                 />
-                <h5>{{ studio.title }}</h5>
+                <h3>{{ studio.title }}</h3>
               <!-- </router-link> -->
               </transition-link>
               <!-- <img class="lazyload" :data-src="studio.imagesPractice[0].url" alt="">

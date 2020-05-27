@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="mt-5 bg-white" v-if="hire">
+  <div class="py-5 bg-white" v-if="hire">
 
       <!--  -->
       <div class="container-fluid">
@@ -19,13 +19,13 @@
       <aside class="container-fluid">
         <div class="sticky-wrapper px-3 mb-4">
           <div class="container-fluid">
-            <div class="row">
+            <div class="row no-gutters">
               <div class="col-12 offset-md-8 col-md-4">
                 <div class="p-4 bg-grey">
                   <div class="py-2">
                     <h2>{{hire.title}}</h2>
-                    <p>Building: {{hire.building}}<br>
-                    Level: {{hire.level}}</p>
+                    <h3>Building: {{hire.building}}<br>
+                    Level: {{hire.level}}</h3>
                   </div>
                   <div class="mt-4">
                     <hire-form></hire-form>
@@ -40,7 +40,7 @@
       <div class="container-fluid">
         <div class="row- px-3">
           <div class="container-fluid pb-5">
-            <div class="row d-flex align-items-start justify-content-between">
+            <div class="row no-gutters d-flex align-items-start justify-content-between">
               <div class="col-12 col-md-8">
                 <div class="row d-flex align-items-end justify-content-end">
                   <div class="col-12 col-md-12">

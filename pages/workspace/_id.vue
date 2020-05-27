@@ -1,8 +1,8 @@
 <template lang="html">
-  <div class="mt-5 bg-white" v-if="spaceType" :key="slug">
+  <div class="mt-5 -bg-white" v-if="spaceType" :key="slug">
 
-      <div class="container-fluid bg-white">
-        <div class="-row pb-5 pt-3 px-4">
+      <div class="container-fluid- -bg-white">
+        <div class="-row pb-5- pt-3 px-4">
           <div class="container-fluid py-5">
 
             <div class="row mb-4">
@@ -10,7 +10,8 @@
                 <h1>{{spaceTypeTitle}}</h1>
               </div>
             </div>
-
+          </div>
+          <div class="container-fluid py-5 bg-white">
             <div class="row">
               <!-- <div class="col-12">
                 <h4>Filter Spaces</h4>

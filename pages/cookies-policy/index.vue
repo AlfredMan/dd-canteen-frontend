@@ -1,6 +1,6 @@
 <template lang="html">
-  <div class="">
-    <div class="container pb-5 pt-5">
+  <div class="px-4 mt-5">
+    <div class="container-fluid pb-5 pt-5">
       <div class="row">
         <div class="col-12 col-md-6">
           <h1>

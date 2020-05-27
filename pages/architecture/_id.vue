@@ -1,18 +1,18 @@
 <template>
   <div class="mt-5">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="container py-5">
+    <div class="-container-fluid">
+      <div class="row- px-4">
+        <div class="container-fluid py-5">
           <div class="row">
             <div class="col-12 col-md-6">
               <h2>{{ studioData.title }}</h2>
               <!-- <h4>{{studioData.buildings}}</h4> -->
             </div>
             <div class="col-12 col-md-3 mt-5">
-              <h5 v-if="studioData.buildings == 'Landscape'">
+              <h5 v-if="studioData.buildings == 'Landscape'" class="mt-2">
                 The landscape
               </h5>
-              <h5 v-else>
+              <h5 v-else class="mt-2">
                 The buildings
               </h5>
               <p>
@@ -21,7 +21,7 @@
             </div>
 
             <div class="col-12 col-md-3 mt-5">
-              <h5>The practice</h5>
+              <h5 class="mt-2">The practice</h5>
               <p>
                 {{ studioData.practiceCopy }}
               </p>
@@ -84,9 +84,9 @@
       </div>
     </div>
 
-    <div class="container-fluid">
-      <div class="row bg-dark text-light pb-5 pt-3">
-        <div class="container py-5">
+    <div class="-container-fluid">
+      <div class="-row bg-dark text-light pb-0 pt-3 px-4">
+        <div class="container-fluid pt-5">
           <div class="row">
             <div class="col-12 col-md-6">
               <h3>Architecture</h3>

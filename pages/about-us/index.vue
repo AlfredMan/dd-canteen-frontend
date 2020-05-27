@@ -1,14 +1,18 @@
 <template lang="html">
   <div class="mt-5">
-    <div class="container py-5">
-      <div class="row">
-        <div class="col-12 col-md-7">
-          <h1>About</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-md-6">
-          <h4>Design District is a collection of 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. From autumn 2020 it will offer a permanent and purpose-designed work space for the creative industries.</h4>
+    <div class="-container-fluid">
+      <div class="px-4">
+        <div class="container-fluid py-5">
+          <div class="row">
+            <div class="col-12 col-md-7">
+              <h1>About</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <h4>Design District is a collection of 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. From autumn 2020 it will offer a permanent and purpose-designed work space for the creative industries.</h4>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -20,9 +24,9 @@
     </div>
 
     <!--  -->
-    <div class="container-fluid bg-white pb-5">
-      <div class="row pt-5">
-        <div class="container pt-2 pb-5">
+    <div class="-container-fluid bg-white pb-5">
+      <div class="px-4 pt-5">
+        <div class="container-fluid pt-2 pb-5">
           <div class="row">
             <div class="col-12 mb-5">
               <h2>Design District</h2>

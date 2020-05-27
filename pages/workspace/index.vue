@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="mt-5">
-    <div class="container-fluid">
+    <div class="-container-fluid">
       <div class="row- px-4">
         <div class="container-fluid py-5">
           <div class="row">
@@ -32,7 +32,7 @@
     </div>
 
     <!--  -->
-    <div class="container-fluid bg-primary bg-primary d-none">
+    <div class="-container-fluid bg-primary bg-primary d-none">
       <div class="row- -pt-3 px-4">
         <div class="container-fluid py-5">
           <div class="row -mb-5">
@@ -122,7 +122,7 @@
       </div>
     </div>
     <!--  -->
-    <div class="container-fluid bg-white">
+    <div class="-container-fluid bg-white">
       <div class="-row pb-5 pt-3 px-4">
         <div class="container-fluid py-5">
 
@@ -232,9 +232,9 @@
 
     <!--  -->
     <span class="anchor" id="service-and-facilities"></span>
-    <div class="container-fluid anchor-target bg-white">
-      <div class="row pb-5-pt-3">
-        <div class="container-fluid p-5">
+    <div class="-container-fluid anchor-target bg-white">
+      <div class="-row pb-5-pt-3 px-4 py-5">
+        <div class="container-fluid">
           <div class="row">
             <div class="col-12 col-md-8">
               <h2>Services & Facilities</h2>
@@ -249,7 +249,7 @@
         </div>
       </div>
 
-      <div class="row d-flex align-items-start justify-content-between bg-white text-black">
+      <div class="row no-gutters d-flex align-items-start justify-content-between bg-white text-black">
         <!-- <div class="col-12">
           <h3>Workshops</h3>
         </div> -->
@@ -267,60 +267,64 @@
 
         <!-- <div class="col-12 col-md-1 order-md-2" /> -->
 
-        <div class="col-12 col-md-7 p-5">
-          <h3>Workshops</h3>
-          <p>Often creative businesses need more than a desk. In the Design District you can access a range of workshops suited to your specialism. There’s a wood workshop, digital workshop, textile workshop, engineering workshop and an assembly space. Prototype or produce a new collection.</p>
+        <div class="col-12 col-md-7">
+          <div class="px-4">
+            <div class="col-12">
+              <h3>Workshops</h3>
+              <p>Often creative businesses need more than a desk. In the Design District you can access a range of workshops suited to your specialism. There’s a wood workshop, digital workshop, textile workshop, engineering workshop and an assembly space. Prototype or produce a new collection.</p>
 
-          <div v-if="false" class="row mt-5">
-            <div class="col-12 col-md-6 col-lg-3 mb-4">
-              <!-- <h5>Onsite Tools</h5> -->
+              <div v-if="false" class="row mt-5">
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                  <!-- <h5>Onsite Tools</h5> -->
 
-              <h5>Wood workshop </h5>
-              <ul class="h6">
-                <li>Axminster bandsaw</li>
-                <li>Festool chop saw</li>
-                <li>CNC router </li>
-                <li>1220x2440mm belt and disk sanders</li>
-                <li>Bobbin sander</li>
-                <li>Floor and table top pillar drills </li>
-                <li>Range of hand tools</li>
-                <li>Range of fixtures and fittings </li>
-                <li>Bookable workbenches </li>
-              </ul>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-4">
-              <h5>Digital workshop </h5>
-              <ul class="h6">
-                <li>1300x900 bed laser cutter </li>
-                <li>Roland GS-24 vinyl cutter </li>
-                <li>Vacuum former</li>
-                <li>Heat press kit </li>
-                <li>Ultimaker 2, Ultimaker S5, Witbox 2, Creality CR-10 and Formlabs2 3D printers </li>
-                <li>Electronic workbench</li>
-                <li>Pick and place machine</li>
-                <li>Arduino and Raspberry Pi coding</li>
-              </ul>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-4">
-              <h5>Textile workshop</h5>
-              <ul>
-                <li>Cutting table</li>
-                <li>Roland vinyl cutter</li>
-                <li>Industrial and domestic sewing machines</li>
-                <li>Overlocker</li>
-                <li>Embroidery machine</li>
-                <li>Heat press</li>
-              </ul>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-4">
-              <h5>Engineering workshop</h5>
-              <ul>
-                <li>Forco Start pillar drill</li>
-                <li>Baileigh metal bender</li>
-                <li>10 ton pneumatic press</li>
-                <li>Clarke CL430 metal lathe</li>
-                <li>Silverline grinding wheel      </li>
-              </ul>
+                  <h5>Wood workshop </h5>
+                  <ul class="h6">
+                    <li>Axminster bandsaw</li>
+                    <li>Festool chop saw</li>
+                    <li>CNC router </li>
+                    <li>1220x2440mm belt and disk sanders</li>
+                    <li>Bobbin sander</li>
+                    <li>Floor and table top pillar drills </li>
+                    <li>Range of hand tools</li>
+                    <li>Range of fixtures and fittings </li>
+                    <li>Bookable workbenches </li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                  <h5>Digital workshop </h5>
+                  <ul class="h6">
+                    <li>1300x900 bed laser cutter </li>
+                    <li>Roland GS-24 vinyl cutter </li>
+                    <li>Vacuum former</li>
+                    <li>Heat press kit </li>
+                    <li>Ultimaker 2, Ultimaker S5, Witbox 2, Creality CR-10 and Formlabs2 3D printers </li>
+                    <li>Electronic workbench</li>
+                    <li>Pick and place machine</li>
+                    <li>Arduino and Raspberry Pi coding</li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                  <h5>Textile workshop</h5>
+                  <ul>
+                    <li>Cutting table</li>
+                    <li>Roland vinyl cutter</li>
+                    <li>Industrial and domestic sewing machines</li>
+                    <li>Overlocker</li>
+                    <li>Embroidery machine</li>
+                    <li>Heat press</li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                  <h5>Engineering workshop</h5>
+                  <ul>
+                    <li>Forco Start pillar drill</li>
+                    <li>Baileigh metal bender</li>
+                    <li>10 ton pneumatic press</li>
+                    <li>Clarke CL430 metal lathe</li>
+                    <li>Silverline grinding wheel      </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -341,9 +345,13 @@
           </div>
         </div>
         <!-- <div class="col-12 col-md-1" /> -->
-        <div class="col-12 col-md-5 p-5">
-          <h3>Meeting rooms</h3>
-          <p>At Design District you’ll have five rooms ideal for small to medium-sized meetings. Meeting rooms can be rented out between 8am and 7pm, either by the hour or for the entire day. Each room features Superfast wi-fi, a Smart TV and wall space for scribbles and post-it notes. </p>
+        <div class="col-12 col-md-5 px-0">
+          <div class="p-4 py-5">
+            <div class="col">
+              <h3>Meeting rooms</h3>
+              <p>At Design District you’ll have five rooms ideal for small to medium-sized meetings. Meeting rooms can be rented out between 8am and 7pm, either by the hour or for the entire day. Each room features Superfast wi-fi, a Smart TV and wall space for scribbles and post-it notes. </p>
+            </div>
+          </div>
         </div>
         <!-- <div class="col-12 col-md-6">
           <div class="row d-flex align-items-end justify-content-end">
@@ -367,10 +375,14 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-7 p-5">
-          <h3>Food hall and kitchen</h3>
-          <p>Open to the public and filled with six independent food partners, the food hall will become a key meeting place in the district. It is located in SelgasCano’s luminescent building at the entrance to the district, immediately visible to visitors.</p>
-          <p>Design District is equipped with an industrial kitchen that will service the food hall and cater for any onsite events. Tenants working in the food and beverage industries will have access to the kitchen by prior arrangement.</p>
+        <div class="col-12 col-md-7">
+          <div class="p-4 py-5">
+            <div class="col">
+              <h3>Food hall and kitchen</h3>
+              <p>Open to the public and filled with six independent food partners, the food hall will become a key meeting place in the district. It is located in SelgasCano’s luminescent building at the entrance to the district, immediately visible to visitors.</p>
+              <p>Design District is equipped with an industrial kitchen that will service the food hall and cater for any onsite events. Tenants working in the food and beverage industries will have access to the kitchen by prior arrangement.</p>
+            </div>
+          </div>
         </div>
 
         <!-- <div class="col-12 col-md-1" />
@@ -425,9 +437,13 @@
           </div>
         </div>
 
-        <div class="col-12 col-md-5 p-5">
-          <h3>Pop-up space </h3>
-          <p>Suitable for retail or small art exhibitions, a pop-up space will be located on the ground floor, opposite the food hall, in a 6A Architects building. It can be hired by members of the public, with discounted rates for the Design District community. You’ll find a flexible lighting system, built in till point and EPOS Payment System, and the hire includes cleaning and security. At an additional cost, we can provide an installation and de-installation service and catering.</p>
+        <div class="col-12 col-md-5 px-0">
+          <div class="px-4 py-5">
+            <div class="col">
+              <h3>Pop-up space </h3>
+              <p>Suitable for retail or small art exhibitions, a pop-up space will be located on the ground floor, opposite the food hall, in a 6A Architects building. It can be hired by members of the public, with discounted rates for the Design District community. You’ll find a flexible lighting system, built in till point and EPOS Payment System, and the hire includes cleaning and security. At an additional cost, we can provide an installation and de-installation service and catering.</p>
+            </div>
+          </div>
         </div>
         <!-- <div class="col-12 col-md-1" />
         <div class="col-12 col-md-6" /> -->
@@ -456,10 +472,14 @@
         </div>
         <!-- <div class="col-12 col-md-1 order-md-2" /> -->
 
-        <div class="col-12 col-md-6 p-5">
-          <h3>Multi-sports rooftop court </h3>
-          <!-- <p>A versatile multi-sports rooftop court will sit on top of building C1. The rooftop will host a range of sports and wellness activities, including basketball, HIIT and yoga. The Design District community and members of the public can hire the court for private events space such as pop-up cinema and photoshoots.</p> -->
-          <p>A versatile multi-sports rooftop court will host a range of sports and wellness activities, including basketball, HIIT and yoga. The Design District community and members of the public can hire the court for private events space such as pop-up cinema and photoshoots.</p>
+        <div class="col-12 col-md-6">
+          <div class="px-4 py-5">
+            <div class="col">
+              <h3>Multi-sports rooftop court </h3>
+              <!-- <p>A versatile multi-sports rooftop court will sit on top of building C1. The rooftop will host a range of sports and wellness activities, including basketball, HIIT and yoga. The Design District community and members of the public can hire the court for private events space such as pop-up cinema and photoshoots.</p> -->
+              <p>A versatile multi-sports rooftop court will host a range of sports and wellness activities, including basketball, HIIT and yoga. The Design District community and members of the public can hire the court for private events space such as pop-up cinema and photoshoots.</p>
+            </div>
+          </div>
         </div>
         <!-- <div class="col-12 col-md-6">
                     <div class="row d-flex align-items-end justify-content-end">
