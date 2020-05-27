@@ -948,12 +948,14 @@ export default {
       this.formAlert.text = 'Processing...'
       this.formAction = 'Loading'
 
-      this.$refs.invisibleRecaptcha.execute()
-
+      console.log('onFormSubmit false')
+      // return false
       // debugger
       if (this.submitEnquireForm() && this.handleRecap()) {
         // alert('checked!')
+        this.$refs.invisibleRecaptcha.execute()
         return true
+
       } else {
         // alert('failed')
         e.preventDefault()
@@ -976,6 +978,7 @@ export default {
     onVerify (recaptchaToken) {
       console.log('Verify: ' + recaptchaToken)
 
+      this.resetRecaptcha()
       const url = 'https://us-central1-designdistrict-2b9e1.cloudfunctions.net/verify'
       // let url = 'https://www.google.com/recaptcha/api/siteverify'
       this.$axios.$post(url, {
@@ -1034,6 +1037,14 @@ export default {
       //   }, 3000)
       // }, 1000)
     },
+    resetForm: _.debounce( function (){
+      this.formState = 'idle'
+      this.formAlert.type = ''
+      this.formAlert.text = ''
+      this.formAction = 'Submit'
+    }, 5000, {
+      leading: false
+    }),
     onExpired () {
       // console.error('reCAPTCHA has expired')
       // this.formState = 'idle'
@@ -1051,6 +1062,19 @@ export default {
     submitEnquireForm () {
       // const form = document.forms.enquireForm
       // const submitButton = document.getElementById('enquireSubmit')
+
+      if ((this.$refs.first_name.value && this.$refs.first_name.value.toLowerCase() == 'test 123')) {
+        alert("Sorry, something went wrong!!");
+        this.resetForm()
+        return false
+      }
+
+      if ((this.$refs.first_name.value && this.$refs.first_name.value.toLowerCase() == 'james') && (this.$refs.first_name.value && this.$refs.last_name.value.toLowerCase() == 'smith')) {
+        alert("Sorry, something went wrong!");
+        this.resetForm()
+        return false
+      }
+
       const today = new Date()
       let dd = today.getDate()
       let mm = today.getMonth() + 1
@@ -1080,16 +1104,6 @@ export default {
       // if (document.getElementById('enquireMarketingOptIn').checked) {
       //   document.getElementById('enquireMarketingOptInDate').value = now
       // }
-
-      if ((this.$refs.first_name.value && this.$refs.first_name.value.toLowerCase() == 'test 123')) {
-        alert("Sorry, something went wrong!!");
-        return false
-      }
-
-      if ((this.$refs.first_name.value && this.$refs.first_name.value.toLowerCase() == 'james') && (this.$refs.first_name.value && this.$refs.last_name.value.toLowerCase() == 'smith')) {
-        alert("Sorry, something went wrong!");
-        return false
-      }
 
       if (this.$refs.enquirePrivacyOptIn.checked) {
         this.$refs.enquirePrivacyOptInDate.value = now
@@ -1132,6 +1146,9 @@ export default {
       this.$refs.utm_term.value = parseGET('utm_term')
       this.$refs.utm_content.value = parseGET('utm_content')
 
+      // console.log('testing finished')
+      // this.resetForm()
+      // return false
       // submitButton.click()
       return true
     }

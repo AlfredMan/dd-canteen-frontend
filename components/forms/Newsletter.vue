@@ -231,9 +231,10 @@ export default {
       this.formAlert.text = 'Processing...'
       this.formAction = 'Loading'
 
-      this.$refs.invisibleRecaptcha.execute()
+      // this.$refs.invisibleRecaptcha.execute()
 
       if (this.submitDEManagerForm() && this.handleRecap()) {
+        this.$refs.invisibleRecaptcha.execute()
         return true
       }
 
