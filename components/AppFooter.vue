@@ -1,8 +1,8 @@
 <template lang="html">
   <footer class="bg-grey">
-    <div class="px-0 px-md-4 pt-0 pb-5 py-md-5">
+    <div class="px-0 px-md-4 pt-4 pb-5 py-md-5">
       <div class="container-fluid">
-        <div class="row pt-5 pb-5">
+        <div class="row">
           <div class="col-12 col-md-3 col-lg-3 mb-5">
             <h5>DESIGN DISTRICT</h5>
             <a target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/The+Gateway+Pavilions,+Peninsula+Square,+Greenwich+Peninsula,+London+SE10+0SQ/@51.5003894,0.0041197,18.67z?hl=en">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a><br><br>

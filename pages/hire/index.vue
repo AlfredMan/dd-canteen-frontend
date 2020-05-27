@@ -4,7 +4,7 @@
       <div class="px-0 px-md-4 py-4 py-5 py-md-5">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <h1>Hire a Space</h1>
               <!-- <h4>Just starting out or trying something new? The Club is an accessible and low-commitment way to be part of the Design District community.</h4> -->
               <h4>Book a recording and broadcast studio, meeting rooms, events spaces, a pop-up retail space and even a multi-sport rooftop court.</h4>

@@ -1,8 +1,8 @@
 <template>
   <div class="mt-5">
     <div class="-container-fluid">
-      <div class="row- px-4">
-        <div class="container-fluid py-5">
+      <div class="row- px-0 px-md-4 py-4 py-5 py-md-5">
+        <div class="container-fluid">
           <div class="row">
             <div class="col-12 col-md-6">
               <h2>{{ studioData.title }}</h2>
@@ -85,8 +85,8 @@
     </div>
 
     <div class="-container-fluid">
-      <div class="-row bg-dark text-light pb-0 pt-3 px-4">
-        <div class="container-fluid pt-5">
+      <div class="-row bg-dark text-light px-0 px-md-4 py-4 py-5 py-md-5">
+        <div class="container-fluid pt-5-">
           <div class="row">
             <div class="col-12 col-md-6">
               <h3>Architecture</h3>
@@ -96,7 +96,9 @@
             <div class="col-12 col-md-5">
               <!-- <router-link to="/about-us/#architecture" class="text-primary"> -->
               <router-link to="/architecture" class="text-primary">
+                <strong>
                 View all architects &rarr;
+                </strong>
               </router-link>
             </div>
           </div>

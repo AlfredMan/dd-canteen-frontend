@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="mt-5">
     <div class="">
-      <div class="px-4">
-        <div class="container-fluid py-5">
+      <div class="px-0 px-md-4 py-4 py-5 py-md-5">
+        <div class="container-fluid -py-5">
           <div class="row">
             <div class="col-12 col-md-7">
               <h1>Contact</h1>
@@ -41,8 +41,8 @@
 
     <!--  -->
     <div class="">
-      <div class="px-4 bg-light">
-        <div class="container-fluid py-5">
+      <div class="px-0 px-md-4 py-4 py-5 py-md-5 bg-light">
+        <div class="container-fluid -py-5">
           <div class="row">
             <div class="col-12 col-md-6">
               <h2>Visit</h2>
@@ -92,7 +92,7 @@
     </div> -->
 
     <span class="anchor" id="register-interest"></span>
-    <div class="px-4 py-5 anchor-target">
+    <div class="px-0 px-md-4 py-4 py-5 py-md-5 anchor-target">
       <div class="container-fluid">
         <div class="row">
           <div class="col-6">

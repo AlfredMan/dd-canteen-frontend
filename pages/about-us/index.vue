@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="mt-5">
     <div class="-container-fluid">
-      <div class="px-4">
-        <div class="container-fluid py-5">
+      <div class="px-0 px-md-4 py-4 py-5 py-md-5">
+        <div class="container-fluid">
           <div class="row">
             <div class="col-12 col-md-7">
               <h1>About</h1>
@@ -25,27 +25,27 @@
 
     <!--  -->
     <div class="-container-fluid bg-white pb-5">
-      <div class="px-4 pt-5">
-        <div class="container-fluid pt-2 pb-5">
+      <div class="px-0 px-md-4 py-4 py-5 py-md-5">
+        <div class="container-fluid">
           <div class="row">
             <div class="col-12 mb-5">
               <h2>Design District</h2>
             </div>
             <div class="col-12" />
-            <div class="col-12 col-md-6 mb-4 mb-lg-5">
+            <div class="col-12 col-md-6 mb-5 mb-lg-5">
               <h3>A thriving home for ideas</h3>
               <!-- <p>Design District will provide a new space for London’s creatives of all kinds to come and work together. A magnetic centre of activity with a vibrant and engaged community of free thinkers – from architects, artists and makers to graphic, fashion and digital designers, gaming professionals, musicians and many more.</p> -->
               <p>Design District will provide a new space for London’s creatives to come and work together. A magnetic centre of activity with a vibrant and engaged community of designers, makers and creators – from architects and artists to graphic, fashion and digital designers, gaming professionals, musicians and many more.</p>
             </div>
-            <div class="col-12 col-md-6 mb-4 mb-lg-5">
+            <div class="col-12 col-md-6 mb-5 mb-lg-5">
               <h3>Here to keep London creative</h3>
               <p>The creative industries are at the heart of what makes London great. But London is also one of the most expensive cities in the world. Creative communities are under threat from rocketing rent, and are being squeezed out of even some more recently formed creative districts. The Design District is here to help keep London creative, by offering an accessible workplace purpose-made to support creative work of all kinds.</p>
             </div>
-            <div class="col-12 col-md-6 mb-4 mb-lg-0">
+            <div class="col-12 col-md-6 mb-5 mb-lg-0">
               <h3>Purpose-made space for creative&nbsp;work</h3>
               <p>Everything about the district is designed to help creative businesses thrive. That includes permanent buildings to provide security and certainty, plus flexible leases to enable businesses to grow or shrink in one place. Our work spaces are naturally ventilated with huge north-light windows. There are options from co-working space to clean studios and dirty workshops, along with a materials library, photographic studio, recording studio and places to eat and do sport for all to share.</p>
             </div>
-            <div class="col-12 col-md-6 mb-4 mb-lg-0">
+            <div class="col-12 col-md-6 mb-5 mb-lg-0">
               <h3>The services creatives really&nbsp;need</h3>
               <p>Beyond space, we will have a programme of events specially curated for our tenants. We will also have business services available from experts in intellectual property, employment law, tax and other topics that creative industries so often need help with. And we will strive to constantly improve this service; behaving more like a world-class R&D department than a landlord.</p>
               <p>So as our city grows, creatives have a permanent place to stay.</p>

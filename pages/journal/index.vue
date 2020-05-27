@@ -1,11 +1,9 @@
 <template>
   <div class="mt-5 mb-5">
-    <div class="container-fluid">
-      <div class="px-4">
-        <div class="container-fluid mt-5 py-5">
-
+    <div class="container-fluid-">
+      <div class="px-0 px-md-4 py-4 py-5 py-md-5">
+        <div class="container-fluid">
           <h1>Journal</h1>
-
         </div>
       </div>
     </div>
@@ -16,9 +14,9 @@
     </div>
   -->
 
-    <div class="container-fluid"  v-if="false">
-      <div class="px-4">
-        <div class="container-fluid mt-5 mb-4 d-flex-align-items-center">
+    <div class="container-fluid-"  v-if="false">
+      <div class="px-0 px-md-4 py-4 py-5 py-md-5">
+        <div class="container-fluid d-flex-align-items-center">
           <h5 class="my-0 mr-2">Filter by topic</h5><br>
           <div class="tags">
             <div class="tag" v-for="tag in tags">
@@ -29,8 +27,8 @@
       </div>
     </div>
 
-    <div class="container-fluid">
-      <div class="px-4">
+    <div class="container-fluid-">
+      <div class="px-0 px-md-4 py-4 py-5 py-md-5">
         <div class="container-fluid my-3 mt-4">
           <div class="row d-flex flex-wrap wrap">
             <div :class="{'col-12 col-md-6': index==0, 'col-12 col-md-3': index>0}" v-for="(entry, index) in entries" :key="entry.sys.id" class="mb-5">

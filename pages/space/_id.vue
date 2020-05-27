@@ -1,9 +1,9 @@
 <template lang="html">
-  <div class="bg-white py-5" v-if="space" :key="slug">
+  <div class="bg-white" v-if="space" :key="slug">
 
       <!--  -->
-      <div class="container-fluid">
-        <div class="row- px-3">
+      <div class="container-fluid-">
+        <div class="px-0 px-md-4 py-4 py-5 py-md-5">
           <div class="container-fluid pt-5">
             <div class="row">
               <div class="col-12 col-md-8">
@@ -16,186 +16,182 @@
 
       <div class="space-information">
 
-      <aside class="container-fluid">
-        <div class="sticky-wrapper px-3 mb-4">
-          <div class="container-fluid">
-            <div class="row no-gutters">
-              <div class="col-12 offset-md-8 col-md-4">
-                <div class="p-4 bg-grey">
-                  <div class="py-2">
-                    <h2>{{space.title}}</h2>
-                    <h3>Building: {{space.building}}<br>
-                    Level: {{space.level}}</h3>
+        <div class="container-fluid-">
+          <div class="px-0 px-md-4">
+            <div class="container-fluid pb-5">
+              <div class="row no-gutters d-flex align-items-start justify-content-between">
+                <div class="col-12 col-md-8">
+                  <lazy-image
+                  :src="space.url"
+                  :w="3000"
+                  :h="2000"
+                  />
+                </div>
+                <div class="col-12">
+
+                </div>
+                <div class="col-12 col-md-6 my-4">
+                  <h4>{{space.description}}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="-container-fluid bg-white">
+          <div class="px-0 px-md-4">
+            <div class="container-fluid py-5">
+              <div class="row mb-4">
+                <div class="col-12 col-md-8">
+                  <h3>Specifications</h3>
+                </div>
+              </div>
+              <div class="row d-flex align-items-start justify-content-start">
+                <div class="col-12 col-md-3 mb-4">
+                  <h6 class="mb-1">Team size</h6>
+                  <div class="tags">
+                    <div class="tag">
+                      2–4
+                    </div>
+                    <div class="tag">
+                      5–10
+                    </div>
                   </div>
-                  <div class="mt-4">
-                    <space-form></space-form>
+                </div>
+                <div class="col-12 col-md-3 mb-4">
+                  <h6 class="mb-1">Option</h6>
+                  <div class="tags">
+                    <div class="tag">
+                      Private Space
+                    </div>
+                    <div class="tag">
+                      Permenant
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+
+                </div>
+                <div class="col-12 col-md-3 mb-4">
+                  <h6 class="mb-1">Features</h6>
+                  <div class="tags">
+                    <div class="tag">
+                      Step Free
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-3 mb-4">
+                  <h6 class="mb-1">Facilities</h6>
+                  <div class="tags">
+                    <div class="tag">
+                      Material Lab
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </aside>
 
-      <div class="container-fluid">
-        <div class="row- px-3">
-          <div class="container-fluid pb-5">
-            <div class="row no-gutters d-flex align-items-start justify-content-between">
-              <div class="col-12 col-md-8">
-                <div class="row no-gutters d-flex align-items-end justify-content-end">
-                  <div class="col-12 col-md-12">
-                    <lazy-image
-                    :src="space.url"
-                    :w="3000"
-                    :h="2000"
-                    />
-                  </div>
+
+        <div class="-container-fluid bg-white">
+          <div class="px-0 px-md-4">
+            <div class="container-fluid py-5">
+              <div class="row mb-4">
+                <div class="col-12 col-md-8">
+                  <h3>Services & Facilities</h3>
                 </div>
               </div>
-              <div class="col-12">
+              <div class="row d-flex align-items-start justify-content-start">
+                <div class="col-12 col-md-3 mb-4">
+                  <h5 class="mb-1">Bike Storage</h5>
+                  <p>Rows of hooks and racks keep your prized bicycle safe on the premises.</p>
+                </div>
+                <div class="col-12 col-md-3 mb-4">
+                  <h5 class="mb-1">Event space</h5>
+                  <p>With a projector, sound system and lighting controls, lounges are easily converted for members’ meet-ups.</p>
+                </div>
+                <div class="col-12">
 
-              </div>
-              <div class="col-12 col-md-6 my-4">
-                <h4>{{space.description}}</h4>
+                </div>
+                <div class="col-12 col-md-3 mb-4">
+                  <h5 class="mb-1">Dog friendly</h5>
+                  <p>Rows of hooks and racks keep your prized bicycle safe on the premises.</p>
+                </div>
+
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="container-fluid bg-white">
-        <div class="row- px-3">
-          <div class="container-fluid py-5">
-            <div class="row mb-4">
-              <div class="col-12 col-md-8">
-                <h3>Specifications</h3>
-              </div>
-            </div>
-            <div class="row d-flex align-items-start justify-content-start">
-              <div class="col-12 col-md-3 mb-4">
-                <h6 class="mb-1">Team size</h6>
-                <div class="tags">
-                  <div class="tag">
-                    2–4
-                  </div>
-                  <div class="tag">
-                    5–10
-                  </div>
+        <div class="-container-fluid bg-white">
+          <div class="px-0 px-md-4">
+            <div class="container-fluid py-5 pb-3">
+              <div class="row">
+                <div class="col-12 col-md-8">
+                  <h3>Architecture</h3>
                 </div>
               </div>
-              <div class="col-12 col-md-3 mb-4">
-                <h6 class="mb-1">Option</h6>
-                <div class="tags">
-                  <div class="tag">
-                    Private Space
-                  </div>
-                  <div class="tag">
-                    Permenant
+              <div class="row d-flex align-items-start justify-content-between">
+                <div class="col-12 col-md-6 my-4">
+                  <h4>The heart and soul of our locations, these lounges are living room-style spaces designed for creativity, comfort and productivity.</h4>
+                </div>
+                <div class="col-12">
+
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                  <div class="row d-flex align-items-end justify-content-end">
+                    <div class="col-12 col-md-12">
+                      <lazy-image
+                      :src="'https://images.ctfassets.net/7p1ysxjarsp5/4D5VxGyVWyk1CZZ8DAoaF6/75189eeb8ae136cdb136d566b648d589/KDN_Design_District_B3_LR.jpeg'"
+                      :w="3000"
+                      :h="2000"
+                      :custom="'fit=thumb'"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-12">
+                <div class="col-12">
 
-              </div>
-              <div class="col-12 col-md-3 mb-4">
-                <h6 class="mb-1">Features</h6>
-                <div class="tags">
-                  <div class="tag">
-                    Step Free
-                  </div>
                 </div>
-              </div>
-              <div class="col-12 col-md-3 mb-4">
-                <h6 class="mb-1">Facilities</h6>
-                <div class="tags">
-                  <div class="tag">
-                    Material Lab
-                  </div>
+                <div class="col-12 col-md-6">
+                  <lazy-image
+                  class=""
+                  :src="'https://images.ctfassets.net/7p1ysxjarsp5/5Qu2qJOxKsVJyq14IByYXQ/eb84ad1acc0500e3946e6bea0f905bd1/AdamKahn-1A-Architect.jpg'"
+                  :w="2000"
+                  :h="2000"
+                  />
+                  <h5>Adam Khan Architect &rarr;</h5>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="container-fluid bg-white">
-        <div class="row- px-3">
-          <div class="container-fluid py-5">
-            <div class="row mb-4">
-              <div class="col-12 col-md-8">
-                <h3>Services & Facilities</h3>
-              </div>
-            </div>
-            <div class="row d-flex align-items-start justify-content-start">
-              <div class="col-12 col-md-3 mb-4">
-                <h5 class="mb-1">Bike Storage</h5>
-                <p>Rows of hooks and racks keep your prized bicycle safe on the premises.</p>
-              </div>
-              <div class="col-12 col-md-3 mb-4">
-                <h5 class="mb-1">Event space</h5>
-                <p>With a projector, sound system and lighting controls, lounges are easily converted for members’ meet-ups.</p>
-              </div>
-              <div class="col-12">
-
-              </div>
-              <div class="col-12 col-md-3 mb-4">
-                <h5 class="mb-1">Dog friendly</h5>
-                <p>Rows of hooks and racks keep your prized bicycle safe on the premises.</p>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container-fluid bg-white">
-        <div class="row- px-3">
-          <div class="container-fluid py-5 pb-3">
-            <div class="row">
-              <div class="col-12 col-md-8">
-                <h3>Architecture</h3>
-              </div>
-            </div>
-            <div class="row d-flex align-items-start justify-content-between">
-              <div class="col-12 col-md-6 my-4">
-                <h4>The heart and soul of our locations, these lounges are living room-style spaces designed for creativity, comfort and productivity.</h4>
-              </div>
-              <div class="col-12">
-
-              </div>
-              <div class="col-12 col-md-6 mb-4">
-                <div class="row d-flex align-items-end justify-content-end">
-                  <div class="col-12 col-md-12">
-                    <lazy-image
-                    :src="'https://images.ctfassets.net/7p1ysxjarsp5/4D5VxGyVWyk1CZZ8DAoaF6/75189eeb8ae136cdb136d566b648d589/KDN_Design_District_B3_LR.jpeg'"
-                    :w="3000"
-                    :h="2000"
-                    :custom="'fit=thumb'"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="col-12">
-
-              </div>
-              <div class="col-12 col-md-6">
-                <lazy-image
-                class=""
-                :src="'https://images.ctfassets.net/7p1ysxjarsp5/5Qu2qJOxKsVJyq14IByYXQ/eb84ad1acc0500e3946e6bea0f905bd1/AdamKahn-1A-Architect.jpg'"
-                :w="2000"
-                :h="2000"
-                />
-                <h5>Adam Khan Architect &rarr;</h5>
               </div>
             </div>
           </div>
         </div>
 
         <!--  -->
-      </div>
 
-    </div>
+        <aside class="-container-fluid">
+          <div class="sticky-wrapper px-0 px-md-4 pb-4">
+            <div class="container-fluid">
+              <div class="row no-gutters">
+                <div class="col-12 offset-md-8 col-md-4">
+                  <div class="p-4 bg-grey">
+                    <div class="py-2">
+                      <h2>{{space.title}}</h2>
+                      <h3>Building: {{space.building}}<br>
+                      Level: {{space.level}}</h3>
+                    </div>
+                    <div class="mt-4">
+                      <space-form></space-form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+      </div>
 
 
     <!-- <div class="bg-light">
