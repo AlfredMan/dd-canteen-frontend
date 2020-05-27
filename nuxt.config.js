@@ -8,6 +8,8 @@ export default {
   head: {
     titleTemplate: 'Design District | %s',
     meta: [
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' },
+
       { property: 'twitter:card', content: 'summary_large_image' },
       { property: 'twitter:site', content: '@design_district' },
 
