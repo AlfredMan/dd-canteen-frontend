@@ -37,10 +37,12 @@
           <div class="px-0 px-md-4 py-0 py-md-2">
             <div class="container-fluid">
               <div class="row">
-                <div class="col-12 col-sm-10 col-xl-7">
+                <div class="col-12 col-sm-12 col-xl-12">
                   <h1 class="text-white- -mb-0 " style="">
                     Keep London creative
                   </h1>
+                </div>
+                <div class="col-12 col-sm-8 col-xl-6">
                   <h4>
                     Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.
                   </h4>

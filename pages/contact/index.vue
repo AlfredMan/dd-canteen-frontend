@@ -41,7 +41,7 @@
 
     <!--  -->
     <div class="">
-      <div class="px-0 px-md-4 py-4 py-5 py-md-5 bg-light">
+      <div class="px-0 px-md-4 py-4 py-5 py-md-5 bg-light-">
         <div class="container-fluid -py-5">
           <div class="row">
             <div class="col-12 col-md-6">

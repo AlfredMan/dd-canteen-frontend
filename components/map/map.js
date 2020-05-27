@@ -5,6 +5,7 @@ import lifecycle from './mapLifecycle.js'
 import events from './mapEvents.js'
 import userEvents from './mapUserEvents.js'
 import model from './mapModel.js'
+import utility from './mapUtility.js'
 
 export default {
   props: ['name', 'active'],
@@ -15,7 +16,8 @@ export default {
     events,
     userEvents,
     lifecycle,
-    model
+    model,
+    utility
   ],
   updated () {
     // console.log('updated', this.name)

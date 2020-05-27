@@ -6,7 +6,7 @@
 
     <div class="info">
       <div class="" v-if="sceneState.intersect">
-        {{sceneState.intersect.object.name}}
+        {{getBuildingName(sceneState.intersect.object.name)}}
       </div>
     </div>
 
