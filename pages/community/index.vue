@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="mt-5">
-    <div class="container-fluid">
-      <div class="px-4">
-        <div v-if="true" class="container-fluid py-5">
+    <div class="-container-fluid">
+      <div class="px-0 px-md-4 py-4 py-5 py-md-5">
+        <div class="container-fluid -py-5">
           <div class="row">
             <div class="col-12 col-md-5">
               <h1>Community</h1>
@@ -25,8 +25,8 @@
       </div>
     </div>
 
-    <div v-if="true" class="container-fluid bg-white py-lg-5 py-4">
-      <div class="px-4">
+    <div class="-container-fluid bg-white py-4-py-lg-5 ">
+      <div class="px-0 px-md-4 py-4 py-5 py-md-5">
         <div class="container-fluid">
           <div class="row d-flex justify-content-between mb-5">
             <div class="col-12 mb-5">
@@ -35,8 +35,8 @@
             <div class="col-12 mb-5">
               <div class="mr-5">
                 <h5>Type</h5>
-                <div class="">
-                  <span class="btn btn-outline-dark chip chip-lg mr-2" v-for="type in sampleType">
+                <div class="tags">
+                  <span class="tag" v-for="type in sampleType">
                     {{type}}
                   </span>
                 </div>
@@ -58,8 +58,8 @@
       </div>
     </div>
 
-    <div class="container-fluid">
-      <div class="px-4 bg-white text-black pb-5-pt-3">
+    <div class="-container-fluid">
+      <div class="bg-white text-black px-0 px-md-4 py-4 py-5 py-md-5">
         <div class="container-fluid py-5">
 
           <div class="row d-flex">

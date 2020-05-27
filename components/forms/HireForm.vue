@@ -89,7 +89,7 @@
         <input id="subscribeSubmit" ref="subscribeSubmit" type="submit" value="Signup" style="display: none;">
 
         <button
-          class="btn btn-primary btn-lg mt-0"
+          class="btn btn-primary btn-lg mt-0 disabled"
           type="submit"
           :class="{disabled: formState === 'loading'}"
         >

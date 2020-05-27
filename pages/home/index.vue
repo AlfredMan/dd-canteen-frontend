@@ -31,10 +31,10 @@
           </div>
         </div>
         <div
-          class="container-fluid pb-5 pt-5 px-0 -position-absolute bg-white"
+          class="container-fluid py-4 py-md-5 px-0 -position-absolute bg-white"
           style="bottom: 0; left:0; right: 0;"
         >
-          <div class="px-4 py-2">
+          <div class="px-0 px-md-4 py-0 py-md-2">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-12 col-sm-10 col-xl-7">
@@ -103,7 +103,7 @@
         </div>
         <div class="disable-click container-fluid py-5" style="z-index:1">
           <div class="row">
-            <div class="col-12 col-md-7 pr-md-5 mb-5 px-4 py-2">
+            <div class="col-12 col-md-7 pr-md-5 mb-5 px-0 px-md-4 py-0 py-md-2">
               <h2>Explore available<br>work spaces</h2>
               <h4 class="mb-4">
                 Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.
@@ -159,7 +159,7 @@
     <!--  -->
     <div class="">
       <div class="bg-white text-black pb-5-pt-3">
-        <div class="px-4 py-2">
+        <div class="px-0 px-md-4 py-0 py-md-2">
           <div class="container-fluid py-5">
             <div class="row d-flex">
               <div class="col-12 col-md-6 px-3">
@@ -167,7 +167,7 @@
               </div>
               <div class="col-12 col-md-6 px-3 ml-auto">
                 <h4>Design District is a new permanent home for the creative industries. With purpose-designed workspaces, workshops, accessible rents and flexible leases. It comprises 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. Each is tailored to the needs of creative businesses to help them thrive.</h4>
-                <nuxt-link :to="{ path: '/workspace'}" class="text-orange h5">
+                <nuxt-link :to="{ path: '/workspace'}" class="text-primary h5">
                   Find your work space &rarr;
                 </nuxt-link>
               </div>
@@ -303,7 +303,7 @@
         </div>
         <div class="disable-click container-fluid py-5" style="z-index:1">
           <div class="row">
-            <div class="col-12 col-md-7 pr-md-5 mb-5 px-4 py-2">
+            <div class="col-12 col-md-7 pr-md-5 mb-5 px-0 px-md-4 py-0 py-md-2">
               <h2>Creative work&nbsp;space</h2>
               <!-- <h4>Just starting out or trying something new? The Club is an accessible way to be part of the Design District community.</h4> -->
               <h4 class="mb-4">
@@ -342,7 +342,7 @@
     <!--  -->
     <div class="-container-fluid -d-none">
       <div class="-row pb-5 pt-3">
-        <div class="px-4 py-0">
+        <div class="px-0 px-md-4 py-0 py-md-2">
           <div class="container-fluid py-4">
             <div class="row">
               <div class="col-12 col-md-4">
@@ -357,7 +357,7 @@
             </div>
 
             <div class="row d-flex align-items-end mt-5 pt-5">
-              <div class="col-12 col-md-6 col-lg-4">
+              <div class="col-12 col-md-6 col-lg-4 mb-5">
                 <div class="">
                   <div class="embed-responsive embed-responsive-4by3 bg-light">
                   <!-- <iframe class="embed-responsive-item" src="..."></iframe> -->
@@ -365,7 +365,7 @@
                 </div>
                 <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
               </div>
-              <div class="col-12 col-md-6 col-lg-4">
+              <div class="col-12 col-md-6 col-lg-4 mb-5">
                 <div class="">
                   <div class="embed-responsive embed-responsive-1by1 bg-light">
                   <!-- <iframe class="embed-responsive-item" src="..."></iframe> -->
@@ -373,7 +373,7 @@
                 </div>
                 <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
               </div>
-              <div class="col-12 col-md-6 col-lg-4">
+              <div class="col-12 col-md-6 col-lg-4 mb-5">
                 <div class="">
                   <div class="embed-responsive embed-responsive-4by3 bg-light">
                   <!-- <iframe class="embed-responsive-item" src="..."></iframe> -->
@@ -388,11 +388,11 @@
     </div>
 
     <!--  -->
-    <div class="-container-fluid">
+    <div class="-container-fluid overflow-hidden">
       <div class="-row bg-dark text-light pb-5-pt-3">
         <div class="container-fluid py-5 px-0">
 
-          <div class="px-4 py-2">
+          <div class="px-0 px-md-4 py-0 py-md-2">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-12 col-md-6 px-3">
@@ -523,6 +523,7 @@ export default {
   height: 0;
   padding-bottom: 100%;
   position: relative;
+  overflow: hidden;
 
   @include media-breakpoint-up(sm) {
     padding-bottom: 46.5%;

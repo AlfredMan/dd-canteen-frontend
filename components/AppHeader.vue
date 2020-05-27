@@ -4,12 +4,12 @@
     headerClass,
     {'mobile-menu-active': menuActive}
   ]">
-    <div data-x="a" class="container-fluid px-xl-0 -px-lg-0">
-      <nav class="inner d-flex flex-row align-items-center row z-index--" :class="{
+    <div data-x="a" class="container-fluid px-0 -px-lg-0">
+      <nav class="inner d-flex -flex-row align-items-center -row z-index--" :class="{
           'text-white': isDark,
           'text-black': !isDark
         }">
-        <nuxt-link to="/" exact class="ml-1 mr-0 ml-3">
+        <nuxt-link to="/" exact class="-ml-1 mr-0 ml-3">
           <img class="logo" src="~/assets/images/logo-hor.svg" alt="logo" v-if="!isDark">
           <img class="logo" src="~/assets/images/logo-hor-white.svg" alt="logo" v-if="isDark">
         </nuxt-link>
@@ -44,8 +44,8 @@
           <span class="d-none d-lg-inline">Join design district</span>
         </a> -->
         <nuxt-link :to="{ path: '/contact', hash: '#register-interest' }" class="btn btn-lg btn-dark text-white ml-auto mr-0" :class="{'btn-outline-dark': menuActive}">
-          <span class="d-inline d-lg-none">Join Now</span>
-          <span class="d-none d-lg-inline">Join design district</span>
+          <span class="d-inline d-xl-none">Join Now</span>
+          <span class="d-none d-xl-inline">Join design district</span>
         </nuxt-link>
 
         <div class="d-block d-lg-none pl-0 bg-white">

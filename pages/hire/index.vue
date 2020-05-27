@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="mt-5">
-    <div v-if="true" class="-container-fluid py-5">
-      <div class="px-4">
+    <div class="-container-fluid">
+      <div class="px-0 px-md-4 py-4 py-5 py-md-5">
         <div class="container-fluid">
           <div class="row">
             <div class="col-12 col-md-6">
@@ -118,47 +118,49 @@
     </div> -->
 
     <div class="">
-      <div class="-row bg-white text-black pb-5-pt-3 px-4">
-        <div class="container-fluid py-5">
+      <div class="-row bg-white text-black pb-5-pt-3 px-0 px-md-4 py-4 py-5 py-md-5">
+        <div class="container-fluid">
           <div class="row d-flex">
             <!-- <div class="col-12 col-md-6 px-4 mb-5">
               <h2>Spaces</h2>
             </div> -->
-            <div class="col-12 d-flex">
-              <div class="mr-5">
+            <div class="col-12 col-md-6 mb-4">
+
                 <h5>Type</h5>
-                <div class="">
-                  <span class="btn btn-outline-dark chip chip-lg">
+                <div class="tags">
+                  <span class="tag">
                     Meeting Room
                   </span>
-                  <span class="btn btn-outline-dark chip chip-lg">
+                  <span class="tag">
                     Popup
                   </span>
-                  <span class="btn btn-outline-dark chip chip-lg">
+                  <span class="tag">
                     Photo Studio
                   </span>
-                  <span class="btn btn-outline-dark chip chip-lg">
+                  <span class="tag">
                     Roof Top
                   </span>
                 </div>
-              </div>
-              <div class="mr-5">
+
+            </div>
+            <div class="col-12 col-md-6 mb-4">
+
                 <h5>Number of People</h5>
-                <div class="">
-                  <span class="btn btn-outline-dark chip chip-lg">
+                <div class="tags">
+                  <span class="tag">
                     1
                   </span>
-                  <span class="btn btn-outline-dark chip chip-lg">
+                  <span class="tag">
                     2–4
                   </span>
-                  <span class="btn btn-outline-dark chip chip-lg">
+                  <span class="tag">
                     5–10
                   </span>
-                  <span class="btn btn-outline-dark chip chip-lg">
+                  <span class="tag">
                     11–20
                   </span>
                 </div>
-              </div>
+
             </div>
           </div>
 
@@ -186,49 +188,56 @@
       </div>
     </div>
 
-    <div v-if="true" class="-container-fluid bg-dark text-white py-5 position-relative"
+    <div v-if="true" class="-container-fluid bg-dark text-white py-5- position-relative"
     >
-      <div class="row- position-relative px-4" style="z-index:1">
-        <div class="container-fluid">
-          <div class="row pb-5">
+      <div class="row- position-relative -px-4" style="z-index:1">
+        <div class="container-fluid px-0">
+          <div class="row no-gutters">
             <div class="col-12 col-md-6 col-lg-6">
+              <div class="px-4 px-md-5 py-5 pb-5 py-md-5">
+                <h3>Pricing starting at<br>£15 per hour (placeholder)</h3>
+                <br>
+                <h4>How does this work?</h4>
+                <ul class="h6">
+                  <li>(Placeholder text)</li>
+                  <li>Exclusive member’s events and mixers</li>
+                  <li>Access to industry specific workshops</li>
+                  <li>On demand work spaces</li>
+                  <li>Complimentary teas and coffees for fixed and micro studio club members</li>
+                  <li>Onsite members cafe and bar</li>
+                  <li>Start-up and business support</li>
+                  <li>Bookable meeting rooms in the building</li>
+                </ul>
+              </div>
               <!-- <h2>Members access</h2>
               <h4>The Design District is at the heart of Greenwich Peninsula, a new type of London created specifically for the creative community.</h4>
               <br> -->
-              <h3>Pricing starting at<br>£15 per hour (placeholder)</h3>
-              <br>
-              <h4>How does this work?</h4>
-              <ul class="h6">
-                <li>(Placeholder text)</li>
-                <li>Exclusive member’s events and mixers</li>
-                <li>Access to industry specific workshops</li>
-                <li>On demand work spaces</li>
-                <li>Complimentary teas and coffees for fixed and micro studio club members</li>
-                <li>Onsite members cafe and bar</li>
-                <li>Start-up and business support</li>
-                <li>Bookable meeting rooms in the building</li>
-              </ul>
               <!-- </div>
               <div class="col-12 col-md-6 col-lg-4"> -->
               <!-- <h3>Club opening hours</h3>
               <p>Serviced opening hours are between 08:00—18:00<br>with 24hr access via a fob.</p> -->
             </div>
+            <div class="col-12 col-md-6 px-0" style="background-size: cover; background-position: center; background-repeat: no-repeat; background-image:url(https://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=2000&h=2000&fm=jpg&q=80)">
+              <div class="d-block d-lg-none" style="padding-bottom: 100%;">
+
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="position-absolute" style="position:absolute;top:0;right:0;bottom:0; left: 50%;  background-size: cover; background-position: center; background-repeat: no-repeat; background-image:url(https://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=2000&h=2000&fm=jpg&q=80)">
+      <!-- <div class="position-absolute" style="position:absolute;top:0;right:0;bottom:0; left: 50%;  background-size: cover; background-position: center; background-repeat: no-repeat; background-image:url(https://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=2000&h=2000&fm=jpg&q=80)"> -->
         <!-- <div class="col-12 col-md-6 col-lg-4 ml-auto px-0"> -->
           <!-- <img class="lazyload" data-src="" alt=""> -->
         <!-- </div> -->
-      </div>
+      <!-- </div> -->
     <!-- <div class="row  d-flex justify-content-end align-items-end">
 
       </div> -->
     </div>
 
-    <div class="container-fluid- -bg-light bg-white">
-      <div class="row- px-4">
-        <div class="container-fluid py-5">
+    <div class="bg-white">
+      <div class="px-0 px-md-4 py-4 pb-5 py-md-5">
+        <div class="container-fluid">
           <div class="row">
             <div class="col-12 col-md-6">
               <h2>Hire</h2>

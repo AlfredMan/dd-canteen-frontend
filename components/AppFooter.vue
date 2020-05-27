@@ -1,6 +1,6 @@
 <template lang="html">
   <footer class="bg-grey">
-    <div class="px-4">
+    <div class="px-0 px-md-4 pt-0 pb-5 py-md-5">
       <div class="container-fluid">
         <div class="row pt-5 pb-5">
           <div class="col-12 col-md-3 col-lg-3 mb-5">
@@ -13,7 +13,7 @@
             </small>
           </div>
 
-        <div class="col-6 col-md-3 col-lg-2 mb-5">
+        <div class="col-6 col-md-2 col-lg-2 mb-5">
           <h5>Connect</h5>
           <a class="" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
           <a class="" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
@@ -22,7 +22,7 @@
           <a class="" target="_blank" rel="noreferrer" href="https://www.pinterest.co.uk/designdistrictlondon/">Pinterest</a>
         </div>
 
-          <div class="col-6 col-md-3 col-lg-2 mb-5">
+          <div class="col-6 col-md-2 col-lg-2 mb-5">
             <h5>Join</h5>
             <nuxt-link class="" to="/workspace">
               Work space
@@ -41,7 +41,7 @@
             </nuxt-link>
           </div>
 
-          <div class="col-6 col-md-3 col-lg-2 mb-5">
+          <div class="col-6 col-md-2 col-lg-2 mb-5">
             <h5>Legal</h5>
             <nuxt-link class="" to="/privacy-policy">
               Privacy Policy
@@ -56,9 +56,9 @@
             </nuxt-link>
           </div>
 
-          <div class="col-6 col-md-3 col-lg-1" />
+          <div class="col-6 col-md-1 col-lg-1" />
 
-          <div class="col-6 col-md-3 col-lg-2 mb-5">
+          <div class="col-6 col-md-2 col-lg-2 mb-5">
             <img src="~/assets/images/logo-hor.svg" alt="Design District logo" style="" class="mb-5 w-75">
             <img src="~/assets/images/gp-logo.svg" alt="Greenwich Peninsula logo" style="" class=" w-75 pr-5 mb-4">
             <img src="~/assets/images/mayor-of-london-logo-3.png" alt="Mayor of London" style="" class=" w-75">

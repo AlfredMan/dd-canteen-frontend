@@ -24,10 +24,17 @@
       margin-right: 2rem;
 
       img {
-        max-height: 30vw;
-        height: 30vw !important;
+        max-height: 50vw;
+        height: 50vw !important;
         max-width: initial;
         width: initial !important;
+
+        @include media-breakpoint-up(sm) {
+          max-height: 30vw;
+          height: 30vw !important;
+          max-width: initial;
+          width: initial !important;
+        }
       }
     }
   }
