@@ -1,7 +1,7 @@
 <template>
   <div class="news" :class="getContentClass(entry.fields.contentType)">
     <!-- <pre>{{entry}}</pre> -->
-    <div class="" v-if="entry" :key="entry">
+    <div class="" v-if="entry" :key="entry.uid">
 
       <!-- <header class="event-header" v-if="entry.fields.contentType === 'Event'">
         <div class="event-info p-5">
@@ -540,13 +540,20 @@ import NewsCard from '~/components/NewsCard'
 
 const client = createClient()
 
+const replaceLineBreak = (string) => {
+  // return string
+  return _.replace(string, /\n/g, "<br>")
+}
+
 const options = {
   renderMark: {
-    [MARKS.BOLD]: text => `<b>${text}<b>`
+    [MARKS.BOLD]: text => `<b>${replaceLineBreak(text)}</b>`,
+    [MARKS.ITALIC]: text => `<em>${replaceLineBreak(text)}</em>`,
+    [MARKS.UNDERLINE]: text => `<u>${replaceLineBreak(text)}</u>`
   },
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, next) =>
-      `<p class="">${next(node.content)}</p>`
+      `<p>${next(node.content)}</p>`,
   },
   renderNode: {
     [INLINES.HYPERLINK]: (node, next) => {
@@ -557,28 +564,6 @@ const options = {
       return `<a href="${node.data.uri}"${node.data.uri.startsWith(origin) ? '' : ' target="_blank"'}>${next(node.content)}</a>`;
     }
   },
-  // renderNode: {
-  //   [INLINES.ENTRY_HYPERLINK]: (node, children) => {
-  //     // If you are using contenful.js sdk, the referenced entry is resolved
-  //     // automatically and is available at `node.data.target`.
-  //     // const referencedEntry = getEntryWithId(node.data.target.sys.id);
-  //     console.log('node', node);
-  //     console.log('node.data.target', node.data.target);
-  //
-  //     let promise = client.getEntry(node.data.target.sys.id)
-  //     .then((entry) => {
-  //       // logs the entry metadata
-  //       console.log(entry)
-  //       // console.log('id entry', node.data.target.sys.id,  entry)
-  //       return `<a href="/pages/${entry.fields.slug}">${node.content[0].value}</a>`;
-  //     })
-  //
-  //     let result = await promise
-  //     console.log('result from INLINES.ENTRY_HYPERLINK', result)
-  //     return result
-  //     // return `<a href="/pages/${node.data.target.fields.slug}">${children}</a>`;
-  //   }
-  // }
 };
 
 // async getEntryWithId = function (id) {
@@ -692,6 +677,24 @@ export default {
       // return data that should be available
       // in the template
       // console.log('asyncData', [entries, entry])
+      // if (entry.items && entry.items[0]) {
+      //   if (entry.items[0].fields && entry.items[0].fields.contentReferences) {
+      //     let cr = entry.items[0].fields.contentReferences
+      //     for (let i = 0; i < cr.length; i++) {
+      //       if (cr[i].fields && cr[i].fields.text && cr[i].fields.text.content && cr[i].fields.text.content) {
+      //         cr[i].fields.text.content = _.map(cr[i].fields.text.content, (content) => {
+      //           console.log(content, content.content)
+      //           let formattedContent = _.map(content.content, (childrenContent) => {
+      //             // childrenContent.value = replaceLineBreak(childrenContent.value)
+      //             return childrenContent
+      //           })
+      //           content.content = formattedContent
+      //           return content
+      //         })
+      //       }
+      //     }
+      //   }
+      // }
 
       return {
         // person: entries.items[0],

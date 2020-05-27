@@ -194,13 +194,14 @@ blockquote {
 
 .content,
 article {
-  p, h4 {
+  p, h5, h4, h3, h2, h1 {
     font-weight: 200;
     line-height: 1.4;
     letter-spacing: 0em;
     margin: 1rem 0;
     font-size: 1.5rem;
     max-width: 20em;
+    white-space: break-spaces;
 
     @include media-breakpoint-up(sm) {
         font-size: 1.5rem;
