@@ -170,10 +170,9 @@
               <transition-link :to="`/hire/${hire.slug}`">
                 <lazy-image
                 :src="hire.url"
-                :w="2000"
+                :w="3000"
                 :h="2000"
-                class=""
-                :xcustom="'fit=thumb&f=bottom'"
+                :custom="'fit=thumb&f=center'"
                 />
                 <div class="my-3">
                   <h5 class="mb-0">{{hire.title}}</h5>

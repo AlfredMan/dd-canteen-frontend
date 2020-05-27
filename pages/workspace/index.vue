@@ -213,10 +213,9 @@
                 <div class="">
                   <lazy-image
                   :src="space.url"
-                  :w="2000"
-                  :h="2000"
-                  class=""
-                  :xcustom="'fit=thumb&f=bottom'"
+                  :w="3000"
+                  :h="2400"
+                  :custom="'fit=thumb&f=center'"
                   />
                 </div>
                 <h5 class="mt-4">{{space.title}}</h5>
@@ -233,7 +232,7 @@
     <!--  -->
     <span class="anchor" id="service-and-facilities"></span>
     <div class="-container-fluid anchor-target bg-white">
-      <div class="-row pb-5-pt-3 px-4 py-5">
+      <div class="-row pb-5-pt-3 px-4 py-5 bg-grey">
         <div class="container-fluid">
           <div class="row">
             <div class="col-12 col-md-8">
@@ -268,7 +267,7 @@
         <!-- <div class="col-12 col-md-1 order-md-2" /> -->
 
         <div class="col-12 col-md-7">
-          <div class="px-4">
+          <div class="px-4 py-5">
             <div class="col-12">
               <h3>Workshops</h3>
               <p>Often creative businesses need more than a desk. In the Design District you can access a range of workshops suited to your specialism. There’s a wood workshop, digital workshop, textile workshop, engineering workshop and an assembly space. Prototype or produce a new collection.</p>

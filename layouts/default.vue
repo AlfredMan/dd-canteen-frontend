@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import AppHeader from '../components/AppHeader'
-import AppFooter from '../components/AppFooter'
-import AppTransition from '../components/AppTransition'
-import AppNewsletter from '../components/AppNewsletter'
-import AppMap from '../components/map/Map'
+import AppHeader from '../components/AppHeader.vue'
+import AppFooter from '../components/AppFooter.vue'
+import AppTransition from '../components/AppTransition.vue'
+import AppNewsletter from '../components/AppNewsletter.vue'
+import AppMap from '../components/map/Map.vue'
 
 export default {
   components: {
