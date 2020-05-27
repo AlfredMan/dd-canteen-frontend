@@ -72,15 +72,15 @@ export default {
     },
     camera () {
       this.sceneState.cameraDefaultPosition = new THREE.Vector3(0, 0, 0)
-      this.sceneState.cameraDefaultPosition.x = -25
+      this.sceneState.cameraDefaultPosition.x = 25
       this.sceneState.cameraDefaultPosition.y = 30
       this.sceneState.cameraDefaultPosition.z = 25
 
-      this.sceneState.camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.01, 10000)
+      this.sceneState.camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.01, 10000)
       this.sceneState.camera.position.x = this.sceneState.cameraDefaultPosition.x
       this.sceneState.camera.position.z = this.sceneState.cameraDefaultPosition.z
       this.sceneState.camera.position.y = this.sceneState.cameraDefaultPosition.y
-      this.sceneState.camera.lookAt(new THREE.Vector3(0, 0, 0))
+      this.sceneState.camera.lookAt(new THREE.Vector3(0, 10, 0))
     },
     lights () {
       const light = new THREE.AmbientLight(0xFFFFFF, 0.5) // soft white light

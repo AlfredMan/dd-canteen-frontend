@@ -7,7 +7,8 @@ export default {
       this.sceneState.controls.autoRotate = true
       this.sceneState.controls.autoRotateSpeed = 0.1
       this.sceneState.controls.enableDamping = true
-      this.sceneState.controls.dampingFcator = 0.1
+      this.sceneState.controls.dampingFcator = 0.05
+      this.sceneState.controls.target = new THREE.Vector3(0, 1, 0)
       // this.sceneState.controls.enableZoom = false
     }
   }

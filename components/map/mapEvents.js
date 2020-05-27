@@ -3,6 +3,10 @@ import _ from 'lodash'
 export default {
   data () {
     return {
+      eventState: {
+        down: false,
+        move: false
+      }
     }
   },
   methods: {
@@ -18,84 +22,106 @@ export default {
       leading: true
     }),
     bindEvents () {
-      const self = this
-      if (('ontouchstart' in window) || window.DocumentTouch) {
-        self.sceneState.renderer.domElement.addEventListener('touchstart', self.onDown, false)
-        self.sceneState.renderer.domElement.addEventListener('touchend', self.onUp, false)
-      } else {
-        // window.document.addEventListener('keydown', self.keydown, false)
-        // window.document.addEventListener('keyup', self.keyup, false)
+      if (process.client) {
+        const self = this
+        if (('ontouchstart' in window) || window.DocumentTouch) {
+          self.sceneState.renderer.domElement.addEventListener('touchstart', self.onDown, false)
+          self.sceneState.renderer.domElement.addEventListener('touchend', self.onUp, false)
+        } else {
+          // window.document.addEventListener('keydown', self.keydown, false)
+          // window.document.addEventListener('keyup', self.keyup, false)
 
-        self.sceneState.renderer.domElement.addEventListener('mousedown', self.onDown, false)
-        self.sceneState.renderer.domElement.addEventListener('mousemove', self.onMove, false)
-        self.sceneState.renderer.domElement.addEventListener('mouseup', self.onUp, false)
+          self.sceneState.renderer.domElement.addEventListener('mousedown', self.onDown, false)
+          self.sceneState.renderer.domElement.addEventListener('mousemove', self.onMove, false)
+          self.sceneState.renderer.domElement.addEventListener('mouseup', self.onUp, false)
+        }
+        self.sceneState.container.addEventListener('resize', self.onContainerResize, false)
+        window.addEventListener('resize', self.onWindowResize, false)
       }
-      self.sceneState.container.addEventListener('resize', self.onContainerResize, false)
-      window.addEventListener('resize', self.onWindowResize, false)
     },
     unbindEvents () {
-      const self = this
-      if (('ontouchstart' in window) || window.DocumentTouch) {
-        self.sceneState.renderer.domElement.removeEventListener('touchstart', self.onDown, false)
-        self.sceneState.renderer.domElement.removeEventListener('touchend', self.onUp, false)
-      } else {
-        // window.document.removeEventListener('keydown', self.keydown, false)
-        // window.document.removeEventListener('keyup', self.keyup, false)
+      if (process.client) {
+        const self = this
+        if (('ontouchstart' in window) || window.DocumentTouch) {
+          self.sceneState.renderer.domElement.removeEventListener('touchstart', self.onDown, false)
+          self.sceneState.renderer.domElement.removeEventListener('touchend', self.onUp, false)
+        } else {
+          // window.document.removeEventListener('keydown', self.keydown, false)
+          // window.document.removeEventListener('keyup', self.keyup, false)
 
-        self.sceneState.renderer.domElement.removeEventListener('mousedown', self.onDown, false)
-        self.sceneState.renderer.domElement.removeEventListener('mousemove', self.onMove, false)
-        self.sceneState.renderer.domElement.removeEventListener('mouseup', self.onUp, false)
+          self.sceneState.renderer.domElement.removeEventListener('mousedown', self.onDown, false)
+          self.sceneState.renderer.domElement.removeEventListener('mousemove', self.onMove, false)
+          self.sceneState.renderer.domElement.removeEventListener('mouseup', self.onUp, false)
+        }
+        self.sceneState.container.removeEventListener('resize', self.onContainerResize, false)
+        window.removeEventListener('resize', self.onWindowResize, false)
       }
-      self.sceneState.container.removeEventListener('resize', self.onContainerResize, false)
-      window.removeEventListener('resize', self.onWindowResize, false)
     },
     onWindowResize () {
-      const self = this
-      // console.log('update camera 1')
-      if (self.sceneState.camera) {
-        // console.log('update camera 2')
-        self.sceneState.camera.aspect = window.innerWidth / window.innerHeight
-        self.sceneState.camera.updateProjectionMatrix()
-        self.sceneState.renderer.setSize(window.innerWidth, window.innerHeight)
+      if (process.client) {
+        const self = this
+        // console.log('update camera 1')
+        if (self.sceneState.camera) {
+          // console.log('update camera 2')
+          self.sceneState.camera.aspect = window.innerWidth / window.innerHeight
+          self.sceneState.camera.updateProjectionMatrix()
+          self.sceneState.renderer.setSize(window.innerWidth, window.innerHeight)
+        }
       }
     },
     onContainerResize () {
-      const self = this
-      // console.log('onContainerResize')
-      if (self.sceneState.camera) {
-        if (self.mapActive) {
-          self.sceneState.camera.aspect = window.innerWidth / window.innerHeight
-          self.sceneState.camera.updateProjectionMatrix()
-          // self.sceneState.renderer.setSize(window.innerWidth, window.innerHeight)
-        } else {
-          self.sceneState.camera.aspect = window.innerWidth / window.innerHeight
-          self.sceneState.camera.updateProjectionMatrix()
-          // self.sceneState.renderer.setSize(100, 100)
+      if (process.client) {
+        const self = this
+        // console.log('onContainerResize')
+        if (self.sceneState.camera) {
+          if (self.mapActive) {
+            self.sceneState.camera.aspect = window.innerWidth / window.innerHeight
+            self.sceneState.camera.updateProjectionMatrix()
+            // self.sceneState.renderer.setSize(window.innerWidth, window.innerHeight)
+          } else {
+            self.sceneState.camera.aspect = window.innerWidth / window.innerHeight
+            self.sceneState.camera.updateProjectionMatrix()
+            // self.sceneState.renderer.setSize(100, 100)
+          }
         }
       }
     },
     onDown () {
-      // console.log('onDown')
-      const self = this
-      // self.addObject()
-      self.sceneState.canAdd = true
+      if (process.client) {
+        // console.log('onDown')
+        // const self = this
+        // self.addObject()
+        // self.sceneState.canAdd = true
+        this.eventState.down = true
+        this.selectBuilding()
+      }
     },
     onUp () {
-      // console.log('onUp')
-      const self = this
-      // self.addObject()
-      self.sceneState.canAdd = false
+      if (process.client) {
+        this.eventState.down = false
+        // console.log('onUp')
+        // const self = this
+        // self.addObject()
+        // self.sceneState.canAdd = false
+      }
     },
     onMove () {
-      // console.log('onMove')
-      const self = this
-      // self.addObject()
-      if (self.sceneState.mouse) {
-        self.sceneState.mouse.x = (event.clientX / window.innerWidth) * 2 - 1
-        self.sceneState.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
-        // console.log(self.sceneState.mouse.x, self.sceneState.mouse.y);
+      if (process.client) {
+        // console.log('onMove')
+        this.eventState.move = true
+        this.onMoveDebounce()
+        const self = this
+        // self.addObject()
+        if (self.sceneState.mouse) {
+          self.sceneState.mouse.x = (event.clientX / window.innerWidth) * 2 - 1
+          self.sceneState.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+          // console.log(self.sceneState.mouse.x, self.sceneState.mouse.y);
+        }
       }
-    }
+    },
+    onMoveDebounce: _.debounce(function () {
+      this.eventState.move = false
+    }, 1000)
     // keyup (event) {
     //   const self = this
     //   console.log(event.keyCode)

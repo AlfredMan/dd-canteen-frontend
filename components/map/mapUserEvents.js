@@ -18,6 +18,19 @@ export default {
     this.mapActive = this.active
   },
   methods: {
+    selectBuilding () {
+      if (this.mapIntersectActive) {
+        const intersect = this.sceneState.intersect
+        if (intersect) {
+          const intersectName = intersect.object.name
+          const buildingName = this.getBuildingName(intersectName)
+
+          this.$router.push({
+            query: { building: buildingName }
+          })
+        }
+      }
+    },
     toggleMapActive (boo) {
       if (boo == true) {
         this.mapActive = true
@@ -48,21 +61,21 @@ export default {
       }
     },
     animate () {
-      const self = this
-      self.sceneState.raf = requestAnimationFrame(this.animate)
-      self.sceneState.tick++
-      self.sceneState.controls.update()
+      this.sceneState.raf = requestAnimationFrame(this.animate)
+      if (this.eventState.move === true) {
+        this.sceneState.tick++
+        this.sceneState.controls.update()
 
-      if (this.ray) {
-        this.ray()
+        if (this.ray) {
+          this.ray()
+        }
+        // if (this.sceneState.mesh) {
+        //   const inc = (this.sceneState.tick / 5)
+        //   for (let i = 0; i < this.sceneState.meshes.length; i++) {
+        //   }
+        // }
+        this.sceneState.renderer.render(this.sceneState.scene, this.sceneState.camera)
       }
-
-      // if (self.sceneState.mesh) {
-      //   const inc = (self.sceneState.tick / 5)
-      //   for (let i = 0; i < self.sceneState.meshes.length; i++) {
-      //   }
-      // }
-      self.sceneState.renderer.render(self.sceneState.scene, self.sceneState.camera)
     },
     setIntersect (intersect) {
       // console.log(intersect)

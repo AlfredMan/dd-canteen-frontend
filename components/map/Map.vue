@@ -7,6 +7,7 @@
     <div class="info">
       <div class="" v-if="sceneState.intersect">
         {{getBuildingName(sceneState.intersect.object.name)}}
+        {{sceneState.tick}}
       </div>
     </div>
 
