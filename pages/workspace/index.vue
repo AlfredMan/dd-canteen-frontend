@@ -5,7 +5,7 @@
       <div class="px-0 px-md-4 py-4 py-5 py-md-5">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
               <h1>A home for creators</h1>
             </div>
           </div>

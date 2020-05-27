@@ -1,105 +1,110 @@
 <template lang="html">
   <div class="mt-5 -bg-white" v-if="spaceType" :key="slug">
 
-      <div class="container-fluid- -bg-white">
-        <div class="-row pb-5- pt-3 px-4">
-          <div class="container-fluid py-5">
+      <div class="-container-fluid- -bg-white">
+        <div class="-row pb-5- pt-3 ">
 
-            <div class="row mb-4">
-              <div class="col-12 col-md-6">
-                <h1>{{spaceTypeTitle}}</h1>
+          <div class="px-0 px-md-4 py-4 py-5 py-md-5">
+            <div class="container-fluid">
+              <div class="row mb-4">
+                <div class="col-12 col-md-6">
+                  <h1>{{spaceTypeTitle}}</h1>
+                </div>
               </div>
             </div>
           </div>
-          <div class="container-fluid py-5 bg-white">
-            <div class="row">
-              <!-- <div class="col-12">
-                <h4>Filter Spaces</h4>
+
+          <div class="px-0 px-md-4 py-4 py-5 py-md-5 bg-white">
+            <div class="container-fluid">
+              <div class="row">
+                <!-- <div class="col-12">
+                  <h4>Filter Spaces</h4>
+                </div> -->
+                <div class="col-12 row d-flex justify-content-start">
+                  <div class="col-12 col-md mb-3">
+                    <div class="mb-2">
+                      <h5>Team Size</h5>
+                    </div>
+                    <div class="">
+                      <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                        1
+                      </div>
+                      <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                        2–4
+                      </div>
+                      <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                        5–10
+                      </div>
+                      <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                        11–30
+                      </div>
+                      <div class="btn btn-outline-dark chip chip-lg mb-2">
+                        30+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md mb-3">
+                    <div class="mb-2">
+                      <h5>Features</h5>
+                    </div>
+                    <div class="">
+                      <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                        South Facing
+                      </div>
+                      <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                        Ground Floor
+                      </div>
+                      <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                        Step Free
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md mb-3">
+                    <div class="mb-2">
+                      <h5>Option</h5>
+                    </div>
+                    <div class="">
+                      <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                        Shared Space
+                      </div>
+                      <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                        Private Room
+                      </div>
+                      <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
+                        Permenant
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- <div class="row mt-5">
+                <div class="col-12">
+                  <h3>Buildings</h3>
+                </div>
               </div> -->
-              <div class="col-12 row d-flex justify-content-start">
-                <div class="col-12 col-md mb-3">
-                  <div class="mb-2">
-                    <h5>Team Size</h5>
-                  </div>
-                  <div class="">
-                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                      1
+              <div class="row mt-5 flex-row align-items-baseline">
+
+                <div class="col-12 col-md-6 col-lg-3 mb-5 building" v-for="space in spaceType">
+                  <transition-link :to="`/space/${space.slug}`">
+                    <div class="">
+                      <lazy-image
+                      :src="space.url"
+                      :w="2000"
+                      :h="2000"
+                      class=""
+                      :xcustom="'fit=thumb&f=bottom'"
+                      />
                     </div>
-                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                      2–4
-                    </div>
-                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                      5–10
-                    </div>
-                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                      11–30
-                    </div>
-                    <div class="btn btn-outline-dark chip chip-lg mb-2">
-                      30+
-                    </div>
-                  </div>
+                    <h5 class="mt-4">{{space.title}}</h5>
+                    <p>{{space.description}}</p>
+                  </transition-link>
                 </div>
-                <div class="col-12 col-md mb-3">
-                  <div class="mb-2">
-                    <h5>Features</h5>
-                  </div>
-                  <div class="">
-                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                      South Facing
-                    </div>
-                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                      Ground Floor
-                    </div>
-                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                      Step Free
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md mb-3">
-                  <div class="mb-2">
-                    <h5>Option</h5>
-                  </div>
-                  <div class="">
-                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                      Shared Space
-                    </div>
-                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                      Private Room
-                    </div>
-                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                      Permenant
-                    </div>
-                  </div>
-                </div>
+
               </div>
 
             </div>
-
-            <!-- <div class="row mt-5">
-              <div class="col-12">
-                <h3>Buildings</h3>
-              </div>
-            </div> -->
-            <div class="row mt-5 flex-row align-items-baseline">
-
-              <div class="col-12 col-md-6 col-lg-3 mb-5 building" v-for="space in spaceType">
-                <transition-link :to="`/space/${space.slug}`">
-                  <div class="">
-                    <lazy-image
-                    :src="space.url"
-                    :w="2000"
-                    :h="2000"
-                    class=""
-                    :xcustom="'fit=thumb&f=bottom'"
-                    />
-                  </div>
-                  <h5 class="mt-4">{{space.title}}</h5>
-                  <p>{{space.description}}</p>
-                </transition-link>
-              </div>
-
-            </div>
-
           </div>
         </div>
       </div>
