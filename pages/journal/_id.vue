@@ -84,7 +84,11 @@
               </div>
             </div>
             <div class="col-12 col-md-6 order-1 order-lg-2 mb-4 mb-lg-0"  v-if="entry.fields.mainImage">
-              <img :src="entry.fields.mainImage.fields.file.url" alt="">
+              <lazy-image
+              :src="entry.fields.mainImage.fields.file.url"
+              :w="2000"
+              :h="2000"
+              />
             </div>
           </div>
         </div>
@@ -121,7 +125,12 @@
             </div>
           </div>
           <div class="col-12 col-md-6 order-1 order-lg-2 mb-4"  v-if="entry.fields.mainImage">
-            <img :src="entry.fields.mainImage.fields.file.url" alt="">
+            <!-- <img :src="entry.fields.mainImage.fields.file.url" alt=""> -->
+            <lazy-image
+              :src="entry.fields.mainImage.fields.file.url"
+              :w="2000"
+              :h="2000"
+              />
           </div>
           <div class="col-12 d-flex px-5 pt-2 order-3 order-lg-3 text-black-50"  v-if="entry.fields.embedContent" :class="{'col-md-6 bg-grey': !entry.fields.mainImage, 'col-md-8': entry.fields.mainImage}">
             <div class="">
@@ -272,7 +281,12 @@
         </div>
         <div class="row d-flex justify-content-center" v-if="entry.fields.mainImage">
           <div class="col-12 col-md-10">
-            <img :src="entry.fields.mainImage.fields.file.url" alt="">
+            <!-- <img :src="entry.fields.mainImage.fields.file.url" alt=""> -->
+            <lazy-image
+                :src="entry.fields.mainImage.fields.file.url"
+                :w="2000"
+                :h="2000"
+                />
           </div>
         </div>
       </header>
@@ -383,7 +397,12 @@
           <div class="col-12 col-lg-8 my-5 px-5 px-lg-0  type-gallery" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'gallery'">
             <div class="row row-flex flex-wrap justify-content-center align-items-center gallery">
               <div class="gallery-item mb-4" v-for="image in content.fields.image" :class="getGalleryImageClass(content.fields.image)">
-                <img :src="image.fields.file.url" alt="" class="image">
+                <!-- <img :src="image.fields.file.url" alt="" class="image"> -->
+                <lazy-image
+                :src="image.fields.file.url"
+                :w="2000"
+                :h="2000"
+                />
                 <div class="caption" v-if="image.fields.description">
                   {{image.fields.description}}
                 </div>
