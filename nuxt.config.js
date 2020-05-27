@@ -151,6 +151,12 @@ export default {
           drop_console: true
         }
       }
+    },
+    transpile: [
+      'three'
+    ],
+    babel: {
+      compact: false
     }
     // extend (config, { isDev, isClient, loaders: { vue } }) {
     //   if (isClient) {
