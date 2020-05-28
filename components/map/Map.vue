@@ -37,33 +37,16 @@
     </div>
 
     <div
-      class="content"
+      class="panel"
       :class="{'active': mapActive }"
       >
-
-        <div class="panel panel-main">
-          <!-- <h1>Map</h1>
-          <h4>Rent a desk, a studio, a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</h4> -->
-
-          <h2>Design<br>District</h2>
-          <h4>Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.</h4>
-          <div class="tags mt-4">
-            <div class="tag">
-              Events
-            </div>
-            <div class="tag">
-              Workshops
-            </div>
-            <div class="tag -active">
-              Facilities
-            </div>
-            <div class="tag">
-              Members Only
-            </div>
-          </div>
-        </div>
-
-      </div>
+      <transition-group name="fade">
+        <map-site v-if="siteActive" :key="'site'" />
+        <map-building v-if="buildingActive" :key="'building'" />
+        <map-floor v-if="floorActive" :key="'floor'" />
+        <map-space v-if="spaceActive" :key="'space'" />
+      </transition-group>
+    </div>
 
   </div>
 </template>

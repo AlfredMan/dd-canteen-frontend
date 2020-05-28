@@ -7,8 +7,19 @@ import userEvents from './mapUserEvents.js'
 import model from './mapModel.js'
 import utility from './mapUtility.js'
 
+import MapSite from './MapSite.vue'
+import MapBuilding from './MapBuilding.vue'
+import MapFloor from './MapFloor.vue'
+import MapSpace from './MapSpace.vue'
+
 export default {
   props: ['name', 'active'],
+  components: {
+    MapSite,
+    MapBuilding,
+    MapFloor,
+    MapSpace
+  },
   mixins: [
     init,
     controls,

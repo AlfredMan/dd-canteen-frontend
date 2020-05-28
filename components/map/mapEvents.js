@@ -21,6 +21,9 @@ export default {
     }, 500, {
       leading: true
     }),
+    onAnimateDebounce: _.debounce(function () {
+      this.eventState.move = false
+    }, 1000),
     bindEvents () {
       if (process.client) {
         const self = this
@@ -109,7 +112,7 @@ export default {
       if (process.client) {
         // console.log('onMove')
         this.eventState.move = true
-        this.onMoveDebounce()
+        this.onAnimateDebounce()
         const self = this
         // self.addObject()
         if (self.sceneState.mouse) {
@@ -118,10 +121,7 @@ export default {
           // console.log(self.sceneState.mouse.x, self.sceneState.mouse.y);
         }
       }
-    },
-    onMoveDebounce: _.debounce(function () {
-      this.eventState.move = false
-    }, 1000)
+    }
     // keyup (event) {
     //   const self = this
     //   console.log(event.keyCode)
