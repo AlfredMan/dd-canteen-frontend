@@ -4,10 +4,13 @@
     'has-intersect': mapIntersectActive
     }">
 
-    <div class="info">
+    <div class="info"
+    :class="{
+      'active': mapActive
+      }"
+    >
       <div class="" v-if="sceneState.intersect">
         {{getBuildingName(sceneState.intersect.object.name)}}
-        {{sceneState.tick}}
       </div>
     </div>
 
@@ -40,7 +43,7 @@
       class="panel"
       :class="{'active': mapActive }"
       >
-      <transition-group name="fade">
+      <transition-group name="map-fade">
         <map-site v-if="siteActive" :key="'site'" />
         <map-building v-if="buildingActive" :key="'building'" />
         <map-floor v-if="floorActive" :key="'floor'" />

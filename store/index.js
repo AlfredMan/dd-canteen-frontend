@@ -56,6 +56,12 @@ export const getters = {
   getSpaceBySlug: state => (slug) => {
     return state.spaces.length > 0 ? state.spaces.find(space => space.slug === slug) : null
   },
+  getBuildingBySlug: state => (slug) => {
+    return state.buildings.length > 0 ? state.buildings.find(building => building.slug === slug) : null
+  },
+  getSpacesByBuilding: state => (slug) => {
+    return state.spaces.length > 0 ? state.spaces.filter(space => space.building === slug) : null
+  },
   getHireBySlug: state => (slug) => {
     return state.hire.length > 0 ? state.hire.find(hire => hire.slug === slug) : null
   }

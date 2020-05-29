@@ -70,6 +70,7 @@ export default {
           self.sceneState.camera.updateProjectionMatrix()
           self.sceneState.renderer.setSize(window.innerWidth, window.innerHeight)
         }
+        this.onAnimateDebounce()
       }
     },
     onContainerResize () {
@@ -86,6 +87,7 @@ export default {
             self.sceneState.camera.updateProjectionMatrix()
             // self.sceneState.renderer.setSize(100, 100)
           }
+          this.onAnimateDebounce()
         }
       }
     },

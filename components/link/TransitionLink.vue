@@ -27,7 +27,11 @@ export default {
       //   // this.$store.dispatch('setRouteTransitionSource', { sourceElement: ev.srcElement })
       //   this.$store.dispatch('setRouteTransitionSourceRect', { boundingClientRect: ev.srcElement.getBoundingClientRect() })
       // }
-      this.$store.dispatch('setRouteTransitionSourceRect', { boundingClientRect: ev.srcElement.getBoundingClientRect() })
+      if (ev && ev.srcElement && ev.srcElement.getBoundingClientRect()) {
+        this.$store.dispatch('setRouteTransitionSourceRect', { boundingClientRect: ev.srcElement.getBoundingClientRect() })
+      } else {
+        this.$store.dispatch('setRouteTransitionSourceRect')
+      }
 
       this.$router.push({path: to})
     }

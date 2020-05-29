@@ -5,6 +5,14 @@ export default ({ app, store }) => {
     // console.log(store)
     // console.log('route plugin beforeEach')
     // a
+    console.log(from.query, to.query)
+
+    // if is map
+    if ((from.query && from.query.building) || (to.query && to.query.building)) {
+      next()
+      return
+    }
+
     store.dispatch('routeTransitionStart')
     const delay = store.state.transition.delay
     const count = store.state.transition.count

@@ -7,8 +7,7 @@ export default {
   data () {
     return {
       sceneState: {
-        model: '/model/dd-site.obj',
-        mtl: '/model/dd-site.mtl',
+        model: '/model/dd-site-BCD-only.obj',
         gltfs: [
           '/model/DD-all-gltf-v01.gltf',
           '/model/DD-all-baked-A1.gltf',
@@ -46,7 +45,6 @@ export default {
         //         resolve(object)
         //       }, onProgress, onError)
         //   })
-
         new GLTFLoader().load(self.sceneState.gltfs[0], function (gltf) {
           // gltf.scene.traverse(function (child) {
           //   if (child.isMesh) {
@@ -54,10 +52,12 @@ export default {
           //   }
           // })
           console.log(gltf)
-          resolve(gltf.scene)
-          // scene.add(gltf.scene)
-          // roughnessMipmapper.dispose()
-          // render()
+          // resolve(gltf.scene)
+
+          new OBJLoader()
+            .load(self.sceneState.model, function (object) {
+              resolve([gltf.scene, object])
+            })
         })
 
         // let index = 0
@@ -81,30 +81,55 @@ export default {
         // }
       })
     },
-    addModels (gltfScene) {
-      // for (let i = 0; i < gltfScenes.length; i++) {
-      //   this.addModel(gltfScenes[i])
-      // }
+    handleModels (models) {
+      const [gltfScene, obj] = models
+      this.sceneState.activeMaterial = new THREE.MeshStandardMaterial({ color: 0x666666, side: THREE.DoubleSide })
+      this.sceneState.defaultMaterial = new THREE.MeshStandardMaterial({ color: 0xEEEEEE, side: THREE.DoubleSide })
+
+      for (let i = 0; i < obj.children.length; i++) {
+        const child = obj.children[i]
+        if (child.type === 'Mesh') {
+          child.material = this.sceneState.defaultMaterial
+          child.visible = true
+          // child.material = new THREE.MeshNormalMaterial()
+          this.sceneState.rayTarget.push(child)
+          // this.sceneState.scene.add(child)
+          // console.log(child.name, child)
+        }
+      }
       for (let i = 0; i < gltfScene.children.length; i++) {
         const child = gltfScene.children[i]
-        if (!_.lowerCase(child.name).includes('plane')) {
-          if (child.type === 'Mesh') {
-            this.sceneState.rayTarget.push(child)
-          } else
-          if (child.type === 'Object3D') {
-            for (let iC = 0; iC < child.children.length; iC++) {
-              const grandchild = child.children[iC]
-              if (grandchild.type == 'Mesh') {
-                this.sceneState.rayTarget.push(grandchild)
-              }
+        if (_.lowerCase(child.name).includes('plane')) {
+          child.visible = false
+        } else
+        if (child.type === 'Mesh') {
+          this.sceneState.rayTarget.push(child)
+        } else
+        if (child.type === 'Object3D') {
+          for (let iC = 0; iC < child.children.length; iC++) {
+            const grandchild = child.children[iC]
+            if (grandchild.type == 'Mesh') {
+              this.sceneState.rayTarget.push(grandchild)
             }
           }
         }
       }
 
-      console.log(this.sceneState.rayTarget)
+      // console.log(this.sceneState.rayTarget)
 
-      this.addModel(gltfScene)
+      // this.addModel(gltfScene)
+      // this.addModel(object)
+      // obj.scale.set(0.1, 0.1, 0.1)
+      obj.position.x = -2.5
+      obj.position.z = 4
+      // this.sceneState.targetMesh = obj
+      this.sceneState.scene.add(obj)
+
+      gltfScene.scale.set(0.01, 0.01, 0.01)
+      gltfScene.position.x = -2.5
+      gltfScene.position.z = 4
+      // this.sceneState.targetMesh = gltfScene
+      this.sceneState.scene.add(gltfScene)
     },
     addModel (object) {
       if (!object) { return }
@@ -120,11 +145,11 @@ export default {
       // this.sceneState.defaultBuildingMaterial = new THREE.MeshStandardMaterial( {color: 0xeeeeee, side: THREE.DoubleSide, map: buildingTexture} );
       // this.sceneState.defaultRoofMaterial = new THREE.MeshStandardMaterial( {color: 0xeeeeee, side: THREE.DoubleSide, map: roofTexture} );
 
-      object.scale.set(0.01, 0.01, 0.01)
+      // object.scale.set(0.01, 0.01, 0.01)
       // object.position.x = 1.0
       // object.position.z = 2.5
       // this.sceneState.targetMesh = object
-      this.sceneState.scene.add(object)
+      // this.sceneState.scene.add(object)
     }
   }
 }

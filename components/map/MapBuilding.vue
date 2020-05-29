@@ -1,16 +1,26 @@
 <template lang="html">
-  <div class="map-building-content">
-    <h2>Building {{slug}}</h2>
-    <div class="">
-      <div class="" v-for="space in allSpaces">
-        <nuxt-link :to="{ query: {
-          building: space.building,
-          floor: space.level,
-          space: space.title
-        } }">{{space.building}} {{space.level}} {{space.title}}</nuxt-link>
-      </div>
+  <div class="map-building-content" v-if="building" :key="building.slug">
+    <div class="content">
+      <nuxt-link class="back" :to="{query:null}">&larr; View all</nuxt-link>
+      <h2>Building {{building.slug}}</h2>
+      <h4>{{building.description}}</h4>
+      <h4 class="">
+        Available Spaces:
+        <div class="" v-for="space in allSpacesByBuilding">
+          <nuxt-link :to="{ query: {
+            building: space.building,
+            floor: space.level,
+            space: space.title
+          } }">{{space.building}} {{space.level}} {{space.title}}</nuxt-link>
+        </div>
+      </h4>
+      <lazy-image
+      class="thumbnail"
+      :src="building.url"
+      :w="2000"
+      :h="2000"
+      />
     </div>
-    <h4>Information goes here</h4>
   </div>
 </template>
 
@@ -28,7 +38,13 @@ export default {
     },
     allBuildings () {
       return this.$store.state.buildings
-    }
+    },
+    building () {
+      return this.$store.getters.getBuildingBySlug(this.slug)
+    },
+    allSpacesByBuilding () {
+      return this.$store.getters.getSpacesByBuilding(this.slug)
+    },
   }
 }
 </script>

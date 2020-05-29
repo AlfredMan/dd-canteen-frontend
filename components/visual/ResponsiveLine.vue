@@ -22,41 +22,41 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
-    if (process.client) {
-      window.addEventListener('scroll', this.handleScroll, { capture: false, passive: true});
-    }
+    // this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
+    // if (process.client) {
+    //   window.addEventListener('scroll', this.handleScroll, { capture: false, passive: true});
+    // }
   },
   destroyed () {
-    if (process.client) {
-      window.removeEventListener('scroll', this.handleScroll);
-    }
+    // if (process.client) {
+    //   window.removeEventListener('scroll', this.handleScroll);
+    // }
   },
   methods: {
-    lineWrapperStyle () {
-      return {
-        height: `${this.lineHeightMax - this.lineHeightMin + this.scrollK * this.lineHeightMin}px`
-      }
-    },
-    handleScroll: _.throttle(function (event) {
-      if (process.client) {
-        let scrollY = window.scrollY
-
-        var element = this.$refs.line;
-        var topPos = element.getBoundingClientRect().top + window.scrollY;
-        var leftPos = element.getBoundingClientRect().left + window.scrollX;
-
-        let threshold = this.scrollThreshold
-        let k = Math.min(threshold - scrollY, threshold) / threshold
-        this.scrollK = k;
-        // console.log(topPos, leftPos)
-        // if (scrollY <= 2) {
-        //   this.menuIsAtTop = true
-        // } else {
-        //   this.menuIsAtTop = false
-        // }
-      }
-    }, 0),
+    // lineWrapperStyle () {
+    //   return {
+    //     height: `${this.lineHeightMax - this.lineHeightMin + this.scrollK * this.lineHeightMin}px`
+    //   }
+    // },
+    // handleScroll: _.throttle(function (event) {
+    //   if (process.client) {
+    //     let scrollY = window.scrollY
+    //
+    //     var element = this.$refs.line;
+    //     var topPos = element.getBoundingClientRect().top + window.scrollY;
+    //     var leftPos = element.getBoundingClientRect().left + window.scrollX;
+    //
+    //     let threshold = this.scrollThreshold
+    //     let k = Math.min(threshold - scrollY, threshold) / threshold
+    //     this.scrollK = k;
+    //     // console.log(topPos, leftPos)
+    //     // if (scrollY <= 2) {
+    //     //   this.menuIsAtTop = true
+    //     // } else {
+    //     //   this.menuIsAtTop = false
+    //     // }
+    //   }
+    // }, 0),
   }
 }
 </script>

@@ -37,23 +37,27 @@ export default {
         this.buildingActive = false
         this.floorActive = false
         this.spaceActive = true
+        this.updateControlsTarget(building)
       } else
       if (floor) {
         this.siteActive = false
         this.buildingActive = false
         this.floorActive = true
         this.spaceActive = false
+        this.updateControlsTarget(building)
       } else
       if (building) {
         this.siteActive = false
         this.buildingActive = true
         this.floorActive = false
         this.spaceActive = false
+        this.updateControlsTarget(building)
       } else {
         this.siteActive = true
         this.buildingActive = false
         this.floorActive = false
         this.spaceActive = false
+        this.updateControlsTarget()
       }
     },
     getBuildingName (name) {

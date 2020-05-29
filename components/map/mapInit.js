@@ -26,6 +26,11 @@ export default {
           velocity: null,
           direction: null
         },
+        controlsTarget: {
+          x: 0,
+          y: 1,
+          z: 0
+        },
         prevTime: null,
         mouse: null,
         container: null,
@@ -38,12 +43,12 @@ export default {
   },
   methods: {
     init () {
-      this.loadModel().then((model) => {
+      this.loadModel().then((models) => {
         this.initThree()
         this.initControls()
         this.animate()
         this.bindEvents()
-        this.addModels(model)
+        this.handleModels(models)
       })
     },
     initThree () {

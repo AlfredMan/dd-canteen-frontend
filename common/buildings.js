@@ -42,9 +42,9 @@ export const buildings = [
   {
     id: '4D5VxGyVWyk1CZZ8DAoaF6/75189eeb8ae136cdb136d566b648d589',
     url: 'https://images.ctfassets.net/7p1ysxjarsp5/4D5VxGyVWyk1CZZ8DAoaF6/75189eeb8ae136cdb136d566b648d589/KDN_Design_District_B3_LR.jpeg?w=2000&h=2000&fm=jpg&q=80',
-    title: 'D3',
-    slug: 'D3',
-    alt: 'Building D3',
+    title: 'B3',
+    slug: 'B3',
+    alt: 'Building B3',
     type: 'building'
   },
   {

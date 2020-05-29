@@ -24,7 +24,6 @@ export default {
         if (intersect) {
           const intersectName = intersect.object.name
           const buildingName = this.getBuildingName(intersectName)
-
           this.$router.push({
             query: { building: buildingName }
           })
@@ -37,10 +36,25 @@ export default {
       } else
       if (boo == false) {
         this.mapActive = false
+        this.$router.push({
+          query: null
+        })
       } else {
         this.mapActive = !this.mapActive
       }
+
+      // update query
+      if (this.mapActive === false) {
+        this.onAnimateDebounce()
+        this.resetRouteDebounce()
+        this.sceneState.intersect = null
+      }
     },
+    resetRouteDebounce: _.debounce(function () {
+      this.$router.push({
+        query: null
+      })
+    }, 500),
     ray () {
       const self = this
       if (!self.sceneState.rayTarget) { return }
@@ -100,13 +114,17 @@ export default {
         const otherBuildings = _.filter(this.sceneState.rayTarget, mesh => !_.includes(mesh.name, buildingName))
 
         for (let i = 0; i < meshesOfSameBuilding.length; i++) {
+          // meshesOfSameBuilding[i].material.transparent = true
+          // meshesOfSameBuilding[i].material.opacity = 1
           meshesOfSameBuilding[i].material.transparent = true
-          meshesOfSameBuilding[i].material.opacity = 1
+          meshesOfSameBuilding[i].material.opacity = 0.9
           // meshesOfSameBuilding[i].material.wireframe = false
         }
         for (let i = 0; i < otherBuildings.length; i++) {
+          // otherBuildings[i].material.transparent = true
+          // otherBuildings[i].material.opacity = 0.05
           otherBuildings[i].material.transparent = true
-          otherBuildings[i].material.opacity = 0.05
+          otherBuildings[i].material.opacity = 1
           // otherBuildings[i].material.wireframe = true
         }
       }
