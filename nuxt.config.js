@@ -283,17 +283,29 @@ export default {
     concurrency: 100,
     devtools: true,
     routes () {
+      const routes = [
+        '/architecture/hnna',
+        '/architecture/6a-architects',
+        '/architecture/adam-khan-architects',
+        '/architecture/architecture-00',
+        '/architecture/barozzi-veiga',
+        '/architecture/david-kohn-architects',
+        '/architecture/mole-architects',
+        '/architecture/schulze-grassov',
+        '/architecture/selgascano'
+      ]
       const client = createClient()
       return Promise.all([
         client.getEntries({
           'content_type': 'news'
         })
       ]).then(([entries]) => {
-        return _.map(entries.items, entry => `/journal/${entry.fields.slug}`)
+        const journalRoutes = _.map(entries.items, entry => `/journal/${entry.fields.slug}`)
+        return [...journalRoutes, ...routes]
       }).catch(console.error)
     },
     exclude: [
-      /^(?=.*\bhelper\b).*$/
+      /^(?=.*\bhelper|home\b).*$/
     ]
   }
   //
