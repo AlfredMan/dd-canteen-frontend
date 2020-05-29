@@ -58,12 +58,12 @@ export default {
       self.tl.play()
 
       function update () {
-        if (self.sceneState.controls) {
-          console.log(target)
-          self.sceneState.controls.target = new THREE.Vector3(target.x, target.y, target.z)
-          self.sceneState.controls.update()
-        }
-        self.onAnimateDebounce()
+        // if (self.sceneState.controls) {
+        //   // console.log(target)
+        //   self.sceneState.controls.target = new THREE.Vector3(target.x, target.y, target.z)
+        //   self.sceneState.controls.update()
+        // }
+        // self.onAnimateDebounce()
       }
     }
   }
