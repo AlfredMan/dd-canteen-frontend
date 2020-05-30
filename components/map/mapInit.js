@@ -3,6 +3,7 @@ export default {
   data () {
     return {
       sceneState: {
+        isLoaded: false,
         scene: null,
         camera: null,
         cameraDefaultPosition: null,
@@ -49,7 +50,14 @@ export default {
         this.animate()
         this.bindEvents()
         this.handleModels(models)
+        // this.onContainerResize()
+        this.updateLoadState()
+        this.render()
+        this.updateViewByRoute()
       })
+    },
+    updateLoadState () {
+      this.sceneState.isLoaded = true
     },
     initThree () {
       this.sceneState.container = this.$refs.webglCanvas
@@ -88,29 +96,34 @@ export default {
       this.sceneState.camera.lookAt(new THREE.Vector3(0, 10, 0))
     },
     lights () {
-      const light = new THREE.AmbientLight(0xFFFFFF, 0.5) // soft white light
+      const light = new THREE.AmbientLight(0xFFFFFF, 1) // soft white light
       this.sceneState.scene.add(light)
 
-      const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.2)
-      directionalLight.position.set(4, 10, 4)
+      const d = 20
+      const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 1)
+      directionalLight.position.set(-4, 10, 4)
       directionalLight.target.position.set(0, 0, 0)
       directionalLight.castShadow = true
-
-      // Set up shadow properties for the light
       directionalLight.shadow.mapSize.width = 1024 // default
       directionalLight.shadow.mapSize.height = 1024 // default
-
-      // directionalLight.shadow.camera.near = 0.1;    // default
-      // directionalLight.shadow.camera.far = 1000;     // default
-
-      const d = 20
       directionalLight.shadow.camera.left = -d
       directionalLight.shadow.camera.right = d
       directionalLight.shadow.camera.top = d
       directionalLight.shadow.camera.bottom = -d
-      // directionalLight.shadow.camera.far = 1024;
-      // directionalLight.shadow.camera.near = 2;
+
+      const directionalLight2 = new THREE.DirectionalLight(0xFFFFFF, 1)
+      directionalLight2.position.set(-4, 10, -1)
+      directionalLight2.target.position.set(0, 0, 0)
+      directionalLight2.castShadow = true
+      directionalLight2.shadow.mapSize.width = 1024 // default
+      directionalLight2.shadow.mapSize.height = 1024 // default
+      directionalLight2.shadow.camera.left = -d
+      directionalLight2.shadow.camera.right = d
+      directionalLight2.shadow.camera.top = d
+      directionalLight2.shadow.camera.bottom = -d
+
       this.sceneState.scene.add(directionalLight)
+      this.sceneState.scene.add(directionalLight2)
     }
   }
 }

@@ -1,17 +1,32 @@
 <template lang="html">
   <div class="map-building-content" v-if="building" :key="building.slug">
     <div class="content">
-      <nuxt-link class="back" :to="{query:null}">&larr; View all</nuxt-link>
+      <nuxt-link class="back" :to="{query:null}">&larr; View all buildings</nuxt-link>
       <h2>Building {{building.slug}}</h2>
       <h4>{{building.description}}</h4>
       <h4 class="">
         Available Spaces:
-        <div class="" v-for="space in allSpacesByBuilding">
-          <nuxt-link :to="{ query: {
+        <div class="listing-table">
+          <div class="listing-header">
+            <div class="listing-field building">Building</div>
+            <div class="listing-field level">Level</div>
+            <div class="listing-field title">Space</div>
+            <div class="listing-field floorarea">Size</div>
+          </div>
+          <nuxt-link
+          class="listing-row"
+          v-for="space in allSpacesByBuilding"
+          :key="space.title"
+          :to="{ query: {
             building: space.building,
             floor: space.level,
             space: space.title
-          } }">{{space.building}} {{space.level}} {{space.title}}</nuxt-link>
+          } }">
+            <div class="listing-field building">{{space.building}} </div>
+            <div class="listing-field level">{{space.level}} </div>
+            <div class="listing-field title">{{space.title}}</div>
+            <div class="listing-field floorarea">{{space.floorarea}}</div>
+          </nuxt-link>
         </div>
       </h4>
       <lazy-image

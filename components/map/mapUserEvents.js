@@ -1,11 +1,15 @@
 import * as THREE from 'three'
 import _ from 'lodash'
+import Stats from 'stats.js'
 export default {
   data () {
     return {
       mapActive: false,
       mapTouchable: true,
-      mapIntersectActive: false
+      mapIntersectActive: false,
+      useStats: true,
+      isStatsActive: false,
+      enableHighlightByRay: true
     }
   },
   watch: {
@@ -16,10 +20,20 @@ export default {
   },
   mounted () {
     this.mapActive = this.active
+    this.initStats()
   },
   methods: {
+    initStats () {
+      if (!this.useStats || this.isStatsActive) { return }
+      this.stats = new Stats()
+      this.stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
+      document.body.appendChild(this.stats.dom)
+      this.stats.dom.style.top = 'auto'
+      this.stats.dom.style.bottom = 0
+      this.isStatsActive = true
+    },
     selectBuilding () {
-      if (this.mapIntersectActive) {
+      if (this.mapIntersectActive && this.enableHighlightByRay) {
         const intersect = this.sceneState.intersect
         if (intersect) {
           const intersectName = intersect.object.name
@@ -45,7 +59,7 @@ export default {
 
       // update query
       if (this.mapActive === false) {
-        this.onAnimateDebounce()
+        this.triggerSceneAnimate()
         this.resetRouteDebounce()
         this.sceneState.intersect = null
       }
@@ -68,73 +82,68 @@ export default {
 
       // return
 
+      if (!this.enableHighlightByRay) { return }
+
       if (intersects.length > 0) {
         self.setIntersect(intersects[0])
       } else {
         self.setIntersect(null)
       }
     },
-    animate () {
-      this.sceneState.raf = requestAnimationFrame(this.animate)
-      if (this.eventState.move === true) {
-        this.sceneState.tick++
-        this.sceneState.controls.update()
-
-        if (this.ray) {
-          this.ray()
-        }
-        // if (this.sceneState.mesh) {
-        //   const inc = (this.sceneState.tick / 5)
-        //   for (let i = 0; i < this.sceneState.meshes.length; i++) {
-        //   }
-        // }
-        this.sceneState.renderer.render(this.sceneState.scene, this.sceneState.camera)
-      }
-    },
     setIntersect (intersect) {
-      // console.log(intersect)
       // return
       if (intersect) {
         this.sceneState.intersect = intersect
-        this.resetMesh()
         this.mapIntersectActive = true
-        this.highlightMesh()
+        this.resetHighlight()
+        this.highlight()
       } else {
         this.mapIntersectActive = false
         this.sceneState.intersect = null
-        this.resetMesh()
+        // this.resetHighlight()
       }
     },
-    highlightMesh () {
+    highlight () {
       const intersect = this.sceneState.intersect
       if (intersect) {
         const intersectName = intersect.object.name
         const buildingName = this.getBuildingName(intersectName)
-        const meshesOfSameBuilding = _.filter(this.sceneState.rayTarget, mesh => _.includes(mesh.name, buildingName))
-        const otherBuildings = _.filter(this.sceneState.rayTarget, mesh => !_.includes(mesh.name, buildingName))
-
-        for (let i = 0; i < meshesOfSameBuilding.length; i++) {
-          // meshesOfSameBuilding[i].material.transparent = true
-          // meshesOfSameBuilding[i].material.opacity = 1
-          meshesOfSameBuilding[i].material.transparent = true
-          meshesOfSameBuilding[i].material.opacity = 0.9
-          // meshesOfSameBuilding[i].material.wireframe = false
-        }
-        for (let i = 0; i < otherBuildings.length; i++) {
-          // otherBuildings[i].material.transparent = true
-          // otherBuildings[i].material.opacity = 0.05
-          otherBuildings[i].material.transparent = true
-          otherBuildings[i].material.opacity = 1
-          // otherBuildings[i].material.wireframe = true
-        }
+        this.highlightBuildingBySlug(buildingName)
       }
     },
-    resetMesh () {
-      for (let i = 0; i < this.sceneState.rayTarget.length; i++) {
-        this.sceneState.rayTarget[i].material.transparent = false
-        this.sceneState.rayTarget[i].material.opacity = 1
-        // this.sceneState.rayTarget[i].material.wireframe = false
+    resetHighlight () {
+      this.resetBuildingHighlight()
+    },
+    animate () {
+      if (this.stats) {
+        this.stats.begin()
       }
+
+      if (this.eventState.move || this.eventState.resize) {
+        this.sceneState.tick++
+        this.sceneState.controls.update()
+
+        if (this.eventState.move) {
+          if (this.ray) {
+            this.ray()
+          }
+        }
+
+        if (this.eventState.resize) {
+          this.onContainerResize()
+        }
+
+        this.render()
+      }
+
+      if (this.stats) {
+        this.stats.end()
+      }
+
+      this.sceneState.raf = requestAnimationFrame(this.animate)
+    },
+    render () {
+      this.sceneState.renderer.render(this.sceneState.scene, this.sceneState.camera)
     }
   }
 }

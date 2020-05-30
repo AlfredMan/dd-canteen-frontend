@@ -1,11 +1,13 @@
 import * as THREE from 'three'
 import _ from 'lodash'
+import gsap from 'gsap'
 export default {
   data () {
     return {
       eventState: {
         down: false,
-        move: false
+        move: false,
+        resize: false
       }
     }
   },
@@ -21,9 +23,20 @@ export default {
     }, 500, {
       leading: true
     }),
-    onAnimateDebounce: _.debounce(function () {
+    animateDebounce: _.debounce(function () {
       this.eventState.move = false
     }, 1000),
+    triggerSceneAnimate () {
+      this.eventState.move = true
+      this.animateDebounce()
+    },
+    resizeDebounce: _.debounce(function () {
+      this.eventState.resize = false
+    }, 1000),
+    triggerSceneResize () {
+      this.eventState.resize = true
+      this.resizeDebounce()
+    },
     bindEvents () {
       if (process.client) {
         const self = this
@@ -39,7 +52,8 @@ export default {
           self.sceneState.renderer.domElement.addEventListener('mouseup', self.onUp, false)
         }
         self.sceneState.container.addEventListener('resize', self.onContainerResize, false)
-        window.addEventListener('resize', self.onWindowResize, false)
+        // window.addEventListener('resize', self.onWindowResize, false)
+        window.addEventListener('resize', self.onContainerResize, false)
       }
     },
     unbindEvents () {
@@ -57,7 +71,8 @@ export default {
           self.sceneState.renderer.domElement.removeEventListener('mouseup', self.onUp, false)
         }
         self.sceneState.container.removeEventListener('resize', self.onContainerResize, false)
-        window.removeEventListener('resize', self.onWindowResize, false)
+        // window.removeEventListener('resize', self.onWindowResize, false)
+        window.removeEventListener('resize', self.onContainerResize, false)
       }
     },
     onWindowResize () {
@@ -70,24 +85,28 @@ export default {
           self.sceneState.camera.updateProjectionMatrix()
           self.sceneState.renderer.setSize(window.innerWidth, window.innerHeight)
         }
-        this.onAnimateDebounce()
+        this.triggerSceneAnimate()
       }
     },
     onContainerResize () {
       if (process.client) {
         const self = this
-        // console.log('onContainerResize')
+        console.log('onContainerResize')
         if (self.sceneState.camera) {
-          if (self.mapActive) {
-            self.sceneState.camera.aspect = window.innerWidth / window.innerHeight
-            self.sceneState.camera.updateProjectionMatrix()
-            // self.sceneState.renderer.setSize(window.innerWidth, window.innerHeight)
-          } else {
-            self.sceneState.camera.aspect = window.innerWidth / window.innerHeight
-            self.sceneState.camera.updateProjectionMatrix()
-            // self.sceneState.renderer.setSize(100, 100)
-          }
-          this.onAnimateDebounce()
+          const dom = self.sceneState.container
+          // if (self.mapActive) {
+          //   self.sceneState.camera.aspect = dom.clientWidth / dom.clientHeight
+          //   self.sceneState.camera.updateProjectionMatrix()
+          //   self.sceneState.renderer.setSize(dom.clientWidth, dom.clientHeight)
+          // } else {
+          //   self.sceneState.camera.aspect = dom.clientWidth / dom.clientHeight
+          //   self.sceneState.camera.updateProjectionMatrix()
+          //   // self.sceneState.renderer.setSize(100, 100)
+          // }
+          self.sceneState.camera.aspect = dom.clientWidth / dom.clientHeight
+          self.sceneState.camera.updateProjectionMatrix()
+          self.sceneState.renderer.setSize(dom.clientWidth, dom.clientHeight)
+          this.triggerSceneAnimate()
         }
       }
     },
@@ -114,15 +133,18 @@ export default {
       if (process.client) {
         // console.log('onMove')
         this.eventState.move = true
-        this.onAnimateDebounce()
+        this.triggerSceneAnimate()
         const self = this
         // self.addObject()
         if (self.sceneState.mouse) {
-          self.sceneState.mouse.x = (event.clientX / window.innerWidth) * 2 - 1
-          self.sceneState.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+          self.sceneState.mouse.x = ((event.clientX - self.sceneState.container.offsetLeft) / self.sceneState.container.clientWidth) * 2 - 1
+          self.sceneState.mouse.y = -((event.clientY - self.sceneState.container.offsetTop) / self.sceneState.container.clientHeight) * 2 + 1
           // console.log(self.sceneState.mouse.x, self.sceneState.mouse.y);
         }
       }
+    },
+    forceContainerResize () {
+      this.triggerSceneResize()
     }
     // keyup (event) {
     //   const self = this

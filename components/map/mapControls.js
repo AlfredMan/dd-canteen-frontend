@@ -9,12 +9,64 @@ export default {
       this.sceneState.controls.autoRotate = false
       // this.sceneState.controls.autoRotateSpeed = 0.1
       this.sceneState.controls.enableDamping = true
-      this.sceneState.controls.dampingFcator = 0.05
+      this.sceneState.controls.dampingFcator = 0.1
       this.sceneState.controls.target = new THREE.Vector3(0, 1, 0)
       this.sceneState.controls.enableZoom = false
+      this.sceneState.controls.minDistance = 50
+      this.sceneState.controls.maxDistance = 50
     },
-    updateControlsTarget (slug) {
+    zoomToBuilding () {
+      let from = {}; let to = {}
       const self = this
+      const controls = self.sceneState.controls
+      from = {
+        limit: controls.maxDistance
+      }
+      to = {
+        limit: 20
+      }
+      gsap.to(from, {
+        limit: to.limit,
+        duration: 0.5,
+        ease: 'power2.inOut',
+        onUpdate: () => {
+          if (controls) {
+            controls.minDistance = from.limit
+            controls.maxDistance = from.limit
+            controls.update()
+            self.triggerSceneAnimate()
+          }
+        }
+      })
+    },
+    zoomToSite () {
+      let from = {}; let to = {}
+      const self = this
+      const controls = self.sceneState.controls
+      from = {
+        limit: controls.maxDistance
+      }
+      to = {
+        limit: 50
+      }
+      gsap.to(from, {
+        limit: to.limit,
+        duration: 0.5,
+        ease: 'power2.inOut',
+        onUpdate: () => {
+          if (controls) {
+            controls.minDistance = from.limit
+            controls.maxDistance = from.limit
+            controls.update()
+            self.triggerSceneAnimate()
+          }
+        }
+      })
+    },
+    updateControlsTarget (slug = '') {
+      const self = this
+
+      if (!self.sceneState.controls) { return }
 
       self.tl = gsap.timeline({
         onUpdate: () => {
@@ -24,46 +76,64 @@ export default {
       self.tl.pause()
 
       const object = _.find(self.sceneState.rayTarget, building => building.name == slug)
-      // debugger
 
-      const from = {
-        x: self.sceneState.controlsTarget.x,
-        y: self.sceneState.controlsTarget.y,
-        z: self.sceneState.controlsTarget.z
+      console.log('updateControlsTarget to ')
+
+      let currentTarget = {}
+      currentTarget = {
+        x: self.sceneState.controls.target.x,
+        y: self.sceneState.controls.target.y,
+        z: self.sceneState.controls.target.z
       }
-
       let target = {
         x: 0,
         y: 1,
         z: 0
       }
+
       if (object && object.position) {
+        console.log(slug, object)
+        const newX = object.getWorldPosition(new THREE.Vector3()).x
+        const newZ = object.getWorldPosition(new THREE.Vector3()).z
         target = {
-          x: object.position.x,
+          x: newX,
           y: 1,
-          z: object.position.z
+          z: newZ
         }
+        console.log(target)
       }
+
+      // const diff = {
+      //   x: currentTarget.x - target.x,
+      //   y: currentTarget.y - target.y,
+      //   z: currentTarget.z - target.z
+      // }
+
+      // debugger
 
       self.sceneState.controlsTarget = Object.assign({}, self.sceneState.controlsTarget, target)
 
-      self.tl.to(from, {
+      self.tl.to(currentTarget, {
         x: target.x,
         y: target.y,
         z: target.z,
-        duration: 1
+        duration: 0.5,
+        ease: 'power2.inOut'
         // background: 'green',
       })
 
       self.tl.play()
 
       function update () {
-        // if (self.sceneState.controls) {
-        //   // console.log(target)
-        //   self.sceneState.controls.target = new THREE.Vector3(target.x, target.y, target.z)
-        //   self.sceneState.controls.update()
-        // }
-        // self.onAnimateDebounce()
+        // console.log(currentTarget.x, target.x)
+        if (self.sceneState.controls) {
+          // console.log(self.sceneState.controls.target.x, self.sceneState.controls.target.z)
+          self.sceneState.controls.target.x = currentTarget.x
+          self.sceneState.controls.target.y = currentTarget.y
+          self.sceneState.controls.target.z = currentTarget.z
+          self.sceneState.controls.update()
+        }
+        self.triggerSceneAnimate()
       }
     }
   }

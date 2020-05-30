@@ -9,7 +9,7 @@
       'active': mapActive
       }"
     >
-      <div class="" v-if="sceneState.intersect">
+      <div class="" v-if="sceneState.intersect && enableHighlightByRay">
         {{getBuildingName(sceneState.intersect.object.name)}}
       </div>
     </div>
@@ -32,7 +32,14 @@
     </div>
 
     <div
-    :class="{'active': mapActive, 'disabled': !mapTouchable}"
+    :class="{
+      'active': mapActive,
+      'disabled': !mapTouchable,
+      'site-active': siteActive,
+      'building-active': buildingActive,
+      'floor-active': floorActive,
+      'space-active': spaceActive,
+      }"
     id="container"
     ref="webglCanvas"
     @click="toggleMapActive(true)"
