@@ -7,7 +7,7 @@ export default {
       mapActive: false,
       mapTouchable: true,
       mapIntersectActive: false,
-      useStats: true,
+      useStats: false,
       isStatsActive: false,
       enableHighlightByRay: true
     }
