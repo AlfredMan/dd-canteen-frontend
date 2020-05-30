@@ -53,6 +53,9 @@ export const mutations = {
 }
 
 export const getters = {
+  getAllSpaces: state => () => {
+    return state.spaces
+  },
   getSpaceBySlug: state => (slug) => {
     return state.spaces.length > 0 ? state.spaces.find(space => space.slug === slug) : null
   },

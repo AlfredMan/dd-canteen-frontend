@@ -62,4 +62,4 @@
 </template>
 
 <script src="./map.js"></script>
-<style lang="scss" src="./map.scss"></style>
+<style lang="scss" src="./scss/map.scss"></style>

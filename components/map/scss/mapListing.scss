@@ -1,0 +1,32 @@
+.listing-table {
+
+  width: 100%;
+
+  .listing-header,
+  .listing-row {
+    display: flex;
+    &:hover {
+
+    }
+  }
+
+  .listing-header {
+    font-weight: 500;
+    pointer-events: none;
+  }
+
+  .listing-row {
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+      // background: #eee;
+      color: $primary
+    }
+  }
+
+  .listing-field {
+    width: 20%;
+    text-transform: capitalize;
+    text-decoration: none;
+  }
+}

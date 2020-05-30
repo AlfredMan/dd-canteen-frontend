@@ -1,16 +1,17 @@
-import init from './mapInit.js'
-import controls from './mapControls.js'
-import environment from './mapEnvironment.js'
-import lifecycle from './mapLifecycle.js'
-import events from './mapEvents.js'
-import userEvents from './mapUserEvents.js'
-import model from './mapModel.js'
-import utility from './mapUtility.js'
+import init from './mixins/mapInit.js'
+import controls from './mixins/mapControls.js'
+import environment from './mixins/mapEnvironment.js'
+import lifecycle from './mixins/mapLifecycle.js'
+import events from './mixins/mapEvents.js'
+import userEvents from './mixins/mapUserEvents.js'
+import model from './mixins/mapModel.js'
+import utility from './mixins/mapUtility.js'
 
-import MapSite from './MapSite.vue'
-import MapBuilding from './MapBuilding.vue'
-import MapFloor from './MapFloor.vue'
-import MapSpace from './MapSpace.vue'
+import MapSite from './templates/MapSite.vue'
+import MapBuilding from './templates/MapBuilding.vue'
+import MapFloor from './templates/MapFloor.vue'
+import MapSpace from './templates/MapSpace.vue'
+import MapListing from './templates/MapListing.vue'
 
 export default {
   props: ['name', 'active'],
@@ -18,7 +19,8 @@ export default {
     MapSite,
     MapBuilding,
     MapFloor,
-    MapSpace
+    MapSpace,
+    MapListing
   },
   mixins: [
     init,
