@@ -413,11 +413,11 @@
             </div>
           </div>
 
-          <div v-if="randomStudios" class="row d-flex align-items-end pt-5">
+          <div v-if="studios" class="row d-flex align-items-end pt-5">
 
             <image-slideshow class="w-100 my-5 carousel carousel-uniform-height">
 
-              <div v-for="studio in randomStudios" class="item">
+              <div v-for="studio in studios" class="item">
                 <router-link :to="`/architecture/${studio.slug}`">
                   <lazy-image
                   :src="studio.imagesPractice[0].url"
@@ -497,9 +497,10 @@ export default {
     NewsletterForm
   },
   computed: {
-    randomStudios () {
+    studios () {
       // return _.sampleSize(studios, 4)
-      return studios
+      // return studios
+      return this.$store.state.studios
     }
   },
   created () {

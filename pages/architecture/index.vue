@@ -45,7 +45,7 @@
 <script>
 import EnquireForm from '../../components/forms/Enquire.vue'
 import NewsletterForm from '../../components/forms/Newsletter.vue'
-import { studios, validStudios } from '~/common/architecture'
+// import { studios, validStudios } from '~/common/architecture'
 export default {
   head () {
     return {
@@ -65,7 +65,7 @@ export default {
   },
   computed: {
     studios () {
-      return studios
+      return this.$store.state.studios
     }
   }
 }

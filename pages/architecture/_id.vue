@@ -159,7 +159,7 @@
 
 <script>
 import _ from 'lodash'
-import { studios, validStudios } from '~/common/architecture'
+// import { studios, validStudios } from '~/common/architecture'
 
 export default {
   components: {
@@ -172,9 +172,9 @@ export default {
     // }
   },
 
-  validate ({ params: { id } }) {
-    return validStudios.includes(id)
-  },
+  // validate ({ params: { id } }) {
+  //   return validStudios.includes(id)
+  // },
 
   data () {
     return {
@@ -182,14 +182,18 @@ export default {
   },
 
   computed: {
-    studio () {
+    slug () {
       return this.$route.params.id
     },
+    studios () {
+      return this.$store.getters.getAllStudios()
+    },
     studioData () {
-      return studios[this.studio]
+      // return studios[this.studio]
+      return this.$store.getters.getStudioBySlug(this.slug)
     },
     nextFour () {
-      const studioArray = _.toArray(studios)
+      const studioArray = _.toArray(this.studios)
       const studiosstudios = _.concat(studioArray, studioArray)
       const currentStudioIndex = _.indexOf(studioArray, this.studioData)
       console.log('currentStudioIndex', currentStudioIndex)
@@ -199,7 +203,7 @@ export default {
 
   head () {
     return {
-      title: studios[this.$route.params.id].title
+      title: this.studioData.title
     }
   },
 

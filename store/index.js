@@ -2,6 +2,7 @@ import _ from 'lodash'
 import { spaces } from '~/common/spaces'
 import { hire } from '~/common/hire'
 import { buildings } from '~/common/buildings'
+import { studios } from '~/common/architecture'
 
 export const state = () => ({
   navigation: {
@@ -14,6 +15,7 @@ export const state = () => ({
     sourceElement: null,
     sourceElementRect: null
   },
+  studios: {},
   hire: [],
   spaces: [],
   buildings: []
@@ -49,12 +51,18 @@ export const mutations = {
   },
   setBuildings (state, payload) {
     state.buildings = payload.buildings
+  },
+  setStudios (state, payload) {
+    state.studios = _.sortBy(payload.studios, ['slug'])
   }
 }
 
 export const getters = {
   getAllSpaces: state => () => {
     return state.spaces
+  },
+  getAllStudios: state => () => {
+    return state.studios
   },
   getSpaceBySlug: state => (slug) => {
     return state.spaces.length > 0 ? state.spaces.find(space => space.slug === slug) : null
@@ -67,6 +75,9 @@ export const getters = {
   },
   getHireBySlug: state => (slug) => {
     return state.hire.length > 0 ? state.hire.find(hire => hire.slug === slug) : null
+  },
+  getStudioBySlug: state => (slug) => {
+    return state.studios.length > 0 ? state.studios.find(studios => studios.slug === slug) : null
   }
 }
 
@@ -76,6 +87,7 @@ export const actions = {
     await dispatch('getMapSpaces')
     await dispatch('getMapHire')
     await dispatch('getMapBuildings')
+    await dispatch('getArchitectureStudios')
   },
   updateNavigationTheme ({ commit }, context) {
     const theme = context.theme
@@ -133,6 +145,15 @@ export const actions = {
         const demoBuildings = buildings
         resolve(demoBuildings)
         commit('setBuildings', { buildings })
+      }, 500)
+    })
+  },
+  getArchitectureStudios ({ commit }) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const demoStudios = studios
+        resolve(demoStudios)
+        commit('setStudios', { studios })
       }, 500)
     })
   }
