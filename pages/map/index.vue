@@ -14,6 +14,7 @@ export default {
   data () {
     return {
       state: 0,
+      a4: '/a4.png',
       map: '~/assets/images/map.png',
       mapSelected: '~/assets/images/map-selected.png',
       mapSelectedDot: '~/assets/images/map-selected-dot.png'

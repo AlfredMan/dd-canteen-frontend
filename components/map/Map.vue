@@ -32,6 +32,15 @@
     </div>
 
     <div
+    class="thumb"
+    :class="{
+      'active': !mapActive
+    }"
+    >
+      <img src="/a4.png" alt="">
+    </div>
+
+    <div
     :class="{
       'active': mapActive,
       'disabled': !mapTouchable,
