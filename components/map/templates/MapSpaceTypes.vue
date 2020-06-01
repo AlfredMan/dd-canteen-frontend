@@ -4,9 +4,11 @@
 
       <div class="col-12 mb-3 d-flex justify-content-between align-items-baseline">
         <h3 class="text-capitalize">{{spaceTypeNameKey}}</h3>
-        <nuxt-link class="h5 text-primary"
+        <!-- <nuxt-link class="h5 text-primary"
         :to="`/workspace/${getSlug(spaceTypeNameKey)}`"
-        >View all {{spaceTypeNameKey}} &rarr;</nuxt-link>
+        >View all {{spaceTypeNameKey}} &rarr;</nuxt-link> -->
+        <a class="h5 text-primary"
+        >View all {{spaceTypeNameKey}} &rarr;</a>
       </div>
       <div class="col-12 col-md-12 col-lg-12 mb-5 building"
       v-for="(space, index) in spaceTypeValue" v-if="index < 1"

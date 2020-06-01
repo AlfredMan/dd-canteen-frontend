@@ -25,7 +25,7 @@
 
     <div
     class="toggle"
-    @click="toggleMapActive"
+    @click="toggleMapActive(false)"
     v-show="mapActive"
     >
       &times;

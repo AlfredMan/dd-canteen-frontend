@@ -4,7 +4,7 @@ import Stats from 'stats.js'
 export default {
   data () {
     return {
-      mapActive: false,
+      // mapActive: false,
       mapTouchable: true,
       mapIntersectActive: false,
       useStats: false,
@@ -39,7 +39,7 @@ export default {
           const intersectName = intersect.object.name
           const buildingName = this.getBuildingName(intersectName)
           this.$router.push({
-            query: { building: buildingName }
+            query: { map: true, building: buildingName }
           })
         }
       }

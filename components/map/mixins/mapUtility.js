@@ -2,6 +2,7 @@ import _ from 'lodash'
 export default {
   data () {
     return {
+      mapActive: false,
       siteActive: true,
       buildingActive: false,
       floorActive: false,
@@ -36,9 +37,22 @@ export default {
 
       console.log('updateViewByRoute.................')
 
+      const map = this.$route.query.map
       const building = this.$route.query.building
       const floor = this.$route.query.floor
       const space = this.$route.query.space
+      // if (!map) {
+      //   this.siteActive = true
+      //   this.buildingActive = false
+      //   this.floorActive = false
+      //   this.spaceActive = false
+      //   this.updateControlsTarget()
+      //   this.zoomToSite()
+      //   setTimeout(() => {
+      //     this.enableHighlightByRay = true
+      //     this.resetBuildingHighlight()
+      //   }, 500)
+      // } else
       if (space) {
         this.siteActive = false
         this.buildingActive = false
@@ -80,7 +94,6 @@ export default {
           this.resetBuildingHighlight()
         }, 500)
       }
-      // this.triggerSceneResize()
     },
     getBuildingName (name) {
       // get first 2 letter of a name
