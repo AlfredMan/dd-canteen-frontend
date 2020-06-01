@@ -17,18 +17,21 @@
           Members Only
         </div>
       </div> -->
-      <map-listing></map-listing>
+      <map-space-types></map-space-types>
+      <!-- <map-listing></map-listing> -->
     </div>
   </div>
 </template>
 
 <script>
-import MapListing from './MapListing.vue'
+// import MapListing from './MapListing.vue'
+import MapSpaceTypes from './MapSpaceTypes.vue'
 export default {
   computed: {
   },
   components: {
-    MapListing
+    // MapListing,
+    MapSpaceTypes
   }
 }
 </script>
