@@ -32,12 +32,13 @@
     </div>
 
     <div
-    class="thumb"
+    class="map-thumb"
     :class="{
       'active': !mapActive
     }"
     >
-      <img src="/a4.png" alt="">
+      <!-- <img src="/a4.png" alt=""> -->
+      <map-thumbnail></map-thumbnail>
     </div>
 
     <div
@@ -50,7 +51,7 @@
       'space-active': spaceActive,
       }"
     id="container"
-    ref="webglCanvas"
+    ref="mapContainer"
     @click="toggleMapActive(true)"
     >
     </div>

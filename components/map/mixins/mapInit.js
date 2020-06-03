@@ -39,6 +39,13 @@ export default {
         canAdd: false,
         targetMesh: null,
         rayTarget: []
+      },
+      thumbSceneState: {
+        w: 150,
+        h: 150,
+        container: null,
+        scene: null,
+        raf: null
       }
     }
   },
@@ -46,6 +53,7 @@ export default {
     init () {
       this.loadModel().then((models) => {
         this.initThree()
+        // this.initThumb()
         this.initControls()
         this.animate()
         this.bindEvents()
@@ -60,7 +68,7 @@ export default {
       this.sceneState.isLoaded = true
     },
     initThree () {
-      this.sceneState.container = this.$refs.webglCanvas
+      this.sceneState.container = this.$refs.mapContainer
       this.sceneState.scene = new THREE.Scene()
       this.sceneState.raycaster = new THREE.Raycaster()
       this.sceneState.mouse = new THREE.Vector2()
@@ -73,14 +81,8 @@ export default {
       this.sceneState.renderer.domElement.style.cssText = 'position:absolute;top:0px;left:0px;z-index:10;background:transparent;width:100%;height:100%'
       this.sceneState.renderer.setPixelRatio(window.devicePixelRatio)
       this.sceneState.renderer.shadowMap.enabled = true
-
-      // this.sceneState.renderer.toneMapping = THREE.ACESFilmicToneMapping
-      // this.sceneState.renderer.toneMappingExposure = 0.8
-      // this.sceneState.renderer.outputEncoding = THREE.sRGBEncoding
       this.sceneState.renderer.gammaOutput = true
       this.sceneState.renderer.gammaFactor = 2.2
-      // this.sceneState.renderer.shadowMap.type = THREE.BasicShadowMap; // default THREE.PCFShadowMap
-      // document.body.appendChild(this.sceneState.renderer.domElement)
       this.sceneState.container.appendChild(this.sceneState.renderer.domElement)
     },
     camera () {
