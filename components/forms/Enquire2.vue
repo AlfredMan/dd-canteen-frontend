@@ -1069,8 +1069,14 @@ export default {
         return false
       }
 
-      if ((this.$refs.first_name.value && this.$refs.first_name.value.toLowerCase() == 'james') && (this.$refs.first_name.value && this.$refs.last_name.value.toLowerCase() == 'smith')) {
+      if ((this.$refs.first_name.value && this.$refs.first_name.value.toLowerCase() == 'james') && (this.$refs.last_name.value && this.$refs.last_name.value.toLowerCase() == 'smith')) {
         alert("Sorry, something went wrong!");
+        this.resetForm()
+        return false
+      }
+
+      if (this.$refs.first_name.value === this.$refs.last_name.value) {
+        alert("Sorry, please check your name!");
         this.resetForm()
         return false
       }
