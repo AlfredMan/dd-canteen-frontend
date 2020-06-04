@@ -2,6 +2,33 @@
   <div class="box-transition">
     <div class="box">
 
+
+
+
+
+      <svg id="arrow-tail" width="670px" height="670px" viewBox="0 0 670 670" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Plan" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="Group-4">
+                  <g id="Group-2">
+                      <rect id="Rectangle" fill="none" x="0" y="0" width="670" height="670"></rect>
+                      <polygon id="Fill-183-Copy-2" fill="#33cf6e" transform="translate(491.000000, 335.000000) rotate(-270.000000) translate(-491.000000, -335.000000) " points="156 156.719671 826 156.719671 826 513.280329 490.992485 178.287843 156 513.280329"></polygon>
+                  </g>
+              </g>
+          </g>
+      </svg>
+
+      <svg id="arrow-head"width="670px" height="670px" viewBox="0 0 670 670" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Plan" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="Group-5">
+                  <g id="Group-3">
+                      <rect id="Rectangle" fill="none" x="0" y="0" width="670" height="670"></rect>
+                      <polygon id="Fill-183" fill="#33cf6e" transform="translate(176.000000, 335.000000) rotate(-270.000000) translate(-176.000000, -335.000000) " points="-159 511 511 511 511 493.227721 175.992485 159 -159 493.227721"></polygon>
+                  </g>
+              </g>
+          </g>
+      </svg>
+
+
     </div>
   </div>
 </template>
@@ -55,7 +82,7 @@ export default {
     },
     setupTimeline () {
       const inDelay = 0
-      const inDur = this.transitionDelay/1000
+      const inDur = this.transitionDelay/1000 * 2
       const fadeDur = 0.1
       const outDelay = 0.1
       const outDur = (inDur + outDelay)
@@ -77,7 +104,7 @@ export default {
       }
       let boxPos = {
         top: rect.top || 0,
-        left: rect.left || 0,
+        left: rect.left || 0 || 0,
         width: rect.width || '0%',
         height: rect.height || '100%'
       }
@@ -116,6 +143,9 @@ export default {
         // background: 'yellow',
         ease: "power3.inOut"
       }, "boxEnter")
+
+
+
       this.tl.to('.box', {
         // autoAlpha:0,
         delay: outDelay,
@@ -129,15 +159,16 @@ export default {
       // this.tl.set('.box', {
       //   autoAlpha:0
       // })
-      this.tl.play()
     },
     playFull () {
       // this.getSourceElement()
       // this.tl.seek("boxReset")
       // this.tl.play()
       this.setupTimeline()
+      this.tl.play()
     },
     playLeave () {
+      this.setupTimeline()
       this.tl.seek("boxLeave")
       this.tl.play()
     },
@@ -170,6 +201,28 @@ export default {
     // left: 0;
     background: $primary;
     // backdrop-filter: blur(50px);
+    svg#arrow-tail {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 100%;
+      bottom: 0;
+      height: 100vh;
+      width: 100vh;
+      margin-right: -10px;
+      display: none;
+    }
+    svg#arrow-head {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      bottom: 0;
+      height: 100vh;
+      width: 100vh;
+      margin-left: -10px;
+      display: none;
+    }
   }
 }
 </style>
