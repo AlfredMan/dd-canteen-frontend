@@ -14,12 +14,13 @@ export default {
   data () {
     return {
       thumbSceneState: {
-        w: 150,
-        h: 150,
+        width: 150,
+        height: 150,
         container: null,
         scene: null,
         renderer: null,
         raf: null,
+        tick: 0,
         gltfs: [
           '/model/DD-all-baked-16-no-texture.gltf',
           '/model/DD-all-gltf-combined-test-1.gltf',
@@ -34,7 +35,8 @@ export default {
         site: null,
         environment: [],
         buildings: [],
-        meshes: []
+        meshes: [],
+        currentBuilding: null
       }
     }
   },
@@ -56,24 +58,106 @@ export default {
   },
   methods: {
     init () {
+      // this.thumbSceneState.container = this.$refs.thumbContainer
+      // var scene = new THREE.Scene();
+      // var camera = new THREE.PerspectiveCamera( 75, this.thumbSceneState.width / this.thumbSceneState.height, 0.1, 1000 );
+      //
+      // var renderer = new THREE.WebGLRenderer();
+      // renderer.setSize( this.thumbSceneState.width, this.thumbSceneState.height );
+      // this.thumbSceneState.container.appendChild( renderer.domElement );
+      //
+      // var geometry = new THREE.BoxGeometry();
+      // var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+      // var cube = new THREE.Mesh( geometry, material );
+      // scene.add( cube );
+      //
+      // camera.position.z = 1.5;
+      //
+      // var animate = function () {
+      //   requestAnimationFrame( animate );
+      //
+      //   cube.rotation.x += 0.01;
+      //   cube.rotation.y += 0.01;
+      //
+      //   renderer.render( scene, camera );
+      // };
+      //
+      // animate();
+
+      // this.thumbSceneState.container = this.$refs.thumbContainer
+      // var scene = new THREE.Scene();
+			// var camera = new THREE.PerspectiveCamera( 75, this.thumbSceneState.width / this.thumbSceneState.height, 0.1, 1000 );
+      //
+			// var renderer = new THREE.WebGLRenderer();
+			// renderer.setSize( this.thumbSceneState.width, this.thumbSceneState.height );
+			// this.thumbSceneState.container.appendChild( renderer.domElement );
+      //
+			// var geometry = new THREE.BoxGeometry();
+			// var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+			// var cube = new THREE.Mesh( geometry, material );
+			// scene.add( cube );
+      //
+			// camera.position.z = 5;
+      //
+			// var animate = function () {
+			// 	requestAnimationFrame( animate );
+      //
+			// 	cube.rotation.x += 0.01;
+			// 	cube.rotation.y += 0.01;
+      //
+			// 	renderer.render( scene, camera );
+			// };
+      //
+			// animate();
       this.loadModel().then((models) => {
         this.initThree()
         this.camera()
+        this.lights()
         this.handleModels(models)
         this.bindEvents()
         this.animate()
+        this.focusBuilding()
       })
     },
     bindEvents () {
       if (process.client) {
         const self = this
         window.addEventListener('resize', self.onWindowResize, false)
+        window.addEventListener('scroll', self.onWindowScroll, false)
       }
     },
     unbindEvents () {
       if (process.client) {
         const self = this
         window.removeEventListener('resize', self.onWindowResize, false)
+        window.removeEventListener('scroll', self.onWindowScroll, false)
+      }
+    },
+    onWindowScroll (event) {
+      if (process.client) {
+        const self = this
+        // console.log(window.scrollY)
+        let y = window.scrollY
+        let step = 1000
+        if (y < 1*step) {
+          this.focusBuilding(3)
+        } else
+        if (y < 2*step) {
+          this.focusBuilding(1)
+        } else
+        if (y < 3*step) {
+          this.focusBuilding(0)
+        } else
+        if (y < 4*step) {
+          this.focusBuilding(6)
+        } else
+        if (y < 5*step) {
+          this.focusBuilding(8)
+        }
+
+        if (this.thumbSceneState.currentBuilding) {
+          this.thumbSceneState.currentBuilding.rotation.y = y / (step/4)
+        }
       }
     },
     onWindowResize () {
@@ -87,8 +171,15 @@ export default {
       }
     },
     animate () {
-      this.thumbSceneState.renderer.render(this.thumbSceneState.scene, this.thumbSceneState.camera)
+      this.thumbSceneState.tick++
       this.thumbSceneState.raf = requestAnimationFrame(this.animate)
+      // console.log('animate...', this.thumbSceneState)
+      // if (this.thumbSceneState.tick % 2 == 0) {
+      //   this.thumbSceneState.renderer.setClearColor( 0xffff00 );
+      // } else {
+      //   this.thumbSceneState.renderer.setClearColor( 0x0000ff );
+      // }
+      this.thumbSceneState.renderer.render(this.thumbSceneState.scene, this.thumbSceneState.camera)
     },
     initThree () {
       this.thumbSceneState.container = this.$refs.thumbContainer
@@ -102,11 +193,46 @@ export default {
       this.thumbSceneState.renderer.gammaFactor = 2.2
       this.thumbSceneState.container.appendChild(this.thumbSceneState.renderer.domElement)
 
-      var geometry = new THREE.BoxGeometry( 10, 10, 10 );
+      // this.thumbSceneState.renderer.setClearColor(0x00FF00, 0);
+      // this.thumbSceneState.renderer.setClearColor( 0xff00ff );
+
+      var geometry = new THREE.BoxGeometry( 100, 100, 100 );
       var material = new THREE.MeshNormalMaterial( {color: 0x00ff00} );
       var cube = new THREE.Mesh( geometry, material );
       this.thumbSceneState.scene.add( cube );
 
+      this.thumbSceneState.renderer.render(this.thumbSceneState.scene, this.thumbSceneState.camera)
+
+    },
+    lights () {
+      const light = new THREE.AmbientLight(0xFFFFFF, 1) // soft white light
+      this.thumbSceneState.scene.add(light)
+
+      const d = 20
+      const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 1)
+      directionalLight.position.set(-4, 10, 4)
+      directionalLight.target.position.set(0, 0, 0)
+      directionalLight.castShadow = true
+      directionalLight.shadow.mapSize.width = 1024 // default
+      directionalLight.shadow.mapSize.height = 1024 // default
+      // directionalLight.shadow.camera.left = -d
+      // directionalLight.shadow.camera.right = d
+      // directionalLight.shadow.camera.top = d
+      // directionalLight.shadow.camera.bottom = -d
+
+      const directionalLight2 = new THREE.DirectionalLight(0xFFFFFF, 1)
+      directionalLight2.position.set(-4, 10, -1)
+      directionalLight2.target.position.set(0, 0, 0)
+      directionalLight2.castShadow = true
+      directionalLight2.shadow.mapSize.width = 1024 // default
+      directionalLight2.shadow.mapSize.height = 1024 // default
+      // directionalLight2.shadow.camera.left = -d
+      // directionalLight2.shadow.camera.right = d
+      // directionalLight2.shadow.camera.top = d
+      // directionalLight2.shadow.camera.bottom = -d
+
+      this.thumbSceneState.scene.add(directionalLight)
+      this.thumbSceneState.scene.add(directionalLight2)
     },
     camera () {
       this.thumbSceneState.cameraDefaultPosition = new THREE.Vector3(0, 0, 0)
@@ -130,6 +256,22 @@ export default {
         })
       })
     },
+    focusBuilding (index = 0) {
+      for (var i = 0; i < this.thumbSceneState.buildings.length; i++) {
+        this.thumbSceneState.buildings[i].visible = false
+      }
+
+      let currentBuilding = this.thumbSceneState.buildings[index]
+      currentBuilding.visible = true
+
+      this.thumbSceneState.camera.position.x = currentBuilding.position.x - 15
+      this.thumbSceneState.camera.position.z = currentBuilding.position.z - 15
+      this.thumbSceneState.camera.position.y = currentBuilding.position.y + 5
+      this.thumbSceneState.camera.lookAt(new THREE.Vector3(currentBuilding.position.x,currentBuilding.position.y + 1.5,currentBuilding.position.z))
+
+      this.thumbSceneState.currentBuilding = currentBuilding
+      console.log(index, this.thumbSceneState.currentBuilding.name)
+    },
     handleModels (models) {
       const [gltfScene, obj] = models
       this.thumbSceneState.activeMaterial = new THREE.MeshStandardMaterial({ color: 0x666666, side: THREE.DoubleSide })
@@ -139,18 +281,25 @@ export default {
         // console.log(_.lowerCase(child.name))
         if (_.includes(['site'], _.lowerCase(child.name))) {
           this.thumbSceneState.site = child
-        } else
-        if (_.includes(['plane', 'ground'], _.lowerCase(child.name))) {
-          child.receiveShadow = true
-          this.thumbSceneState.environment.push(child)
-        } else
-        if (child.type === 'Object3D') {
-          this.thumbSceneState.buildings.push(child)
-        }else
-        if (child.type === 'Mesh') {
-          this.thumbSceneState.meshes.push(child)
+          for (let i = 0; i < this.thumbSceneState.site.children.length; i++) {
+            this.thumbSceneState.buildings.push(this.thumbSceneState.site.children[i])
+          }
         }
+        // else
+        // if (_.includes(['plane', 'ground'], _.lowerCase(child.name))) {
+        //   child.receiveShadow = true
+        //   this.thumbSceneState.environment.push(child)
+        // } else
+        // if (child.type === 'Object3D') {
+        //   this.thumbSceneState.buildings.push(child)
+        // }else
+        // if (child.type === 'Mesh') {
+        //   this.thumbSceneState.meshes.push(child)
+        // }
       })
+
+      console.log(this.thumbSceneState)
+
       gltfScene.position.x = 0
       gltfScene.position.y = 0
       gltfScene.position.z = 0
@@ -191,6 +340,6 @@ export default {
   position: relative;
   width: 150px;
   height: 150px;
-  background: red;
+  // background: yellow;
 }
 </style>

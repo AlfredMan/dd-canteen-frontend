@@ -33,6 +33,7 @@
 
     <div
     class="map-thumb"
+    @click="toggleMapActive(true)"
     :class="{
       'active': !mapActive
     }"
@@ -52,7 +53,7 @@
       }"
     id="container"
     ref="mapContainer"
-    @click="toggleMapActive(true)"
+
     >
     </div>
 
