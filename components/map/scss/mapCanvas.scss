@@ -1,3 +1,19 @@
+.map-thumb {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  // width: 120px;
+  height: auto;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+
+  &.active {
+    pointer-events: initial;
+    cursor: pointer;
+    opacity: 1;
+  }
+}
 #container {
   position: absolute;
   bottom: 0;
@@ -16,6 +32,8 @@
   transition: all 0.5s cubic-bezier(0.64, 0.01, 0.34, 1) 0s;
   transition-delay: 0.1s;
   cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
 
   &:hover {
     // transform: translateX(4%) scale(0.3);
@@ -46,6 +64,7 @@
 
   &.active {
     // canvas
+    opacity: 1;
     transition: .5s ease all;
     width: 100%;
     height: 100%;
@@ -57,6 +76,7 @@
     @include media-breakpoint-up(sm) {
   	  &.site-active {
         width: 100%;
+        width: 66.67%;
       }
       &.space-active,
       &.floor-active,
@@ -67,6 +87,7 @@
     @include media-breakpoint-up(lg) {
   	  &.site-active {
         width: 100%;
+        width: 75%;
       }
       &.space-active,
       &.floor-active,
@@ -93,4 +114,21 @@
     pointer-events: none;
   }
 
+}
+
+#thumb-container {
+  canvas {
+    // border: 1px solid red;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: translate3d(0, 0, 0);
+    z-index: 99;
+    transition: all 0.5s cubic-bezier(0.64, 0.01, 0.34, 1) 0s;
+
+    &:hover {
+      transform: translate3d(0, 0, 0) scale(1.1);
+    }
+  }
 }

@@ -44,15 +44,19 @@ export const mutations = {
     state.transition.sourceElementRect = null
   },
   setSpaces (state, payload) {
+    console.log('vuex setSpaces', payload)
     state.spaces = payload.spaces
   },
   setHire (state, payload) {
+    console.log('vuex setHire', payload)
     state.hire = payload.hire
   },
   setBuildings (state, payload) {
+    console.log('vuex setBuildings', payload)
     state.buildings = payload.buildings
   },
   setStudios (state, payload) {
+    console.log('vuex setStudios', payload)
     state.studios = _.sortBy(payload.studios, ['slug'])
   }
 }
@@ -122,6 +126,7 @@ export const actions = {
     commit('clearRouteTransitionSourceElementRect')
   },
   getMapSpaces ({ commit }) {
+    console.log('getMapSpaces...')
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const demoSpaces = spaces
@@ -131,6 +136,7 @@ export const actions = {
     })
   },
   getMapHire ({ commit }) {
+    console.log('getMapHire...')
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const demoHire = hire
@@ -140,6 +146,7 @@ export const actions = {
     })
   },
   getMapBuildings ({ commit }) {
+    console.log('getMapBuildings...')
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const demoBuildings = buildings
@@ -149,6 +156,7 @@ export const actions = {
     })
   },
   getArchitectureStudios ({ commit }) {
+    console.log('getArchitectureStudios...')
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const demoStudios = studios

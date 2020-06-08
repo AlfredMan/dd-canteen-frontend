@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import _ from 'lodash'
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
-import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js'
+// import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
+// import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 export default {
   data () {
@@ -121,9 +121,11 @@ export default {
           child.castShadow = true
           child.defaultMaterial = child.material.clone()
           this.sceneState.rayTarget.push(child)
+          // this.sceneState.buildings.push(child)
+        } else
+        if (child.type === 'Object3D') {
           this.sceneState.buildings.push(child)
         }
-        // console.log(this.sceneState.rayTarget)
       })
 
       // for (let i = 0; i < gltfScene.children.length; i++) {

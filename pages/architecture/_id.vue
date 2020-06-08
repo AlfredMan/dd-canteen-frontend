@@ -190,7 +190,7 @@ export default {
     },
     studioData () {
       // return studios[this.studio]
-      return this.$store.getters.getStudioBySlug(this.slug)
+      return this.$store.getters.getStudioBySlug(this.slug) || null
     },
     nextFour () {
       const studioArray = _.toArray(this.studios)
@@ -203,7 +203,7 @@ export default {
 
   head () {
     return {
-      title: this.studioData.title
+      title: this.studioData ? this.studioData.title : ''
     }
   },
 
