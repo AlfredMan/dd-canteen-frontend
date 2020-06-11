@@ -14,8 +14,8 @@ export default {
   data () {
     return {
       thumbSceneState: {
-        width: 200,
-        height: 200,
+        width: 250,
+        height: 250,
         container: null,
         scene: null,
         renderer: null,
@@ -289,8 +289,8 @@ export default {
 <style lang="scss" scoped="">
 #thumb-container {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   // background: yellow;
 }
 </style>
