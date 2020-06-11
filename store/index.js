@@ -3,6 +3,7 @@ import { spaces } from '~/common/spaces'
 import { hire } from '~/common/hire'
 import { buildings } from '~/common/buildings'
 import { studios } from '~/common/architecture'
+import { units } from '~/common/units'
 
 export const state = () => ({
   navigation: {
@@ -10,10 +11,37 @@ export const state = () => ({
   },
   transition: {
     step: 0,
-    delay: 500,
+    delay: 700,
     count: 0,
     sourceElement: null,
     sourceElementRect: null
+  },
+  filters: {
+    sizeBracket: [
+      '>100',
+      '100-200',
+      '201-500',
+      '501-1,000',
+      '1,001-2,000',
+      '2,001<'
+    ],
+    architect: [
+      'A6 Architects',
+      'Adam Khan Architects',
+      'Archtecture 00',
+      'Barozzi Veiga',
+      'David Kohn Architects',
+      'HNNA',
+      'Mole Architects',
+      'Selgascano'
+    ],
+    options: [
+      'Multi-purpose work space',
+      'Serviced studio',
+      'On/off office',
+      'Co-working',
+      'Ground floor space'
+    ]
   },
   studios: {},
   hire: [],
@@ -58,6 +86,19 @@ export const mutations = {
   setStudios (state, payload) {
     console.log('vuex setStudios', payload)
     state.studios = _.sortBy(payload.studios, ['slug'])
+  },
+  setSpaceFilter (state, payload) {
+    console.log('vuex setSpaceFilter', payload)
+    state.filters = payload.filters
+  },
+  setSpaceFilterOptions (state, payload) {
+    state.filters.options = payload.filterSpaceOptions
+  },
+  setSpaceFilterSizeBracket (state, payload) {
+    state.filters.sizeBracket = payload.filterSpaceSizeBracket
+  },
+  setSpaceFilterArchitect (state, payload) {
+    state.filters.architect = payload.filterSpaceArchitect
   }
 }
 
@@ -82,16 +123,19 @@ export const getters = {
   },
   getStudioBySlug: state => (slug) => {
     return state.studios.length > 0 ? state.studios.find(studios => studios.slug === slug) : null
+  },
+  getStudioByBuilding: state => (building) => {
+    return state.studios.length > 0 ? state.studios.find(studios => _.includes(_.split(studios.buildings, ' '), building)) : null
   }
 }
 
 export const actions = {
   async nuxtServerInit ({ dispatch }) {
     console.log('nuxtServerInit ++++++++++++++++++++++++++++++=')
-    await dispatch('getMapSpaces')
+    await dispatch('getArchitectureStudios')
     await dispatch('getMapHire')
     await dispatch('getMapBuildings')
-    await dispatch('getArchitectureStudios')
+    await dispatch('getMapSpaces')
   },
   updateNavigationTheme ({ commit }, context) {
     const theme = context.theme
@@ -125,13 +169,55 @@ export const actions = {
   resetRouteTransitionSourceRect ({ commit }) {
     commit('clearRouteTransitionSourceElementRect')
   },
-  getMapSpaces ({ commit }) {
+  getMapSpaces ({ commit, getters }) {
     console.log('getMapSpaces...')
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const demoSpaces = spaces
+        const demoSpaces = _.map(units, (unit) => {
+          // console.log(unit.Building)
+          // console.log(getters, getters.getBuildingBySlug(unit.Building))
+          const newUnit = {
+            title: unit.Title,
+            slug: unit.Slug,
+            images: [
+              {
+                url: getters.getBuildingBySlug(unit.Building) ? getters.getBuildingBySlug(unit.Building).url : ''
+              }
+            ],
+            floorplan: [
+              {
+                url: 'https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png'
+              }
+            ],
+            uniqueUnitReference: unit['Unique Unit Reference'],
+            building: unit.Building,
+            architect: unit.Architect,
+            floor: unit.Floor,
+            unit: unit.Unit,
+            tenant: unit.Tenant,
+            spaceType: unit['Space Type'],
+            spaceOption: unit['Space option'],
+            sizeSqFt: unit['Size Sq Ft'],
+            sizeSqM: unit['Size Sq M'],
+            sizeSqFtBracket: unit['Size Sq Ft Bracket'],
+            explantion: unit.Explantion,
+            options: unit.Options
+          }
+          // console.log('newUnit', newUnit)
+          return newUnit
+        })
+        // console.log(demoSpaces)
+
+        // const filterSpaceOptions = _.uniq(_.map(demoSpaces, space => space.options))
+        // const filterSpaceSizeBracket = _.uniq(_.map(demoSpaces, space => space.sizeSqFtBracket))
+        // const filterSpaceArchitect = _.uniq(_.map(demoSpaces, space => space.architect))
+
+        commit('setSpaces', { spaces: demoSpaces })
+        // commit('setSpaceFilterOptions', { options: filterSpaceOptions })
+        // commit('setSpaceFilterSizeBracket', { sizeBracket: filterSpaceSizeBracket })
+        // commit('setSpaceFilterArchitect', { architect: filterSpaceArchitect })
+
         resolve(demoSpaces)
-        commit('setSpaces', { spaces })
       }, 500)
     })
   },

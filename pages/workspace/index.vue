@@ -134,13 +134,60 @@
           </div>
 
           <div class="row">
-            <!-- <div class="col-12">
-              <h4>Filter Spaces</h4>
-            </div> -->
+
             <div class="col-12 row d-flex justify-content-start">
+
               <div class="col-12 col-md mb-3">
                 <div class="mb-2">
-                  <h5>Team Size</h5>
+                  <h5 class="filter-option">Size (Sq Ft)</h5>
+                </div>
+                <div class="">
+                  <div
+                  v-for="option in spaceFilters['sizeBracket']" :key="option"
+                  @click="toggleFilter('sizeBracket', option)"
+                  :class="{'active': option == filter.sizeBracket}"
+                  class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
+                  >
+                    {{option}} <span v-if="option == filter.sizeBracket">&times;</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-md mb-3">
+                <div class="mb-2">
+                  <h5 class="filter-option">Architect</h5>
+                </div>
+                <div class="">
+                  <div
+                  v-for="option in spaceFilters['architect']" :key="option"
+                  @click="toggleFilter('architect', option)"
+                  :class="{'active': option == filter.architect}"
+                  class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
+                  >
+                    {{option}} <span v-if="option == filter.architect">&times;</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-md mb-3">
+                <div class="mb-2">
+                  <h5 class="filter-option">Options</h5>
+                </div>
+                <div class="">
+                  <div
+                  v-for="option in spaceFilters['options']" :key="option"
+                  @click="toggleFilter('options', option)"
+                  :class="{'active': option == filter.options}"
+                  class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
+                  >
+                    {{option}} <span v-if="option == filter.options">&times;</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="col-12 col-md mb-3">
+                <div class="mb-2">
+                  <h5>Size</h5>
                 </div>
                 <div class="">
                   <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
@@ -191,7 +238,7 @@
                     Permenant
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
 
           </div>
@@ -201,30 +248,48 @@
               <h3>Buildings</h3>
             </div>
           </div> -->
-          <div class="row mt-5 flex-row align-items-baseline" v-for="(spaceTypeValue, spaceTypeNameKey) in allSpacesByType " :key="spaceTypeNameKey">
 
-            <div class="col-12 mb-3 d-flex justify-content-between align-items-baseline">
+
+
+
+          <!-- <div class="row mt-5 flex-row align-items-baseline" v-for="(spaceTypeValue, spaceTypeNameKey) in allSpacesByType " :key="spaceTypeNameKey"> -->
+
+            <!-- <div class="col-12 mb-3 d-flex justify-content-between align-items-baseline">
               <h3 class="text-capitalize">{{spaceTypeNameKey}}</h3>
               <nuxt-link class="h5 text-primary"
               :to="`/workspace/${getSlug(spaceTypeNameKey)}`"
               >View all {{spaceTypeNameKey}} &rarr;</nuxt-link>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-5 building" v-for="(space, index) in spaceTypeValue" v-if="index < 4" :key="space.slug">
-              <transition-link :to="`/space/${space.slug}`">
-                <div class="">
-                  <lazy-image
-                  :src="space.url"
-                  :w="3000"
-                  :h="2400"
-                  :custom="'fit=thumb&f=center'"
-                  />
-                </div>
-                <h5 class="mt-4">{{space.title}}</h5>
-                <p>{{space.description}}</p>
-              </transition-link>
+            </div> -->
+            <div class="row mt-5">
+              <div class="col-12">
+                <h4>Find your space</h4>
+              </div>
+              <!-- <div class="col-12">
+                <h5>View all spaces</h5>
+              </div> -->
+              <div class="col-12 col-md-6 col-lg-3 mb-5 building"
+              v-if="filteredSpaces.length > 0"
+              v-for="(space, index) in filteredSpaces"
+              :key="space.slug">
+                <transition-link :to="`/space/${space.slug}`">
+                  <div class="">
+                    <lazy-image
+                    :src="space.images[0].url"
+                    :w="3000"
+                    :h="2400"
+                    :custom="'fit=thumb&f=center'"
+                    />
+                  </div>
+                  <h5 class="mt-4">{{space.title}}</h5>
+                  <p>This is a placeholder short description of a unit</p>
+                </transition-link>
+              </div>
+              <div class="col-12 pb-5" v-if="filteredSpaces.length < 1 && allSpaces.length > 0">
+                <h4 class="my-5" style="opacity:0.5">No matching units</h4>
+              </div>
             </div>
 
-          </div>
+          <!-- </div> -->
 
         </div>
       </div>
@@ -593,7 +658,12 @@ export default {
   data () {
     return {
       spaceActive: false,
-      mapActive: false
+      mapActive: false,
+      filter: {
+        sizeBracket: null,
+        architect: null,
+        options: null
+      }
     }
   },
 
@@ -614,18 +684,46 @@ export default {
     //     return b
     //   })
     // },
-    allSpaces () {
-      return this.$store.state.spaces
-    },
     allSpacesByType () {
       return _.groupBy(this.allSpaces, 'type')
     },
     allBuildings () {
       return this.$store.state.buildings
+    },
+    allSpaces () {
+      return this.$store.state.spaces
+    },
+    spaceFilters () {
+      return this.$store.state.filters
+    },
+    filteredSpaces () {
+      return _.filter(this.$store.state.spaces, (space) => {
+        let match = 0
+        if (this.filter.sizeBracket) {
+          match = space.sizeSqFtBracket == this.filter.sizeBracket ? match+1 : -100
+        }
+        if (this.filter.architect) {
+          match = space.architect == this.filter.architect ? match+1 : -100
+        }
+        if (this.filter.options) {
+          match = space.options == this.filter.options ? match+1 : -100
+        }
+        return match >= 0
+      })
     }
   },
 
   methods: {
+    toggleFilter (filterOption, value) {
+      if (this.filter[filterOption] == value) {
+        this.filter[filterOption] = null
+      } else {
+        this.filter[filterOption] = value
+      }
+    },
+    getTitleCase (string) {
+      return _.startCase(string)
+    },
     getSlug (string) {
       return _.kebabCase(string)
     },

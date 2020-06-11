@@ -6,7 +6,7 @@
 
 
 
-      <svg id="arrow-tail" width="670px" height="670px" viewBox="0 0 670 670" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <svg id="transition-arrow-tail" class="transition-arrow" width="670px" height="670px" viewBox="0 0 670 670" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g id="Plan" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
               <g id="Group-4">
                   <g id="Group-2">
@@ -17,7 +17,7 @@
           </g>
       </svg>
 
-      <svg id="arrow-head"width="670px" height="670px" viewBox="0 0 670 670" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <svg id="transition-arrow-head" class="transition-arrow" width="670px" height="670px" viewBox="0 0 670 670" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g id="Plan" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
               <g id="Group-5">
                   <g id="Group-3">
@@ -67,7 +67,8 @@ export default {
     }
   },
   mounted () {
-    // this.setupTimeline()
+    this.resetBoxStyle()
+    // this.tl.pause()
   },
   methods: {
     resetBoxStyle () {
@@ -82,7 +83,7 @@ export default {
     },
     setupTimeline () {
       const inDelay = 0
-      const inDur = this.transitionDelay/1000 * 2
+      const inDur = this.transitionDelay/1000
       const fadeDur = 0.1
       const outDelay = 0.1
       const outDur = (inDur + outDelay)
@@ -96,7 +97,9 @@ export default {
       this.tl = gsap.timeline()
       this.tl.pause()
 
-      let rect = srcRect ? srcRect : {
+      const hasSrcRect = srcRect ? true : false
+
+      let rect = hasSrcRect ? srcRect : {
         top: 0,
         left: 0,
         width: '0%',
@@ -104,10 +107,21 @@ export default {
       }
       let boxPos = {
         top: rect.top || 0,
-        left: rect.left || 0 || 0,
+        left: rect.left || -document.getElementById('transition-arrow-head').clientWidth - 50,
         width: rect.width || '0%',
-        height: rect.height || '100%'
+        height: rect.height || '100%',
       }
+
+      this.tl.set(['#transition-arrow-head'], {
+        opacity: function () {
+          return hasSrcRect ? 0 : 1
+        },
+      })
+      this.tl.set(['#transition-arrow-tail'], {
+        opacity: function () {
+          return 0
+        },
+      })
 
       this.tl.set('.box', {
         autoAlpha:0,
@@ -144,14 +158,19 @@ export default {
         ease: "power3.inOut"
       }, "boxEnter")
 
-
+      this.tl.set(['#transition-arrow-head'], {
+        opacity: 1
+      })
 
       this.tl.to('.box', {
         // autoAlpha:0,
         delay: outDelay,
         duration: outDur,
         top: 0,
-        left: '100%',
+        // left: '100%',
+        left: () => {
+          return window.innerWidth + document.getElementById('transition-arrow-tail').clientWidth + 50
+        },
         force3D: true,
         // background: 'blue',
         ease: "power3.in"
@@ -169,7 +188,7 @@ export default {
     },
     playLeave () {
       this.setupTimeline()
-      this.tl.seek("boxLeave")
+      this.tl.seek("boxPreEnter")
       this.tl.play()
     },
     // getSourceElement () {
@@ -201,7 +220,7 @@ export default {
     // left: 0;
     background: $primary;
     // backdrop-filter: blur(50px);
-    svg#arrow-tail {
+    svg#transition-arrow-tail {
       display: block;
       position: absolute;
       top: 0;
@@ -210,9 +229,9 @@ export default {
       height: 100vh;
       width: 100vh;
       margin-right: -10px;
-      display: none;
+      // display: none;
     }
-    svg#arrow-head {
+    svg#transition-arrow-head {
       display: block;
       position: absolute;
       top: 0;
@@ -221,7 +240,7 @@ export default {
       height: 100vh;
       width: 100vh;
       margin-left: -10px;
-      display: none;
+      // display: none;
     }
   }
 }

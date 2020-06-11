@@ -14,8 +14,8 @@ export default {
   data () {
     return {
       thumbSceneState: {
-        width: 150,
-        height: 150,
+        width: 200,
+        height: 200,
         container: null,
         scene: null,
         renderer: null,
@@ -58,57 +58,6 @@ export default {
   },
   methods: {
     init () {
-      // this.thumbSceneState.container = this.$refs.thumbContainer
-      // var scene = new THREE.Scene();
-      // var camera = new THREE.PerspectiveCamera( 75, this.thumbSceneState.width / this.thumbSceneState.height, 0.1, 1000 );
-      //
-      // var renderer = new THREE.WebGLRenderer();
-      // renderer.setSize( this.thumbSceneState.width, this.thumbSceneState.height );
-      // this.thumbSceneState.container.appendChild( renderer.domElement );
-      //
-      // var geometry = new THREE.BoxGeometry();
-      // var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-      // var cube = new THREE.Mesh( geometry, material );
-      // scene.add( cube );
-      //
-      // camera.position.z = 1.5;
-      //
-      // var animate = function () {
-      //   requestAnimationFrame( animate );
-      //
-      //   cube.rotation.x += 0.01;
-      //   cube.rotation.y += 0.01;
-      //
-      //   renderer.render( scene, camera );
-      // };
-      //
-      // animate();
-
-      // this.thumbSceneState.container = this.$refs.thumbContainer
-      // var scene = new THREE.Scene();
-			// var camera = new THREE.PerspectiveCamera( 75, this.thumbSceneState.width / this.thumbSceneState.height, 0.1, 1000 );
-      //
-			// var renderer = new THREE.WebGLRenderer();
-			// renderer.setSize( this.thumbSceneState.width, this.thumbSceneState.height );
-			// this.thumbSceneState.container.appendChild( renderer.domElement );
-      //
-			// var geometry = new THREE.BoxGeometry();
-			// var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-			// var cube = new THREE.Mesh( geometry, material );
-			// scene.add( cube );
-      //
-			// camera.position.z = 5;
-      //
-			// var animate = function () {
-			// 	requestAnimationFrame( animate );
-      //
-			// 	cube.rotation.x += 0.01;
-			// 	cube.rotation.y += 0.01;
-      //
-			// 	renderer.render( scene, camera );
-			// };
-      //
-			// animate();
       this.loadModel().then((models) => {
         this.initThree()
         this.camera()
@@ -264,13 +213,15 @@ export default {
       let currentBuilding = this.thumbSceneState.buildings[index]
       currentBuilding.visible = true
 
-      this.thumbSceneState.camera.position.x = currentBuilding.position.x - 15
-      this.thumbSceneState.camera.position.z = currentBuilding.position.z - 15
-      this.thumbSceneState.camera.position.y = currentBuilding.position.y + 5
-      this.thumbSceneState.camera.lookAt(new THREE.Vector3(currentBuilding.position.x,currentBuilding.position.y + 1.5,currentBuilding.position.z))
+      if (this.thumbSceneState.camera) {
+        this.thumbSceneState.camera.position.x = currentBuilding.position.x - 15
+        this.thumbSceneState.camera.position.z = currentBuilding.position.z - 15
+        this.thumbSceneState.camera.position.y = currentBuilding.position.y + 5
+        this.thumbSceneState.camera.lookAt(new THREE.Vector3(currentBuilding.position.x,currentBuilding.position.y + 1.5,currentBuilding.position.z))
+      }
 
       this.thumbSceneState.currentBuilding = currentBuilding
-      console.log(index, this.thumbSceneState.currentBuilding.name)
+      // console.log(index, this.thumbSceneState.currentBuilding.name)
     },
     handleModels (models) {
       const [gltfScene, obj] = models
@@ -298,7 +249,7 @@ export default {
         // }
       })
 
-      console.log(this.thumbSceneState)
+      // console.log(this.thumbSceneState)
 
       gltfScene.position.x = 0
       gltfScene.position.y = 0
@@ -338,8 +289,8 @@ export default {
 <style lang="scss" scoped="">
 #thumb-container {
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   // background: yellow;
 }
 </style>

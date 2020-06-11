@@ -8,6 +8,9 @@
             <div class="row">
               <div class="col-12 col-md-8">
                 <h1>{{space.title}}</h1>
+                <!-- <h4>
+                  <span>Building {{space.building}}</span>, <span>{{getFloorLabel(space.floor)}}</span>, <span>Unit {{space.unit}}</span>
+                </h4> -->
               </div>
             </div>
           </div>
@@ -22,7 +25,14 @@
               <div class="row no-gutters d-flex align-items-start justify-content-between">
                 <div class="col-12 col-md-8">
                   <lazy-image
-                  :src="space.url"
+                  :src="space.images[0].url"
+                  :w="3000"
+                  :h="2000"
+                  />
+                </div>
+                <div class="col-12 col-md-8">
+                  <lazy-image
+                  :src="space.floorplan[0].url"
                   :w="3000"
                   :h="2000"
                   />
@@ -30,9 +40,9 @@
                 <div class="col-12">
 
                 </div>
-                <div class="col-12 col-md-6 my-4">
+                <!-- <div class="col-12 col-md-6 my-4">
                   <h4>{{space.description}}</h4>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -47,44 +57,35 @@
                 </div>
               </div>
               <div class="row d-flex align-items-start justify-content-start">
-                <div class="col-12 col-md-3 mb-4">
-                  <h6 class="mb-1">Team size</h6>
+                <div class="col-12 col-md-2 mb-4">
+                  <h6 class="mb-1">Size</h6>
                   <div class="tags">
                     <div class="tag">
-                      2–4
-                    </div>
-                    <div class="tag">
-                      5–10
+                      {{space['sizeSqFtBracket']}}
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-3 mb-4">
+                <div class="col-12 col-md-2 mb-4">
+                  <h6 class="mb-1">Type</h6>
+                  <div class="tags">
+                    <div class="tag">
+                      {{space.spaceType}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-2 mb-4">
                   <h6 class="mb-1">Option</h6>
                   <div class="tags">
                     <div class="tag">
-                      Private Space
-                    </div>
-                    <div class="tag">
-                      Permenant
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12">
-
-                </div>
-                <div class="col-12 col-md-3 mb-4">
-                  <h6 class="mb-1">Features</h6>
-                  <div class="tags">
-                    <div class="tag">
-                      Step Free
+                      {{space.options}}
                     </div>
                   </div>
                 </div>
                 <div class="col-12 col-md-3 mb-4">
-                  <h6 class="mb-1">Facilities</h6>
+                  <h6 class="mb-1">Architect</h6>
                   <div class="tags">
                     <div class="tag">
-                      Material Lab
+                      {{space.architect}}
                     </div>
                   </div>
                 </div>
@@ -94,7 +95,7 @@
         </div>
 
 
-        <div class="-container-fluid bg-white">
+        <!-- <div class="-container-fluid bg-white">
           <div class="px-0 px-md-4">
             <div class="container-fluid py-5">
               <div class="row mb-4">
@@ -122,46 +123,33 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div class="-container-fluid bg-white">
           <div class="px-0 px-md-4">
             <div class="container-fluid py-5 pb-3">
               <div class="row">
                 <div class="col-12 col-md-8">
-                  <h3>Architecture</h3>
+                  <h3>{{architect.title}}</h3>
                 </div>
               </div>
               <div class="row d-flex align-items-start justify-content-between">
                 <div class="col-12 col-md-6 my-4">
-                  <h4>The heart and soul of our locations, these lounges are living room-style spaces designed for creativity, comfort and productivity.</h4>
+                  <p>{{architect.buildingsCopy}}</p>
+                  <h5>{{architect.title}} &rarr;</h5>
                 </div>
+
                 <div class="col-12">
 
                 </div>
-                <div class="col-12 col-md-6 mb-4">
-                  <div class="row d-flex align-items-end justify-content-end">
-                    <div class="col-12 col-md-12">
-                      <lazy-image
-                      :src="'https://images.ctfassets.net/7p1ysxjarsp5/4D5VxGyVWyk1CZZ8DAoaF6/75189eeb8ae136cdb136d566b648d589/KDN_Design_District_B3_LR.jpeg'"
-                      :w="3000"
-                      :h="2000"
-                      :custom="'fit=thumb'"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12">
 
-                </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-4 mb-4">
                   <lazy-image
                   class=""
-                  :src="'https://images.ctfassets.net/7p1ysxjarsp5/5Qu2qJOxKsVJyq14IByYXQ/eb84ad1acc0500e3946e6bea0f905bd1/AdamKahn-1A-Architect.jpg'"
+                  :src="architect.imagesPractice[0].url"
                   :w="2000"
                   :h="2000"
                   />
-                  <h5>Adam Khan Architect &rarr;</h5>
                 </div>
               </div>
             </div>
@@ -178,8 +166,11 @@
                   <div class="p-4 bg-grey">
                     <div class="py-2">
                       <h2>{{space.title}}</h2>
-                      <h3>Building: {{space.building}}<br>
-                      Level: {{space.level}}</h3>
+                      <h3>
+                        Building {{space.building}}<br>
+                        {{getFloorLabel(space.floor)}}<br>
+                        Unit {{space.unit}}
+                      </h3>
                     </div>
                     <div class="mt-4">
                       <space-form></space-form>
@@ -278,6 +269,9 @@ export default {
     },
     space () {
       return this.$store.getters.getSpaceBySlug(this.slug)
+    },
+    architect () {
+      return this.$store.getters.getStudioByBuilding(this.space.building)
     }
     // space () {
     //   if (this.$store.spaces && this.slug) {
@@ -295,6 +289,12 @@ export default {
   },
 
   methods: {
+    getFloorLabel (floor) {
+      if (+floor == 0) {
+        return 'Ground floor'
+      }
+      return `Floor ${floor}`
+    },
     openSpace () {
       this.spaceActive = true
     },
