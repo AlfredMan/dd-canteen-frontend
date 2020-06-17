@@ -9,6 +9,7 @@ export default {
       sceneState: {
         // model: '/model/dd-site-BCD-only.obj',
         gltfs: [
+          '/model/DD-all-notex-01.glb',
           // '/model/DD-all-baked.gltf',
           '/model/DD-all-baked-16-no-texture.gltf',
           // '/model/DD-all-baked-16-no-texture-has-tags.gltf',
