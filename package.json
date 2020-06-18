@@ -25,6 +25,7 @@
     "@nuxtjs/sitemap": "^2.1.0",
     "contentful": "^7.14.2",
     "contentful-rich-text-vue-renderer": "^1.1.5",
+    "cookie-universal-nuxt": "^2.1.4",
     "lazysizes": "^5.2.0",
     "moment": "^2.24.0",
     "nuxt": "^2.10.2",
