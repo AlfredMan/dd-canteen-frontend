@@ -68,34 +68,42 @@ export default {
       this.sceneState.isLoaded = true
     },
     initThree () {
-      this.sceneState.container = this.$refs.mapContainer
-      this.sceneState.scene = new THREE.Scene()
-      this.sceneState.raycaster = new THREE.Raycaster()
-      this.sceneState.mouse = new THREE.Vector2()
+      const container = this.$refs.mapContainer
+      const scene = new THREE.Scene()
+      const raycaster = new THREE.Raycaster()
+      const mouse = new THREE.Vector2()
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+      renderer.setSize(window.innerWidth, window.innerHeight)
+      renderer.domElement.style.cssText = 'position:absolute;top:0px;left:0px;z-index:10;background:transparent;width:100%;height:100%'
+      renderer.setPixelRatio(window.devicePixelRatio)
+      renderer.shadowMap.enabled = true
+      renderer.gammaOutput = true
+      renderer.gammaFactor = 2.2
+      container.appendChild(renderer.domElement)
+
+      this.sceneState.container = container
+      this.sceneState.scene = scene
+      this.sceneState.raycaster = raycaster
+      this.sceneState.mouse = mouse
+      this.sceneState.renderer = renderer
 
       this.camera()
       this.lights()
-
-      this.sceneState.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-      this.sceneState.renderer.setSize(window.innerWidth, window.innerHeight)
-      this.sceneState.renderer.domElement.style.cssText = 'position:absolute;top:0px;left:0px;z-index:10;background:transparent;width:100%;height:100%'
-      this.sceneState.renderer.setPixelRatio(window.devicePixelRatio)
-      this.sceneState.renderer.shadowMap.enabled = true
-      this.sceneState.renderer.gammaOutput = true
-      this.sceneState.renderer.gammaFactor = 2.2
-      this.sceneState.container.appendChild(this.sceneState.renderer.domElement)
     },
     camera () {
-      this.sceneState.cameraDefaultPosition = new THREE.Vector3(0, 0, 0)
-      this.sceneState.cameraDefaultPosition.x = 25
-      this.sceneState.cameraDefaultPosition.y = 30
-      this.sceneState.cameraDefaultPosition.z = 25
+      const cameraDefaultPosition = new THREE.Vector3(0, 0, 0)
+      cameraDefaultPosition.x = 25
+      cameraDefaultPosition.y = 30
+      cameraDefaultPosition.z = 25
 
-      this.sceneState.camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.01, 10000)
-      this.sceneState.camera.position.x = this.sceneState.cameraDefaultPosition.x
-      this.sceneState.camera.position.z = this.sceneState.cameraDefaultPosition.z
-      this.sceneState.camera.position.y = this.sceneState.cameraDefaultPosition.y
-      this.sceneState.camera.lookAt(new THREE.Vector3(0, 10, 0))
+      const camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.01, 10000)
+      camera.position.x = cameraDefaultPosition.x
+      camera.position.z = cameraDefaultPosition.z
+      camera.position.y = cameraDefaultPosition.y
+      camera.lookAt(new THREE.Vector3(0, 10, 0))
+
+      this.sceneState.cameraDefaultPosition = cameraDefaultPosition
+      this.sceneState.camera = camera
     },
     lights () {
       const light = new THREE.AmbientLight(0xFFFFFF, 1) // soft white light
