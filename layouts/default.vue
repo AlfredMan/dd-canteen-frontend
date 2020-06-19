@@ -28,6 +28,8 @@
 
     <app-footer />
 
+    <cookies />
+
   </div>
 </template>
 
@@ -35,11 +37,13 @@
 import NewsletterForm from '../components/forms/Newsletter.vue'
 import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
+import Cookies from '../components/Cookies.vue'
 export default {
   components: {
     NewsletterForm,
     AppHeader,
-    AppFooter
+    AppFooter,
+    Cookies
   },
   mounted () {
     // From testing, without a brief timeout, it won't work.
@@ -51,7 +55,7 @@ export default {
           console.log(document.querySelector(this.$route.hash).offsetTop - 50)
           window.scrollTo({ top: document.querySelector(this.$route.hash).offsetTop - 50, behavior: 'smooth' })
         })
-      }  
+      }
     }
   }
 }

@@ -55,7 +55,11 @@ export default {
     '~/plugins/filters',
     '~/plugins/vue-lazysizes.js',
     // '~/plugins/ga.js',
-    '~/plugins/global.js'
+    '~/plugins/global.js',
+    {
+      src: '~/plugins/nuxt-client-init.js',
+      ssr: false
+    }
   ],
 
   render: {
@@ -122,7 +126,8 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/sitemap',
-    '@nuxtjs/google-gtag'
+    '@nuxtjs/google-gtag',
+    'cookie-universal-nuxt'
   ],
 
   'google-gtag': {

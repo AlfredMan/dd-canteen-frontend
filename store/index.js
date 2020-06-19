@@ -1,101 +1,42 @@
-import Vue from 'vue'
-
-import { CancelToken } from 'axios'
-import { validFeeds } from '~/common/api'
-import { lazy } from '~/common/utils'
-
+// import Vue from 'vue'
 // Learn more on https://nuxtjs.org/guide/vuex-store
 
 // =================================================
 // State
 // =================================================
 export const state = () => {
-  const s = {
-    items: {
-      /* [id: number]: Item */
-    },
-    users: {
-      /* [id: string]: User */
-    },
-    feeds: {
-      /* [page: number] : [ [id: number] ] */
-    }
+  return {
+    cookieActive: false
   }
-
-  validFeeds.forEach((feed) => {
-    s.feeds[feed] = {}
-  })
-
-  return s
 }
 
 // =================================================
 // Mutations
 // =================================================
 export const mutations = {
-  SET_FEED: (state, { feed, ids, page }) => {
-    Vue.set(state.feeds[feed], page, ids)
-  },
-  SET_ITEM: (state, { item }) => {
-    if (item) {
-      Vue.set(state.items, item.id, item)
-    }
-  },
-  SET_ITEMS: (state, { items }) => {
-    items.forEach((item) => {
-      if (item) {
-        Vue.set(state.items, item.id, item)
-      }
-    })
-  },
-  SET_USER: (state, { id, user }) => {
-    Vue.set(state.users, id, user || false) /* false means user not found */
+  COOKIE_IS_ACTIVE: (state) => {
+    state.cookieActive = true
   }
 }
 // =================================================
 // Actions
 // =================================================
 export const actions = {
-  FETCH_FEED ({ commit, state }, { feed, page, prefetch }) {
-    // Don't priorotize already fetched feeds
-    if (state.feeds[feed][page] && state.feeds[feed][page].length) {
-      prefetch = true
+  // COOKIE_FOUND ({ commit, state }) {
+  //   commit('COOKIE_IS_ACTIVE')
+  // },
+  COOKIE_CHECK ({ commit, state }) {
+    console.log('COOKIE_CHECK')
+    const cookieRes = this.$cookies.get('DD_CP')
+    if (cookieRes && +cookieRes === 1) {
+      commit('COOKIE_IS_ACTIVE')
     }
-    if (!prefetch) {
-      if (this.feedCancelSource) {
-        this.feedCancelSource.cancel(
-          'priorotize feed: ' + feed + ' page: ' + page
-        )
-      }
-      this.feedCancelSource = CancelToken.source()
-    }
-    return lazy(
-      (items) => {
-        const ids = items.map(item => item.id)
-        commit('SET_FEED', { feed, ids, page })
-        commit('SET_ITEMS', { items })
-      },
-      () =>
-        this.$axios.$get(`/${feed}?page=${page}`, {
-          cancelToken: this.feedCancelSource && this.feedCancelSource.token
-        }),
-      (state.feeds[feed][page] || []).map(id => state.items[id])
-    )
   },
-
-  FETCH_ITEM ({ commit, state }, { id }) {
-    return lazy(
-      item => commit('SET_ITEM', { item }),
-      () => this.$axios.$get(`/item/${id}`),
-      Object.assign({ id, loading: true, comments: [] }, state.items[id])
-    )
-  },
-
-  FETCH_USER ({ state, commit }, { id }) {
-    return lazy(
-      user => commit('SET_USER', { id, user }),
-      () => this.$axios.$get(`/user/${id}`),
-      Object.assign({ id, loading: true }, state.users[id])
-    )
+  COOKIE_ACCEPT ({ commit, state }) {
+    this.$cookies.set('DD_CP', 1, {
+      path: '/',
+      maxAge: 60 * 60 * 24 * 30
+    })
+    commit('COOKIE_IS_ACTIVE')
   }
 }
