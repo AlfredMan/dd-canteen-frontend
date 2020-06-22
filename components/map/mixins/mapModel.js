@@ -9,6 +9,9 @@ export default {
       sceneState: {
         // model: '/model/dd-site-BCD-only.obj',
         gltfs: [
+          '/model/DD-all-baked-tex-fixb2-fromfbx.glb',
+          '/model/DD-all-baked-tex-fixb2.glb',
+          '/model/DD-all-baked-tex.glb',
           '/model/DD-all-baked-tex-B-alphafix.glb',
           '/model/DD-all-baked-tex-B.gltf',
           '/model/DD-all-baked-tex-B.glb',
@@ -150,13 +153,24 @@ export default {
       //   }
       // }
 
+      for (let i = 0; i < this.sceneState.buildings.length; i++) {
+        const b = this.sceneState.buildings[i]
+        console.log(b.name)
+        if (b.name == 'B2') {
+          const m = b.children[1].material
+          console.log(b.children[1].material)
+          m.roughness = 0.2
+          m.metalness = 0.9
+          // m.wireframe = true
+        }
+      }
       // console.log(this.sceneState.rayTarget)
 
       // this.addModel(gltfScene)
       // this.addModel(object)
       // obj.scale.set(0.1, 0.1, 0.1)
-      // obj.position.x = -2.5
-      // obj.position.z = 4
+      gltfScene.position.x = -2.5
+      gltfScene.position.z = 4
       // // this.sceneState.targetMesh = obj
       // this.sceneState.scene.add(obj)
 
