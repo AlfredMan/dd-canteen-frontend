@@ -35,6 +35,8 @@
   opacity: 0;
   pointer-events: none;
 
+  overflow: hidden;
+
   &:hover {
     // transform: translateX(4%) scale(0.3);
     transition-delay: 0;
@@ -93,6 +95,7 @@
       &.floor-active,
       &.building-active {
         width: 75%;
+        width: 66.67%;
       }
   	}
 
