@@ -6,15 +6,12 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12 col-md-8">
-              <h1>A home for creators</h1>
+              <h1>Find your work space</h1>
             </div>
           </div>
-          <div class="row d-flex align-items-start justify-content-between">
+          <!-- <div class="row d-flex align-items-start justify-content-between">
             <div class="col-12 col-md-5 mb-5">
-              <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering affordable rent, flexible leases and work spaces purpose-built for creative disciplines.</h4> -->
               <h4>Rent a desk, a studio, a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</h4>
-              <!-- <h4>Design District will provide 150,000 sq ft of permanent workspace for everyone for London’s designers makers and creators. A place for total focus, shared stories and resources, new connections and collaboration. </h4>
-              <h4>Rent a desk, a studio,  a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</h4> -->
               <a href="#become-a-tenant" class="btn btn btn-lg btn-primary mt-3">Get in touch</a>
             </div>
             <div class="col-12 col-md-6">
@@ -28,112 +25,23 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
 
     <!--  -->
-    <div class="-container-fluid bg-primary bg-primary d-none">
-      <div class="row- -pt-3 px-0 px-md-4 py-0 py-md-2">
-        <div class="container-fluid py-5">
-          <div class="row -mb-5">
-            <div class="col-12 col-md-6 mb-5">
-              <h2>Find a work space</h2>
-              <h4>Rent a desk, a studio,  a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</h4>
-              <!-- <br> -->
-              <h3>Flexible tenancies</h3>
-              <p>Rent work spaces on short or long leases made to be flexible. Grow the size of your studio along with your business.</p>
-              <!-- <br> -->
-              <!-- <h3>What we offer: </h3>
-              <ul class="h6">
-                <li>A desk to 1,500 sq. ft studio space</li>
-                <li>Flexible tenancy agreements</li>
-                <li>High speed wi-fi connection</li>
-                <li>Integrated security across the district and in your building </li>
-                <li>24-hour access to your building with your fob</li>
-                <li>Access to creative industry events</li>
-                <li>Bookable workshop spaces and meeting rooms</li>
-              </ul> -->
-              <a href="#become-a-tenant" class="btn btn btn-lg btn-dark mt-3">Join Design District</a>
-              <!-- <p>Want something smaller?</p>
-              <router-link to="/the-club" class="h5 text-primary">
-                Join The Club &rarr;
-              </router-link> -->
-            </div>
-            <div class="col-12 col-md-1" />
-            <div class="col-12 col-md-5">
-              <lazy-image
-              :src="'https://images.ctfassets.net/7p1ysxjarsp5/6rHoxeVj26VyAX2odQiUB7/d0b8111acc6b6e4123d4ab8c6ebcf1ab/RoofTerrace.jpg'"
-              :w="1000"
-              :h="1200"
-              :custom="'fit=thumb'"
-              />
-            </div>
-          </div>
 
-          <!-- <div class="row d-flex align-items-end- justify-content-end-">
-            <div class="col-12 col-md-6 col-lg-4">
-              <h4>Flexible tenancies</h4>
-              <p>Rent an office or workshop studio for three months or a year. Our studio tenancy agreements are made to be flexible. Grow the size of your studio along with your business. </p>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-              <h4>What we offer: </h4>
-              <ul>
-                <li>200 to 1,500 sq. ft studio space</li>
-                <li>High speed wi-fi connection</li>
-                <li>Integrated security across the district and in your building</li>
-                <li>24-hour access to your building with your fob </li>
-                <li>Access to three free events per year</li>
-                <li>Year round start-up and business support</li>
-                <li>Flexible tenancy agreements</li>
-                <li>Available with rental subsidy </li>
-              </ul>
-              <p>Want something smaller? <a href="#">Join The Club &rarr;</a></p>
-            </div>
-          </div> -->
-
-          <!-- <div class="row d-flex align-items-end justify-content-between">
-            <div class="col-12 col-md-4">
-              <h3>Flexible tenancies</h3>
-              <p>Rent an office or workshop studio for three months or a year. Our studio tenancy agreements are made to be flexible. Grow the size of your studio along with your business. </p>
-
-              <h3>What we offer: </h3>
-              <ul class="h6">
-                <li>200 to 1,500 sq. ft studio space</li>
-                <li>High speed wi-fi connection</li>
-                <li>Integrated security across the district and in your building</li>
-                <li>24-hour access to your building with your fob </li>
-                <li>Access to three free events per year</li>
-                <li>Year round start-up and business support</li>
-                <li>Flexible tenancy agreements</li>
-                <li>Available with rental subsidy </li>
-              </ul>
-              <p>Want something smaller?</p>
-              <a href="#" class="h5 text-primary">Join The Club &rarr;</a>
-            </div>
-            <div class="col-12 col-md-8">
-              <div class="row d-flex align-items-end justify-content-end">
-                <div class="col-12 col-md-7">
-                  <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/1eLvovl1dCbtnZvQ5f7EEM/09e2e8afdb9cefe11c793ce446ee7e50/KDN_Design_District_C1_190603_LR.jpeg?w=1000&h=1200&fm=jpg&q=80&fit=thumb" alt="">
-                </div>
-              </div>
-            </div>
-          </div> -->
-        </div>
-      </div>
-    </div>
     <!--  -->
     <div class="-container-fluid bg-white">
       <div class="-row pb-5 pt-3 px-0 px-md-4 py-0 py-md-2">
         <div class="container-fluid py-5">
 
-          <div class="row mb-4">
+          <!-- <div class="row mb-4">
             <div class="col-12 col-md-6">
-              <!-- <h2>Available Spaces</h2> -->
               <h2>Find your work&nbsp;space</h2>
             </div>
-          </div>
+          </div> -->
 
           <div class="row">
 
@@ -186,12 +94,6 @@
                   </div>
                 </div>
               </div>
-
-              <div class="col-12 col-md-12 mb-3 -d-flex-align-items-center mt-5">
-                <nuxt-link :to="'/workspace/filter'" class="btn btn-lg btn-primary">Start &rarr;</nuxt-link>
-              </div>
-
-
 
               <!-- <div class="col-12 col-md mb-3">
                 <div class="mb-2">
@@ -268,22 +170,21 @@
               :to="`/workspace/${getSlug(spaceTypeNameKey)}`"
               >View all {{spaceTypeNameKey}} &rarr;</nuxt-link>
             </div> -->
-
-
-
-
-            <!-- <div class="row mt-5">
+            <div class="row mt-5">
               <div class="col-12">
                 <h4>Find your space</h4>
               </div>
+              <!-- <div class="col-12">
+                <h5>View all spaces</h5>
+              </div> -->
               <div class="col-12 col-md-6 col-lg-3 mb-5 building"
               v-if="filteredSpaces.length > 0"
-              v-for="(space, index) in filteredSpaces"
+              v-for="(space, index) in allBuildings"
               :key="space.slug">
-                <transition-link :to="`/space/${space.slug}`">
+                <transition-link :to="`/workspace/building/${space.slug}`">
                   <div class="">
                     <lazy-image
-                    :src="space.images[0].url"
+                    :src="space.url"
                     :w="3000"
                     :h="2400"
                     :custom="'fit=thumb&f=center'"
@@ -293,10 +194,10 @@
                   <p>This is a placeholder short description of a unit</p>
                 </transition-link>
               </div>
-              <div class="col-12 pb-5" v-if="filteredSpaces.length < 1 && allSpaces.length > 0">
+              <div class="col-12 pb-5" v-if="allBuildings.length < 1 && allSpaces.length > 0">
                 <h4 class="my-5" style="opacity:0.5">No matching units</h4>
               </div>
-            </div> -->
+            </div>
 
           <!-- </div> -->
 
@@ -317,14 +218,13 @@
           <div class="row">
             <div class="col-12 col-md-5">
               <h4>Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.</h4>
-              <!-- <a href="#" class="text-primary">View all architects &rarr;</a> -->
-              <nuxt-link :to="'/workspace/services-facilities'" class="btn btn-lg btn-primary">View all &rarr;</nuxt-link>
+            <!-- <a href="#" class="text-primary">View all architects &rarr;</a> -->
             </div>
           </div>
         </div>
       </div>
 
-      <div class="row no-gutters d-flex align-items-start justify-content-between bg-white text-black" v-if="false">
+      <div class="row no-gutters d-flex align-items-start justify-content-between bg-white text-black">
         <!-- <div class="col-12">
           <h3>Workshops</h3>
         </div> -->
@@ -347,7 +247,7 @@
 
         <!-- <div class="col-12 col-md-1 order-md-2" /> -->
 
-        <!-- <div class="col-12 col-md-7 px-0">
+        <div class="col-12 col-md-7 px-0">
           <div class="px-0 px-md-4 py-4 pb-5 py-md-5">
             <div class="col-12">
               <h3>Workshops</h3>
@@ -355,6 +255,8 @@
 
               <div v-if="false" class="row mt-5">
                 <div class="col-12 col-md-6 col-lg-3 mb-4">
+                  <!-- <h5>Onsite Tools</h5> -->
+
                   <h5>Wood workshop </h5>
                   <ul class="h6">
                     <li>Axminster bandsaw</li>
@@ -405,10 +307,10 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
 
-      <div class="row no-gutters d-flex align-items-start justify-content-between" v-if="false">
+      <div class="row no-gutters d-flex align-items-start justify-content-between">
         <!-- <div class="col-12 col-md-6" /> -->
         <div class="col-12 col-md-7 mb-0">
           <!-- <div class="row d-flex align-items-end justify-content-end">
@@ -446,7 +348,7 @@
         </div> -->
       </div>
 
-      <div class="row no-gutters d-flex align-items-start justify-content-between bg-white text-black" v-if="false">
+      <div class="row no-gutters d-flex align-items-start justify-content-between bg-white text-black">
         <div class="col-12 col-md-5 mb order-md-2">
           <!-- <div class="row d-flex align-items-end justify-content-end">
             <div class="col-12 col-md-12 px-0">
@@ -519,7 +421,7 @@
         </div> -->
       </div>
 
-      <div class="row no-gutters d-flex align-items-start justify-content-between" v-if="false">
+      <div class="row no-gutters d-flex align-items-start justify-content-between">
         <div class="col-12 col-md-7 mb-">
           <!-- <div class="row d-flex align-items-end justify-content-end">
             <div class="col-12 col-md-12 px-0">
@@ -558,7 +460,7 @@
         </div> -->
       </div>
 
-      <div class="row no-gutters d-flex align-items-start justify-content-between pt-5- bg-white" v-if="false">
+      <div class="row no-gutters d-flex align-items-start justify-content-between pt-5- bg-white">
         <!-- <div class="col-12 col-md-6" /> -->
         <div class="col-12 col-md-5 mb-  order-md-2">
           <!-- <div class="row d-flex align-items-end justify-content-end">

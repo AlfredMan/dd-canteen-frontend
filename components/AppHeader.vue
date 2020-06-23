@@ -7,7 +7,9 @@
     <div data-x="a" class="container-fluid px-0 -px-lg-0">
       <nav class="inner d-flex -flex-row align-items-center -row z-index--" :class="{
           'text-white': isDark,
-          'text-black': !isDark
+          'text-black': !isDark,
+          'bg-white': !isDark && scrolled,
+          'bg-black': isDark && scrolled
         }">
         <nuxt-link to="/" exact class="-ml-1 mr-0 ml-3">
           <img class="logo" src="~/assets/images/logo-hor.svg" alt="logo" v-if="!isDark">
@@ -18,14 +20,14 @@
           Work space
         </nuxt-link>
         <nuxt-link class="menu-link d-none d-lg-inline" to="/hire">
-          Hire a Space
+          Venue hire
         </nuxt-link>
-        <nuxt-link class="menu-link d-none d-lg-inline" to="/the-club">
+        <!-- <nuxt-link class="menu-link d-none d-lg-inline" to="/the-club">
           The Club
-        </nuxt-link>
-        <nuxt-link class="menu-link d-none d-lg-inline" to="/community">
+        </nuxt-link> -->
+        <!-- <nuxt-link class="menu-link d-none d-lg-inline" to="/community">
           Community
-        </nuxt-link>
+        </nuxt-link> -->
         <nuxt-link class="menu-link d-none d-lg-inline" to="/architecture">
           Architecture
         </nuxt-link>
@@ -43,7 +45,7 @@
           <span class="d-inline d-lg-none">Join Now</span>
           <span class="d-none d-lg-inline">Join design district</span>
         </a> -->
-        <nuxt-link :to="{ path: '/contact', hash: '#register-interest' }" class="btn btn-lg btn-dark text-white ml-auto mr-0" :class="{'btn-outline-dark': menuActive}">
+        <nuxt-link :to="{ path: '/contact', hash: '#register-interest' }" class="btn btn-lg btn-dark- btn-primary text-white ml-auto mr-0" :class="{'btn-outline-dark': menuActive}">
           <span class="d-inline d-xl-none">Join Now</span>
           <span class="d-none d-xl-inline">Join design district</span>
         </nuxt-link>
@@ -80,14 +82,14 @@
             Work space
           </nuxt-link>
           <nuxt-link class="d-block mobile-menu-link" to="/hire">
-            Hire a Space
+            Venue hire
           </nuxt-link>
-          <nuxt-link class="d-block mobile-menu-link" to="/the-club">
+          <!-- <nuxt-link class="d-block mobile-menu-link" to="/the-club">
             The Club
-          </nuxt-link>
-          <nuxt-link class="d-block mobile-menu-link" to="/community">
+          </nuxt-link> -->
+          <!-- <nuxt-link class="d-block mobile-menu-link" to="/community">
             Community
-          </nuxt-link>
+          </nuxt-link> -->
           <nuxt-link class="d-block mobile-menu-link" to="/architecture">
             Architecture
           </nuxt-link>
@@ -126,7 +128,8 @@
 export default {
   data () {
     return {
-      menuActive: false
+      menuActive: false,
+      scrolled: false
     }
   },
   computed: {
@@ -142,6 +145,37 @@ export default {
       // console.log(this)
       if (to.fullPath !== from.fullPath) {
         this.menuActive = false
+      }
+    }
+  },
+  mounted () {
+    this.bindEvents()
+  },
+  beforeDestroy () {
+    this.unbindEvents()
+  },
+  methods: {
+    bindEvents () {
+      if (process.client) {
+        const self = this
+        window.addEventListener('scroll', self.onWindowScroll, false)
+      }
+    },
+    unbindEvents () {
+      if (process.client) {
+        const self = this
+        window.removeEventListener('scroll', self.onWindowScroll, false)
+      }
+    },
+    onWindowScroll (event) {
+      if (process.client) {
+        const self = this
+        let y = window.scrollY
+        if (y > 10) {
+          this.scrolled = true
+        } else {
+          this.scrolled = false
+        }
       }
     }
   }

@@ -7,7 +7,9 @@
         {{building.description}}
       </div>
       <!-- <div><strong>Available spaces</strong></div> -->
-      <map-listing :building="building.slug"></map-listing>
+
+      <!-- <map-listing :building="building.slug"></map-listing> -->
+
       <!-- <h4 class="">
         Available Spaces:
         <div class="listing-table">

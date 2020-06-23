@@ -17,7 +17,9 @@
           Members Only
         </div>
       </div> -->
-      <map-space-types></map-space-types>
+
+      <!-- <map-space-types></map-space-types> -->
+
       <!-- <map-listing></map-listing> -->
     </div>
   </div>
