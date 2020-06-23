@@ -9,6 +9,7 @@ export default {
       sceneState: {
         // model: '/model/dd-site-BCD-only.obj',
         gltfs: [
+          '/model/DD-all-baked-tex-v06-b.glb',
           '/model/DD-all-baked-tex-fixb2-fromfbx.glb',
           '/model/DD-all-baked-tex-fixb2.glb',
           '/model/DD-all-baked-tex.glb',
@@ -155,29 +156,74 @@ export default {
 
       for (let i = 0; i < this.sceneState.buildings.length; i++) {
         const b = this.sceneState.buildings[i]
-        console.log(b.name)
-        if (b.name == 'B2') {
-          const m = b.children[1].material
-          console.log(b.children[1].material)
-          m.roughness = 0.2
-          m.metalness = 0.9
-          // m.wireframe = true
-        }
+        // console.log(b.name)
+        // if (b.name == 'B2') {
+        //   const m = b.children[1].material
+        //   console.log(b.children[1].material)
+        //   m.roughness = 0.2
+        //   m.metalness = 0.9
+        //   // m.emissive = 0xFF0000
+        //   // m.wireframe = true
+        // }
+        // for (let iChildren = 0; iChildren < b.children.length; iChildren++) {
+        //   const child = b.children[iChildren]
+        //   console.log(child.name)
+        //   if (child.name.includes('Glass')) {
+        //     child.material = new THREE.MeshStandardMaterial({
+        //     })
+        //     child.material.roughness = 0.5
+        //     child.material.metalness = 0.5
+        //     child.material.transparent = true
+        //     child.material.opacity = 0.9
+        //     // child.material.envMap = this.sceneState.cubeCamera.texture
+        //     // child.material.side = THREE.DoubleSide
+        //     // child.material.emissive = 0xFF0000
+        //     // child.material.color = 0xFF0000
+        //     // console.log(child)
+        //     // child.material = new THREE.MeshLambertMaterial ({
+        //     //     // map: texture,
+        //     //     envMap: this.sceneState.scene.background,
+        //     // })
+        //   }
+        //   if (child.name.includes('windows')) {
+        //     child.material = new THREE.MeshStandardMaterial({
+        //     })
+        //     child.material.roughness = 0.5
+        //     child.material.metalness = 0.5
+        //     child.material.transparent = true
+        //     child.material.opacity = 0.9
+        //     // child.material.envMap = this.sceneState.cubeCamera.texture
+        //     // child.material.side = THREE.DoubleSide
+        //     // child.material.emissive = 0xFF0000
+        //     // child.material.color = 0xFF0000
+        //     // console.log(child)
+        //     // child.material = new THREE.MeshLambertMaterial ({
+        //     //     // map: texture,
+        //     //     envMap: this.sceneState.scene.background,
+        //     // })
+        //   }
+        // }
+        // const m = b.children[1].material
+        // console.log(b.children[1].material)
+        // m.roughness = 0.2
+        // m.metalness = 0.9
       }
       // console.log(this.sceneState.rayTarget)
 
       // this.addModel(gltfScene)
       // this.addModel(object)
       // obj.scale.set(0.1, 0.1, 0.1)
+
       gltfScene.position.x = -2.5
       gltfScene.position.z = 4
+
       // // this.sceneState.targetMesh = obj
       // this.sceneState.scene.add(obj)
 
       // gltfScene.scale.set(0.01, 0.01, 0.01)
-      gltfScene.position.x = 0
-      gltfScene.position.y = 0
-      gltfScene.position.z = 0
+      // gltfScene.position.x = 0
+      // gltfScene.position.y = 0
+      // gltfScene.position.z = 0
       // this.sceneState.targetMesh = gltfScene
       this.sceneState.scene.add(gltfScene)
     },
@@ -202,6 +248,7 @@ export default {
       // this.sceneState.scene.add(object)
     },
     highlightBuildingBySlug (buildingName = '') {
+      return
       if (!buildingName) {
         this.resetBuildingHighlight()
         return
@@ -220,6 +267,7 @@ export default {
     },
     displayBuildingBySlugOnly (buildingName = '') {
       console.log('highlightBuildingBySlugOnly', buildingName)
+      return
       if (!buildingName) {
         this.resetBuildingHighlight()
         return
@@ -245,6 +293,7 @@ export default {
       }
     },
     resetBuildingHighlight () {
+      return
       console.log('resetBuildingHighlight')
       for (let i = 0; i < this.sceneState.rayTarget.length; i++) {
         this.sceneState.rayTarget[i].material.transparent = true

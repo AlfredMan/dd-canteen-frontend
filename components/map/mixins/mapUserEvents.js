@@ -132,6 +132,10 @@ export default {
         //   this.onContainerResize()
         // }
 
+        // this.sceneState.mirrorCube.visible = false;
+        // this.sceneState.cubeCamera.update(this.sceneState.renderer, this.sceneState.scene)
+        // this.sceneState.mirrorCube.visible = true;
+
         this.render()
       }
 

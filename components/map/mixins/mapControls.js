@@ -19,7 +19,7 @@ export default {
       this.sceneState.controls.enableDamping = true
       this.sceneState.controls.dampingFcator = 0.7
       this.sceneState.controls.target = new THREE.Vector3(0, 1, 0)
-      this.sceneState.controls.enableZoom = false
+      this.sceneState.controls.enableZoom = true
       this.sceneState.controls.minDistance = this.sceneState.controlsDefaultDistance
       this.sceneState.controls.maxDistance = this.sceneState.controlsDefaultDistance
     },

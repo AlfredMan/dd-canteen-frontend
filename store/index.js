@@ -72,19 +72,19 @@ export const mutations = {
     state.transition.sourceElementRect = null
   },
   setSpaces (state, payload) {
-    console.log('vuex setSpaces', payload)
+    // console.log('vuex setSpaces', payload)
     state.spaces = payload.spaces
   },
   setHire (state, payload) {
-    console.log('vuex setHire', payload)
+    // console.log('vuex setHire', payload)
     state.hire = payload.hire
   },
   setBuildings (state, payload) {
-    console.log('vuex setBuildings', payload)
+    // console.log('vuex setBuildings', payload)
     state.buildings = payload.buildings
   },
   setStudios (state, payload) {
-    console.log('vuex setStudios', payload)
+    // console.log('vuex setStudios', payload)
     state.studios = _.sortBy(payload.studios, ['slug'])
   },
   setSpaceFilter (state, payload) {

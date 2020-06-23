@@ -76,9 +76,9 @@ export default {
       renderer.setSize(window.innerWidth, window.innerHeight)
       renderer.domElement.style.cssText = 'position:absolute;top:0px;left:0px;z-index:10;background:transparent;width:100%;height:100%'
       renderer.setPixelRatio(window.devicePixelRatio)
-      renderer.shadowMap.enabled = true
+      // renderer.shadowMap.enabled = true
       renderer.gammaOutput = true
-      renderer.gammaFactor = 2.2
+      renderer.gammaFactor = 0
       container.appendChild(renderer.domElement)
 
       this.sceneState.container = container
@@ -96,11 +96,17 @@ export default {
       cameraDefaultPosition.y = 30
       cameraDefaultPosition.z = 25
 
-      const camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.01, 10000)
+      const camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 1, 1000)
       camera.position.x = cameraDefaultPosition.x
       camera.position.z = cameraDefaultPosition.z
       camera.position.y = cameraDefaultPosition.y
       camera.lookAt(new THREE.Vector3(0, 10, 0))
+
+      // const cubeCamera = new THREE.CubeCamera(0.1, 5000, 512)
+      // cubeCamera.position.set(0, 50, 0) /* Actual solution */
+      // cubeCamera.lookAt(new THREE.Vector3(0, 0, 0))
+      // this.sceneState.scene.add(cubeCamera)
+      // this.sceneState.cubeCamera = cubeCamera
 
       this.sceneState.cameraDefaultPosition = cameraDefaultPosition
       this.sceneState.camera = camera
@@ -132,8 +138,8 @@ export default {
       directionalLight2.shadow.camera.top = d
       directionalLight2.shadow.camera.bottom = -d
 
-      this.sceneState.scene.add(directionalLight)
-      this.sceneState.scene.add(directionalLight2)
+      // this.sceneState.scene.add(directionalLight)
+      // this.sceneState.scene.add(directionalLight2)
     }
   }
 }
