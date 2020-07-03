@@ -102,7 +102,15 @@ export default {
     {
       src: '~/plugins/nuxt-client-init.js',
       mode: 'client'
+    },
+    {
+      src: '~/plugins/vue-slider-component.js',
+      mode: 'client'
     }
+    // {
+    //   src: '~/plugins/vue-range-slider.js',
+    //   mode: 'client'
+    // }
   ],
 
   render: {

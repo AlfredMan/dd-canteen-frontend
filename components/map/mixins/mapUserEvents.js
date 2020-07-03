@@ -146,7 +146,9 @@ export default {
       this.sceneState.raf = requestAnimationFrame(this.animate)
     },
     render () {
-      this.sceneState.renderer.render(this.sceneState.scene, this.sceneState.camera)
+      if (this.sceneState.scene && this.sceneState.camera) {
+        this.sceneState.renderer.render(this.sceneState.scene, this.sceneState.camera)
+      }
     }
   }
 }

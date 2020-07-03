@@ -42,19 +42,52 @@
               <h2>Find your work&nbsp;space</h2>
             </div>
           </div> -->
+          <div class="d-flex">
 
-          <div class="row">
-
-            <div class="col-12 row d-flex flex-wrap justify-content-start">
-
-              <div class="col-12 col-md-12 mb-3 -d-flex-align-items-center">
-                <div class="mb-2">
-                  <h5 class="filter-option">Size (Sq Ft)</h5>
+            <div class="col-col-6-col-md-6 pr-0 mb-3 d-flex align-items-center position-relative mr-3">
+              <div class="mb-2- mr-3">
+                <h3 class="filter-option small">Type</h3>
+              </div>
+              <div class="-relative">
+                <div
+                class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
+                @click="typeFilters = true; sizeFilters = false"
+                >
+                <span v-if="!this.filter.options">All types</span>
+                <span v-else>{{this.filter.options}}</span>
                 </div>
-                <div class="">
+
+                <div class="filter-popup" v-show="typeFilters === true">
+                  <!-- <h5>Select workspace type</h5> -->
+                  <div
+                  v-for="option in spaceFilters['options']" :key="option"
+                  @click="toggleFilter('options', option); typeFilters = false"
+                  :class="{'active': option == filter.options}"
+                  class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
+                  >
+                    {{option}} <span v-if="option == filter.options">&times;</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-col-6-col-md-3 pr-0 mb-3 d-flex align-items-center position-relative">
+              <div class="mb-2- mr-3">
+                <h3 class="filter-option small">Size</h3>
+              </div>
+              <div class="-relative">
+                <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
+                @click="sizeFilters = true; typeFilters = false"
+                >
+                <span v-if="!this.filter.sizeBracket">All sizes</span>
+                <span v-else>{{this.filter.sizeBracket}}</span>
+                </div>
+
+                <div class="filter-popup" v-show="sizeFilters === true">
+                  <!-- <h5>Select workspace size in sqft</h5> -->
                   <div
                   v-for="option in spaceFilters['sizeBracket']" :key="option"
-                  @click="toggleFilter('sizeBracket', option)"
+                  @click="toggleFilter('sizeBracket', option); sizeFilters = false"
                   :class="{'active': option == filter.sizeBracket}"
                   class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
                   >
@@ -62,24 +95,37 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <!-- <div class="col-12 col-md-12 mb-3 -d-flex-align-items-center mt-3">
+              <nuxt-link :to="'/workspace/filter'" class="btn btn-lg btn-primary">Start &rarr;</nuxt-link>
+            </div> -->
 
-              <!-- <div class="col-12 col-md mb-3 -d-flex-align-items-center">
+          </div>
+
+
+
+
+          <div class="row">
+
+            <div class="col-12 row d-flex flex-wrap justify-content-start">
+
+              <!-- <div class="col-12 col-md-12 mb-3 -d-flex-align-items-center">
                 <div class="mb-2">
-                  <h5 class="filter-option">Architect</h5>
+                  <h5 class="filter-option">Size</h5>
                 </div>
                 <div class="">
                   <div
-                  v-for="option in spaceFilters['architect']" :key="option"
-                  @click="toggleFilter('architect', option)"
-                  :class="{'active': option == filter.architect}"
-                  class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
+                  v-for="option in spaceFilters['sizeBracket']" :key="option"
+                  @click="toggleFilter('sizeBracket', option)"
+                  :class="{'active': option == filter.sizeBracket}"
+                  class="btn btn-outline-dark chip chip-xl mr-2 mb-2"
                   >
-                    {{option}} <span v-if="option == filter.architect">&times;</span>
+                    {{option}} <span v-if="option == filter.sizeBracket">&times;</span>
                   </div>
                 </div>
               </div> -->
 
-              <div class="col-12 col-md-12 mb-3 -d-flex-align-items-center">
+              <!-- <div class="col-12 col-md-12 mb-3 -d-flex-align-items-center">
                 <div class="mb-2">
                   <h5 class="filter-option">Type</h5>
                 </div>
@@ -93,7 +139,11 @@
                     {{option}} <span v-if="option == filter.options">&times;</span>
                   </div>
                 </div>
-              </div>
+              </div> -->
+
+
+
+
 
               <!-- <div class="col-12 col-md mb-3">
                 <div class="mb-2">
@@ -190,11 +240,11 @@
                     :custom="'fit=thumb&f=center'"
                     />
                   </div>
-                  <h5 class="mt-4">{{space.title}}</h5>
+                  <h5 class="mt-4">Building {{space.title}}</h5>
                   <p>This is a placeholder short description of a unit</p>
                 </transition-link>
               </div>
-              <div class="col-12 pb-5" v-if="allBuildings.length < 1 && allSpaces.length > 0">
+              <div class="col-12 pb-5" v-if="filteredSpaces.length < 1 && allSpaces.length > 0">
                 <h4 class="my-5" style="opacity:0.5">No matching units</h4>
               </div>
             </div>
@@ -206,323 +256,52 @@
     </div>
 
     <!--  -->
-    <span class="anchor" id="service-and-facilities"></span>
-    <div class="-container-fluid anchor-target bg-white">
-      <div class="-row pb-5-pt-3 px-0 px-md-4 py-4 py-md-5 bg-grey">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12 col-md-8">
-              <h2>Services & Facilities</h2>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 col-md-5">
-              <h4>Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.</h4>
-            <!-- <a href="#" class="text-primary">View all architects &rarr;</a> -->
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row no-gutters d-flex align-items-start justify-content-between bg-white text-black">
-        <!-- <div class="col-12">
-          <h3>Workshops</h3>
-        </div> -->
-        <div class="col-12 col-md-5 mb-0 px-0 order-md-2">
-          <!-- <div class="row d-flex align-items-end justify-content-end">
-            <div class="col-12 col-md-12">
-              <lazy-image
-              :src="'https://images.ctfassets.net/7p1ysxjarsp5/21RQ1kgWpGexfUKMtcdKTm/1e47bf755d78145ee1eb547be44c627d/Hartley-Cycles_1.jpg'"
-              :w="1000"
-              :h="1000"
-              />
-            </div>
-          </div> -->
-          <lazy-image
-          :src="'https://images.ctfassets.net/7p1ysxjarsp5/21RQ1kgWpGexfUKMtcdKTm/1e47bf755d78145ee1eb547be44c627d/Hartley-Cycles_1.jpg'"
-          :w="1000"
-          :h="1000"
-          />
-        </div>
-
-        <!-- <div class="col-12 col-md-1 order-md-2" /> -->
-
-        <div class="col-12 col-md-7 px-0">
-          <div class="px-0 px-md-4 py-4 pb-5 py-md-5">
-            <div class="col-12">
-              <h3>Workshops</h3>
-              <p>Often creative businesses need more than a desk. In the Design District you can access a range of workshops suited to your specialism. There’s a wood workshop, digital workshop, textile workshop, engineering workshop and an assembly space. Prototype or produce a new collection.</p>
-
-              <div v-if="false" class="row mt-5">
-                <div class="col-12 col-md-6 col-lg-3 mb-4">
-                  <!-- <h5>Onsite Tools</h5> -->
-
-                  <h5>Wood workshop </h5>
-                  <ul class="h6">
-                    <li>Axminster bandsaw</li>
-                    <li>Festool chop saw</li>
-                    <li>CNC router </li>
-                    <li>1220x2440mm belt and disk sanders</li>
-                    <li>Bobbin sander</li>
-                    <li>Floor and table top pillar drills </li>
-                    <li>Range of hand tools</li>
-                    <li>Range of fixtures and fittings </li>
-                    <li>Bookable workbenches </li>
-                  </ul>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 mb-4">
-                  <h5>Digital workshop </h5>
-                  <ul class="h6">
-                    <li>1300x900 bed laser cutter </li>
-                    <li>Roland GS-24 vinyl cutter </li>
-                    <li>Vacuum former</li>
-                    <li>Heat press kit </li>
-                    <li>Ultimaker 2, Ultimaker S5, Witbox 2, Creality CR-10 and Formlabs2 3D printers </li>
-                    <li>Electronic workbench</li>
-                    <li>Pick and place machine</li>
-                    <li>Arduino and Raspberry Pi coding</li>
-                  </ul>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 mb-4">
-                  <h5>Textile workshop</h5>
-                  <ul>
-                    <li>Cutting table</li>
-                    <li>Roland vinyl cutter</li>
-                    <li>Industrial and domestic sewing machines</li>
-                    <li>Overlocker</li>
-                    <li>Embroidery machine</li>
-                    <li>Heat press</li>
-                  </ul>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 mb-4">
-                  <h5>Engineering workshop</h5>
-                  <ul>
-                    <li>Forco Start pillar drill</li>
-                    <li>Baileigh metal bender</li>
-                    <li>10 ton pneumatic press</li>
-                    <li>Clarke CL430 metal lathe</li>
-                    <li>Silverline grinding wheel      </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row no-gutters d-flex align-items-start justify-content-between">
-        <!-- <div class="col-12 col-md-6" /> -->
-        <div class="col-12 col-md-7 mb-0">
-          <!-- <div class="row d-flex align-items-end justify-content-end">
-            <div class="col-12 col-md-12 px-0">
-              <lazy-image
-              :src="'https://images.ctfassets.net/7p1ysxjarsp5/2KQ913hiCMPeZFVYGQTDZR/51632e614fe29a553364b69990f89ad0/Design-District-Matthew-Thompson-8457-LOW-RES.jpg'"
-              :w="2000"
-              :h="1000"
-              :custom="'fit=thumb'"
-              />
-            </div>
-          </div> -->
-          <lazy-image
-          :src="'https://images.ctfassets.net/7p1ysxjarsp5/2KQ913hiCMPeZFVYGQTDZR/51632e614fe29a553364b69990f89ad0/Design-District-Matthew-Thompson-8457-LOW-RES.jpg'"
-          :w="2000"
-          :h="1000"
-          :custom="'fit=thumb'"
-          />
-        </div>
-        <!-- <div class="col-12 col-md-1" /> -->
-        <div class="col-12 col-md-5 px-0">
-          <div class="px-0 px-md-4 py-4 pb-5 py-md-5">
-            <div class="col-12">
-              <h3>Meeting rooms</h3>
-              <p>At Design District you’ll have five rooms ideal for small to medium-sized meetings. Meeting rooms can be rented out between 8am and 7pm, either by the hour or for the entire day. Each room features Superfast wi-fi, a Smart TV and wall space for scribbles and post-it notes. </p>
-            </div>
-          </div>
-        </div>
-        <!-- <div class="col-12 col-md-6">
-          <div class="row d-flex align-items-end justify-content-end">
-            <div class="col-12 col-md-10">
-              <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/2YkGmNe7vtf12308xsP0J1/7f043a0b6845187e4c66952b334c7a5c/KDN_Design_District_B4_190603_LR.jpeg?w=1000&h=800&fm=jpg&q=80&fit=thumb" alt="">
-            </div>
-          </div>
-        </div> -->
-      </div>
-
-      <div class="row no-gutters d-flex align-items-start justify-content-between bg-white text-black">
-        <div class="col-12 col-md-5 mb order-md-2">
-          <!-- <div class="row d-flex align-items-end justify-content-end">
-            <div class="col-12 col-md-12 px-0">
-              <lazy-image
-              :src="'https://images.ctfassets.net/7p1ysxjarsp5/64OjUmEoOvUZh7W0EdQTfe/cbd8c37727a7c54be182da4f6d1deeb1/MarketHall.jpg'"
-              :w="1500"
-              :h="1000"
-              :custom="'fit=thumb'"
-              />
-            </div>
-          </div> -->
-          <lazy-image
-          :src="'https://images.ctfassets.net/7p1ysxjarsp5/64OjUmEoOvUZh7W0EdQTfe/cbd8c37727a7c54be182da4f6d1deeb1/MarketHall.jpg'"
-          :w="1500"
-          :h="1000"
-          :custom="'fit=thumb'"
-          />
-        </div>
-        <div class="col-12 col-md-7">
-          <div class="px-0 px-md-4 py-4 pb-5 py-md-5">
-            <div class="col">
-              <h3>Food hall and kitchen</h3>
-              <p>Open to the public and filled with six independent food partners, the food hall will become a key meeting place in the district. It is located in SelgasCano’s luminescent building at the entrance to the district, immediately visible to visitors.</p>
-              <p>Design District is equipped with an industrial kitchen that will service the food hall and cater for any onsite events. Tenants working in the food and beverage industries will have access to the kitchen by prior arrangement.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- <div class="col-12 col-md-1" />
-        <div class="col-12 col-md-6" /> -->
-        <!-- <div class="col-12 col-md-6">
-          <div class="row d-flex align-items-end justify-content-end">
-            <div class="col-12 col-md-10">
-              <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/2YkGmNe7vtf12308xsP0J1/7f043a0b6845187e4c66952b334c7a5c/KDN_Design_District_B4_190603_LR.jpeg?w=1000&h=800&fm=jpg&q=80&fit=thumb" alt="">
-            </div>
-          </div>
-        </div> -->
-      </div>
-
-      <div v-if="false" class="row d-flex align-items-start justify-content-between py-5">
-        <!-- <div class="col-12 col-md-6" /> -->
-        <div class="col-12 col-md-5 mb-3">
-          <!-- <div class="row d-flex align-items-end">
-            <div class="col-12 col-md-12">
-              <lazy-image
-              :src="'https://images.ctfassets.net/7p1ysxjarsp5/7DifsFTlzI7vzhBUouVQGf/77edcddc87c2531fd53898440f016035/AdamKahn-1C-Architect.jpg'"
-              :w="1500"
-              :h="1000"
-              :custom="'fit=thumb'"
-              />
-            </div>
-          </div> -->
-          <lazy-image
-          :src="'https://images.ctfassets.net/7p1ysxjarsp5/7DifsFTlzI7vzhBUouVQGf/77edcddc87c2531fd53898440f016035/AdamKahn-1C-Architect.jpg'"
-          :w="1500"
-          :h="1000"
-          :custom="'fit=thumb'"
-          />
-        </div>
-        <div class="col-12 col-md-6">
-          <h3>Book and design supply shop</h3>
-          <p>At Design District a book and supplies shop will open to the public. The shop will be a place for the design community to purchase art materials and design tools, as well as magazines and books. The space will allow the tenants to host events, such as book launches.</p>
-        </div>
-        <!-- <div class="col-12 col-md-6">
-          <div class="row d-flex align-items-end justify-content-end">
-            <div class="col-12 col-md-10">
-              <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/2YkGmNe7vtf12308xsP0J1/7f043a0b6845187e4c66952b334c7a5c/KDN_Design_District_B4_190603_LR.jpeg?w=1000&h=800&fm=jpg&q=80&fit=thumb" alt="">
-            </div>
-          </div>
-        </div> -->
-      </div>
-
-      <div class="row no-gutters d-flex align-items-start justify-content-between">
-        <div class="col-12 col-md-7 mb-">
-          <!-- <div class="row d-flex align-items-end justify-content-end">
-            <div class="col-12 col-md-12 px-0">
-              <lazy-image
-              :src="'https://images.ctfassets.net/7p1ysxjarsp5/HZdjU0R1Fsm5E43GN0IvT/5d14e50e33add1aeff3939b18060c641/KDN_Design_District_A2_190603_LR.jpeg'"
-              :w="2000"
-              :h="1000"
-              :custom="'fit=thumb'"
-              />
-            </div>
-          </div> -->
-          <lazy-image
-          :src="'https://images.ctfassets.net/7p1ysxjarsp5/HZdjU0R1Fsm5E43GN0IvT/5d14e50e33add1aeff3939b18060c641/KDN_Design_District_A2_190603_LR.jpeg'"
-          :w="2000"
-          :h="1000"
-          :custom="'fit=thumb'"
-          />
-        </div>
-
-        <div class="col-12 col-md-5 px-0">
-          <div class="px-0 px-md-4 py-4 pb-5 py-md-5">
-            <div class="col">
-              <h3>Pop-up space </h3>
-              <p>Suitable for retail or small art exhibitions, a pop-up space will be located on the ground floor, opposite the food hall, in a 6A Architects building. It can be hired by members of the public, with discounted rates for the Design District community. You’ll find a flexible lighting system, built in till point and EPOS Payment System, and the hire includes cleaning and security. At an additional cost, we can provide an installation and de-installation service and catering.</p>
-            </div>
-          </div>
-        </div>
-        <!-- <div class="col-12 col-md-1" />
-        <div class="col-12 col-md-6" /> -->
-        <!-- <div class="col-12 col-md-6">
-          <div class="row d-flex align-items-end justify-content-end">
-            <div class="col-12 col-md-10">
-              <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/2YkGmNe7vtf12308xsP0J1/7f043a0b6845187e4c66952b334c7a5c/KDN_Design_District_B4_190603_LR.jpeg?w=1000&h=800&fm=jpg&q=80&fit=thumb" alt="">
-            </div>
-          </div>
-        </div> -->
-      </div>
-
-      <div class="row no-gutters d-flex align-items-start justify-content-between pt-5- bg-white">
-        <!-- <div class="col-12 col-md-6" /> -->
-        <div class="col-12 col-md-5 mb-  order-md-2">
-          <!-- <div class="row d-flex align-items-end justify-content-end">
-            <div class="col-12 col-md-12 px-0">
-              <lazy-image
-              :src="'https://images.ctfassets.net/7p1ysxjarsp5/3aSHHWF58a3lz1wLhodNS3/d7bf1c2dd9c8e04abd2057194b16ace7/bb.jpg'"
-              :w="1500"
-              :h="1000"
-              :custom="'fit=thumb&f=bottom'"
-              />
-            </div>
-          </div> -->
-          <lazy-image
-          :src="'https://images.ctfassets.net/7p1ysxjarsp5/3aSHHWF58a3lz1wLhodNS3/d7bf1c2dd9c8e04abd2057194b16ace7/bb.jpg'"
-          :w="1500"
-          :h="1000"
-          :custom="'fit=thumb&f=bottom'"
-          />
-        </div>
-        <!-- <div class="col-12 col-md-1 order-md-2" /> -->
-
-        <div class="col-12 col-md-6">
-          <div class="px-0 px-md-4 py-4 pb-5 py-md-5">
-            <div class="col">
-              <h3>Multi-sports rooftop court </h3>
-              <!-- <p>A versatile multi-sports rooftop court will sit on top of building C1. The rooftop will host a range of sports and wellness activities, including basketball, HIIT and yoga. The Design District community and members of the public can hire the court for private events space such as pop-up cinema and photoshoots.</p> -->
-              <p>A versatile multi-sports rooftop court will host a range of sports and wellness activities, including basketball, HIIT and yoga. The Design District community and members of the public can hire the court for private events space such as pop-up cinema and photoshoots.</p>
-            </div>
-          </div>
-        </div>
-        <!-- <div class="col-12 col-md-6">
-                    <div class="row d-flex align-items-end justify-content-end">
-                      <div class="col-12 col-md-10">
-                        <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/2YkGmNe7vtf12308xsP0J1/7f043a0b6845187e4c66952b334c7a5c/KDN_Design_District_B4_190603_LR.jpeg?w=1000&h=800&fm=jpg&q=80&fit=thumb" alt="">
-                      </div>
-                    </div>
-                  </div> -->
-      </div>
-
-    </div>
 
     <!-- <div class="bg-light">
       <div class="container mt-10">
         <enquire-form></enquire-form>
       </div>
     </div> -->
-    <span class="anchor" id="become-a-tenant" ></span>
-    <div class="py-5 bg-white anchor-target px-0 px-md-4 py-4 pb-5 py-md-5">
+
+    <div class="py-5 bg-dark text-white anchor-target px-0 px-md-4 py-4 pb-5 py-md-5">
+      <div class="container-fluid -my-5">
+        <div class="row">
+          <div class="col-12 col-md-8">
+            <h2>Services & Facilities</h2>
+          </div>
+          <div class="col-12" />
+          <div class="col-12 col-md-6 mb-5">
+            <h4>Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.</h4>
+            <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering accessible rent, flexible leases and workspace purpose-built for creative disciplines.</h4> -->
+            <!-- <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</p> -->
+            <nuxt-link :to="'/workspace/services-facilities'" class="mt-3 btn btn-lg bg-primary text-white">View all &rarr;</nuxt-link>
+          </div>
+          <!-- <div class="col-12 col-lg-1" />
+          <div class="col-12 col-md-8 col-lg-7">
+            <enquire-form source="workspace"/>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="py-5 bg-black- bg-white text-black anchor-target px-0 px-md-4 py-4 pb-5 py-md-5">
+      <span class="anchor" id="become-a-tenant" ></span>
       <div class="container-fluid -my-5">
         <div class="row">
           <div class="col-12 col-md-8">
             <h2>Become a tenant</h2>
           </div>
           <div class="col-12" />
-          <div class="col-12 col-md-4 mb-5">
-            <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering accessible rent, flexible leases and workspace purpose-built for creative disciplines.</h4>
-            <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</p>
+          <div class="col-12 col-md-6 mb-5">
+            <h4>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</h4>
+            <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering accessible rent, flexible leases and workspace purpose-built for creative disciplines.</h4> -->
+            <!-- <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</p> -->
+            <nuxt-link :to="'/workspace/enquire'" class="mt-3 btn btn-lg bg-primary text-white">Join Design District &rarr;</nuxt-link>
           </div>
-          <div class="col-12 col-lg-1" />
+          <!-- <div class="col-12 col-lg-1" />
           <div class="col-12 col-md-8 col-lg-7">
             <enquire-form source="workspace"/>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -573,7 +352,9 @@ export default {
         sizeBracket: null,
         architect: null,
         options: null
-      }
+      },
+      sizeFilters: false,
+      typeFilters: false
     }
   },
 
@@ -597,6 +378,9 @@ export default {
     allSpacesByType () {
       return _.groupBy(this.allSpaces, 'type')
     },
+    allSpacesByBuilding () {
+      return _.groupBy(this.allSpaces, 'building')
+    },
     allBuildings () {
       return this.$store.state.buildings
     },
@@ -606,6 +390,11 @@ export default {
     spaceFilters () {
       return this.$store.state.filters
     },
+    // filteredBuildings () {
+    //   _.forIn(this.allSpacesByBuilding, (val, key) => {
+    //
+    //   })
+    // },
     filteredSpaces () {
       return _.filter(this.$store.state.spaces, (space) => {
         let match = 0
@@ -620,10 +409,21 @@ export default {
         }
         return match >= 0
       })
+    },
+    filteredSpacesByBuilding () {
+      let group = _.groupBy(this.filteredSpaces, 'building')
+      // return group
+
+      return _.filter(allBuildings, (building) => {
+        return filter
+      })
     }
   },
 
   methods: {
+    getBuildingBySlug (slug) {
+      return this.$store.getters.getBuildingBySlug(slug)
+    },
     toggleFilter (filterOption, value) {
       if (this.filter[filterOption] == value) {
         this.filter[filterOption] = null
@@ -654,7 +454,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .building {
   cursor: pointer;
 
@@ -736,5 +536,14 @@ export default {
     bottom: 0;
     background: rgba(0,0,0,0.2)
   }
+}
+
+.filter-popup {
+  position: absolute;
+  top: 3.5rem;
+  width: 15rem;
+  background: white;
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
+  z-index: 99;
 }
 </style>

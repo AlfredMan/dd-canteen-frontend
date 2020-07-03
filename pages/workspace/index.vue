@@ -10,13 +10,121 @@
             </div>
           </div>
           <div class="row d-flex align-items-start justify-content-between">
-            <div class="col-12 col-md-5 mb-5">
+            <div class="col-12 col-md-6 mb-5">
               <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering affordable rent, flexible leases and work spaces purpose-built for creative disciplines.</h4> -->
-              <h4>Rent a desk, a studio, a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</h4>
+              <p class="font-weight-normal">Rent a desk, a studio, a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</p>
               <!-- <h4>Design District will provide 150,000 sq ft of permanent workspace for everyone for London’s designers makers and creators. A place for total focus, shared stories and resources, new connections and collaboration. </h4>
               <h4>Rent a desk, a studio,  a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</h4> -->
-              <a href="#become-a-tenant" class="btn btn btn-lg btn-primary mt-3">Get in touch</a>
+              <!-- <a href="#become-a-tenant" class="btn btn btn-lg btn-primary mt-3">Get in touch</a> -->
+
+              <!-- <h3 class="mt-5 mb-5">Find your work space</h3> -->
+
+              <div class="d-flex flex-wrap align-items-baseline">
+
+                <div class="-col col-6-col-md-6 pr-0 mb-3 d-flex align-items-center">
+                  <h5 class="filter-option font-weight-normal mt-0 mb-0">Find your work space.</h5>
+                </div>
+
+
+                <div class="-col col-6-col-md-6 pr-0 mb-3 d-flex align-items-center pl-2 pr-1  mr-1">
+                  <div class="mb-2- mr-2">
+                    <h5 class="filter-option font-weight-normal mt-0 mb-0">View</h5>
+                  </div>
+                  <div class="position-relative">
+                    <div
+                    class="btn btn-outline-dark chip chip-lg mr-0 mb-0 mt-2"
+                    :class="[this.filter.options ? 'active' : '']"
+                    @click="typeFilters = true; sizeFilters = false"
+                    >
+                    <span v-if="!this.filter.options">All space types</span>
+                    <span v-else>{{this.filter.options}}</span>
+                    </div>
+
+                    <div class="filter-popup" v-show="typeFilters === true">
+                      <!-- <h5>Select workspace type</h5> -->
+                      <div
+                      v-for="option in spaceFilters['options']" :key="option"
+                      @click="toggleFilter('options', option); typeFilters = false"
+                      :class="{'active': option == filter.options}"
+                      v-show="option !== filter.options"
+                      class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
+                      >
+                        {{option}} <span v-if="option == filter.options">&times;</span>
+                      </div>
+                      <div class="clear-filter" @click="toggleFilter('options', null); typeFilters = false">
+                        Clear
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="-col-3 col-6-col-md-3 pr-0 mb-3 d-flex align-items-center pr-2">
+                  <div class="mb-2- mr-2">
+                    <h5 class="filter-option font-weight-normal mt-0 mb-0">in</h5>
+                  </div>
+                  <div class="position-relative">
+                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-0 mt-2"
+                    :class="[this.filter.sizeBracket ? 'active' : '']"
+                    @click="sizeFilters = true; typeFilters = false"
+                    >
+                    <!-- <span v-if="!this.filter.sizeBracket">All sizes</span>
+                    <span v-else>{{this.filter.sizeBracket}} sq ft</span> -->
+                    <span v-if="filterDisplay.sizeBracketMin=='0' && filterDisplay.sizeBracketMax=='5000+'">All sizes</span>
+                    <span v-else>{{filterDisplay.sizeBracketMin}}–{{filterDisplay.sizeBracketMax}} sq ft</span>
+                    </div>
+
+                    <div class="filter-popup slider"
+                    v-show="sizeFilters === true"
+                    @mouseleave="typeFilters = false"
+                    >
+                      <!-- <h5>Select workspace size in sqft</h5> -->
+                      <!-- <div
+                      v-for="option in spaceFilters['sizeBracket']" :key="option"
+                      @click="toggleFilter('sizeBracket', option); sizeFilters = false"
+                      :class="{'active': option == filter.sizeBracket}"
+                      class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
+                      >
+                        {{option}} <span v-if="option == filter.sizeBracket">&times;</span>
+                      </div> -->
+
+                      <vue-slider
+                      v-model="sliderModel"
+                      :absorb="true"
+                      :marks="sliderMarks"
+                      :tooltip="'none'"
+                      :min="0"
+                      :max="5"
+                      :min-range="1"
+                      :interval="1"
+                      :direction="'btt'"
+                      :height="100"
+                      @change="onSliderChange"
+                      @drag-end="onSliderDragEnd"
+                      >
+                        <template v-slot:mark="{ pos, label }">
+                          <div class="custom-mark" :style="{ top: `${pos}%` }">
+                            {{ label }}
+                          </div>
+                        </template>
+                        <template v-slot:process="{ start, end, style, index }">
+                          <div class="vue-slider-process custom-process" :style="[style]">
+                            <!-- Can add custom elements here -->
+                          </div>
+                        </template>
+                      </vue-slider>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-12 mb-3 -d-flex-align-items-center mt-3 px-0">
+                  <nuxt-link :to="'/workspace/filter'" class="btn btn-lg -btn-outline -btn-outline-dark btn-primary -btn-dark">Start &rarr;</nuxt-link>
+                  <!-- <nuxt-link :to="'/workspace/filter'" class="btn btn-lg btn-gray">Show All &rarr;</nuxt-link> -->
+                </div>
+              </div>
+
             </div>
+
             <div class="col-12 col-md-6">
               <div class="row d-flex align-items-end justify-content-end">
                 <div class="col-12 col-md-12">
@@ -28,11 +136,33 @@
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
     </div>
 
+    <span class="anchor" id="become-a-tenant" ></span>
+    <div class="py-5 bg-white anchor-target px-0 px-md-4 py-4 pb-5 py-md-5">
+      <div class="container-fluid -my-5">
+        <div class="row">
+          <div class="col-12 col-md-8">
+            <h2>Work space</h2>
+          </div>
+          <div class="col-12" />
+          <div class="col-12 col-md-6 mb-5">
+            <h4>Our work spaces range from serviced studio, co-working spaces, ground floor space, to on/off office and multi-purpose work space.</h4>
+            <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering accessible rent, flexible leases and workspace purpose-built for creative disciplines.</h4> -->
+            <!-- <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</p> -->
+            <nuxt-link :to="'/workspace/filter'" class="mt-3 btn btn-lg bg-primary text-white">View all &rarr;</nuxt-link>
+          </div>
+          <!-- <div class="col-12 col-lg-1" />
+          <div class="col-12 col-md-8 col-lg-7">
+            <enquire-form source="workspace"/>
+          </div> -->
+        </div>
+      </div>
+    </div>
     <!--  -->
     <div class="-container-fluid bg-primary bg-primary d-none">
       <div class="row- -pt-3 px-0 px-md-4 py-0 py-md-2">
@@ -124,7 +254,7 @@
       </div>
     </div>
     <!--  -->
-    <div class="-container-fluid bg-white">
+    <div class="-container-fluid bg-white d-none">
       <div class="-row pb-5 pt-3 px-0 px-md-4 py-0 py-md-2">
         <div class="container-fluid py-5">
 
@@ -152,6 +282,21 @@
                   >
                     {{option}} <span v-if="option == filter.sizeBracket">&times;</span>
                   </div>
+                </div>
+                <div class="">
+                  <!-- <no-ssr>
+                    <vue-range-slider
+                    ref="slider"
+                    :min="100"
+                    :max="2000"
+                    :value="[100, 200, 500, 1000, 2000]"
+                    @drag-start="onDragStart"
+                    @drag-end="onDragEnd"
+                    @slide-end="onSlideEnd"
+                    @on-keypress="onKeypress"
+                    >
+                    </vue-range-slider>
+                  </no-ssr> -->
                 </div>
               </div>
 
@@ -306,8 +451,12 @@
 
     <!--  -->
     <span class="anchor" id="service-and-facilities"></span>
-    <div class="-container-fluid anchor-target bg-white">
-      <div class="-row pb-5-pt-3 px-0 px-md-4 py-4 py-md-5 bg-grey">
+    <div class="-container-fluid anchor-target bg-black" accesskey="">
+      <div class="-row pb-5-pt-3 px-0 px-md-4 py-4 py-md-5 bg-dark text-white"
+      >
+        <div class="" style="background-size: cover; background-position: center center; opacity: 0.5; z-index: 0; position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; background-image: url('https://images.ctfassets.net/7p1ysxjarsp5/21RQ1kgWpGexfUKMtcdKTm/1e47bf755d78145ee1eb547be44c627d/Hartley-Cycles_1.jpg?fm=jpg&q=80&w=1200&h=1200&');">
+
+        </div>
         <div class="container-fluid">
           <div class="row">
             <div class="col-12 col-md-8">
@@ -613,14 +762,16 @@
             <h2>Become a tenant</h2>
           </div>
           <div class="col-12" />
-          <div class="col-12 col-md-4 mb-5">
-            <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering accessible rent, flexible leases and workspace purpose-built for creative disciplines.</h4>
-            <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</p>
+          <div class="col-12 col-md-6 mb-5">
+            <h4>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</h4>
+            <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering accessible rent, flexible leases and workspace purpose-built for creative disciplines.</h4> -->
+            <!-- <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</p> -->
+            <nuxt-link :to="'/workspace/enquire'" class="btn btn-lg bg-primary text-white">Join Design District &rarr;</nuxt-link>
           </div>
-          <div class="col-12 col-lg-1" />
+          <!-- <div class="col-12 col-lg-1" />
           <div class="col-12 col-md-8 col-lg-7">
             <enquire-form source="workspace"/>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -671,6 +822,24 @@ export default {
         sizeBracket: null,
         architect: null,
         options: null
+      },
+      sizeFilters: false,
+      typeFilters: false,
+      // sliderModel: ['0','5000+'],
+      // sliderData: ['0', '100', '200', '1000', '2000', '5000+'],
+      sliderModel: [0,5],
+      sliderData: [0,1,2,3,4,5],
+      sliderMarks: {
+        '5': { label: '0' },
+        '4': { label: '100' },
+        '3': { label: '200' } ,
+        '2': { label: '1000' },
+        '1': { label: '2000' },
+        '0': { label: '5000+ sq ft' }
+      },
+      filterDisplay: {
+        sizeBracketMin: '0',
+        sizeBracketMax: '5000+'
       }
     }
   },
@@ -748,11 +917,23 @@ export default {
     closeMap () {
       this.mapActive = false
     },
+    onSliderChange (val, a) {
+      // console.log('onSliderChange', ev, a)
+      let values=['0', '100', '200', '1000', '2000', '5000+']
+      let min = values[val[0]]
+      let max = values[val[1]]
+      this.filterDisplay.sizeBracketMin = min
+      this.filterDisplay.sizeBracketMax = max
+      console.log('onSliderChange', min, max)
+    },
+    onSliderDragEnd (val, a) {
+      // console.log('onSliderDragEnd', ev, a)
+    }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .building {
   cursor: pointer;
 
@@ -834,5 +1015,47 @@ export default {
     bottom: 0;
     background: rgba(0,0,0,0.2)
   }
+}
+
+.filter-popup {
+  position: absolute;
+  top: 3.5rem;
+  width: 15rem;
+  // padding: 1.5rem;
+  // background: white;
+  // box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
+  z-index: 99;
+
+  .clear-filter {
+    cursor: pointer;
+  }
+
+  &.slider {
+    width: 10rem;
+    padding: 1rem;
+  }
+}
+
+.custom-mark {
+  // position: absolute;
+  // top: 10px;
+  // transform: translateX(-50%);
+  // white-space: nowrap;
+  // width: 50px;
+  // text-align: center;
+  // font-size: .8rem;
+  position: absolute;
+  left: 20px;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  width: 50px;
+  text-align: left;
+  font-size: .8rem;
+}
+.custom-process {
+  background: black;
+}
+.custom-dot {
+
 }
 </style>

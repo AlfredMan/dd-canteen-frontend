@@ -84,7 +84,9 @@
       </div>
     </div>
 
-    <div class="-container-fluid">
+    <block-architecture />
+
+    <div class="-container-fluid" v-if="false">
       <div class="-row bg-dark text-light px-0 px-md-4 py-4 py-5 py-md-5">
         <div class="container-fluid pt-5-">
           <div class="row">
@@ -159,10 +161,12 @@
 
 <script>
 import _ from 'lodash'
+import BlockArchitecture from '~/components/blocks/BlockArchitecture.vue'
 // import { studios, validStudios } from '~/common/architecture'
 
 export default {
   components: {
+    BlockArchitecture
   },
 
   middleware ({ store, redirect }) {

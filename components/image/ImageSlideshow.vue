@@ -3,11 +3,11 @@
   v-waypoint="{ active: true, callback: onWaypoint, options: intersectionOptions }"
   class="flickity-wrapper"
   >
-    <client-only>
+    <!-- <client-only> -->
       <Flickity :options="flickityOptions" class="flickity" ref="flkty" :class="{
         'dragging': isDragging
         }">
-        <div v-for="item in items" class="item">
+        <!-- <div v-for="item in items" class="item" v-if="items">
           <router-link :to="`/architecture/${item.slug}`">
             <lazy-image
             :src="item.imagesPractice[0].url"
@@ -15,28 +15,10 @@
             />
             <h5>{{ item.title }}</h5>
           </router-link>
-        </div>
-        <!-- <div
-        class="flickity-item container"
-        v-for="(item, index) in carousel"
-        :key="item.id"
-        >
-          <figure>
-            <lazy-image
-            :src="item.image"
-            :w="1000"
-            :h="1000"
-            />
-            <figcaption
-            v-if="item.caption"
-            >
-              {{item.caption}}
-            </figcaption>
-          </figure>
         </div> -->
         <slot></slot>
       </Flickity>
-    </client-only>
+    <!-- </client-only> -->
   </div>
 </template>
 
@@ -127,7 +109,7 @@ export default {
         flkty.on('dragEnd', () => this.isDragging = false);
         flkty.on( 'staticClick', ( event, pointer, cellElement, cellIndex ) => {
           // console.log(event, pointer, cellElement, cellIndex)
-          console.log(flkty.selectedIndex(), cellIndex)
+          console.log(flkty.selectedIndex(), cellIndex, cellElement)
           // if (flkty.selectedIndex() == cellIndex) {
           //   this.openCarousel(this.block, cellIndex)
           // } else {
@@ -193,4 +175,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.dragging .item a {
+  pointer-events: none;
+  background: red;
+}
 </style>

@@ -54,6 +54,9 @@
               <div class="row">
                 <div class="col-12 col-md-12 mb-5">
                   <h4>Design District will be a new permanent home for the creative industries in the heart of Greenwich Peninsula. One minute from North Greenwich underground station.</h4>
+                  <a href="https://www.google.com/maps/dir//Now+Gallery,+London/@51.5003015,-0.0301968,13z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x47d8a81b8fd12c73:0xa8650d8a3a4c3d7c!2m2!1d0.0049082!2d51.5003067!3e2" target="_blank" class="btn btn-lg btn-dark text-primary- -h4">
+                    Plan my trip &rarr;
+                  </a>
                 </div>
                 <!-- </div>
 

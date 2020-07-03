@@ -342,7 +342,7 @@
     </transition-link>
 
     <!--  -->
-    <div class="-container-fluid -d-none">
+    <div class="-container-fluid -d-none" v-if="false">
       <div class="-row pb-5 pt-3">
         <div class="px-0 px-md-4 py-0 py-md-2">
           <div class="container-fluid py-4">
@@ -390,7 +390,7 @@
     </div>
 
     <!--  -->
-    <div class="-container-fluid overflow-hidden">
+    <!-- <div class="-container-fluid overflow-hidden">
       <div class="-row bg-dark text-light pb-5-pt-3">
         <div class="container-fluid py-5 px-0">
 
@@ -404,7 +404,6 @@
               </div>
               <div class="row">
                 <div class="col-12 col-md-6 px-3">
-                  <!-- <a href="/about-us#architecture" class="h5 text-primary"> -->
                   <a href="/architecture" class="h5 text-primary">
                     View all architects &rarr;
                   </a>
@@ -413,7 +412,7 @@
             </div>
           </div>
 
-          <div v-if="studios" class="row d-flex align-items-end pt-5">
+          <div v-if="studios && studios.length > 0" class="row d-flex align-items-end pt-5">
 
             <image-slideshow class="w-100 my-5 carousel carousel-uniform-height">
 
@@ -431,7 +430,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+
+    <block-architecture />
 
     <!-- <div class="bg-light">
       <div class="container mt-10">
@@ -478,9 +479,10 @@
 
 <script>
 import _ from 'lodash'
-import EnquireForm from '../../components/forms/Enquire.vue'
-import NewsletterForm from '../../components/forms/Newsletter.vue'
-import { studios, validStudios } from '~/common/architecture'
+import EnquireForm from '~/components/forms/Enquire.vue'
+import NewsletterForm from '~/components/forms/Newsletter.vue'
+import BlockArchitecture from '~/components/blocks/BlockArchitecture.vue'
+// import { studios, validStudios } from '~/common/architecture'
 export default {
   layout: 'v2',
   head () {
@@ -494,7 +496,8 @@ export default {
   },
   components: {
     EnquireForm,
-    NewsletterForm
+    NewsletterForm,
+    BlockArchitecture
   },
   computed: {
     studios () {

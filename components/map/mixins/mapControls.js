@@ -7,7 +7,7 @@ export default {
     return {
       sceneState: {
         controlsDefaultDistance: 50,
-        controlsZoomedDistance: 15
+        controlsZoomedDistance: 20
       }
     }
   },

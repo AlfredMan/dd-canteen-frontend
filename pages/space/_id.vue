@@ -312,7 +312,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .space-information {
   position: relative;
 }

@@ -12,10 +12,11 @@
           <div class="row">
             <div class="col-12 col-md-6">
               <h4>Extraordinary buildings. The needs of creatives put front and centre. Design District is an offer that’s entirely new for London. Meet the architects.</h4>
+              <h4>The 16 buildings in the district have been designed by creatives, for creatives. The architects prioritised natural ventilation, high ceilings, north-facing lights and pedestrian movement for a healthy and happy workplace. The brief to the architects was to create a space that they would like to work in themselves. The project’s novel and exciting approach involved each practice working in a silo, overseen by HNNA founder Hannah Corlett.</h4>
             </div>
-            <div class="col-12 col-md-6">
-              <p>The 16 buildings in the district have been designed by creatives, for creatives. The architects prioritised natural ventilation, high ceilings, north-facing lights and pedestrian movement for a healthy and happy workplace. The brief to the architects was to create a space that they would like to work in themselves. The project’s novel and exciting approach involved each practice working in a silo, overseen by HNNA founder Hannah Corlett.</p>
-            </div>
+            <!-- <div class="col-12 col-md-6"> -->
+              <!-- <p>The 16 buildings in the district have been designed by creatives, for creatives. The architects prioritised natural ventilation, high ceilings, north-facing lights and pedestrian movement for a healthy and happy workplace. The brief to the architects was to create a space that they would like to work in themselves. The project’s novel and exciting approach involved each practice working in a silo, overseen by HNNA founder Hannah Corlett.</p> -->
+            <!-- </div> -->
           </div>
         </div>
       </div>
@@ -32,7 +33,7 @@
                 :w="2000"
                 :h="2000"
                 />
-                <h3>{{ studio.title }}</h3>
+                <h4>{{ studio.title }}</h4>
               </transition-link>
             </div>
           </div>

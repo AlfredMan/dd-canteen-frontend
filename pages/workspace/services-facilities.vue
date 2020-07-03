@@ -332,7 +332,7 @@
         <enquire-form></enquire-form>
       </div>
     </div> -->
-    <span class="anchor" id="become-a-tenant" ></span>
+    <!-- <span class="anchor" id="become-a-tenant" ></span>
     <div class="py-5 bg-white anchor-target px-0 px-md-4 py-4 pb-5 py-md-5">
       <div class="container-fluid -my-5">
         <div class="row">
@@ -348,6 +348,49 @@
           <div class="col-12 col-md-8 col-lg-7">
             <enquire-form source="workspace"/>
           </div>
+        </div>
+      </div>
+    </div> -->
+
+
+    <div class="py-5 bg-dark text-white anchor-target px-0 px-md-4 py-4 pb-5 py-md-5">
+      <div class="container-fluid -my-5">
+        <div class="row">
+          <div class="col-12 col-md-8">
+            <h2>Work space</h2>
+          </div>
+          <div class="col-12" />
+          <div class="col-12 col-md-6 mb-5">
+            <h4>Our work spaces range from serviced studio, co-working spaces, ground floor space, to on/off office and multi-purpose work space.</h4>
+            <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering accessible rent, flexible leases and workspace purpose-built for creative disciplines.</h4> -->
+            <!-- <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</p> -->
+            <nuxt-link :to="'/workspace/filter'" class="mt-3 btn btn-lg bg-primary text-white">View all &rarr;</nuxt-link>
+          </div>
+          <!-- <div class="col-12 col-lg-1" />
+          <div class="col-12 col-md-8 col-lg-7">
+            <enquire-form source="workspace"/>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="py-5 bg-white anchor-target px-0 px-md-4 py-4 pb-5 py-md-5">
+      <div class="container-fluid -my-5">
+        <div class="row">
+          <div class="col-12 col-md-8">
+            <h2>Become a tenant</h2>
+          </div>
+          <div class="col-12" />
+          <div class="col-12 col-md-6 mb-5">
+            <h4>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</h4>
+            <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering accessible rent, flexible leases and workspace purpose-built for creative disciplines.</h4> -->
+            <!-- <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</p> -->
+            <nuxt-link :to="'/workspace/enquire'" class="mt-3 btn btn-lg bg-primary text-white">Join Design District &rarr;</nuxt-link>
+          </div>
+          <!-- <div class="col-12 col-lg-1" />
+          <div class="col-12 col-md-8 col-lg-7">
+            <enquire-form source="workspace"/>
+          </div> -->
         </div>
       </div>
     </div>

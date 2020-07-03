@@ -9,6 +9,8 @@ export default {
       sceneState: {
         // model: '/model/dd-site-BCD-only.obj',
         gltfs: [
+          '/model/DD-all-baked-tex-v07.gltf',
+          // '/model/DD-all-baked-tex-v06-color.glb',
           '/model/DD-all-baked-tex-v06-b.glb',
           '/model/DD-all-baked-tex-fixb2-fromfbx.glb',
           '/model/DD-all-baked-tex-fixb2.glb',
@@ -121,12 +123,14 @@ export default {
           this.sceneState.site = child
         } else
         if (_.includes(['plane', 'ground'], _.lowerCase(child.name))) {
-          child.receiveShadow = true
+          child.receiveShadow = false
           this.sceneState.environment.push(child)
+          // child.material.metalness = 0
+          // child.material.roughness = 1
         } else
         if (child.type === 'Mesh') {
           // child.material = this.sceneState.defaultMaterial
-          child.castShadow = true
+          child.castShadow = false
           child.defaultMaterial = child.material.clone()
           this.sceneState.rayTarget.push(child)
           // this.sceneState.buildings.push(child)

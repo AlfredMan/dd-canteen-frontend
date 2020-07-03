@@ -7,6 +7,7 @@
           <div class="container-fluid pt-5">
             <div class="row">
               <div class="col-12 col-md-8">
+                <nuxt-link :to="'/workspace/filter'"><h5>&larr; view all spaces</h5></nuxt-link>
                 <h1>{{building.title}}</h1>
                 <!-- <h4>
                   <span>Building {{building.building}}</span>, <span>{{getFloorLabel(building.floor)}}</span>, <span>Unit {{building.unit}}</span>
@@ -61,34 +62,57 @@
                   <h6 class="mb-1">Size</h6>
                   <div class="tags">
                     <div class="tag">
+                      200-500
                       <!-- {{space['sizeSqFtBracket']}} -->
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-2 mb-4">
+                <div class="col-12 col-md-6 mb-4">
                   <h6 class="mb-1">Type</h6>
                   <div class="tags">
                     <div class="tag">
-
-                      {{building.spaceType}}
+                      Serviced studio
+                    </div>
+                    <div class="tag">
+                      On/off office
+                    </div>
+                    <div class="tag">
+                      Co-working
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-2 mb-4">
+                <!-- <div class="col-12 col-md-2 mb-4">
                   <h6 class="mb-1">Option</h6>
                   <div class="tags">
                     <div class="tag">
                       {{building.options}}
                     </div>
                   </div>
-                </div>
-                <div class="col-12 col-md-3 mb-4">
+                </div> -->
+                <!-- <div class="col-12 col-md-3 mb-4">
                   <h6 class="mb-1">Architect</h6>
                   <div class="tags">
                     <div class="tag">
                       {{building.architect}}
                     </div>
                   </div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="-container-fluid bg-white">
+          <div class="px-0 px-md-4">
+            <div class="container-fluid py-5">
+              <div class="row mb-4">
+                <div class="col-12 col-md-8">
+                  <h3>Floorplans</h3>
+                </div>
+              </div>
+              <div class="row d-flex align-items-start justify-content-start pr-5">
+                <div class="floorplan col-3 col-md-2" v-for="floorplan in floorplans">
+                  <img :src="floorplan.url" alt="">
                 </div>
               </div>
             </div>
@@ -131,13 +155,15 @@
             <div class="container-fluid py-5 pb-3">
               <div class="row">
                 <div class="col-12 col-md-8">
-                  <h3>{{architect.title}}</h3>
+                  <h3>Architect</h3>
+                  <!-- <h3>{{architect.title}}</h3> -->
                 </div>
               </div>
               <div class="row d-flex align-items-start justify-content-between">
                 <div class="col-12 col-md-6 my-4">
+                  <h5>{{architect.title}}</h5>
                   <p>{{architect.buildingsCopy}}</p>
-                  <h5>{{architect.title}} &rarr;</h5>
+                  <!-- <h5>{{architect.title}} &rarr;</h5> -->
                 </div>
 
                 <div class="col-12">
@@ -164,18 +190,21 @@
             <div class="container-fluid">
               <div class="row no-gutters">
                 <div class="col-12 offset-md-8 col-md-4">
-                  <div class="p-4 bg-grey">
-                    <div class="py-2">
-                      <h2>{{building.title}}</h2>
+                  <div class="px-4 -bg-grey">
+                    <div class="py-0">
+                      <!-- <h2>{{building.title}}</h2> -->
                       <!-- <h3>
                         Building {{building.building}}<br>
                         {{getFloorLabel(building.floor)}}<br>
                         Unit {{building.unit}}
                       </h3> -->
+                      <h5>Interested in this building?</h5>
+                      <p>Tell us about your requirements, and we’ll be in touch.</p>
+                      <nuxt-link :to="'/workspace/enquire'" class="btn btn-lg bg-dark text-white">CONTACT US &rarr;</nuxt-link>
                     </div>
-                    <div class="mt-4">
+                    <!-- <div class="mt-4">
                       <space-form></space-form>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -183,6 +212,28 @@
           </div>
         </aside>
 
+      </div>
+
+      <span class="anchor" id="become-a-tenant" ></span>
+      <div class="py-5 bg-grey anchor-target px-0 px-md-4 py-4 pb-5 py-md-5">
+        <div class="container-fluid -my-5">
+          <div class="row">
+            <div class="col-12 col-md-8">
+              <h2>Become a tenant</h2>
+            </div>
+            <div class="col-12" />
+            <div class="col-12 col-md-6 mb-5">
+              <h4>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</h4>
+              <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering accessible rent, flexible leases and workspace purpose-built for creative disciplines.</h4> -->
+              <!-- <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</p> -->
+              <nuxt-link :to="'/workspace/enquire'" class="btn btn-lg bg-primary text-white">Join Design District &rarr;</nuxt-link>
+            </div>
+            <!-- <div class="col-12 col-lg-1" />
+            <div class="col-12 col-md-8 col-lg-7">
+              <enquire-form source="workspace"/>
+            </div> -->
+          </div>
+        </div>
       </div>
 
 
@@ -256,7 +307,21 @@ export default {
   data () {
     return {
       spaceActive: false,
-      mapActive: false
+      mapActive: false,
+      floorplans: [
+        {
+          url: require('~/assets/images/floorplans/A1-0-1.png')
+        },
+        {
+          url: require('~/assets/images/floorplans/A1-1-1.png')
+        },
+        {
+          url: require('~/assets/images/floorplans/A1-2-1.png')
+        },
+        {
+          url: require('~/assets/images/floorplans/A1-3-1.png')
+        }
+      ]
     }
   },
 
@@ -316,7 +381,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .space-information {
   position: relative;
 }
@@ -332,7 +397,7 @@ aside {
 
     .sticky-wrapper {
       position: sticky;
-      top: 0;
+      top: 3.5rem;
     }
   }
 }

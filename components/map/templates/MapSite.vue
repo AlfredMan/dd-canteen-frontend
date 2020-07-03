@@ -21,6 +21,10 @@
       <!-- <map-space-types></map-space-types> -->
 
       <!-- <map-listing></map-listing> -->
+
+      <div class="credit">
+        Design and build by Hato
+      </div>
     </div>
   </div>
 </template>
@@ -38,5 +42,24 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+// .map-content {
+//   pointer-events: none;
+//
+//   .content {
+//     position: relative;
+//     pointer-events: none;
+//
+//     > * {
+//       pointer-events: initial;
+//     }
+//   }
+// }
+.credit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 2rem;
+  opacity: 0.3;
+}
 </style>

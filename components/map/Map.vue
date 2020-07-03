@@ -28,7 +28,7 @@
     @click="toggleMapActive(false)"
     v-show="mapActive"
     >
-      &times;
+      <span>Close Map</span><span class="cross">&times;</span>
     </div>
 
     <div

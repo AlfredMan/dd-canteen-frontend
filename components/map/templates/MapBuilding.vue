@@ -2,9 +2,88 @@
   <div class="map-content map-building-content" v-if="building" :key="building.slug">
     <div class="content">
       <nuxt-link class="back" :to="{query:null}">&larr; View all buildings</nuxt-link>
+
       <h1>{{building.slug}}</h1>
+
+      <lazy-image
+      class="thumbnail"
+      :src="building.url"
+      :w="2000"
+      :h="2000"
+      />
+
       <div class="description">
         {{building.description}}
+      </div>
+
+      <div class="-container-fluid bg-white">
+        <div class="px-0">
+          <div class="py-5">
+            <div class="row mb-4">
+              <div class="col-12 col-md-8">
+                <h3>Specifications</h3>
+              </div>
+            </div>
+            <div class="row d-flex align-items-start justify-content-start">
+              <div class="col-12 col-md-12 mb-4">
+                <h6 class="mb-1">Size</h6>
+                <div class="tags">
+                  <div class="tag">
+                    200-500
+                    <!-- {{space['sizeSqFtBracket']}} -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-12 mb-4">
+                <h6 class="mb-1">Type</h6>
+                <div class="tags">
+                  <div class="tag">
+                    Serviced studio
+                  </div>
+                  <div class="tag">
+                    On/off office
+                  </div>
+                  <div class="tag">
+                    Co-working
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="col-12 col-md-2 mb-4">
+                <h6 class="mb-1">Option</h6>
+                <div class="tags">
+                  <div class="tag">
+                    {{building.options}}
+                  </div>
+                </div>
+              </div> -->
+              <!-- <div class="col-12 col-md-3 mb-4">
+                <h6 class="mb-1">Architect</h6>
+                <div class="tags">
+                  <div class="tag">
+                    {{building.architect}}
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="-container-fluid bg-white">
+        <div class="px-0">
+          <div class="pb-5">
+            <div class="row mb-4">
+              <div class="col-12 col-md-8">
+                <h3>Floorplans</h3>
+              </div>
+            </div>
+            <div class="row d-flex align-items-start justify-content-start">
+              <div class="floorplan col-3 col-md-4 mb-5" v-for="floorplan in floorplans">
+                <img :src="floorplan.url" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- <div><strong>Available spaces</strong></div> -->
 
@@ -35,12 +114,6 @@
           </nuxt-link>
         </div>
       </h4> -->
-      <lazy-image
-      class="thumbnail"
-      :src="building.url"
-      :w="2000"
-      :h="2000"
-      />
     </div>
   </div>
 </template>
@@ -48,6 +121,24 @@
 <script>
 import MapListing from './MapListing.vue'
 export default {
+  data () {
+    return {
+      floorplans: [
+        {
+          url: require('~/assets/images/floorplans/A1-0-1.png')
+        },
+        {
+          url: require('~/assets/images/floorplans/A1-1-1.png')
+        },
+        {
+          url: require('~/assets/images/floorplans/A1-2-1.png')
+        },
+        {
+          url: require('~/assets/images/floorplans/A1-3-1.png')
+        }
+      ]
+    }
+  },
   components: {
     MapListing
   },

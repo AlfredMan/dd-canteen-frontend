@@ -1,10 +1,6 @@
 <template lang="html">
   <div class="box-transition">
-    <div class="box">
-
-
-
-
+    <div class="box" style="opacity: 0; visibility: hidden;">
 
       <svg id="transition-arrow-tail" class="transition-arrow" width="670px" height="670px" viewBox="0 0 670 670" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g id="Plan" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -27,7 +23,6 @@
               </g>
           </g>
       </svg>
-
 
     </div>
   </div>

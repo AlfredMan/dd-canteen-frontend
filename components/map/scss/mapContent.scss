@@ -62,8 +62,29 @@ $content-width: 33.33vw;
         pointer-events: initial;
         overflow: auto;
       }
+      .map-site-content {
+        pointer-events: none;
+        .content {
+          pointer-events: none;
+          > * {
+            pointer-events: initial;
+          }
+        }
+      }
     }
 
+    // .map-content {
+    //   pointer-events: none;
+    //
+    //   .content {
+    //     position: relative;
+    //     pointer-events: none;
+    //
+    //     > * {
+    //       pointer-events: initial;
+    //     }
+    //   }
+    // }
     .spacer {
       margin: auto;
     }
@@ -86,7 +107,8 @@ $content-width: 33.33vw;
 
     .thumbnail {
       margin: 2rem 0;
-      max-width: 20rem;
+      // max-width: 20rem;
+
     }
 
     h1 {
@@ -246,13 +268,32 @@ $content-width: 33.33vw;
     z-index: 99999;
     right: 0;
     bottom: 0;
-    width: 5rem;
-    height: 5rem;
+    // width: 5rem;
     text-align: center;
-    line-height: 5rem;
-    font-size: 3rem;
+    line-height: 1rem;
     font-weight: 200;
     color: black;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    text-transform: uppercase;
+
+    span {
+      font-size: 1.25em;
+      display: inline-block;
+    }
+    .cross {
+      margin-left: 1rem;
+      font-size: 2.5rem;
+    }
+  }
+
+  .map-thumb {
+    display: none;
+
+    @media (min-width: map-get($grid-breakpoints, sm)){
+      display: block;
+    }
   }
 }
