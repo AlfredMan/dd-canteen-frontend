@@ -7,7 +7,11 @@
           <div class="container-fluid pt-5">
             <div class="row">
               <div class="col-12 col-md-8">
-                <nuxt-link :to="'/workspace/filter'"><h5>&larr; view all spaces</h5></nuxt-link>
+
+                <div class="d-flex h5 ">
+                  <nuxt-link class="" :to="'/workspace/filter'"><h5>All Spaces</h5></nuxt-link> <span class="mx-2">/</span> <nuxt-link class="" :to="'/workspace/filter'"><h5>Serviced Studio</h5></nuxt-link> <span class="mx-2">/</span> Building {{building.title}}
+                </div>
+
                 <h1>{{building.title}}</h1>
                 <!-- <h4>
                   <span>Building {{building.building}}</span>, <span>{{getFloorLabel(building.floor)}}</span>, <span>Unit {{building.unit}}</span>
@@ -44,6 +48,18 @@
                 <!-- <div class="col-12 col-md-6 my-4">
                   <h4>{{building.description}}</h4>
                 </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="-container-fluid bg-white">
+          <div class="px-0 px-md-4">
+            <div class="container-fluid py-5">
+              <div class="row mb-4">
+                <div class="col-12 col-md-8">
+                  <h4>[placeholder] {{building.description}}</h4>
+                </div>
               </div>
             </div>
           </div>
@@ -150,7 +166,7 @@
           </div>
         </div> -->
 
-        <div class="-container-fluid bg-white">
+        <div class="-container-fluid bg-white" v-if="false">
           <div class="px-0 px-md-4">
             <div class="container-fluid py-5 pb-3">
               <div class="row">
@@ -189,9 +205,9 @@
           <div class="sticky-wrapper px-0 px-md-4 pb-4">
             <div class="container-fluid">
               <div class="row no-gutters">
-                <div class="col-12 offset-md-8 col-md-4">
-                  <div class="px-4 -bg-grey">
-                    <div class="py-0">
+                <div class="col-12 offset-md-8 col-md-4 pl-0 pl-sm-4">
+                  <div class="px-4 px-sm-4 bg-grey">
+                    <div class="py-5">
                       <!-- <h2>{{building.title}}</h2> -->
                       <!-- <h3>
                         Building {{building.building}}<br>
@@ -215,7 +231,7 @@
       </div>
 
       <span class="anchor" id="become-a-tenant" ></span>
-      <div class="py-5 bg-grey anchor-target px-0 px-md-4 py-4 pb-5 py-md-5">
+      <div class="py-5 -bg-grey bg-dark text-white anchor-target px-0 px-md-4 py-4 pb-5 py-md-5">
         <div class="container-fluid -my-5">
           <div class="row">
             <div class="col-12 col-md-8">
