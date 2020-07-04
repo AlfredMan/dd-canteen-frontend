@@ -42,23 +42,36 @@
               <h2>Find your work&nbsp;space</h2>
             </div>
           </div> -->
+          <div class="">
+            <h4>Find your space</h4>
+          </div>
+
           <div class="d-flex">
 
             <div class="col-col-6-col-md-6 pr-0 mb-3 d-flex align-items-center position-relative mr-3">
-              <div class="mb-2- mr-3">
+              <!-- <div class="mb-2- mr-3">
                 <h3 class="filter-option small">Type</h3>
-              </div>
-              <div class="-relative">
+              </div> -->
+              <div class="position-relative">
                 <div
-                class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
+                class="btn btn-outline-dark chip chip-lg mr-0 mb-0 mt-2"
+                :class="[this.filter.options ? 'active' : '']"
                 @click="typeFilters = true; sizeFilters = false"
                 >
-                <span v-if="!this.filter.options">All types</span>
+                <span v-if="!this.filter.options">All space types</span>
                 <span v-else>{{this.filter.options}}</span>
                 </div>
 
                 <div class="filter-popup" v-show="typeFilters === true">
                   <!-- <h5>Select workspace type</h5> -->
+                  <div class="d-flex justify-content-between align-items-baseline">
+                    <div class="h5 font-weight-normal">
+                      Select space type
+                    </div>
+                    <div class="close-popup" @click="typeFilters = false">
+                      &times;
+                    </div>
+                  </div>
                   <div
                   v-for="option in spaceFilters['options']" :key="option"
                   @click="toggleFilter('options', option); typeFilters = false"
@@ -67,32 +80,78 @@
                   >
                     {{option}} <span v-if="option == filter.options">&times;</span>
                   </div>
+                  <div class="clear-filter" @click="toggleFilter('options', null); typeFilters = false">
+                    Clear
+                  </div>
                 </div>
               </div>
             </div>
 
             <div class="col-col-6-col-md-3 pr-0 mb-3 d-flex align-items-center position-relative">
-              <div class="mb-2- mr-3">
+              <!-- <div class="mb-2- mr-3">
                 <h3 class="filter-option small">Size</h3>
-              </div>
-              <div class="-relative">
-                <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
+              </div> -->
+              <div class="position-relative">
+                <div class="btn btn-outline-dark chip chip-lg mr-2 mb-0 mt-2"
+                :class="[!(filterDisplay.sizeBracketMin=='0' && filterDisplay.sizeBracketMax=='5000+') ? 'active' : '']"
                 @click="sizeFilters = true; typeFilters = false"
                 >
-                <span v-if="!this.filter.sizeBracket">All sizes</span>
-                <span v-else>{{this.filter.sizeBracket}}</span>
+                <!-- <span v-if="!this.filter.sizeBracket">All sizes</span>
+                <span v-else>{{this.filter.sizeBracket}} sq ft</span> -->
+                <span v-if="filterDisplay.sizeBracketMin=='0' && filterDisplay.sizeBracketMax=='5000+'">All sizes</span>
+                <span v-else>{{filterDisplay.sizeBracketMin}}–{{filterDisplay.sizeBracketMax}} sq ft</span>
                 </div>
 
-                <div class="filter-popup" v-show="sizeFilters === true">
+                <div class="filter-popup slider"
+                v-show="sizeFilters === true"
+                >
                   <!-- <h5>Select workspace size in sqft</h5> -->
-                  <div
+                  <!-- <div
                   v-for="option in spaceFilters['sizeBracket']" :key="option"
                   @click="toggleFilter('sizeBracket', option); sizeFilters = false"
                   :class="{'active': option == filter.sizeBracket}"
                   class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
                   >
                     {{option}} <span v-if="option == filter.sizeBracket">&times;</span>
+                  </div> -->
+                  <div class="d-flex justify-content-between align-items-baseline">
+                    <div class="h5 font-weight-normal">
+                      Select size (sq ft)
+                    </div>
+                    <div class="close-popup" @click="sizeFilters = false">
+                      &times;
+                    </div>
                   </div>
+
+                  <div class="px-2">
+                    <vue-slider
+                    class="slider-component"
+                    v-model="sliderModel"
+                    :absorb="true"
+                    :marks="sliderMarks"
+                    :tooltip="'none'"
+                    :min="0"
+                    :max="5"
+                    :min-range="1"
+                    :interval="1"
+                    :contained="false"
+
+                    @change="onSliderChange"
+                    @drag-end="onSliderDragEnd"
+                    >
+                      <template v-slot:mark="{ pos, label }">
+                        <div class="custom-mark" :style="{ left: `${pos}%` }">
+                          {{ label }}
+                        </div>
+                      </template>
+                      <template v-slot:process="{ start, end, style, index }">
+                        <div class="vue-slider-process custom-process" :style="[style]">
+                          <!-- Can add custom elements here -->
+                        </div>
+                      </template>
+                    </vue-slider>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -102,153 +161,79 @@
 
           </div>
 
+          <!-- <pre>
+            {{filter}}
+          </pre> -->
 
+          <div class="row mt-5">
+            <!-- <div class="col-12">
+              <h4>Find your space</h4>
+            </div> -->
+            <!-- <div class="col-12">
+              <h5>View all spaces</h5>
+            </div> -->
 
+            <!-- <pre>{{filteredSpacesByBuilding}}</pre> -->
 
-          <div class="row">
-
-            <div class="col-12 row d-flex flex-wrap justify-content-start">
-
-              <!-- <div class="col-12 col-md-12 mb-3 -d-flex-align-items-center">
-                <div class="mb-2">
-                  <h5 class="filter-option">Size</h5>
-                </div>
+            <!-- <div class="col-12 col-md-6 col-lg-3 mb-5 building"
+            v-if="filteredSpaces.length > 0"
+            v-for="(space, index) in allBuildings"
+            :key="space.slug">
+              <transition-link :to="`/workspace/building/${space.slug}`">
                 <div class="">
-                  <div
-                  v-for="option in spaceFilters['sizeBracket']" :key="option"
-                  @click="toggleFilter('sizeBracket', option)"
-                  :class="{'active': option == filter.sizeBracket}"
-                  class="btn btn-outline-dark chip chip-xl mr-2 mb-2"
-                  >
-                    {{option}} <span v-if="option == filter.sizeBracket">&times;</span>
-                  </div>
+                  <lazy-image
+                  :src="space.url"
+                  :w="3000"
+                  :h="2400"
+                  :custom="'fit=thumb&f=center'"
+                  />
                 </div>
-              </div> -->
-
-              <!-- <div class="col-12 col-md-12 mb-3 -d-flex-align-items-center">
-                <div class="mb-2">
-                  <h5 class="filter-option">Type</h5>
-                </div>
-                <div class="">
-                  <div
-                  v-for="option in spaceFilters['options']" :key="option"
-                  @click="toggleFilter('options', option)"
-                  :class="{'active': option == filter.options}"
-                  class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
-                  >
-                    {{option}} <span v-if="option == filter.options">&times;</span>
-                  </div>
-                </div>
-              </div> -->
-
-
-
-
-
-              <!-- <div class="col-12 col-md mb-3">
-                <div class="mb-2">
-                  <h5>Size</h5>
-                </div>
-                <div class="">
-                  <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                    1
-                  </div>
-                  <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                    2–4
-                  </div>
-                  <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                    5–10
-                  </div>
-                  <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                    11–30
-                  </div>
-                  <div class="btn btn-outline-dark chip chip-lg mb-2">
-                    30+
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md mb-3">
-                <div class="mb-2">
-                  <h5>Features</h5>
-                </div>
-                <div class="">
-                  <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                    South Facing
-                  </div>
-                  <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                    Ground Floor
-                  </div>
-                  <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                    Step Free
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md mb-3">
-                <div class="mb-2">
-                  <h5>Option</h5>
-                </div>
-                <div class="">
-                  <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                    Shared Space
-                  </div>
-                  <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                    Private Room
-                  </div>
-                  <div class="btn btn-outline-dark chip chip-lg mr-2 mb-2">
-                    Permenant
-                  </div>
-                </div>
-              </div> -->
+                <h5 class="mt-4">Building {{space.title}}</h5>
+                <p></p>
+              </transition-link>
             </div>
+            <div class="col-12 pb-5" v-if="filteredSpaces.length < 1 && allSpaces.length > 0">
+              <h4 class="my-5" style="opacity:0.5">No matching units</h4>
+            </div> -->
+
+            <div class="col-12 col-md-6 col-lg-3 mb-5 building"
+            v-if="filteredSpacesByBuilding"
+            v-for="(building, index) in filteredSpacesByBuilding"
+            :key="building.id">
+              <transition-link :to="`/workspace/building/${building.id}`">
+                <div class="">
+                  <lazy-image
+                  :src="building.building.url"
+                  :w="3000"
+                  :h="2400"
+                  :custom="'fit=thumb&f=center'"
+                  />
+                </div>
+                <h5 class="mt-4">{{building.title}}</h5>
+                <div class="chips">
+                  <!-- <span class="chip" v-for="size in building.sizeSqFtBracket">{{size}}</span> -->
+                  <!-- <span class="chip chip-lg">{{getSizeRangeFromBracket(building.sizeSqFtBracket)}}</span> -->
+                  <div class="mb-3">{{getSizeRangeFromBracket(building.sizeSqFtBracket)}}</div>
+                </div>
+                <div class="chips">
+                  <span class="chip chip-lg" v-for="option in building.options">{{option}}</span>
+                </div>
+              </transition-link>
+            </div>
+            <div class="col-12 pb-5" v-if="!filteredSpacesByBuilding && allSpaces.length > 0">
+              <h4 class="my-5" style="opacity:0.5">No matching units</h4>
+            </div>
+
+            <!-- <pre>{{filteredSpacesByBuilding}}</pre> -->
 
           </div>
-
-          <!-- <div class="row mt-5">
-            <div class="col-12">
-              <h3>Buildings</h3>
-            </div>
-          </div> -->
-
-
-
-
           <!-- <div class="row mt-5 flex-row align-items-baseline" v-for="(spaceTypeValue, spaceTypeNameKey) in allSpacesByType " :key="spaceTypeNameKey"> -->
-
             <!-- <div class="col-12 mb-3 d-flex justify-content-between align-items-baseline">
               <h3 class="text-capitalize">{{spaceTypeNameKey}}</h3>
               <nuxt-link class="h5 text-primary"
               :to="`/workspace/${getSlug(spaceTypeNameKey)}`"
               >View all {{spaceTypeNameKey}} &rarr;</nuxt-link>
             </div> -->
-            <div class="row mt-5">
-              <div class="col-12">
-                <h4>Find your space</h4>
-              </div>
-              <!-- <div class="col-12">
-                <h5>View all spaces</h5>
-              </div> -->
-              <div class="col-12 col-md-6 col-lg-3 mb-5 building"
-              v-if="filteredSpaces.length > 0"
-              v-for="(space, index) in allBuildings"
-              :key="space.slug">
-                <transition-link :to="`/workspace/building/${space.slug}`">
-                  <div class="">
-                    <lazy-image
-                    :src="space.url"
-                    :w="3000"
-                    :h="2400"
-                    :custom="'fit=thumb&f=center'"
-                    />
-                  </div>
-                  <h5 class="mt-4">Building {{space.title}}</h5>
-                  <p>This is a placeholder short description of a unit</p>
-                </transition-link>
-              </div>
-              <div class="col-12 pb-5" v-if="filteredSpaces.length < 1 && allSpaces.length > 0">
-                <h4 class="my-5" style="opacity:0.5">No matching units</h4>
-              </div>
-            </div>
-
           <!-- </div> -->
 
         </div>
@@ -350,11 +335,27 @@ export default {
       mapActive: false,
       filter: {
         sizeBracket: null,
+        sizeBracketMin: null,
+        sizeBracketMax: null,
         architect: null,
         options: null
       },
       sizeFilters: false,
-      typeFilters: false
+      typeFilters: false,
+      sliderModel: [0,5],
+      sliderData: [0,1,2,3,4,5],
+      sliderMarks: {
+        '0': { label: '0' },
+        '1': { label: '100' },
+        '2': { label: '200' } ,
+        '3': { label: '1000' },
+        '4': { label: '2000' },
+        '5': { label: '5000+' }
+      },
+      filterDisplay: {
+        sizeBracketMin: '0',
+        sizeBracketMax: '5000+'
+      }
     }
   },
 
@@ -398,25 +399,93 @@ export default {
     filteredSpaces () {
       return _.filter(this.$store.state.spaces, (space) => {
         let match = 0
-        if (this.filter.sizeBracket) {
-          match = space.sizeSqFtBracket == this.filter.sizeBracket ? match+1 : -100
+
+        // if (this.filter.architect) {
+        //   match = space.architect == this.filter.architect ? match+1 : -100
+        // }
+        if (!this.filter.options && !this.filter.sizeBracket) {
+          return true
         }
-        if (this.filter.architect) {
-          match = space.architect == this.filter.architect ? match+1 : -100
+
+        let sb = space.building
+        let suid = space.uniqueUnitReference
+        console.log(suid, match)
+
+        if (this.filter.options && space.options) {
+          // match = space.options == this.filter.options ? match+1 : -100
+          match = _.includes(this.filter.options, space.options) ? match+1 : -100
+          console.log(match, this.filter.options, space.options)
         }
-        if (this.filter.options) {
-          match = space.options == this.filter.options ? match+1 : -100
+        if (this.filter.sizeBracket && space.options.length > 0) {
+          // match = space.sizeSqFtBracket == this.filter.sizeBracket ? match+1 : -100
+          match = _.includes(this.filter.sizeBracket, space.sizeSqFtBracket) ? match+1 : -100
+          console.log(match, this.filter.sizeBracket, space.sizeSqFtBracket)
         }
-        return match >= 0
+
+        return match > 0
       })
     },
     filteredSpacesByBuilding () {
-      let group = _.groupBy(this.filteredSpaces, 'building')
+      let group = _.groupBy(this.allSpaces, 'building')
       // return group
 
-      return _.filter(allBuildings, (building) => {
-        return filter
+      group = _.mapValues(group, (building, key) => {
+        let options = _.uniq(_.map(building, (b) => b.options))
+        let sizeSqFtBracket = _.uniq(_.map(building, (b) => b.sizeSqFtBracket))
+        let sizeSqFt = _.map(building, (b) => b['sizeSqFt'])
+        let sizeSqFtMin = _.round(_.min(sizeSqFt))
+        let sizeSqFtMax = _.round(_.max(sizeSqFt))
+
+        return {
+          title: `Building ${key}`,
+          id: key,
+          building: this.getBuildingBySlug(key),
+          options: options,
+          sizeSqFtBracket: sizeSqFtBracket,
+          sizeSqFt: sizeSqFt,
+          sizeSqFtMin: sizeSqFtMin,
+          sizeSqFtMax: sizeSqFtMax,
+          units: building
+        }
       })
+
+      return _.filter(group, (building) => {
+
+        // show all buildings if filter is at default state
+        if (!this.filter.options && !this.filter.sizeBracketMax) {
+          return true
+        }
+
+        let match = 0
+
+        if (this.filter.options && building.options) {
+          // match = space.options == this.filter.options ? match+1 : -100
+          match = _.includes(building.options, this.filter.options) ? match+1 : -100
+        }
+
+        // console.log(this.filter.sizeBracketMin , this.filter.sizeBracketMax, building.sizeSqFtMin, building.sizeSqFtMax>0)
+
+        if (this.filter.sizeBracketMin >=0 && this.filter.sizeBracketMax>0 && building.sizeSqFtMin>0 && building.sizeSqFtMax>0) {
+          // match = space.sizeSqFtBracket == this.filter.sizeBracket ? match+1 : -100
+          let filterMin = this.filter.sizeBracketMin == 0 ? 0 : this.filter.sizeBracketMin
+          let filterMax = this.filter.sizeBracketMax == 5000 ? 999999 : this.filter.sizeBracketMax
+
+          // console.log(building.sizeSqFtMin, filterMin, filterMax)
+          // console.log(building.sizeSqFtMax, filterMin, filterMax)
+
+          match = _.inRange(building.sizeSqFtMin, filterMin, filterMax) || _.inRange(building.sizeSqFtMax, filterMin, filterMax)
+                ? match + 1 : -100
+
+          // console.log(match)
+        }
+
+        return match > 0
+
+      })
+
+      // return _.filter(allBuildings, (building) => {
+      //   return filter
+      // })
     }
   },
 
@@ -430,6 +499,42 @@ export default {
       } else {
         this.filter[filterOption] = value
       }
+    },
+    onSliderChange (val, a) {
+      // console.log('onSliderChange', ev, a)
+      let displayValues=['0', '100', '200', '1000', '2000', '5000+']
+      let displayMin = displayValues[val[0]]
+      let displayMax = displayValues[val[1]]
+      this.filterDisplay.sizeBracketMin = displayMin
+      this.filterDisplay.sizeBracketMax = displayMax
+
+      let filterValues=['0', '100', '200', '1000', '2000', '5000']
+      let filterMin = filterValues[val[0]]
+      let filterMax = filterValues[val[1]]
+      this.filter.sizeBracketMin = _.toNumber(filterMin)
+      this.filter.sizeBracketMax = _.toNumber(filterMax)
+
+      console.log('onSliderChange', displayMin, displayMax, filterMin, filterMax)
+    },
+    getSizeRangeFromBracket (sizeBrackets) {
+      let sizes = _.map(_.flatten(_.map(sizeBrackets, (size) => _.split(size, '-'))), (v) => {
+          v = _.replace(v, ',', '')
+          v = _.replace(v, '<', '')
+          v = _.replace(v, '>', '')
+          return _.round(v)
+      })
+
+      let min = _.min(sizes)
+      let max = _.max(sizes)
+
+      if (min==max) {
+        return `${max}–5000+ sq ft`
+      }
+
+      return `${_.round(_.min(sizes),-1)}–${_.round(_.max(sizes),-1)} sq ft`
+    },
+    onSliderDragEnd (val, a) {
+      // console.log('onSliderDragEnd', ev, a)
     },
     getTitleCase (string) {
       return _.startCase(string)
@@ -460,6 +565,12 @@ export default {
 
   &:hover {
     color: $primary
+  }
+
+  .chip {
+    color: black;
+    background: #eee;
+    margin: 0 .3em .3em 0;
   }
 }
 .drawer {
@@ -541,9 +652,56 @@ export default {
 .filter-popup {
   position: absolute;
   top: 3.5rem;
-  width: 15rem;
+  // right: 0;
+  // left: 50%;
+  // transform: translateX(-50%);
+  left: 0;
+  width: 19rem;
+  padding: 1.25rem 1.5rem 1.5rem;
   background: white;
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
   z-index: 99;
+  border-radius: 3px;
+
+  .clear-filter, .close-popup {
+    cursor: pointer;
+  }
+  .close-popup {
+    font-size: 1.5rem;
+  }
+
+  &.slider {
+    width: 24rem;
+    padding: 1.25rem 1.5rem 2.5rem;
+  }
+}
+
+.slider-component {
+
+  height: 2px !important;
+
+  .custom-mark {
+    position: absolute;
+    top: 15px;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    width: 50px;
+    text-align: center;
+    font-size: .8rem;
+    // position: absolute;
+    // left: 20px;
+    // transform: translateY(-50%);
+    // white-space: nowrap;
+    // width: 50px;
+    // text-align: left;
+    // font-size: .8rem;
+  }
+  .custom-process {
+    background: black;
+    height: 2px;
+  }
+  .custom-dot {
+
+  }
 }
 </style>

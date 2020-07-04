@@ -42,11 +42,18 @@
 
                     <div class="filter-popup" v-show="typeFilters === true">
                       <!-- <h5>Select workspace type</h5> -->
+                      <div class="d-flex justify-content-between align-items-baseline">
+                        <div class="h5 font-weight-normal">
+                          Select space type
+                        </div>
+                        <div class="close-popup" @click="typeFilters = false">
+                          &times;
+                        </div>
+                      </div>
                       <div
                       v-for="option in spaceFilters['options']" :key="option"
                       @click="toggleFilter('options', option); typeFilters = false"
                       :class="{'active': option == filter.options}"
-                      v-show="option !== filter.options"
                       class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
                       >
                         {{option}} <span v-if="option == filter.options">&times;</span>
@@ -64,7 +71,7 @@
                   </div>
                   <div class="position-relative">
                     <div class="btn btn-outline-dark chip chip-lg mr-2 mb-0 mt-2"
-                    :class="[this.filter.sizeBracket ? 'active' : '']"
+                    :class="[!(filterDisplay.sizeBracketMin=='0' && filterDisplay.sizeBracketMax=='5000+') ? 'active' : '']"
                     @click="sizeFilters = true; typeFilters = false"
                     >
                     <!-- <span v-if="!this.filter.sizeBracket">All sizes</span>
@@ -75,7 +82,6 @@
 
                     <div class="filter-popup slider"
                     v-show="sizeFilters === true"
-                    @mouseleave="typeFilters = false"
                     >
                       <!-- <h5>Select workspace size in sqft</h5> -->
                       <!-- <div
@@ -86,32 +92,42 @@
                       >
                         {{option}} <span v-if="option == filter.sizeBracket">&times;</span>
                       </div> -->
+                      <div class="d-flex justify-content-between align-items-baseline">
+                        <div class="h5 font-weight-normal">
+                          Select size (sq ft)
+                        </div>
+                        <div class="close-popup" @click="sizeFilters = false">
+                          &times;
+                        </div>
+                      </div>
 
-                      <vue-slider
-                      v-model="sliderModel"
-                      :absorb="true"
-                      :marks="sliderMarks"
-                      :tooltip="'none'"
-                      :min="0"
-                      :max="5"
-                      :min-range="1"
-                      :interval="1"
-                      :direction="'btt'"
-                      :height="100"
-                      @change="onSliderChange"
-                      @drag-end="onSliderDragEnd"
-                      >
-                        <template v-slot:mark="{ pos, label }">
-                          <div class="custom-mark" :style="{ top: `${pos}%` }">
-                            {{ label }}
-                          </div>
-                        </template>
-                        <template v-slot:process="{ start, end, style, index }">
-                          <div class="vue-slider-process custom-process" :style="[style]">
-                            <!-- Can add custom elements here -->
-                          </div>
-                        </template>
-                      </vue-slider>
+                      <div class="px-2">
+                        <vue-slider
+                        class="slider-component"
+                        v-model="sliderModel"
+                        :absorb="true"
+                        :marks="sliderMarks"
+                        :tooltip="'none'"
+                        :min="0"
+                        :max="5"
+                        :min-range="1"
+                        :interval="1"
+
+                        @change="onSliderChange"
+                        @drag-end="onSliderDragEnd"
+                        >
+                          <template v-slot:mark="{ pos, label }">
+                            <div class="custom-mark" :style="{ left: `${pos}%` }">
+                              {{ label }}
+                            </div>
+                          </template>
+                          <template v-slot:process="{ start, end, style, index }">
+                            <div class="vue-slider-process custom-process" :style="[style]">
+                              <!-- Can add custom elements here -->
+                            </div>
+                          </template>
+                        </vue-slider>
+                      </div>
 
                     </div>
                   </div>
@@ -830,12 +846,12 @@ export default {
       sliderModel: [0,5],
       sliderData: [0,1,2,3,4,5],
       sliderMarks: {
-        '5': { label: '0' },
-        '4': { label: '100' },
-        '3': { label: '200' } ,
-        '2': { label: '1000' },
-        '1': { label: '2000' },
-        '0': { label: '5000+ sq ft' }
+        '0': { label: '0' },
+        '1': { label: '100' },
+        '2': { label: '200' } ,
+        '3': { label: '1000' },
+        '4': { label: '2000' },
+        '5': { label: '5000+' }
       },
       filterDisplay: {
         sizeBracketMin: '0',
@@ -1020,42 +1036,56 @@ export default {
 .filter-popup {
   position: absolute;
   top: 3.5rem;
-  width: 15rem;
-  // padding: 1.5rem;
-  // background: white;
-  // box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
+  // right: 0;
+  // left: 50%;
+  // transform: translateX(-50%);
+  left: 0;
+  width: 19rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+  background: white;
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
   z-index: 99;
+  border-radius: 3px;
 
-  .clear-filter {
+  .clear-filter, .close-popup {
     cursor: pointer;
+  }
+  .close-popup {
+    font-size: 1.5rem;
   }
 
   &.slider {
-    width: 10rem;
-    padding: 1rem;
+    width: 24rem;
+    padding: 1.25rem 1.5rem 2.5rem;
   }
 }
 
-.custom-mark {
-  // position: absolute;
-  // top: 10px;
-  // transform: translateX(-50%);
-  // white-space: nowrap;
-  // width: 50px;
-  // text-align: center;
-  // font-size: .8rem;
-  position: absolute;
-  left: 20px;
-  transform: translateY(-50%);
-  white-space: nowrap;
-  width: 50px;
-  text-align: left;
-  font-size: .8rem;
-}
-.custom-process {
-  background: black;
-}
-.custom-dot {
+.slider-component {
 
+  height: 2px !important;
+
+  .custom-mark {
+    position: absolute;
+    top: 15px;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    width: 50px;
+    text-align: center;
+    font-size: .8rem;
+    // position: absolute;
+    // left: 20px;
+    // transform: translateY(-50%);
+    // white-space: nowrap;
+    // width: 50px;
+    // text-align: left;
+    // font-size: .8rem;
+  }
+  .custom-process {
+    background: black;
+    height: 2px;
+  }
+  .custom-dot {
+
+  }
 }
 </style>

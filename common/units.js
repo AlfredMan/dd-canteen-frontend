@@ -1580,7 +1580,8 @@ export const units = [
     'Size Sq Ft': 8194.557069999999,
     'Size Sq M': 761.2992632564927,
     'Size Sq Ft Bracket': '2,001<',
-    'Explantion': '(Floor / Building)'
+    'Explantion': '(Floor / Building)',
+    'Options': ''
   },
   {
     'Title': 'D1-0-1',
