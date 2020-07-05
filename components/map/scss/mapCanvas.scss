@@ -16,11 +16,11 @@
 }
 #container {
   position: absolute;
-  bottom: 0;
+  // bottom: 0;
   right: 0;
   z-index: 99;
   width: 100%;
-  height: 100%;
+  // height: 100%;
   transition: .7s ease-in-out all;
   z-index: 99;
   pointer-events: initial;
@@ -36,6 +36,18 @@
   pointer-events: none;
 
   overflow: hidden;
+
+  @include media-breakpoint-down(sm) {
+    height: calc(100% - 12rem);
+    bottom: auto;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+  @include media-breakpoint-up(sm) {
+    height: 100%;
+    bottom: 0;
+  }
 
   &:hover {
     // transform: translateX(4%) scale(0.3);

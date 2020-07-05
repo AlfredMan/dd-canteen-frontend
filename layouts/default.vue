@@ -13,6 +13,8 @@
 
     <app-map />
 
+    <!-- <app-tool /> -->
+
   </div>
 </template>
 
@@ -22,6 +24,7 @@ import AppFooter from '../components/AppFooter.vue'
 import AppTransition from '../components/AppTransition.vue'
 import AppNewsletter from '../components/AppNewsletter.vue'
 import AppMap from '../components/map/Map.vue'
+import AppTool from '../components/AppTool.vue'
 
 export default {
   components: {
@@ -29,7 +32,8 @@ export default {
     AppFooter,
     AppTransition,
     AppNewsletter,
-    AppMap
+    AppMap,
+    AppTool
   },
   mounted () {
     // From testing, without a brief timeout, it won't work.

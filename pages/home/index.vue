@@ -163,12 +163,12 @@
       <div class="bg-white text-black pb-5-pt-3">
         <div class="px-0 px-md-4 py-0 py-md-2">
           <div class="container-fluid py-5">
-            <div class="row d-flex">
+            <div class="row d-flex align-items-baseline">
               <div class="col-12 col-md-6 px-3">
                 <h2>London’s new design district</h2>
               </div>
               <div class="col-12 col-md-6 px-3 ml-auto">
-                <h4>Design District is a new permanent home for the creative industries. With purpose-designed workspaces, workshops, accessible rents and flexible leases. It comprises 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. Each is tailored to the needs of creative businesses to help them thrive.</h4>
+                <h4 class="mt-4">Design District is a new permanent home for the creative industries. With purpose-designed workspaces, workshops, accessible rents and flexible leases. It comprises 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. Each is tailored to the needs of creative businesses to help them thrive.</h4>
                 <nuxt-link :to="{ path: '/workspace'}" class="text-primary h5">
                   Find your work space &rarr;
                 </nuxt-link>

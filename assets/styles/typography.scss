@@ -5,14 +5,20 @@ body {
 	font-weight: 200;
 	color: #000;
 
+  @include media-breakpoint-down(sm) {
+		font-size: 12px;
+	}
 	@include media-breakpoint-up(sm) {
 		font-size: 12px;
+    // font-size: 1.02vw;
 	}
 	@include media-breakpoint-up(md) {
 		font-size: 12.5px;
+    // font-size: 1.02vw;
 	}
 	@include media-breakpoint-up(lg) {
 		font-size: 13px;
+    // font-size: 1.02vw;
 	}
 	@include media-breakpoint-up(xl) {
 		font-size: 14px;
@@ -74,12 +80,18 @@ h1,
 	font-size: 5rem;
 	@include media-breakpoint-up(md) {
 		font-size: 7.5rem;
+    font-size: 8rem;
+    font-size: 9vw;
 	}
 	@include media-breakpoint-up(lg) {
-		font-size: 8rem;
+		// font-size: 8rem;
+    // font-size: 7.5rem;
+    font-size: 8rem;
+    font-size: 9vw;
 	}
 	@include media-breakpoint-up(xl) {
-		font-size: 10rem;
+		// font-size: 10rem;
+    font-size: 9rem;
 	}
 }
 

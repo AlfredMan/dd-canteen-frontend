@@ -38,6 +38,20 @@ $content-width: 33.33vw;
     // overflow: auto;
     pointer-events: none;
 
+    @include media-breakpoint-down(sm) {
+      background: white;
+      transform: translate3d(0px, calc(100% - 13rem), 0px);
+      box-shadow: 0px 0px 6px rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+
+    @include media-breakpoint-up(sm) {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
     &.panel-main {
 
     }
@@ -92,16 +106,32 @@ $content-width: 33.33vw;
 
   .map-content {
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
+
+
+    @include media-breakpoint-down(sm) {
+      left: 0;
+      bottom: 0;
+      right: 0;
+      top: 0;
+    }
+    @include media-breakpoint-up(sm) {
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
     // border: 1px solid blue;
   }
   .content {
 
     height: 100%;
-    max-width: $content-width;
-    width: $content-width;
+    max-width: 100%;
+    width: 100%;
+
+    @include media-breakpoint-up(sm) {
+      max-width: $content-width;
+      width: $content-width;
+    }
+
     padding: 2rem;
     font-size: 1rem;
 
@@ -266,8 +296,14 @@ $content-width: 33.33vw;
   .toggle {
     position: absolute;
     z-index: 99999;
+
     right: 0;
-    bottom: 0;
+    @include media-breakpoint-down(sm) {
+      top: 0;
+    }
+    @include media-breakpoint-up(sm) {
+      bottom: 0;
+    }
     // width: 5rem;
     text-align: center;
     line-height: 1rem;

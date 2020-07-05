@@ -2,13 +2,22 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import gsap from 'gsap'
 import _ from 'lodash'
+const scale = 10
 export default {
   data () {
     return {
       sceneState: {
-        controlsDefaultDistance: 50,
-        controlsZoomedDistance: 20
+        controlsDefaultDistance: 50 * scale,
+        controlsZoomedDistance: 20 * scale
       }
+    }
+  },
+  computed: {
+    controlsDefaultDistance () {
+      return this.isMobile ? 60 * scale : 50 * scale
+    },
+    controlsZoomedDistance () {
+      return this.isMobile ? 30 * scale : 20 * scale
     }
   },
   methods: {
@@ -20,8 +29,8 @@ export default {
       this.sceneState.controls.dampingFcator = 0.7
       this.sceneState.controls.target = new THREE.Vector3(0, 1, 0)
       this.sceneState.controls.enableZoom = true
-      this.sceneState.controls.minDistance = this.sceneState.controlsDefaultDistance
-      this.sceneState.controls.maxDistance = this.sceneState.controlsDefaultDistance
+      this.sceneState.controls.minDistance = this.controlsDefaultDistance
+      this.sceneState.controls.maxDistance = this.controlsDefaultDistance
     },
     zoomToBuilding () {
       let from = {}; let to = {}
@@ -55,7 +64,7 @@ export default {
         limit: controls.maxDistance
       }
       to = {
-        limit: self.sceneState.controlsDefaultDistance
+        limit: self.controlsDefaultDistance
       }
       gsap.to(from, {
         limit: to.limit,

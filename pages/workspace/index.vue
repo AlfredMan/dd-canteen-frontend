@@ -5,12 +5,12 @@
       <div class="px-0 px-md-4 py-4 py-5 py-md-5">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-12 col-md-8">
+            <div class="col-12 col-md-12">
               <h1>A home for creators</h1>
             </div>
           </div>
           <div class="row d-flex align-items-start justify-content-between">
-            <div class="col-12 col-md-6 mb-5">
+            <div class="col-12 col-md-5 mb-5">
               <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering affordable rent, flexible leases and work spaces purpose-built for creative disciplines.</h4> -->
               <p class="font-weight-normal">Rent a desk, a studio, a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</p>
               <!-- <h4>Design District will provide 150,000 sq ft of permanent workspace for everyone for London’s designers makers and creators. A place for total focus, shared stories and resources, new connections and collaboration. </h4>
@@ -141,7 +141,7 @@
 
             </div>
 
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-7">
               <div class="row d-flex align-items-end justify-content-end">
                 <div class="col-12 col-md-12">
                   <lazy-image

@@ -126,8 +126,8 @@
                   <h3>Floorplans</h3>
                 </div>
               </div>
-              <div class="row d-flex align-items-start justify-content-start pr-5">
-                <div class="floorplan col-3 col-md-2" v-for="floorplan in floorplans">
+              <div class="row d-flex align-items-start justify-content-start pr-md-5">
+                <div class="floorplan col-12 col-sm-3 col-md-2 mb-4" v-for="floorplan in floorplans">
                   <img :src="floorplan.url" alt="">
                 </div>
               </div>

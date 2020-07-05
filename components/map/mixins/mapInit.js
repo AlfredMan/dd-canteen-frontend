@@ -114,33 +114,28 @@ export default {
       // this.sceneState.camera = camera
     },
     lights () {
-      const light = new THREE.AmbientLight(0xFFFFFF, 1) // soft white light
+      // return
+
+      const light = new THREE.AmbientLight(0xFFFFFF, 0.5) // soft white light
       this.sceneState.scene.add(light)
 
-      const d = 20
-
-      const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 1)
-      directionalLight.position.set(10, 50, 0)
-      directionalLight.target.position.set(0, 0, 0)
-      // directionalLight.castShadow = false
-      // directionalLight.shadow.mapSize.width = 1024 // default
-      // directionalLight.shadow.mapSize.height = 1024 // default
-      // directionalLight.shadow.camera.left = -d
-      // directionalLight.shadow.camera.right = d
-      // directionalLight.shadow.camera.top = d
-      // directionalLight.shadow.camera.bottom = -d
-
-      const directionalLight2 = new THREE.DirectionalLight(0xFFFFFF, 1)
-      directionalLight2.position.set(-10, 50, 0)
-      directionalLight2.target.position.set(0, 0, 0)
-
-      const directionalLight3 = new THREE.DirectionalLight(0xFFFFFF, 1)
-      directionalLight3.position.set(0, 50, 10)
-      directionalLight3.target.position.set(0, 0, 0)
-
-      const directionalLight4 = new THREE.DirectionalLight(0xFFFFFF, 1)
-      directionalLight4.position.set(0, 50, -10)
-      directionalLight4.target.position.set(0, 0, 0)
+      // const d = 20
+      //
+      // const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 1)
+      // directionalLight.position.set(10, 50, 0)
+      // directionalLight.target.position.set(0, 0, 0)
+      //
+      // const directionalLight2 = new THREE.DirectionalLight(0xFFFFFF, 1)
+      // directionalLight2.position.set(-10, 50, 0)
+      // directionalLight2.target.position.set(0, 0, 0)
+      //
+      // const directionalLight3 = new THREE.DirectionalLight(0xFFFFFF, 1)
+      // directionalLight3.position.set(0, 50, 10)
+      // directionalLight3.target.position.set(0, 0, 0)
+      //
+      // const directionalLight4 = new THREE.DirectionalLight(0xFFFFFF, 1)
+      // directionalLight4.position.set(0, 50, -10)
+      // directionalLight4.target.position.set(0, 0, 0)
 
       // directionalLight2.castShadow = false
       // directionalLight2.shadow.mapSize.width = 1024 // default

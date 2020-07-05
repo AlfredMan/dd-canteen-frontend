@@ -3,6 +3,7 @@ import _ from 'lodash'
 // import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 // import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+const scale = 10
 export default {
   data () {
     return {
@@ -115,6 +116,30 @@ export default {
       //   }
       // }
 
+      const urls = [
+        '/images/px.png',
+        '/images/nx.png',
+        '/images/py.png',
+        '/images/ny.png',
+        '/images/pz.png',
+        '/images/nz.png'
+      ]
+
+      const envMap = new THREE.CubeTextureLoader().load(urls)
+      envMap.mapping = THREE.CubeReflectionMapping
+      envMap.format = THREE.RGBFormat
+
+      const geometry = new THREE.CubeGeometry(2 * scale, 3 * scale, 4 * scale)
+    	const material = new THREE.MeshBasicMaterial({
+        envMap,
+        combine: THREE.MixOperation,
+        reflectivity: 0.8,
+        color: 0xFFFFFF,
+        transparent: true,
+        opacity: 0.7
+      })
+    	// const mesh = new THREE.Mesh(geometry, material)
+    	// this.sceneState.scene.add(mesh)
       // debugger
 
       gltfScene.traverse((child) => {
@@ -132,7 +157,23 @@ export default {
           // child.material = this.sceneState.defaultMaterial
           child.castShadow = false
           child.defaultMaterial = child.material.clone()
+          child.defaultOpacity = _.clone(child.material.opacity)
+          child.defaultTransparent = _.clone(child.material.transparent)
+
           this.sceneState.rayTarget.push(child)
+
+          // console.log(child)
+          if (_.includes(_.lowerCase(child.material.name), 'glass')) {
+            console.log('is glass')
+            // child.material.envMap = envMap
+            // child.material.needsUpdate = true
+            // child.material.opacity = 0.8
+            // child.material.color = new THREE.Color(0xFF0000)
+
+            child.material = material
+
+            console.log(child.material)
+          }
           // this.sceneState.buildings.push(child)
         } else
         if (child.type === 'Object3D') {
@@ -218,13 +259,13 @@ export default {
       // this.addModel(object)
       // obj.scale.set(0.1, 0.1, 0.1)
 
-      gltfScene.position.x = -2.5
-      gltfScene.position.z = 4
+      // gltfScene.position.x = -2.5
+      // gltfScene.position.z = 4
 
       // // this.sceneState.targetMesh = obj
       // this.sceneState.scene.add(obj)
 
-      // gltfScene.scale.set(0.01, 0.01, 0.01)
+      gltfScene.scale.set(scale, scale, scale)
       // gltfScene.position.x = 0
       // gltfScene.position.y = 0
       // gltfScene.position.z = 0

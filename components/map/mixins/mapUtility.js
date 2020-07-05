@@ -18,6 +18,13 @@ export default {
     },
     currentSpace () {
       return this.$route.query.space
+    },
+    isMobile () {
+      console.log('map isMobile ()')
+      if (process.client) {
+        return window.innerWidth < 768
+      }
+      return false
     }
   },
   watch: {
