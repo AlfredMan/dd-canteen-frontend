@@ -133,6 +133,16 @@ export default {
   },
   methods: {
     init () {
+      window.onbeforeunload = function(evt) {
+        var message = 'Tool values will not be saved. Sure you want to leave?';
+        if (typeof evt == 'undefined') {
+            evt = window.event;
+        }
+        if (evt) {
+            evt.returnValue = message;
+        }
+        return message;
+      }
     }
   }
 }
