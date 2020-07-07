@@ -22,6 +22,7 @@ export default {
         raf: null,
         tick: 0,
         gltfs: [
+          '/model/DD-all-baked-tex-v07.gltf',
           '/model/DD-all-baked-16-no-texture.gltf',
           '/model/DD-all-gltf-combined-test-1.gltf',
           '/model/DD-all-gltf-v01.gltf',
@@ -60,12 +61,13 @@ export default {
     init () {
       this.loadModel().then((models) => {
         this.initThree()
-        this.camera()
+        // this.camera()
         this.lights()
         this.handleModels(models)
         this.bindEvents()
         this.animate()
-        this.focusBuilding()
+        this.focusBuilding(4)
+        this.rotateBuilding()
       })
     },
     bindEvents () {
@@ -87,26 +89,23 @@ export default {
         const self = this
         // console.log(window.scrollY)
         let y = window.scrollY
-        let step = 1000
+        let step = 1500
         if (y < 1*step) {
-          this.focusBuilding(3)
+          this.focusBuilding(4)
         } else
         if (y < 2*step) {
-          this.focusBuilding(1)
+          this.focusBuilding(10)
         } else
         if (y < 3*step) {
-          this.focusBuilding(0)
+          this.focusBuilding(9)
         } else
         if (y < 4*step) {
           this.focusBuilding(6)
         } else
         if (y < 5*step) {
-          this.focusBuilding(8)
+          this.focusBuilding(15)
         }
-
-        if (this.thumbSceneState.currentBuilding) {
-          this.thumbSceneState.currentBuilding.rotation.y = y / (step/4)
-        }
+        this.rotateBuilding()
       }
     },
     onWindowResize () {
@@ -116,6 +115,15 @@ export default {
           self.thumbSceneState.camera.aspect = this.thumbSceneState.width /this.thumbSceneState.height
           self.thumbSceneState.camera.updateProjectionMatrix()
           self.thumbSceneState.renderer.setSize(this.thumbSceneState.width, this.thumbSceneState.height)
+        }
+      }
+    },
+    rotateBuilding () {
+      if (process.client) {
+        if (this.thumbSceneState.currentBuilding) {
+          let y = window.scrollY
+          let step = 1000
+          this.thumbSceneState.currentBuilding.rotation.y = y / (step/4) + 3
         }
       }
     },
@@ -133,6 +141,19 @@ export default {
     initThree () {
       this.thumbSceneState.container = this.$refs.thumbContainer
       this.thumbSceneState.scene = new THREE.Scene()
+
+      this.thumbSceneState.cameraDefaultPosition = new THREE.Vector3(0, 0, 0)
+      this.thumbSceneState.cameraDefaultPosition.x = 25
+      this.thumbSceneState.cameraDefaultPosition.y = 5
+      this.thumbSceneState.cameraDefaultPosition.z = 25
+
+      this.thumbSceneState.camera = new THREE.PerspectiveCamera(15, this.thumbSceneState.width / this.thumbSceneState.height, 0.01, 10000)
+      this.thumbSceneState.camera.position.x = this.thumbSceneState.cameraDefaultPosition.x
+      this.thumbSceneState.camera.position.z = this.thumbSceneState.cameraDefaultPosition.z
+      this.thumbSceneState.camera.position.y = this.thumbSceneState.cameraDefaultPosition.y
+      this.thumbSceneState.camera.lookAt(new THREE.Vector3(0, 1, 0))
+
+      this.thumbSceneState.scene.add( this.thumbSceneState.camera );
 
       this.thumbSceneState.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
       this.thumbSceneState.renderer.setSize(this.thumbSceneState.width, this.thumbSceneState.height)
@@ -154,6 +175,8 @@ export default {
 
     },
     lights () {
+      return
+
       const light = new THREE.AmbientLight(0xFFFFFF, 1) // soft white light
       this.thumbSceneState.scene.add(light)
 
@@ -183,20 +206,20 @@ export default {
       this.thumbSceneState.scene.add(directionalLight)
       this.thumbSceneState.scene.add(directionalLight2)
     },
-    camera () {
-      this.thumbSceneState.cameraDefaultPosition = new THREE.Vector3(0, 0, 0)
-      this.thumbSceneState.cameraDefaultPosition.x = 25
-      this.thumbSceneState.cameraDefaultPosition.y = 30
-      this.thumbSceneState.cameraDefaultPosition.z = 25
-
-      this.thumbSceneState.camera = new THREE.PerspectiveCamera(15, this.thumbSceneState.width / this.thumbSceneState.height, 0.01, 10000)
-      this.thumbSceneState.camera.position.x = this.thumbSceneState.cameraDefaultPosition.x
-      this.thumbSceneState.camera.position.z = this.thumbSceneState.cameraDefaultPosition.z
-      this.thumbSceneState.camera.position.y = this.thumbSceneState.cameraDefaultPosition.y
-      this.thumbSceneState.camera.lookAt(new THREE.Vector3(0, 1, 0))
-
-      this.thumbSceneState.scene.add( this.thumbSceneState.camera );
-    },
+    // camera () {
+    //   this.thumbSceneState.cameraDefaultPosition = new THREE.Vector3(0, 0, 0)
+    //   this.thumbSceneState.cameraDefaultPosition.x = 25
+    //   this.thumbSceneState.cameraDefaultPosition.y = 5
+    //   this.thumbSceneState.cameraDefaultPosition.z = 25
+    //
+    //   this.thumbSceneState.camera = new THREE.PerspectiveCamera(15, this.thumbSceneState.width / this.thumbSceneState.height, 0.01, 10000)
+    //   this.thumbSceneState.camera.position.x = this.thumbSceneState.cameraDefaultPosition.x
+    //   this.thumbSceneState.camera.position.z = this.thumbSceneState.cameraDefaultPosition.z
+    //   this.thumbSceneState.camera.position.y = this.thumbSceneState.cameraDefaultPosition.y
+    //   this.thumbSceneState.camera.lookAt(new THREE.Vector3(0, 1, 0))
+    //
+    //   this.thumbSceneState.scene.add( this.thumbSceneState.camera );
+    // },
     loadModel () {
       const self = this
       return new Promise((resolve, reject) => {
@@ -216,7 +239,7 @@ export default {
       if (this.thumbSceneState.camera) {
         this.thumbSceneState.camera.position.x = currentBuilding.position.x - 15
         this.thumbSceneState.camera.position.z = currentBuilding.position.z - 15
-        this.thumbSceneState.camera.position.y = currentBuilding.position.y + 5
+        this.thumbSceneState.camera.position.y = currentBuilding.position.y + 2
         this.thumbSceneState.camera.lookAt(new THREE.Vector3(currentBuilding.position.x,currentBuilding.position.y + 1.5,currentBuilding.position.z))
       }
 
@@ -225,30 +248,89 @@ export default {
     },
     handleModels (models) {
       const [gltfScene, obj] = models
-      this.thumbSceneState.activeMaterial = new THREE.MeshStandardMaterial({ color: 0x666666, side: THREE.DoubleSide })
-      this.thumbSceneState.defaultMaterial = new THREE.MeshStandardMaterial({ color: 0xEEEEEE, side: THREE.DoubleSide })
+      // this.thumbSceneState.activeMaterial = new THREE.MeshStandardMaterial({ color: 0x666666, side: THREE.DoubleSide })
+      // this.thumbSceneState.defaultMaterial = new THREE.MeshStandardMaterial({ color: 0xEEEEEE, side: THREE.DoubleSide })
       // debugger
+      // gltfScene.traverse((child) => {
+      //   // console.log(_.lowerCase(child.name))
+      //   if (_.includes(['site'], _.lowerCase(child.name))) {
+      //     this.thumbSceneState.site = child
+      //     for (let i = 0; i < this.thumbSceneState.site.children.length; i++) {
+      //       this.thumbSceneState.buildings.push(this.thumbSceneState.site.children[i])
+      //     }
+      //   }
+      //   // else
+      //   // if (_.includes(['plane', 'ground'], _.lowerCase(child.name))) {
+      //   //   child.receiveShadow = true
+      //   //   this.thumbSceneState.environment.push(child)
+      //   // } else
+      //   // if (child.type === 'Object3D') {
+      //   //   this.thumbSceneState.buildings.push(child)
+      //   // }else
+      //   // if (child.type === 'Mesh') {
+      //   //   this.thumbSceneState.meshes.push(child)
+      //   // }
+      // })
+      const urls = [
+        '/images/px.png',
+        '/images/nx.png',
+        '/images/py.png',
+        '/images/ny.png',
+        '/images/pz.png',
+        '/images/nz.png'
+      ]
+
+      const envMap = new THREE.CubeTextureLoader().load(urls)
+      envMap.mapping = THREE.CubeReflectionMapping
+      envMap.format = THREE.RGBFormat
+      const material = new THREE.MeshBasicMaterial({
+        envMap,
+        combine: THREE.MixOperation,
+        reflectivity: 0.8,
+        // color: 0xFFFFFF,
+        color: 0xEEEEFF,
+        transparent: true,
+        opacity: 0.9
+      })
       gltfScene.traverse((child) => {
         // console.log(_.lowerCase(child.name))
         if (_.includes(['site'], _.lowerCase(child.name))) {
           this.thumbSceneState.site = child
-          for (let i = 0; i < this.thumbSceneState.site.children.length; i++) {
-            this.thumbSceneState.buildings.push(this.thumbSceneState.site.children[i])
-          }
-        }
-        // else
-        // if (_.includes(['plane', 'ground'], _.lowerCase(child.name))) {
-        //   child.receiveShadow = true
-        //   this.thumbSceneState.environment.push(child)
-        // } else
-        // if (child.type === 'Object3D') {
-        //   this.thumbSceneState.buildings.push(child)
-        // }else
-        // if (child.type === 'Mesh') {
-        //   this.thumbSceneState.meshes.push(child)
-        // }
-      })
+        } else
+        if (_.includes(['plane', 'ground'], _.lowerCase(child.name))) {
+          child.receiveShadow = false
+          this.thumbSceneState.environment.push(child)
+          child.visible = false
+          // child.material.metalness = 0
+          // child.material.roughness = 1
+        } else
+        if (child.type === 'Mesh') {
+          // child.material = this.thumbSceneState.defaultMaterial
+          child.castShadow = false
+          child.defaultMaterial = child.material.clone()
+          child.defaultOpacity = _.clone(child.material.opacity)
+          child.defaultTransparent = _.clone(child.material.transparent)
 
+          // this.thumbSceneState.rayTarget.push(child)
+
+          // console.log(child)
+          if (_.includes(_.lowerCase(child.material.name), 'glass')) {
+            // console.log('is glass')
+            // child.material.envMap = envMap
+            // child.material.needsUpdate = true
+            // child.material.opacity = 0.8
+            // child.material.color = new THREE.Color(0xFF0000)
+
+            child.material = material
+
+            // console.log(child.material)
+          }
+          // this.thumbSceneState.buildings.push(child)
+        } else
+        if (child.type === 'Object3D') {
+          this.thumbSceneState.buildings.push(child)
+        }
+      })
       // console.log(this.thumbSceneState)
 
       gltfScene.position.x = 0

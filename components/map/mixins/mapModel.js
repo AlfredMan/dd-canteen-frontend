@@ -164,7 +164,7 @@ export default {
 
           // console.log(child)
           if (_.includes(_.lowerCase(child.material.name), 'glass')) {
-            console.log('is glass')
+            // console.log('is glass')
             // child.material.envMap = envMap
             // child.material.needsUpdate = true
             // child.material.opacity = 0.8
@@ -172,7 +172,7 @@ export default {
 
             child.material = material
 
-            console.log(child.material)
+            // console.log(child.material)
           }
           // this.sceneState.buildings.push(child)
         } else
