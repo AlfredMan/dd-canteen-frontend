@@ -13,7 +13,7 @@
 
     <app-map />
 
-    <app-tool />
+    <!-- <app-tool /> -->
 
   </div>
 </template>

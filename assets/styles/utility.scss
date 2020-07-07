@@ -67,6 +67,7 @@ button, input, optgroup, select, textarea {
 button, input[type="submit"] {
 	display: inline-block;
 	font-size: 1rem;
+  font-size: .875rem;
 	border-radius: 1.5em;
 	margin-top: 1rem;
 }
@@ -81,6 +82,7 @@ button, .btn, input[type="submit"] {
 .btn-lg {
   padding: 1rem 2rem;
   font-size: 1rem;
+  font-size: .875rem;
 }
 
 .btn-primary {
@@ -223,6 +225,7 @@ select {
 	top: 2px;
 	width: 18px;
 	font-size: 1rem;
+  font-size: .875rem;
 	text-align: center;
 }
 

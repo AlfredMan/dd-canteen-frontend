@@ -7,7 +7,7 @@
         <div class="event-info p-5">
           <div class="d-flex flex-column justify-content-between ">
             <div class="event-title">
-              <h1 class="strong mt-2 mb-4 pl-0 h2 col-12 col-md-6" v-if="entry.fields.title">
+              <h1 class=" mt-2 mb-4 pl-0 h2 col-12 col-md-6" v-if="entry.fields.title">
                 {{entry.fields.title}}
               </h1>
               <h3 class="mb-4" v-if="entry.fields.date">
@@ -46,7 +46,7 @@
           <div class="row row-flex justify-content-between ">
             <div class="col-12 col-md-6 order-2 order-lg-1">
               <div class="event-title order-sm-3">
-                <h1 class="strong mt-2 mb-4 pl-0 h2" v-if="entry.fields.title">
+                <h1 class="mt-2 mb-4 pl-0 h2" v-if="entry.fields.title">
                   {{entry.fields.title}}
                 </h1>
                 <h3 class="mb-4" v-if="entry.fields.date">
@@ -98,7 +98,7 @@
       <header class="container my-3 mt-4 pt-5" v-else-if="entry.fields.contentType === 'Podcast'">
         <div class="row d-flex justify-content-center">
           <div class="col-12 col-md-6 mb-4  order-2 order-lg-1">
-            <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
+            <h1 class=" mt-2 mb-4 h2" v-if="entry.fields.title">
               {{entry.fields.title}}
             </h1>
             <h3 class="mb-4" v-if="entry.fields.date">
@@ -151,7 +151,7 @@
       <!-- <header class="container my-3 mt-4" v-else-if="entry.fields.contentType === 'Podcast'">
         <div class="row d-flex justify-content-start">
           <div class="col-12 col-md-6">
-            <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
+            <h1 class=" mt-2 mb-4 h2" v-if="entry.fields.title">
               {{entry.fields.title}}
             </h1>
             <h3 class="mb-4" v-if="entry.fields.date">
@@ -184,7 +184,7 @@
       <header class="container-fluid mb-0 mt-0 py-5 bg-dark text-white" v-else-if="entry.fields.contentType === 'Video'">
         <div class="row d-flex justify-content-start pt-5">
           <!-- <div class="col-12 col-md-7 mb-4">
-            <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
+            <h1 class=" mt-2 mb-4 h2" v-if="entry.fields.title">
               {{entry.fields.title}}
             </h1>
             <h3 class="mb-4" v-if="entry.fields.date">
@@ -209,7 +209,7 @@
             <div class="row">
               <div class="col-12 col-lg-6">
                 <div class="mb-4">
-                  <h1 class="strong mt-2 mb-4 h2 col-12 col-lg-8 px-0" v-if="entry.fields.title">
+                  <h1 class=" mt-2 mb-4 h2 col-12 col-lg-8 px-0" v-if="entry.fields.title">
                     {{entry.fields.title}}
                   </h1>
                   <h3 class="mb-4" v-if="entry.fields.date">
@@ -259,7 +259,7 @@
       <header class="container my-3 mt-4 pt-5" v-else>
         <div class="row d-flex justify-content-start">
           <div class="col-12 col-md-7 mb-4">
-            <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
+            <h1 class=" mt-2 mb-4 h2" v-if="entry.fields.title">
               {{entry.fields.title}}
             </h1>
             <h3 class="mb-4" v-if="entry.fields.date">
@@ -276,7 +276,7 @@
 
               </h6>
             </div>
-            <div class="summary" v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)"></div>
+            <div class="summary h5" v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)"></div>
           </div>
         </div>
         <div class="row d-flex justify-content-center" v-if="entry.fields.mainImage">
@@ -337,7 +337,7 @@
               <div class="row justify-content-center">
                 <div class="col-12 col-md-6 my-4">
                   <div class="mb-4">
-                    <h1 class="strong mt-2 mb-4 h2" v-if="entry.fields.title">
+                    <h1 class=" mt-2 mb-4 h2" v-if="entry.fields.title">
                       {{entry.fields.title}}
                     </h1>
                     <h3 class="mb-4" v-if="entry.fields.date">
