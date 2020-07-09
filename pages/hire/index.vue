@@ -128,16 +128,16 @@
 
                 <h5>Type</h5>
                 <div class="tags">
-                  <span class="tag">
+                  <span class="tag tag-sm">
                     Meeting Room
                   </span>
-                  <span class="tag">
+                  <span class="tag tag-sm">
                     Popup
                   </span>
-                  <span class="tag">
+                  <span class="tag tag-sm">
                     Photo Studio
                   </span>
-                  <span class="tag">
+                  <span class="tag tag-sm">
                     Roof Top
                   </span>
                 </div>
@@ -147,16 +147,16 @@
 
                 <h5>Number of People</h5>
                 <div class="tags">
-                  <span class="tag">
+                  <span class="tag tag-sm">
                     1
                   </span>
-                  <span class="tag">
+                  <span class="tag tag-sm">
                     2–4
                   </span>
-                  <span class="tag">
+                  <span class="tag tag-sm">
                     5–10
                   </span>
-                  <span class="tag">
+                  <span class="tag tag-sm">
                     11–20
                   </span>
                 </div>

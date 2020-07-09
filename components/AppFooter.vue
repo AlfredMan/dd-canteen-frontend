@@ -4,7 +4,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12 col-md-3 col-lg-3 mb-5">
-            <h5>DESIGN DISTRICT</h5>
+            <h6>DESIGN DISTRICT</h6>
             <a target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/The+Gateway+Pavilions,+Peninsula+Square,+Greenwich+Peninsula,+London+SE10+0SQ/@51.5003894,0.0041197,18.67z?hl=en">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a><br><br>
             <email :address="'hello@designdistrict.co.uk'" /><br>
             <a class="">+44 (0)20 3981 2426</a><br>
@@ -14,44 +14,44 @@
           </div>
 
         <div class="col-6 col-md-2 col-lg-2 mb-5">
-          <h5>Connect</h5>
-          <a class="" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
-          <a class="" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
-          <a class="" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br>
-          <a class="" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london">LinkedIn</a><br>
-          <a class="" target="_blank" rel="noreferrer" href="https://www.pinterest.co.uk/designdistrictlondon/">Pinterest</a>
+          <h6>Connect</h6>
+          <a class="h6" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
+          <a class="h6" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
+          <a class="h6" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br>
+          <a class="h6" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london">LinkedIn</a><br>
+          <a class="h6" target="_blank" rel="noreferrer" href="https://www.pinterest.co.uk/designdistrictlondon/">Pinterest</a>
         </div>
 
           <div class="col-6 col-md-2 col-lg-2 mb-5">
-            <h5>Join</h5>
-            <nuxt-link class="" to="/workspace">
+            <h6>Join</h6>
+            <nuxt-link class="h6" to="/workspace">
               Work space
             </nuxt-link>
             <br>
-            <!-- <nuxt-link class="" to="/the-club">
+            <!-- <nuxt-link class="h6" to="/the-club">
               The Club
             </nuxt-link>
             <br> -->
-            <nuxt-link class="" to="/about-us">
+            <nuxt-link class="h6" to="/about-us">
               About
             </nuxt-link>
             <br>
-            <nuxt-link class="" to="/contact">
+            <nuxt-link class="h6" to="/contact">
               Contact
             </nuxt-link>
           </div>
 
           <div class="col-6 col-md-2 col-lg-2 mb-5">
-            <h5>Legal</h5>
-            <nuxt-link class="" to="/privacy-policy">
+            <h6>Legal</h6>
+            <nuxt-link class="h6" to="/privacy-policy">
               Privacy Policy
             </nuxt-link>
             <br>
-            <nuxt-link class="" to="/cookies-policy">
+            <nuxt-link class="h6" to="/cookies-policy">
               Cookies Policy
             </nuxt-link>
             <br>
-            <nuxt-link class="" to="/terms-and-conditions">
+            <nuxt-link class="h6" to="/terms-and-conditions">
               Terms & Conditions
             </nuxt-link>
           </div>

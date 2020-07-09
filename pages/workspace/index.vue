@@ -12,7 +12,7 @@
           <div class="row d-flex align-items-start justify-content-between">
             <div class="col-12 col-md-5 mb-5">
               <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering affordable rent, flexible leases and work spaces purpose-built for creative disciplines.</h4> -->
-              <p class="font-weight-normal">Rent a desk, a studio, a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</p>
+              <p class="-font-weight-light">Rent a desk, a studio, a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</p>
               <!-- <h4>Design District will provide 150,000 sq ft of permanent workspace for everyone for London’s designers makers and creators. A place for total focus, shared stories and resources, new connections and collaboration. </h4>
               <h4>Rent a desk, a studio,  a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</h4> -->
               <!-- <a href="#become-a-tenant" class="btn btn btn-lg btn-primary mt-3">Get in touch</a> -->
@@ -21,18 +21,18 @@
 
               <div class="d-flex flex-wrap align-items-baseline">
 
-                <div class="-col col-6-col-md-6 pr-0 mb-3 d-flex align-items-center">
-                  <h5 class="filter-option font-weight-normal mt-0 mb-0">Find your work space.</h5>
+                <div class="-col col-6-col-md-6 pr-0 mb-3 d-flex align-items-baseline">
+                  <h5 class="filter-option font-weight-light mt-0 mb-0">Find your work space.</h5>
                 </div>
 
 
-                <div class="-col col-6-col-md-6 pr-0 mb-3 d-flex align-items-center pl-2 pr-1  mr-1">
+                <div class="-col col-6-col-md-6 pr-0 mb-3 d-flex align-items-baseline pl-2 pr-1  mr-1">
                   <div class="mb-2- mr-2">
-                    <h5 class="filter-option font-weight-normal mt-0 mb-0">View</h5>
+                    <h5 class="filter-option font-weight-light mt-0 mb-0">View</h5>
                   </div>
                   <div class="position-relative">
                     <div
-                    class="btn btn-outline-dark chip chip-lg mr-0 mb-0 mt-2"
+                    class="btn btn-outline-dark chip chip-lg mr-0 mb-0 mt-0"
                     :class="[this.filter.options ? 'active' : '']"
                     @click="typeFilters = true; sizeFilters = false"
                     >
@@ -43,7 +43,7 @@
                     <div class="filter-popup" v-show="typeFilters === true">
                       <!-- <h5>Select workspace type</h5> -->
                       <div class="d-flex justify-content-between align-items-baseline">
-                        <div class="h5 font-weight-normal">
+                        <div class="h5 font-weight-light">
                           Select space type
                         </div>
                         <div class="close-popup" @click="typeFilters = false">
@@ -67,10 +67,10 @@
 
                 <div class="-col-3 col-6-col-md-3 pr-0 mb-3 d-flex align-items-center pr-2">
                   <div class="mb-2- mr-2">
-                    <h5 class="filter-option font-weight-normal mt-0 mb-0">in</h5>
+                    <h5 class="filter-option font-weight-light mt-0 mb-0">in</h5>
                   </div>
                   <div class="position-relative">
-                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-0 mt-2"
+                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-0 mt-0"
                     :class="[!(filterDisplay.sizeBracketMin=='0' && filterDisplay.sizeBracketMax=='5000+') ? 'active' : '']"
                     @click="sizeFilters = true; typeFilters = false"
                     >
@@ -93,7 +93,7 @@
                         {{option}} <span v-if="option == filter.sizeBracket">&times;</span>
                       </div> -->
                       <div class="d-flex justify-content-between align-items-baseline">
-                        <div class="h5 font-weight-normal">
+                        <div class="h5 font-weight-light">
                           Select size (sq ft)
                         </div>
                         <div class="close-popup" @click="sizeFilters = false">
