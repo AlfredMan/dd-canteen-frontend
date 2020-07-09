@@ -5,9 +5,9 @@
         <div class="row">
           <div class="col-12 col-md-3 col-lg-3 mb-5">
             <h6>DESIGN DISTRICT</h6>
-            <a target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/The+Gateway+Pavilions,+Peninsula+Square,+Greenwich+Peninsula,+London+SE10+0SQ/@51.5003894,0.0041197,18.67z?hl=en">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a><br><br>
-            <email :address="'hello@designdistrict.co.uk'" /><br>
-            <a class="">+44 (0)20 3981 2426</a><br>
+            <a class="h6" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/The+Gateway+Pavilions,+Peninsula+Square,+Greenwich+Peninsula,+London+SE10+0SQ/@51.5003894,0.0041197,18.67z?hl=en">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a><br><br>
+            <email class="h6" :address="'hello@designdistrict.co.uk'" /><br>
+            <a class="h6">+44 (0)20 3981 2426</a><br>
             <small class="mt-4 d-block">
               Copyright © 2020 Design District Limited
             </small>

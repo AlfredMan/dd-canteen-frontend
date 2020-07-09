@@ -22,17 +22,17 @@
               <div class="d-flex flex-wrap align-items-baseline">
 
                 <div class="-col col-6-col-md-6 pr-0 mb-3 d-flex align-items-baseline">
-                  <h5 class="filter-option font-weight-light mt-0 mb-0">Find your work space.</h5>
+                  <h6 class="filter-option font-weight-light mt-0 mb-0">Find your work space.</h6>
                 </div>
 
 
                 <div class="-col col-6-col-md-6 pr-0 mb-3 d-flex align-items-baseline pl-2 pr-1  mr-1">
                   <div class="mb-2- mr-2">
-                    <h5 class="filter-option font-weight-light mt-0 mb-0">View</h5>
+                    <h6 class="filter-option font-weight-light mt-0 mb-0">View</h6>
                   </div>
                   <div class="position-relative">
                     <div
-                    class="btn btn-outline-dark chip chip-lg mr-0 mb-0 mt-0"
+                    class="btn btn-outline-dark chip -chip-lg mr-0 mb-0 mt-0"
                     :class="[this.filter.options ? 'active' : '']"
                     @click="typeFilters = true; sizeFilters = false"
                     >
@@ -41,9 +41,9 @@
                     </div>
 
                     <div class="filter-popup" v-show="typeFilters === true">
-                      <!-- <h5>Select workspace type</h5> -->
+                      <!-- <h6>Select workspace type</h6> -->
                       <div class="d-flex justify-content-between align-items-baseline">
-                        <div class="h5 font-weight-light">
+                        <div class="h6 font-weight-light">
                           Select space type
                         </div>
                         <div class="close-popup" @click="typeFilters = false">
@@ -54,12 +54,12 @@
                       v-for="option in spaceFilters['options']" :key="option"
                       @click="toggleFilter('options', option); typeFilters = false"
                       :class="{'active': option == filter.options}"
-                      class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
+                      class="btn btn-outline-dark chip -chip-lg mr-2 mb-2"
                       >
                         {{option}} <span v-if="option == filter.options">&times;</span>
                       </div>
-                      <div class="clear-filter" @click="toggleFilter('options', null); typeFilters = false">
-                        Clear
+                      <div class="mt-2clear-filter" @click="toggleFilter('options', null); typeFilters = false">
+                        <small>Clear</small>
                       </div>
                     </div>
                   </div>
@@ -67,10 +67,10 @@
 
                 <div class="-col-3 col-6-col-md-3 pr-0 mb-3 d-flex align-items-center pr-2">
                   <div class="mb-2- mr-2">
-                    <h5 class="filter-option font-weight-light mt-0 mb-0">in</h5>
+                    <h6 class="filter-option font-weight-light mt-0 mb-0">in</h6>
                   </div>
                   <div class="position-relative">
-                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-0 mt-0"
+                    <div class="btn btn-outline-dark chip -chip-lg mr-2 mb-0 mt-0"
                     :class="[!(filterDisplay.sizeBracketMin=='0' && filterDisplay.sizeBracketMax=='5000+') ? 'active' : '']"
                     @click="sizeFilters = true; typeFilters = false"
                     >
@@ -83,7 +83,7 @@
                     <div class="filter-popup slider"
                     v-show="sizeFilters === true"
                     >
-                      <!-- <h5>Select workspace size in sqft</h5> -->
+                      <!-- <h6>Select workspace size in sqft</h6> -->
                       <!-- <div
                       v-for="option in spaceFilters['sizeBracket']" :key="option"
                       @click="toggleFilter('sizeBracket', option); sizeFilters = false"
@@ -93,7 +93,7 @@
                         {{option}} <span v-if="option == filter.sizeBracket">&times;</span>
                       </div> -->
                       <div class="d-flex justify-content-between align-items-baseline">
-                        <div class="h5 font-weight-light">
+                        <div class="h6 font-weight-light">
                           Select size (sq ft)
                         </div>
                         <div class="close-popup" @click="sizeFilters = false">
@@ -1040,7 +1040,7 @@ export default {
   // left: 50%;
   // transform: translateX(-50%);
   left: 0;
-  width: 19rem;
+  width: 16rem;
   padding: 1.25rem 1.5rem 1.5rem;
   background: white;
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
