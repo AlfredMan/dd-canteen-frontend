@@ -80,13 +80,14 @@ button, .btn, input[type="submit"] {
 }
 
 .btn-lg {
-  padding: 1rem 2rem;
+  padding: 1em 2em;
   font-size: 1rem;
-  font-size: .875rem;
+  // font-size: .875rem;
 }
 
 .btn-primary {
-	// color: #000;
+	// color: inherit;
+
 	&:hover {
 		// color: #000;
 	}

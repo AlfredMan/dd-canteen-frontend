@@ -47,7 +47,8 @@
                     Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.
                   </h4>
                   <nuxt-link :to="{ path: '/contact',hash:'#register-interest'}" class="btn btn btn-lg btn-primary mt-3">
-                    <strong>Express interest</strong>
+                    <!-- <strong>Express interest</strong> -->
+                    Express interest
                   </nuxt-link>
                 </div>
               </div>

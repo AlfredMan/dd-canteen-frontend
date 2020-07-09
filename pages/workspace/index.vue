@@ -10,9 +10,9 @@
             </div>
           </div>
           <div class="row d-flex align-items-start justify-content-between">
-            <div class="col-12 col-sm-5 mb-5">
+            <div class="col-12 col-sm-6 mb-5">
               <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering affordable rent, flexible leases and work spaces purpose-built for creative disciplines.</h4> -->
-              <p class="-font-weight-light">Rent a desk, a studio, a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</p>
+              <h4 class="-font-weight-light">Rent a desk, a studio, a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</h4>
               <!-- <h4>Design District will provide 150,000 sq ft of permanent workspace for everyone for London’s designers makers and creators. A place for total focus, shared stories and resources, new connections and collaboration. </h4>
               <h4>Rent a desk, a studio,  a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</h4> -->
               <!-- <a href="#become-a-tenant" class="btn btn btn-lg btn-primary mt-3">Get in touch</a> -->
@@ -22,28 +22,29 @@
               <div class="d-flex flex-wrap align-items-baseline">
 
                 <div class="col-12 pl-0 -col col-6-col-md-6 pr-0 mb-3 d-flex align-items-baseline">
-                  <h6 class="filter-option font-weight-light mt-0 mb-0">Find your work space.</h6>
+                  <h4 class="filter-option font-weight-light mt-0 mb-0">Find your work space.</h4>
                 </div>
 
 
                 <div class="-col col-6-col-md-6 pr-0 mb-3 d-flex align-items-baseline -pl-2 pr-1  mr-1">
-                  <div class="mb-2- mr-2">
-                    <h6 class="filter-option font-weight-light mt-0 mb-0">View</h6>
+                  <div class="mb-2- mr-2 d-none d-sm-block">
+                    <h4 class="filter-option font-weight-light mt-0 mb-0">View</h4>
                   </div>
                   <div class="position-relative mr-2">
                     <div
-                    class="btn btn-outline-dark chip -chip-lg mr-0 mb-0 mt-0 h6"
+                    class="btn btn-outline-dark chip chip-lg mr-0 mb-1 mt-0 h4 filter-chip"
                     :class="[this.filter.options ? 'active' : '']"
                     @click="typeFilters = true; sizeFilters = false"
                     >
-                    <span v-if="!this.filter.options">All space types</span>
+                    <span v-if="!this.filter.options" class="d-none d-sm-block">All space types</span>
+                    <span v-if="!this.filter.options" class="d-sm-none">View all space types</span>
                     <span v-else>{{this.filter.options}}</span>
                     </div>
 
                     <div class="filter-popup" v-show="typeFilters === true">
-                      <!-- <h6>Select workspace type</h6> -->
+                      <!-- <h4>Select workspace type</h4> -->
                       <div class="d-flex justify-content-between align-items-baseline">
-                        <div class="h6 font-weight-light">
+                        <div class="h5 font-weight-light">
                           Select space type
                         </div>
                         <div class="close-popup" @click="typeFilters = false">
@@ -54,7 +55,7 @@
                       v-for="option in spaceFilters['options']" :key="option"
                       @click="toggleFilter('options', option); typeFilters = false"
                       :class="{'active': option == filter.options}"
-                      class="btn btn-outline-dark chip -chip-lg mr-2 mb-2 h6"
+                      class="btn btn-outline-dark chip chip-lg mr-2 mb-2 h4"
                       >
                         {{option}} <span v-if="option == filter.options">&times;</span>
                       </div>
@@ -65,11 +66,11 @@
                   </div>
                 <!-- </div>
                 <div class="-col-3 col-6-col-md-3 pr-0 mb-3 d-flex align-items-center pr-2"> -->
-                  <div class="mb-2- mr-2">
-                    <h6 class="filter-option font-weight-light mt-0 mb-0">in</h6>
+                  <div class="mb-2- mr-2 d-none d-sm-block">
+                    <h4 class="filter-option font-weight-light mt-0 mb-0">in</h4>
                   </div>
-                  <div class="position-relative">
-                    <div class="btn btn-outline-dark chip -chip-lg mr-2 mb-0 mt-0 h6"
+                  <div class="position-relative d-none d-sm-block">
+                    <div class="btn btn-outline-dark chip chip-lg mr-2 mb-1 mt-0 h4"
                     :class="[!(filterDisplay.sizeBracketMin=='0' && filterDisplay.sizeBracketMax=='5000+') ? 'active' : '']"
                     @click="sizeFilters = true; typeFilters = false"
                     >
@@ -82,7 +83,7 @@
                     <div class="filter-popup slider"
                     v-show="sizeFilters === true"
                     >
-                      <!-- <h6>Select workspace size in sqft</h6> -->
+                      <!-- <h4>Select workspace size in sqft</h4> -->
                       <!-- <div
                       v-for="option in spaceFilters['sizeBracket']" :key="option"
                       @click="toggleFilter('sizeBracket', option); sizeFilters = false"
@@ -92,7 +93,7 @@
                         {{option}} <span v-if="option == filter.sizeBracket">&times;</span>
                       </div> -->
                       <div class="d-flex justify-content-between align-items-baseline">
-                        <div class="h6 font-weight-light">
+                        <div class="h5 font-weight-light">
                           Select size (sq ft)
                         </div>
                         <div class="close-popup" @click="sizeFilters = false">
@@ -140,7 +141,7 @@
 
             </div>
 
-            <div class="col-12 col-sm-7">
+            <div class="col-12 col-sm-6">
               <div class="row d-flex align-items-end justify-content-end">
                 <div class="col-12 col-md-12">
                   <lazy-image
@@ -956,79 +957,84 @@ export default {
     color: $primary
   }
 }
-.drawer {
-  position: fixed;
-  width: 100vw;
-  height: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background: white;
-  transform: translate3d(100%, 0, 0);
-  transition: .3s ease-in-out all;
-  z-index: 9999;
-  box-shadow: 0px 0px 20px 0 rgba(0,0,0,0.5);
-
-  &.space-active {
-    transform: translate3d(66.6667%, 0, 0);
-  }
-  &.map-active {
-    transform: translate3d(0%, 0, 0);
-  }
-  .space {
-    width: 33.3333%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-
-    .close-space,
-    .toggle-map {
-      font-size: 1.5rem;
-      position: relative;
-      // width: 50%;
-      z-index: 999;
-      cursor: pointer;
-    }
-
-    .close-space {
-      opacity: 0.5
-    }
-
-    .scroller {
-      height: 100%;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      padding: 2rem;
-      overflow: auto;
-    }
-  }
-  .close-cross {
-    // position: absolute;
-    cursor: pointer;
-    // right: 2rem;
-    // top: 2.5rem;
-    // width: 50%;
-    // // height: 2rem;
-    // text-align: right;
-    // font-weight: 100;
-    // font-size: 1.5rem;
-    // line-height: 1.5rem;
-    // // font-family: sans-serif;
-    // z-index: 999;
-  }
-  .map {
-    width: 66.66667%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.2)
+// .drawer {
+//   position: fixed;
+//   width: 100vw;
+//   height: 100%;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   background: white;
+//   transform: translate3d(100%, 0, 0);
+//   transition: .3s ease-in-out all;
+//   z-index: 9999;
+//   box-shadow: 0px 0px 20px 0 rgba(0,0,0,0.5);
+//
+//   &.space-active {
+//     transform: translate3d(66.6667%, 0, 0);
+//   }
+//   &.map-active {
+//     transform: translate3d(0%, 0, 0);
+//   }
+//   .space {
+//     width: 33.3333%;
+//     height: 100%;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     bottom: 0;
+//
+//     .close-space,
+//     .toggle-map {
+//       font-size: 1.5rem;
+//       position: relative;
+//       // width: 50%;
+//       z-index: 999;
+//       cursor: pointer;
+//     }
+//
+//     .close-space {
+//       opacity: 0.5
+//     }
+//
+//     .scroller {
+//       height: 100%;
+//       position: absolute;
+//       top: 0;
+//       right: 0;
+//       bottom: 0;
+//       left: 0;
+//       padding: 2rem;
+//       overflow: auto;
+//     }
+//   }
+//   .close-cross {
+//     // position: absolute;
+//     cursor: pointer;
+//     // right: 2rem;
+//     // top: 2.5rem;
+//     // width: 50%;
+//     // // height: 2rem;
+//     // text-align: right;
+//     // font-weight: 100;
+//     // font-size: 1.5rem;
+//     // line-height: 1.5rem;
+//     // // font-family: sans-serif;
+//     // z-index: 999;
+//   }
+//   .map {
+//     width: 66.66667%;
+//     height: 100%;
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     background: rgba(0,0,0,0.2)
+//   }
+// }
+.filter-chip {
+  @include media-breakpoint-down(sm) {
+    font-size: 1.75rem;
   }
 }
 
@@ -1039,12 +1045,19 @@ export default {
   // left: 50%;
   // transform: translateX(-50%);
   left: 0;
-  width: 16rem;
+  width: 19rem;
   padding: 1.25rem 1.5rem 1.5rem;
   background: white;
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
   z-index: 99;
   border-radius: 3px;
+
+  &.size-popup {
+    @include media-breakpoint-down(sm) {
+      left: auto;
+      right: 0;
+  	}
+  }
 
   .clear-filter, .close-popup {
     cursor: pointer;
@@ -1056,6 +1069,10 @@ export default {
   &.slider {
     width: 24rem;
     padding: 1.25rem 1.5rem 2.5rem;
+    @include media-breakpoint-down(sm) {
+      left: auto;
+      right: 0;
+  	}
   }
 }
 

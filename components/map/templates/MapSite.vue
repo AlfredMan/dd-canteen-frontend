@@ -60,6 +60,7 @@ export default {
   bottom: 0;
   left: 0;
   padding: 2rem;
-  opacity: 0.3;
+  opacity: 1;
+  font-size: .8rem;
 }
 </style>

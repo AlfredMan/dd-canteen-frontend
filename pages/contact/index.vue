@@ -9,7 +9,7 @@
             </div>
           </div>
           <div class="row mb-5">
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-6">
               <h4>Ask a question or book a viewing. Comment or collaborate. We want to hear from you.</h4>
             </div>
           </div>
