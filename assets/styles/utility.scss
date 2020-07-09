@@ -97,17 +97,17 @@ button, .btn, input[type="submit"] {
   flex-wrap: wrap;
 
   .tag {
-    padding: .5rem 1.25rem;
-    margin-right: .3rem;
+    padding: .5em 1.25em;
+    margin-right: .3em;
     margin-left: 0;
-    margin-bottom: .2rem;
-    font-size: 1.2rem;
-    border-radius: 2rem;
+    margin-bottom: .2em;
+    font-size: 1rem;
+    border-radius: 2em;
     border: 1.2px solid;
     white-space: nowrap;
     cursor: pointer;
     &:first-child {
-      margin-left: -0.05rem;
+      margin-left: -0.05em;
     }
     &.active,
     &:hover {

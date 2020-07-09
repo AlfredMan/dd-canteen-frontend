@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="">
     <span class="anchor" id="newsletter"></span>
-    <div class="bg-light px-0 px-md-4 py-4 pb-5 py-md-5">
+    <div class="bg-light px-0 px-sm-4 py-4 pb-5 py-sm-5">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
@@ -9,12 +9,12 @@
           </div>
 
           <div class="col-12" />
-          <div class="col-12 col-md-4 d-none d-md-block">
+          <div class="col-12 col-sm-5 col-md-4 d-none d-sm-block">
             <p>The Design District is at the heart of Greenwich Peninsula, a new type of London created specifically for the creative community.</p>
             <p>From autumn 2020, Design District will offer a new permanent home for the creative industries in south east London. With flexible leases and purpose-designed workspaces to help creative businesses thrive.</p>
           </div>
-          <div class="col-12 col-md-1" />
-          <div class="col-12 col-md-4">
+          <div class="col-12 col-sm-1 col-md-1 d-none d-md-block" />
+          <div class="col-12 col-sm-5 col-md-4">
             <newsletter-form />
           </div>
         </div>

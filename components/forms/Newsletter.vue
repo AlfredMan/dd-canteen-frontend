@@ -65,7 +65,7 @@
 
       <div v-show="active" class="">
         <h6>
-          I agree to the terms of your <a href="/privacy-policy/" target="_blank">Privacy Policy</a> and I want to receive:
+          <small>I agree to the terms of your <a href="/privacy-policy/" target="_blank">Privacy Policy</a> and I want to receive:</small>
         </h6>
 
         <div>
@@ -134,7 +134,7 @@
       <div v-show="active" class="">
         <h6>
           <!-- Our <a href="/privacy-policy/">Privacy Policy</a> outlines how we use and store your data. You can manage your preferences or opt out of communications at any time. -->
-          Our <a href="/privacy-policy/" target="_blank">Privacy Policy</a> outlines how we use and store your data. You can manage your preferences or opt out of communications at any time.
+          <small>Our <a href="/privacy-policy/" target="_blank">Privacy Policy</a> outlines how we use and store your data. You can manage your preferences or opt out of communications at any time.</small>
         </h6>
         <!-- <div class="mt-4">
           <small class="text-black-50">

@@ -164,10 +164,10 @@
         <div class="px-0 px-md-4 py-0 py-md-2">
           <div class="container-fluid py-5">
             <div class="row d-flex align-items-baseline">
-              <div class="col-12 col-md-6 px-3">
+              <div class="col-12 col-sm-6 px-3">
                 <h2>London’s new design district</h2>
               </div>
-              <div class="col-12 col-md-6 px-3 ml-auto">
+              <div class="col-12 col-sm-6 px-3 ml-auto">
                 <h4 class="mt-4">Design District is a new permanent home for the creative industries. With purpose-designed workspaces, workshops, accessible rents and flexible leases. It comprises 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. Each is tailored to the needs of creative businesses to help them thrive.</h4>
                 <nuxt-link :to="{ path: '/workspace'}" class="text-primary h5">
                   Find your work space &rarr;
@@ -176,7 +176,7 @@
             </div>
 
             <div class="row d-flex align-items-end align-items-baseline mt-5 pt-5 text-dark">
-              <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+              <div class="col-12 col-sm-3 col-lg-3 mb-5 mb-md-0">
                 <!-- <div class="">
                   <img
                     class="lazyload"
@@ -203,7 +203,7 @@
                   </p>
                 </div>
               </div>
-              <!-- <div class="col-12 col-md-6 col-lg-3 mb-2 mb-md-0">
+              <!-- <div class="col-12 col-sm-3 col-lg-3 mb-2 mb-md-0">
                 <div class="">
                   <img class="lazyload"
                   data-src="https://images.ctfassets.net/7p1ysxjarsp5/6wUPBkuAGGxBgcm4X5RszG/8eb3bac1543bee530b798f7eace31e3d/KDN_Design_District_C3_LR.jpeg?w=1600&h=2000&fm=jpg&q=80&fit=thumb"
@@ -215,7 +215,7 @@
                   <p>Aimed at freelancers, entrepreneurs and start-ups, The Club offers a place to work but also talks, events and business support. <router-link to="/the-club" class="">Express your interest</router-link>.</p>
                 </div>
               </div> -->
-              <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+              <div class="col-12 col-sm-3 col-lg-3 mb-5 mb-md-0">
                 <!-- <div class="">
                   <img
                     class="lazyload"
@@ -242,7 +242,7 @@
                   </p>
                 </div>
               </div>
-              <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+              <div class="col-12 col-sm-3 col-lg-3 mb-5 mb-md-0">
                 <!-- <div class="">
                   <img
                     class="lazyload"
@@ -267,7 +267,7 @@
                   </p>
                 </div>
               </div>
-              <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+              <div class="col-12 col-sm-3 col-lg-3 mb-5 mb-md-0">
                 <!-- <div class="">
                   <img
                     class="lazyload"

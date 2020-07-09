@@ -16,34 +16,34 @@
           <img class="logo" src="~/assets/images/logo-hor-white.svg" alt="logo" v-if="isDark">
         </nuxt-link>
 
-        <nuxt-link class="menu-link d-none d-lg-inline" to="/workspace">
+        <nuxt-link class="menu-link d-none d-sm-inline" to="/workspace">
           Work space
         </nuxt-link>
-        <nuxt-link class="menu-link d-none d-lg-inline" to="/hire">
+        <nuxt-link class="menu-link d-none d-sm-inline" to="/hire">
           Venue hire
         </nuxt-link>
-        <!-- <nuxt-link class="menu-link d-none d-lg-inline" to="/the-club">
+        <!-- <nuxt-link class="menu-link d-none d-sm-inline" to="/the-club">
           The Club
         </nuxt-link> -->
-        <!-- <nuxt-link class="menu-link d-none d-lg-inline" to="/community">
+        <!-- <nuxt-link class="menu-link d-none d-sm-inline" to="/community">
           Community
         </nuxt-link> -->
-        <nuxt-link class="menu-link d-none d-lg-inline" to="/architecture">
+        <nuxt-link class="menu-link d-none d-sm-inline" to="/architecture">
           Architecture
         </nuxt-link>
-        <nuxt-link class="menu-link d-none d-lg-inline" to="/journal">
+        <nuxt-link class="menu-link d-none d-sm-inline" to="/journal">
           Journal
         </nuxt-link>
-        <nuxt-link class="menu-link d-none d-lg-inline" to="/about-us">
+        <nuxt-link class="menu-link d-none d-sm-inline" to="/about-us">
           About
         </nuxt-link>
-        <nuxt-link class="menu-link d-none d-lg-inline" to="/contact">
+        <nuxt-link class="menu-link d-none d-sm-inline" to="/contact">
           Contact Us
         </nuxt-link>
 
         <!-- <a href="/contact#register-interest" class="btn text-black btn-outline-primary ml-auto mr-0" :class="{'btn-outline-dark': menuActive}">
           <span class="d-inline d-lg-none">Join Now</span>
-          <span class="d-none d-lg-inline">Join design district</span>
+          <span class="d-none d-sm-inline">Join design district</span>
         </a> -->
         <nuxt-link :to="{ path: '/contact', hash: '#register-interest' }"
         class="btn btn-lg- btn-dark- btn-primary-text-white btn-outline-primary m-2 pt-2 ml-auto -mr-0"
@@ -52,7 +52,7 @@
           <span class="d-none d-xl-inline">Join design district</span>
         </nuxt-link>
 
-        <div class="d-block d-lg-none pl-0 -bg-white">
+        <div class="d-block d-sm-none pl-0 -bg-white">
           <button class="form-field-reset btn cursor-pointer p0 mt-1" type="button" @click="menuActive = !menuActive">
             <span class="accessible-hide">Menu</span>
             <div class="icon-burger" style="color: rgb(43, 43, 43);" :class="{'icon-burger--is-active': menuActive}">

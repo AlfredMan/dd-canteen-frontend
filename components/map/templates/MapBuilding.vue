@@ -37,13 +37,13 @@
               <div class="col-12 col-md-12 mb-4">
                 <h6 class="mb-1">Type</h6>
                 <div class="tags">
-                  <div class="tag">
+                  <div class="tag mb-2">
                     Serviced studio
                   </div>
-                  <div class="tag">
+                  <div class="tag mb-2">
                     On/off office
                   </div>
-                  <div class="tag">
+                  <div class="tag mb-2">
                     Co-working
                   </div>
                 </div>
@@ -78,7 +78,7 @@
               </div>
             </div>
             <div class="row d-flex align-items-start justify-content-start">
-              <div class="floorplan col-3 col-md-4 mb-5" v-for="floorplan in floorplans">
+              <div class="floorplan col-6 col-md-4 mb-5" v-for="floorplan in floorplans">
                 <img :src="floorplan.url" alt="">
               </div>
             </div>

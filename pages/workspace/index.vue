@@ -10,7 +10,7 @@
             </div>
           </div>
           <div class="row d-flex align-items-start justify-content-between">
-            <div class="col-12 col-md-5 mb-5">
+            <div class="col-12 col-sm-5 mb-5">
               <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering affordable rent, flexible leases and work spaces purpose-built for creative disciplines.</h4> -->
               <p class="-font-weight-light">Rent a desk, a studio, a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</p>
               <!-- <h4>Design District will provide 150,000 sq ft of permanent workspace for everyone for London’s designers makers and creators. A place for total focus, shared stories and resources, new connections and collaboration. </h4>
@@ -21,12 +21,12 @@
 
               <div class="d-flex flex-wrap align-items-baseline">
 
-                <div class="-col col-6-col-md-6 pr-0 mb-3 d-flex align-items-baseline">
+                <div class="col-12 pl-0 -col col-6-col-md-6 pr-0 mb-3 d-flex align-items-baseline">
                   <h6 class="filter-option font-weight-light mt-0 mb-0">Find your work space.</h6>
                 </div>
 
 
-                <div class="-col col-6-col-md-6 pr-0 mb-3 d-flex align-items-baseline pl-2 pr-1  mr-1">
+                <div class="-col col-6-col-md-6 pr-0 mb-3 d-flex align-items-baseline -pl-2 pr-1  mr-1">
                   <div class="mb-2- mr-2">
                     <h6 class="filter-option font-weight-light mt-0 mb-0">View</h6>
                   </div>
@@ -140,7 +140,7 @@
 
             </div>
 
-            <div class="col-12 col-md-7">
+            <div class="col-12 col-sm-7">
               <div class="row d-flex align-items-end justify-content-end">
                 <div class="col-12 col-md-12">
                   <lazy-image
