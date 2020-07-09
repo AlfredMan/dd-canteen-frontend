@@ -30,9 +30,9 @@
                   <div class="mb-2- mr-2">
                     <h6 class="filter-option font-weight-light mt-0 mb-0">View</h6>
                   </div>
-                  <div class="position-relative">
+                  <div class="position-relative mr-2">
                     <div
-                    class="btn btn-outline-dark chip -chip-lg mr-0 mb-0 mt-0"
+                    class="btn btn-outline-dark chip -chip-lg mr-0 mb-0 mt-0 h6"
                     :class="[this.filter.options ? 'active' : '']"
                     @click="typeFilters = true; sizeFilters = false"
                     >
@@ -54,7 +54,7 @@
                       v-for="option in spaceFilters['options']" :key="option"
                       @click="toggleFilter('options', option); typeFilters = false"
                       :class="{'active': option == filter.options}"
-                      class="btn btn-outline-dark chip -chip-lg mr-2 mb-2"
+                      class="btn btn-outline-dark chip -chip-lg mr-2 mb-2 h6"
                       >
                         {{option}} <span v-if="option == filter.options">&times;</span>
                       </div>
@@ -63,14 +63,13 @@
                       </div>
                     </div>
                   </div>
-                </div>
-
-                <div class="-col-3 col-6-col-md-3 pr-0 mb-3 d-flex align-items-center pr-2">
+                <!-- </div>
+                <div class="-col-3 col-6-col-md-3 pr-0 mb-3 d-flex align-items-center pr-2"> -->
                   <div class="mb-2- mr-2">
                     <h6 class="filter-option font-weight-light mt-0 mb-0">in</h6>
                   </div>
                   <div class="position-relative">
-                    <div class="btn btn-outline-dark chip -chip-lg mr-2 mb-0 mt-0"
+                    <div class="btn btn-outline-dark chip -chip-lg mr-2 mb-0 mt-0 h6"
                     :class="[!(filterDisplay.sizeBracketMin=='0' && filterDisplay.sizeBracketMax=='5000+') ? 'active' : '']"
                     @click="sizeFilters = true; typeFilters = false"
                     >
