@@ -12,6 +12,7 @@
       class="page-form"
       name="enquireForm"
       method="post"
+      action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"
       :class="{disabled: formState === 'loading'}"
       @submit.prevent="onFormSubmit"
     >
@@ -977,7 +978,6 @@ export default {
     sendForm ({ oid }) {
 
       this.$refs.oid.value = oid
-      this.$refs.enquireForm.setAttribute('action','https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8');
       this.$refs.enquireForm.submit();
 
       // const url = 'https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8'
