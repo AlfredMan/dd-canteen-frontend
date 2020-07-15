@@ -10,7 +10,6 @@
       v-if="formState !== 'complete'"
       ref="enquireForm"
       class="page-form"
-      action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"
       name="enquireForm"
       method="post"
       :class="{disabled: formState === 'loading'}"
@@ -831,7 +830,7 @@
         </div> -->
       </div>
 
-      <input type="hidden" name="oid" value="00D20000000nxym">
+      <input type="hidden" name="oid" value="">
       <!-- <input type="hidden" name="retURL" value="https://designdistrict.co.uk/success"> -->
       <input type="hidden" name="retURL" :value="retURL">
       <input id="00N0O00000AB5j2" ref="00N0O00000AB5j2" type="hidden" name="00N0O00000AB5j2" value="Web Form">
@@ -975,6 +974,97 @@ export default {
       // do some checking
       return true
     },
+    sendForm ({ oid }) {
+
+      this.$refs.oid.value = oid
+      this.$refs.enquireForm.action = 'https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8'
+      this.$refs.enquireForm.submit();
+
+      // const url = 'https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8'
+      // let bodyFormData = new FormData(this.$refs.enquireForm);
+
+      // enquireForm
+      // first_name
+      // last_name
+      // email
+      // phone
+      // 00N20000009fVlo
+      // 00N20000009fVle
+      // 00N20000009fVlj
+      // button
+      // 00N3Y00000H10Ce
+      // 00N3Y00000H10Cj
+      // 00N3Y00000H10Ea
+      // 00N3Y00000H10Ef
+      // 00N20000009fVtE
+      // 00N0O00000AAdtS
+      // 00N0O00000GRkIk
+      // 00N0O00000AAmP4
+      // 00N0O00000AAdth
+      // 00N0O00000AAoDP
+      // 00N0O00000AAmXD
+      // 00N0O00000AAmWy
+      // 00N0O00000AAmXc
+      // 00N0O00000AAmXN
+      // 00N3Y00000H11CL
+      // 00N0O00000AAmXI
+      // 00N0O00000AAmX8
+      // 00N0O00000AAmX3
+      // 00N3Y00000H11CQ
+      // 00N3Y00000H11CV
+      // 00N3Y00000H11Cf
+      // 00N3Y00000H11Ca
+      // 00N3Y00000H11Ck
+      // 00N0O00000AAmXh
+      // 00N0O00000AAmXX
+      // 00N3Y00000H10Eu
+      // 00N3Y00000H10Eu
+      // 00N0O00000AAdtw
+      // 00N3Y00000H10Ek
+      // 00N0O00000GRrXc
+      // 00N0O00000GRkIa
+      // 00N0O00000GRZb7
+      // 00N20000009fVlo
+      // 00N20000009fVle
+      // 00N20000009fVlj
+      // oid
+      // retURL
+      // 00N0O00000AB5j2
+      // 00N0O00000AB5j1
+      // 00N0O00000AB5iY
+      // 00N0O00000AB5iN
+      // 00N0O00000GRkIf
+      // 00N0O00000GRZbC
+      // 00N0O00000GRrXh
+      // 00N0O00000AB5iO
+      // 00N0O00000AB5iQ
+      // 00N0O00000AB5iR
+      // 00N0O00000AB5iS
+      // 00N0O00000AB5iP
+      // recordType
+
+      // for (let i=0; this.$refs.enquireForm.elements; i++) {
+      //   let name = this.$refs.enquireForm.elements[i].name;
+      //   let val = this.$refs.enquireForm.elements[i].value;
+      //   if (name || name.indexOf('recaptcha') >= 0) {
+      //     continue;
+      //   }
+      // }
+      //
+      // debugger
+      // console.log('bodyFormData', bodyFormData, this.$refs.enquireForm)
+      //
+      // for (var i = 0; i < array.length; i++) {
+      //   array[i]
+      // }
+      //
+      // return
+      //
+      // this.$axios.$post(url, {
+      //   data: bodyFormData,
+      //   config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
+      // })
+    },
     onVerify (recaptchaToken) {
       console.log('Verify: ' + recaptchaToken)
 
@@ -986,7 +1076,10 @@ export default {
       }).then((response) => {
         console.log(response)
         // this.formTarget = 'subscribRet'
-        this.$refs.enquireForm.submit()
+        this.sendForm({
+          oid: response.oid
+        })
+
       }).catch((error) => {
         return false;
         console.log(error)
