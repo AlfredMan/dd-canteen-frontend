@@ -977,7 +977,7 @@ export default {
     sendForm ({ oid }) {
 
       this.$refs.oid.value = oid
-      this.$refs.enquireForm.action = 'https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8'
+      this.$refs.enquireForm.setAttribute('action','https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8');
       this.$refs.enquireForm.submit();
 
       // const url = 'https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8'
