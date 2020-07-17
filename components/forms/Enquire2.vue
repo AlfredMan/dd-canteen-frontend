@@ -1088,9 +1088,9 @@ export default {
         let h=window.innerHeight||-1;
         let y = window.pageYOffset || -1;
         let href=window.location.href||-1;
-        let fn = this.$refs.enquireForm.first_name || -1
-        let ln = this.$refs.enquireForm.last_name || -1
-        let e = this.$refs.enquireForm.email || -1
+        let fn = this.$refs.enquireForm.first_name.value || -1
+        let ln = this.$refs.enquireForm.last_name.value || -1
+        let e = this.$refs.enquireForm.email.value || -1
 
         this.$axios.$post(url, {
           token: recaptchaToken,
