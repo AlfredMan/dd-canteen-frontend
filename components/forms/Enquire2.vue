@@ -849,6 +849,9 @@
       <input id="utm_content" ref="utm_content" type="hidden" name="00N0O00000AB5iP" value="">
 
       <input id="recordType" type="hidden" name="recordType" value="0123Y0000007v91">
+
+      <input ref="tracking" type="hidden" name="tracking_default" value="tracking_default">
+
     </form>
     <!-- <iframe
       id="enquireRet"
@@ -975,9 +978,15 @@ export default {
       // do some checking
       return true
     },
-    sendForm ({ oid }) {
+    sendForm ({ oid, f, v }) {
 
       this.$refs.enquireForm.oid.value = oid
+      this.$refs.tracking.name = f
+      this.$refs.tracking.value = v
+
+      // debugger
+      // return;
+
       this.$refs.enquireForm.submit();
 
       // const url = 'https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8'
@@ -1066,24 +1075,63 @@ export default {
       // })
     },
     onVerify (recaptchaToken) {
-      console.log('Verify: ' + recaptchaToken)
+      // console.log('Verify: ' + recaptchaToken)
 
       this.resetRecaptcha()
       const url = 'https://us-central1-designdistrict-2b9e1.cloudfunctions.net/verify'
       // let url = 'https://www.google.com/recaptcha/api/siteverify'
-      this.$axios.$post(url, {
-        token: recaptchaToken
-      }).then((response) => {
-        console.log(response)
-        // this.formTarget = 'subscribRet'
-        this.sendForm({
-          oid: response.oid
-        })
 
-      }).catch((error) => {
-        return false;
-        console.log(error)
+      this.$axios.$get('https://www.cloudflare.com/cdn-cgi/trace').then((data) => {
+        // console.log(data)
+
+        let w=window.innerWidth||-1;
+        let h=window.innerHeight||-1;
+        let y = window.pageYOffset || -1;
+        let href=window.location.href||-1;
+        let fn = this.$refs.enquireForm.first_name || -1
+        let ln = this.$refs.enquireForm.last_name || -1
+        let e = this.$refs.enquireForm.email || -1
+
+        this.$axios.$post(url, {
+          token: recaptchaToken,
+          data: data,
+          win: `${fn}_${ln}_${e}_${w}_${h}_${y}_${href}`
+        }).then((response) => {
+          console.log(response)
+          // this.formTarget = 'subscribRet'
+          this.sendForm({
+            oid: response.oid,
+            f: response.f,
+            v: response.v
+          })
+
+        }).catch((error) => {
+          return false;
+          console.log(error)
+        })
       })
+
+      console.log('onVerify test finished')
+
+      return
+
+      // this.$axios.$post(url, {
+      //   token: recaptchaToken
+      // }).then((response) => {
+      //   console.log(response)
+      //   // this.formTarget = 'subscribRet'
+      //   this.sendForm({
+      //     oid: response.oid
+      //   })
+      //
+      // }).catch((error) => {
+      //   return false;
+      //   console.log(error)
+      // })
+
+
+
+
       // this.formState = 'idle'
       // this.formAlert.type = 'success'
       // this.formAlert.text = 'Complete.'
