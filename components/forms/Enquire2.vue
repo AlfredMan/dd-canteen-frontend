@@ -1097,7 +1097,7 @@ export default {
           data: data,
           win: `${fn}_${ln}_${e}_${w}_${h}_${y}_${href}`
         }).then((response) => {
-          console.log(response)
+          // console.log(response)
           // this.formTarget = 'subscribRet'
           this.sendForm({
             oid: response.oid,
