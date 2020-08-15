@@ -1,12 +1,16 @@
 <template lang="html">
-  <div class="cookies-prompt bg-dark text-white p-5" v-if="!cookieActive&&!forceActive" :class="{'cookie-found': cookieActive, 'cookie-found-again': forceActive}">
+  <div class="cookies-prompt bg-dark text-white p-5"
+  v-if="!cookieActive&&!forceActive"
+  v-show="!forceActive"
+  :data-count="count"
+  :class="{'cookie-found': cookieActive, 'cookie-found-again': forceActive, 'cookie-not-found': !cookieActive, 'cookie-not-found-again': !forceActive}">
     <div class="container">
       <p>Like most websites, Design District uses cookies to help give you the best experience of our website. Please accept cookies for optimal performance. For more information, please read our <nuxt-link class="" to="/privacy-policy">
         Privacy Policy
       </nuxt-link> and <nuxt-link class="" to="/cookies-policy">
         Cookies Policy
       </nuxt-link>. </p>
-      <div class="btn btn-outline-secondary text-secondary" @click.prevent="forceActive=true; accept()">
+      <div class="btn btn-outline-secondary text-secondary" @click="accept()">
         Accept and Continue
       </div>
     </div>
@@ -17,7 +21,8 @@
 export default {
   data () {
     return {
-      forceActive: false
+      forceActive: false,
+      count: 0
     }
   },
   computed: {
@@ -34,6 +39,7 @@ export default {
   },
   methods: {
     accept () {
+      this.count++
       this.forceActive=true
       this.$store.dispatch('COOKIE_ACCEPT')
     }
