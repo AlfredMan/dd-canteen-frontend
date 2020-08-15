@@ -28,7 +28,7 @@ export const actions = {
   COOKIE_CHECK ({ commit, state }) {
     console.log('COOKIE_CHECK')
     const cookieRes = this.$cookies.get('DD_CP')
-    if ((cookieRes && +cookieRes === 1) || (document && window.document.cookie.indexOf('DD_CP')>-1)) {
+    if ((cookieRes && +cookieRes === 1) || (document && document.cookie.indexOf('DD_CP')>-1)) {
       commit('COOKIE_IS_ACTIVE')
     }
   },

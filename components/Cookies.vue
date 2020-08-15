@@ -22,7 +22,10 @@ export default {
   },
   computed: {
     cookieActive () {
-      return this.$store.state.cookieActive || this.$cookies.get('DD_CP') || document.cookie.indexOf('DD_CP')>-1
+      if (process.client) {
+        return this.$store.state.cookieActive || this.$cookies.get('DD_CP') || document.cookie.indexOf('DD_CP')>-1
+      }
+      return this.$store.state.cookieActive || this.$cookies.get('DD_CP')
     }
   },
   methods: {
