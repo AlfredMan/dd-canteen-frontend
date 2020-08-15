@@ -26,6 +26,7 @@ export default {
   },
   methods: {
     accept () {
+      this.cookieActive=true
       this.$store.dispatch('COOKIE_ACCEPT')
     }
   }
