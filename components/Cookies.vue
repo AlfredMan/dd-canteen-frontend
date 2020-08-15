@@ -18,7 +18,6 @@
 </template>
 
 <script>
-const COOKIE_FOUND = document.cookie.indexOf('DD_CP')>-1 || document.cookie.indexOf('dd')>-1
 export default {
   data () {
     return {
@@ -28,8 +27,11 @@ export default {
   },
   computed: {
     cookieFound () {
-      console.log(COOKIE_FOUND)
-      return COOKIE_FOUND
+      if (process.client) {
+        const COOKIE_FOUND = document.cookie.indexOf('DD_CP')>-1 || document.cookie.indexOf('dd')>-1
+        console.log(COOKIE_FOUND)
+        return COOKIE_FOUND
+      }
     },
     cookieActive () {
       if (process.client) {
