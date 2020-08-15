@@ -1,14 +1,14 @@
 <template lang="html">
-  <div class="cookies-prompt bg-dark text-white p-5" v-if="!cookieActive&&!forceActive" :class="{'cookie-found': cookieActive}">
+  <div class="cookies-prompt bg-dark text-white p-5" v-if="!cookieActive&&!forceActive" :class="{'cookie-found': cookieActive, 'cookie-found-again': forceActive}">
     <div class="container">
       <p>Like most websites, Design District uses cookies to help give you the best experience of our website. Please accept cookies for optimal performance. For more information, please read our <nuxt-link class="" to="/privacy-policy">
         Privacy Policy
       </nuxt-link> and <nuxt-link class="" to="/cookies-policy">
         Cookies Policy
       </nuxt-link>. </p>
-      <a class="btn btn-outline-secondary text-secondary" @click.prevent="accept">
+      <div class="btn btn-outline-secondary text-secondary" @click.prevent="forceActive=true; accept()">
         Accept and Continue
-      </a>
+      </div>
     </div>
   </div>
 </template>
@@ -54,6 +54,11 @@ export default {
   }
 
   &.cookie-found {
+    display: none;
+    visibility: hidden;
+    opacity: 0
+  }
+  &.cookie-found-again {
     display: none;
     visibility: hidden;
     opacity: 0
