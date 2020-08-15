@@ -11,7 +11,7 @@
         Cookies Policy
       </nuxt-link>. </p>
       <div class="btn btn-outline-secondary text-secondary" @click="accept()">
-        Accept and Continue
+        Accept and Continue <span style="display:none">{{count}}</span>
       </div>
     </div>
   </div>
@@ -28,20 +28,34 @@ export default {
   computed: {
     cookieActive () {
       if (process.client) {
-        let hasCookie = this.$store.state.cookieActive || this.$cookies.get('DD_CP') || document.cookie.indexOf('DD_CP')>-1
-        if (hasCookie) {
-          this.forceActive = true
-        }
+        // let hasCookie = this.$store.state.cookieActive || this.$cookies.get('DD_CP') || document.cookie.indexOf('DD_CP')>-1
+        let hasCookie = this.$cookies.get('DD_CP') || document.cookie.indexOf('DD_CP')>-1
         return hasCookie
       }
-      return this.$store.state.cookieActive || this.$cookies.get('DD_CP')
+      //  else {
+      //   return this.$store.state.cookieActive || this.$cookies.get('DD_CP')
+      // }
+    }
+  },
+  mounted () {
+    if (process.client) {
+      if (document.cookie.indexOf('DD_CP')>-1) {
+        this.forceActive=true
+      }
     }
   },
   methods: {
     accept () {
       this.count++
       this.forceActive=true
-      this.$store.dispatch('COOKIE_ACCEPT')
+      console.log(this.count)
+      // this.$store.dispatch('COOKIE_ACCEPT')
+      if (process.client) {
+        this.$cookies.set('DD_CP', 1, {
+          path: '/',
+          maxAge: 60 * 60 * 24 * 30
+        })
+      }
     }
   }
 }
