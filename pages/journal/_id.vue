@@ -83,7 +83,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 col-md-6 order-1 order-lg-2 mb-4 mb-lg-0"  v-if="entry.fields.mainImage">
+            <div class="col-12 col-md-6 order-1 order-lg-2 mb-4 mb-lg-0"  v-if="entry.fields.mainImage && entry.fields.mainImage.fields && entry.fields.mainImage.fields.file">
               <lazy-image
               :src="entry.fields.mainImage.fields.file.url"
               :w="2000"
@@ -124,7 +124,7 @@
               </h6>
             </div>
           </div>
-          <div class="col-12 col-md-6 order-1 order-lg-2 mb-4"  v-if="entry.fields.mainImage">
+          <div class="col-12 col-md-6 order-1 order-lg-2 mb-4"  v-if="entry.fields.mainImage && entry.fields.mainImage.fields && entry.fields.mainImage.fields.file">
             <!-- <img :src="entry.fields.mainImage.fields.file.url" alt=""> -->
             <lazy-image
               :src="entry.fields.mainImage.fields.file.url"
@@ -279,7 +279,7 @@
             <div class="summary" v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)"></div>
           </div>
         </div>
-        <div class="row d-flex justify-content-center" v-if="entry.fields.mainImage">
+        <div class="row d-flex justify-content-center" v-if="entry.fields.mainImage && entry.fields.mainImage.fields && entry.fields.mainImage.fields.file">
           <div class="col-12 col-md-10">
             <!-- <img :src="entry.fields.mainImage.fields.file.url" alt=""> -->
             <lazy-image
@@ -399,6 +399,7 @@
               <div class="gallery-item mb-4" v-for="image in content.fields.image" :class="getGalleryImageClass(content.fields.image)">
                 <!-- <img :src="image.fields.file.url" alt="" class="image"> -->
                 <lazy-image
+                v-if="image.fields && image.fields.file"
                 :src="image.fields.file.url"
                 :w="2000"
                 :h="2000"
@@ -587,7 +588,7 @@ export default {
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         { hid: 'description', name: 'description', content: this.entry.fields.seoDescription },
-        { property: 'og:image', content: this.entry.fields.thumbnailImage.fields.file.url },
+        { property: 'og:image', content: this.entry.fields.thumbnailImage && this.entry.fields.thumbnailImage.fields.file && this.entry.fields.thumbnailImage.fields.file.url },
         { property: 'og:url', content: `https://designdistrict.co.uk/journal/${this.entry.fields.slug}` },
         { property: 'og:type', content: 'website' },
         { property: 'og:title', content: this.entry.fields.seoTitle },
