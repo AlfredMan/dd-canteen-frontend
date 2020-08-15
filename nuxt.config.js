@@ -58,7 +58,7 @@ export default {
     '~/plugins/global.js',
     {
       src: '~/plugins/nuxt-client-init.js',
-      ssr: false
+      mode: 'client'
     }
   ],
 
