@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     cookieActive () {
-      return this.$store.state.cookieActive
+      return this.$store.state.cookieActive || this.$cookies.get('DD_CP')
     }
   },
   methods: {
