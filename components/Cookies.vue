@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="cookies-prompt bg-dark text-white p-5"
-  v-if="!cookieActive&&!forceActive"
+  v-if="!cookieFound&&!forceActive"
   v-show="!forceActive"
   :data-count="count"
   :class="{'cookie-found': cookieActive, 'cookie-found-again': forceActive, 'cookie-not-found': !cookieActive, 'cookie-not-found-again': !forceActive}">
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+const COOKIE_FOUND = document.cookie.indexOf('DD_CP')>-1 || document.cookie.indexOf('dd')>-1
 export default {
   data () {
     return {
@@ -26,10 +27,15 @@ export default {
     }
   },
   computed: {
+    cookieFound () {
+      console.log(COOKIE_FOUND)
+      return COOKIE_FOUND
+    },
     cookieActive () {
       if (process.client) {
         // let hasCookie = this.$store.state.cookieActive || this.$cookies.get('DD_CP') || document.cookie.indexOf('DD_CP')>-1
-        let hasCookie = this.$cookies.get('DD_CP') || document.cookie.indexOf('DD_CP')>-1
+        // let hasCookie = this.$cookies.get('DD_CP') || document.cookie.indexOf('DD_CP')>-1
+        let hasCookie = document.cookie.indexOf('DD_CP')>-1 || document.cookie.indexOf('dd')>-1
         return hasCookie
       }
       //  else {
@@ -42,6 +48,9 @@ export default {
       if (document.cookie.indexOf('DD_CP')>-1) {
         this.forceActive=true
       }
+      if (document.cookie.indexOf('dd')>-1) {
+        this.forceActive=true
+      }
     }
   },
   methods: {
@@ -51,6 +60,9 @@ export default {
       console.log(this.count)
       // this.$store.dispatch('COOKIE_ACCEPT')
       if (process.client) {
+
+        document.cookie = "dd=accepted; max-age=3600"
+
         this.$cookies.set('DD_CP', 1, {
           path: '/',
           maxAge: 60 * 60 * 24 * 30
