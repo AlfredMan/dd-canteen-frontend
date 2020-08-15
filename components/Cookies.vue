@@ -62,11 +62,12 @@ export default {
       if (process.client) {
 
         document.cookie = "dd=accepted; max-age=3600"
+        document.cookie = "DD_CP=accepted; max-age=3600"
 
-        this.$cookies.set('DD_CP', 1, {
-          path: '/',
-          maxAge: 60 * 60 * 24 * 30
-        })
+        // this.$cookies.set('DD_CP', 1, {
+        //   path: '/',
+        //   maxAge: 60 * 60 * 24 * 30
+        // })
       }
     }
   }
