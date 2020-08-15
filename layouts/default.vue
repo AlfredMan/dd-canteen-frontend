@@ -1,6 +1,8 @@
 <template>
   <div id="app">
 
+    <!-- <test-cookies /> -->
+
     <app-header />
 
     <nuxt nuxt-child-key="none" role="main" />
@@ -38,12 +40,14 @@ import NewsletterForm from '../components/forms/Newsletter.vue'
 import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
 import Cookies from '../components/Cookies.vue'
+import TestCookies from '../components/TestCookies'
 export default {
   components: {
     NewsletterForm,
     AppHeader,
     AppFooter,
-    Cookies
+    Cookies,
+    TestCookies
   },
   mounted () {
     // From testing, without a brief timeout, it won't work.
