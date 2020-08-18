@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="cookies-prompt bg-dark text-white p-5"
-  v-if="!hasCookie"
+  v-if="!hasCookie&&!forceClose"
   >
     <div class="container">
 
@@ -15,7 +15,7 @@
       <div class="btn btn-secondary" @click="accept()">
         Accept and Continue
       </div>
-      <div class="btn btn-outline-secondary" @click="opOut()">
+      <div class="btn btn-outline-secondary ml-2" @click="opOut()">
         Opt Out
       </div>
     </div>
@@ -27,7 +27,7 @@
 export default {
   data () {
     return {
-      forceActive: false,
+      forceClose: false,
       count: 0,
       hasCookie: true,
       added: false,
@@ -87,7 +87,8 @@ export default {
     },
     remove () {
       document.cookie = 'DD_CP=;max-age=0'
-      this.checkCookie()
+      // this.checkCookie()
+      this.forceClose = true
     },
     checkCookie () {
       this.documentCookie = document.cookie
@@ -99,7 +100,7 @@ export default {
     opOut () {
       this.remove()
       if (process.client) {
-        window['ga-disable-GTM-5PF87Z8'] = true;  
+        window['ga-disable-GTM-5PF87Z8'] = true;
       }
     }
     // accept () {
