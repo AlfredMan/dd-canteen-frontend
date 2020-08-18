@@ -6,31 +6,24 @@
 
       <!-- <test-cookies></test-cookies> -->
 
-      <p>Like most websites, Design District uses cookies to help give you the best experience of our website. Please accept cookies for optimal performance. For more information, please read our <nuxt-link class="" to="/privacy-policy">
+      <p>We use cookies to ensure that we give you the best experience on our website. If you continue without opting out, we'll assume that you are happy to receive all cookies on the Design District website. You can change your cookie settings at any time through your browser settings, but you may receive a limited service through the website because of this.
+        <br>View our <nuxt-link class="" to="/privacy-policy">
         Privacy Policy
       </nuxt-link> and <nuxt-link class="" to="/cookies-policy">
         Cookies Policy
       </nuxt-link>. </p>
-      <div class="btn btn-outline-secondary" @click="accept()">
+      <div class="btn btn-secondary" @click="accept()">
         Accept and Continue
       </div>
-      <div v-show="false">
-        <button @click="count++">{{count}}</button>
-        <button @click="add">add</button>
-        <button @click="remove">remove</button>
-        <div class="">
-          hasCookie? {{hasCookie}}
-        </div>
-        <div>
-          document.cookie = {{documentCookie}}
-        </div>
+      <div class="btn btn-outline-secondary" @click="opOut()">
+        Opt Out
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import TestCookies from './TestCookies'
+// import TestCookies from './TestCookies'
 export default {
   data () {
     return {
@@ -42,7 +35,7 @@ export default {
     }
   },
   components: {
-    TestCookies
+    // TestCookies
   },
   // computed: {
   //   cookieFound () {
@@ -102,6 +95,12 @@ export default {
     },
     accept () {
       this.add()
+    },
+    opOut () {
+      this.remove()
+      if (process.client) {
+        window['ga-disable-GTM-5PF87Z8'] = true;  
+      }
     }
     // accept () {
       // this.count++

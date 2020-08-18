@@ -11,7 +11,7 @@
           <div class="row d-flex align-items-start justify-content-between">
             <div class="col-12 col-md-5 mb-5">
               <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering affordable rent, flexible leases and work spaces purpose-built for creative disciplines.</h4> -->
-              <h4>Design District will provide 150,000 sq ft of permanent workspace for everyone for London’s designers makers and creators. A place for total focus, shared stories and resources, new connections and collaboration. </h4>
+              <h4>Design District will provide 150,000 sq ft of permanent work space for everyone for London’s designers makers and creators. A place for total focus, shared stories and resources, new connections and collaboration. </h4>
               <a href="#become-a-tenant" class="btn btn btn-lg btn-primary mt-3">Get in touch</a>
             </div>
             <div class="col-12 col-md-6">

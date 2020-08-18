@@ -181,6 +181,11 @@ ul {
     list-style: circle;
     margin-bottom: .25em
   }
+	ul {
+		li {
+	    list-style: disc;
+		}
+	}
 }
 
 small {
