@@ -10,7 +10,7 @@
           </div>
           <div class="row">
             <div class="col-12 col-md-6">
-              <h4>Design District is a collection of 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. From autumn 2020 it will offer a permanent and purpose-designed work space for the creative industries.</h4>
+              <h4>Design District is a collection of 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. Opening 2021, it will offer a permanent and purpose-designed work space for the creative industries.</h4>
             </div>
           </div>
         </div>
@@ -118,7 +118,7 @@ export default {
       title: 'About',
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        { hid: 'description', name: 'description', content: 'Design District is a collection of 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. From autumn 2020 it will offer a permanent and purpose-designed work space for the creative industries.' }
+        { hid: 'description', name: 'description', content: 'Design District is a collection of 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. Opening 2021, it will offer a permanent and purpose-designed work space for the creative industries.' }
       ]
     }
   },

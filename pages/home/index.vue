@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-12 col-sm-8 col-xl-6">
                   <h4>
-                    Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.
+                    Welcome to the Design District. London’s new work space for the creative industries. Opening 2021.
                   </h4>
                   <nuxt-link :to="{ path: '/contact',hash:'#register-interest'}" class="btn btn btn-lg btn-primary mt-3">
                     <!-- <strong>Express interest</strong> -->
@@ -491,7 +491,7 @@ export default {
       title: 'Keep London creative',
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        { hid: 'description', name: 'description', content: 'Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.' }
+        { hid: 'description', name: 'description', content: 'Welcome to the Design District. London’s new work space for the creative industries. Opening 2021.' }
       ]
     }
   },

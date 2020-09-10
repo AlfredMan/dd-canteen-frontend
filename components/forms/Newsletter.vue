@@ -159,14 +159,14 @@
       <input id="privacyOptInDate" ref="privacyOptInDate" type="hidden" name="00N0O00000GRrXh" value="">
       <input id="recordType" type="hidden" name="recordType" value="0123Y0000007v91">
     </form>
-    <iframe
+    <!-- <iframe
       v-if="!isSuccess && formState === 'loading'"
       id="subscribRet"
       ref="subscribRet"
       name="subscribRet"
       style="display:none"
       @load="retOnload"
-    />
+    /> -->
   </div>
 </template>
 
@@ -231,9 +231,10 @@ export default {
       this.formAlert.text = 'Processing...'
       this.formAction = 'Loading'
 
-      this.$refs.invisibleRecaptcha.execute()
+      // this.$refs.invisibleRecaptcha.execute()
 
       if (this.submitDEManagerForm() && this.handleRecap()) {
+        this.$refs.invisibleRecaptcha.execute()
         return true
       }
 

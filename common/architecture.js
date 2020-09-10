@@ -3,7 +3,7 @@ export const studios = {
     title: 'HNNA',
     slug: 'hnna',
     buildings: 'C3 and D3',
-    buildingsCopy: 'The two buildings by HNNA are distinct cousins. Each has a clean, white exterior that is interrupted by large windows of different sizes. The Club is located in C3, which has an undulating shape that creates informal pockets of space inside. The windows in its irregular facade provide many different views of the Design District and the surrounding park. The top floor has an inward falling roof that creates two small courtyards for members to enjoy. D3 will be completed after the Silvertown Tunnel has been built.',
+    buildingsCopy: 'The two buildings by HNNA are distinct cousins. Each has a clean, white exterior that is interrupted by large windows of different sizes. C3 has an undulating shape that creates informal pockets of space inside. The windows in its irregular facade provide many different views of the Design District and the surrounding park. The top floor has an inward falling roof that creates two small courtyards for members to enjoy. D3 will be completed after the Silvertown Tunnel has been built.',
     practiceCopy: 'HNNA (formerly ASSEMBLAGE) is a London-based studio of architects and urban designers that was founded by Hannah Corlett in 2004. It works at a number of scales but specialises in rethinking how we design cities. HNNA has won a string of major international design competitions and was recently commissioned to design the Iraq Parliament and sustainable, human-centric housing for The United Nations Human Settlements Programme (UN-Habitat). Having worked on the Peninsula-wide masterplan here in North Greenwich, HNNA designed and developed the masterplan for the Design District and is also its design coordinator.',
     images: [
       {
@@ -119,7 +119,7 @@ export const studios = {
     title: 'Barozzi Veiga',
     slug: 'barozzi-veiga',
     buildings: 'A1 and D4',
-    buildingsCopy: 'The polished aluminium facades of Barozzi Veiga’s two buildings reflect the sun in a way that changes throughout the day and appears different in each season. All year round, they light up the surrounding courtyards and alleys. Both buildings have been designed with photographers, artists and sculptors in mind. They have large windows, external staircases and high ceilings. Ravensbourne University will launch a new department, The Institute of Creativity and Technology, in the gateway building opposite the NOW Gallery in September 2020.',
+    buildingsCopy: 'The polished aluminium facades of Barozzi Veiga’s two buildings reflect the sun in a way that changes throughout the day and appears different in each season. All year round, they light up the surrounding courtyards and alleys. Both buildings have been designed with photographers, artists and sculptors in mind. They have large windows, external staircases and high ceilings.',
     practiceCopy: 'Barozzi Veiga is an architectural firm founded in 2004 in Barcelona by Fabrizio Barozzi and Alberto Veiga. Its work is characterised by buildings that are rooted in a place, change over time and have an emotional resonance. Creating atmosphere is at the heart of what the practice does. Barozzi Veiga has won many international awards, including the Mies van der Rohe European Union Prize for Contemporary Architecture in 2015 for its translucent Philharmonic Hall in Szczecin, Poland.',
     images: [
       {

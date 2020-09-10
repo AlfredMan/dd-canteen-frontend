@@ -83,7 +83,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 col-md-6 order-1 order-lg-2 mb-4 mb-lg-0"  v-if="entry.fields.mainImage">
+            <div class="col-12 col-md-6 order-1 order-lg-2 mb-4 mb-lg-0"  v-if="entry.fields.mainImage && entry.fields.mainImage.fields && entry.fields.mainImage.fields.file">
               <lazy-image
               :src="entry.fields.mainImage.fields.file.url"
               :w="2000"
@@ -124,7 +124,7 @@
               </h6>
             </div>
           </div>
-          <div class="col-12 col-md-6 order-1 order-lg-2 mb-4"  v-if="entry.fields.mainImage">
+          <div class="col-12 col-md-6 order-1 order-lg-2 mb-4"  v-if="entry.fields.mainImage && entry.fields.mainImage.fields && entry.fields.mainImage.fields.file">
             <!-- <img :src="entry.fields.mainImage.fields.file.url" alt=""> -->
             <lazy-image
               :src="entry.fields.mainImage.fields.file.url"
@@ -279,7 +279,7 @@
             <div class="summary h5" v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)"></div>
           </div>
         </div>
-        <div class="row d-flex justify-content-center" v-if="entry.fields.mainImage">
+        <div class="row d-flex justify-content-center" v-if="entry.fields.mainImage && entry.fields.mainImage.fields && entry.fields.mainImage.fields.file">
           <div class="col-12 col-md-10">
             <!-- <img :src="entry.fields.mainImage.fields.file.url" alt=""> -->
             <lazy-image
@@ -399,6 +399,7 @@
               <div class="gallery-item mb-4" v-for="image in content.fields.image" :class="getGalleryImageClass(content.fields.image)">
                 <!-- <img :src="image.fields.file.url" alt="" class="image"> -->
                 <lazy-image
+                v-if="image.fields && image.fields.file"
                 :src="image.fields.file.url"
                 :w="2000"
                 :h="2000"
@@ -540,13 +541,20 @@ import NewsCard from '~/components/NewsCard'
 
 const client = createClient()
 
+const replaceLineBreak = (string) => {
+  // return string
+  return _.replace(string, /\n/g, "<br>")
+}
+
 const options = {
   renderMark: {
-    [MARKS.BOLD]: text => `<b>${text}<b>`
+    [MARKS.BOLD]: text => `<b>${replaceLineBreak(text)}</b>`,
+    [MARKS.ITALIC]: text => `<em>${replaceLineBreak(text)}</em>`,
+    [MARKS.UNDERLINE]: text => `<u>${replaceLineBreak(text)}</u>`
   },
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, next) =>
-      `<p class="">${next(node.content)}</p>`
+      `<p>${next(node.content)}</p>`,
   },
   renderNode: {
     [INLINES.HYPERLINK]: (node, next) => {
@@ -557,28 +565,6 @@ const options = {
       return `<a href="${node.data.uri}"${node.data.uri.startsWith(origin) ? '' : ' target="_blank"'}>${next(node.content)}</a>`;
     }
   },
-  // renderNode: {
-  //   [INLINES.ENTRY_HYPERLINK]: (node, children) => {
-  //     // If you are using contenful.js sdk, the referenced entry is resolved
-  //     // automatically and is available at `node.data.target`.
-  //     // const referencedEntry = getEntryWithId(node.data.target.sys.id);
-  //     console.log('node', node);
-  //     console.log('node.data.target', node.data.target);
-  //
-  //     let promise = client.getEntry(node.data.target.sys.id)
-  //     .then((entry) => {
-  //       // logs the entry metadata
-  //       console.log(entry)
-  //       // console.log('id entry', node.data.target.sys.id,  entry)
-  //       return `<a href="/pages/${entry.fields.slug}">${node.content[0].value}</a>`;
-  //     })
-  //
-  //     let result = await promise
-  //     console.log('result from INLINES.ENTRY_HYPERLINK', result)
-  //     return result
-  //     // return `<a href="/pages/${node.data.target.fields.slug}">${children}</a>`;
-  //   }
-  // }
 };
 
 // async getEntryWithId = function (id) {
@@ -602,7 +588,7 @@ export default {
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         { hid: 'description', name: 'description', content: this.entry.fields.seoDescription },
-        { property: 'og:image', content: this.entry.fields.thumbnailImage.fields.file.url },
+        { property: 'og:image', content: this.entry.fields.thumbnailImage && this.entry.fields.thumbnailImage.fields.file && this.entry.fields.thumbnailImage.fields.file.url },
         { property: 'og:url', content: `https://designdistrict.co.uk/journal/${this.entry.fields.slug}` },
         { property: 'og:type', content: 'website' },
         { property: 'og:title', content: this.entry.fields.seoTitle },
@@ -712,6 +698,24 @@ export default {
       // return data that should be available
       // in the template
       // console.log('asyncData', [entries, entry])
+      // if (entry.items && entry.items[0]) {
+      //   if (entry.items[0].fields && entry.items[0].fields.contentReferences) {
+      //     let cr = entry.items[0].fields.contentReferences
+      //     for (let i = 0; i < cr.length; i++) {
+      //       if (cr[i].fields && cr[i].fields.text && cr[i].fields.text.content && cr[i].fields.text.content) {
+      //         cr[i].fields.text.content = _.map(cr[i].fields.text.content, (content) => {
+      //           console.log(content, content.content)
+      //           let formattedContent = _.map(content.content, (childrenContent) => {
+      //             // childrenContent.value = replaceLineBreak(childrenContent.value)
+      //             return childrenContent
+      //           })
+      //           content.content = formattedContent
+      //           return content
+      //         })
+      //       }
+      //     }
+      //   }
+      // }
 
       if (entry && entry.items[0] && entry.items[0].fields.contentType == 'Video') {
         store.dispatch('updateNavigationTheme', { theme: 'dark' })

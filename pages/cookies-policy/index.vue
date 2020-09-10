@@ -6,12 +6,26 @@
           <h1>
             Cookies Policy
           </h1>
+          <h5>Last updated: 29th JULY 2020</h5>
         </div>
         <div class="col-12 col-md-6">
-          <h5>Cookies Policy</h5>
+          <!-- <h5>Cookies Policy</h5>
           <p>We will ask your permission for a small file called a cookie to be placed on your computer’s hard drive. Once you agree, the file is added and the cookie helps analyse web traffic or lets you know when you visit a particular site. Cookies allow web applications to respond to you as an individual. The web application can tailor its operations to your needs, likes and dislikes by gathering and remembering information about your preferences.</p>
           <p>We use traffic log cookies to identify which pages are being used. This helps us analyse data about web page traffic and improve our website in order to tailor it to customer needs. We only use this information for statistical analysis purposes and then the data is removed from the system. Overall, cookies help us provide you with a better website, by enabling us to monitor which pages you find useful and which you do not. A cookie in no way gives us access to your computer or any information about you, other than the data you choose to share with us.</p>
-          <p>You can choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. This may prevent you from taking full advantage of the website.</p>
+          <p>You can choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. This may prevent you from taking full advantage of the website.</p> -->
+          <p>Greenwich Peninsula (“us”, “we”, or “our”) uses cookies on our website (the “Service”). By using the Service, you consent to the use of cookies.</p>
+          <h5>What are Cookies</h5>
+          <p>Cookies are small pieces of text sent by your web browser by a website you visit. A cookie file is stored by your web browser on your device and allows the Service or a third ­party to recognise you and make your next visit more enjoyable by remembering your preferences, and to make the Service more useful to you. Cookies can be “persistent” or “session” cookies.</p>
+          <h5>How we use Cookies</h5>
+          <p>We will place a small file called a cookie on your device’s hard drive, though it is your right to decline and opt-out of this. The file is stored and the cookie helps analyse web traffic or lets you know when you visit a particular site. Cookies allow web applications to respond to you as an individual. The web application can tailor its operations to your needs, likes and dislikes by gathering and remembering information about your preferences.</p>
+          <p>We use traffic log cookies from Google, Facebook, Instagram, LinkedIn and Twitter to identify which pages are being used. This helps us for social media advertising, analysing data about web page traffic and improving our website in order to tailor it to customer needs. Overall, cookies help us provide you with a better website, by enabling us to monitor which pages you find useful and which you do not. A cookie in no way gives us access to your computer or any information about you, other than the data you choose to share with us.</p>
+          <p>You can choose to opt-out of cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. This may prevent you from taking full advantage of the website. If you choose not to opt-out of cookies, we will assume that you are happy to receive all cookies from this website.</p>
+          <h5>What are your choices regarding Cooking</h5>
+          <p>If you'd like to delete cookies or instruct your web browser to delete or refuse cookies, please visit the help pages of your web browser. Please note, however, that if you delete cookies or refuse to accept them, you might not be able to use all of the features we offer, you may not be able to store your preferences, and some of our pages might not display properly.</p>
+          <p>Where can you find more information about cookies:<br>
+            You can learn more about cookies and the following third-party websites:<br>
+            All About Cookies: http://www.allaboutcookies.org/ <br>
+            Network Advertising Initiative: http://www.networkadvertising.org/</p>
         </div>
       </div>
     </div>

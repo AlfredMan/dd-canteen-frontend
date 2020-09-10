@@ -1,6 +1,8 @@
 <template>
   <div id="app">
 
+    <!-- <test-cookies /> -->
+
     <app-header />
 
     <nuxt nuxt-child-key="none" role="main" />

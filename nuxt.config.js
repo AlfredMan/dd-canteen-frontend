@@ -315,14 +315,14 @@ export default {
     exclude: [
       /^(?=.*\bhelper|home\b).*$/
     ]
-  }
+  },
   //
   // router: {
   //   middleware: ['redirect']
   // }
 
-  // server: {
-  //   port: 3333, // default: 3000
-  //   host: '0.0.0.0' // default: localhost
-  // }
+  server: {
+    port: 3333, // default: 3000
+    // host: '0.0.0.0' // default: localhost
+  }
 }

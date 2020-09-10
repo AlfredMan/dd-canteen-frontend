@@ -10,9 +10,9 @@
       v-if="formState !== 'complete'"
       ref="enquireForm"
       class="page-form"
-      action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"
       name="enquireForm"
       method="post"
+      action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"
       :class="{disabled: formState === 'loading'}"
       @submit.prevent="onFormSubmit"
     >
@@ -831,7 +831,7 @@
         </div> -->
       </div>
 
-      <input type="hidden" name="oid" value="00D20000000nxym">
+      <input type="hidden" name="oid" value="">
       <!-- <input type="hidden" name="retURL" value="https://designdistrict.co.uk/success"> -->
       <input type="hidden" name="retURL" :value="retURL">
       <input id="00N0O00000AB5j2" ref="00N0O00000AB5j2" type="hidden" name="00N0O00000AB5j2" value="Web Form">
@@ -849,6 +849,9 @@
       <input id="utm_content" ref="utm_content" type="hidden" name="00N0O00000AB5iP" value="">
 
       <input id="recordType" type="hidden" name="recordType" value="0123Y0000007v91">
+
+      <input ref="tracking" type="hidden" name="tracking_default" value="tracking_default">
+
     </form>
     <!-- <iframe
       id="enquireRet"
@@ -948,12 +951,18 @@ export default {
       this.formAlert.text = 'Processing...'
       this.formAction = 'Loading'
 
-      this.$refs.invisibleRecaptcha.execute()
-
-      // console.log('checkForm')
+      console.log('onFormSubmit false')
+      // return false
+      // debugger
       if (this.submitEnquireForm() && this.handleRecap()) {
-        // console.log('checked!')
+        // alert('checked!')
+        this.$refs.invisibleRecaptcha.execute()
         return true
+
+      } else {
+        // alert('failed')
+        e.preventDefault()
+        return false
       }
 
       e.preventDefault()
@@ -969,8 +978,159 @@ export default {
       // do some checking
       return true
     },
+    sendForm ({ oid, f, v }) {
+
+      this.$refs.enquireForm.oid.value = oid
+      this.$refs.tracking.name = f
+      this.$refs.tracking.value = v
+
+      // debugger
+      // return;
+
+      this.$refs.enquireForm.submit();
+
+      // const url = 'https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8'
+      // let bodyFormData = new FormData(this.$refs.enquireForm);
+
+      // enquireForm
+      // first_name
+      // last_name
+      // email
+      // phone
+      // 00N20000009fVlo
+      // 00N20000009fVle
+      // 00N20000009fVlj
+      // button
+      // 00N3Y00000H10Ce
+      // 00N3Y00000H10Cj
+      // 00N3Y00000H10Ea
+      // 00N3Y00000H10Ef
+      // 00N20000009fVtE
+      // 00N0O00000AAdtS
+      // 00N0O00000GRkIk
+      // 00N0O00000AAmP4
+      // 00N0O00000AAdth
+      // 00N0O00000AAoDP
+      // 00N0O00000AAmXD
+      // 00N0O00000AAmWy
+      // 00N0O00000AAmXc
+      // 00N0O00000AAmXN
+      // 00N3Y00000H11CL
+      // 00N0O00000AAmXI
+      // 00N0O00000AAmX8
+      // 00N0O00000AAmX3
+      // 00N3Y00000H11CQ
+      // 00N3Y00000H11CV
+      // 00N3Y00000H11Cf
+      // 00N3Y00000H11Ca
+      // 00N3Y00000H11Ck
+      // 00N0O00000AAmXh
+      // 00N0O00000AAmXX
+      // 00N3Y00000H10Eu
+      // 00N3Y00000H10Eu
+      // 00N0O00000AAdtw
+      // 00N3Y00000H10Ek
+      // 00N0O00000GRrXc
+      // 00N0O00000GRkIa
+      // 00N0O00000GRZb7
+      // 00N20000009fVlo
+      // 00N20000009fVle
+      // 00N20000009fVlj
+      // oid
+      // retURL
+      // 00N0O00000AB5j2
+      // 00N0O00000AB5j1
+      // 00N0O00000AB5iY
+      // 00N0O00000AB5iN
+      // 00N0O00000GRkIf
+      // 00N0O00000GRZbC
+      // 00N0O00000GRrXh
+      // 00N0O00000AB5iO
+      // 00N0O00000AB5iQ
+      // 00N0O00000AB5iR
+      // 00N0O00000AB5iS
+      // 00N0O00000AB5iP
+      // recordType
+
+      // for (let i=0; this.$refs.enquireForm.elements; i++) {
+      //   let name = this.$refs.enquireForm.elements[i].name;
+      //   let val = this.$refs.enquireForm.elements[i].value;
+      //   if (name || name.indexOf('recaptcha') >= 0) {
+      //     continue;
+      //   }
+      // }
+      //
+      // debugger
+      // console.log('bodyFormData', bodyFormData, this.$refs.enquireForm)
+      //
+      // for (var i = 0; i < array.length; i++) {
+      //   array[i]
+      // }
+      //
+      // return
+      //
+      // this.$axios.$post(url, {
+      //   data: bodyFormData,
+      //   config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
+      // })
+    },
     onVerify (recaptchaToken) {
-      console.log('Verify: ' + recaptchaToken)
+      // console.log('Verify: ' + recaptchaToken)
+
+      this.resetRecaptcha()
+      const url = 'https://us-central1-designdistrict-2b9e1.cloudfunctions.net/verify'
+      // let url = 'https://www.google.com/recaptcha/api/siteverify'
+
+      this.$axios.$get('https://www.cloudflare.com/cdn-cgi/trace').then((data) => {
+        // console.log(data)
+
+        let w=window.innerWidth||-1;
+        let h=window.innerHeight||-1;
+        let y = window.pageYOffset || -1;
+        let href=window.location.href||-1;
+        let fn = this.$refs.enquireForm.first_name.value || -1
+        let ln = this.$refs.enquireForm.last_name.value || -1
+        let e = this.$refs.enquireForm.email.value || -1
+
+        this.$axios.$post(url, {
+          token: recaptchaToken,
+          data: data,
+          win: `${fn}_${ln}_${e}_${w}_${h}_${y}_${href}`
+        }).then((response) => {
+          // console.log(response)
+          // this.formTarget = 'subscribRet'
+          this.sendForm({
+            oid: response.oid,
+            f: response.f,
+            v: response.v
+          })
+
+        }).catch((error) => {
+          return false;
+          console.log(error)
+        })
+      })
+
+      console.log('onVerify test finished')
+
+      return
+
+      // this.$axios.$post(url, {
+      //   token: recaptchaToken
+      // }).then((response) => {
+      //   console.log(response)
+      //   // this.formTarget = 'subscribRet'
+      //   this.sendForm({
+      //     oid: response.oid
+      //   })
+      //
+      // }).catch((error) => {
+      //   return false;
+      //   console.log(error)
+      // })
+
+
+
 
       const url = 'https://us-central1-designdistrict-2b9e1.cloudfunctions.net/verify'
       // let url = 'https://www.google.com/recaptcha/api/siteverify'
@@ -1030,6 +1190,14 @@ export default {
       //   }, 3000)
       // }, 1000)
     },
+    resetForm: _.debounce( function (){
+      this.formState = 'idle'
+      this.formAlert.type = ''
+      this.formAlert.text = ''
+      this.formAction = 'Submit'
+    }, 5000, {
+      leading: false
+    }),
     onExpired () {
       // console.error('reCAPTCHA has expired')
       // this.formState = 'idle'
@@ -1047,6 +1215,25 @@ export default {
     submitEnquireForm () {
       // const form = document.forms.enquireForm
       // const submitButton = document.getElementById('enquireSubmit')
+
+      if ((this.$refs.first_name.value && this.$refs.first_name.value.toLowerCase() == 'test 123')) {
+        alert("Sorry, something went wrong!!");
+        this.resetForm()
+        return false
+      }
+
+      if ((this.$refs.first_name.value && this.$refs.first_name.value.toLowerCase() == 'james') && (this.$refs.last_name.value && this.$refs.last_name.value.toLowerCase() == 'smith')) {
+        alert("Sorry, something went wrong!");
+        this.resetForm()
+        return false
+      }
+
+      if (this.$refs.first_name.value === this.$refs.last_name.value) {
+        alert("Sorry, please check your name!");
+        this.resetForm()
+        return false
+      }
+
       const today = new Date()
       let dd = today.getDate()
       let mm = today.getMonth() + 1
@@ -1123,6 +1310,9 @@ export default {
       this.$refs.utm_term.value = parseGET('utm_term')
       this.$refs.utm_content.value = parseGET('utm_content')
 
+      // console.log('testing finished')
+      // this.resetForm()
+      // return false
       // submitButton.click()
       return true
     }
