@@ -1132,18 +1132,21 @@ export default {
 
 
 
-      const url = 'https://us-central1-designdistrict-2b9e1.cloudfunctions.net/verify'
-      // let url = 'https://www.google.com/recaptcha/api/siteverify'
-      this.$axios.$post(url, {
-        token: recaptchaToken
-      }).then((response) => {
-        console.log(response)
-        // this.formTarget = 'subscribRet'
-        this.$refs.enquireForm.submit()
-      }).catch((error) => {
-        return false;
-        console.log(error)
-      })
+      // const url = 'https://us-central1-designdistrict-2b9e1.cloudfunctions.net/verify'
+      // // let url = 'https://www.google.com/recaptcha/api/siteverify'
+      // this.$axios.$post(url, {
+      //   token: recaptchaToken
+      // }).then((response) => {
+      //   console.log(response)
+      //   // this.formTarget = 'subscribRet'
+      //   this.$refs.enquireForm.submit()
+      // }).catch((error) => {
+      //   return false;
+      //   console.log(error)
+      // })
+
+
+
       // this.formState = 'idle'
       // this.formAlert.type = 'success'
       // this.formAlert.text = 'Complete.'

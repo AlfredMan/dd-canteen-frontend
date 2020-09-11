@@ -26,7 +26,7 @@
     "contentful": "^7.14.4",
     "contentful-rich-text-vue-renderer": "^1.1.5",
     "flickity-imagesloaded": "^2.0.0",
-    "gsap": "^3.2.6",
+    "gsap": "^3.5.1",
     "lazysizes": "^5.2.0",
     "moment": "^2.24.0",
     "nuxt": "^2.10.2",
@@ -36,7 +36,7 @@
     "vue-range-component": "^1.0.3",
     "vue-recaptcha": "^1.3.0",
     "vue-recaptcha-v3": "^1.9.0",
-    "vue-slider-component": "^3.1.5"
+    "vue-slider-component": "^3.2.5"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.1.2",
@@ -68,6 +68,6 @@
     "stylus-loader": "^3.0.2",
     "vue-flickity": "^1.2.1",
     "vue-loader": "^15.9.2",
-    "vue-waypoint": "^3.4.1"
+    "vue-waypoint": "^3.5.0"
   }
 }

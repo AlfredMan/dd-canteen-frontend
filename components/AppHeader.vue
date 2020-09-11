@@ -45,11 +45,18 @@
           <span class="d-inline d-lg-none">Join Now</span>
           <span class="d-none d-sm-inline">Join design district</span>
         </a> -->
+        <a href="tel:+4402039812426"
+        class="btn btn-lg- btn-dark- btn-primary-text-white text-primary m-2 pt-2 ml-auto -mr-0 d-sm-inline-block d-none "
+        :class="{'btn-outline-dark': menuActive}">
+          <span class="d-inline d-xl-none">+44 (0)20 3981 2426</span>
+          <span class="d-none d-xl-inline">+44 (0)20 3981 2426</span>
+        </a>
+
         <nuxt-link :to="{ path: '/contact', hash: '#register-interest' }"
-        class="btn btn-lg- btn-dark- btn-primary-text-white btn-outline-primary m-2 pt-2 ml-auto -mr-0"
+        class="btn btn-lg- btn-dark- btn-primary-text-white btn-outline-primary m-2 pt-2 -mr-0 ml-auto ml-sm-0"
         :class="{'btn-outline-dark': menuActive}">
           <span class="d-inline d-xl-none">Join Now</span>
-          <span class="d-none d-xl-inline">Join design district</span>
+          <span class="d-none d-xl-inline">Join Now</span>
         </nuxt-link>
 
         <div class="d-block d-sm-none pl-0 -bg-white">

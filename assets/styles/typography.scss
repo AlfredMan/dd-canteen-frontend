@@ -11,12 +11,12 @@ h6     17.5
 $base_size:             1rem;
 
 $h1_size:               $base_size * 8.333;
-$h2_size:               $base_size * 5;
+$h2_size:               $base_size * 4;
 $h3_size:               $base_size * 1.833;
 $h4_size:               $base_size * 1.833;
 $h5_size:               $base_size * 1.333;
 $h6_size:               $base_size * 1.166;
-$p_size:                $base_size * 1.166;
+$p_size:                $base_size * 1;
 
 $h1_size_responsive:    15vw;
 $h2_size_responsive:    10.5vw;
@@ -24,7 +24,7 @@ $h3_size_responsive:    4.5vw;
 $h4_size_responsive:    4.5vw;
 $h5_size_responsive:    $base_size * 1.333;
 $h6_size_responsive:    $base_size * 1.166;
-$p_size_responsive:     $base_size * 1.166;
+$p_size_responsive:     $base_size * 1;
 
 html,
 body {
@@ -99,7 +99,6 @@ em, i {
   // font-size: $h1_size;
   margin-left: -.035em;
   letter-spacing: -0.05em;
-
   font-size: $h1_size_responsive;
 
   @include media-breakpoint-up(md) {
@@ -121,6 +120,7 @@ h1 {
   letter-spacing: 0;
   // font-size: $h1_size;
   font-size: $h1_size_responsive;
+	text-transform: uppercase;
 
   @include media-breakpoint-up(md) {
     font-size: $h1_size
@@ -151,7 +151,7 @@ h1 {
 }
 
 .h2 {
-  line-height: 1;
+  line-height: 1.1;
   margin-left: -.035em;
   // font-size: $h2_size;
   // @include media-breakpoint-up(md) {
@@ -170,9 +170,10 @@ h2 {
 	// line-height: 0.925;
 	// letter-spacing: 0;
   letter-spacing: -0.01em;
-  line-height: 1;
+  line-height: 1.1;
 	margin: 2rem 0;
   margin-left: -.035em;
+	text-transform: uppercase;
 
 	&:first-child {
 		margin-top: -0.1em;
@@ -234,7 +235,7 @@ h3 {
 }
 
 .h4 {
-  line-height: 1.45;
+  line-height: 1.25;
   // font-size: 1.375rem;
   font-size: $h4_size;
   @include media-breakpoint-up(md) {
@@ -245,7 +246,7 @@ h3 {
 
 h4 {
   font-weight: 200;
-	line-height: 1.45;
+	line-height: 1.25;
 	letter-spacing: 0em;
 	margin: 1rem 0;
 

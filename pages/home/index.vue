@@ -31,24 +31,26 @@
           </div>
         </div>
         <div
-          class="container-fluid py-4 py-md-5 px-0 -position-absolute bg-white"
+          class="container-fluid py-4 py-md-5 px-0 position-absolute -bg-white"
           style="bottom: 0; left:0; right: 0;"
         >
           <div class="px-0 px-md-4 py-0 py-md-2">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-12 col-sm-12 col-xl-12">
-                  <h1 class="text-white- -mb-0 " style="">
+                  <h1 class="text-white -mb-0 " style="">
                     Keep London creative
                   </h1>
                 </div>
                 <div class="col-12 col-sm-8 col-xl-6">
-                  <h4>
-                    Welcome to the Design District. London’s new work space for the creative industries. Opening 2021.
+                  <h4 class="text-white">
+                    <!-- Welcome to the Design District. London’s new work space for the creative industries. Opening 2021. -->
+                    Welcome to the Design District.
                   </h4>
-                  <nuxt-link :to="{ path: '/contact',hash:'#register-interest'}" class="btn btn btn-lg btn-primary mt-3">
+                  <nuxt-link :to="{ path: '/contact',hash:'#register-interest'}" class="btn btn -btn-lg btn-primary mt-3">
                     <!-- <strong>Express interest</strong> -->
-                    Express interest
+                    <!-- Express interest -->
+                    Find your work space
                   </nuxt-link>
                 </div>
               </div>
@@ -99,7 +101,7 @@
       </div>
     </div> -->
 
-    <transition-link :to='`/workspace`'>
+    <!-- <transition-link :to='`/workspace`' v-if="false">
       <div class="container-fluid position-relative bg-dark text-white" style="min-height: 25vw;">
         <div class="on-hover-fade-0" style="background-size:cover; background-size:cover; opacity: 0.5; z-index: 0; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-image:url(https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=4000&fm=jpg&q=80)">
 
@@ -118,7 +120,7 @@
           </div>
         </div>
       </div>
-    </transition-link>
+    </transition-link> -->
 
     <!-- <div class="w-100 d-flex bg-white py-5">
       <div class="container-fluid px-0">
@@ -299,25 +301,95 @@
       </div>
     </div>
 
-    <transition-link :to='`/workspace`'>
+    <block-architecture />
+
+    <div class="">
+      <img src="https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=4000&fm=jpg&q=80" alt="">
+    </div>
+
+    <!-- <transition-link :to='`/workspace`' v-if="false">
       <div class="container-fluid position-relative bg-dark text-white" style="min-height: 25vw;">
-        <div class="on-hover-fade-0" style="background-size:cover; background-size:cover; opacity: 0.5; z-index: 0; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-image:url(https://images.ctfassets.net/7p1ysxjarsp5/1vccdswWfzojf7HUFt3t2w/8fb6455dafc6632094801439d0c791f0/Design-District-Matthew-Thompson-1505-LOW-RES.jpg?fm=jpg&q=80&w=1200&h=1200&)">
+        <div class="on-hover-fade-0" style="background-size:cover; background-size:cover; opacity: 0.5; z-index: 0; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-image:url(https://images.ctfassets.net/7p1ysxjarsp5/7j8uWLxtgXEitvBBIO8OgY/54bab45ebfc6fdebe0707a10cd5ec259/KDN_DD_West_Elevation_170816_02-1.jpg?w=4000&fm=jpg&q=80)">
 
         </div>
         <div class="disable-click container-fluid py-5" style="z-index:1">
           <div class="row">
             <div class="col-12 col-md-7 pr-md-5 mb-5 px-0 px-md-4 py-0 py-md-2">
-              <h2>Creative work&nbsp;space</h2>
+              <h2>Explore available<br>work spaces</h2>
+              <h4 class="mb-4">
+                Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.
+              </h4>
+              <h5>Find out more &rarr;</h5>
+            </div>
+            <div class="col-12 col-md-5 px-4">
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition-link> -->
+
+    <!-- <transition-link :to='`/workspace`'> -->
+      <div class="container-fluid position-relative bg-dark-text-white bg-white text-black" style="min-height: 25vw;">
+        <!-- <div class="on-hover-fade-0" style="background-size:cover; background-size:cover; opacity: 0.5; z-index: 0; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-image:url(https://images.ctfassets.net/7p1ysxjarsp5/1vccdswWfzojf7HUFt3t2w/8fb6455dafc6632094801439d0c791f0/Design-District-Matthew-Thompson-1505-LOW-RES.jpg?fm=jpg&q=80&w=1200&h=1200&)">
+
+        </div> -->
+        <div class="disable-click container-fluid py-5" style="z-index:1">
+          <div class="row">
+            <div class="col-12 col-md-7 pr-md-5 mb-5 px-0 px-md-4 py-0 py-md-2">
+              <h2>Explore available work&nbsp;spaces</h2>
               <!-- <h4>Just starting out or trying something new? The Club is an accessible way to be part of the Design District community.</h4> -->
               <h4 class="mb-4">
                 Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.
               </h4>
-              <!-- <router-link to="/workspace" class="text-primary h5">
+              <router-link to="/workspace" class="h5 btn btn-primary text-white">
+                Find out more
+              </router-link>
+              <!-- <a class="btn">
                 Find out more &rarr;
+              </a> -->
+            </div>
+            <div class="col-12 col-md-5 px-4">
+              <!-- <img
+                class="lazyload"
+                data-src="https://images.ctfassets.net/7p1ysxjarsp5/22w4CLfcQCe1mdF3zH64Dy/89f59d445e25ae91085e0aa8e5b8bbd0/Design-District-Matthew-Thompson-2226-LOW-RES.jpg?w=2000&h=2000&fm=jpg&q=80&fit=thumb"
+                alt=""
+              > -->
+              <!-- <lazy-image
+              :src="'https://images.ctfassets.net/7p1ysxjarsp5/22w4CLfcQCe1mdF3zH64Dy/89f59d445e25ae91085e0aa8e5b8bbd0/Design-District-Matthew-Thompson-2226-LOW-RES.jpg'"
+              :w="2000"
+              :h="2000"
+              :custom="'fit=thumb'"
+              /> -->
+            </div>
+          </div>
+          <!-- <div class="row d-flex justify-content-end align-items-end mt-0 mt-lg-n5" style="margin-top: -30rem!important">
+            <div class="col-6">
+              <img class="lazyload" data-src="https://images.ctfassets.net/7p1ysxjarsp5/64OjUmEoOvUZh7W0EdQTfe/cbd8c37727a7c54be182da4f6d1deeb1/MarketHall.jpg?w=1000&h=1200&fm=jpg&q=80&fit=thumb" alt="">
+            </div>
+          </div> -->
+        </div>
+      </div>
+    <!-- </transition-link> -->
+
+    <transition-link :to='`/workspace`'>
+      <div class="container-fluid position-relative bg-dark-text-white bg-primary text-black" style="min-height: 25vw;">
+        <div class="on-hover-fade-0" style="filter:blur(20px); background-size:cover; background-size:cover; opacity: 0.5; z-index: 0; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-image:url(https://images.ctfassets.net/7p1ysxjarsp5/1vccdswWfzojf7HUFt3t2w/8fb6455dafc6632094801439d0c791f0/Design-District-Matthew-Thompson-1505-LOW-RES.jpg?fm=jpg&q=80&w=1200&h=1200&)">
+
+        </div>
+        <div class="disable-click container-fluid py-5" style="z-index:1">
+          <div class="row">
+            <div class="col-12 col-md-7 pr-md-5 mb-5 px-0 px-md-4 py-0 py-md-2">
+              <h2>Take the 3d&nbsp;experience</h2>
+              <!-- <h4>Just starting out or trying something new? The Club is an accessible way to be part of the Design District community.</h4> -->
+              <h4 class="mb-4">
+                Explore the district in 3D on your desktop or alternatively in Augmented Reality with your mobile device and view the site to a scale worthy IRL.
+              </h4>
+              <!-- <router-link to="/workspace" class="h5 btn btn-primary text-white">
+                Find out more
               </router-link> -->
-              <h5>
+              <!-- <a class="btn">
                 Find out more &rarr;
-              </h5>
+              </a> -->
             </div>
             <div class="col-12 col-md-5 px-4">
               <!-- <img
@@ -432,9 +504,6 @@
         </div>
       </div>
     </div> -->
-
-    <block-architecture />
-
     <!-- <div class="bg-light">
       <div class="container mt-10">
         <enquire-form></enquire-form>

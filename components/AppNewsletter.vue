@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="">
-    <span class="anchor" id="newsletter"></span>
-    <div class="bg-light px-0 px-sm-4 py-4 pb-5 py-sm-5">
+    <div class="bg-primary px-0 px-sm-4 py-4 pb-5 py-sm-5">
+      <span class="anchor" id="newsletter"></span>      
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
