@@ -1,9 +1,18 @@
+import path from 'path'
+import fs from 'fs'
 import _ from 'lodash'
 import { createClient } from './plugins/contentful.js'
 
 export default {
 
   mode: 'universal',
+
+  server: {
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, 'localhost-key.pem')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'localhost.pem'))
+    }
+  },
 
   head: {
     titleTemplate: 'Design District | %s',
@@ -177,7 +186,8 @@ export default {
   buildModules: [
     // '@nuxtjs/pwa',
     '@nuxtjs/axios',
-    'nuxt-purgecss'
+    'nuxt-purgecss',
+    '@nuxtjs/tailwindcss'
   ],
 
   modules: [
@@ -321,8 +331,8 @@ export default {
   //   middleware: ['redirect']
   // }
 
-  server: {
-    port: 3333, // default: 3000
-    // host: '0.0.0.0' // default: localhost
-  }
+  // server: {
+  //   port: 3333, // default: 3000
+  //   // host: '0.0.0.0' // default: localhost
+  // }
 }
