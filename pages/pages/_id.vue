@@ -1,47 +1,22 @@
 <template>
   <div class="page-component">
-    <div class="max-w-xl mx-auto mt-24">
-      <pre>{{entry}}</pre>
-    </div>
+    <AppPage :entry="entry"/>
   </div>
 </template>
 
 <script>
 import _ from 'lodash'
+import AppPage from '~/components/AppPage'
 import { createClient } from '~/plugins/contentful.js'
-import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const client = createClient()
 
-const replaceLineBreak = (string) => {
-  // return string
-  return _.replace(string, /\n/g, "<br>")
-}
-
-const options = {
-  renderMark: {
-    [MARKS.BOLD]: text => `<b>${replaceLineBreak(text)}</b>`,
-    [MARKS.ITALIC]: text => `<em>${replaceLineBreak(text)}</em>`,
-    [MARKS.UNDERLINE]: text => `<u>${replaceLineBreak(text)}</u>`
-  },
-  renderNode: {
-    [BLOCKS.PARAGRAPH]: (node, next) =>
-      `<p>${next(node.content)}</p>`,
-  },
-  renderNode: {
-    [INLINES.HYPERLINK]: (node, next) => {
-      let origin = 'https://designdistrict.co.uk'
-      if (process.client) {
-        origin = window ? window.location.origin : 'https://designdistrict.co.uk'
-      }
-      return `<a href="${node.data.uri}"${node.data.uri.startsWith(origin) ? '' : ' target="_blank"'}>${next(node.content)}</a>`;
-    }
-  },
-};
-
 export default {
-  name: 'index',
+  name: 'page',
+
+  components: {
+    AppPage
+  },
 
   head () {
     return {
@@ -78,7 +53,8 @@ export default {
 
       client.getEntries({
         'content_type': 'pages',
-        'fields.slug': route.params.id
+        'fields.slug': route.params.id,
+        'include': 3
       })
 
     ]).then(([entry]) => {
