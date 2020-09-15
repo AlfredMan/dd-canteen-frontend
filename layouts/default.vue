@@ -7,7 +7,9 @@
 
     <nuxt nuxt-child-key="none" role="main" />
 
-    <app-newsletter />
+    <app-newsletter v-if="showNewsletterFooter"/>
+
+    <app-sales v-if="showSalesFooter"/>
 
     <app-footer />
 
@@ -25,6 +27,7 @@ import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
 import AppTransition from '../components/AppTransition.vue'
 import AppNewsletter from '../components/AppNewsletter.vue'
+import AppSales from '../components/AppSales.vue'
 import AppMap from '../components/map/Map.vue'
 import AppTool from '../components/AppTool.vue'
 
@@ -34,6 +37,7 @@ export default {
     AppFooter,
     AppTransition,
     AppNewsletter,
+    AppSales,
     AppMap,
     AppTool
   },
@@ -49,6 +53,15 @@ export default {
         })
       }
     }
+  },
+
+  computed: {
+    showNewsletterFooter () {
+      return this.$route.path.indexOf('workspace') < 0
+    },
+    showSalesFooter () {
+      return !this.showNewsletterFooter
+    },
   }
 }
 </script>

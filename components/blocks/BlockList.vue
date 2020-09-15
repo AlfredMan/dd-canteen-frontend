@@ -100,7 +100,7 @@ section {
     @apply max-w-2xl
   }
   h4 {
-    @apply max-w-3xl
+    @apply max-w-3xl font-thin;
   }
 
 }
@@ -114,10 +114,10 @@ section {
     @apply px-2 mb-6;
 
     h4 {
-      @apply uppercase mt-4 mb-2 font-medium;
+      @apply uppercase mt-4 mb-2 font-normal;
     }
     p {
-      @apply my-2 font-medium;
+      @apply my-2;
     }
   }
 }

@@ -5,6 +5,9 @@ import { buildings } from '~/common/buildings'
 import { studios } from '~/common/architecture'
 import { units } from '~/common/units'
 
+import { createClient } from '~/plugins/contentful.js'
+const client = createClient()
+
 export const state = () => ({
   navigation: {
     theme: 'light'
@@ -39,14 +42,19 @@ export const state = () => ({
       'Multi-purpose work space',
       'Serviced studio',
       'On/off office',
+      'Ground floor space',
       'Co-working',
-      'Ground floor space'
+      'Food stalls',
+      'Entire floor',
+      'Building'
     ]
   },
   studios: {},
   hire: [],
   spaces: [],
-  buildings: []
+  buildings: [],
+  journals: [],
+  spaceType: []
 })
 
 export const mutations = {
@@ -83,12 +91,20 @@ export const mutations = {
     // console.log('vuex setBuildings', payload)
     state.buildings = payload.buildings
   },
+  setSpaceType (state, payload) {
+    // console.log('vuex setBuildings', payload)
+    state.spaceType = payload.spaceType
+  },
   setStudios (state, payload) {
     // console.log('vuex setStudios', payload)
     state.studios = _.sortBy(payload.studios, ['slug'])
   },
+  setJournals (state, payload) {
+    // console.log('vuex setBuildings', payload)
+    state.journals = payload.journals
+  },
   setSpaceFilter (state, payload) {
-    console.log('vuex setSpaceFilter', payload)
+    // console.log('vuex setSpaceFilter', payload)
     state.filters = payload.filters
   },
   setSpaceFilterOptions (state, payload) {
@@ -133,9 +149,13 @@ export const actions = {
   async nuxtServerInit ({ dispatch }) {
     console.log('nuxtServerInit ++++++++++++++++++++++++++++++=')
     await dispatch('getArchitectureStudios')
-    await dispatch('getMapHire')
-    await dispatch('getMapBuildings')
-    await dispatch('getMapSpaces')
+    // await dispatch('getMapHire')
+    // await dispatch('getMapBuildings')
+    // await dispatch('getMapSpaces')
+
+    await dispatch('getJournals')
+    await dispatch('getBuildings')
+    await dispatch('getSpaceTypes')
   },
   updateNavigationTheme ({ commit }, context) {
     const theme = context.theme
@@ -169,78 +189,78 @@ export const actions = {
   resetRouteTransitionSourceRect ({ commit }) {
     commit('clearRouteTransitionSourceElementRect')
   },
-  getMapSpaces ({ commit, getters }) {
-    console.log('getMapSpaces...')
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const demoSpaces = _.map(units, (unit) => {
-          // console.log(unit.Building)
-          // console.log(getters, getters.getBuildingBySlug(unit.Building))
-          const newUnit = {
-            title: unit.Title,
-            slug: unit.Slug,
-            images: [
-              {
-                url: getters.getBuildingBySlug(unit.Building) ? getters.getBuildingBySlug(unit.Building).url : ''
-              }
-            ],
-            floorplan: [
-              {
-                url: 'https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png'
-              }
-            ],
-            uniqueUnitReference: unit['Unique Unit Reference'],
-            building: unit.Building,
-            architect: unit.Architect,
-            floor: unit.Floor,
-            unit: unit.Unit,
-            tenant: unit.Tenant,
-            spaceType: unit['Space Type'],
-            spaceOption: unit['Space option'],
-            sizeSqFt: unit['Size Sq Ft'],
-            sizeSqM: unit['Size Sq M'],
-            sizeSqFtBracket: unit['Size Sq Ft Bracket'],
-            explantion: unit.Explantion,
-            options: unit.Options
-          }
-          // console.log('newUnit', newUnit)
-          return newUnit
-        })
-        // console.log(demoSpaces)
-
-        // const filterSpaceOptions = _.uniq(_.map(demoSpaces, space => space.options))
-        // const filterSpaceSizeBracket = _.uniq(_.map(demoSpaces, space => space.sizeSqFtBracket))
-        // const filterSpaceArchitect = _.uniq(_.map(demoSpaces, space => space.architect))
-
-        commit('setSpaces', { spaces: demoSpaces })
-        // commit('setSpaceFilterOptions', { options: filterSpaceOptions })
-        // commit('setSpaceFilterSizeBracket', { sizeBracket: filterSpaceSizeBracket })
-        // commit('setSpaceFilterArchitect', { architect: filterSpaceArchitect })
-
-        resolve(demoSpaces)
-      }, 500)
-    })
-  },
-  getMapHire ({ commit }) {
-    console.log('getMapHire...')
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const demoHire = hire
-        resolve(demoHire)
-        commit('setHire', { hire })
-      }, 500)
-    })
-  },
-  getMapBuildings ({ commit }) {
-    console.log('getMapBuildings...')
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const demoBuildings = buildings
-        resolve(demoBuildings)
-        commit('setBuildings', { buildings })
-      }, 500)
-    })
-  },
+  // getMapSpaces ({ commit, getters }) {
+  //   console.log('getMapSpaces...')
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       const demoSpaces = _.map(units, (unit) => {
+  //         // console.log(unit.Building)
+  //         // console.log(getters, getters.getBuildingBySlug(unit.Building))
+  //         const newUnit = {
+  //           title: unit.Title,
+  //           slug: unit.Slug,
+  //           images: [
+  //             {
+  //               url: getters.getBuildingBySlug(unit.Building) ? getters.getBuildingBySlug(unit.Building).url : ''
+  //             }
+  //           ],
+  //           floorplan: [
+  //             {
+  //               url: 'https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png'
+  //             }
+  //           ],
+  //           uniqueUnitReference: unit['Unique Unit Reference'],
+  //           building: unit.Building,
+  //           architect: unit.Architect,
+  //           floor: unit.Floor,
+  //           unit: unit.Unit,
+  //           tenant: unit.Tenant,
+  //           spaceType: unit['Space Type'],
+  //           spaceOption: unit['Space option'],
+  //           sizeSqFt: unit['Size Sq Ft'],
+  //           sizeSqM: unit['Size Sq M'],
+  //           sizeSqFtBracket: unit['Size Sq Ft Bracket'],
+  //           explantion: unit.Explantion,
+  //           options: unit.Options
+  //         }
+  //         // console.log('newUnit', newUnit)
+  //         return newUnit
+  //       })
+  //       // console.log(demoSpaces)
+  //
+  //       // const filterSpaceOptions = _.uniq(_.map(demoSpaces, space => space.options))
+  //       // const filterSpaceSizeBracket = _.uniq(_.map(demoSpaces, space => space.sizeSqFtBracket))
+  //       // const filterSpaceArchitect = _.uniq(_.map(demoSpaces, space => space.architect))
+  //
+  //       commit('setSpaces', { spaces: demoSpaces })
+  //       // commit('setSpaceFilterOptions', { options: filterSpaceOptions })
+  //       // commit('setSpaceFilterSizeBracket', { sizeBracket: filterSpaceSizeBracket })
+  //       // commit('setSpaceFilterArchitect', { architect: filterSpaceArchitect })
+  //
+  //       resolve(demoSpaces)
+  //     }, 500)
+  //   })
+  // },
+  // getMapHire ({ commit }) {
+  //   console.log('getMapHire...')
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       const demoHire = hire
+  //       resolve(demoHire)
+  //       commit('setHire', { hire })
+  //     }, 500)
+  //   })
+  // },
+  // getMapBuildings ({ commit }) {
+  //   console.log('getMapBuildings...')
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       const demoBuildings = buildings
+  //       resolve(demoBuildings)
+  //       commit('setBuildings', { buildings })
+  //     }, 500)
+  //   })
+  // },
   getArchitectureStudios ({ commit }) {
     console.log('getArchitectureStudios...')
     return new Promise((resolve, reject) => {
@@ -250,5 +270,43 @@ export const actions = {
         commit('setStudios', { studios })
       }, 500)
     })
+  },
+  async getJournals ({ commit }) {
+    const response = await client.getEntries({
+      'content_type': 'news',
+      order: '-sys.createdAt',
+      limit: 5
+    })
+    if (response.items.length > 0) {
+      // console.log('getJournals response.items??..............', response.items)
+      const journals = _.orderBy(response.items, ['fields.featured'], ['desc'])
+      commit('setJournals', { journals })
+    }
+  },
+  async getBuildings ({ commit }) {
+    const response = await client.getEntries({
+      'content_type': 'buildings',
+      order: '-sys.createdAt'
+    })
+    if (response.items.length > 0) {
+      console.log('getBuildings response.items??..............', response.items.length)
+      let buildings = response.items
+      buildings = _.map(buildings, (b)=>{
+        b.slug = b.fields.title
+        return b
+      })
+      commit('setBuildings', { buildings })
+    }
+  },
+  async getSpaceTypes ({ commit }) {
+    const response = await client.getEntries({
+      'content_type': 'spaceType',
+      order: '-sys.createdAt'
+    })
+    if (response.items.length > 0) {
+      console.log('getBuildings response.items??..............', response.items.length)
+      const spaceType = response.items
+      commit('setSpaceType', { spaceType })
+    }
   }
 }

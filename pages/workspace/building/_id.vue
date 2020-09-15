@@ -1,297 +1,225 @@
 <template lang="html">
-  <div class="bg-white" v-if="building" :key="slug">
+  <div class="workspace-building mt-24 bg-white" v-if="building" :key="slug">
 
-      <!--  -->
-      <div class="container-fluid-">
-        <div class="px-0 px-md-4 py-4 py-5 py-md-5">
-          <div class="container-fluid pt-5">
-            <div class="row">
-              <div class="col-12 col-md-8">
+    <div class="px-8 flex align-center items-center">
+      <nuxt-link class="" :to="'/workspace'">Work Space</nuxt-link> <span class="mx-2">></span>
+      <span class="underline">
+        {{building.fields.title}}: {{building.fields.architecture[0].fields.title}}
+      </span>
+    </div>
 
-                <div class="d-flex h5 ">
-                  <nuxt-link class="" :to="'/workspace/filter'"><h5>All Spaces</h5></nuxt-link> <span class="mx-2">/</span> <nuxt-link class="" :to="'/workspace/filter'"><h5>Serviced Studio</h5></nuxt-link> <span class="mx-2">/</span> Building {{building.title}}
-                </div>
 
-                <h1>{{building.title}}</h1>
-                <!-- <h4>
-                  <span>Building {{building.building}}</span>, <span>{{getFloorLabel(building.floor)}}</span>, <span>Unit {{building.unit}}</span>
-                </h4> -->
-              </div>
-            </div>
-          </div>
-        </div>
+    <h1 class="px-8 mt-6 my-4 flex items-baseline building-title">
+      <span class="inline-block mr-6 building-name font-medium -ml-2">{{building.fields.title}}</span>
+      <span class="inline-block text-green uppercase building-architect">{{building.fields.architecture[0].fields.title}}</span>
+    </h1>
+
+
+    <div class="px-8 my-4 mb-8 tags">
+      <div class="tag" v-for="spaceType in building.fields.spaceType" :key="spaceType.sys.id">
+        {{spaceType.fields.title}}
+      </div>
+    </div>
+
+
+    <div class="flex flex-wrap mb-12">
+
+      <div class="w-full lg:w-2/3">
+        <nuxt-link :to="`/workspace/building/${building.fields.title}`" >
+          <lazy-image
+          :src="building.fields.thumbnailImageAsset[0].fields.file.url"
+          :w="1000"
+          :h="1000"
+          :custom="'fit=thumb&f=center'"
+          />
+        </nuxt-link>
       </div>
 
-      <div class="space-information">
+      <div class="w-full lg:w-1/3 bg-gray-100 p-6 pt-4">
 
-        <div class="container-fluid-">
-          <div class="px-0 px-md-4">
-            <div class="container-fluid pb-5">
-              <div class="row no-gutters d-flex align-items-start justify-content-between">
-                <div class="col-12 col-md-8">
-                  <lazy-image
-                  :src="building.url"
-                  :w="3000"
-                  :h="2000"
-                  />
-                </div>
-                <!-- <div class="col-12 col-md-8">
-                  <lazy-image
-                  :src="building.url"
-                  :w="3000"
-                  :h="2000"
-                  />
-                </div> -->
-                <div class="col-12">
+        <h4 class="inline-block font-medium text-6xl mb-4">{{building.fields.title}}</h4>
 
-                </div>
-                <!-- <div class="col-12 col-md-6 my-4">
-                  <h4>{{building.description}}</h4>
-                </div> -->
-              </div>
-            </div>
-          </div>
+        <h4 class="text-2xl my-4">{{building.fields.shortDescription}}</h4>
+
+        <div class="my-4">
+          <h3>Interested in this building?</h3>
+          <p>Tell us about your requirements, and we’ll be in touch.
+          Or call us on +44 (0)20 3981 2426</p>
+          <a class="mt-2 px-2 py-2 leading-5 bg-green text-white uppercase">Book a visit</a>
         </div>
 
-        <div class="-container-fluid bg-white">
-          <div class="px-0 px-md-4">
-            <div class="container-fluid py-5">
-              <div class="row mb-4">
-                <div class="col-12 col-md-8">
-                  <h4>[placeholder] {{building.description}}</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="-container-fluid bg-white">
-          <div class="px-0 px-md-4">
-            <div class="container-fluid py-5">
-              <div class="row mb-4">
-                <div class="col-12 col-md-8">
-                  <h3>Specifications</h3>
-                </div>
-              </div>
-              <div class="row d-flex align-items-start justify-content-start">
-                <div class="col-12 col-md-2 mb-4">
-                  <h6 class="mb-1">Size</h6>
-                  <div class="tags">
-                    <div class="tag">
-                      200-500
-                      <!-- {{space['sizeSqFtBracket']}} -->
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-6 mb-4">
-                  <h6 class="mb-1">Type</h6>
-                  <div class="tags">
-                    <div class="tag">
-                      Serviced studio
-                    </div>
-                    <div class="tag">
-                      On/off office
-                    </div>
-                    <div class="tag">
-                      Co-working
-                    </div>
-                  </div>
-                </div>
-                <!-- <div class="col-12 col-md-2 mb-4">
-                  <h6 class="mb-1">Option</h6>
-                  <div class="tags">
-                    <div class="tag">
-                      {{building.options}}
-                    </div>
-                  </div>
-                </div> -->
-                <!-- <div class="col-12 col-md-3 mb-4">
-                  <h6 class="mb-1">Architect</h6>
-                  <div class="tags">
-                    <div class="tag">
-                      {{building.architect}}
-                    </div>
-                  </div>
-                </div> -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="-container-fluid bg-white">
-          <div class="px-0 px-md-4">
-            <div class="container-fluid py-5">
-              <div class="row mb-4">
-                <div class="col-12 col-md-8">
-                  <h3>Floorplans</h3>
-                </div>
-              </div>
-              <div class="row d-flex align-items-start justify-content-start pr-md-5">
-                <div class="floorplan col-12 col-sm-3 col-md-2 mb-4" v-for="floorplan in floorplans">
-                  <img :src="floorplan.url" alt="">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- <div class="-container-fluid bg-white">
-          <div class="px-0 px-md-4">
-            <div class="container-fluid py-5">
-              <div class="row mb-4">
-                <div class="col-12 col-md-8">
-                  <h3>Services & Facilities</h3>
-                </div>
-              </div>
-              <div class="row d-flex align-items-start justify-content-start">
-                <div class="col-12 col-md-3 mb-4">
-                  <h5 class="mb-1">Bike Storage</h5>
-                  <p>Rows of hooks and racks keep your prized bicycle safe on the premises.</p>
-                </div>
-                <div class="col-12 col-md-3 mb-4">
-                  <h5 class="mb-1">Event space</h5>
-                  <p>With a projector, sound system and lighting controls, lounges are easily converted for members’ meet-ups.</p>
-                </div>
-                <div class="col-12">
-
-                </div>
-                <div class="col-12 col-md-3 mb-4">
-                  <h5 class="mb-1">Dog friendly</h5>
-                  <p>Rows of hooks and racks keep your prized bicycle safe on the premises.</p>
-                </div>
-
-              </div>
-            </div>
-          </div>
+        <!-- <div class="flex my-2">
+          <div class="mr-3">Sqft. {{building.fields.minSize}}–{{building.fields.maxSize}}</div>
+          <div class="mr-3 flex"><IconPerson class="inline text-xs self-center mr-2" /><span>{{building.fields.people}} people</span></div>
         </div> -->
 
-        <div class="-container-fluid bg-white" v-if="false">
-          <div class="px-0 px-md-4">
-            <div class="container-fluid py-5 pb-3">
-              <div class="row">
-                <div class="col-12 col-md-8">
-                  <h3>Architect</h3>
-                  <!-- <h3>{{architect.title}}</h3> -->
-                </div>
-              </div>
-              <div class="row d-flex align-items-start justify-content-between">
-                <div class="col-12 col-md-6 my-4">
-                  <h5>{{architect.title}}</h5>
-                  <p>{{architect.buildingsCopy}}</p>
-                  <!-- <h5>{{architect.title}} &rarr;</h5> -->
-                </div>
+      </div>
 
-                <div class="col-12">
+    </div>
 
-                </div>
-
-                <div class="col-12 col-md-4 mb-4">
-                  <lazy-image
-                  class=""
-                  :src="architect.imagesPractice[0].url"
-                  :w="2000"
-                  :h="2000"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="px-0 my-8">
+      <h2 class="px-8 uppercase max-w-2xl w-full">Photos</h2>
+      <div class="flex flex-wrap -mx-6 items-baseline bg-black px-8 py-4">
+        <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4">
+          <lazy-image
+          src="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
+          :w="1000"
+          :h="1000"
+          />
         </div>
 
-        <!--  -->
+        <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4">
+          <lazy-image
+          src="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
+          :w="1000"
+          :h="1000"
+          />
+        </div>
 
-        <aside class="-container-fluid">
-          <div class="sticky-wrapper px-0 px-md-4 pb-4">
-            <div class="container-fluid">
-              <div class="row no-gutters">
-                <div class="col-12 offset-md-8 col-md-4 pl-0 pl-sm-4">
-                  <div class="px-4 px-sm-4 bg-grey">
-                    <div class="py-5">
-                      <!-- <h2>{{building.title}}</h2> -->
-                      <!-- <h3>
-                        Building {{building.building}}<br>
-                        {{getFloorLabel(building.floor)}}<br>
-                        Unit {{building.unit}}
-                      </h3> -->
-                      <h5>Interested in this building?</h5>
-                      <p>Tell us about your requirements, and we’ll be in touch.</p>
-                      <nuxt-link :to="'/workspace/enquire'" class="btn btn-lg bg-dark text-white">CONTACT US &rarr;</nuxt-link>
-                    </div>
-                    <!-- <div class="mt-4">
-                      <space-form></space-form>
-                    </div> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </aside>
+        <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4">
+          <lazy-image
+          src="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
+          :w="1000"
+          :h="1000"
+          />
+        </div>
 
       </div>
+    </div>
 
-      <span class="anchor" id="become-a-tenant" ></span>
-      <div class="py-5 -bg-grey bg-dark text-white anchor-target px-0 px-md-4 py-4 pb-5 py-md-5">
-        <div class="container-fluid -my-5">
-          <div class="row">
-            <div class="col-12 col-md-8">
-              <h2>Become a tenant</h2>
-            </div>
-            <div class="col-12" />
-            <div class="col-12 col-md-6 mb-5">
-              <h4>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</h4>
-              <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering accessible rent, flexible leases and workspace purpose-built for creative disciplines.</h4> -->
-              <!-- <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</p> -->
-              <nuxt-link :to="'/workspace/enquire'" class="btn btn-lg bg-primary text-white">Join Design District &rarr;</nuxt-link>
-            </div>
-            <!-- <div class="col-12 col-lg-1" />
-            <div class="col-12 col-md-8 col-lg-7">
-              <enquire-form source="workspace"/>
-            </div> -->
-          </div>
+    <div class="px-8 my-16">
+      <h2 class="uppercase max-w-2xl w-full">Location</h2>
+      <div class="w-full bg-black">
+        <lazy-image
+        src="https://images.ctfassets.net/xsmgpzj6d8er/2zCRdF5QZl8FqBQQM57Lom/1f4c7c7e6706f5c494a9cd32a0b164c6/dd-3d-map.png"
+        :w="2000"
+        />
+      </div>
+    </div>
+
+    <div class="px-8 my-16">
+      <h2 class="uppercase max-w-2xl w-full">Floor plans</h2>
+      <div class="flex flex-wrap -mx-6 items-baseline">
+        <a
+        class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4"
+        href="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
+        target="_blank"
+        >
+          <lazy-image
+          src="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
+          :w="1000"
+          :h="1000"
+          />
+        </a>
+
+        <a
+        class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4"
+        href="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
+        target="_blank"
+        >
+          <lazy-image
+          src="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
+          :w="1000"
+          :h="1000"
+          />
+        </a>
+
+        <a
+        class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4"
+        href="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
+        target="_blank"
+        >
+          <lazy-image
+          src="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
+          :w="1000"
+          :h="1000"
+          />
+        </a>
+
+      </div>
+    </div>
+
+    <div class="px-8 my-16">
+      <h2 class="uppercase max-w-2xl w-full">Services & facilities</h2>
+      <p class="max-w-lg w-full">Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.</p>
+      <div class="flex flex-wrap -mx-6">
+        <div class="w-full xl:w-1/3 px-6">
+          <p><strong>Workshops</strong><br>
+          Often creative businesses need more than a desk. In the Design District you can access a range of workshops suited to your specialism. There’s a wood workshop, digital workshop, textile workshop, engineering workshop and an assembly space. Prototype or produce a new collection.</p>
+        </div>
+        <div class="w-full xl:w-1/3 px-6">
+          <p><strong>Food hall and kitchen</strong><br>
+            The food hall is the bustling heart of Design District — a place for eating, meeting, socialising and relaxing. In an airy, plant-filled transparent structure by SelgasCano, six independently run food stalls serve up innovative global fare to tenants, visitors and local residents. Design District is equipped with an industrial kitchen available to on-site event caterers. It also doubles as a test kitchen, available by prior arrangement to tenants working in the food and beverage industries.</p>
+        </div>
+        <div class="w-full xl:w-1/3 px-6">
+          <p><strong>Rooftop basketball court </strong><br>
+            The open-air basketball court occupies a commanding position, with high transparent walls affording views across The O2 and beyond. Crowning Architecture 00’s C2 building, the court hosts a range of sports and wellness activities, including basketball, HIIT and yoga. The space can be hired by Design District tenants and members of the public for everything from pop-up cinema events to photoshoots.</p>
         </div>
       </div>
+    </div>
 
-
-    <!-- <div class="bg-light">
-      <div class="container mt-10">
-        <enquire-form></enquire-form>
-      </div>
-    </div> -->
-    <!-- <span class="anchor" id="become-a-tenant" ></span>
-    <div class="py-5 bg-white anchor-target px-4">
-      <div class="container-fluid -my-5">
-        <div class="row">
-          <div class="col-12 col-md-4">
-            <h2>Become a tenant</h2>
-          </div>
-          <div class="col-12" />
-          <div class="col-12 col-md-4">
-            <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering accessible rent, flexible leases and workspace purpose-built for creative disciplines.</h4>
-            <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</p>
-          </div>
-          <div class="col-12 col-lg-1" />
-          <div class="col-12 col-md-8 col-lg-7">
-            <enquire-form source="workspace"/>
-          </div>
+    <div class="px-8 my-16">
+      <h2 class="uppercase max-w-2xl w-full">Architecture</h2>
+      <h4 class="max-w-xl w-full mb-4">
+        The heart and soul of our locations, these lounges are living room-style spaces designed for creativity, comfort and productivity.
+      </h4>
+      <div class="flex flex-wrap -mx-6">
+        <div class="w-full xl:w-2/3 px-6">
+          <lazy-image
+          :src="building.fields.thumbnailImageAsset[0].fields.file.url"
+          :w="1000"
+          :h="1000"
+          :custom="'fit=thumb&f=center'"
+          />
+          <h4 class="uppercase">{{building.fields.architecture[0].fields.title}}</h4>
         </div>
-      </div>
-    </div> -->
-
-
-
-    <!-- <div class="bg-light">
-      <div class="container mt-10">
-        <div class="row">
-          <div class="col">
-
-          </div>
-          <div class="col">
-            <enquire-form></enquire-form>
-          </div>
+        <div class="w-full xl:w-1/3 px-6">
         </div>
+
       </div>
-    </div> -->
+    </div>
+
+    <div class="px-8 bg-black text-white py-6 pb-12">
+      <h2 class="uppercase max-w-2xl w-full">Events</h2>
+      <div class="flex flex-wrap -mx-6 items-baseline">
+        <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4">
+          <lazy-image
+          :src="building.fields.thumbnailImageAsset[0].fields.file.url"
+          :w="1000"
+          :h="1000"
+          :custom="'fit=thumb&f=center'"
+          />
+          <h4 class="uppercase mb-3">Placeholder</h4>
+          <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
+        </div>
+
+        <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4">
+          <lazy-image
+          :src="building.fields.thumbnailImageAsset[0].fields.file.url"
+          :w="1000"
+          :h="1000"
+          :custom="'fit=thumb&f=center'"
+          />
+          <h4 class="uppercase mb-3">Placeholder</h4>
+          <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
+        </div>
+
+        <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4">
+          <lazy-image
+          :src="building.fields.thumbnailImageAsset[0].fields.file.url"
+          :w="1000"
+          :h="1000"
+          :custom="'fit=thumb&f=center'"
+          />
+          <h4 class="uppercase mb-3">Placeholder</h4>
+          <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
+        </div>
+
+      </div>
+    </div>
+
+
+
 
   </div>
 </template>
@@ -312,9 +240,8 @@ export default {
   },
   head () {
     return {
-      title: 'Work space',
+      title: 'Work Space',
       meta: [
-        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         { hid: 'description', name: 'description', content: 'Design District will provide 150,000 sq ft of permanent workspace for everyone for London’s designers makers and creators. A place for total focus, shared stories and resources, new connections and collaboration.' }
       ]
     }
@@ -400,6 +327,26 @@ export default {
 <style lang="scss" scoped>
 .space-information {
   position: relative;
+}
+.building-title {
+  align-items: center;
+  @media (min-width: map-get($grid-breakpoints, sm)){
+    align-items: baseline;
+  }
+  .building-name {
+    font-size: 6rem;
+    @media (min-width: map-get($grid-breakpoints, sm)){
+      font-size: 10rem;
+    }
+    line-height: 1;
+  }
+  .building-architect {
+    font-size: 2rem;
+    @media (min-width: map-get($grid-breakpoints, sm)){
+      font-size: 4rem;
+    }
+    line-height: 1;
+  }
 }
 aside {
   // background: red;

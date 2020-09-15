@@ -101,7 +101,8 @@
     @include media-breakpoint-up(lg) {
   	  &.site-active {
         width: 100%;
-        // width: 75%;
+        width: 75%;
+        width: 66.67%;
       }
       &.space-active,
       &.floor-active,

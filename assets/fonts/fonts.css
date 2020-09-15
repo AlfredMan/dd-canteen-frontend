@@ -1,7 +1,23 @@
 @font-face {
     font-family:"MabryTrial";
+    src:url("./MabryTrial-LightItalic-export/MabryTrial-LightItalic.woff2") format("woff2"),url("./MabryTrial-LightItalic-export/MabryTrial-LightItalic.woff") format("woff"),url("./MabryTrial-LightItalic-export/MabryTrial-LightItalic.otf") format("opentype");
+    font-style:italic;font-weight:200;
+}
+@font-face {
+    font-family:"MabryTrial";
+    src:url("./MabryTrial-Light-export/MabryTrial-Light.woff2") format("woff2"),url("./MabryTrial-Light-export/MabryTrial-Light.woff") format("woff"),url("./MabryTrial-Light-export/MabryTrial-Light.otf") format("opentype");
+    /* src:url("./Mabry Pro Light-export/Mabry Pro Light.woff2") format("woff2"),url("./Mabry Pro Light-export/Mabry Pro Light.woff") format("woff"),url("./Mabry Pro Light-export/Mabry Pro Light.otf") format("opentype"); */
+    font-style:normal;font-weight:200;
+}
+@font-face {
+    font-family:"MabryTrial";
     src:url("./MabryTrial-Regular-export/MabryTrial-Regular.woff2") format("woff2"),url("./MabryTrial-Regular-export/MabryTrial-Regular.woff") format("woff"),url("./MabryTrial-Regular-export/MabryTrial-Regular.otf") format("opentype");
     font-style:normal;font-weight:400;
+}
+@font-face {
+    font-family:"MabryTrial";
+    src:url("./MabryTrial-Italic-export/MabryTrial-Italic.woff2") format("woff2"),url("./MabryTrial-Italic-export/MabryTrial-Italic.woff") format("woff"),url("./MabryTrial-Italic-export/MabryTrial-Italic.otf") format("opentype");
+    font-style:italic;font-weight:400;
 }
 @font-face {
     font-family:"MabryTrial";
@@ -15,29 +31,13 @@
 }
 @font-face {
     font-family:"MabryTrial";
-    src:url("./MabryTrial-LightItalic-export/MabryTrial-LightItalic.woff2") format("woff2"),url("./MabryTrial-LightItalic-export/MabryTrial-LightItalic.woff") format("woff"),url("./MabryTrial-LightItalic-export/MabryTrial-LightItalic.otf") format("opentype");
-    font-style:italic;font-weight:200;
-}
-@font-face {
-    font-family:"MabryTrial";
-    /* src:url("./MabryTrial-Light-export/MabryTrial-Light.woff2") format("woff2"),url("./MabryTrial-Light-export/MabryTrial-Light.woff") format("woff"),url("./MabryTrial-Light-export/MabryTrial-Light.otf") format("opentype"); */
-    src:url("./Mabry Pro Light-export/Mabry Pro Light.woff2") format("woff2"),url("./Mabry Pro Light-export/Mabry Pro Light.woff") format("woff"),url("./Mabry Pro Light-export/Mabry Pro Light.otf") format("opentype");
-    font-style:normal;font-weight:200;
-}
-@font-face {
-    font-family:"MabryTrial";
-    src:url("./MabryTrial-Italic-export/MabryTrial-Italic.woff2") format("woff2"),url("./MabryTrial-Italic-export/MabryTrial-Italic.woff") format("woff"),url("./MabryTrial-Italic-export/MabryTrial-Italic.otf") format("opentype");
-    font-style:italic;font-weight:400;
-}
-@font-face {
-    font-family:"MabryTrial";
     src:url("./MabryTrial-BoldItalic-export/MabryTrial-BoldItalic.woff2") format("woff2"),url("./MabryTrial-BoldItalic-export/MabryTrial-BoldItalic.woff") format("woff"),url("./MabryTrial-BoldItalic-export/MabryTrial-BoldItalic.otf") format("opentype");
     font-style:italic;font-weight:600;
 }
 @font-face {
     font-family:"MabryTrial";
-    /* src:url("./MabryTrial-Bold-export/MabryTrial-Bold.woff2") format("woff2"),url("./MabryTrial-Bold-export/MabryTrial-Bold.woff") format("woff"),url("./MabryTrial-Bold-export/MabryTrial-Bold.otf") format("opentype"); */
-    src:url("./Mabry Pro Bold-export/Mabry Pro Bold.woff2") format("woff2"),url("./Mabry Pro Bold-export/Mabry Pro Bold.woff") format("woff"),url("./Mabry Pro Bold-export/Mabry Pro Bold.otf") format("opentype");
+    src:url("./MabryTrial-Bold-export/MabryTrial-Bold.woff2") format("woff2"),url("./MabryTrial-Bold-export/MabryTrial-Bold.woff") format("woff"),url("./MabryTrial-Bold-export/MabryTrial-Bold.otf") format("opentype");
+    /* src:url("./Mabry Pro Bold-export/Mabry Pro Bold.woff2") format("woff2"),url("./Mabry Pro Bold-export/Mabry Pro Bold.woff") format("woff"),url("./Mabry Pro Bold-export/Mabry Pro Bold.otf") format("opentype"); */
     font-style:normal;font-weight:600;
 }
 @font-face {
@@ -49,4 +49,16 @@
     font-family:"MabryTrial";
     src:url("./MabryTrial-Black-export/MabryTrial-Black.woff2") format("woff2"),url("./MabryTrial-Black-export/MabryTrial-Black.woff") format("woff"),url("./MabryTrial-Black-export/MabryTrial-Black.otf") format("opentype");
     font-style:normal;font-weight:900;
+}
+
+
+@font-face {
+    font-family:"MabryMonoTrial";
+    src:url("./MabryMonoTrial-Regular-export/MabryMonoTrial-Regular.woff2") format("woff2"),url("./MabryMonoTrial-Regular-export/MabryMonoTrial-Regular.woff") format("woff"),url("./MabryMonoTrial-Regular-export/MabryMonoTrial-Regular.otf") format("opentype");
+    font-style:normal;font-weight:400;
+}
+@font-face {
+    font-family:"MabryMonoTrial";
+    src:url("./MabryMonoTrial-Medium-export/MabryMonoTrial-Medium.woff2") format("woff2"),url("./MabryMonoTrial-Medium-export/MabryMonoTrial-Medium.woff") format("woff"),url("./MabryMonoTrial-Medium-export/MabryMonoTrial-Medium.otf") format("opentype");
+    font-style:normal;font-weight:500;
 }

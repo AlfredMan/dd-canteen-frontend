@@ -18,6 +18,8 @@
 
         <BlockArchitecture :block="block" v-else-if="isBlockType(block, 'blockArchitecture')"/>
 
+        <BlockJournal :block="block" v-else-if="isBlockType(block, 'blockJournal')"/>
+
         <div class="p-16 bg-red-100" v-else>
           <p v-if="block.sys && block.sys.contentType">{{block.sys.contentType.sys.id}}</p>
           <pre>{{block.fields}}</pre>
@@ -26,9 +28,9 @@
       </template>
     </div>
 
-    <div class="max-w-screen-xl mx-auto mt-24 bg-green-lighter hover:bg-green transition duration-100">
+    <!-- <div class="max-w-screen-xl mx-auto mt-24 bg-green-lighter hover:bg-green transition duration-100">
       <pre>{{entry}}</pre>
-    </div>
+    </div> -->
   </main>
 </template>
 
@@ -40,6 +42,7 @@ import BlockList from '~/components/blocks/BlockList'
 import BlockBanner from '~/components/blocks/BlockBanner'
 import BlockImage from '~/components/blocks/BlockImage'
 import BlockArchitecture from '~/components/blocks/BlockArchitecture'
+import BlockJournal from '~/components/blocks/BlockJournal'
 
 export default {
   name: 'page',
@@ -50,7 +53,8 @@ export default {
     BlockList,
     BlockBanner,
     BlockImage,
-    BlockArchitecture
+    BlockArchitecture,
+    BlockJournal
   },
 
   props: {

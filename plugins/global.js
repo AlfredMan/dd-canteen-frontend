@@ -6,6 +6,10 @@ import Email from '~/components/Email.vue'
 
 import CallToAction from '~/components/blocks/ComponentCallToAction.vue'
 
+import IconFloorplan from '~/components/icons/IconFloorplan.vue'
+import IconPerson from '~/components/icons/IconPerson.vue'
+import IconBox from '~/components/icons/IconBox.vue'
+
 // import ResponsiveLine from '~/components/visual/ResponsiveLine.vue'
 // import BlockPageBanner from '~/components/blocks/BlockPageBanner.vue'
 
@@ -14,6 +18,10 @@ Vue.component('imageSlideshow', ImageSlideshow)
 Vue.component('transitionLink', TransitionLink)
 Vue.component('email', Email)
 Vue.component('callToAction', CallToAction)
+
+Vue.component('IconPerson', IconPerson)
+Vue.component('IconFloorplan', IconFloorplan)
+Vue.component('IconBox', IconBox)
 
 // Vue.component('responsiveLine', ResponsiveLine)
 // Vue.component('blockPageBanner', BlockPageBanner)

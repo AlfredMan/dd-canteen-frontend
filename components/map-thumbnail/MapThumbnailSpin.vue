@@ -22,7 +22,6 @@ export default {
         raf: null,
         tick: 0,
         gltfs: [
-          '/model/DD-all-gltf-skeleton.gltf',
           '/model/DD-all-baked-tex-v07.gltf',
           '/model/DD-all-baked-16-no-texture.gltf',
           '/model/DD-all-gltf-combined-test-1.gltf',

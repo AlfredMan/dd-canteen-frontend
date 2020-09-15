@@ -7,7 +7,7 @@
   ]"
   >
     <component
-    :is="bannerStyle=='Full'?'nuxt-link':'DIV'"
+    :is="bannerStyle=='Full'?'DIV':'DIV'"
     :to="bannerStyle=='Full'&&block.fields.callToAction.fields.path?block.fields.callToAction.fields.path:undefined"
     class="block-banner-header"
     >
@@ -119,7 +119,7 @@ section {
     @apply max-w-3xl;
   }
   h4 {
-    @apply max-w-3xl font-medium;
+    @apply max-w-3xl;
   }
 }
 </style>

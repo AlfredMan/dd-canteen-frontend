@@ -32,14 +32,26 @@
     </div>
 
     <div
-    class="map-thumb"
+    class="map-thumb bg-white border-1 rounded-full m-6 shadow transition duration-300"
     @click="toggleMapActive(true)"
     :class="{
       'active': !mapActive
     }"
     >
-      <!-- <img src="/a4.png" alt=""> -->
-      <map-thumbnail></map-thumbnail>
+      <div
+      class="flex align-center items-center items-end px-6 py-2 text-lg rounded-lg bg-opacity-50"
+      >
+        <!-- <img src="/a4.png" alt="" class="w-12 h-auto mr-2">  -->
+        <div class="relative w-4 h-4 mr-2">
+          <IconBox class=""/>
+          <!-- <div class="absolute z-10 inset-0 flex justify-center items-center" style="font-size: 0.6em; font-weight:bold; -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: white;">
+            3D
+          </div> -->
+        </div>
+        Map
+      </div>
+      <!-- <map-thumbnail></map-thumbnail> -->
     </div>
 
     <div

@@ -4,10 +4,9 @@
       <h5>Thank you for your interest!</h5>
       <p>We'll be in touch soon. Meanwhile, follow our <a href="https://www.instagram.com/designdistrictlondon/" target="_blank" rel="noreferrer">Instagram</a> for more news and updates.</p>
     </div>
-    <p v-if="!isSuccess">
-      <!-- Sign up now to stay in the loop with the latest happenings on the&nbsp;Peninsula. -->
+    <!-- <p v-if="!isSuccess">
       Sign-up today for the latest Design District news, updates and&nbsp;events.
-    </p>
+    </p> -->
     <form
       v-if="!isSuccess"
       ref="subscribeForm"
@@ -20,7 +19,7 @@
     >
       <div>
         <div class="form-row">
-          <div :class="[{'col-7 col-md-8': !active}, {'col-12': active}]">
+          <div :class="[{'col-12 col-md-12': !active}, {'col-12': active}]" class="relative">
             <input
               class="form-control input-text form-field-reset"
               type="email"
@@ -29,14 +28,17 @@
               value=""
               required
             >
+            <button class="btn -btn-outline-dark btn-lg mt-0 absolute right-0" @click="active = true"  v-show="!active">
+              &rarr;
+            </button>
           </div>
-          <div v-show="!active" class="col">
+          <!-- <div v-show="!active" class="col">
             <div class="form-group">
-              <button class="btn btn-outline-dark btn-lg mt-0" @click="active = true">
-                Next &rarr;
+              <button class="btn -btn-outline-dark btn-lg mt-0" @click="active = true">
+                &rarr;
               </button>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <input
@@ -115,7 +117,7 @@
         <input id="subscribeSubmit" ref="subscribeSubmit" type="submit" value="Signup" style="display: none;">
 
         <button
-          class="btn btn-primary btn-lg mt-0"
+          class="btn btn-dark btn-lg mt-0"
           type="submit"
           :class="{disabled: formState === 'loading'}"
         >
@@ -288,86 +290,6 @@ export default {
         console.log(error)
       })
 
-      // debugger
-      // this.$refs.subscribeForm.submit()
-
-      // setTimeout(() => {
-      //   this.formState = 'idle'
-      //   this.formAlert.type = 'success'
-      //   this.formAlert.text = 'Complete.'
-      //   this.formAction = 'Complete'
-      //
-      //   // alert('done')
-      //   this.$refs.subscribeForm.submit()
-      //
-      //   setTimeout(() => {
-      //     this.formState = 'idle'
-      //     this.formAlert.type = ''
-      //     this.formAlert.text = ''
-      //     this.formAction = 'Submit'
-      //   }, 3000)
-      // }, 1000)
-
-      // const postBody = {
-      //   'email': 'testtestjason@hato.co',
-      //   'first_name': 'Jason TEST',
-      //   'last_name': 'Chow TEST',
-      //   'oid': '00D20000000nxym',
-      //   '00N0O00000GRkIa': '1',
-      //   '00N0O00000GRZb7': '1',
-      //   '00N0O00000AB5j2': 'Web Form',
-      //   '00N0O00000AB5j1': 'Design District',
-      //   '00N0O00000AB5iY': 'Design District Subscription',
-      //   '00N0O00000AB5iN': '7010O00000153NQQAY',
-      //   '00N0O00000GRkIf': this.getNow(),
-      //   '00N0O00000GRZbC': this.getNow(),
-      //   '00N0O00000GRrXc': '1',
-      //   '00N0O00000GRrXh': this.getNow()
-      // }
-      //
-      // const formUrlEncoded = (x) => {
-      //   return Object.keys(x).reduce((p, c) => p + `&${c}=${encodeURIComponent(x[c])}`, '')
-      // }
-      //
-      // const dataFromForm = formUrlEncoded(postBody)
-      //
-      // const fd = new FormData(this.$refs.subscribeForm)
-      // fd.append('email', 'testtestjason@hato.co')
-      // fd.append('first_name', 'Jason TEST')
-      // fd.append('last_name', 'Chow TEST')
-      // fd.append('oid', '00D20000000nxym')
-      // fd.append('00N0O00000GRkIa', '1')
-      // fd.append('00N0O00000GRZb7', '1')
-      // fd.append('00N0O00000AB5j2', 'Web Form')
-      // fd.append('00N0O00000AB5j1', 'Design District')
-      // fd.append('00N0O00000AB5iY', 'Design District Subscription')
-      // fd.append('00N0O00000AB5iN', '7010O00000153NQQAY')
-      // fd.append('00N0O00000GRkIf', this.getNow())
-      // fd.append('00N0O00000GRZbC', this.getNow())
-      // fd.append('00N0O00000GRrXc', '1')
-      // fd.append('00N0O00000GRrXh', this.getNow())
-      // debugger
-      // this.$axios.$post('https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8', fd).then((response) => {
-      //   console.log(response)
-      // }).catch((error) => {
-      //   console.log(error)
-      // })
-
-      // this.$axios({
-      //   method: 'post',
-      //   url: 'https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8',
-      //   data: dataFromForm,
-      //   config: {
-      //     headers: { 'Content-type': 'application/x-www-form-urlencoded' }
-      //   }
-      //   // headers: {
-      //   //   'Content-type': 'application/x-www-form-urlencoded'
-      //   // }
-      // }).then((response) => {
-      //   console.log(response)
-      // }).catch((error) => {
-      //   console.log(error)
-      // })
     },
     onExpired () {
       // console.error('reCAPTCHA has expired')
@@ -436,3 +358,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+form {
+  @apply max-w-3xl;
+}
+h2 {
+  @apply max-w-2xl;
+}
+h4 {
+  @apply max-w-3xl font-medium;
+}
+</style>
