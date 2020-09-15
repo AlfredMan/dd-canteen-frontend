@@ -55,13 +55,15 @@
                 </div>
               </div> -->
               <div class="uppercase mb-2 text-sm">Space type</div>
-              <div
-              v-for="option in spaceFilters['options']" :key="option"
-              @click="toggleFilter('options', option); typeFilters = false"
-              :class="{'active': option == filter.options}"
-              class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
-              >
-                {{option}} <span v-if="option == filter.options">&times;</span>
+              <div class="tags">
+                <div
+                v-for="option in spaceFilters['options']" :key="option"
+                @click="toggleFilter('options', option); typeFilters = false"
+                :class="{'active': option == filter.options}"
+                class="btn btn-outline-dark tag mr-2 mb-2"
+                >
+                  {{option}} <span v-if="option == filter.options">&times;</span>
+                </div>
               </div>
               <!-- <div class="clear-filter" @click="toggleFilter('options', null); typeFilters = false">
                 Clear
@@ -75,14 +77,14 @@
                 </div>
               </div> -->
 
-              <div class="px-2 w-full max-w-md mb-24">
+              <div class="px-2 w-full max-w-sm mb-24">
                 <vue-slider
                 class="slider-component"
                 v-model="sliderModel"
                 :absorb="true"
                 :marks="sliderMarks"
                 :tooltip="'none'"
-                :min="0"
+                :min="1"
                 :max="5"
                 :min-range="1"
                 :interval="1"
@@ -92,8 +94,8 @@
                 @drag-end="onSliderDragEnd"
                 >
                   <template v-slot:mark="{ pos, label }">
-                    <div class="custom-mark" :style="{ left: `${pos}%` }">
-                      {{ label }}
+                    <div class="custom-mark monospace" :style="{ left: `${pos}%` }">
+                      {{ numberWithCommas(label) }}
                     </div>
                   </template>
                   <template v-slot:process="{ start, end, style, index }">
@@ -137,16 +139,16 @@
               <!-- <div><IconFloorplan class="inline" /> {{building.fields.minSize}}–{{building.fields.maxSize}} Sqft</div>
               <div><IconPerson class="inline" /> {{building.fields.people}} people</div> -->
 
-              <div class="flex my-2">
-                <div class="mr-3">Sqft. {{building.fields.minSize}}–{{building.fields.maxSize}}</div>
+              <div class="flex my-2 monospace">
+                <div class="mr-3">Sqft {{numberWithCommas(building.fields.minSize)}}–{{numberWithCommas(building.fields.maxSize)}}</div>
                 <!-- <div class="mr-3 flex">
                   <IconPerson class="inline text-xs self-center mr-2" />
                   <span>
                     {{building.fields.people}} people</span></div> -->
               </div>
 
-              <div class="chips mt-4">
-                <div class="chip" v-for="spaceType in building.fields.spaceType" :key="spaceType.sys.id">
+              <div class="tags mt-4">
+                <div class="tag tag-sm tag-display" v-for="spaceType in building.fields.spaceType" :key="spaceType.sys.id">
                   {{spaceType.fields.title}}
                 </div>
               </div>
@@ -198,10 +200,10 @@ export default {
       },
       sizeFilters: false,
       typeFilters: false,
-      sliderModel: [0,5],
-      sliderData: [0,1,2,3,4,5],
+      sliderModel: [1,5],
+      sliderData: [1,2,3,4,5],
       sliderMarks: {
-        '0': { label: '0' },
+        // '0': { label: '0' },
         '1': { label: '100' },
         '2': { label: '200' } ,
         '3': { label: '1000' },
@@ -209,7 +211,7 @@ export default {
         '5': { label: '5000+' }
       },
       filterDisplay: {
-        sizeBracketMin: '0',
+        sizeBracketMin: '100',
         sizeBracketMax: '5000+'
       }
     }
@@ -392,6 +394,9 @@ export default {
 
       return `${_.round(_.min(sizes),-1)}–${_.round(_.max(sizes),-1)} sq ft`
     },
+    numberWithCommas(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
     onSliderDragEnd (val, a) {
       // console.log('onSliderDragEnd', ev, a)
     },
@@ -555,7 +560,7 @@ export default {
     white-space: nowrap;
     width: 50px;
     text-align: center;
-    font-size: .75rem;
+    font-size: 1rem;
     // position: absolute;
     // left: 20px;
     // transform: translateY(-50%);

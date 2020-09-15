@@ -109,10 +109,10 @@ button, .btn, input[type="submit"] {
   .tag {
 		@extend .monospace;
 		font-weight: 400;
-    padding: .5em 1.25em .4em;
-    margin-right: .3em;
+    padding: .2em 1.25em .3em;
+    margin-right: .4em;
     margin-left: 0;
-    margin-bottom: .2em;
+    margin-bottom: .4em;
     font-size: 1rem;
     border-radius: 2em;
     border: 1.2px solid;
@@ -128,6 +128,16 @@ button, .btn, input[type="submit"] {
       color: white;
     }
   }
+	.tag-sm {
+		font-size: 0.75rem;
+	}
+	.tag-xs {
+		font-size: 0.5rem;
+	}
+	.tag-display {
+		cursor: default;
+		pointer-events: none;
+	}
 }
 
 .chip {
@@ -136,8 +146,12 @@ button, .btn, input[type="submit"] {
 	font-size: .8em;
 	padding-left: .75em;
 	padding-right: .75em;
+
 	@extend .monospace;
 	font-weight: 400;
+	line-height: 1;
+	padding-top: .1em;
+	padding-bottom: .2em;
 
   &.chip-lg {
     font-size: 1em;

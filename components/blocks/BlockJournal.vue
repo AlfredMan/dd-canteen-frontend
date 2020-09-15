@@ -74,7 +74,7 @@ section {
 
 }
 .block-journal--entries {
-  @apply flex flex-wrap items-baseline;
+  @apply flex flex-wrap items-start;
   @apply mt-12;
   @apply -mx-2;
 

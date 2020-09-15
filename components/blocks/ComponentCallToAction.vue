@@ -5,7 +5,7 @@
   v-if="callToAction && callToAction.fields.path && callToAction.fields.label"
   :to="callToAction.fields.path"
   >
-    <span>{{callToAction.fields.label}}</span>
+    <span class="label">{{callToAction.fields.label}}</span>
   </nuxt-link>
 </template>
 
@@ -40,7 +40,7 @@ export default {
   @apply inline-block text-black transition duration-300;
 
   &.theme-default {
-    @apply text-black;
+    @apply text-white;
     &:hover {
       @apply text-green;
     }
@@ -71,6 +71,9 @@ export default {
     }
   }
 
+  span.label {
+    @apply uppercase;
+  }
 
 }
 </style>

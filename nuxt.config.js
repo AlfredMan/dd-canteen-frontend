@@ -136,9 +136,17 @@ export default {
     }
   },
 
+  components: false,
+
   build: {
     analyze: false,
-    extractCSS: true,
+    extractCSS: process.env.NODE_ENV === 'production',
+    parallel: true,
+    cache: true,
+    optimizeCSS: process.env.NODE_ENV === 'production',
+    transpile: [
+      'three'
+    ],
     optimization: {
       splitChunks: {
         cacheGroups: {
@@ -169,9 +177,6 @@ export default {
         }
       }
     },
-    transpile: [
-      'three'
-    ],
     babel: {
       compact: false
     }

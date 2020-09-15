@@ -11,21 +11,21 @@
       <div class="news-info mt-2">
         <h4 class="mt-0 mb-2" v-if="entry.fields.title">
           <div class="news-type">
-            <div class="badge badge-pill" :class="{
+            <div class="monospace badge badge-pill" :class="{
               'badge-secondary': entry.fields.contentType == 'Event',
               'badge-success': entry.fields.contentType == 'Podcast',
               'badge-dark': entry.fields.contentType == 'Video',
               'badge-light': entry.fields.contentType == 'Article',
             }">{{entry.fields.contentType}}</div>
           </div>
-          {{entry.fields.title}}
+          <span class="uppercase">{{entry.fields.title}}</span>
         </h4>
         <h5 class="mt-2" v-if="entry.fields.date">
           {{getDataTime(entry.fields.date, entry.fields.endDate)}}
         </h5>
         <h5 class="mt-2" v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)">
         </h5>
-        <div class="new-meta d-flex mt-3 flex-wrap">
+        <div class="new-meta d-flex mt-3 flex-wrap monospace">
           <!-- <h6 class="-text-uppercase my-0 mr-1" v-if="entry.fields.contentType">
             {{entry.fields.contentType}}
           </h6> -->
@@ -84,8 +84,10 @@ export default {
 
   .news-type
     line-height: 1
-    height: 1.5rem
-    margin-bottom: .25rem
+    height: 2em
+    font-size: .9rem
+    line-height: 1
+    margin-bottom: .5rem
     @media screen and (max-width: 768px)
       height: auto
       margin-top: 1rem
@@ -97,17 +99,20 @@ export default {
       font-weight: 500
     .badge
       font-weight: 400
-      font-size: 0.35em
+      font-size: .9rem
       line-height: 1
-      letter-spacing: 0.1em
-      text-transform: uppercase
-      padding: .4em .7em
+      // letter-spacing: 0.1em
+      // text-transform: uppercase
+      padding: .3em 1.8em
+      margin: .5em 0 .5em 0
       vertical-align: super
       @media screen and (max-width: 768px)
         font-size: .5em
 
     .new-meta
       opacity: 0.5
+      h6
+        font-size: 0.8em
 
 
 
