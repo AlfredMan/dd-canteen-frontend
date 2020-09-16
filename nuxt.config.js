@@ -5,7 +5,8 @@ import { createClient } from './plugins/contentful.js'
 
 export default {
 
-  mode: 'universal',
+  // mode: 'universal',
+  target: 'static',
 
   // server: {
   //   https: {
