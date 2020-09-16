@@ -248,9 +248,13 @@
 
     <div class="px-8 my-16 overflow-hidden" id="services-facilities">
       <h2 class="uppercase max-w-2xl w-full">Services & facilities</h2>
-      <p class="max-w-lg w-full">Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.</p>
+      <p class="max-w-lg w-full mb-6">Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.</p>
       <div class="flex flex-wrap -mx-6">
-        <div class="w-full xl:w-1/3 px-6">
+        <div class="w-full xl:w-1/3 px-6 mb-4" v-for="sf in building.fields.servicesFacilities">
+          <p><strong>{{sf.fields.title}}</strong><br>
+          {{sf.fields.description}}</p>
+        </div>
+        <!-- <div class="w-full xl:w-1/3 px-6">
           <p><strong>Workshops</strong><br>
           Often creative businesses need more than a desk. In the Design District you can access a range of workshops suited to your specialism. There’s a wood workshop, digital workshop, textile workshop, engineering workshop and an assembly space. Prototype or produce a new collection.</p>
         </div>
@@ -261,7 +265,7 @@
         <div class="w-full xl:w-1/3 px-6">
           <p><strong>Rooftop basketball court </strong><br>
             The open-air basketball court occupies a commanding position, with high transparent walls affording views across The O2 and beyond. Crowning Architecture 00’s C2 building, the court hosts a range of sports and wellness activities, including basketball, HIIT and yoga. The space can be hired by Design District tenants and members of the public for everything from pop-up cinema events to photoshoots.</p>
-        </div>
+        </div> -->
       </div>
     </div>
 

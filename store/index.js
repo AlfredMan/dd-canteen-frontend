@@ -153,9 +153,9 @@ export const actions = {
     // await dispatch('getMapBuildings')
     // await dispatch('getMapSpaces')
 
-    await dispatch('getJournals')
-    await dispatch('getBuildings')
-    await dispatch('getSpaceTypes')
+    // await dispatch('getJournals')
+    // await dispatch('getBuildings')
+    // await dispatch('getSpaceTypes')
   },
   updateNavigationTheme ({ commit }, context) {
     const theme = context.theme

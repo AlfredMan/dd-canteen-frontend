@@ -5,9 +5,12 @@ import { createClient } from './plugins/contentful.js'
 
 export default {
 
-  // mode: 'universal',
-  target: 'static',
+  mode: 'universal',
+  // target: 'static',
 
+  purgeCSS: {
+    enabled: false
+  },
   // server: {
   //   https: {
   //     key: fs.readFileSync(path.resolve(__dirname, 'localhost-key.pem')),
@@ -140,47 +143,47 @@ export default {
   components: false,
 
   build: {
-    analyze: false,
-    extractCSS: process.env.NODE_ENV === 'production',
-    parallel: true,
-    cache: true,
-    optimizeCSS: process.env.NODE_ENV === 'production',
-    transpile: [
-      'three'
-    ],
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          styles: {
-            name: 'styles',
-            test: /\.(css|vue)$/,
-            chunks: 'all',
-            enforce: true
-          }
-        }
-      }
-    },
-    loaders: {
-      cssModules: {
-        modules: true,
-        localIdentName: '[local]_[hash:base64:5]'
-        // modules: {
-        //   localIdentName: '[local]--[Frida]_[hash:base64:4]',
-        //   modules: true,
-        //   hashPrefix: 'my-hash'
-        // }
-      }
-    },
-    terser: {
-      terserOptions: {
-        compress: {
-          drop_console: true
-        }
-      }
-    },
-    babel: {
-      compact: false
-    }
+    // analyze: false,
+    // extractCSS: process.env.NODE_ENV === 'production',
+    // parallel: true,
+    // cache: true,
+    // optimizeCSS: process.env.NODE_ENV === 'production',
+    // transpile: [
+    //   'three'
+    // ],
+    // optimization: {
+    //   splitChunks: {
+    //     cacheGroups: {
+    //       styles: {
+    //         name: 'styles',
+    //         test: /\.(css|vue)$/,
+    //         chunks: 'all',
+    //         enforce: true
+    //       }
+    //     }
+    //   }
+    // },
+    // loaders: {
+    //   cssModules: {
+    //     modules: true,
+    //     localIdentName: '[local]_[hash:base64:5]'
+    //     // modules: {
+    //     //   localIdentName: '[local]--[Frida]_[hash:base64:4]',
+    //     //   modules: true,
+    //     //   hashPrefix: 'my-hash'
+    //     // }
+    //   }
+    // },
+    // terser: {
+    //   terserOptions: {
+    //     compress: {
+    //       drop_console: true
+    //     }
+    //   }
+    // },
+    // babel: {
+    //   compact: false
+    // }
     // extend (config, { isDev, isClient, loaders: { vue } }) {
     //   if (isClient) {
     //     vue.transformAssetUrls.img = ['data-src', 'src']
