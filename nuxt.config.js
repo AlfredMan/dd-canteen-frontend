@@ -5,7 +5,7 @@ import { createClient } from './plugins/contentful.js'
 
 export default {
 
-  mode: 'universal',
+  mode: 'spa',
   // target: 'static',
 
 
@@ -150,26 +150,26 @@ export default {
   components: false,
 
   build: {
-    // analyze: false,
-    // extractCSS: process.env.NODE_ENV === 'production',
-    // parallel: true,
-    // cache: true,
-    // optimizeCSS: process.env.NODE_ENV === 'production',
-    // transpile: [
-    //   'three'
-    // ],
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          styles: {
-            name: 'styles',
-            test: /\.(css|vue)$/,
-            chunks: 'all',
-            enforce: true
-          }
-        }
-      }
-    },
+    analyze: false,
+    extractCSS: process.env.NODE_ENV === 'production',
+    parallel: true,
+    cache: true,
+    optimizeCSS: process.env.NODE_ENV === 'production',
+    transpile: [
+      'three'
+    ],
+    // optimization: {
+    //   splitChunks: {
+    //     cacheGroups: {
+    //       styles: {
+    //         name: 'styles',
+    //         test: /\.(css|vue)$/,
+    //         chunks: 'all',
+    //         enforce: true
+    //       }
+    //     }
+    //   }
+    // },
     loaders: {
       cssModules: {
         modules: true,
