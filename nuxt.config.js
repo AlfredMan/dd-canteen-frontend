@@ -5,8 +5,9 @@ import { createClient } from './plugins/contentful.js'
 
 export default {
 
-  mode: 'universal',
-  // target: 'static',
+  // mode: 'universal',
+  target: 'static',
+
 
   purgeCSS: {
     enabled: false
@@ -91,21 +92,15 @@ export default {
     {
       src: '~/plugins/filters'
     },
-    // {
-    //   src: '~/plugins/vue-lazysizes.js',
-    //   mode: 'client'
-    // },
-    // {
-    //   src: '~/plugins/gsap.js',
-    //   mode: 'client'
-    // },
+    {
+      src: '~/plugins/vue-lazysizes.js'
+    },
     // use gtag module instead
     // {
     //   src: '~/plugins/ga.js'
     // },
     {
-      src: '~/plugins/global.js',
-      mode: 'client'
+      src: '~/plugins/global.js'
     },
     {
       src: '~/plugins/route.js',
@@ -150,44 +145,44 @@ export default {
   components: false,
 
   build: {
-    // analyze: false,
-    // extractCSS: process.env.NODE_ENV === 'production',
-    // parallel: true,
-    // cache: true,
-    // optimizeCSS: process.env.NODE_ENV === 'production',
-    // transpile: [
-    //   'three'
-    // ],
-    // optimization: {
-    //   splitChunks: {
-    //     cacheGroups: {
-    //       styles: {
-    //         name: 'styles',
-    //         test: /\.(css|vue)$/,
-    //         chunks: 'all',
-    //         enforce: true
-    //       }
-    //     }
-    //   }
-    // },
-    // loaders: {
-    //   cssModules: {
-    //     modules: true,
-    //     localIdentName: '[local]_[hash:base64:5]'
-    //     // modules: {
-    //     //   localIdentName: '[local]--[Frida]_[hash:base64:4]',
-    //     //   modules: true,
-    //     //   hashPrefix: 'my-hash'
-    //     // }
-    //   }
-    // },
-    // terser: {
-    //   terserOptions: {
-    //     compress: {
-    //       drop_console: true
-    //     }
-    //   }
-    // },
+    analyze: false,
+    extractCSS: process.env.NODE_ENV === 'production',
+    parallel: true,
+    cache: true,
+    optimizeCSS: process.env.NODE_ENV === 'production',
+    transpile: [
+      'three'
+    ],
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          styles: {
+            name: 'styles',
+            test: /\.(css|vue)$/,
+            chunks: 'all',
+            enforce: true
+          }
+        }
+      }
+    },
+    loaders: {
+      cssModules: {
+        modules: true,
+        localIdentName: '[local]_[hash:base64:5]'
+        // modules: {
+        //   localIdentName: '[local]--[Frida]_[hash:base64:4]',
+        //   modules: true,
+        //   hashPrefix: 'my-hash'
+        // }
+      }
+    },
+    terser: {
+      terserOptions: {
+        compress: {
+          drop_console: true
+        }
+      }
+    },
     babel: {
       compact: false
     }

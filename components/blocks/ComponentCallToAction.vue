@@ -57,7 +57,7 @@ export default {
     @apply mt-4 px-4 py-3 rounded-sm;
 
     &.theme-default {
-      @apply bg-green text-black;
+      @apply bg-green text-white;
       &:hover {
         @apply bg-green-darker;
       }
