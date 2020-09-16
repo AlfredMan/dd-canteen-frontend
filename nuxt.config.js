@@ -101,6 +101,10 @@ export default {
     //   src: '~/plugins/ga.js'
     // },
     {
+      src: '~/plugins/gsap.js',
+      mode: 'client'
+    },
+    {
       src: '~/plugins/global.js'
     },
     {

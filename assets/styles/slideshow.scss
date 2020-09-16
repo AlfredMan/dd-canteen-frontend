@@ -13,8 +13,19 @@
       }
     }
   }
+
   .item {
     align-self: baseline;
+  }
+
+  &.overflow-visible {
+    overflow-x: visible;
+
+    .flickity-viewport {
+      overflow: visible;
+      // overflow-x: visible;
+      // overflow-y: hidden;
+    }
   }
 
   &.carousel-uniform-height {
@@ -34,6 +45,55 @@
           height: 50vh !important;
           max-width: initial;
           width: initial !important;
+        }
+      }
+    }
+
+    &.carousel-uniform-height-sm {
+      .item {
+        img {
+          max-height: 60vh;
+          height: 60vh !important;
+
+          @include media-breakpoint-up(sm) {
+            max-height: 30vh;
+            height: 30vh !important;
+          }
+        }
+      }
+    }
+
+    .fullscreen & {
+
+      height: 100% !important;
+
+      .flickity {
+        height: 100% !important;
+      }
+
+      .flickity-viewport {
+        height: 100% !important;
+      }
+
+      .item {
+        height: 100%;
+        margin: 0 !important;
+        width: auto;
+        max-width: unset;
+        display: flex;
+        align-items: center;
+        padding-left: 5rem;
+        padding-right: 5rem;
+
+        img {
+          max-height: calc(100vh - 200px);
+          height: calc(100vh - 200px) !important;
+          @include media-breakpoint-up(sm) {
+            max-height: calc(100vh - 200px);
+            height: calc(100vh - 200px) !important;
+            max-width: initial;
+            width: initial !important;
+          }
         }
       }
     }

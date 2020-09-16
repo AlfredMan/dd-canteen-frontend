@@ -4,11 +4,7 @@
     <div class="-container-fluid">
       <div class="px-0 px-md-4- py-4 py-5 py-md-5 cap-max-w">
         <div class="container-fluid">
-          <!-- <div class="row">
-            <div class="col-12 col-md-8">
-              <h1>Find your work space</h1>
-            </div>
-          </div> -->
+
           <div class="row d-flex align-items-start justify-content-between">
             <div class="col-12 col-md-7 mb-5">
               <h1>Find your work space</h1>
@@ -31,29 +27,17 @@
       </div>
     </div>
 
-    <!--  -->
-
-    <!--  -->
     <div class="-container-fluid bg-white">
       <div class="-row pb-5 pt-3 px-0 -px-md-4 py-0 py-md-2 cap-max-w">
         <div class="container-fluid py-5">
 
-          <!-- <div class="row mb-4">
-            <div class="col-12 col-md-6">
-              <h2>Find your work&nbsp;space</h2>
-            </div>
-          </div> -->
           <div class="">
             <h4 class="uppercase">Explore spaces</h4>
           </div>
 
           <div class="my-8">
             <div class="my-8">
-              <!-- <div class="d-flex justify-content-between align-items-baseline">
-                <div class="h5 font-weight-normal">
-                  Select space type
-                </div>
-              </div> -->
+
               <div class="uppercase mb-2 text-sm">Space type</div>
               <div class="tags">
                 <div
@@ -65,17 +49,11 @@
                   {{option}} <span v-if="option == filter.options">&times;</span>
                 </div>
               </div>
-              <!-- <div class="clear-filter" @click="toggleFilter('options', null); typeFilters = false">
-                Clear
-              </div> -->
+
             </div>
             <div class="my-8">
+
               <div class="uppercase mb-2  text-sm">Size (sq ft)</div>
-              <!-- <div class="d-flex justify-content-between align-items-baseline">
-                <div class="h5 font-weight-normal">
-                  Size (sq ft)
-                </div>
-              </div> -->
 
               <div class="px-2 w-full max-w-sm mb-24">
                 <vue-slider
@@ -99,27 +77,20 @@
                     </div>
                   </template>
                   <template v-slot:process="{ start, end, style, index }">
-                    <div class="vue-slider-process custom-process" :style="[style]">
-                      <!-- Can add custom elements here -->
-                    </div>
+                    <div class="vue-slider-process custom-process" :style="[style]"></div>
                   </template>
-                  <!-- <template v-slot:tooltip="{ value }">
-                    <div class="custom-tooltip">{{ value }}</div>
-                  </template> -->
                 </vue-slider>
               </div>
             </div>
           </div>
 
-          <div class="flex flex-wrap mt-8 -mx-2">
+          <div class="flex flex-wrap mt-8 -mx-2" v-if="allBuildings">
 
             <div
             class="w-full lg:w-1/2 xl:w-1/4 px-2 mb-5 building text-sm"
-            v-if="filteredBuildings"
+            v-if="filteredBuildings && filteredBuildings.length>0"
             v-for="(building, index) in filteredBuildings"
             :key="building.id">
-
-              <!-- <pre>{{building}}</pre> -->
 
               <nuxt-link :to="`/workspace/building/${building.fields.title}`" >
                 <lazy-image
@@ -127,24 +98,19 @@
                 :w="1000"
                 :h="1000"
                 :custom="'fit=thumb&f=center'"
-                />
+                >
+                </lazy-image>
               </nuxt-link>
 
               <nuxt-link :to="`/workspace/building/${building.fields.title}`" class="block my-2 mt-3">
                 <span class="inline-block font-medium text-green mr-2">Building {{building.fields.title}}</span>
                 <span class="inline-block font-medium">{{building.fields.architecture[0].fields.title}}</span>
               </nuxt-link>
-              <div>{{building.fields.shortDescription}}</div>
 
-              <!-- <div><IconFloorplan class="inline" /> {{building.fields.minSize}}–{{building.fields.maxSize}} Sqft</div>
-              <div><IconPerson class="inline" /> {{building.fields.people}} people</div> -->
+              <div>{{building.fields.shortDescription}}</div>
 
               <div class="flex my-2 monospace">
                 <div class="mr-3">Sqft {{numberWithCommas(building.fields.minSize)}}–{{numberWithCommas(building.fields.maxSize)}}</div>
-                <!-- <div class="mr-3 flex">
-                  <IconPerson class="inline text-xs self-center mr-2" />
-                  <span>
-                    {{building.fields.people}} people</span></div> -->
               </div>
 
               <div class="tags mt-4">
@@ -154,10 +120,13 @@
               </div>
 
             </div>
+
             <div class="col-12 pb-5" v-if="!filteredBuildings && allBuildings.length > 0">
               <h4 class="my-5" style="opacity:0.5">No matching work space</h4>
             </div>
+
           </div>
+
         </div>
       </div>
     </div>

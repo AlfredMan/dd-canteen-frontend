@@ -2,6 +2,9 @@
   <div
   v-waypoint="{ active: true, callback: onWaypoint, options: intersectionOptions }"
   class="flickity-wrapper"
+  :class="{
+    'overflow-visible': overflow=='visible'
+    }"
   >
     <!-- <client-only> -->
       <Flickity :options="flickityOptions" class="flickity" ref="flkty" :class="{
@@ -24,6 +27,7 @@
 
 <script>
 import { gsap } from "gsap";
+import _ from "lodash";
 
 export default {
   props: {
@@ -47,6 +51,19 @@ export default {
     ratio: {
       type: String,
       default: 'auto'
+    },
+    overflow: {
+      type: String,
+      default: 'hidden'
+    },
+    fullscreen: {
+      type: Boolean,
+      default: false
+    },
+  },
+  watch: {
+    fullscreen (newVal, oldVal) {
+      this.resize()
     }
   },
   data () {
@@ -96,6 +113,41 @@ export default {
   methods: {
     openCarousel (block, index) {
       this.$store.dispatch('openCarousel', { block, index })
+    },
+    resize () {
+      if (process.client) {
+        let flkty = this.$refs.flkty
+        if (!flkty) {
+          console.log('flkty not found')
+          return
+        }
+        // console.log('resize')
+        flkty.resize();
+
+        // setTimeout(()=>{
+        //   flkty.resize();
+        // },100)
+      }
+    },
+    viewFullscreen () {
+      if (process.client) {
+        let flkty = this.$refs.flkty
+        if (!flkty) {
+          console.log('flkty not found')
+          return
+        }
+        flkty.viewFullscreen();
+      }
+    },
+    exitFullscreen () {
+      if (process.client) {
+        let flkty = this.$refs.flkty
+        if (!flkty) {
+          console.log('flkty not found')
+          return
+        }
+        flkty.exitFullscreen();
+      }
     },
     initFlickityControl () {
       if (process.client) {

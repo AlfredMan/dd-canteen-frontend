@@ -129,6 +129,7 @@ export const getters = {
     return state.spaces.length > 0 ? state.spaces.find(space => space.slug === slug) : null
   },
   getBuildingBySlug: state => (slug) => {
+    console.log(slug)
     return state.buildings.length > 0 ? state.buildings.find(building => building.slug === slug) : null
   },
   getSpacesByBuilding: state => (slug) => {
@@ -148,7 +149,7 @@ export const getters = {
 export const actions = {
   async nuxtServerInit ({ dispatch }) {
     console.log('nuxtServerInit ++++++++++++++++++++++++++++++=')
-    await dispatch('getArchitectureStudios')
+    // await dispatch('getArchitectureStudios')
     // await dispatch('getMapHire')
     // await dispatch('getMapBuildings')
     // await dispatch('getMapSpaces')
@@ -156,6 +157,10 @@ export const actions = {
     // await dispatch('getJournals')
     // await dispatch('getBuildings')
     // await dispatch('getSpaceTypes')
+    await dispatch('getArchitectureStudios')
+    await dispatch('getJournals')
+    await dispatch('getBuildings')
+    await dispatch('getSpaceTypes')
   },
   updateNavigationTheme ({ commit }, context) {
     const theme = context.theme

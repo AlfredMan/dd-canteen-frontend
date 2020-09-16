@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="workspace-building mt-24 bg-white" v-if="building" :key="slug">
 
-    <div class="px-8 flex align-center items-center">
+    <div class="px-3 flex align-center items-center cap-max-w">
       <nuxt-link class="monospace" :to="'/workspace'">Work Space</nuxt-link> <span class="mx-2">></span>
       <span class="underline monospace">
         {{building.fields.title}}: {{building.fields.architecture[0].fields.title}}
@@ -9,13 +9,13 @@
     </div>
 
 
-    <h1 class="px-8 mt-6 my-4 flex items-baseline building-title">
+    <h1 class="px-3 mt-6 my-4 flex items-baseline building-title cap-max-w">
       <span class="inline-block mr-6 building-name font-medium -ml-2">{{building.fields.title}}</span>
       <span class="inline-block text-green uppercase building-architect">{{building.fields.architecture[0].fields.title}}</span>
     </h1>
 
 
-    <div class="px-8 my-4 mb-8 tags">
+    <div class="px-3 my-4 mb-8 tags cap-max-w">
       <div class="tag" v-for="spaceType in building.fields.spaceType" :key="spaceType.sys.id">
         {{spaceType.fields.title}}
       </div>
@@ -25,17 +25,17 @@
     </div>
 
 
-    <div class="flex flex-wrap">
+    <div class="flex flex-wrap cap-max-w">
 
       <div class="w-full lg:w-2/3">
-        <nuxt-link :to="`/workspace/building/${building.fields.title}`" >
+        <!-- <nuxt-link :to="`/workspace/building/${building.fields.title}`" > -->
           <lazy-image
           :src="building.fields.thumbnailImageAsset[0].fields.file.url"
           :w="1000"
           :h="1000"
           :custom="'fit=thumb&f=center'"
           />
-        </nuxt-link>
+        <!-- </nuxt-link> -->
       </div>
 
       <div class="w-full lg:w-1/3 bg-gray-100 p-6 pt-4">
@@ -76,78 +76,61 @@
     </div>
 
     <div class="sticky-navigation">
-      <div class="current-building monospace">
-        Building {{building.fields.title}}
+      <div class="px-3 cap-max-w">
+        <div class="current-building monospace">
+          Building {{building.fields.title}}
+        </div>
+        <a @click.prevent="scrollTo('#photos')" href="#photos">Photos</a>
+        <a @click.prevent="scrollTo('#location')" href="#location">Location</a>
+        <a @click.prevent="scrollTo('#floorplans')" href="#floorplans">Floorplans</a>
+        <a @click.prevent="scrollTo('#services-facilities')" href="#services-facilities">Services & Facilities</a>
+        <a @click.prevent="scrollTo('#architecture')" href="#architecture">Architecture</a>
+        <a @click.prevent="scrollTo('#events')" href="#events">Events</a>
       </div>
-      <a @click.prevent="scrollTo('#photos')" href="#photos">Photos</a>
-      <a @click.prevent="scrollTo('#location')" href="#location">Location</a>
-      <a @click.prevent="scrollTo('#floorplans')" href="#floorplans">Floorplans</a>
-      <a @click.prevent="scrollTo('#services-facilities')" href="#services-facilities">Services & Facilities</a>
-      <a @click.prevent="scrollTo('#architecture')" href="#architecture">Architecture</a>
-      <a @click.prevent="scrollTo('#events')" href="#events">Events</a>
     </div>
 
     <div class="px-0 my-8 overflow-hidden" id="photos">
-      <h2 class="px-8 uppercase max-w-2xl w-full">Photos</h2>
+      <div class="cap-max-w">
+        <h2 class="px-3 uppercase max-w-2xl w-full">Photos</h2>
+      </div>
 
-      <image-slideshow class="w-100 py-8 carousel carousel-uniform-height bg-black">
+      <div
+      class="bg-black"
+      :class="{
+        'fullscreen': photosFullscreen
+        }"
+      >
 
-        <div
-        class="item w-2/3 lg:w-1/2 xl:w-1/4 px-6 my-4"
-        v-for="image in building.fields.imageAssets"
-        :key="image.sys.id"
-        >
-          <lazy-image
-          :src="image.fields.file.url"
-          :w="1000"
-          :h="1000"
-          />
+        <div class="fullscreen-close" @click="photosFullscreen=false" v-if="photosFullscreen">
+          &times;
         </div>
 
-      </image-slideshow>
-
-      <!-- <div class="flex flex-wrap -mx-6 items-baseline bg-black px-8 py-4"> -->
-
-        <!-- <div
-        class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4"
-        v-for="image in building.fields.imageAssets"
-        :key="image.sys.id"
+        <image-slideshow
+        class="w-100 py-8 carousel carousel-uniform-height carousel-uniform-height-sm cap-max-w"
+        :overflow="'visible'"
+        :options="slideshowOptions"
+        :fullscreen="photosFullscreen"
         >
-          <lazy-image
-          :src="image.fields.file.url"
-          :w="1000"
-          :h="1000"
-          />
-        </div> -->
 
-        <!-- <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4">
-          <lazy-image
-          src="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
-          :w="1000"
-          :h="1000"
-          />
-        </div> -->
+          <div
+          class="item w-2/3 lg:w-1/2 xl:w-1/4 px-6 my-4"
+          v-for="image in building.fields.imageAssets"
+          @click="photosFullscreen=true"
+          :key="image.sys.id"
+          >
+            <lazy-image
+            :src="image.fields.file.url"
+            :w="1000"
+            :h="1000"
+            />
+          </div>
 
-        <!-- <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4">
-          <lazy-image
-          src="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
-          :w="1000"
-          :h="1000"
-          />
-        </div> -->
+        </image-slideshow>
+      </div>
 
-        <!-- <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4">
-          <lazy-image
-          src="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
-          :w="1000"
-          :h="1000"
-          />
-        </div> -->
-
-      <!-- </div> -->
     </div>
 
-    <div class="px-8 my-16" id="location">
+    <div class="px-3 my-16 cap-max-w" id="location">
       <div class="flex items-baseline">
         <h2 class="uppercase inline-block">Location</h2>
         <a
@@ -167,7 +150,7 @@
 
     <div class="my-16 overflow-hidden" id="floorplans">
 
-      <div class="flex items-baseline px-8">
+      <div class="flex items-baseline px-3 cap-max-w">
         <h2 class="uppercase inline-block">Floor plans</h2>
         <a
         v-if="building.fields.floorplanDownload && building.fields.floorplanDownload[0]"
@@ -177,14 +160,30 @@
         >Download all</a>
       </div>
 
-      <div class="flex flex-wrap -mx-6 items-baseline">
+      <div
+      class="bg-black"
+      :class="{
+        'fullscreen': floorplanFullscreen
+        }"
+      >
 
-        <image-slideshow class="w-full py-8 carousel carousel-uniform-height bg-black">
+        <div class="fullscreen-close" @click="floorplanFullscreen=false" v-if="floorplanFullscreen">
+          &times;
+        </div>
+
+        <image-slideshow
+        class="w-100 py-8 carousel carousel-uniform-height carousel-uniform-height-sm cap-max-w"
+        :overflow="'visible'"
+        :options="slideshowOptions"
+        :fullscreen="floorplanFullscreen"
+        ref="floorplanSlideshow"
+        >
 
           <div
           class="item w-2/3 lg:w-1/2 xl:w-1/4 px-6 my-4"
           v-for="floorplan in building.fields.floorplans"
           :key="floorplan.sys.id"
+          @click="floorplanFullscreen=true"
           >
             <lazy-image
             :src="floorplan.fields.file.url"
@@ -194,59 +193,11 @@
           </div>
 
         </image-slideshow>
-
-        <!-- <div
-        class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4"
-        v-for="floorplan in building.fields.floorplans"
-        :key="floorplan.sys.id"
-        >
-          <lazy-image
-          :src="floorplan.fields.file.url"
-          :w="1000"
-          :h="1000"
-          />
-        </div> -->
-
-        <!-- <a
-        class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4"
-        href="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
-        target="_blank"
-        >
-          <lazy-image
-          src="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
-          :w="1000"
-          :h="1000"
-          />
-        </a>
-
-        <a
-        class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4"
-        href="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
-        target="_blank"
-        >
-          <lazy-image
-          src="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
-          :w="1000"
-          :h="1000"
-          />
-        </a>
-
-        <a
-        class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4"
-        href="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
-        target="_blank"
-        >
-          <lazy-image
-          src="https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png"
-          :w="1000"
-          :h="1000"
-          />
-        </a> -->
-
       </div>
+
     </div>
 
-    <div class="px-8 my-16 overflow-hidden" id="services-facilities">
+    <div class="px-3 my-16 overflow-hidden  cap-max-w" id="services-facilities">
       <h2 class="uppercase max-w-2xl w-full">Services & facilities</h2>
       <p class="max-w-lg w-full mb-6">Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.</p>
       <div class="flex flex-wrap -mx-6">
@@ -269,7 +220,7 @@
       </div>
     </div>
 
-    <div class="px-8 my-16" id="architecture">
+    <div class="px-3 my-16 cap-max-w" id="architecture">
       <h2 class="uppercase max-w-2xl w-full">Architecture</h2>
       <h4 class="max-w-xl w-full mb-4">
         The heart and soul of our locations, these lounges are living room-style spaces designed for creativity, comfort and productivity.
@@ -290,22 +241,17 @@
       </div>
     </div>
 
-    <div class="bg-black text-white py-6 pb-12  overflow-hidden" id="events">
-      <h2 class="px-8 uppercase max-w-2xl w-full">Events</h2>
+    <div class="bg-black text-white pt-12 pb-12  overflow-hidden" id="events">
+      <div class=" cap-max-w">
+        <h2 class="px-3 uppercase max-w-2xl w-full">Events</h2>
+      </div>
 
-      <image-slideshow class="w-full py-8 carousel -carousel-uniform-height bg-black">
-
-        <!-- <div
-        class="item w-2/3 lg:w-1/2 xl:w-1/4 px-6 my-4"
-        v-for="floorplan in building.fields.floorplans"
-        :key="floorplan.sys.id"
+      <div class="bg-black">
+        <image-slideshow
+        class="w-100 py-8 carousel carousel-uniform-height-carousel-uniform-height-sm cap-max-w"
+        :overflow="'visible'"
+        :options="slideshowOptions"
         >
-          <lazy-image
-          :src="floorplan.fields.file.url"
-          :w="1000"
-          :h="1000"
-          />
-        </div> -->
 
         <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4 item">
           <lazy-image
@@ -363,6 +309,7 @@
         </div>
 
       </image-slideshow>
+    </div>
 
       <!-- <div class="flex flex-wrap -mx-6 items-baseline">
         <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4">
@@ -409,25 +356,25 @@
 
 <script>
 // import EnquireForm from '~/components/forms/Enquire.vue'
-import EnquireForm from '~/components/forms/Enquire2.vue'
-import NewsletterForm from '~/components/forms/Newsletter.vue'
-import SpaceForm from '~/components/forms/SpaceForm.vue'
+// import EnquireForm from '~/components/forms/Enquire2.vue'
+// import NewsletterForm from '~/components/forms/Newsletter.vue'
+// import SpaceForm from '~/components/forms/SpaceForm.vue'
 import { mapGetters } from 'vuex'
 // import { buildings } from '~/common/buildings.js'
 import _ from 'lodash'
 
-// import gsap from 'gsap'
-// import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin.js'
-// import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js'
-// gsap.registerPlugin(ScrollToPlugin)
-// gsap.registerPlugin(ScrollTrigger);
+import gsap from 'gsap'
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin.js'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js'
+gsap.registerPlugin(ScrollToPlugin)
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
   name: 'Building',
   components: {
-    EnquireForm,
-    NewsletterForm,
-    SpaceForm
+    // EnquireForm,
+    // NewsletterForm,
+    // SpaceForm
   },
   head () {
     return {
@@ -440,22 +387,49 @@ export default {
 
   data () {
     return {
+      photosFullscreen:false,
+      floorplanFullscreen:false,
       spaceActive: false,
       mapActive: false,
-      floorplans: [
-        {
-          url: require('~/assets/images/floorplans/A1-0-1.png')
+      slideshowOptions: {
+        selector: '.item',
+        cellAlign: 'left',
+        draggable: true,
+        pageDots: false,
+        prevNextButtons: false,
+        pauseAutoPlayOnHover: true,
+        setGallerySize: true,
+        bgLazyLoad: 1,
+        wrapAround: false, // true
+        freeScroll: true,
+        imagesLoaded: true,
+        autoPlay: false,
+        selectedAttraction: 0.01,
+        friction: 0.15,
+        contain: true,
+        // adaptiveHeight: true,
+        arrowShape: {
+          x0: 10,
+          x1: 45, y1: 35,
+          x2: 10, y2: 0,
+          x3: 95
         },
-        {
-          url: require('~/assets/images/floorplans/A1-1-1.png')
-        },
-        {
-          url: require('~/assets/images/floorplans/A1-2-1.png')
-        },
-        {
-          url: require('~/assets/images/floorplans/A1-3-1.png')
-        }
-      ]
+        initialIndex: this.start || 0
+      }
+      // floorplans: [
+      //   {
+      //     url: require('~/assets/images/floorplans/A1-0-1.png')
+      //   },
+      //   {
+      //     url: require('~/assets/images/floorplans/A1-1-1.png')
+      //   },
+      //   {
+      //     url: require('~/assets/images/floorplans/A1-2-1.png')
+      //   },
+      //   {
+      //     url: require('~/assets/images/floorplans/A1-3-1.png')
+      //   }
+      // ]
     }
   },
 
@@ -467,15 +441,17 @@ export default {
     slug () {
       return this.$route.params.id
     },
-    space () {
-      return this.$store.getters.getSpaceBySlug(this.slug)
-    },
+    // space () {
+    //   return this.$store.getters.getSpaceBySlug(this.slug)
+    // },
     building () {
-      return this.$store.getters.getBuildingBySlug(this.slug)
+      let b = this.slug && this.$store.getters.getBuildingBySlug(this.slug)
+      console.log(b)
+      return b
     },
-    architect () {
-      return this.$store.getters.getStudioByBuilding(this.slug)
-    },
+    // architect () {
+    //   return this.slug && this.$store.getters.getStudioByBuilding(this.slug)
+    // },
     // space () {
     //   if (this.$store.spaces && this.slug) {
     //     return _.find(this.$store.spaces, (space) => space.slug === this.slug)
@@ -505,7 +481,7 @@ export default {
         // });
         console.log('id', id)
         // // gsap.to(window, {duration: 2, scrollTo: {y: "#photos", offsetY: 50}});
-        // gsap.to(window, {duration: 0.5, scrollTo: {y: id, offsetY: 100}});
+        gsap.to(window, {duration: 0.5, scrollTo: {y: id, offsetY: 100}});
       }
     },
     numberWithCommas(x) {
@@ -576,7 +552,7 @@ aside {
 }
 
 .sticky-navigation {
-  @apply w-full sticky top-0 px-8 py-3 bg-white;
+  @apply w-full sticky top-0 px-3 py-3 bg-white;
   z-index: 999;
   top: 3rem;
 
@@ -603,4 +579,31 @@ aside {
     }
   }
 }
+
+.carousel {
+  overflow-x: visible;
+
+  .item {
+    cursor: zoom-in;
+  }
+}
+
+.fullscreen {
+  @apply fixed inset-0 top-0 left-0 w-full h-full;
+  z-index: 99999999;
+
+  .fullscreen-close {
+    @apply fixed top-0 right-0 text-white p-6 text-xl z-50 cursor-pointer;
+    font-size: 4rem;
+    width: 6rem;
+    line-height: 3rem;
+    font-weight: 100;
+    font-family: sans-serif;
+  }
+
+  .item {
+    cursor: initial;
+  }
+}
+
 </style>
