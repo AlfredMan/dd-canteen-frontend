@@ -5,8 +5,8 @@ import { createClient } from './plugins/contentful.js'
 
 export default {
 
-  // mode: 'universal',
-  target: 'static',
+  mode: 'universal',
+  // target: 'static',
 
 
   purgeCSS: {
@@ -150,14 +150,14 @@ export default {
   components: false,
 
   build: {
-    analyze: false,
-    extractCSS: process.env.NODE_ENV === 'production',
-    parallel: true,
-    cache: true,
-    optimizeCSS: process.env.NODE_ENV === 'production',
-    transpile: [
-      'three'
-    ],
+    // analyze: false,
+    // extractCSS: process.env.NODE_ENV === 'production',
+    // parallel: true,
+    // cache: true,
+    // optimizeCSS: process.env.NODE_ENV === 'production',
+    // transpile: [
+    //   'three'
+    // ],
     optimization: {
       splitChunks: {
         cacheGroups: {
