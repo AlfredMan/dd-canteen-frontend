@@ -6,10 +6,10 @@
   ]">
     <div data-x="a" class="container-fluid px-0 -px-lg-0">
       <nav class="inner d-flex -flex-row align-items-center -row z-index--" :class="{
-          'text-white': isDark,
-          'text-black': !isDark,
-          'bg-white': !isDark && scrolled,
-          'bg-black': isDark && scrolled
+          'text-white': isDark && !menuActive,
+          'text-black': !isDark && !menuActive,
+          'bg-white': !isDark && scrolled && !menuActive,
+          'bg-black': isDark && scrolled && !menuActive
         }">
         <nuxt-link to="/" exact class="-ml-1 mr-0 ml-3">
           <img class="logo" src="~/assets/images/logo-hor.svg" alt="logo" v-if="!isDark">
@@ -47,14 +47,15 @@
         </a> -->
         <a href="tel:+4402039812426"
         class="btn btn-lg- btn-dark- btn-primary-text-white text-primary m-2 pt-2 ml-auto -mr-0 d-sm-inline-block d-none "
-        :class="{'btn-outline-dark': menuActive}">
+        :class="{'btn-outline-black': menuActive}">
           <span class="d-inline d-xl-none">+44 (0)20 3981 2426</span>
           <span class="d-none d-xl-inline">+44 (0)20 3981 2426</span>
         </a>
 
         <nuxt-link :to="{ path: '/contact', hash: '#register-interest' }"
-        class="btn btn-lg- btn-dark- btn-primary-text-white btn-outline-primary m-2 pt-2 -mr-0 ml-auto ml-sm-0"
-        :class="{'btn-outline-dark': menuActive}">
+        class="btn btn-lg- btn-dark- btn-primary text-white -btn-outline-primary m-2 pt-2 -mr-0 ml-auto ml-sm-0"
+        :class="{'btn-outline-black': menuActive}"
+        >
           <span class="d-inline d-xl-none">Join Now</span>
           <span class="d-none d-xl-inline">Join Now</span>
         </nuxt-link>
