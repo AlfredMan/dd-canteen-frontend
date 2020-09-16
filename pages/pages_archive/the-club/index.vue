@@ -292,7 +292,7 @@
 </template>
 
 <script>
-import ClubForm from '../../components/forms/JoinTheClub.vue'
+import ClubForm from '../../../components/forms/JoinTheClub.vue'
 export default {
   head () {
     return {

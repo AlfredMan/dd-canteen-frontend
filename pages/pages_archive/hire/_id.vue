@@ -236,10 +236,10 @@
 </template>
 
 <script>
-// import EnquireForm from '../../components/forms/Enquire.vue'
-import EnquireForm from '../../components/forms/Enquire2.vue'
-import NewsletterForm from '../../components/forms/Newsletter.vue'
-import HireForm from '../../components/forms/HireForm.vue'
+// import EnquireForm from '../../../components/forms/Enquire.vue'
+import EnquireForm from '../../../components/forms/Enquire2.vue'
+import NewsletterForm from '../../../components/forms/Newsletter.vue'
+import HireForm from '../../../components/forms/HireForm.vue'
 import { mapGetters } from 'vuex'
 // import { buildings } from '~/common/buildings.js'
 import _ from 'lodash'

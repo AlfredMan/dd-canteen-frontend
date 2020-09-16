@@ -108,8 +108,8 @@
 </template>
 
 <script>
-import EnquireForm from '../../components/forms/Enquire.vue'
-import NewsletterForm from '../../components/forms/Newsletter.vue'
+import EnquireForm from '../../../components/forms/Enquire.vue'
+import NewsletterForm from '../../../components/forms/Newsletter.vue'
 import BlockArchitecture from '~/components/blocks/BlockArchitecture.vue'
 // import { studios, validStudios } from '~/common/architecture'
 export default {

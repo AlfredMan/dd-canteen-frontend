@@ -15,5 +15,8 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="scss" scoped>
+section {
+  overflow-x: hidden;
+}
 </style>

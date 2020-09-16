@@ -415,8 +415,8 @@
 
 <script>
 import _ from 'lodash'
-import EnquireForm from '../../components/forms/Enquire.vue'
-import NewsletterForm from '../../components/forms/Newsletter.vue'
+import EnquireForm from '../../../components/forms/Enquire.vue'
+import NewsletterForm from '../../../components/forms/Newsletter.vue'
 import { studios, validStudios } from '~/common/architecture'
 export default {
   head () {

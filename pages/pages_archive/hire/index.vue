@@ -262,7 +262,7 @@
 </template>
 
 <script>
-import ClubForm from '../../components/forms/JoinTheClub.vue'
+import ClubForm from '../../../components/forms/JoinTheClub.vue'
 // import { buildings } from '~/common/buildings.js'
 import _ from 'lodash'
 export default {

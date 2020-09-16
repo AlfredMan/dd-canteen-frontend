@@ -297,7 +297,7 @@
 </template>
 
 <script>
-// import EnquireForm from '../../components/forms/Enquire.vue'
+// import EnquireForm from '~/components/forms/Enquire.vue'
 import EnquireForm from '~/components/forms/Enquire2.vue'
 import NewsletterForm from '~/components/forms/Newsletter.vue'
 import SpaceForm from '~/components/forms/SpaceForm.vue'

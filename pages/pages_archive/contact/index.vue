@@ -175,9 +175,9 @@
 </template>
 
 <script>
-import EnquireForm from '../../components/forms/Enquire2.vue'
-// import EnquireFormCondensed from '../../components/forms/EnquireCondensed.vue'
-import NewsletterForm from '../../components/forms/Newsletter.vue'
+import EnquireForm from '../../../components/forms/Enquire2.vue'
+// import EnquireFormCondensed from '../../../components/forms/EnquireCondensed.vue'
+import NewsletterForm from '../../../components/forms/Newsletter.vue'
 export default {
   head () {
     return {

@@ -113,7 +113,7 @@
 </template>
 
 <script>
-import ClubForm from '../../components/forms/JoinTheClub.vue'
+import ClubForm from '../../../components/forms/JoinTheClub.vue'
 import { directory } from '~/common/directory.js'
 import { vendors } from '~/common/vendors.js'
 import _ from 'lodash'

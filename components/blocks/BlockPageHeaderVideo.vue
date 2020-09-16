@@ -1,5 +1,5 @@
 <template>
-  <section class="" v-if="block">
+  <section class="block-page-header-video" v-if="block">
     <div class="video-wrapper">
       <div class="iframe-wrapper">
         <iframe style="" src="https://player.vimeo.com/video/421875361?autoplay=1&loop=1&color=ffffff&title=0&byline=0&portrait=0&background=1" width="640" height="299" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
@@ -33,6 +33,36 @@ section {
   }
 }
 .video-wrapper {
+  width: 100%;
+  // height: 80vh;
+  // height: 50vw;
+  // max-height: 600px;
+  height: 0;
+  padding-bottom: 100%;
+  position: relative;
+  overflow: hidden;
+
+  @include media-breakpoint-up(sm) {
+    padding-bottom: 46.5%;
+  }
+
+  .iframe-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      transform: scale(2.15);
+
+      @include media-breakpoint-up(sm) {
+        transform: scale(1.01)
+      }
+    }
+  }
 
 }
 

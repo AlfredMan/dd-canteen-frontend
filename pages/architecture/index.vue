@@ -15,7 +15,7 @@
               <!-- <h4>The 16 buildings in the district have been designed by creatives, for creatives. The architects prioritised natural ventilation, high ceilings, north-facing lights and pedestrian movement for a healthy and happy workplace. The brief to the architects was to create a space that they would like to work in themselves. The project’s novel and exciting approach involved each practice working in a silo, overseen by HNNA founder Hannah Corlett.</h4> -->
             </div>
             <div class="col-12 col-md-6">
-              <p class="h5">The 16 buildings in the district have been designed by creatives, for creatives. The architects prioritised natural ventilation, high ceilings, north-facing lights and pedestrian movement for a healthy and happy workplace. The brief to the architects was to create a space that they would like to work in themselves. The project’s novel and exciting approach involved each practice working in a silo, overseen by HNNA founder Hannah Corlett.</p>
+              <!-- <p class="h5">The 16 buildings in the district have been designed by creatives, for creatives. The architects prioritised natural ventilation, high ceilings, north-facing lights and pedestrian movement for a healthy and happy workplace. The brief to the architects was to create a space that they would like to work in themselves. The project’s novel and exciting approach involved each practice working in a silo, overseen by HNNA founder Hannah Corlett.</p> -->
               <!-- <p>The 16 buildings in the district have been designed by creatives, for creatives. The architects prioritised natural ventilation, high ceilings, north-facing lights and pedestrian movement for a healthy and happy workplace. The brief to the architects was to create a space that they would like to work in themselves. The project’s novel and exciting approach involved each practice working in a silo, overseen by HNNA founder Hannah Corlett.</p> -->
             </div>
           </div>
@@ -45,8 +45,8 @@
 </template>
 
 <script>
-import EnquireForm from '../../components/forms/Enquire.vue'
-import NewsletterForm from '../../components/forms/Newsletter.vue'
+import EnquireForm from '~/components/forms/Enquire.vue'
+import NewsletterForm from '~/components/forms/Newsletter.vue'
 // import { studios, validStudios } from '~/common/architecture'
 export default {
   head () {

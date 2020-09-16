@@ -37,9 +37,9 @@
 </template>
 
 <script>
-// import EnquireForm from '../../components/forms/Enquire.vue'
-import EnquireForm from '../../components/forms/Enquire2.vue'
-import NewsletterForm from '../../components/forms/Newsletter.vue'
+// import EnquireForm from '~/components/forms/Enquire.vue'
+import EnquireForm from '~/components/forms/Enquire2.vue'
+import NewsletterForm from '~/components/forms/Newsletter.vue'
 // import { buildings } from '~/common/buildings.js'
 // import { spaces } from '~/common/spaces.js'
 import _ from 'lodash'
