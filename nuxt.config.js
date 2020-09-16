@@ -5,7 +5,7 @@ import { createClient } from './plugins/contentful.js'
 
 export default {
 
-  mode: 'spa',
+  mode: 'universal',
   // target: 'static',
 
 
@@ -150,11 +150,11 @@ export default {
   components: false,
 
   build: {
-    analyze: false,
-    extractCSS: process.env.NODE_ENV === 'production',
-    parallel: true,
-    cache: true,
-    optimizeCSS: process.env.NODE_ENV === 'production',
+    // analyze: false,
+    // extractCSS: process.env.NODE_ENV === 'production',
+    // parallel: true,
+    // cache: true,
+    // optimizeCSS: process.env.NODE_ENV === 'production',
     transpile: [
       'three'
     ],
