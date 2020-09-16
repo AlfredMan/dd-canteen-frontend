@@ -416,11 +416,11 @@ import { mapGetters } from 'vuex'
 // import { buildings } from '~/common/buildings.js'
 import _ from 'lodash'
 
-import gsap from 'gsap'
-import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin.js'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js'
-gsap.registerPlugin(ScrollToPlugin)
-gsap.registerPlugin(ScrollTrigger);
+// import gsap from 'gsap'
+// import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin.js'
+// import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js'
+// gsap.registerPlugin(ScrollToPlugin)
+// gsap.registerPlugin(ScrollTrigger);
 
 export default {
   name: 'Building',
@@ -504,8 +504,8 @@ export default {
         //   }
         // });
         console.log('id', id)
-        // gsap.to(window, {duration: 2, scrollTo: {y: "#photos", offsetY: 50}});
-        gsap.to(window, {duration: 0.5, scrollTo: {y: id, offsetY: 100}});
+        // // gsap.to(window, {duration: 2, scrollTo: {y: "#photos", offsetY: 50}});
+        // gsap.to(window, {duration: 0.5, scrollTo: {y: id, offsetY: 100}});
       }
     },
     numberWithCommas(x) {

@@ -11,12 +11,13 @@ export default {
   purgeCSS: {
     enabled: false
   },
-  // server: {
-  //   https: {
-  //     key: fs.readFileSync(path.resolve(__dirname, 'localhost-key.pem')),
-  //     cert: fs.readFileSync(path.resolve(__dirname, 'localhost.pem'))
-  //   }
-  // },
+
+  server: {
+    https: {
+      key: process.env.NODE_ENV === 'production' ? undefined : fs.readFileSync(path.resolve(__dirname, 'localhost-key.pem')),
+      cert: process.env.NODE_ENV === 'production' ? undefined : fs.readFileSync(path.resolve(__dirname, 'localhost.pem'))
+    }
+  },
 
   head: {
     titleTemplate: 'Design District | %s',
@@ -90,15 +91,21 @@ export default {
     {
       src: '~/plugins/filters'
     },
-    {
-      src: '~/plugins/vue-lazysizes.js'
-    },
+    // {
+    //   src: '~/plugins/vue-lazysizes.js',
+    //   mode: 'client'
+    // },
+    // {
+    //   src: '~/plugins/gsap.js',
+    //   mode: 'client'
+    // },
     // use gtag module instead
     // {
     //   src: '~/plugins/ga.js'
     // },
     {
-      src: '~/plugins/global.js'
+      src: '~/plugins/global.js',
+      mode: 'client'
     },
     {
       src: '~/plugins/route.js',
@@ -181,9 +188,9 @@ export default {
     //     }
     //   }
     // },
-    // babel: {
-    //   compact: false
-    // }
+    babel: {
+      compact: false
+    }
     // extend (config, { isDev, isClient, loaders: { vue } }) {
     //   if (isClient) {
     //     vue.transformAssetUrls.img = ['data-src', 'src']
