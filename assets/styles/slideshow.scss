@@ -37,14 +37,21 @@
         }
       }
     }
-  }
 
-  .carousel.is-fullscreen .carousel-cell {
-    height: 100%;
+    &.is-fullscreen .carousel-cell {
+      height: 100%;
 
-    img {
-      max-height: 90vw;
-      height: 90vw !important;
+      img {
+        max-height: 90vh;
+        height: 90vh !important;
+        @include media-breakpoint-up(sm) {
+          max-height: 90vh;
+          height: 90vh !important;
+          max-width: initial;
+          width: initial !important;
+        }
+      }
     }
   }
+
 }

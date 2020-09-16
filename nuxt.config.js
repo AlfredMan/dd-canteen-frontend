@@ -7,12 +7,12 @@ export default {
 
   mode: 'universal',
 
-  server: {
-    https: {
-      key: fs.readFileSync(path.resolve(__dirname, 'localhost-key.pem')),
-      cert: fs.readFileSync(path.resolve(__dirname, 'localhost.pem'))
-    }
-  },
+  // server: {
+  //   https: {
+  //     key: fs.readFileSync(path.resolve(__dirname, 'localhost-key.pem')),
+  //     cert: fs.readFileSync(path.resolve(__dirname, 'localhost.pem'))
+  //   }
+  // },
 
   head: {
     titleTemplate: 'Design District | %s',
