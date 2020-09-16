@@ -1,6 +1,6 @@
 <template lang="html">
   <section class="app-newsletter">
-    <div class="flex flex-wrap">
+    <div class="flex flex-wrap cap-max-w px-3">
       <div class="w-full xl:w-5/12">
         <h2>Contact our sales team</h2>
       </div>

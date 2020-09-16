@@ -94,7 +94,9 @@ section {
   }
 }
 .block-list-header {
-  @apply mb-12;
+  @apply mb-16;
+  @apply pb-12;
+  @apply cap-max-w;
 
   h2 {
     @apply max-w-2xl
@@ -107,8 +109,9 @@ section {
 
 .block-list--contentList {
   @apply flex flex-wrap items-baseline;
-  @apply mt-12;
+  @apply mt-16;
   @apply -mx-2;
+  @apply cap-max-w;
 
   .block-list--contentList--content {
     @apply px-2 mb-6;

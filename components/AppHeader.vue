@@ -4,13 +4,15 @@
     headerClass,
     {'mobile-menu-active': menuActive}
   ]">
-    <div data-x="a" class="container-fluid px-0 -px-lg-0">
-      <nav class="inner d-flex -flex-row align-items-center -row z-index--" :class="{
-          'text-white': isDark && !menuActive,
-          'text-black': !isDark && !menuActive,
-          'bg-white': !isDark && scrolled && !menuActive,
-          'bg-black': isDark && scrolled && !menuActive
-        }">
+    <div data-x="a" class="container-fluid px-0 -px-lg-0 transition duration-300"
+    :class="{
+        'text-white': isDark && !menuActive,
+        'text-black': !isDark && !menuActive,
+        'bg-white': !isDark && scrolled && !menuActive,
+        'bg-black': isDark && scrolled && !menuActive
+      }"
+    >
+      <nav class="inner d-flex -flex-row align-items-center -row z-index-- cap-max-w" >
         <nuxt-link to="/" exact class="-ml-1 mr-0 ml-3">
           <img class="logo" src="~/assets/images/logo-hor.svg" alt="logo" v-if="!isDark">
           <img class="logo" src="~/assets/images/logo-hor-white.svg" alt="logo" v-if="isDark">

@@ -15,7 +15,7 @@
       <div
        class="block-journal--entries--entry"
       :class="{'w-full lg:w-full xl:w-8/12': index==0, 'w-full xl:w-4/12': index>0}" v-for="(entry, index) in entries" :key="entry.sys.id">
-        <news-card :entry="entry"></news-card>
+        <news-card class="news-card" :entry="entry"></news-card>
       </div>
     </div>
 
@@ -64,6 +64,7 @@ section {
 }
 .block-journal-header {
   @apply mb-12;
+  @apply cap-max-w;
 
   h2 {
     @apply max-w-2xl
@@ -74,12 +75,20 @@ section {
 
 }
 .block-journal--entries {
-  @apply flex flex-wrap items-start;
+  @apply flex flex-wrap items-stretch;
   @apply mt-12;
   @apply -mx-2;
+  @apply cap-max-w;
 
   .block-journal--entries--entry {
     @apply px-2 mb-6;
+
+    .news-card {
+      @screen lg {
+        @apply sticky;
+        top: 3rem;
+      }
+    }
 
     h4 {
       @apply uppercase mt-4 mb-2 font-medium;

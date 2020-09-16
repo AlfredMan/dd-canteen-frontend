@@ -1,7 +1,7 @@
 <template>
   <div class="mt-5">
     <div class="-container-fluid">
-      <div class="row- px-0 px-md-4 py-4 py-5 py-md-5">
+      <div class="row- px-0 -px-md-4 py-4 py-5 py-md-5 cap-max-w">
         <div class="container-fluid">
           <div class="row d-flex align-items-baseline">
             <div class="col-12 col-md-6">

@@ -4,7 +4,7 @@
     <div class="-row bg-dark text-light pb-5-pt-3">
       <div class="container-fluid py-5 px-0">
 
-        <div class="px-0 px-md-4 py-0 py-md-2">
+        <div class="px-0 py-0 py-md-2 cap-max-w">
           <div class="container-fluid">
             <div class="row">
               <div class="col-12 col-md-6 px-3">

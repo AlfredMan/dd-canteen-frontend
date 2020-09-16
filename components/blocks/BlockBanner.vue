@@ -6,23 +6,27 @@
     `bannerStyle-${bannerStyle}`
   ]"
   >
-    <component
-    :is="bannerStyle=='Full'?'DIV':'DIV'"
-    :to="bannerStyle=='Full'&&block.fields.callToAction.fields.path?block.fields.callToAction.fields.path:undefined"
-    class="block-banner-header"
-    >
-      <h2 v-if="block.fields.heading">{{block.fields.heading}}</h2>
-      <h4 v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
-      <callToAction v-if="block.fields.callToAction && bannerStyle=='Default'" :callToAction="block.fields.callToAction"/>
-    </component>
-    <div class="block-banner-media">
-      <lazy-image
-        class="block-banner-media-image"
-        v-if="block.fields.imageAsset && block.fields.imageAsset[0]"
-        :src="block.fields.imageAsset[0].fields.file.url"
-        :w="2000"
-        />
+
+    <div class="cap-max-w w-full relative">
+      <component
+      :is="bannerStyle=='Full'?'DIV':'DIV'"
+      :to="bannerStyle=='Full'&&block.fields.callToAction.fields.path?block.fields.callToAction.fields.path:undefined"
+      class="block-banner-header"
+      >
+        <h2 v-if="block.fields.heading">{{block.fields.heading}}</h2>
+        <h4 v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
+        <callToAction v-if="block.fields.callToAction && bannerStyle=='Default'" :callToAction="block.fields.callToAction"/>
+      </component>
+      <div class="block-banner-media">
+        <lazy-image
+          class="block-banner-media-image"
+          v-if="block.fields.imageAsset && block.fields.imageAsset[0]"
+          :src="block.fields.imageAsset[0].fields.file.url"
+          :w="2000"
+          />
+      </div>
     </div>
+
   </section>
 </template>
 

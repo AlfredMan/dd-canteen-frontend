@@ -72,7 +72,8 @@ export default {
       '~/assets/styles/custom.scss',
       '~/node_modules/bootstrap/scss/_functions.scss',
       '~/node_modules/bootstrap/scss/_variables.scss',
-      '~/node_modules/bootstrap/scss/_mixins.scss'
+      '~/node_modules/bootstrap/scss/_mixins.scss',
+      '~/assets/styles/tailwind.scss',
       // '~/assets/styles/custom.scss',
       // './node_modules/bootstrap/scss/bootstrap.scss',
       // '~/assets/styles/reset.scss',

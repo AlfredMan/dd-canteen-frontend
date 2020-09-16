@@ -1,7 +1,8 @@
 <template>
   <div class="mt-5 mb-5">
-    <div class="container-fluid-">
-      <div class="px-0 px-md-4 py-4 py-5 py-md-5">
+
+    <div class="container-fluid- cap-max-w">
+      <div class="px-0 -px-md-4 py-4 py-5 py-md-5">
         <div class="container-fluid">
           <h1>Journal</h1>
         </div>
@@ -30,9 +31,11 @@
     <div class="container-fluid-">
       <div class="px-0 px-md-4 py-4 py-5 py-md-5">
         <div class="container-fluid my-3 mt-4">
-          <div class="row d-flex flex-wrap wrap">
-            <div :class="{'col-12 col-md-6': index==0, 'col-12 col-md-3': index>0}" v-for="(entry, index) in entries" :key="entry.sys.id" class="mb-5">
-              <news-card :entry="entry"></news-card>
+          <div class="row d-flex flex-wrap wrap journal--entries">
+            <div
+            :class="{'col-12 col-md-6': index==0, 'col-12 col-md-3': index>0}" v-for="(entry, index) in entries" :key="entry.sys.id"
+            class="journal--entries--entry mb-5">
+              <news-card class="news-card" :entry="entry"></news-card>
             </div>
           </div>
         </div>
@@ -98,12 +101,39 @@ export default {
 }
 </script>
 
-<style media="screen" scoped lang="sass">
+<style media="screen" scoped lang="scss">
+img {
+  display: block;
+  width: 100%;
+}
+ul {
+  li {
+    list-style: none;
+  }
+}
 
-  img
-    display: block
-    width: 100%
-  ul
-    li
-      list-style: none
+.journal--entries {
+  @apply flex flex-wrap items-stretch;
+  @apply mt-12;
+  @apply -mx-2;
+  @apply cap-max-w;
+
+  .journal--entries--entry {
+    @apply px-2 mb-6;
+
+    .news-card {
+      @screen lg {
+        @apply sticky;
+        top: 3rem;
+      }
+    }
+
+    h4 {
+      @apply uppercase mt-4 mb-2 font-medium;
+    }
+    p {
+      @apply my-2 font-medium;
+    }
+  }
+}
 </style>

@@ -2,7 +2,7 @@
   <div class="mt-5">
 
     <div class="-container-fluid">
-      <div class="px-0 px-md-4 py-4 py-5 py-md-5">
+      <div class="px-0 px-md-4- py-4 py-5 py-md-5 cap-max-w">
         <div class="container-fluid">
           <!-- <div class="row">
             <div class="col-12 col-md-8">
@@ -35,7 +35,7 @@
 
     <!--  -->
     <div class="-container-fluid bg-white">
-      <div class="-row pb-5 pt-3 px-0 px-md-4 py-0 py-md-2">
+      <div class="-row pb-5 pt-3 px-0 -px-md-4 py-0 py-md-2 cap-max-w">
         <div class="container-fluid py-5">
 
           <!-- <div class="row mb-4">

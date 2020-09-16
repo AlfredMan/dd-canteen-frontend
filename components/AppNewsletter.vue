@@ -1,7 +1,7 @@
 <template lang="html">
-  <section class="app-newsletter">
+  <section class="app-newsletter ">
     <span class="anchor" id="newsletter"></span>
-    <div class="flex flex-wrap">
+    <div class="flex flex-wrap cap-max-w px-3">
       <div class="w-full xl:w-5/12">
         <h2>Newsletter</h2>
       </div>

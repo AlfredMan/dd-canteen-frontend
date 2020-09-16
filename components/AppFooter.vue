@@ -1,7 +1,7 @@
 <template lang="html">
   <footer class="bg-grey monospace">
     <div class="px-0 px-md-4 pt-2 pb-4 py-md-5">
-      <div class="container-fluid">
+      <div class="container-fluid cap-max-w">
         <div class="row">
           <div class="col-12 col-md-4 col-lg-4 mb-5">
             <h6 class="mb-0 font-medium">DESIGN DISTRICT</h6>
@@ -64,7 +64,7 @@
           <!-- <div class="col-6 col-md-1 col-lg-1" /> -->
 
           <div class="col-6 col-md-4 mb-5 pl-0 lg:pl-24">
-            <div class="row mt-4"> 
+            <div class="row mt-4">
               <div class="col-6 flex align-items-start justify-content-end">
                 <img src="~/assets/images/logo-hor.svg" alt="Design District logo" style="" class="mb-5 w-75">
               </div>
