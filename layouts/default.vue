@@ -15,9 +15,9 @@
 
     <app-transition />
 
-    <app-map />
+    <!-- <app-map /> -->
     <!-- <app-tool /> -->
-    <!-- <div
+    <div
     class="z-50 fixed bottom-0 right-0 bg-white border-1 rounded-full m-6 shadow transition duration-300 cursor-pointer hover:mb-8"
     >
       <div
@@ -28,7 +28,7 @@
         </div>
         Map
       </div>
-    </div> -->
+    </div>
 
   </div>
 </template>

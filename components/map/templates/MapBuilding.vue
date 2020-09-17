@@ -37,6 +37,7 @@
       </div> -->
       <div class="flex justify-between items-end">
         <nuxt-link
+        @click="toggleMapActive(false)"
         :to="`/workspace/building/${building.slug}`"
         class="uppercase btn btn-primary mt-3"
         >More info</nuxt-link>
@@ -44,6 +45,7 @@
         <nuxt-link
         class="text-green"
         :to="{ query: {
+          map: true,
           building: buildingPairs[building.slug]
         } }">
           View next
@@ -59,7 +61,26 @@
 
 <script>
 import MapListing from './MapListing.vue'
+
+import init from '../mixins/mapInit.js'
+import controls from '../mixins/mapControls.js'
+import environment from '../mixins/mapEnvironment.js'
+import lifecycle from '../mixins/mapLifecycle.js'
+import events from '../mixins/mapEvents.js'
+import userEvents from '../mixins/mapUserEvents.js'
+import model from '../mixins/mapModel.js'
+import utility from '../mixins/mapUtility.js'
 export default {
+  mixins: [
+    init,
+    controls,
+    environment,
+    events,
+    userEvents,
+    lifecycle,
+    model,
+    utility
+  ],
   data () {
     return {
       buildingPairs: {

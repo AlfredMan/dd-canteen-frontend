@@ -97,7 +97,8 @@
       <div
       class="bg-black"
       :class="{
-        'fullscreen': photosFullscreen
+        'fullscreen': photosFullscreen,
+        'bg-gray-200': !building.fields.imageAssets || building.fields.imageAssets.length < 1
         }"
       >
 
@@ -106,6 +107,7 @@
         </div>
 
         <image-slideshow
+        v-if="building.fields.imageAssets && building.fields.imageAssets.length > 0"
         class="w-100 py-8 can-fullscreen carousel carousel-uniform-height carousel-uniform-height-sm cap-max-w"
         :overflow="'visible'"
         :options="slideshowOptions"
@@ -126,6 +128,13 @@
           </div>
 
         </image-slideshow>
+
+        <div class="w-full text-black" v-else>
+          <div class="cap-max-w py-40 px-4 text-center opacity-50">
+            Photos coming soon
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -163,7 +172,8 @@
       <div
       class="bg-black"
       :class="{
-        'fullscreen': floorplanFullscreen
+        'fullscreen': floorplanFullscreen,
+        'bg-gray-200': !building.fields.floorplans || building.fields.floorplans.length < 1
         }"
       >
 
@@ -172,6 +182,7 @@
         </div>
 
         <image-slideshow
+        v-if="building.fields.floorplans && building.fields.floorplans.length > 0"
         class="w-100 py-8 can-fullscreen carousel carousel-uniform-height carousel-uniform-height-sm cap-max-w"
         :overflow="'visible'"
         :options="slideshowOptions"
@@ -193,6 +204,12 @@
           </div>
 
         </image-slideshow>
+
+        <div class="w-full text-black" v-else>
+          <div class="cap-max-w py-40 px-4 text-center opacity-50">
+            Floor plans coming soon
+          </div>
+        </div>
       </div>
 
     </div>

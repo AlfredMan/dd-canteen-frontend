@@ -84,13 +84,18 @@
             </div>
           </div>
 
+          <div class="">
+            {{filter}}<br>
+            {{sliderModel}}<br>
+          </div>
+
           <div class="flex flex-wrap mt-8 -mx-2" v-if="allBuildings">
 
             <div
             class="w-full lg:w-1/2 xl:w-1/4 px-2 mb-5 building text-sm"
             v-if="filteredBuildings && filteredBuildings.length>0"
             v-for="(building, index) in filteredBuildings"
-            :key="building.id">
+            :key="building.sys.id">
 
               <nuxt-link :to="`/workspace/building/${building.fields.title}`" >
                 <lazy-image
@@ -121,7 +126,7 @@
 
             </div>
 
-            <div class="col-12 pb-5" v-if="!filteredBuildings && allBuildings.length > 0">
+            <div class="px-2 pb-5" v-if="!filteredBuildings || filteredBuildings.length < 1">
               <h4 class="my-5" style="opacity:0.5">No matching work space</h4>
             </div>
 
@@ -162,8 +167,8 @@ export default {
       mapActive: false,
       filter: {
         sizeBracket: null,
-        sizeBracketMin: null,
-        sizeBracketMax: null,
+        sizeBracketMin: 100,
+        sizeBracketMax: 5000,
         architect: null,
         options: null
       },
@@ -253,7 +258,33 @@ export default {
     //   })
     // },
     filteredBuildings () {
-      return this.allBuildings
+      let visibleInWorkSpaceOnly = _.filter(this.allBuildings, (building) => {
+        return _.includes(building.fields.visibility, "Work Space")
+      })
+
+      let filter = this.filter
+
+      let filtered = _.filter(visibleInWorkSpaceOnly, (building) => {
+        let b = building
+        let isChosen = -1
+        if (filter.options) {
+          let matchingSpaceType = _.find(b.fields.spaceType, (type)=>_.kebabCase(type.fields.title)==_.kebabCase(filter.options))
+          if (matchingSpaceType) {
+            isChosen = 1
+          }
+        } else {
+          isChosen = 1
+        }
+        // if (+b.fields.minSize <= +filter.sizeBracketMax || +b.fields.maxSize >= +filter.sizeBracketMin) {
+        if (_.inRange(+b.fields.minSize, +filter.sizeBracketMin, +filter.sizeBracketMax) || _.inRange(+b.fields.maxSize, +filter.sizeBracketMin, +filter.sizeBracketMax)) {
+          isChosen = isChosen+1
+        }
+
+        return isChosen>=2
+      })
+
+      // show visibility = 'Work Space' only.
+      return filtered
     },
     filteredSpacesByBuilding () {
       let group = _.groupBy(this.allSpaces, 'building')
