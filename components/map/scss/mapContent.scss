@@ -1,5 +1,5 @@
 // $content-width: 30rem;
-$content-width: 33.33vw;
+$content-width: 25vw;
 
 .map {
   font-family: MabryTrial, "MabryTrial", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -128,11 +128,18 @@ $content-width: 33.33vw;
     width: 100%;
 
     @include media-breakpoint-up(sm) {
-      max-width: $content-width;
-      width: $content-width;
+      max-width: 33.33vw;
+      width: 33.33vw;
+    }
+    @include media-breakpoint-up(lg) {
+      max-width: 25vw;
+      width: 25vw;
     }
 
-    padding: 2rem;
+    padding: 1rem;
+    @include media-breakpoint-up(sm) {
+      padding: 1.5rem;
+    }
     font-size: 1rem;
 
     .thumbnail {

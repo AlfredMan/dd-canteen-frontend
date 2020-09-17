@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="map-content map-site-content">
-    <div class="px-8 pt-8">
+    <div class="px-6 pt-8">
       <h1 class="">Design<br>District</h1>
       <h3 class="font-200">3D Map</h3>
     </div>
@@ -13,13 +13,16 @@
             </div>
           </div> -->
           <div class="uppercase mb-2 text-sm">Space type</div>
-          <div
-          v-for="option in spaceFilters['options']" :key="option"
-          @click="toggleFilter('options', option); typeFilters = false"
-          :class="{'active': option == filter.options}"
-          class="btn btn-outline-dark chip chip-lg mr-2 mb-2"
-          >
-            {{option}} <span v-if="option == filter.options">&times;</span>
+
+          <div class="tags">
+            <div
+            v-for="option in spaceFilters['options']" :key="option"
+            @click="toggleFilter('options', option); typeFilters = false"
+            :class="{'active': option == filter.options}"
+            class="btn btn-outline-dark tag tag-sm mr-1 mb-1"
+            >
+              {{option}} <span v-if="option == filter.options">&times;</span>
+            </div>
           </div>
           <!-- <div class="clear-filter" @click="toggleFilter('options', null); typeFilters = false">
             Clear
@@ -207,9 +210,10 @@ h1 {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 2rem;
+  padding: 1.5rem;
   opacity: 1;
-  font-size: .8rem;
+  font-size: 1rem;
+  opacity: 0.8;
 }
 
 .slider-component {

@@ -27,10 +27,14 @@ export default {
       // this.sceneState.controls.autoRotateSpeed = 0.1
       this.sceneState.controls.enableDamping = true
       this.sceneState.controls.dampingFcator = 0.7
-      this.sceneState.controls.target = new THREE.Vector3(0, 1, 0)
-      this.sceneState.controls.enableZoom = true
+      this.sceneState.controls.target = new THREE.Vector3(0, 3, 0)
+      this.sceneState.controls.enableZoom = false
       this.sceneState.controls.minDistance = this.controlsDefaultDistance
       this.sceneState.controls.maxDistance = this.controlsDefaultDistance
+
+      this.sceneState.controls.minPolarAngle = Math.PI * 0.5 - 0.5
+      this.sceneState.controls.maxPolarAngle = Math.PI * 0.5 - 0.5
+
     },
     zoomToBuilding () {
       let from = {}; let to = {}
@@ -50,6 +54,9 @@ export default {
           if (controls) {
             controls.minDistance = from.limit
             controls.maxDistance = from.limit
+            controls.minPolarAngle = Math.PI * 0.5 - 0.1
+            controls.maxPolarAngle = Math.PI * 0.5 - 0.1
+            controls.enablePan = false
             controls.update()
             self.triggerSceneAnimate()
           }
@@ -74,6 +81,9 @@ export default {
           if (controls) {
             controls.minDistance = from.limit
             controls.maxDistance = from.limit
+            controls.minPolarAngle = Math.PI * 0.5 - 0.5
+            controls.maxPolarAngle = Math.PI * 0.5 - 0.5
+            controls.enablePan = true
             controls.update()
             self.triggerSceneAnimate()
           }
@@ -104,7 +114,7 @@ export default {
       }
       let target = {
         x: 0,
-        y: 1,
+        y: 3,
         z: 0
       }
 
@@ -114,7 +124,7 @@ export default {
         const newZ = object.getWorldPosition(new THREE.Vector3()).z
         target = {
           x: newX,
-          y: 1,
+          y: 2,
           z: newZ
         }
         console.log(target)

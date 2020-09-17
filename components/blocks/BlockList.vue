@@ -43,13 +43,28 @@
         'w-full lg:w-1/2 xl:w-1/2': contentDisplay=='2-column'
       }]"
       >
-        <div class="block-list--contentList--content--image" v-if="content.fields.imageAsset && content.fields.imageAsset[0]">
-          <!-- {{content.fields.imageAsset}} -->
-          <lazy-image
-          :src="content.fields.imageAsset[0].fields.file.url"
-          :w="1000"
-          />
-        </div>
+
+        <template v-if="content.fields.imageAsset && content.fields.imageAsset[0]">
+          <transition-link
+          v-if="content.fields.callToAction && content.fields.callToAction.fields.path"
+          class="block-list--contentList--content--image"
+          :to="content.fields.callToAction.fields.path">
+            <!-- {{content.fields.imageAsset}} -->
+            <lazy-image
+            :src="content.fields.imageAsset[0].fields.file.url"
+            :w="1000"
+            />
+          </transition-link>
+
+          <div class="block-list--contentList--content--image" v-else>
+            <!-- {{content.fields.imageAsset}} -->
+            <lazy-image
+            :src="content.fields.imageAsset[0].fields.file.url"
+            :w="1000"
+            />
+          </div>
+        </template>
+
         <h4 v-if="content.fields.heading" class="">
           {{content.fields.heading}}
         </h4>

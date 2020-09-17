@@ -82,6 +82,9 @@ export default {
 <style lang="sass" scoped="">
 .news-card
 
+  @media screen and (max-width: 768px)
+    margin-bottom: 2rem
+
   .news-type
     line-height: 1
     height: 2em
@@ -97,6 +100,10 @@ export default {
       font-weight: 400
     h5
       font-weight: 500
+      @media screen and (max-width: 768px)
+        font-size: 1.2rem
+        p
+          font-size: 1.2rem
     .badge
       font-weight: 400
       font-size: .9rem
@@ -108,11 +115,14 @@ export default {
       vertical-align: super
       @media screen and (max-width: 768px)
         font-size: .5em
+        font-size: .9rem
 
     .new-meta
       opacity: 0.5
       h6
         font-size: 0.8em
+        @media screen and (max-width: 768px)
+          font-size: 1rem
 
 
 

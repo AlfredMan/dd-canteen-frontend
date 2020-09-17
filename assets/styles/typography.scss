@@ -110,9 +110,13 @@ em, i {
   letter-spacing: -0.05em;
   font-size: $h1_size_responsive;
 
-  @include media-breakpoint-up(md) {
-    font-size: $h1_size
-  }
+	@include media-breakpoint-up(md) {
+		font-size: $h1_size * 0.9;
+	}
+
+	@include media-breakpoint-up(lg) {
+		font-size: $h1_size;
+	}
 }
 
 h1 {
@@ -132,8 +136,12 @@ h1 {
   font-size: $h1_size_responsive;
 	text-transform: uppercase;
 
-  @include media-breakpoint-up(md) {
-    font-size: $h1_size
+	@include media-breakpoint-up(md) {
+		font-size: $h1_size * 0.9;
+	}
+
+  @include media-breakpoint-up(lg) {
+    font-size: $h1_size;
   }
 
   // @extend .h1;
@@ -168,9 +176,12 @@ h1 {
   //   font-size: $h2_size;
   // }
   font-size: $h2_size_responsive;
-  @include media-breakpoint-up(md) {
-    font-size: $h2_size
-  }
+	@include media-breakpoint-up(md) {
+		font-size: $h2_size * 0.9;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: $h2_size;
+	}
 }
 
 h2 {
@@ -192,9 +203,12 @@ h2 {
   // @extend .h2;
   // font-size: $h2_size;
   font-size: $h2_size_responsive;
-  @include media-breakpoint-up(md) {
-    font-size: $h2_size
-  }
+	@include media-breakpoint-up(md) {
+		font-size: $h2_size * 0.9;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: $h2_size;
+	}
 
 	// font-size: 4rem;
 	// @include media-breakpoint-up(md) {

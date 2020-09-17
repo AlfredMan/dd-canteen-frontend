@@ -109,7 +109,10 @@ section {
       }
 
       &:hover {
-        // @apply bg-opacity-25 text-opacity-0;
+
+        backdrop-filter: blur(0px) contrast(0.8);
+        @apply bg-opacity-0;
+        // @apply bg-opacity-0 text-opacity-0;
         //
         // + .block-banner-media {
         //   filter: blur(0);

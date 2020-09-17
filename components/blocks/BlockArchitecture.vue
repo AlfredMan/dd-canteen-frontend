@@ -56,5 +56,12 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="scss" scoped>
+.item {
+  a:hover {
+    h5 {
+      @apply text-green;
+    }
+  }
+}
 </style>
