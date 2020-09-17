@@ -83,11 +83,13 @@ section {
   .block-journal--entries--entry {
     @apply px-2 mb-6;
 
-    .news-card {
-      @screen lg {
-        @apply sticky;
-        top: 3rem;
-      }
+    &:nth-of-type(2) {
+      .news-card {
+        @screen lg {
+          @apply sticky;
+          top: 3rem;
+        }
+      }  
     }
 
     h4 {

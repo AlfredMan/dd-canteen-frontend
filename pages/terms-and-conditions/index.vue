@@ -1,14 +1,14 @@
 <template lang="html">
   <div class="mt-5 px-0 px-md-4 py-4 py-5 py-md-5">
-    <div class="container-fluid">
+    <div class="container-fluid cap-max-w">
       <div class="row">
-        <div class="col-12 col-md-6">
-          <h1>
+        <div class="col-12 col-md-5">
+          <h1 class="text-6xl">
             <!-- <small>Privacy Policy</small> -->
             Terms & Conditions
           </h1>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-7 pl-4 pl-md-0">
           <h5>Terms &amp; Conditions</h5>
           <p>
             <span>Your use of this Website or any of its sections or pages is governed by these terms and conditions and by our Privacy Policy (collectively, these “terms and conditions”). By accessing or using this Website you will be taken to have read and accepted these terms and conditions and to have consented to the processing of your personal data in accordance with our Privacy Policy. Greenwich Peninsula reserves the right, without notice, to change or modify any of these terms and conditions in any manner and at any time and changes to these terms and conditions will take effect when posted on this Website. You are responsible for reading these terms and conditions each time that you access or use this Website.</span>

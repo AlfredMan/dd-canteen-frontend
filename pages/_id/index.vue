@@ -54,7 +54,7 @@ export default {
       client.getEntries({
         'content_type': 'pages',
         'fields.slug': route.params.id,
-        'include': 3
+        'include': 4
       })
 
     ]).then(([entry]) => {

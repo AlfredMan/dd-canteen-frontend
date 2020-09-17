@@ -1,14 +1,14 @@
 <template lang="html">
   <div class="mt-5 px-0 px-md-4 py-4 py-5 py-md-5">
-    <div class="container-fluid">
+    <div class="container-fluid cap-max-w">
       <div class="row">
-        <div class="col-12 col-md-6">
-          <h1>
+        <div class="col-12 col-md-5">
+          <h1 class="text-6xl">
             <!-- <small>Privacy Policy</small> -->
             Privacy Policy
           </h1>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-7 pl-4 pl-md-0">
           <h5>Privacy Notice</h5>
 
           <p>This privacy notice sets out how Knight Dragon Investments Limited and its group companies (Knight Dragon) uses and protects any information that you give Knight Dragon when you use this website. Knight Dragon is committed to ensuring that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website, then you can be assured that it will only be used in accordance with the terms outlined in this privacy notice. Knight Dragon may change this notice from time to time by updating this web page. This Privacy Notice was last updated in July 2020.</p>

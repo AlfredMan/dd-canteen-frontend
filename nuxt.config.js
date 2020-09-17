@@ -108,6 +108,9 @@ export default {
       src: '~/plugins/global.js'
     },
     {
+      src: '~/plugins/globalUtilities.js'
+    },
+    {
       src: '~/plugins/route.js',
       mode: 'client'
     },

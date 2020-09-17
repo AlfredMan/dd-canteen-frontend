@@ -54,7 +54,7 @@
           <span class="d-none d-xl-inline">+44 (0)20 3981 2426</span>
         </a>
 
-        <nuxt-link :to="{ path: '/contact', hash: '#register-interest' }"
+        <nuxt-link :to="{ path: '/enquire' }"
         class="btn btn-lg- btn-dark- btn-primary text-white -btn-outline-primary m-2 pt-2 -mr-0 ml-auto ml-sm-0"
         :class="{'btn-outline-black': menuActive}"
         >

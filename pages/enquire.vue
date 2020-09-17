@@ -1,7 +1,7 @@
 <template lang="html">
-  <div class="mt-0 bg-white -pt-5">
+  <div class="mt-12 bg-white -pt-5 px-3">
 
-    <div class="py-5 bg-white anchor-target px-0 px-md-4 py-4 pb-5 py-md-5">
+    <div class="py-5 bg-white anchor-target px-0 -px-md-4 py-4 pb-5 py-md-5 cap-max-w">
       <div class="container-fluid -my-5 pt-5">
         <div class="row">
           <div class="col-12 col-md-12">

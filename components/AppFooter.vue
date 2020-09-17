@@ -3,21 +3,21 @@
     <div class="px-0 px-md-4 pt-2 pb-4 py-md-5">
       <div class="container-fluid cap-max-w">
         <div class="row">
-          <div class="col-12 col-md-4 col-lg-4 mb-5">
-            <h6 class="mb-0 font-medium">DESIGN DISTRICT</h6>
+          <div class="col-12 col-md-4 col-lg-4 mb-5 mt-4 mt-lg-0">
+            <h6 class=" font-medium">DESIGN DISTRICT</h6>
             <a class="h6" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/The+Gateway+Pavilions,+Peninsula+Square,+Greenwich+Peninsula,+London+SE10+0SQ/@51.5003894,0.0041197,18.67z?hl=en">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a><br>
-            <a class="h6 text-green" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/The+Gateway+Pavilions,+Peninsula+Square,+Greenwich+Peninsula,+London+SE10+0SQ/@51.5003894,0.0041197,18.67z?hl=en">Plan my route</a><br><br>
-            <email class="h6 text-green" :address="'hello@designdistrict.co.uk'" /><br>
-            <a class="h6 text-green">+44 (0)20 3981 2426</a><br>
+            <a class="h6 underline" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/The+Gateway+Pavilions,+Peninsula+Square,+Greenwich+Peninsula,+London+SE10+0SQ/@51.5003894,0.0041197,18.67z?hl=en">Plan my route</a><br><br>
+            <email class="h6 underline" :address="'hello@designdistrict.co.uk'" /><br>
+            <a class="h6 underline" href="tel:4402039812426">+44 (0)20 3981 2426</a><br>
             <small class="d-block">
               Copyright © 2020 Design District Limited
             </small>
           </div>
 
-          <div class="col-4">
+          <div class="col-12 col-md-4">
             <div class=" row">
               <div class="col-4 col-md-2-col-lg-2 mb-5">
-                <h6 class="mb-0 font-medium">Connect</h6>
+                <h6 class=" font-medium">Connect</h6>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br>
@@ -26,7 +26,7 @@
               </div>
 
               <div class="col-4 col-md-2-col-lg-2 mb-5">
-                <h6 class="mb-0 font-medium">Join</h6>
+                <h6 class=" font-medium">Join</h6>
                 <nuxt-link class="h6" to="/workspace">
                   Work space
                 </nuxt-link>
@@ -45,7 +45,7 @@
               </div>
 
               <div class="col-4 col-md-2-col-lg-2 mb-5">
-                <h6 class="mb-0 font-medium">Legal</h6>
+                <h6 class=" font-medium">Legal</h6>
                 <nuxt-link class="h6" to="/privacy-policy">
                   Privacy Policy
                 </nuxt-link>
@@ -63,7 +63,7 @@
 
           <!-- <div class="col-6 col-md-1 col-lg-1" /> -->
 
-          <div class="col-6 col-md-4 mb-5 pl-0 lg:pl-24">
+          <div class="col-12 col-md-4 mb-5 pl-0 lg:pl-24">
             <div class="row mt-4">
               <div class="col-6 flex align-items-start justify-content-end">
                 <img src="~/assets/images/logo-hor.svg" alt="Design District logo" style="" class="mb-5 w-75">
@@ -123,5 +123,6 @@ export default {
 h6, .h6 {
   font-size: 0.9rem;
   line-height: 1.25;
+  margin-bottom: 0.5em;
 }
 </style>

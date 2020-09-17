@@ -63,7 +63,7 @@
         <div class="my-8 mt-12">
           <h3>Interested in this building?</h3>
           <p class="mb-2">Tell us about your requirements, and we’ll be in touch.<br>Or call us on +44 (0)20 3981 2426</p>
-          <a class="inline-block mt-2 px-2 py-2 leading-5 bg-green text-white uppercase">Book a visit</a>
+          <nuxt-link to="/enquire" class="inline-block mt-2 px-2 py-2 leading-5 bg-green text-white uppercase">Book a visit</nuxt-link>
         </div>
 
         <!-- <div class="flex my-2">
@@ -106,7 +106,7 @@
         </div>
 
         <image-slideshow
-        class="w-100 py-8 carousel carousel-uniform-height carousel-uniform-height-sm cap-max-w"
+        class="w-100 py-8 can-fullscreen carousel carousel-uniform-height carousel-uniform-height-sm cap-max-w"
         :overflow="'visible'"
         :options="slideshowOptions"
         :fullscreen="photosFullscreen"
@@ -172,7 +172,7 @@
         </div>
 
         <image-slideshow
-        class="w-100 py-8 carousel carousel-uniform-height carousel-uniform-height-sm cap-max-w"
+        class="w-100 py-8 can-fullscreen carousel carousel-uniform-height carousel-uniform-height-sm cap-max-w"
         :overflow="'visible'"
         :options="slideshowOptions"
         :fullscreen="floorplanFullscreen"
@@ -233,7 +233,7 @@
           :h="1000"
           :custom="'fit=thumb&f=center'"
           />
-          <h4 class="uppercase">{{building.fields.architecture[0].fields.title}}</h4>
+          <h3 class="uppercase">{{building.fields.architecture[0].fields.title}}</h3>
         </div>
         <div class="w-full xl:w-1/3 px-6">
         </div>
@@ -583,8 +583,10 @@ aside {
 .carousel {
   overflow-x: visible;
 
-  .item {
-    cursor: zoom-in;
+  &.can-fullscreen {
+    .item {
+      cursor: zoom-in;
+    }
   }
 }
 

@@ -18,6 +18,9 @@
         <callToAction v-if="block.fields.callToAction && bannerStyle=='Default'" :callToAction="block.fields.callToAction"/>
       </component>
       <div class="block-banner-media">
+        <div class="block-banner-media-screen">
+
+        </div>
         <lazy-image
           class="block-banner-media-image"
           v-if="block.fields.imageAsset && block.fields.imageAsset[0]"
@@ -44,9 +47,9 @@ export default {
 
 <style lang="scss" scoped>
 section {
-  @apply px-6 py-16;
+  @apply px-0;
   @media (min-width: 1024px) {
-    @apply pt-16 pb-4;
+    // @apply pt-16 pb-4;
   }
 
   @apply relative;
@@ -59,6 +62,14 @@ section {
       @apply w-full;
       @media (min-width: 1024px) {
         @apply w-1/2;
+      }
+    }
+
+    .block-banner-header {
+      @apply px-4 py-12 mb-0;
+
+      @media (min-width: 1024px) {
+        @apply pt-12 pb-16;
       }
     }
   }
@@ -87,27 +98,35 @@ section {
     }
 
     .block-banner-header {
-      @apply bg-green bg-opacity-100 text-opacity-100 transition-all duration-300;
-      @apply px-6 py-16 mb-0;
-      mix-blend-mode: multiply;
+      @apply bg-green bg-opacity-75 text-opacity-100 transition-all duration-300;
+      @apply px-4 py-12 mb-0;
+      // mix-blend-mode: multiply;
+      backdrop-filter: blur(12px) contrast(0.8);
 
       @media (min-width: 1024px) {
-        @apply pt-16 pb-16;
+        @apply pt-8 pb-16;
         min-height: 500px;
       }
 
       &:hover {
-        @apply bg-opacity-25 text-opacity-0;
-
-        + .block-banner-media {
-          filter: blur(0);
-        }
+        // @apply bg-opacity-25 text-opacity-0;
+        //
+        // + .block-banner-media {
+        //   filter: blur(0);
+        // }
       }
     }
 
     .block-banner-media {
       @apply absolute z-0 inset-0;
-      filter: blur(30px);
+      // filter: blur(12px) brightness(-30%);
+      // backdrop-filter: blur(2px);
+      // backdrop-filter: brightness(60%);
+      // backdrop-filter: contrast(40%);
+
+      .block-banner-media-screen {
+        @apply absolute inset-0 z-50;
+      }
 
       .block-banner-media-image {
         @apply w-full h-full object-cover object-center;

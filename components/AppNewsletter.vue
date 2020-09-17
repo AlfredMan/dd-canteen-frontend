@@ -26,7 +26,7 @@ export default {
 
 <style lang="scss" scoped>
 section {
-  @apply px-8 py-8;
+  @apply px-6 py-8;
   @apply bg-green;
 
   @media (min-width: 1024px) {

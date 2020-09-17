@@ -21,7 +21,7 @@
 
         <div class="form-row">
           <div class="col-12 col-md-6">
-            <label class="-accessible-hide" for="first_name">First name<sup>*</sup></label>
+            <!-- <label class="-accessible-hide" for="first_name">First name<sup>*</sup></label> -->
             <input
               id="first_name"
               ref="first_name"
@@ -34,7 +34,7 @@
             >
           </div>
           <div class="col-12 col-md-6">
-            <label class="-accessible-hide" for="last_name">Last name<sup>*</sup></label>
+            <!-- <label class="-accessible-hide" for="last_name">Last name<sup>*</sup></label> -->
             <input
               id="last_name"
               ref="last_name"
@@ -50,7 +50,7 @@
 
         <div class="form-row">
           <div class="col-12 col-md-6">
-            <label class="-accessible-hide" for="email">Email address<sup>*</sup></label>
+            <!-- <label class="-accessible-hide" for="email">Email address<sup>*</sup></label> -->
             <input
               id="email"
               type="email"
@@ -62,7 +62,7 @@
             >
           </div>
           <div class="col-12 col-md-6">
-            <label class="-accessible-hide" for="phone">Phone</label>
+            <!-- <label class="-accessible-hide" for="phone">Phone</label> -->
             <input type="text" name="phone" placeholder="Phone" class="input-text form-field-reset" value="">
           </div>
         </div>
@@ -133,7 +133,7 @@
         <h5>Your work</h5>
         <div class="form-row">
           <div class="col-12 col-md-6">
-            <label class="-accessible-hide" for="00N3Y00000H10Ce">I am a:</label>
+            <!-- <label class="-accessible-hide" for="00N3Y00000H10Ce">I am a:</label> -->
             <select
               id="00N3Y00000H10Ce"
               ref="00N3Y00000H10Ce"
@@ -180,7 +180,7 @@
 
         <div class="form-row"> -->
           <div class="col-12 col-md-6">
-            <label class="-accessible-hide" for="00N3Y00000H10Ea">Industry:</label>
+            <!-- <label class="-accessible-hide" for="00N3Y00000H10Ea">Industry:</label> -->
             <select
               id="00N3Y00000H10Ea"
               ref="00N3Y00000H10Ea"
@@ -239,7 +239,7 @@
             </select>
           </div>
           <div v-show="arrayIncludesString(industry,'Other')" class="col-12 col-md-6">
-            <label class="-accessible-hide" for="00N3Y00000H10Ef">Please specify your industry</label>
+            <!-- <label class="-accessible-hide" for="00N3Y00000H10Ef">Please specify your industry</label> -->
             <input
               id="00N3Y00000H10Ef"
               ref="00N3Y00000H10Ef"
@@ -254,7 +254,7 @@
 
         <div class="form-row">
           <div class="col-12 col-md-6">
-            <label class="-accessible-hide" for="00N20000009fVtE">Business name</label>
+            <!-- <label class="-accessible-hide" for="00N20000009fVtE">Business name</label> -->
             <input
               id="00N20000009fVtE"
               type="text"
@@ -265,7 +265,7 @@
             >
           </div>
           <div class="col-12 col-md-6">
-            <label class="-accessible-hide" for="00N0O00000AAdtS">Website or social media handle</label>
+            <!-- <label class="-accessible-hide" for="00N0O00000AAdtS">Website or social media handle</label> -->
             <input
               id="00N0O00000AAdtS"
               type="text"
@@ -279,7 +279,7 @@
 
         <div class="form-row">
           <div class="col-12 col-md-6">
-            <label class="-accessible-hide" for="00N0O00000GRkIk">Number of employees:</label>
+            <!-- <label class="-accessible-hide" for="00N0O00000GRkIk">Number of employees:</label> -->
             <select
               id="00N0O00000GRkIk"
               name="00N0O00000GRkIk"
@@ -287,7 +287,7 @@
               class="custom-select form-control form-field-reset"
             >
               <option value="" disabled selected>
-                Select
+                Select number of employees
               </option>
               <option value="1">
                 1
@@ -310,11 +310,10 @@
 
         <div class="form-row">
           <div class="col-12 col-md-12">
-            <label for="00N0O00000AAmP4" class="-accessible-hide">
+            <!-- <label for="00N0O00000AAmP4" class="-accessible-hide">
               Describe your business in 250 words
-              <!-- Tell us a little bit about your business or idea and how you see it working at the Design District -->
-            </label>
-            <textarea id="00N0O00000AAmP4" name="00N0O00000AAmP4" rows="4" class="input-text form-field-reset" placeholder="Describe your business" />
+            </label> -->
+            <textarea id="00N0O00000AAmP4" name="00N0O00000AAmP4" rows="4" class="input-text form-field-reset" placeholder="Describe your business in 250 words" />
           </div>
         </div>
       </div>
@@ -322,7 +321,7 @@
       <div v-show="step === 2" class="my-4">
         <div class="form-row">
           <div class="col-12 col-md-6">
-            <label for="00N0O00000AAdth">What type of space suits you? *</label>
+            <!-- <label for="00N0O00000AAdth">What type of space suits you? *</label> -->
             <select
               id="00N0O00000AAdth"
               ref="00N0O00000AAdth"
@@ -332,7 +331,7 @@
               required
             >
               <option value="" disabled selected>
-                Choose an option
+                What type of space suits you?
               </option>
               <option value="Desk">
                 Desk
@@ -611,7 +610,7 @@
         <div v-show="step === 2" class="my-4"> -->
         <div class="form-row">
           <div class="col-12 col-md-6">
-            <label for="00N0O00000AAdtw">Why are you looking for a new workspace?</label>
+            <!-- <label for="00N0O00000AAdtw">Why are you looking for a new workspace?</label> -->
             <select
               id="00N0O00000AAdtw"
               ref="00N0O00000AAdtw"
@@ -620,7 +619,7 @@
               name="00N0O00000AAdtw"
             >
               <option value="" disabled selected>
-                Choose an option
+                Why are you looking for a new workspace?
               </option>
               <option value="Support a better work-life balance">
                 Support a better work-life balance

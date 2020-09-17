@@ -121,10 +121,13 @@ ul {
   .journal--entries--entry {
     @apply px-2 mb-6;
 
-    .news-card {
-      @screen lg {
-        @apply sticky;
-        top: 3rem;
+    &:nth-of-type(2),
+    &:nth-of-type(3) {
+      .news-card {
+        @screen lg {
+          @apply sticky;
+          top: 3rem;
+        }
       }
     }
 

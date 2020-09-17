@@ -1,14 +1,14 @@
 <template lang="html">
   <div class="mt-5 px-0 px-md-4 py-4 py-5 py-md-5">
-    <div class="container-fluid">
+    <div class="container-fluid cap-max-w">
       <div class="row">
-        <div class="col-12 col-md-6">
-          <h1>
+        <div class="col-12 col-md-5">
+          <h1 class="text-6xl">
             Cookies Policy
           </h1>
           <h5>Last updated: 29th JULY 2020</h5>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-7 pl-4 pl-md-0">
           <!-- <h5>Cookies Policy</h5>
           <p>We will ask your permission for a small file called a cookie to be placed on your computer’s hard drive. Once you agree, the file is added and the cookie helps analyse web traffic or lets you know when you visit a particular site. Cookies allow web applications to respond to you as an individual. The web application can tailor its operations to your needs, likes and dislikes by gathering and remembering information about your preferences.</p>
           <p>We use traffic log cookies to identify which pages are being used. This helps us analyse data about web page traffic and improve our website in order to tailor it to customer needs. We only use this information for statistical analysis purposes and then the data is removed from the system. Overall, cookies help us provide you with a better website, by enabling us to monitor which pages you find useful and which you do not. A cookie in no way gives us access to your computer or any information about you, other than the data you choose to share with us.</p>

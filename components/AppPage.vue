@@ -20,6 +20,10 @@
 
         <BlockJournal :block="block" v-else-if="isBlockType(block, 'blockJournal')"/>
 
+        <BlockPress :block="block" v-else-if="isBlockType(block, 'blockPress')"/>
+
+        <BlockTabs :block="block" v-else-if="isBlockType(block, 'blockTabs')"/>
+
         <div class="p-16 bg-red-100" v-else>
           <p v-if="block.sys && block.sys.contentType">{{block.sys.contentType.sys.id}}</p>
           <pre>{{block.fields}}</pre>
@@ -43,6 +47,8 @@ import BlockBanner from '~/components/blocks/BlockBanner'
 import BlockImage from '~/components/blocks/BlockImage'
 import BlockArchitecture from '~/components/blocks/BlockArchitecture'
 import BlockJournal from '~/components/blocks/BlockJournal'
+import BlockPress from '~/components/blocks/BlockPress'
+import BlockTabs from '~/components/blocks/BlockTabs'
 
 export default {
   name: 'page',
@@ -54,7 +60,9 @@ export default {
     BlockBanner,
     BlockImage,
     BlockArchitecture,
-    BlockJournal
+    BlockJournal,
+    BlockPress,
+    BlockTabs
   },
 
   props: {

@@ -1,15 +1,15 @@
 <template lang="html">
-  <div class="mt-5">
+  <div class="mt-24">
 
     <div class="-container-fluid">
-      <div class="px-0 px-md-4- py-4 py-5 py-md-5 cap-max-w">
+      <div class="px-0 px-md-4- py-4 py-5 py-md-0 cap-max-w">
         <div class="container-fluid">
 
           <div class="row d-flex align-items-start justify-content-between">
-            <div class="col-12 col-md-7 mb-5">
+            <div class="col-12 col-md-7 mb-5 mb-lg-0">
               <h1>Find your work space</h1>
               <h4 class="max-w-48">Rent a desk, a studio, a workshop, or an entire building. With simple wi-fi access, clean and dirty workshops, integrated security, flexible leases and a host of events.</h4>
-              <a href="#become-a-tenant" class="btn btn -btn-lg btn-primary mt-3 uppercase">Contact Us</a>
+              <nuxt-link to="/enquire" class="btn btn -btn-lg btn-primary mt-3 uppercase">Contact Us</nuxt-link>
             </div>
             <div class="col-12 col-md-5">
               <div class="row d-flex align-items-end justify-content-end">
