@@ -84,10 +84,10 @@
             </div>
           </div>
 
-          <div class="">
+          <!-- <div class="">
             {{filter}}<br>
             {{sliderModel}}<br>
-          </div>
+          </div> -->
 
           <div class="flex flex-wrap mt-8 -mx-2" v-if="allBuildings">
 
