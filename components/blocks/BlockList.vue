@@ -8,12 +8,12 @@
       'flex flex-wrap items-baseline':headingDisplay=='Right'
       }"
     >
-      <div v-if="block.fields.heading" :class="{'w-full xl:w-5/12':headingDisplay=='Right'}">
+      <div v-if="block.fields.heading" :class="{'w-full lg:w-5/12':headingDisplay=='Right'}">
         <h2>
           {{block.fields.heading}}
         </h2>
       </div>
-      <div v-if="block.fields.subheading" :class="{'w-full xl:w-7/12':headingDisplay=='Right'}">
+      <div v-if="block.fields.subheading" :class="{'w-full lg:w-7/12':headingDisplay=='Right'}">
         <h4 class="font-medium max-w-3xl">
           {{block.fields.subheading}}
         </h4>
@@ -45,12 +45,14 @@
       >
 
         <template v-if="content.fields.imageAsset && content.fields.imageAsset[0]">
+
           <transition-link
           v-if="content.fields.callToAction && content.fields.callToAction.fields.path"
           class="block-list--contentList--content--image"
           :to="content.fields.callToAction.fields.path">
             <!-- {{content.fields.imageAsset}} -->
             <lazy-image
+            class="transition-source"
             :src="content.fields.imageAsset[0].fields.file.url"
             :w="1000"
             />
@@ -63,20 +65,31 @@
             :w="1000"
             />
           </div>
+
         </template>
 
-        <h4 v-if="content.fields.heading" class="">
-          {{content.fields.heading}}
-        </h4>
+        <template v-if="content.fields.callToAction && content.fields.callToAction.fields.path">
+          <nuxt-link :to="content.fields.callToAction.fields.path">
+            <h4 v-if="content.fields.heading" class="">
+              {{content.fields.heading}}
+            </h4>
+          </nuxt-link>
+        </template>
+        <template v-else>
+          <h4 v-if="content.fields.heading" class="">
+            {{content.fields.heading}}
+          </h4>
+        </template>
+
         <div v-if="content.fields.description" class="content-fields-description" v-html="markdown(content.fields.description)">
         </div>
 
-        <callToAction
+        <!-- <callToAction
         v-if="content.fields.callToAction"
         :callToAction="content.fields.callToAction"
         :theme="'default'"
         :format="'inline'"
-        />
+        /> -->
 
       </div>
     </div>
@@ -104,7 +117,7 @@ export default {
 
 <style lang="scss" scoped>
 section {
-  @apply px-6 py-16;
+  @apply px-1 py-8;
   @media (min-width: 1024px) {
     @apply pt-12 pb-4;
   }
@@ -125,13 +138,16 @@ section {
 
 .block-list--contentList {
   @apply flex flex-wrap items-baseline;
-  @apply mb-8;
+  @apply mb-4;
   @apply -mx-2;
-  @apply px-4;
+  @apply px-3;
   @apply cap-max-w;
 
   .block-list--contentList--content {
-    @apply mb-4 pr-4;
+    @apply mb-4 pr-0;
+    @screen lg {
+      @apply pr-4;
+    }
 
     .block-list--contentList--content--image {
       @apply mb-4
@@ -140,6 +156,10 @@ section {
     h4 {
       @apply uppercase mb-2 font-normal max-w-2xl;
     }
+    a:hover h4 {
+      @apply text-green;
+    }
+
     .content-fields-description {
       // white-space: pre;
       @apply my-2 max-w-2xl;

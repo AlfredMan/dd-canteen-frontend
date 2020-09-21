@@ -40,7 +40,7 @@ body {
 	@include media-breakpoint-up(sm) {
 		// font-size: 12px;
     // font-size: 1.02vw;
-    font-size: 13px;
+    font-size: 12px;
 	}
 	@include media-breakpoint-up(md) {
 		// font-size: 12.5px;
@@ -197,7 +197,7 @@ h2 {
 	text-transform: uppercase;
 
 	&:first-child {
-		margin-top: -0.1em;
+		// margin-top: -0.1em;
 	}
 
   // @extend .h2;
@@ -500,25 +500,25 @@ p {
 h1,
 .h1 {
 	&:first-child {
-    margin-top: -0.19em
+    // margin-top: -0.19em
   }
 }
 h2,
 .h2{
 	&:first-child {
-		margin-top: -0.2em
+		// margin-top: -0.2em
 	}
 }
 h3,
 .h3 {
 	&:first-child {
-    margin-top: -0.35em
+    // margin-top: -0.35em
   }
 }
 h4,
 .h4 {
 	&:first-child {
-    margin-top: -0.1em
+    // margin-top: -0.1em
   }
 }
 h5,

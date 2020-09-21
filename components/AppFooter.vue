@@ -1,7 +1,7 @@
 <template lang="html">
   <footer class="bg-grey monospace">
-    <div class="px-0 px-md-4 pt-2 pb-4 py-md-5">
-      <div class="container-fluid cap-max-w">
+    <div class="px-0 -px-md-4 pt-2 pb-4 py-md-5">
+      <div class="container-fluid cap-max-w px-3">
         <div class="row">
           <div class="col-12 col-md-4 col-lg-4 mb-5 mt-4 mt-lg-0">
             <h6 class=" font-medium">DESIGN DISTRICT</h6>
@@ -17,31 +17,45 @@
           <div class="col-12 col-md-4">
             <div class=" row">
               <div class="col-4 col-md-2-col-lg-2 mb-5">
-                <h6 class=" font-medium">Connect</h6>
+                <h6 class=" font-medium">Stay Connected</h6>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
-                <a class="h6" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
-                <a class="h6" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london">LinkedIn</a><br>
+                <a class="h6" target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCOE4WSM2KzYyItgaS6k4_eg">YouTube</a><br>
+                <!-- <a class="h6" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
+                <a class="h6" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br> -->
+
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.pinterest.co.uk/designdistrictlondon/">Pinterest</a>
+                <a class="h6" target="_blank" rel="noreferrer" href="">Newsletter</a>
               </div>
 
               <div class="col-4 col-md-2-col-lg-2 mb-5">
-                <h6 class=" font-medium">Join</h6>
+                <h6 class=" font-medium">Find your workspace</h6>
                 <nuxt-link class="h6" to="/workspace">
-                  Work space
+                  Multi-Purpose
                 </nuxt-link>
                 <br>
+                <nuxt-link class="h6" to="/workspace">
+                  serviced Studio
+                </nuxt-link>
+                <br>
+                <nuxt-link class="h6" to="/workspace">
+                  On/Off Office
+                </nuxt-link>
+                <br>
+                <nuxt-link class="h6" to="/workspace">
+                  Rend a Building
+                </nuxt-link>
                 <!-- <nuxt-link class="h6" to="/the-club">
                   The Club
                 </nuxt-link>
                 <br> -->
-                <nuxt-link class="h6" to="/about-us">
+                <!-- <nuxt-link class="h6" to="/about-us">
                   About
                 </nuxt-link>
                 <br>
                 <nuxt-link class="h6" to="/contact">
                   Contact
-                </nuxt-link>
+                </nuxt-link> -->
               </div>
 
               <div class="col-4 col-md-2-col-lg-2 mb-5">
@@ -85,7 +99,13 @@
           </div> -->
         </div>
 
-        <div class="inner d-flex row align-items-end justify-content-start mt-0 pb-0">
+        <div class="row">
+          <div class="col-12">
+            <h6 class="">Design and build by Hato</h6>
+          </div>
+        </div>
+
+        <div class="inner d-flex row align-items-end justify-content-start mt-0 pb-0" v-if="false">
           <!-- <div class="p-3 mr-auto-mr-md-0-ml-md-auto-order-md-2 d-flex align-items-end">
             <img src="~/assets/images/logo-hor.svg" alt="Design District logo" style="max-width: 40px" class="mr-5">
             <img src="~/assets/images/gp-logo.svg" alt="Greenwich Peninsula logo" style="max-width: 100px">

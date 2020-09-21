@@ -5,7 +5,7 @@
         <iframe style="" src="https://player.vimeo.com/video/421875361?autoplay=1&loop=1&color=ffffff&title=0&byline=0&portrait=0&background=1" width="640" height="299" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
     </div>
-    <div class="relative sm:absolute bottom-0 inset-x-0 text-black sm:text-white px-4 py-12 cap-max-w">
+    <div class="relative sm:absolute bottom-0 inset-x-0 text-black sm:text-white px-3 py-12 cap-max-w">
       <h1 v-if="block.fields.heading">{{block.fields.heading}}</h1>
       <h4 v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
       <callToAction v-if="block.fields.callToAction" :callToAction="block.fields.callToAction"/>
@@ -32,13 +32,18 @@ section {
     text-shadow: 0 0 3rem rgba(0,0,0,0.3);
   }
 }
+.block-page-header-video {
+  // @apply cap-max-w;
+  overflow: hidden;
+  max-height: 800px
+}
 .video-wrapper {
   width: 100%;
   // height: 80vh;
   // height: 50vw;
   // max-height: 600px;
   height: 0;
-  padding-bottom: 100%;
+  padding-bottom: 66%;
   position: relative;
   overflow: hidden;
 

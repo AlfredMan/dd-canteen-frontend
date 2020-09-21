@@ -1,3 +1,13 @@
+.map-thumb-wrapper {
+  @apply absolute max-w-screen-2xl mx-auto bottom-0 inset-x-0;
+  // position: absolute;
+  // margin: auto;
+  // max-width: 1440px;
+  // width: 100%;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
+}
 .map-thumb {
   position: absolute;
   bottom: 10px;
@@ -7,6 +17,11 @@
   z-index: 9999;
   opacity: 0;
   pointer-events: none;
+
+  @screen 2xl {
+    right: 0;
+    margin-right: 0;
+  }
 
   &.active {
     pointer-events: initial;
@@ -27,8 +42,8 @@
   user-select: none;
   // canvas
   transition: .5s ease all;
-  transform-origin: bottom right;
-  transform: translateX(5%) scale(0.25);
+  // transform-origin: bottom right;
+  // transform: translateX(5%) scale(0.25);
   transition: all 0.5s cubic-bezier(0.64, 0.01, 0.34, 1) 0s;
   transition-delay: 0.1s;
   cursor: pointer;

@@ -100,8 +100,13 @@ section {
     .block-banner-header {
       @apply bg-green bg-opacity-75 text-opacity-100 transition-all duration-300;
       @apply px-4 py-12 mb-0;
+      @apply cursor-pointer;
       // mix-blend-mode: multiply;
       backdrop-filter: blur(12px) contrast(0.8);
+
+      h2, h4 {
+        @apply transition duration-300;
+      }
 
       @media (min-width: 1024px) {
         @apply pt-8 pb-16;
@@ -111,12 +116,15 @@ section {
       &:hover {
 
         backdrop-filter: blur(0px) contrast(0.8);
+        // @apply bg-opacity-0;
         @apply bg-opacity-0;
-        // @apply bg-opacity-0 text-opacity-0;
         //
         // + .block-banner-media {
         //   filter: blur(0);
         // }
+        h2, h4 {
+          @apply opacity-0;
+        }
       }
     }
 

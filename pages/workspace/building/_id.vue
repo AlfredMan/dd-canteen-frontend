@@ -62,8 +62,19 @@
 
         <div class="my-8 mt-12">
           <h3>Interested in this building?</h3>
-          <p class="mb-2">Tell us about your requirements, and we’ll be in touch.<br>Or call us on +44 (0)20 3981 2426</p>
-          <nuxt-link to="/enquire" class="inline-block mt-2 px-2 py-2 leading-5 bg-green text-white uppercase">Book a visit</nuxt-link>
+          <p class="mb-2">Tell us about your requirements, and we’ll be in touch.<br>Or call us on <a href="tel:+4402039812426">+44 (0)20 3981 2426</a></p>
+
+          <!-- <nuxt-link
+          to="/enquire"
+          class="inline-block mt-2 px-2 py-2 leading-5 bg-green text-white uppercase font-base"
+          >Book a visit</nuxt-link> -->
+
+          <callToAction :callToAction="{
+            fields:{
+              path:'/enquire',
+              label:'Book a visit'
+            }}"
+            />
         </div>
 
         <!-- <div class="flex my-2">
@@ -76,20 +87,27 @@
     </div>
 
     <div class="sticky-navigation">
-      <div class="px-3 cap-max-w">
-        <div class="current-building monospace">
+      <div class="px-2 lg:px-3 cap-max-w">
+        <!-- <div class="current-building monospace">
           Building {{building.fields.title}}
-        </div>
-        <a @click.prevent="scrollTo('#photos')" href="#photos">Photos</a>
+        </div> -->
+        <a
+        v-if="building.fields.imageAssets && building.fields.imageAssets.length > 0"
+        @click.prevent="scrollTo('#photos')" href="#photos">Photos</a>
         <a @click.prevent="scrollTo('#location')" href="#location">Location</a>
-        <a @click.prevent="scrollTo('#floorplans')" href="#floorplans">Floorplans</a>
+        <a
+        v-if="building.fields.floorplanDownload && building.fields.floorplanDownload[0]"
+        @click.prevent="scrollTo('#floorplans')" href="#floorplans">Floorplans</a>
         <a @click.prevent="scrollTo('#services-facilities')" href="#services-facilities">Services & Facilities</a>
         <a @click.prevent="scrollTo('#architecture')" href="#architecture">Architecture</a>
         <a @click.prevent="scrollTo('#events')" href="#events">Events</a>
       </div>
     </div>
 
-    <div class="px-0 my-8 overflow-hidden" id="photos">
+    <div class="px-0 my-8 overflow-hidden"
+    id="photos"
+    v-if="building.fields.imageAssets && building.fields.imageAssets.length > 0"
+    >
       <div class="cap-max-w">
         <h2 class="px-3 uppercase max-w-2xl w-full">Photos</h2>
       </div>
@@ -157,7 +175,9 @@
       </div>
     </div>
 
-    <div class="my-16 overflow-hidden" id="floorplans">
+    <div class="my-16 overflow-hidden" id="floorplans"
+    v-if="building.fields.floorplanDownload && building.fields.floorplanDownload[0]"
+    >
 
       <div class="flex items-baseline px-3 cap-max-w">
         <h2 class="uppercase inline-block">Floor plans</h2>
@@ -216,7 +236,7 @@
 
     <div class="px-3 my-16 overflow-hidden  cap-max-w" id="services-facilities">
       <h2 class="uppercase max-w-2xl w-full">Services & facilities</h2>
-      <p class="max-w-lg w-full mb-6">Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.</p>
+      <!-- <p class="max-w-lg w-full mb-6">Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.</p> -->
       <div class="flex flex-wrap -mx-6">
         <div class="w-full xl:w-1/3 px-6 mb-4" v-for="sf in building.fields.servicesFacilities">
           <p><strong>{{sf.fields.title}}</strong><br>
@@ -259,18 +279,18 @@
     </div>
 
     <div class="bg-black text-white pt-12 pb-12  overflow-hidden" id="events">
-      <div class=" cap-max-w">
-        <h2 class="px-3 uppercase max-w-2xl w-full">Events</h2>
+      <div class="px-3 cap-max-w">
+        <h2 class="uppercase max-w-2xl w-full">Events</h2>
       </div>
 
       <div class="bg-black">
         <image-slideshow
-        class="w-100 py-8 carousel carousel-uniform-height-carousel-uniform-height-sm cap-max-w"
+        class="w-100 py-0 carousel carousel-uniform-height-carousel-uniform-height-sm cap-max-w"
         :overflow="'visible'"
         :options="slideshowOptions"
         >
 
-        <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4 item">
+        <div class="w-full lg:w-1/2 xl:w-1/4 px-4 my-4 item">
           <lazy-image
           :src="building.fields.thumbnailImageAsset[0].fields.file.url"
           :w="1000"
@@ -281,7 +301,7 @@
           <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
         </div>
 
-        <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4 item">
+        <div class="w-full lg:w-1/2 xl:w-1/4 px-4 my-4 item">
           <lazy-image
           :src="building.fields.thumbnailImageAsset[0].fields.file.url"
           :w="1000"
@@ -292,7 +312,7 @@
           <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
         </div>
 
-        <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4 item">
+        <div class="w-full lg:w-1/2 xl:w-1/4 px-4 my-4 item">
           <lazy-image
           :src="building.fields.thumbnailImageAsset[0].fields.file.url"
           :w="1000"
@@ -303,7 +323,7 @@
           <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
         </div>
 
-        <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4 item">
+        <div class="w-full lg:w-1/2 xl:w-1/4 px-4 my-4 item">
           <lazy-image
           :src="building.fields.thumbnailImageAsset[0].fields.file.url"
           :w="1000"
@@ -314,7 +334,7 @@
           <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
         </div>
 
-        <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4 item">
+        <div class="w-full lg:w-1/2 xl:w-1/4 px-4 my-4 item">
           <lazy-image
           :src="building.fields.thumbnailImageAsset[0].fields.file.url"
           :w="1000"
@@ -572,9 +592,15 @@ aside {
   @apply w-full sticky top-0 px-3 py-3 bg-white;
   z-index: 999;
   top: 3rem;
-
-  @media (min-width: 1024px) {
-    // padding-left: 5rem;
+  overflow-x: auto;
+  // @media (min-width: 1024px) {
+  //   // padding-left: 5rem;
+  //   .cap-max-w {
+  //     white-space: nowrap;
+  //   }
+  // }
+  .cap-max-w {
+    white-space: nowrap;
   }
 
   .current-building {

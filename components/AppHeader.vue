@@ -21,9 +21,9 @@
         <nuxt-link class="menu-link d-none d-sm-inline" to="/workspace">
           Work space
         </nuxt-link>
-        <nuxt-link class="menu-link d-none d-sm-inline" to="/hire">
+        <!-- <nuxt-link class="menu-link d-none d-sm-inline" to="/hire">
           Venue hire
-        </nuxt-link>
+        </nuxt-link> -->
         <!-- <nuxt-link class="menu-link d-none d-sm-inline" to="/the-club">
           The Club
         </nuxt-link> -->
@@ -48,15 +48,15 @@
           <span class="d-none d-sm-inline">Join design district</span>
         </a> -->
         <a href="tel:+4402039812426"
-        class="btn btn-lg- btn-dark- btn-primary-text-white text-primary m-2 pt-2 ml-auto -mr-0 d-sm-inline-block d-none "
+        class="btn btn-lg- btn-dark- btn-primary-text-white text-primary m-2 pt-1 ml-auto -mr-0 d-sm-inline-block d-none "
         :class="{'btn-outline-black': menuActive}">
           <span class="d-inline d-xl-none">+44 (0)20 3981 2426</span>
           <span class="d-none d-xl-inline">+44 (0)20 3981 2426</span>
         </a>
 
         <nuxt-link :to="{ path: '/enquire' }"
-        class="btn btn-lg- btn-dark- btn-primary text-white -btn-outline-primary m-2 pt-2 -mr-0 ml-auto ml-sm-0"
-        :class="{'btn-outline-black': menuActive}"
+        class="btn btn-lg- btn-dark- btn-primary text-white -btn-outline-primary m-2 -pt-1 -mr-0 ml-auto ml-sm-0"
+        :class="{'btn-dark': menuActive}"
         >
           <span class="d-inline d-xl-none">Join Now</span>
           <span class="d-none d-xl-inline">Join Now</span>
@@ -93,9 +93,9 @@
           <nuxt-link class="d-block mobile-menu-link" to="/workspace">
             Work space
           </nuxt-link>
-          <nuxt-link class="d-block mobile-menu-link" to="/hire">
+          <!-- <nuxt-link class="d-block mobile-menu-link" to="/hire">
             Venue hire
-          </nuxt-link>
+          </nuxt-link> -->
           <!-- <nuxt-link class="d-block mobile-menu-link" to="/the-club">
             The Club
           </nuxt-link> -->
@@ -118,10 +118,10 @@
       </div>
       <div class="row p-4 mobile-footer">
         <div class="col-12">
-          <a class="">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a>
-          <br><br>
+          <!-- <a class="">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a>
+          <br><br> -->
           <email :address="'hello@designdistrict.co.uk'"></email><br>
-          <a class="">020 3981 2426</a>
+          <a href="tel:+4402039812426">+44 (0)20 3981 2426</a>
           <br><br>
           <!-- </div>
         <div class="col-5"> -->

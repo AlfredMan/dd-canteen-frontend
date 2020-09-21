@@ -203,7 +203,7 @@ export default {
   right: 0;
   bottom: 0;
   // opacity: 0.5;
-  z-index: 9999;
+  z-index: 9999999;
   pointer-events: none;
 
   .box {

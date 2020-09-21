@@ -92,22 +92,23 @@
           <div class="flex flex-wrap mt-8 -mx-2" v-if="allBuildings">
 
             <div
-            class="w-full lg:w-1/2 xl:w-1/4 px-2 mb-5 building text-sm"
+            class="w-full md:w-1/2 lg:w-1/4 px-2 mb-5 building text-sm"
             v-if="filteredBuildings && filteredBuildings.length>0"
             v-for="(building, index) in filteredBuildings"
             :key="building.sys.id">
 
-              <nuxt-link :to="`/workspace/building/${building.fields.title}`" >
+              <transition-link :to="`/workspace/building/${building.fields.title}`" >
                 <lazy-image
+                class="transition-source"
                 :src="building.fields.thumbnailImageAsset[0].fields.file.url"
                 :w="1000"
                 :h="1000"
                 :custom="'fit=thumb&f=center'"
                 >
                 </lazy-image>
-              </nuxt-link>
+              </transition-link>
 
-              <nuxt-link :to="`/workspace/building/${building.fields.title}`" class="block my-2 mt-3">
+              <nuxt-link :to="`/workspace/building/${building.fields.title}`" class="building-title block my-2 mt-3">
                 <span class="inline-block font-medium text-green mr-2">Building {{building.fields.title}}</span>
                 <span class="inline-block font-medium">{{building.fields.architecture[0].fields.title}}</span>
               </nuxt-link>
@@ -432,10 +433,22 @@ export default {
   padding: .1em 1.5em .1em;
 }
 .building {
-  // cursor: pointer;
 
   &:hover {
     color: inherit;
+  }
+
+  a {
+    &:hover {
+      + a {
+        span {
+          @apply text-green;
+        }
+      }
+      span {
+        @apply text-green;
+      }
+    }
   }
 
   .chip {
@@ -445,6 +458,7 @@ export default {
     // margin: 0 .4em .5em 0;
     // padding: .1em 1.5em .1em;
   }
+
 }
 .drawer {
   position: fixed;

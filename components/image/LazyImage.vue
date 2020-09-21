@@ -55,14 +55,17 @@ export default {
   computed: {
     ratio () {
       return this.h/this.w
+    },
+    ctfSrc () {
+      return _.replace(this.src, 'downloads.ctfassets.net', 'images.ctfassets.net')
     }
   },
   methods: {
     getSrc () {
-      return `${this.src}?fm=jpg&q=10${this.getDimParam(10)}&${this.custom}`
+      return `${this.ctfSrc}?fm=jpg&q=10${this.getDimParam(10)}&${this.custom}`
     },
     getLazySrc (size = 'sm') {
-      return `${this.src}?fm=jpg&q=80${this.getDimParam(this['sizes'][size])}&${this.custom}`
+      return `${this.ctfSrc}?fm=jpg&q=80${this.getDimParam(this['sizes'][size])}&${this.custom}`
     },
     getLazySrcSet () {
       return `
@@ -74,7 +77,7 @@ export default {
       `
     },
     getSrcForSet (size = 'xl') {
-      return `${this.src}?fm=jpg&q=80${this.getDimParam(this['sizes'][size])}&${this.custom} ${this['sizes'][size]}w`
+      return `${this.ctfSrc}?fm=jpg&q=80${this.getDimParam(this['sizes'][size])}&${this.custom} ${this['sizes'][size]}w`
     },
     getDimParam (width) {
       let dim = ''

@@ -12,7 +12,7 @@ body {
   background: transparent;
 	position: fixed;
   // position: absolute;
-	z-index: 999;
+	z-index: 99999;
 	height: auto;
 	top: 0;
 	left: 0;
@@ -45,7 +45,11 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-size: 1rem;
-    font-size: .875rem;
+    font-size: .75rem;
+
+    @screen xl {
+      font-size: .875rem;
+    }
     // border-radius: 0;
     // border: 1px solid red;
 

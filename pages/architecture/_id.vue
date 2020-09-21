@@ -9,10 +9,10 @@
               <!-- <h4>{{studioData.buildings}}</h4> -->
             </div>
             <div class="col-12 col-md-3 mt-5">
-              <h5 v-if="studioData.buildings == 'Landscape'" class="mt-2">
+              <h5 v-if="studioData.buildings == 'Landscape'" class="mt-2 uppercase">
                 The landscape
               </h5>
-              <h5 v-else class="mt-2">
+              <h5 v-else class="mt-2 uppercase">
                 The buildings
               </h5>
               <p>
@@ -21,7 +21,7 @@
             </div>
 
             <div class="col-12 col-md-3 mt-5">
-              <h5 class="mt-2">The practice</h5>
+              <h5 class="mt-2 uppercase">The practice</h5>
               <p>
                 {{ studioData.practiceCopy }}
               </p>

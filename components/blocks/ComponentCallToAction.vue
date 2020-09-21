@@ -5,7 +5,7 @@
   v-if="callToAction && callToAction.fields.path && callToAction.fields.label"
   :to="callToAction.fields.path"
   >
-    <span class="label">{{callToAction.fields.label}}</span>
+    <span class="label" v-html="callToAction.fields.label"></span>
   </nuxt-link>
 </template>
 
@@ -37,7 +37,7 @@ export default {
 
 <style lang="scss" scoped>
 .cta {
-  @apply inline-block text-black transition duration-300;
+  @apply inline-block text-black transition duration-300 font-medium;
 
   &.theme-default {
     @apply text-white;

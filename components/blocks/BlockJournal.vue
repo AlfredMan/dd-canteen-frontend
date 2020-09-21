@@ -57,14 +57,15 @@ export default {
 
 <style scoped lang="scss">
 section {
-  @apply px-6 py-16;
+  @apply px-0 py-8;
   @media (min-width: 1024px) {
     @apply pt-16 pb-4;
+    @apply cap-max-w px-4;
   }
 }
 .block-journal-header {
   @apply mb-12;
-  @apply cap-max-w;
+  // @apply cap-max-w px-4;
 
   h2 {
     @apply max-w-2xl
@@ -77,11 +78,18 @@ section {
 .block-journal--entries {
   @apply flex flex-wrap items-stretch;
   @apply mt-12;
-  @apply -mx-2;
-  @apply cap-max-w;
+  // @apply cap-max-w px-4;
+
+  @screen lg {
+    @apply -mx-2;
+  }
 
   .block-journal--entries--entry {
-    @apply px-2 mb-6;
+    @apply mb-6;
+
+    @screen lg {
+      @apply px-2
+    }
 
     &:nth-of-type(2) {
       .news-card {
@@ -89,7 +97,7 @@ section {
           @apply sticky;
           top: 3rem;
         }
-      }  
+      }
     }
 
     h4 {
