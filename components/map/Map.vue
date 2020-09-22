@@ -26,14 +26,24 @@
     <div
     class="toggle"
     @click="toggleMapActive(false)"
-    v-show="mapActive"
+    :class="{
+      'active': mapActive
+    }"
     >
-      <span>Close Map</span><span class="cross">&times;</span>
+      <!-- <span>Close Map</span><span class="cross">&times;</span> -->
+      <div
+      class="flex align-center items-center items-end px-6 py-2 text-lg rounded-lg bg-opacity-50"
+      >
+        <div class="relative w-4 h-4 mr-2">
+          <IconX class=""/>
+        </div>
+        Close Map
+      </div>
     </div>
 
     <div class="map-thumb-wrapper">
       <div
-      class="map-thumb bg-white border-1 rounded-full m-6 shadow transition duration-300"
+      class="map-thumb"
       @click="toggleMapActive(true)"
       :class="{
         'active': !mapActive
@@ -42,13 +52,8 @@
         <div
         class="flex align-center items-center items-end px-6 py-2 text-lg rounded-lg bg-opacity-50"
         >
-          <!-- <img src="/a4.png" alt="" class="w-12 h-auto mr-2">  -->
           <div class="relative w-4 h-4 mr-2">
             <IconBox class=""/>
-            <!-- <div class="absolute z-10 inset-0 flex justify-center items-center" style="font-size: 0.6em; font-weight:bold; -webkit-text-stroke-width: 0.5px;
-    -webkit-text-stroke-color: white;">
-              3D
-            </div> -->
           </div>
           Map
         </div>

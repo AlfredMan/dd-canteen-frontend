@@ -8,7 +8,8 @@ export default {
     return {
       sceneState: {
         controlsDefaultDistance: 50 * scale,
-        controlsZoomedDistance: 20 * scale
+        controlsZoomedDistance: 20 * scale,
+        currentRotation: 0
       }
     }
   },
@@ -18,7 +19,7 @@ export default {
     },
     controlsZoomedDistance () {
       return this.isMobile ? 30 * scale : 20 * scale
-    }
+    },
   },
   methods: {
     initControls () {
@@ -35,6 +36,12 @@ export default {
       this.sceneState.controls.minPolarAngle = Math.PI * 0.5 - 0.5
       this.sceneState.controls.maxPolarAngle = Math.PI * 0.5 - 0.5
 
+    },
+    rotateLeft () {
+      const controls = self.sceneState.controls
+    },
+    rotateRight () {
+      const controls = self.sceneState.controls
     },
     zoomToBuilding () {
       let from = {}; let to = {}

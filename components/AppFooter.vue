@@ -1,10 +1,10 @@
 <template lang="html">
   <footer class="bg-grey monospace">
-    <div class="px-0 -px-md-4 pt-2 pb-4 py-md-5">
+    <div class="px-0 -px-md-4 pt-2 pb-4 py-md-4">
       <div class="container-fluid cap-max-w px-3">
         <div class="row">
-          <div class="col-12 col-md-4 col-lg-4 mb-5 mt-4 mt-lg-0">
-            <h6 class=" font-medium">DESIGN DISTRICT</h6>
+          <div class="col-12 col-md-4 col-lg-4 mb-5 mt-4 mt-md-0">
+            <h6 class=" font-medium uppercase">DESIGN DISTRICT</h6>
             <a class="h6" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/The+Gateway+Pavilions,+Peninsula+Square,+Greenwich+Peninsula,+London+SE10+0SQ/@51.5003894,0.0041197,18.67z?hl=en">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a><br>
             <a class="h6 underline" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/The+Gateway+Pavilions,+Peninsula+Square,+Greenwich+Peninsula,+London+SE10+0SQ/@51.5003894,0.0041197,18.67z?hl=en">Plan my route</a><br><br>
             <email class="h6 underline" :address="'hello@designdistrict.co.uk'" /><br>
@@ -16,8 +16,8 @@
 
           <div class="col-12 col-md-4">
             <div class=" row">
-              <div class="col-4 col-md-2-col-lg-2 mb-5">
-                <h6 class=" font-medium">Stay Connected</h6>
+              <div class="col-3 col-md-2-col-lg-2 mb-5">
+                <h6 class=" font-medium uppercase">Stay Connected</h6>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london">LinkedIn</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCOE4WSM2KzYyItgaS6k4_eg">YouTube</a><br>
@@ -28,22 +28,22 @@
                 <a class="h6" target="_blank" rel="noreferrer" href="">Newsletter</a>
               </div>
 
-              <div class="col-4 col-md-2-col-lg-2 mb-5">
-                <h6 class=" font-medium">Find your workspace</h6>
+              <div class="col-5 col-md-2-col-lg-2 mb-5">
+                <h6 class=" font-medium uppercase">Find your workspace</h6>
                 <nuxt-link class="h6" to="/workspace">
                   Multi-Purpose
                 </nuxt-link>
                 <br>
                 <nuxt-link class="h6" to="/workspace">
-                  serviced Studio
+                  Serviced Studio
                 </nuxt-link>
                 <br>
                 <nuxt-link class="h6" to="/workspace">
-                  On/Off Office
+                  On/off Office
                 </nuxt-link>
                 <br>
                 <nuxt-link class="h6" to="/workspace">
-                  Rend a Building
+                  Rent a Building
                 </nuxt-link>
                 <!-- <nuxt-link class="h6" to="/the-club">
                   The Club
@@ -59,7 +59,7 @@
               </div>
 
               <div class="col-4 col-md-2-col-lg-2 mb-5">
-                <h6 class=" font-medium">Legal</h6>
+                <h6 class=" font-medium uppercase">Legal</h6>
                 <nuxt-link class="h6" to="/privacy-policy">
                   Privacy Policy
                 </nuxt-link>

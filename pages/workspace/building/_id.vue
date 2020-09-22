@@ -238,7 +238,7 @@
       <h2 class="uppercase max-w-2xl w-full">Services & facilities</h2>
       <!-- <p class="max-w-lg w-full mb-6">Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.</p> -->
       <div class="flex flex-wrap -mx-6">
-        <div class="w-full xl:w-1/3 px-6 mb-4" v-for="sf in building.fields.servicesFacilities">
+        <div class="w-full lg:w-1/3 px-6 mb-4" v-for="sf in building.fields.servicesFacilities">
           <p><strong>{{sf.fields.title}}</strong><br>
           {{sf.fields.description}}</p>
         </div>
@@ -263,7 +263,7 @@
         The heart and soul of our locations, these lounges are living room-style spaces designed for creativity, comfort and productivity.
       </h4>
       <div class="flex flex-wrap -mx-6">
-        <div class="w-full xl:w-2/3 px-6">
+        <div class="w-full lg:w-2/3 px-6">
           <lazy-image
           :src="building.fields.thumbnailImageAsset[0].fields.file.url"
           :w="1000"
@@ -591,7 +591,7 @@ aside {
 .sticky-navigation {
   @apply w-full sticky top-0 px-3 py-3 bg-white;
   z-index: 999;
-  top: 3rem;
+  top: 2.8rem;
   overflow-x: auto;
   // @media (min-width: 1024px) {
   //   // padding-left: 5rem;
@@ -613,10 +613,15 @@ aside {
 
   a {
     @apply uppercase inline-block mr-4;
-    font-size: 0.9rem;
+    // font-size: 0.9rem;
     font-weight: 500;
     letter-spacing: 0.05em;
+    font-size: .75rem;
+    font-weight: 600;
 
+    @screen xl {
+      font-size: .875rem;
+    }
     &:hover {
       @apply text-green;
     }

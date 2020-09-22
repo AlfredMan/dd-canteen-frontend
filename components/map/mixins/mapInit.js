@@ -2,6 +2,9 @@ import * as THREE from 'three'
 export default {
   data () {
     return {
+      mapState: {
+        hasInit: false
+      },
       sceneState: {
         isLoaded: false,
         scene: null,
@@ -51,18 +54,23 @@ export default {
   },
   methods: {
     init () {
-      this.loadModel().then((models) => {
-        this.initThree()
-        // this.initThumb()
-        this.initControls()
-        this.animate()
-        this.bindEvents()
-        this.handleModels(models)
-        // this.onContainerResize()
-        this.updateLoadState()
-        this.render()
-        this.updateViewByRoute()
-      })
+      if (!this.mapState.hasInit) {
+        this.mapState.hasInit=true
+        this.loadModel().then((models) => {
+          this.initThree()
+          // this.initThumb()
+          this.initControls()
+          this.animate()
+          this.bindEvents()
+          this.handleModels(models)
+          // this.onContainerResize()
+          this.updateLoadState()
+          this.render()
+          this.updateViewByRoute()
+        })
+      } else {
+        console.log('hasInit')
+      }
     },
     updateLoadState () {
       this.sceneState.isLoaded = true

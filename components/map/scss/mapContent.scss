@@ -131,7 +131,7 @@ $content-width: 25vw;
       max-width: 33.33vw;
       width: 33.33vw;
     }
-    @include media-breakpoint-up(lg) {
+    @include media-breakpoint-up(md) {
       max-width: 25vw;
       width: 25vw;
     }
@@ -300,44 +300,72 @@ $content-width: 25vw;
     }
   }
 
+  // .toggle {
+  //   position: absolute;
+  //   z-index: 99999;
+  //
+  //   right: 0;
+  //   @include media-breakpoint-down(sm) {
+  //     top: 0;
+  //   }
+  //   @include media-breakpoint-up(sm) {
+  //     bottom: 0;
+  //   }
+  //   // width: 5rem;
+  //   text-align: center;
+  //   line-height: 1rem;
+  //   font-weight: 200;
+  //   color: black;
+  //   cursor: pointer;
+  //   display: flex;
+  //   align-items: center;
+  //   padding: 2rem;
+  //   text-transform: uppercase;
+  //
+  //   span {
+  //     font-size: 1.25em;
+  //     display: inline-block;
+  //   }
+  //   .cross {
+  //     margin-left: 1rem;
+  //     font-size: 2.5rem;
+  //     margin-top: -0.2em;
+  //   }
+  // }
   .toggle {
+    @apply bg-white rounded-full shadow transition duration-300 m-3;
     position: absolute;
-    z-index: 99999;
+    bottom: 0px;
+    right: 0px;
+    // width: 120px;
+    height: auto;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
 
-    right: 0;
-    @include media-breakpoint-down(sm) {
-      top: 0;
+    @screen 2xl {
+      right: 0;
+      margin-right: 0;
     }
-    @include media-breakpoint-up(sm) {
-      bottom: 0;
-    }
-    // width: 5rem;
-    text-align: center;
-    line-height: 1rem;
-    font-weight: 200;
-    color: black;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 2rem;
-    text-transform: uppercase;
 
-    span {
-      font-size: 1.25em;
-      display: inline-block;
+    &.active {
+      pointer-events: initial;
+      cursor: pointer;
+      opacity: 1;
     }
-    .cross {
-      margin-left: 1rem;
-      font-size: 2.5rem;
-      margin-top: -0.2em;
+
+    .toggle-cross {
+      font-size: 2em;
+      font-weight: 100;
+      line-height: 1rem;
     }
   }
 
   .map-thumb {
-    display: none;
-
-    @media (min-width: map-get($grid-breakpoints, sm)){
-      display: block;
-    }
+    // display: none;
+    //
+    // @media (min-width: map-get($grid-breakpoints, sm)){
+    //   display: block;
+    // }
   }
 }

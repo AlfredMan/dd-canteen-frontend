@@ -55,15 +55,15 @@
 
               <div class="uppercase mb-2  text-sm">Size (sq ft)</div>
 
-              <div class="px-2 w-full max-w-sm mb-24">
+              <div class="px-2 w-full max-w-lg mb-24">
                 <vue-slider
                 class="slider-component"
                 v-model="sliderModel"
                 :absorb="true"
                 :marks="sliderMarks"
                 :tooltip="'none'"
-                :min="1"
-                :max="5"
+                :min="0"
+                :max="7"
                 :min-range="1"
                 :interval="1"
                 :contained="false"
@@ -178,12 +178,14 @@ export default {
       sliderModel: [1,5],
       sliderData: [1,2,3,4,5],
       sliderMarks: {
-        // '0': { label: '0' },
+        '0': { label: '5' },
         '1': { label: '100' },
-        '2': { label: '200' } ,
-        '3': { label: '1000' },
-        '4': { label: '2000' },
-        '5': { label: '5000+' }
+        '2': { label: '200' },
+        '3': { label: '500' },
+        '4': { label: '1000' },
+        '5': { label: '2000' },
+        '6': { label: '3000' },
+        '7': { label: '4000+' }
       },
       filterDisplay: {
         sizeBracketMin: '100',

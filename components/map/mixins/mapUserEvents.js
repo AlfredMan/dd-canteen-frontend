@@ -15,8 +15,16 @@ export default {
   watch: {
     mapActive (newVal, oldVal) {
       // this.onContainerResize()
+      console.log('mapActive', newVal, oldVal)
       this.disableMapInteraction()
-    }
+      this.init()
+    },
+    '$route' (newVal, oldVal) {
+      console.log('$route', newVal)
+      if (oldVal.path != newVal.path) {
+        this.toggleMapActive(false)
+      }
+    },
   },
   mounted () {
     this.mapActive = this.active

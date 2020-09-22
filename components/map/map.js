@@ -45,7 +45,7 @@ export default {
     console.log('deactivated', this._inactive)
   },
   mounted () {
-    this.init()
+    // this.init()
   },
   beforeDestroy () {
     this.removeObjects()
