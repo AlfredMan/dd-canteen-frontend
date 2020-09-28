@@ -95,15 +95,23 @@
           <a
           v-if="building.fields.longDescription && building.fields.longDescription.length > 0"
           @click.prevent="scrollTo('#type-of-space')" href="#type-of-space">Type of Space</a>
+
           <a
           v-if="building.fields.imageAssets && building.fields.imageAssets.length > 0"
           @click.prevent="scrollTo('#photos')" href="#photos">Photos</a>
-          <a @click.prevent="scrollTo('#location')" href="#location">Location</a>
+
+          <a
+          v-if="building.fields.locationImage && building.fields.locationImage[0] && building.fields.locationImage[0].fields.file.url"
+          @click.prevent="scrollTo('#location')" href="#location">Location</a>
+
           <a
           v-if="building.fields.floorplanDownload && building.fields.floorplanDownload[0]"
           @click.prevent="scrollTo('#floorplans')" href="#floorplans">Floorplans</a>
+
           <a @click.prevent="scrollTo('#services-facilities')" href="#services-facilities">Services & Facilities</a>
+
           <a @click.prevent="scrollTo('#architecture')" href="#architecture">Architecture</a>
+
           <a
           v-if="building.fields.eventsActive"
           @click.prevent="scrollTo('#events')" href="#events">Events</a>
@@ -176,7 +184,7 @@
 
     </div>
 
-    <div class="px-3 my-16 cap-max-w" id="location">
+    <div class="px-3 my-16 cap-max-w" id="location" v-if="building.fields.locationImage && building.fields.locationImage[0] && building.fields.locationImage[0].fields.file.url">
       <div class="flex items-baseline">
         <h2 class="uppercase inline-block">Location</h2>
         <a
@@ -188,7 +196,7 @@
       </div>
       <div class="w-full bg-black">
         <lazy-image
-        src="https://images.ctfassets.net/xsmgpzj6d8er/2zCRdF5QZl8FqBQQM57Lom/1f4c7c7e6706f5c494a9cd32a0b164c6/dd-3d-map.png"
+        :src="building.fields.locationImage[0].fields.file.url"
         :w="2000"
         />
       </div>
