@@ -83,7 +83,7 @@
               </transition-link>
 
               <nuxt-link :to="`/workspace/building/${building.fields.title}`" class="building-title block my-2 mt-3">
-                <span class="inline-block font-medium text-green mr-2">Building {{building.fields.title}}</span>
+                <span class="inline-block font-medium text-green mr-2">{{building.fields.title}}</span>
                 <span class="inline-block font-medium">{{building.fields.architecture[0].fields.title}}</span>
               </nuxt-link>
 

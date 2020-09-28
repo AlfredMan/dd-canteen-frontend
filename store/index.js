@@ -55,7 +55,8 @@ export const state = () => ({
   buildings: [],
   journals: [],
   spaceType: [],
-  architects: []
+  architects: [],
+  events: []
 })
 
 export const mutations = {
@@ -121,6 +122,10 @@ export const mutations = {
     // console.log('vuex setBuildings', payload)
     state.architects = payload.architects
   },
+  setEvents (state, payload) {
+    // console.log('vuex setBuildings', payload)
+    state.events = payload.events
+  },
 }
 
 export const getters = {
@@ -166,6 +171,7 @@ export const actions = {
     await dispatch('getJournals')
     await dispatch('getBuildings')
     await dispatch('getSpaceTypes')
+    await dispatch('getEvents')
   },
   updateNavigationTheme ({ commit }, context) {
     const theme = context.theme
@@ -280,6 +286,18 @@ export const actions = {
         commit('setStudios', { studios })
       }, 500)
     })
+  },
+  async getEvents ({ commit }) {
+    const response = await client.getEntries({
+      'content_type': 'events',
+      order: '-sys.createdAt',
+      limit: 99
+    })
+    if (response.items.length > 0) {
+      // console.log('getJournals response.items??..............', response.items)
+      const events = _.orderBy(response.items, ['fields.title'], ['desc'])
+      commit('setEvents', { events })
+    }
   },
   async getArchitects ({ commit }) {
     const response = await client.getEntries({

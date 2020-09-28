@@ -87,20 +87,24 @@
     </div>
 
     <div class="sticky-navigation">
-      <div class="px-2 lg:px-3 cap-max-w">
-        <!-- <div class="current-building monospace">
-          Building {{building.fields.title}}
-        </div> -->
-        <a
-        v-if="building.fields.imageAssets && building.fields.imageAssets.length > 0"
-        @click.prevent="scrollTo('#photos')" href="#photos">Photos</a>
-        <a @click.prevent="scrollTo('#location')" href="#location">Location</a>
-        <a
-        v-if="building.fields.floorplanDownload && building.fields.floorplanDownload[0]"
-        @click.prevent="scrollTo('#floorplans')" href="#floorplans">Floorplans</a>
-        <a @click.prevent="scrollTo('#services-facilities')" href="#services-facilities">Services & Facilities</a>
-        <a @click.prevent="scrollTo('#architecture')" href="#architecture">Architecture</a>
-        <a @click.prevent="scrollTo('#events')" href="#events">Events</a>
+      <div class="cap-max-w">
+        <div class="px-3 lg:px-3">
+          <!-- <div class="current-building monospace">
+            Building {{building.fields.title}}
+          </div> -->
+          <a
+          v-if="building.fields.imageAssets && building.fields.imageAssets.length > 0"
+          @click.prevent="scrollTo('#photos')" href="#photos">Photos</a>
+          <a @click.prevent="scrollTo('#location')" href="#location">Location</a>
+          <a
+          v-if="building.fields.floorplanDownload && building.fields.floorplanDownload[0]"
+          @click.prevent="scrollTo('#floorplans')" href="#floorplans">Floorplans</a>
+          <a @click.prevent="scrollTo('#services-facilities')" href="#services-facilities">Services & Facilities</a>
+          <a @click.prevent="scrollTo('#architecture')" href="#architecture">Architecture</a>
+          <a
+          v-if="building.fields.eventsActive"
+          @click.prevent="scrollTo('#events')" href="#events">Events</a>
+        </div>
       </div>
     </div>
 
@@ -236,24 +240,11 @@
 
     <div class="px-3 my-16 overflow-hidden  cap-max-w" id="services-facilities">
       <h2 class="uppercase max-w-2xl w-full">Services & facilities</h2>
-      <!-- <p class="max-w-lg w-full mb-6">Workshops and specialist tools right on your doorstep. Hire a recording studio, a pop-up space, meeting rooms or a test kitchen. Even a rooftop sports court.</p> -->
       <div class="flex flex-wrap -mx-6">
         <div class="w-full lg:w-1/3 px-6 mb-4" v-for="sf in building.fields.servicesFacilities">
           <p><strong>{{sf.fields.title}}</strong><br>
           {{sf.fields.description}}</p>
         </div>
-        <!-- <div class="w-full xl:w-1/3 px-6">
-          <p><strong>Workshops</strong><br>
-          Often creative businesses need more than a desk. In the Design District you can access a range of workshops suited to your specialism. There’s a wood workshop, digital workshop, textile workshop, engineering workshop and an assembly space. Prototype or produce a new collection.</p>
-        </div>
-        <div class="w-full xl:w-1/3 px-6">
-          <p><strong>Food hall and kitchen</strong><br>
-            The food hall is the bustling heart of Design District — a place for eating, meeting, socialising and relaxing. In an airy, plant-filled transparent structure by SelgasCano, six independently run food stalls serve up innovative global fare to tenants, visitors and local residents. Design District is equipped with an industrial kitchen available to on-site event caterers. It also doubles as a test kitchen, available by prior arrangement to tenants working in the food and beverage industries.</p>
-        </div>
-        <div class="w-full xl:w-1/3 px-6">
-          <p><strong>Rooftop basketball court </strong><br>
-            The open-air basketball court occupies a commanding position, with high transparent walls affording views across The O2 and beyond. Crowning Architecture 00’s C2 building, the court hosts a range of sports and wellness activities, including basketball, HIIT and yoga. The space can be hired by Design District tenants and members of the public for everything from pop-up cinema events to photoshoots.</p>
-        </div> -->
       </div>
     </div>
 
@@ -270,123 +261,24 @@
           :h="1000"
           :custom="'fit=thumb&f=center'"
           />
-          <h3 class="uppercase">{{building.fields.architecture[0].fields.title}}</h3>
+
+          <div class="flex items-baseline py-3 pb-6">
+            <h3 class="uppercase">{{building.fields.architecture[0].fields.title}}</h3>
+            <nuxt-link
+            :to="{path: `/architecture/${building.fields.architecture[0].fields.slug}`}"
+            class="inline-block ml-4 text-green text-base underline"
+            >View architect</nuxt-link>
+          </div>
+
         </div>
-        <div class="w-full xl:w-1/3 px-6">
+        <div class="w-full xl:w-1/3 px-6" v-if="architectRelatedJournalEntry">
+          <news-card class="news-card" :entry="architectRelatedJournalEntry"></news-card>
         </div>
 
       </div>
     </div>
 
-    <div class="bg-black text-white pt-12 pb-12  overflow-hidden" id="events">
-      <div class="px-3 cap-max-w">
-        <h2 class="uppercase max-w-2xl w-full">Events</h2>
-      </div>
-
-      <div class="bg-black">
-        <image-slideshow
-        class="w-100 py-0 carousel carousel-uniform-height-carousel-uniform-height-sm cap-max-w"
-        :overflow="'visible'"
-        :options="slideshowOptions"
-        >
-
-        <div class="w-full lg:w-1/2 xl:w-1/4 px-4 my-4 item">
-          <lazy-image
-          :src="building.fields.thumbnailImageAsset[0].fields.file.url"
-          :w="1000"
-          :h="1000"
-          :custom="'fit=thumb&f=center'"
-          />
-          <h4 class="uppercase mb-3">Placeholder</h4>
-          <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
-        </div>
-
-        <div class="w-full lg:w-1/2 xl:w-1/4 px-4 my-4 item">
-          <lazy-image
-          :src="building.fields.thumbnailImageAsset[0].fields.file.url"
-          :w="1000"
-          :h="1000"
-          :custom="'fit=thumb&f=center'"
-          />
-          <h4 class="uppercase mb-3">Placeholder</h4>
-          <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
-        </div>
-
-        <div class="w-full lg:w-1/2 xl:w-1/4 px-4 my-4 item">
-          <lazy-image
-          :src="building.fields.thumbnailImageAsset[0].fields.file.url"
-          :w="1000"
-          :h="1000"
-          :custom="'fit=thumb&f=center'"
-          />
-          <h4 class="uppercase mb-3">Placeholder</h4>
-          <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
-        </div>
-
-        <div class="w-full lg:w-1/2 xl:w-1/4 px-4 my-4 item">
-          <lazy-image
-          :src="building.fields.thumbnailImageAsset[0].fields.file.url"
-          :w="1000"
-          :h="1000"
-          :custom="'fit=thumb&f=center'"
-          />
-          <h4 class="uppercase mb-3">Placeholder</h4>
-          <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
-        </div>
-
-        <div class="w-full lg:w-1/2 xl:w-1/4 px-4 my-4 item">
-          <lazy-image
-          :src="building.fields.thumbnailImageAsset[0].fields.file.url"
-          :w="1000"
-          :h="1000"
-          :custom="'fit=thumb&f=center'"
-          />
-          <h4 class="uppercase mb-3">Placeholder</h4>
-          <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
-        </div>
-
-      </image-slideshow>
-    </div>
-
-      <!-- <div class="flex flex-wrap -mx-6 items-baseline">
-        <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4">
-          <lazy-image
-          :src="building.fields.thumbnailImageAsset[0].fields.file.url"
-          :w="1000"
-          :h="1000"
-          :custom="'fit=thumb&f=center'"
-          />
-          <h4 class="uppercase mb-3">Placeholder</h4>
-          <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
-        </div>
-
-        <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4">
-          <lazy-image
-          :src="building.fields.thumbnailImageAsset[0].fields.file.url"
-          :w="1000"
-          :h="1000"
-          :custom="'fit=thumb&f=center'"
-          />
-          <h4 class="uppercase mb-3">Placeholder</h4>
-          <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
-        </div>
-
-        <div class="w-full lg:w-1/2 xl:w-1/4 px-6 my-4">
-          <lazy-image
-          :src="building.fields.thumbnailImageAsset[0].fields.file.url"
-          :w="1000"
-          :h="1000"
-          :custom="'fit=thumb&f=center'"
-          />
-          <h4 class="uppercase mb-3">Placeholder</h4>
-          <p>Fill in your details below to tell us what type of space you are after and the commercial opportunities at the Design District.</p>
-        </div>
-
-      </div> -->
-    </div>
-
-
-
+    <BlockEventsCarousel id="events" v-if="building.fields.eventsActive"/>
 
   </div>
 </template>
@@ -395,7 +287,7 @@
 // import EnquireForm from '~/components/forms/Enquire.vue'
 // import EnquireForm from '~/components/forms/Enquire2.vue'
 // import NewsletterForm from '~/components/forms/Newsletter.vue'
-// import SpaceForm from '~/components/forms/SpaceForm.vue'
+import BlockEventsCarousel from '~/components/blocks/BlockEventsCarousel.vue'
 import { mapGetters } from 'vuex'
 // import { buildings } from '~/common/buildings.js'
 import _ from 'lodash'
@@ -406,9 +298,13 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js'
 gsap.registerPlugin(ScrollToPlugin)
 gsap.registerPlugin(ScrollTrigger);
 
+import NewsCard from '~/components/NewsCard'
+
 export default {
   name: 'Building',
   components: {
+    BlockEventsCarousel,
+    NewsCard
     // EnquireForm,
     // NewsletterForm,
     // SpaceForm
@@ -485,6 +381,21 @@ export default {
       let b = this.slug && this.$store.getters.getBuildingBySlug(this.slug)
       console.log(b)
       return b
+    },
+
+    journalEntries () {
+      // return _.sampleSize(studios, 4)
+      // return studios
+      return this.$store.state.journals
+    },
+
+    architectRelatedJournalEntry () {
+      let currentBuildingEntry = this.building;
+      return this.journalEntries && _.find(this.journalEntries, (entry) => {
+        return entry.fields.architects && _.find(entry.fields.architects, (architect) => {
+          return architect.sys.id == currentBuildingEntry.fields.architecture[0].sys.id
+        })
+      })
     },
     // architect () {
     //   return this.slug && this.$store.getters.getStudioByBuilding(this.slug)
