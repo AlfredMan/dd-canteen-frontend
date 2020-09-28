@@ -93,6 +93,9 @@
             Building {{building.fields.title}}
           </div> -->
           <a
+          v-if="building.fields.longDescription && building.fields.longDescription.length > 0"
+          @click.prevent="scrollTo('#type-of-space')" href="#type-of-space">Type of Space</a>
+          <a
           v-if="building.fields.imageAssets && building.fields.imageAssets.length > 0"
           @click.prevent="scrollTo('#photos')" href="#photos">Photos</a>
           <a @click.prevent="scrollTo('#location')" href="#location">Location</a>
@@ -105,6 +108,18 @@
           v-if="building.fields.eventsActive"
           @click.prevent="scrollTo('#events')" href="#events">Events</a>
         </div>
+      </div>
+    </div>
+
+    <div class="px-3 my-16 cap-max-w" id="type-of-space" v-if="building.fields.longDescription && building.fields.longDescription.length > 0">
+      <div class="flex items-baseline">
+        <h2 class="uppercase inline-block">Type of Space</h2>
+      </div>
+      <div class="w-full">
+        <!-- <div class="" v-html="markdown(building.fields.longDescription)">
+        </div> -->
+        <h4 class="max-w-6xl" v-html="building.fields.longDescription">
+        </h4>
       </div>
     </div>
 

@@ -6,7 +6,7 @@
           <div class="col-12 col-md-3 col-lg-3 mb-5 mt-4 mt-md-0">
             <h6 class=" font-medium uppercase">DESIGN DISTRICT</h6>
             <a class="h6" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/The+Gateway+Pavilions,+Peninsula+Square,+Greenwich+Peninsula,+London+SE10+0SQ/@51.5003894,0.0041197,18.67z?hl=en">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a><br>
-            <a class="h6 underline" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/The+Gateway+Pavilions,+Peninsula+Square,+Greenwich+Peninsula,+London+SE10+0SQ/@51.5003894,0.0041197,18.67z?hl=en">Plan my route</a><br><br>
+            <a class="h6 underline" target="_blank" rel="noreferrer" href="https://goo.gl/maps/bNePBjngUXNPMr9P9">Plan my route</a><br><br>
             <email class="h6 underline" :address="'hello@designdistrict.co.uk'" /><br>
             <a class="h6 underline" href="tel:4402039812426">+44 (0)20 3981 2426</a><br>
             <small class="d-block">
