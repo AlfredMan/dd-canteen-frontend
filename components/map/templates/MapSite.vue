@@ -1,11 +1,11 @@
 <template lang="html">
   <div class="map-content map-site-content">
-    <div class="px-6 pt-8">
-      <h1 class="">Design<br>District</h1>
-      <h3 class="font-200">3D Map</h3>
-    </div>
     <div class="content">
-      <div class="my-0">
+      <div class="map-site-title">
+        <h1 class="">Design<br>District</h1>
+        <h3 class="font-200">3D Map</h3>
+      </div>
+      <div class="my-0 py-1">
         <div class="my-0">
           <!-- <div class="d-flex justify-content-between align-items-baseline">
             <div class="h5 font-weight-normal">
@@ -36,7 +36,7 @@
             </div>
           </div> -->
 
-          <div class="px-2 w-full max-w-md mb-24">
+          <div class="px-2 w-full max-w-md mb-12">
             <vue-slider
             class="slider-component"
             v-model="sliderModel"
@@ -44,7 +44,7 @@
             :marks="sliderMarks"
             :tooltip="'none'"
             :min="0"
-            :max="5"
+            :max="7"
             :min-range="1"
             :interval="1"
             :contained="false"
@@ -69,6 +69,62 @@
           </div>
         </div>
       </div>
+
+      <div class="mt-4 pb-16">
+
+        <div class="uppercase mb-2 text-sm" v-if="!filteredBuildings || filteredBuildings.length < 1">
+          No matching results
+        </div>
+        <div class="uppercase mb-2 text-sm" v-else>
+          Listing {{filteredBuildings.length}} <span v-if="filteredBuildings.length>1">buildings</span><span v-else>building</span>
+        </div>
+
+        <div class="flex flex-wrap mt-0 -mx-2" v-if="allBuildings">
+
+          <div
+          class="w-full px-2 my-0 building text-sm"
+          v-if="filteredBuildings && filteredBuildings.length>0"
+          v-for="(building, index) in filteredBuildings"
+          :key="building.sys.id">
+
+            <!-- <lazy-image
+            class="transition-source"
+            :src="building.fields.thumbnailImageAsset[0].fields.file.url"
+            :w="1000"
+            :h="1000"
+            :custom="'fit=thumb&f=center'"
+            >
+            </lazy-image> -->
+
+            <nuxt-link
+            :to="{ query: {
+              building: building.fields.title,
+            } }"
+            class="building-title block hover:text-green">
+              <span class="inline-block font-medium mr-2 text-4xl w-12">{{building.fields.title}}</span>
+              <span class="inline-block font-medium text-green text-xl">{{building.fields.architecture[0].fields.title}}</span>
+            </nuxt-link>
+
+            <!-- <div>{{building.fields.shortDescription}}</div> -->
+
+            <!-- <div class="flex my-2 monospace">
+              <div class="mr-3">Sqft {{numberWithCommas(building.fields.minSize)}}–{{numberWithCommas(building.fields.maxSize)}}</div>
+            </div>
+
+            <div class="tags mt-4">
+              <div class="tag tag-sm tag-display" v-for="spaceType in building.fields.spaceType" :key="spaceType.sys.id">
+                {{spaceType.fields.title}}
+              </div>
+            </div> -->
+
+          </div>
+
+          <!-- <div class="px-2 pb-5" v-if="!filteredBuildings || filteredBuildings.length < 1">
+            <h4 class="my-5" style="opacity:0.5">No matching work space</h4>
+          </div> -->
+
+        </div>
+      </div>
       <!-- <h4>Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.</h4> -->
       <!-- <div class="tags mt-4">
         <div class="tag">
@@ -89,20 +145,55 @@
 
       <!-- <map-listing></map-listing> -->
 
-      <div class="credit">
+      <!-- <div class="credit">
         Design and build by Hato
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
 // import MapListing from './MapListing.vue'
+import _ from 'lodash'
 import MapSpaceTypes from './MapSpaceTypes.vue'
 export default {
   computed: {
     spaceFilters () {
       return this.$store.state.filters
+    },
+    allBuildings () {
+      return this.$store.state.buildings
+    },
+    filteredBuildings () {
+      let visibleInWorkSpaceOnly = _.filter(this.allBuildings, (building) => {
+        return _.includes(building.fields.visibility, "Map")
+      })
+
+      let filter = this.filter
+
+      let filtered = _.filter(visibleInWorkSpaceOnly, (building) => {
+        let b = building
+        let isChosen = -1
+        if (filter.options) {
+          let matchingSpaceType = _.find(b.fields.spaceType, (type)=>_.kebabCase(type.fields.title)==_.kebabCase(filter.options))
+          if (matchingSpaceType) {
+            isChosen = 1
+          }
+        } else {
+          isChosen = 1
+        }
+        // if (+b.fields.minSize <= +filter.sizeBracketMax || +b.fields.maxSize >= +filter.sizeBracketMin) {
+        if (_.inRange(+b.fields.minSize, +filter.sizeBracketMin, +filter.sizeBracketMax) || _.inRange(+b.fields.maxSize, +filter.sizeBracketMin, +filter.sizeBracketMax)) {
+          isChosen = isChosen+1
+        }
+
+        return isChosen>=2
+      })
+
+      filtered = _.orderBy(filtered, ['fields.title'])
+
+      // show visibility = 'Work Space' only.
+      return filtered
     },
   },
   components: {
@@ -113,30 +204,35 @@ export default {
     return {
       filter: {
         sizeBracket: null,
-        sizeBracketMin: null,
-        sizeBracketMax: null,
+        sizeBracketMin: 100,
+        sizeBracketMax: 5000,
         architect: null,
         options: null
       },
       sizeFilters: false,
       typeFilters: false,
-      sliderModel: [0,5],
-      sliderData: [0,1,2,3,4,5],
+      sliderModel: [0,7],
+      sliderData: [1,2,3,4,5,6,7],
       sliderMarks: {
-        '0': { label: '0' },
+        '0': { label: '5' },
         '1': { label: '100' },
-        '2': { label: '200' } ,
-        '3': { label: '1000' },
-        '4': { label: '2000' },
-        '5': { label: '5000+' }
+        '2': { label: '200' },
+        '3': { label: '500' },
+        '4': { label: '1000' },
+        '5': { label: '2000' },
+        '6': { label: '3000' },
+        '7': { label: '4000+' }
       },
       filterDisplay: {
-        sizeBracketMin: '0',
-        sizeBracketMax: '5000+'
+        sizeBracketMin: '5',
+        sizeBracketMax: '4000+'
       }
     }
   },
   methods: {
+    numberWithCommas(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
     toggleFilter (filterOption, value) {
       if (this.filter[filterOption] == value) {
         this.filter[filterOption] = null
@@ -146,13 +242,13 @@ export default {
     },
     onSliderChange (val, a) {
       // console.log('onSliderChange', ev, a)
-      let displayValues=['0', '100', '200', '1000', '2000', '5000+']
+      let displayValues=['5', '100', '200', '500', '1000', '2000', '3000', '4000+']
       let displayMin = displayValues[val[0]]
       let displayMax = displayValues[val[1]]
       this.filterDisplay.sizeBracketMin = displayMin
       this.filterDisplay.sizeBracketMax = displayMax
 
-      let filterValues=['0', '100', '200', '1000', '2000', '5000']
+      let filterValues=['5', '100', '200', '500', '1000', '2000', '3000', '4000']
       let filterMin = filterValues[val[0]]
       let filterMax = filterValues[val[1]]
       this.filter.sizeBracketMin = _.toNumber(filterMin)

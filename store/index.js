@@ -54,7 +54,8 @@ export const state = () => ({
   spaces: [],
   buildings: [],
   journals: [],
-  spaceType: []
+  spaceType: [],
+  architects: []
 })
 
 export const mutations = {
@@ -115,7 +116,11 @@ export const mutations = {
   },
   setSpaceFilterArchitect (state, payload) {
     state.filters.architect = payload.filterSpaceArchitect
-  }
+  },
+  setArchitects (state, payload) {
+    // console.log('vuex setBuildings', payload)
+    state.architects = payload.architects
+  },
 }
 
 export const getters = {
@@ -276,11 +281,23 @@ export const actions = {
       }, 500)
     })
   },
+  async getArchitects ({ commit }) {
+    const response = await client.getEntries({
+      'content_type': 'architect',
+      order: '-sys.createdAt',
+      limit: 99
+    })
+    if (response.items.length > 0) {
+      // console.log('getJournals response.items??..............', response.items)
+      const architects = _.orderBy(response.items, ['fields.title'], ['desc'])
+      commit('setArchitects', { architects })
+    }
+  },
   async getJournals ({ commit }) {
     const response = await client.getEntries({
       'content_type': 'news',
       order: '-sys.createdAt',
-      limit: 5
+      limit: 99
     })
     if (response.items.length > 0) {
       // console.log('getJournals response.items??..............', response.items)

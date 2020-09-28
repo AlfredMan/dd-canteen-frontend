@@ -45,6 +45,8 @@ section {
 }
 .block-page-header-text {
   // @apply flex flex-wrap;
+  @apply w-full;
+
   .block-page-header-has-image & {
     @apply w-full;
     @screen lg {

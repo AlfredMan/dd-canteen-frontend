@@ -1,142 +1,76 @@
 <template>
-  <div class="mt-5 mb-5">
-
-    <div class="container-fluid- cap-max-w">
-      <div class="px-0 -px-md-4 py-4 py-5 py-md-5">
-        <div class="container-fluid">
-          <h1>Journal</h1>
-        </div>
-      </div>
-    </div>
-
-    <!--
-    <div class="my-4">
-      &nbsp;
-    </div>
-  -->
-
-    <div class="container-fluid-"  v-if="false">
-      <div class="px-0 px-md-4 py-4 py-5 py-md-5">
-        <div class="container-fluid d-flex-align-items-center">
-          <h5 class="my-0 mr-2">Filter by topic</h5><br>
-          <div class="tags">
-            <div class="tag" v-for="tag in tags">
-              {{tag.fields.tagName}}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container-fluid-">
-      <div class="px-0 px-md-4 py-4 py-5 py-md-5">
-        <div class="container-fluid my-3 mt-4">
-          <div class="row d-flex flex-wrap wrap journal--entries">
-            <div
-            :class="{'col-12 col-md-6': index==0, 'col-12 col-md-3': index>0}" v-for="(entry, index) in entries" :key="entry.sys.id"
-            class="journal--entries--entry mb-5">
-              <news-card class="news-card" :entry="entry"></news-card>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+  <div class="page-component">
+    <AppPage :entry="entry"/>
   </div>
 </template>
 
 <script>
 import _ from 'lodash'
+import AppPage from '~/components/AppPage'
 import { createClient } from '~/plugins/contentful.js'
-import NewsCard from '~/components/NewsCard'
 
 const client = createClient()
 
 export default {
+  name: 'page',
+
+  components: {
+    AppPage
+  },
 
   head () {
     return {
-      title: 'Journal',
+      title: this.entry && this.entry.fields.seoTitle || this.entry.fields.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+
+        // { hid: 'description', name: 'description', content: this.entry.fields.seoDescription },
+        // { property: 'og:image', content: this.entry.fields.thumbnailImage && this.entry.fields.thumbnailImage.fields.file && this.entry.fields.thumbnailImage.fields.file.url },
+        // { property: 'og:url', content: `https://designdistrict.co.uk/journal/${this.entry.fields.slug}` },
+        // { property: 'og:type', content: 'website' },
+        // { property: 'og:title', content: this.entry.fields.seoTitle },
+        // { property: 'og:description', content: this.entry.fields.seoDescription },
+        //
+        // { name: 'twitter:description', content: this.entry.fields.seoDescription },
+        // { name: 'twitter:image', content: 'https://designdistrict.co.uk/DD_Banner.jpg" ' },
+      ]
     }
-  },
-
-  components: {
-    NewsCard
-  },
-
-  created () {
-    this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
   },
 
   data () {
     return {
-      entries: null,
-      tags: null
+      entry: null
     }
   },
 
-  middleware ({ store, redirect }) {
-    // if (process.env.NODE_ENV!=='development') {
-      // return redirect('/')
-    // }
-  },
-  // `env` is available in the context object
-  asyncData ({ env }) {
+  asyncData ({ route, store }) {
     return Promise.all([
+      // fetch the owner of the blog
+      // client.getEntries({
+      //   'sys.id': env.CTF_PERSON_ID
+      // }),
+      // fetch all blog posts sorted by creation date
+
       client.getEntries({
-        'content_type': 'news',
-        order: '-sys.createdAt'
-      }),
-      client.getEntries({
-        'content_type': 'tag',
-        order: '-sys.createdAt'
+        'content_type': 'pages',
+        'fields.slug': 'journal',
+        'include': 4
       })
-    ]).then(([entries, tags]) => {
+
+    ]).then(([entry]) => {
+
       return {
-        entries: _.orderBy(entries.items, ['fields.featured'], ['desc']),
-        tags: tags.items
+        entry: entry.items[0]
       }
     }).catch(console.error)
+  },
+
+  methods: {
+
+    getRichText (document) {
+      return documentToHtmlString(document, options);
+    },
+
   }
 }
 </script>
-
-<style media="screen" scoped lang="scss">
-img {
-  display: block;
-  width: 100%;
-}
-ul {
-  li {
-    list-style: none;
-  }
-}
-
-.journal--entries {
-  @apply flex flex-wrap items-stretch;
-  @apply mt-12;
-  @apply -mx-2;
-  @apply cap-max-w;
-
-  .journal--entries--entry {
-    @apply px-2 mb-6;
-
-    &:nth-of-type(2),
-    &:nth-of-type(3) {
-      .news-card {
-        @screen lg {
-          @apply sticky;
-          top: 3rem;
-        }
-      }
-    }
-
-    h4 {
-      @apply uppercase mt-4 mb-2 font-medium;
-    }
-    p {
-      @apply my-2 font-medium;
-    }
-  }
-}
-</style>

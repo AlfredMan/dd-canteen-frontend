@@ -553,6 +553,7 @@ export default {
 }
 .building-title {
   align-items: center;
+  overflow: hidden;
   @media (min-width: map-get($grid-breakpoints, sm)){
     align-items: baseline;
   }

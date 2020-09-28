@@ -20,7 +20,7 @@ export default {
 
   head () {
     return {
-      title: this.entry && this.entry.fields.seoTitle,
+      title: this.entry && this.entry.fields.seoTitle || this.entry.fields.title,
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
 

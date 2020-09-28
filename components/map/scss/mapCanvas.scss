@@ -70,6 +70,19 @@
     transition-delay: 0;
   }
 
+  .credit {
+    position: absolute;
+    margin: 1rem;
+    z-index: 999;
+
+    @include media-breakpoint-up(sm) {
+      bottom: 0;
+      right: 11rem;
+      font-size: .75rem;
+      opacity: 0.5;
+    }
+  }
+
   canvas {
     // border: 1px solid red;
     pointer-events: none;
@@ -107,11 +120,13 @@
   	  &.site-active {
         width: 100%;
         width: 66.67%;
+        width: calc(100% - 20rem);
       }
       &.space-active,
       &.floor-active,
       &.building-active {
         width: 66.67%;
+        width: calc(100% - 20rem);
       }
   	}
     @include media-breakpoint-up(md) {
@@ -119,12 +134,14 @@
         width: 100%;
         width: 75%;
         // width: 66.67%;
+        width: calc(100% - 20rem);
       }
       &.space-active,
       &.floor-active,
       &.building-active {
         width: 75%;
         // width: 66.67%;
+        width: calc(100% - 20rem);
       }
   	}
 

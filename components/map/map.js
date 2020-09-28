@@ -12,6 +12,7 @@ import MapBuilding from './templates/MapBuilding.vue'
 import MapFloor from './templates/MapFloor.vue'
 import MapSpace from './templates/MapSpace.vue'
 import MapListing from './templates/MapListing.vue'
+import MapControls from './templates/MapControls.vue'
 
 import MapThumbnail from '~/components/map-thumbnail/MapThumbnail.vue'
 
@@ -23,7 +24,8 @@ export default {
     MapFloor,
     MapSpace,
     MapListing,
-    MapThumbnail
+    MapThumbnail,
+    MapControls
   },
   mixins: [
     init,

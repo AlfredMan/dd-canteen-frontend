@@ -24,6 +24,12 @@
 
         <BlockTabs :block="block" v-else-if="isBlockType(block, 'blockTabs')"/>
 
+        <BlockWorkspaceFilter :block="block" v-else-if="isBlockType(block, 'blockWorkspaceFilter')"/>
+
+        <BlockArchitectureList :block="block" v-else-if="isBlockType(block, 'blockArchitectureList')"/>
+
+        <BlockJournalFullList :block="block" v-else-if="isBlockType(block, 'blockJournalFullList')"/>
+
         <div class="p-16 bg-red-100" v-else>
           <p v-if="block.sys && block.sys.contentType">{{block.sys.contentType.sys.id}}</p>
           <pre>{{block.fields}}</pre>
@@ -49,6 +55,9 @@ import BlockArchitecture from '~/components/blocks/BlockArchitecture'
 import BlockJournal from '~/components/blocks/BlockJournal'
 import BlockPress from '~/components/blocks/BlockPress'
 import BlockTabs from '~/components/blocks/BlockTabs'
+import BlockWorkspaceFilter from '~/components/blocks/BlockWorkspaceFilter'
+import BlockArchitectureList from '~/components/blocks/BlockArchitectureList'
+import BlockJournalFullList from '~/components/blocks/BlockJournalFullList'
 
 export default {
   name: 'page',
@@ -62,7 +71,10 @@ export default {
     BlockArchitecture,
     BlockJournal,
     BlockPress,
-    BlockTabs
+    BlockTabs,
+    BlockWorkspaceFilter,
+    BlockArchitectureList,
+    BlockJournalFullList
   },
 
   props: {

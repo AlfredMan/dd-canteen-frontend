@@ -77,9 +77,9 @@ $content-width: 25vw;
         overflow: auto;
       }
       .map-site-content {
-        pointer-events: none;
+        // pointer-events: none;
         .content {
-          pointer-events: none;
+          // pointer-events: none;
           > * {
             pointer-events: initial;
           }
@@ -118,6 +118,9 @@ $content-width: 25vw;
       top: 0;
       left: 0;
       bottom: 0;
+      overflow: auto;
+
+      @apply shadow;
     }
     // border: 1px solid blue;
   }
@@ -130,15 +133,21 @@ $content-width: 25vw;
     @include media-breakpoint-up(sm) {
       max-width: 33.33vw;
       width: 33.33vw;
+
+      max-width: 20rem;
+      width: 20rem;
     }
     @include media-breakpoint-up(md) {
       max-width: 25vw;
       width: 25vw;
+
+      max-width: 20rem;
+      width: 20rem;
     }
 
     padding: 1rem;
     @include media-breakpoint-up(sm) {
-      padding: 1.5rem;
+      padding: 1.25rem;
     }
     font-size: 1rem;
 
@@ -206,7 +215,22 @@ $content-width: 25vw;
       }
     }
   }
-
+  .map-site-title {
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 400;
+      margin-bottom: .5rem !important;
+      margin-left: -0.05em;
+    }
+    h3 {
+      margin-top: 0;
+      font-size: 2rem;
+      font-weight: 500;
+    }
+  }
+  .building-title {
+    // @apply text-sm;
+  }
   // curtain
 
   .curtain {

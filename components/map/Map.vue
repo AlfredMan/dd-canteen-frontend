@@ -74,6 +74,11 @@
     ref="mapContainer"
 
     >
+
+      <map-controls />
+      <div class="credit">
+        Design and build by Hato
+      </div>
     </div>
 
     <div

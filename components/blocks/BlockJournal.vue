@@ -49,7 +49,7 @@ export default {
 
   computed: {
     entries () {
-      return this.$store.state.journals
+      return _.take(this.$store.state.journals, 5)
     }
   }
 }
@@ -61,6 +61,7 @@ section {
   @media (min-width: 1024px) {
     @apply pt-16 pb-4;
     @apply cap-max-w px-4;
+    overflow-x: inherit;
   }
 }
 .block-journal-header {

@@ -124,7 +124,7 @@ export default {
     lights () {
       // return
 
-      const light = new THREE.AmbientLight(0xFFFFFF, 0.5) // soft white light
+      const light = new THREE.AmbientLight(0xFFFFFF, 0.2) // soft white light
       this.sceneState.scene.add(light)
 
       // const d = 20
