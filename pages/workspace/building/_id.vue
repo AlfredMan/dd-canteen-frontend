@@ -294,7 +294,7 @@
           </div>
 
         </div>
-        <div class="w-full xl:w-1/3 px-6" v-if="architectRelatedJournalEntry">
+        <div class="w-full lg:w-1/3 px-6" v-if="architectRelatedJournalEntry">
           <news-card class="news-card" :entry="architectRelatedJournalEntry"></news-card>
         </div>
 
