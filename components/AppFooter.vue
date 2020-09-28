@@ -3,7 +3,7 @@
     <div class="px-0 -px-md-4 pt-2 pb-4 py-md-4">
       <div class="container-fluid cap-max-w px-3">
         <div class="row">
-          <div class="col-12 col-md-4 col-lg-4 mb-5 mt-4 mt-md-0">
+          <div class="col-12 col-md-3 col-lg-3 mb-5 mt-4 mt-md-0">
             <h6 class=" font-medium uppercase">DESIGN DISTRICT</h6>
             <a class="h6" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/The+Gateway+Pavilions,+Peninsula+Square,+Greenwich+Peninsula,+London+SE10+0SQ/@51.5003894,0.0041197,18.67z?hl=en">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a><br>
             <a class="h6 underline" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/The+Gateway+Pavilions,+Peninsula+Square,+Greenwich+Peninsula,+London+SE10+0SQ/@51.5003894,0.0041197,18.67z?hl=en">Plan my route</a><br><br>
@@ -14,9 +14,9 @@
             </small>
           </div>
 
-          <div class="col-12 col-md-4">
+          <div class="col-12 col-md-5">
             <div class=" row">
-              <div class="col-3 col-md-2-col-lg-2 mb-5">
+              <div class="col-4 col-md-2-col-lg-2 mb-5">
                 <h6 class=" font-medium uppercase">Stay Connected</h6>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london">LinkedIn</a><br>
@@ -28,7 +28,7 @@
                 <a class="h6" target="_blank" rel="noreferrer" href="">Newsletter</a>
               </div>
 
-              <div class="col-5 col-md-2-col-lg-2 mb-5">
+              <div class="col-4 col-md-2-col-lg-2 mb-5">
                 <h6 class=" font-medium uppercase">Find your workspace</h6>
                 <nuxt-link class="h6" to="/workspace">
                   Multi-Purpose

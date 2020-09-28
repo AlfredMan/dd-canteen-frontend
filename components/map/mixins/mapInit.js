@@ -54,8 +54,15 @@ export default {
   },
   methods: {
     init () {
+      console.log('has already init? this.mapState.hasInit = ', this.mapState.hasInit)
       if (!this.mapState.hasInit) {
-        this.mapState.hasInit=true
+        console.log('no init. init now')
+        this.mapState.hasInit = true
+        const container = this.$refs.mapContainer
+        if (!container) {
+          console.log('this.$refs.mapContainer error', this.$refs)
+          return
+        }
         this.loadModel().then((models) => {
           this.initThree()
           // this.initThumb()
@@ -69,7 +76,7 @@ export default {
           this.updateViewByRoute()
         })
       } else {
-        console.log('hasInit')
+        console.log('has already init')
       }
     },
     updateLoadState () {
@@ -77,6 +84,10 @@ export default {
     },
     initThree () {
       const container = this.$refs.mapContainer
+      if (!container) {
+        console.log('this.$refs.mapContainer error', this.$refs)
+        return
+      }
       const scene = new THREE.Scene()
       const raycaster = new THREE.Raycaster()
       const mouse = new THREE.Vector2()
