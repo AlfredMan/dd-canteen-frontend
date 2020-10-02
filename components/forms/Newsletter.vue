@@ -28,7 +28,7 @@
               value=""
               required
             >
-            <button class="block btn -btn-outline-dark btn-lg mt-0 absolute right-0 pr-4" @click="active = true"  v-show="!active">
+            <button class="block btn -btn-outline-dark btn-lg mt-0 absolute right-0 top-0 pr-4" @click="active = true"  v-show="!active">
               &rarr;
             </button>
           </div>

@@ -8,7 +8,7 @@
       <div
       class="block-page-header-text"
       >
-        <h1 class="" v-if="block.fields.heading">{{formattedHeading}}</h1>
+        <h1 class="hyphens" v-if="block.fields.heading">{{formattedHeading}}</h1>
         <div class="flex flex-wrap items-baseline">
           <h4 class="" v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
           <h5 class="" v-if="block.fields.minorSubheading">{{block.fields.minorSubheading}}</h5>
