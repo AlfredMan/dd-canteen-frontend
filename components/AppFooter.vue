@@ -21,7 +21,7 @@
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london">LinkedIn</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCOE4WSM2KzYyItgaS6k4_eg">YouTube</a><br>
-                <a class="h6" target="_blank" rel="noreferrer" href="https://www.pinterest.co.uk/designdistrictlondon/">Pinterest</a>
+                <a class="h6" target="_blank" rel="noreferrer" href="https://www.pinterest.co.uk/designdistrictlondon/">Pinterest</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="">Newsletter</a>
                 <!-- <a class="h6" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br> -->
