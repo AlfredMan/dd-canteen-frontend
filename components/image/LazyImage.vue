@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="lazy-image ratio-container" :style="getContainerStyle()">
+  <div class="lazy-image ratio-container" :class="getContainerClass()">
     <img
         data-sizes="auto"
         :src="getSrc()"
@@ -37,6 +37,10 @@ export default {
       default: 80,
     },
     custom: {
+      type: String,
+      default: '',
+    },
+    fit: {
       type: String,
       default: '',
     }
@@ -95,7 +99,17 @@ export default {
 
       return dim
     },
-    getContainerStyle () {
+    getContainerClass () {
+      if (this.fit == 'cover') {
+        return [
+          'fit-cover'
+        ]
+      }
+      if (this.fit == 'contain') {
+        return [
+          'fit-contain'
+        ]
+      }
       // if (this.w && this.h) {
       //   return {'padding-bottom': `${100*this.h/this.w}%`, 'height': 0}
       // } else {
@@ -111,6 +125,24 @@ export default {
 .ratio-container {
     position: relative;
     overflow: hidden;
+    &.fit-cover {
+      width: 100%;
+      height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &.fit-contain {
+      width: 100%;
+      height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
 }
 .ratio-container > * {
     // position: absolute;

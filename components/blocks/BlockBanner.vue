@@ -26,6 +26,8 @@
           v-if="block.fields.imageAsset && block.fields.imageAsset[0]"
           :src="block.fields.imageAsset[0].fields.file.url"
           :w="2000"
+          :custom="`fit=thumb`"
+          :fit="`cover`"
           />
       </div>
     </div>
@@ -140,6 +142,7 @@ section {
       }
 
       .block-banner-media-image {
+        @apply absolute inset-0 m-auto;
         @apply w-full h-full object-cover object-center;
       }
     }
