@@ -120,7 +120,7 @@
                 <div class="mr-3">Sqft {{numberWithCommas(building.fields.minSize)}}–{{numberWithCommas(building.fields.maxSize)}}</div>
               </div>
 
-              <div class="tags mt-4">
+              <div class="tags mt-2 pt-1">
                 <div class=" tag tag-sm tag-display" v-for="spaceType in building.fields.spaceType" :key="spaceType.sys.id">
                   {{spaceType.fields.title}}
                 </div>
