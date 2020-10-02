@@ -103,7 +103,8 @@ export default {
       @media screen and (max-width: 768px)
         font-size: 1.2rem
         p
-          font-size: 1.2rem
+          font-size: 1.5rem
+
     .badge
       font-weight: 400
       font-size: .9rem
@@ -120,9 +121,9 @@ export default {
     .new-meta
       opacity: 0.5
       h6
-        font-size: 0.8em
+        font-size: 0.8rem
         @media screen and (max-width: 768px)
-          font-size: 1rem
+          font-size: .9rem
 
 
 

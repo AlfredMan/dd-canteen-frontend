@@ -95,10 +95,12 @@ section {
     // }
 
     h4 {
-      @apply uppercase font-normal max-w-2xl my-0;
+      @apply font-normal max-w-2xl my-0;
     }
 
     .source {
+      @apply text-2xl;
+      @apply uppercase;
       @apply w-full;
       @screen md {
         @apply w-3/12;
@@ -106,6 +108,7 @@ section {
       overflow: hidden;
     }
     .title {
+      @apply text-2xl;
       @apply w-full;
       @screen md {
         @apply w-7/12;
@@ -113,6 +116,8 @@ section {
       overflow: hidden;
     }
     .date {
+      @apply text-2xl;
+      @apply uppercase;
       @apply w-full;
       @screen md {
         @apply w-2/12;

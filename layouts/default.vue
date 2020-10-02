@@ -15,7 +15,7 @@
 
     <app-transition />
 
-    <app-map />
+    <!-- <app-map /> -->
 
     <!-- <Cookies /> -->
 

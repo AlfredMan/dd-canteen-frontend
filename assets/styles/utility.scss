@@ -109,7 +109,7 @@ button, .btn, input[type="submit"] {
   .tag {
 		@extend .monospace;
 		font-weight: 400;
-    padding: .2em 1.25em .3em;
+    padding: .2em .9em .3em;
     margin-right: .4em;
     margin-left: 0;
     margin-bottom: .4em;
@@ -130,9 +130,15 @@ button, .btn, input[type="submit"] {
   }
 	.tag-sm {
 		font-size: 0.75rem;
+		@screen mobile {
+			font-size: .9rem;
+		}
 	}
 	.tag-xs {
 		font-size: 0.5rem;
+		@screen mobile {
+			font-size: .8rem;
+		}
 	}
 	.tag-display {
 		cursor: default;
@@ -185,6 +191,7 @@ select {
 
 .input-text,
 [type="text"] {
+	font-size: 1.25rem;
 	padding: .9rem .5rem;
 	width: 100%;
 	margin-bottom: 1rem;
@@ -361,6 +368,12 @@ select {
   box-sizing: border-box;
   box-shadow: 0.5px 0.5px 2px 1px rgba(0, 0, 0, 0.32);
 	border: 2px solid black;
+
+	@screen mobile {
+		border: 1px solid black;
+		transform: scale(1.5);
+	}
+
 }
 .vue-slider-dot-handle-focus {
   box-shadow: 0px 0px 1px 2px rgba(52, 152, 219, 0.36);

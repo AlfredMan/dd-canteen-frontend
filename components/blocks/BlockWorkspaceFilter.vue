@@ -29,7 +29,7 @@
 
               <div class="uppercase mb-2  text-sm">Size (sq ft)</div>
 
-              <div class="px-2 w-full max-w-lg mb-24">
+              <div class="px-3 pt-2 lg:pt-0 lg:px-2 w-full max-w-lg mb-24">
                 <vue-slider
                 class="slider-component"
                 v-model="sliderModel"
@@ -54,7 +54,34 @@
                     <div class="vue-slider-process custom-process" :style="[style]"></div>
                   </template>
                 </vue-slider>
+
+                <vue-slider
+                class="mobile-slider-component"
+                v-model="sliderModel_Mobile"
+                :absorb="true"
+                :marks="sliderMarks_Mobile"
+                :tooltip="'none'"
+                :min="0"
+                :max="4"
+                :min-range="1"
+                :interval="1"
+                :contained="false"
+
+                @change="onSliderChange"
+                @drag-end="onSliderDragEnd"
+                >
+                  <template v-slot:mark="{ pos, label }">
+                    <div class="custom-mark monospace" :style="{ left: `${pos}%` }">
+                      {{ numberWithCommas(label) }}
+                    </div>
+                  </template>
+                  <template v-slot:process="{ start, end, style, index }">
+                    <div class="vue-slider-process custom-process" :style="[style]"></div>
+                  </template>
+                </vue-slider>
+
               </div>
+
             </div>
           </div>
 
@@ -66,7 +93,7 @@
           <div class="flex flex-wrap mt-8 -mx-2" v-if="allBuildings">
 
             <div
-            class="w-full md:w-1/2 lg:w-1/4 px-2 mb-5 building text-sm"
+            class="w-full md:w-1/2 lg:w-1/4 px-2 mb-5 building text-lg lg:text-sm"
             v-if="filteredBuildings && filteredBuildings.length>0"
             v-for="(building, index) in filteredBuildings"
             :key="building.sys.id">
@@ -82,7 +109,7 @@
                 </lazy-image>
               </transition-link>
 
-              <nuxt-link :to="`/workspace/building/${building.fields.title}`" class="building-title block my-2 mt-3">
+              <nuxt-link :to="`/workspace/building/${building.fields.title}`" class="building-title block my-2 mt-3 text-xl lg:text-sm">
                 <span class="inline-block font-medium text-green mr-2">{{building.fields.title}}</span>
                 <span class="inline-block font-medium">{{building.fields.architecture[0].fields.title}}</span>
               </nuxt-link>
@@ -94,7 +121,7 @@
               </div>
 
               <div class="tags mt-4">
-                <div class="tag tag-sm tag-display" v-for="spaceType in building.fields.spaceType" :key="spaceType.sys.id">
+                <div class=" tag tag-sm tag-display" v-for="spaceType in building.fields.spaceType" :key="spaceType.sys.id">
                   {{spaceType.fields.title}}
                 </div>
               </div>
@@ -150,7 +177,6 @@ export default {
       sizeFilters: false,
       typeFilters: false,
       sliderModel: [0,7],
-      sliderData: [1,2,3,4,5,6,7],
       sliderMarks: {
         '0': { label: '5' },
         '1': { label: '100' },
@@ -160,6 +186,14 @@ export default {
         '5': { label: '2000' },
         '6': { label: '3000' },
         '7': { label: '4000+' }
+      },
+      sliderModel_Mobile: [0,4],
+      sliderMarks_Mobile: {
+        '0': { label: '5' },
+        '1': { label: '200' },
+        '2': { label: '500' },
+        '3': { label: '1000' },
+        '4': { label: '2000+' }
       },
       filterDisplay: {
         sizeBracketMin: '5',
@@ -539,6 +573,7 @@ export default {
   }
 }
 
+.mobile-slider-component,
 .slider-component {
 
   height: 2px !important;
@@ -567,4 +602,20 @@ export default {
     background: red;
   }
 }
+
+.slider-component {
+  @apply hidden;
+}
+.mobile-slider-component {
+  @apply block;
+}
+@screen lg {
+  .slider-component {
+    @apply block;
+  }
+  .mobile-slider-component {
+    @apply hidden;
+  }
+}
+
 </style>

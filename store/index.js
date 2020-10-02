@@ -14,7 +14,7 @@ export const state = () => ({
   },
   transition: {
     step: 0,
-    delay: 700,
+    delay: 400,
     count: 0,
     sourceElement: null,
     sourceElementRect: null

@@ -1,14 +1,14 @@
 <template>
   <section class="block-page-header" v-if="block">
     <div
-    class="cap-max-w px-3 flex flex-wrap"
+    class="cap-max-w-px-3 flex flex-wrap"
     :class="{ 'block-page-header-has-image': block.fields.imageAsset && block.fields.imageAsset[0] }"
     >
 
       <div
       class="block-page-header-text"
       >
-        <h1 v-if="block.fields.heading">{{block.fields.heading}}</h1>
+        <h1 class="" v-if="block.fields.heading">{{block.fields.heading}}</h1>
         <div class="flex flex-wrap items-baseline">
           <h4 class="" v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
           <h5 class="" v-if="block.fields.minorSubheading">{{block.fields.minorSubheading}}</h5>
@@ -40,9 +40,17 @@ export default {
 
 <style lang="scss" scoped>
 section {
-  overflow-x: hidden;
-  @apply p-4 mt-24;
+  @apply px-4 mt-24;
+  @screen lg {
+    @apply pb-4;
+    @apply cap-max-w px-4 ;
+    overflow-x: hidden;
+  }
 }
+// section {
+//   overflow-x: hidden;
+//   @apply p-4 mt-24;
+// }
 .block-page-header-text {
   // @apply flex flex-wrap;
   @apply w-full;
@@ -67,6 +75,9 @@ section {
       @apply mb-8
     }
   }
+}
+h1 {
+  @apply -mt-4;
 }
 h4 {
   @apply max-w-2xl w-full mt-0 pr-0 font-light;

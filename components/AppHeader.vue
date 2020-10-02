@@ -58,8 +58,8 @@
         class="btn btn-lg- btn-dark- btn-primary text-white -btn-outline-primary m-2 -pt-1 -mr-0 ml-auto ml-sm-0"
         :class="{'btn-dark': menuActive}"
         >
-          <span class="d-inline d-xl-none">Join Now</span>
-          <span class="d-none d-xl-inline">Join Now</span>
+          <span class="d-inline d-xl-none">Become a tenant</span>
+          <span class="d-none d-xl-inline">Become a tenant</span>
         </nuxt-link>
 
         <div class="d-block d-sm-none pl-0 -bg-white">
@@ -126,10 +126,17 @@
           <!-- </div>
         <div class="col-5"> -->
           <!-- <h5>Connect</h5> -->
+
           <a class="" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
+          <a class="" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london">LinkedIn</a><br>
+          <a class="" target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCOE4WSM2KzYyItgaS6k4_eg">YouTube</a><br>
+          <a class="" target="_blank" rel="noreferrer" href="https://www.pinterest.co.uk/designdistrictlondon/">Pinterest</a><br>
+          <a class="" target="_blank" rel="noreferrer" href="">Newsletter</a>
+
+          <!-- <a class="" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
           <a class="" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
           <a class="" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br>
-          <a class="" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london">LinkedIn</a>
+          <a class="" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london">LinkedIn</a> -->
         </div>
       </div>
     </div>

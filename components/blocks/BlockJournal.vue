@@ -57,7 +57,7 @@ export default {
 
 <style scoped lang="scss">
 section {
-  @apply px-0 py-8;
+  @apply px-4 py-8;
   @media (min-width: 1024px) {
     @apply pt-16 pb-4;
     @apply cap-max-w px-4;

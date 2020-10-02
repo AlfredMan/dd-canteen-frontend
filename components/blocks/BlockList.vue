@@ -144,9 +144,9 @@ section {
   @apply cap-max-w;
 
   .block-list--contentList--content {
-    @apply mb-4 pr-0;
+    @apply mb-8 pr-0;
     @screen lg {
-      @apply pr-4;
+      @apply px-2;
     }
 
     .block-list--contentList--content--image {

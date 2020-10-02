@@ -17,15 +17,14 @@
           <div class="col-12 col-md-5">
             <div class=" row">
               <div class="col-4 col-md-2-col-lg-2 mb-5">
-                <h6 class=" font-medium uppercase">Stay Connected</h6>
+                <h6 class=" font-medium uppercase"><!--Stay Connected-->Connect</h6>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london">LinkedIn</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCOE4WSM2KzYyItgaS6k4_eg">YouTube</a><br>
-                <!-- <a class="h6" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
-                <a class="h6" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br> -->
-
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.pinterest.co.uk/designdistrictlondon/">Pinterest</a>
                 <a class="h6" target="_blank" rel="noreferrer" href="">Newsletter</a>
+                <!-- <a class="h6" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
+                <a class="h6" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br> -->
               </div>
 
               <div class="col-4 col-md-2-col-lg-2 mb-5">

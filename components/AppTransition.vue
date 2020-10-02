@@ -168,7 +168,7 @@ export default {
         },
         force3D: true,
         // background: 'blue',
-        ease: "power3.in"
+        ease: "power1.out"
       }, "boxLeave")
       // this.tl.set('.box', {
       //   autoAlpha:0
