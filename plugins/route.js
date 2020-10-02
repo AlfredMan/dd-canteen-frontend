@@ -15,6 +15,14 @@ export default ({ app, store }) => {
       return
     }
 
+    // if is map
+    if (from.path.indexOf('workspace')>=0 && to.path.indexOf('workspace')>=0) {
+      // if ((from.query && from.query['space-type']) || (to.query && to.query['space-type'])) {
+        next()
+        return
+      // }
+    }
+
     store.dispatch('routeTransitionStart')
     const delay = store.state.transition.delay
     const count = store.state.transition.count

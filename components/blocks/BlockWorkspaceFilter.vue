@@ -16,11 +16,11 @@
               <div class="tags">
                 <div
                 v-for="option in spaceFilters['options']" :key="option"
-                @click="toggleFilter('options', option); typeFilters = false"
+                @click="toggleSpaceTypeFilter(option); typeFilters = false"
                 :class="{'active': isActiveFilter(option)}"
                 class="btn btn-outline-dark tag mr-2 mb-2"
                 >
-                  {{option}} <span v-if="option == filter.options">&times;</span>
+                  {{option}} <span v-if="isActiveFilter(option)">&times;</span>
                 </div>
               </div>
 
@@ -210,6 +210,16 @@ export default {
     this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
   },
 
+  mounted () {
+    this.setActiveFilterFromRoute()
+  },
+
+  watch: {
+    '$route' (newValue, oldValue) {
+      this.setActiveFilterFromRoute()
+    }
+  },
+
   computed: {
     // formattedBuildings () {
     //   // console.log('buildings', buildings)
@@ -238,39 +248,20 @@ export default {
     spaceFilters () {
       return this.$store.state.filters
     },
-    // filteredBuildings () {
-    //   _.forIn(this.allSpacesByBuilding, (val, key) => {
-    //
-    //   })
-    // },
-    // filteredSpaces () {
-    //   return _.filter(this.$store.state.spaces, (space) => {
-    //     let match = 0
-    //
-    //     // if (this.filter.architect) {
-    //     //   match = space.architect == this.filter.architect ? match+1 : -100
-    //     // }
-    //     if (!this.filter.options && !this.filter.sizeBracket) {
-    //       return true
-    //     }
-    //
-    //     let sb = space.building
-    //     let suid = space.uniqueUnitReference
-    //     console.log(suid, match)
-    //
-    //     if (this.filter.options && space.options) {
-    //       // match = space.options == this.filter.options ? match+1 : -100
-    //       match = _.includes(this.filter.options, space.options) ? match+1 : -100
-    //       console.log(match, this.filter.options, space.options)
-    //     }
-    //     if (this.filter.sizeBracket && space.options.length > 0) {
-    //       // match = space.sizeSqFtBracket == this.filter.sizeBracket ? match+1 : -100
-    //       match = _.includes(this.filter.sizeBracket, space.sizeSqFtBracket) ? match+1 : -100
-    //       console.log(match, this.filter.sizeBracket, space.sizeSqFtBracket)
-    //     }
-    //
-    //     return match > 0
-    //   })
+    activeFilterOption () {
+      return _.kebabCase(this.filter.options)
+    },
+    //   // getter
+    //   get: function () {
+    //     return this.$route.query && this.$route.query['space-type']
+    //   },
+    //   // setter
+    //   set: function (newValue) {
+    //     // var names = newValue.split(' ')
+    //     // this.firstName = names[0]
+    //     // this.lastName = names[names.length - 1]
+    //     this.filter.options = newValue
+    //   }
     // },
     filteredBuildings () {
       let visibleInWorkSpaceOnly = _.filter(this.allBuildings, (building) => {
@@ -306,83 +297,42 @@ export default {
       // show visibility = 'Work Space' only.
       return filtered
     },
-    // filteredSpacesByBuilding () {
-    //   let group = _.groupBy(this.allSpaces, 'building')
-    //   // return group
-    //
-    //   group = _.mapValues(group, (building, key) => {
-    //     let options = _.uniq(_.map(building, (b) => b.options))
-    //     let sizeSqFtBracket = _.uniq(_.map(building, (b) => b.sizeSqFtBracket))
-    //     let sizeSqFt = _.map(building, (b) => b['sizeSqFt'])
-    //     let sizeSqFtMin = _.round(_.min(sizeSqFt))
-    //     let sizeSqFtMax = _.round(_.max(sizeSqFt))
-    //
-    //     return {
-    //       title: `Building ${key}`,
-    //       id: key,
-    //       building: this.getBuildingBySlug(key),
-    //       options: options,
-    //       sizeSqFtBracket: sizeSqFtBracket,
-    //       sizeSqFt: sizeSqFt,
-    //       sizeSqFtMin: sizeSqFtMin,
-    //       sizeSqFtMax: sizeSqFtMax,
-    //       units: building
-    //     }
-    //   })
-    //
-    //   return _.filter(group, (building) => {
-    //
-    //     // show all buildings if filter is at default state
-    //     if (!this.filter.options && !this.filter.sizeBracketMax) {
-    //       return true
-    //     }
-    //
-    //     let match = 0
-    //
-    //     if (this.filter.options && building.options) {
-    //       // match = space.options == this.filter.options ? match+1 : -100
-    //       match = _.includes(building.options, this.filter.options) ? match+1 : -100
-    //     }
-    //
-    //     // console.log(this.filter.sizeBracketMin , this.filter.sizeBracketMax, building.sizeSqFtMin, building.sizeSqFtMax>0)
-    //
-    //     if (this.filter.sizeBracketMin >=0 && this.filter.sizeBracketMax>0 && building.sizeSqFtMin>0 && building.sizeSqFtMax>0) {
-    //       // match = space.sizeSqFtBracket == this.filter.sizeBracket ? match+1 : -100
-    //       let filterMin = this.filter.sizeBracketMin == 0 ? 0 : this.filter.sizeBracketMin
-    //       let filterMax = this.filter.sizeBracketMax == 4000 ? 999999 : this.filter.sizeBracketMax
-    //
-    //       // console.log(building.sizeSqFtMin, filterMin, filterMax)
-    //       // console.log(building.sizeSqFtMax, filterMin, filterMax)
-    //
-    //       match = (building.sizeSqFtMin!=filterMax && _.inRange(building.sizeSqFtMin, filterMin, filterMax)) || (building.sizeSqFtMax != filterMin && _.inRange(building.sizeSqFtMax, filterMin, filterMax))
-    //             ? match + 1 : -100
-    //
-    //       debugger
-    //     }
-    //
-    //     return match > 0
-    //
-    //   })
-    //
-    //   // return _.filter(allBuildings, (building) => {
-    //   //   return filter
-    //   // })
-    // }
   },
 
   methods: {
+    setActiveFilterFromRoute () {
+      if (this.$route.query) {
+        if (this.$route.query['space-type']) {
+          this.filter.options = this.$route.query['space-type']
+        }
+      }
+    },
+
     isActiveFilter (option) {
-      return option == this.filter.options
+      return _.kebabCase(option) == _.kebabCase(this.filter.options)
     },
     getBuildingBySlug (slug) {
       return this.$store.getters.getBuildingBySlug(slug)
     },
-    toggleFilter (filterOption, value) {
-      if (this.filter[filterOption] == value) {
-        this.filter[filterOption] = null
+    toggleSpaceTypeFilter (value) {
+      if (this.activeFilterOption && this.activeFilterOption == _.kebabCase(value)) {
+        this.$router.push({
+          query: {
+            'space-type':null
+          }
+        })
       } else {
-        this.filter[filterOption] = value
+        this.$router.push({
+          query: {
+            'space-type':_.kebabCase(value)
+          }
+        })
       }
+      // if (this.filter[filterOption] == value) {
+      //   this.filter[filterOption] = null
+      // } else {
+      //   this.filter[filterOption] = value
+      // }
     },
     onSliderChange (val, a) {
       // console.log('onSliderChange', ev, a)

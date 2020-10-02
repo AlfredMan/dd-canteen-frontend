@@ -43,6 +43,9 @@
         <div class="relative w-full">
           <h4 class="inline-block font-medium text-6xl mb-4">{{building.fields.title}}</h4>
           <div
+
+          v-if="false"
+
           class="absolute top-0 right-0 -bg-white border-1 rounded-full -shadow transition duration-300 mr-3"
           >
             <div
@@ -93,7 +96,7 @@
             Building {{building.fields.title}}
           </div> -->
           <a
-          v-if="building.fields.longDescription && building.fields.longDescription.length > 0"
+          v-if="building.fields.longDescription && building.fields.longDescription.length > 0 && building.fields.longDescriptionActive"
           @click.prevent="scrollTo('#type-of-space')" href="#type-of-space">Type of Space</a>
 
           <a
@@ -119,7 +122,7 @@
       </div>
     </div>
 
-    <div class="px-3 my-16 cap-max-w" id="type-of-space" v-if="building.fields.longDescription && building.fields.longDescription.length > 0">
+    <div class="px-3 my-16 cap-max-w" id="type-of-space" v-if="building.fields.longDescription && building.fields.longDescription.length > 0 && building.fields.longDescriptionActive">
       <div class="flex items-baseline">
         <h2 class="uppercase inline-block">Type of Space</h2>
       </div>
