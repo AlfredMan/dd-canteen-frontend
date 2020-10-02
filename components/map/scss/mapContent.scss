@@ -358,6 +358,7 @@ $content-width: 25vw;
   // }
   .toggle {
     @apply bg-white rounded-full shadow transition duration-300 m-3;
+    // @apply bg-green shadow transition duration-300 m-3;
     position: absolute;
     bottom: 0px;
     right: 0px;

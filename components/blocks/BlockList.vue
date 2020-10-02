@@ -1,5 +1,9 @@
 <template>
-  <section class="block-list" v-if="block">
+  <section
+  v-if="block"
+  class="block-list"
+  :class="[blockThemeClass]"
+  >
     <div
     v-if="block.fields.heading || block.fields.subheading"
     class="block-list-header"
@@ -110,6 +114,12 @@ export default {
     },
     contentDisplay () {
       return this.block && this.block.fields.columns || '4-column'
+    },
+    blockTheme () {
+      return this.block && _.lowerCase(this.block.fields.theme) || 'default'
+    },
+    blockThemeClass () {
+      return `theme-${this.blockTheme}`
     }
   }
 }
@@ -120,6 +130,11 @@ section {
   @apply px-1 py-8;
   @media (min-width: 1024px) {
     @apply pt-12 pb-4;
+  }
+}
+.block-list {
+  &.theme-light {
+    @apply bg-gray-100
   }
 }
 .block-list-header {

@@ -21,7 +21,8 @@
 
   @screen 2xl {
     right: 0;
-    margin-right: 0;
+    // margin-right: 0;
+    @apply mr-2;
   }
 
   &.active {

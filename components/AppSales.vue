@@ -9,7 +9,7 @@
       <div class="w-full lg:w-7/12">
         <!-- <h4>Need help finding a work space for you and your team?</h4> -->
         <!-- <h4>Call on <a href="#" class="underline">+44 (0)20 3981 2426</a> or email us at <a href="#" class="underline">sales@designdistrict.co.uk</a></h4> -->
-        <h4>Find a space and leasing model to suit your needs, register your interest, or arrange a tour — Alex and the team are on-site to show you around.</h4>
+        <h4>Find a space and leasing model to suit your needs, register your interest, or arrange a tour. Alex and the team are on-site to show you around.</h4>
         <h4><email :address="'sales@designdistrict.co.uk'"></email><br><a href="#" class="underline">+44 (0)20 3981 2426</a></h4>
         <callToAction :callToAction="{fields:{path:'/enquire',label:'More ways to connect &rarr;'}}" theme="black"/>
       </div>

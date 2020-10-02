@@ -27,6 +27,7 @@ section {
   @apply relative;
   h1 {
     @apply font-normal;
+    line-height: 1.1;
   }
   h1, h4 {
     text-shadow: 0 0 3rem rgba(0,0,0,0.3);

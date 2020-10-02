@@ -524,7 +524,7 @@
                 value="1"
               >
               <label for="agreePolicy">
-                <span>I agree to the terms of your <a href="/privacy-policy/">Privacy Policy</a>*</span>
+                <span>I agree to the terms of your <a href="/privacy-notice/">Privacy Policy</a>*</span>
               </label>
             </div>
           </div>
@@ -596,8 +596,8 @@
       </div>
       <div v-show="active||true" class="">
         <h6>
-          <!-- Our <a href="/privacy-policy/">Privacy Policy</a> outlines how we use and store your data. You can manage your preferences or opt out of communications at any time. -->
-          Our <a href="/privacy-policy/">Privacy Policy</a> outlines how we use and store your data. You can manage your preferences or opt out of communications at any time.
+          <!-- Our <a href="/privacy-notice/">Privacy Policy</a> outlines how we use and store your data. You can manage your preferences or opt out of communications at any time. -->
+          Our <a href="/privacy-notice/">Privacy Policy</a> outlines how we use and store your data. You can manage your preferences or opt out of communications at any time.
         </h6>
         <div class="mt-4">
           <small class="text-black-50">

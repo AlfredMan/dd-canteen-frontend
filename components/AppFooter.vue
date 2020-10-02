@@ -59,7 +59,7 @@
 
               <div class="col-4 col-md-2-col-lg-2 mb-5">
                 <h6 class=" font-medium uppercase">Legal</h6>
-                <nuxt-link class="h6" to="/privacy-policy">
+                <nuxt-link class="h6" to="/privacy-notice">
                   Privacy Policy
                 </nuxt-link>
                 <br>
@@ -117,7 +117,7 @@
           <!-- <small class="col-12 col-md-6 text-left text-md-right ml-auto mt-2">
             Copyright © 2020 Design District Limited
           </small> -->
-          <!-- <nuxt-link class="d-none d-md-inline nav-link" to="/privacy-policy">
+          <!-- <nuxt-link class="d-none d-md-inline nav-link" to="/privacy-notice">
             Privacy Policy
           </nuxt-link>
           <nuxt-link class="d-none d-md-inline nav-link" to="/terms-and-conditions">

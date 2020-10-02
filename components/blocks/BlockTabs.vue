@@ -78,14 +78,14 @@ section {
 }
 
 .block-tab-selectors {
-  @apply px-4;
+  @apply px-4 mb-4 cap-max-w;
   div {
 
-    @apply flex cap-max-w px-4;
+    @apply flex px-4 -ml-4;
 
     h4 {
       @apply my-0 mr-8 uppercase font-normal cursor-pointer;
-      
+
       &:hover,
       &.active {
         @apply text-green;
@@ -95,16 +95,16 @@ section {
 }
 
 .block-tab--tab-contents {
-  // @apply cap-max-w;
 
   .block-tab--tab-content {
+    @apply cap-max-w;
   }
 
   .block-tab--tab-list {
     @apply pt-8;
   }
   .block-tab--tab-image {
-    @apply cap-max-w py-0;
+    @apply cap-max-w py-0 px-4;
   }
 }
 </style>

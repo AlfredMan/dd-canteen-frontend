@@ -238,7 +238,7 @@ export default {
     exclude: [
       '/helper/**',
       '/helper',
-      '/privacy-policy',
+      '/privacy-notice',
       '/terms-and-conditions',
       '/cookies-policy',
       '/success',

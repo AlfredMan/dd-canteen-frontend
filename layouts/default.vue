@@ -72,11 +72,11 @@ export default {
   },
 
   computed: {
-    showNewsletterFooter () {
-      return this.$route.path.indexOf('workspace') < 0
-    },
     showSalesFooter () {
-      return !this.showNewsletterFooter
+      return this.$route.path.indexOf('workspace') >= 0 || this.$route.path.indexOf('about') >= 0
+    },
+    showNewsletterFooter () {
+      return !this.showSalesFooter
     },
   }
 }

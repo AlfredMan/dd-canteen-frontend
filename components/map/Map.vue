@@ -31,8 +31,11 @@
     }"
     >
       <!-- <span>Close Map</span><span class="cross">&times;</span> -->
-      <div
+      <!-- <div
       class="flex align-center items-center items-end px-6 py-2 text-lg rounded-lg bg-opacity-50"
+      > -->
+      <div
+      class="flex align-center items-center items-end px-3 py-2 text-base bg-opacity-50 rounded-sm uppercase font-medium"
       >
         <div class="relative w-4 h-4 mr-2">
           <IconX class=""/>
@@ -49,8 +52,11 @@
         'active': !mapActive
       }"
       >
-        <div
+        <!-- <div
         class="flex align-center items-center items-end px-6 py-2 text-lg rounded-lg bg-opacity-50"
+        > -->
+        <div
+        class="flex align-center items-center items-end px-3 py-2 text-base text-white bg-green bg-opacity-50 rounded-sm uppercase font-medium"
         >
           <div class="relative w-4 h-4 mr-2">
             <IconBox class=""/>

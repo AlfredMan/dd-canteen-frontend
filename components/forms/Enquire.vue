@@ -312,7 +312,7 @@
                 class="custom-control-input"
               >
               <label class="custom-control-label" for="customCheck1">
-                I agree to the terms of your <a href="/privacy-policy/">Privacy Policy</a>*
+                I agree to the terms of your <a href="/privacy-notice/">Privacy Policy</a>*
               </label>
               <div class="invalid-feedback">
                 You must agree before submitting.
@@ -333,7 +333,7 @@
                 :class="{'is-invalid': true, 'is-valid': true}"
               >
               <label class="cb" for="enquirePrivacyOptIn">
-                <span>I agree to the terms of your <a href="/privacy-policy/">Privacy Policy</a>*</span>
+                <span>I agree to the terms of your <a href="/privacy-notice/">Privacy Policy</a>*</span>
               </label>
               <!-- <div class="invalid-feedback">
                 You must agree before submitting.
