@@ -7,7 +7,7 @@
       </div>
 
       <div class="w-full lg:w-7/12">
-        <h4>Creativity never stands still — keep up-to-date with what’s going on in our ever-evolving community.</h4>
+        <h4>Creativity never stands still – keep up-to-date with what’s going on in our ever-evolving community.</h4>
         <h4>Sign-up for the latest Design District news, developments and events.</h4>
         <NewsletterForm class="NewsletterForm" />
       </div>
@@ -28,6 +28,7 @@ export default {
 section {
   @apply px-0 py-8;
   @apply bg-green;
+  @apply overflow-hidden;
 
   @media (min-width: 1024px) {
 

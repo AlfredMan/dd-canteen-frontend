@@ -91,7 +91,7 @@
 
     <div class="sticky-navigation">
       <div class="cap-max-w">
-        <div class="px-3 lg:px-3">
+        <div class="px-3 lg:px-3 inline-block">
           <!-- <div class="current-building monospace">
             Building {{building.fields.title}}
           </div> -->
@@ -118,6 +118,7 @@
           <a
           v-if="building.fields.eventsActive"
           @click.prevent="scrollTo('#events')" href="#events">Events</a>
+
         </div>
       </div>
     </div>
@@ -527,7 +528,7 @@ aside {
 }
 
 .sticky-navigation {
-  @apply w-full sticky top-0 px-3 py-3 bg-white;
+  @apply w-full sticky top-0 bg-white;
   z-index: 999;
   top: 2.8rem;
   overflow-x: auto;
@@ -539,6 +540,8 @@ aside {
   // }
   .cap-max-w {
     white-space: nowrap;
+    overflow-x: auto;
+    @apply py-3 ;
   }
 
   .current-building {

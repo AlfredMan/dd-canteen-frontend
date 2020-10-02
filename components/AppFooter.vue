@@ -76,16 +76,16 @@
 
           <!-- <div class="col-6 col-md-1 col-lg-1" /> -->
 
-          <div class="col-12 col-md-4 mb-5 pl-0 lg:pl-24">
+          <div class="col-12 col-md-4 mb-5 pl-0 pl-4 lg:pl-24">
             <div class="row mt-4">
-              <div class="col-6 flex align-items-start justify-content-end">
-                <img src="~/assets/images/logo-hor.svg" alt="Design District logo" style="" class="mb-5 w-75">
+              <div class="col-6 flex align-items-start lg:justify-content-end">
+                <img src="~/assets/images/logo-hor.svg" alt="Design District logo" style="" class="mb-5 w-full lg:w-75">
               </div>
               <div class="col-6">
-                <div class="w-50 mb-4 mx-auto px-3">
+                <div class="w-75 lg:w-50 mb-4 mx-auto px-3">
                   <img src="~/assets/images/gp-logo.svg" alt="Greenwich Peninsula logo" style="" class=" w-100 mb-4 mx-auto">
                 </div>
-                <div class="w-75 mb-4 mx-auto px-3">
+                <div class="w-full lg:w-75 mb-4 mx-auto px-3">
                   <img src="~/assets/images/mayor-of-london-logo-3.png" alt="Mayor of London" style="" class=" w-100 mx-auto">
                 </div>
               </div>

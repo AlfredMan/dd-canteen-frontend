@@ -8,7 +8,7 @@
       <div
       class="block-page-header-text"
       >
-        <h1 class="" v-if="block.fields.heading">{{block.fields.heading}}</h1>
+        <h1 class="" v-if="block.fields.heading">{{formattedHeading}}</h1>
         <div class="flex flex-wrap items-baseline">
           <h4 class="" v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
           <h5 class="" v-if="block.fields.minorSubheading">{{block.fields.minorSubheading}}</h5>
@@ -34,6 +34,20 @@
 // import ComponentCallToAction from '~/components/blocks/ComponentCallToAction'
 export default {
   props: ['block'],
+  computed: {
+    formattedHeading () {
+      if (!this.block) return;
+      let heading = this.block && this.block.fields.heading
+      // if (heading=='Architecture') {
+      //   if (process.client) {
+      //     if (window.innerWidth < 400) {
+      //       return 'Architect-ure'
+      //     }
+      //   }
+      // }
+      return heading
+    }
+  }
   // components: { ComponentCallToAction }
 }
 </script>

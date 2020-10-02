@@ -1,5 +1,5 @@
 <template>
-  <section class="BlockJournalFullList mt-5 mb-5">
+  <section class="BlockJournalFullList">
 
     <!-- <div class="container-fluid-" v-if="false">
       <div class="px-0 px-md-4 py-4 py-5 py-md-5">
@@ -105,7 +105,7 @@ export default {
 <style scoped lang="scss">
 section {
   @apply px-0 py-8;
-  @media (min-width: 1024px) {
+  @screen lg {
     @apply pt-16 pb-4;
     @apply cap-max-w px-4;
     overflow-x: inherit;
@@ -132,7 +132,7 @@ ul {
   }
 
   .block-journal--entries--entry {
-    @apply mb-6;
+    @apply mb-6 px-3;
 
     @screen lg {
       @apply px-2
