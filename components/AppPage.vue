@@ -38,9 +38,6 @@
       </template>
     </div>
 
-    <!-- <div class="max-w-screen-xl mx-auto mt-24 bg-green-lighter hover:bg-green transition duration-100">
-      <pre>{{entry}}</pre>
-    </div> -->
   </main>
 </template>
 
@@ -80,12 +77,13 @@ export default {
   props: {
     entry: {
       type: Object,
-      // default: () => {
-      //   return {}
-      // }
     }
   },
 
+  mounted () {
+    this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
+  },
+  
   methods: {
 
     getRichText (document) {

@@ -3,9 +3,6 @@
   v-if="!hasCookie&&!forceClose"
   >
     <div class="container">
-
-      <!-- <test-cookies></test-cookies> -->
-
       <p>We use cookies to ensure that we give you the best experience on our website. If you continue without opting out, we'll assume that you are happy to receive all cookies on the Design District website. You can change your cookie settings at any time through your browser settings, but you may receive a limited service through the website because of this.
         <br>View our <nuxt-link class="" to="/privacy-notice">
         Privacy Notice

@@ -54,7 +54,6 @@
           v-if="content.fields.callToAction && content.fields.callToAction.fields.path"
           class="block-list--contentList--content--image"
           :to="content.fields.callToAction.fields.path">
-            <!-- {{content.fields.imageAsset}} -->
             <lazy-image
             class="transition-source"
             :src="content.fields.imageAsset[0].fields.file.url"
@@ -63,7 +62,6 @@
           </transition-link>
 
           <div class="block-list--contentList--content--image" v-else>
-            <!-- {{content.fields.imageAsset}} -->
             <lazy-image
             :src="content.fields.imageAsset[0].fields.file.url"
             :w="1000"
@@ -88,17 +86,8 @@
         <div v-if="content.fields.description" class="content-fields-description" v-html="markdown(content.fields.description)">
         </div>
 
-        <!-- <callToAction
-        v-if="content.fields.callToAction"
-        :callToAction="content.fields.callToAction"
-        :theme="'default'"
-        :format="'inline'"
-        /> -->
-
       </div>
     </div>
-
-    <!-- <pre>{{block.fields}}</pre> -->
 
   </section>
 </template>

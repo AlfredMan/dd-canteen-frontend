@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-12 col-md-3 col-lg-3 mb-5 mt-4 mt-md-0">
             <h6 class=" font-medium uppercase">DESIGN DISTRICT</h6>
-            <a class="h6" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/The+Gateway+Pavilions,+Peninsula+Square,+Greenwich+Peninsula,+London+SE10+0SQ/@51.5003894,0.0041197,18.67z?hl=en">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a><br>
+            <a class="h6" target="_blank" rel="noreferrer" href="https://goo.gl/maps/bNePBjngUXNPMr9P9">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a><br>
             <a class="h6 underline" target="_blank" rel="noreferrer" href="https://goo.gl/maps/bNePBjngUXNPMr9P9">Plan my route</a><br><br>
             <email class="h6 underline" :address="'hello@designdistrict.co.uk'" /><br>
             <a class="h6 underline" href="tel:4402039812426">+44 (0)20 3981 2426</a><br>
@@ -17,44 +17,31 @@
           <div class="col-12 col-md-5">
             <div class=" row">
               <div class="col-4 col-md-2-col-lg-2 mb-5">
-                <h6 class=" font-medium uppercase"><!--Stay Connected-->Connect</h6>
+                <h6 class=" font-medium uppercase">Connect</h6>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london">LinkedIn</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCOE4WSM2KzYyItgaS6k4_eg">YouTube</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.pinterest.co.uk/designdistrictlondon/">Pinterest</a><br>
                 <nuxt-link class="h6" to="/contact#newsletter">Newsletter</nuxt-link>
-                <!-- <a class="h6" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
-                <a class="h6" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br> -->
               </div>
 
               <div class="col-4 col-md-2-col-lg-2 mb-5">
                 <h6 class=" font-medium uppercase">Find your workspace</h6>
-                <nuxt-link class="h6" to="/workspace">
+                <nuxt-link class="h6" to="/workspace?space-type=multi-purpose-work-space">
                   Multi-Purpose
                 </nuxt-link>
                 <br>
-                <nuxt-link class="h6" to="/workspace">
+                <nuxt-link class="h6" to="/workspace?space-type=serviced-studio">
                   Serviced Studio
                 </nuxt-link>
                 <br>
-                <nuxt-link class="h6" to="/workspace">
+                <nuxt-link class="h6" to="/workspace?space-type=on-off-office">
                   On/off Office
                 </nuxt-link>
                 <br>
-                <nuxt-link class="h6" to="/workspace">
+                <nuxt-link class="h6" to="/workspace?space-type=building">
                   Rent a Building
                 </nuxt-link>
-                <!-- <nuxt-link class="h6" to="/the-club">
-                  The Club
-                </nuxt-link>
-                <br> -->
-                <!-- <nuxt-link class="h6" to="/about-us">
-                  About
-                </nuxt-link>
-                <br>
-                <nuxt-link class="h6" to="/contact">
-                  Contact
-                </nuxt-link> -->
               </div>
 
               <div class="col-4 col-md-2-col-lg-2 mb-5">
@@ -74,8 +61,6 @@
             </div>
           </div>
 
-          <!-- <div class="col-6 col-md-1 col-lg-1" /> -->
-
           <div class="col-12 col-md-4 mb-5 pl-0 pl-4 lg:pl-24">
             <div class="row mt-4">
               <div class="col-6 flex align-items-start lg:justify-content-end">
@@ -92,10 +77,6 @@
             </div>
           </div>
 
-          <!-- <div class="col-12 d-block d-md-none" />
-          <div class="col-6 col-md-3 col-lg-2 mb-5 ml-md-auto text-md-right text-left">
-            <img src="~/assets/images/gp-logo.svg" alt="Greenwich Peninsula" class="w-100 w-md-75" style="max-width: 100px">
-          </div> -->
         </div>
 
         <div class="row">
@@ -104,30 +85,6 @@
           </div>
         </div>
 
-        <div class="inner d-flex row align-items-end justify-content-start mt-0 pb-0" v-if="false">
-          <!-- <div class="p-3 mr-auto-mr-md-0-ml-md-auto-order-md-2 d-flex align-items-end">
-            <img src="~/assets/images/logo-hor.svg" alt="Design District logo" style="max-width: 40px" class="mr-5">
-            <img src="~/assets/images/gp-logo.svg" alt="Greenwich Peninsula logo" style="max-width: 100px">
-          </div> -->
-          <div class="col-6 col-md-2 pr-0 pr-md-5">
-            <!-- <img src="~/assets/images/logo-hor.svg" alt="Design District logo" style="" class="mb-4 w-75">
-            <img src="~/assets/images/gp-logo.svg" alt="Greenwich Peninsula logo" style="" class=" w-75 pr-5"> -->
-          </div>
-
-          <!-- <small class="col-12 col-md-6 text-left text-md-right ml-auto mt-2">
-            Copyright © 2020 Design District Limited
-          </small> -->
-          <!-- <nuxt-link class="d-none d-md-inline nav-link" to="/privacy-notice">
-            Privacy Policy
-          </nuxt-link>
-          <nuxt-link class="d-none d-md-inline nav-link" to="/terms-and-conditions">
-            Terms & Conditions
-          </nuxt-link> -->
-
-          <!-- <a class="d-none d-md-inline nav-link ml-auto" href="https://twitter.com/Design_District">Twitter</a>
-          <a class="d-none d-md-inline nav-link" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a>
-          <a class="d-none d-md-inline nav-link" href="http://www.instagram.com/designdistrictlondon">Instagram</a> -->
-        </div>
       </div>
     </div>
   </footer>

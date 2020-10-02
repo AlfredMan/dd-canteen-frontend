@@ -1,7 +1,6 @@
 <template lang="html">
   <div class="news-card">
     <router-link :to="{ path: `/journal/${entry.fields.slug}` }">
-      <!-- <img class="news-thumbnail" :src="entry.fields.thumbnailImage.fields.file.url" alt=""> -->
       <lazy-image
       class="news-thumbnail"
       :src="entry.fields.thumbnailImage.fields.file.url"
@@ -26,9 +25,6 @@
         <h5 class="mt-2" v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)">
         </h5>
         <div class="new-meta d-flex mt-3 flex-wrap monospace">
-          <!-- <h6 class="-text-uppercase my-0 mr-1" v-if="entry.fields.contentType">
-            {{entry.fields.contentType}}
-          </h6> -->
           <h6 class="-text-uppercase my-0 mr-3" v-if="entry.fields.author">
             By {{entry.fields.author[0].fields.name}}
           </h6>

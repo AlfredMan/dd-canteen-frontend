@@ -30,65 +30,59 @@
               <div class="uppercase mb-2  text-sm">Size (sq ft)</div>
 
               <div class="px-3 pt-2 lg:pt-0 lg:px-2 w-full max-w-lg mb-24">
-                <vue-slider
-                class="slider-component"
-                v-model="sliderModel"
-                :absorb="true"
-                :marks="sliderMarks"
-                :tooltip="'none'"
-                :min="0"
-                :max="7"
-                :min-range="1"
-                :interval="1"
-                :contained="false"
+                <client-only>
+                  <vue-slider
+                  class="slider-component"
+                  v-model="sliderModel"
+                  :absorb="true"
+                  :marks="sliderMarks"
+                  :tooltip="'none'"
+                  :min="0"
+                  :max="7"
+                  :min-range="1"
+                  :interval="1"
+                  :contained="false"
 
-                @change="onSliderChange"
-                @drag-end="onSliderDragEnd"
-                >
-                  <template v-slot:mark="{ pos, label }">
-                    <div class="custom-mark monospace" :style="{ left: `${pos}%` }">
-                      {{ numberWithCommas(label) }}
-                    </div>
-                  </template>
-                  <template v-slot:process="{ start, end, style, index }">
-                    <div class="vue-slider-process custom-process" :style="[style]"></div>
-                  </template>
-                </vue-slider>
+                  @change="onSliderChange"
+                  @drag-end="onSliderDragEnd"
+                  >
+                    <template v-slot:mark="{ pos, label }">
+                      <div class="custom-mark monospace" :style="{ left: `${pos}%` }">
+                        {{ numberWithCommas(label) }}
+                      </div>
+                    </template>
+                    <template v-slot:process="{ start, end, style, index }">
+                      <div class="vue-slider-process custom-process" :style="[style]"></div>
+                    </template>
+                  </vue-slider>
+                  <vue-slider
+                  class="mobile-slider-component"
+                  v-model="sliderModel_Mobile"
+                  :absorb="true"
+                  :marks="sliderMarks_Mobile"
+                  :tooltip="'none'"
+                  :min="0"
+                  :max="4"
+                  :min-range="1"
+                  :interval="1"
+                  :contained="false"
 
-                <vue-slider
-                class="mobile-slider-component"
-                v-model="sliderModel_Mobile"
-                :absorb="true"
-                :marks="sliderMarks_Mobile"
-                :tooltip="'none'"
-                :min="0"
-                :max="4"
-                :min-range="1"
-                :interval="1"
-                :contained="false"
-
-                @change="onSliderChange"
-                @drag-end="onSliderDragEnd"
-                >
-                  <template v-slot:mark="{ pos, label }">
-                    <div class="custom-mark monospace" :style="{ left: `${pos}%` }">
-                      {{ numberWithCommas(label) }}
-                    </div>
-                  </template>
-                  <template v-slot:process="{ start, end, style, index }">
-                    <div class="vue-slider-process custom-process" :style="[style]"></div>
-                  </template>
-                </vue-slider>
-
+                  @change="onSliderChange"
+                  @drag-end="onSliderDragEnd"
+                  >
+                    <template v-slot:mark="{ pos, label }">
+                      <div class="custom-mark monospace" :style="{ left: `${pos}%` }">
+                        {{ numberWithCommas(label) }}
+                      </div>
+                    </template>
+                    <template v-slot:process="{ start, end, style, index }">
+                      <div class="vue-slider-process custom-process" :style="[style]"></div>
+                    </template>
+                  </vue-slider>
+                </client-only>
               </div>
-
             </div>
           </div>
-
-          <!-- <div class="">
-            {{filter}}<br>
-            {{sliderModel}}<br>
-          </div> -->
 
           <div class="flex flex-wrap mt-8 -mx-2" v-if="allBuildings">
 

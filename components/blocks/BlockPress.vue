@@ -12,7 +12,6 @@
         </h2>
       </div>
     </div>
-
     <div
     class="block-press--contentList"
     >
@@ -24,7 +23,6 @@
       :target="press.fields.link?'_blank':undefined"
       class="block-press--contentList--content"
       >
-
         <h4 v-if="press.fields.source" class="source">
           {{press.fields.source}}
         </h4>
@@ -37,8 +35,6 @@
 
       </component>
     </div>
-
-    <!-- <pre>{{block.fields}}</pre> -->
   </section>
 </template>
 

@@ -6,7 +6,6 @@
     `bannerStyle-${bannerStyle}`
   ]"
   >
-
     <div class="cap-max-w w-full relative">
       <component
       :is="bannerStyle=='Full'?'DIV':'DIV'"
@@ -31,14 +30,12 @@
           />
       </div>
     </div>
-
   </section>
 </template>
 
 <script>
 export default {
   props: ['block'],
-  // components: { ComponentCallToAction }
   computed: {
     bannerStyle () {
       return this.block && this.block.fields.bannerStyle || 'Default'

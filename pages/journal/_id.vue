@@ -374,7 +374,9 @@
       </footer>
     </div>
 
-    <div class="container-fluid" v-if="entries">
+    <BlockJournal />
+
+    <!-- <div class="container-fluid" v-if="entries">
       <div class="row bg-grey text-black pb-5-pt-3">
         <div class="container py-5">
           <div class="row">
@@ -404,7 +406,7 @@
 
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- render data of the person -->
     <!-- <h1 v-if="person">
@@ -428,6 +430,7 @@
 <script>
 import _ from 'lodash'
 import moment from 'moment'
+import BlockJournal from '~/components/blocks/BlockJournal'
 import { createClient } from '~/plugins/contentful.js'
 // import RichTextRenderer from 'contentful-rich-text-vue-renderer'
 
@@ -553,7 +556,8 @@ export default {
   },
 
   components: {
-    NewsCard
+    NewsCard,
+    BlockJournal
     // RichTextRenderer
   },
 
@@ -623,10 +627,10 @@ export default {
       //   'sys.id': env.CTF_PERSON_ID
       // }),
       // fetch all blog posts sorted by creation date
-      client.getEntries({
-        'content_type': 'news',
-        order: '-sys.createdAt'
-      }),
+      // client.getEntries({
+      //   'content_type': 'news',
+      //   order: '-sys.createdAt'
+      // }),
 
       client.getEntries({
         'content_type': 'news',
@@ -635,7 +639,8 @@ export default {
 
       // client.getAssets()
 
-    ]).then(([entries, entry]) => {
+      ]).then(([entry]) => {
+    // ]).then(([entries, entry]) => {
     // ]).then(([assets]) => {
       // return data that should be available
       // in the template
@@ -667,7 +672,7 @@ export default {
 
       return {
         // person: entries.items[0],
-        entries: entries.items,
+        // entries: entries.items,
         entry: entry.items[0]
         // assets: _.filter(assets.items, (a)=>(a.fields.title.indexOf('KDN') >= 0 || a.fields.title.indexOf('-Architect') >= 0 || a.fields.title.indexOf('Building') >= 0 || a.fields.title.indexOf('Laneway') >= 0))
         // assets: assets.items

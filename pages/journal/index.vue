@@ -54,6 +54,10 @@ export default {
     }
   },
 
+  mounted () {
+    this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
+  },
+
   asyncData ({ route, store }) {
     return Promise.all([
       // fetch the owner of the blog

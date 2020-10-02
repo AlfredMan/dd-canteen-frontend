@@ -21,15 +21,6 @@
         <nuxt-link class="menu-link d-none d-sm-inline" to="/workspace">
           Work space
         </nuxt-link>
-        <!-- <nuxt-link class="menu-link d-none d-sm-inline" to="/hire">
-          Venue hire
-        </nuxt-link> -->
-        <!-- <nuxt-link class="menu-link d-none d-sm-inline" to="/the-club">
-          The Club
-        </nuxt-link> -->
-        <!-- <nuxt-link class="menu-link d-none d-sm-inline" to="/community">
-          Community
-        </nuxt-link> -->
         <nuxt-link class="menu-link d-none d-sm-inline" to="/architecture">
           Architecture
         </nuxt-link>
@@ -43,10 +34,6 @@
           Contact Us
         </nuxt-link>
 
-        <!-- <a href="/contact#register-interest" class="btn text-black btn-outline-primary ml-auto mr-0" :class="{'btn-outline-dark': menuActive}">
-          <span class="d-inline d-lg-none">Join Now</span>
-          <span class="d-none d-sm-inline">Join design district</span>
-        </a> -->
         <a href="tel:+4402039812426"
         class="btn btn-lg- btn-dark- btn-primary-text-white text-primary m-2 pt-1 ml-auto -mr-0 d-sm-inline-block d-none "
         :class="{'btn-outline-black': menuActive}">
@@ -77,31 +64,9 @@
     <div v-show="menuActive" class="position-fixed w-100 h-100 bg-primary">
       <div class="row p-4 mobile-nav">
         <div class="col">
-          <!-- <nuxt-link class="mobile-menu-link" to="/workspace">
-            Work space
-          </nuxt-link><br>
-          <nuxt-link class="mobile-menu-link" to="/journal">
-            Journal
-          </nuxt-link><br>
-          <nuxt-link class="mobile-menu-link" to="/about-us">
-            About
-          </nuxt-link><br>
-          <nuxt-link class="mobile-menu-link" to="/contact">
-            Contact Us
-          </nuxt-link><br> -->
-
           <nuxt-link class="d-block mobile-menu-link" to="/workspace">
             Work space
           </nuxt-link>
-          <!-- <nuxt-link class="d-block mobile-menu-link" to="/hire">
-            Venue hire
-          </nuxt-link> -->
-          <!-- <nuxt-link class="d-block mobile-menu-link" to="/the-club">
-            The Club
-          </nuxt-link> -->
-          <!-- <nuxt-link class="d-block mobile-menu-link" to="/community">
-            Community
-          </nuxt-link> -->
           <nuxt-link class="d-block mobile-menu-link" to="/architecture">
             Architecture
           </nuxt-link>
@@ -118,25 +83,14 @@
       </div>
       <div class="row p-4 mobile-footer">
         <div class="col-12">
-          <!-- <a class="">The Gateway Pavilions<br>Peninsula Square<br>Greenwich Peninsula<br>London SE10 0SQ</a>
-          <br><br> -->
           <email :address="'hello@designdistrict.co.uk'"></email><br>
           <a href="tel:+4402039812426">+44 (0)20 3981 2426</a>
           <br><br>
-          <!-- </div>
-        <div class="col-5"> -->
-          <!-- <h5>Connect</h5> -->
-
           <a class="" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
           <a class="" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london">LinkedIn</a><br>
           <a class="" target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCOE4WSM2KzYyItgaS6k4_eg">YouTube</a><br>
           <a class="" target="_blank" rel="noreferrer" href="https://www.pinterest.co.uk/designdistrictlondon/">Pinterest</a><br>
           <nuxt-link class="" to="/contact#newsletter">Newsletter</nuxt-link>
-
-          <!-- <a class="" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
-          <a class="" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
-          <a class="" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br>
-          <a class="" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london">LinkedIn</a> -->
         </div>
       </div>
     </div>

@@ -1,16 +1,15 @@
 <template>
   <section class="block-journal">
-
     <div class="block-journal-header">
-      <h2>Journal</h2>
+      <div class="flex items-baseline">
+        <h2>Journal</h2>
+        <router-link :to="{ path:'/journal' }"
+        class="inline-block ml-4 text-green text-lg"
+        >
+          View all &rarr;
+        </router-link>
+      </div>
     </div>
-
-    <!--
-    <div class="my-4">
-      &nbsp;
-    </div>
-    -->
-
     <div class="block-journal--entries">
       <div
        class="block-journal--entries--entry"
@@ -18,7 +17,6 @@
         <news-card class="news-card" :entry="entry"></news-card>
       </div>
     </div>
-
   </section>
 </template>
 

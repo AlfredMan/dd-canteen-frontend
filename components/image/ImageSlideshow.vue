@@ -6,22 +6,13 @@
     'overflow-visible': overflow=='visible'
     }"
   >
-    <!-- <client-only> -->
+
       <Flickity :options="flickityOptions" class="flickity" ref="flkty" :class="{
         'dragging': isDragging
         }">
-        <!-- <div v-for="item in items" class="item" v-if="items">
-          <router-link :to="`/architecture/${item.slug}`">
-            <lazy-image
-            :src="item.imagesPractice[0].url"
-            :h="2000"
-            />
-            <h5>{{ item.title }}</h5>
-          </router-link>
-        </div> -->
         <slot></slot>
       </Flickity>
-    <!-- </client-only> -->
+
   </div>
 </template>
 

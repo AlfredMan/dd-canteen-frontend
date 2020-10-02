@@ -12,7 +12,7 @@ import { createClient } from '~/plugins/contentful.js'
 const client = createClient()
 
 export default {
-  name: 'page',
+  name: 'index',
 
   components: {
     AppPage
@@ -56,20 +56,12 @@ export default {
 
   asyncData ({ route, store }) {
     return Promise.all([
-      // fetch the owner of the blog
-      // client.getEntries({
-      //   'sys.id': env.CTF_PERSON_ID
-      // }),
-      // fetch all blog posts sorted by creation date
-
       client.getEntries({
         'content_type': 'pages',
         'fields.slug': 'home',
         'include': 3
       })
-
     ]).then(([entry]) => {
-
       return {
         entry: entry.items[0]
       }
@@ -85,30 +77,3 @@ export default {
   }
 }
 </script>
-
-
-<!-- <template lang="html">
-  <home />
-</template>
-
-<script>
-export default {
-}
-</script>
-
-<script>
-// import { validFeeds } from '~/common/api'
-import Home from './home/index.vue'
-
-export default {
-  // fetch ({ redirect }) {
-  //   redirect('/' + validFeeds[0])
-  // },
-  components: {
-    Home,
-  }
-}
-</script>
-
-<style lang="css" scoped>
-</style> -->

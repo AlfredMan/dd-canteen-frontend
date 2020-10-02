@@ -2,7 +2,6 @@
   <section class="block-tabs"
   v-if="block"
   >
-
     <div class="block-tab-selectors">
       <div class="">
         <h4
@@ -17,30 +16,22 @@
         </h4>
       </div>
     </div>
-
     <div class="block-tab--tab-contents">
       <div
       class="block-tab--tab-content"
       v-for="(tabs, index) in block.fields.tabs"
       v-if="activeTab == index"
       :key="tabs.sys.id">
-
         <template
         v-if="tabs && tabs.fields.tabContent"
         v-for="tab in tabs.fields.tabContent"
         >
 
-
           <BlockList class="block-tab--tab-list" :key="tab.sys.id" :block="tab" v-if="isBlockType(tab, 'blockList')"/>
-
           <BlockImage class="block-tab--tab-image" :key="tab.sys.id" :block="tab" v-else-if="isBlockType(tab, 'blockImage')"/>
-
         </template>
-
       </div>
     </div>
-
-    <!-- <pre>{{block.fields.tabs[0].fields}}</pre> -->
   </section>
 </template>
 

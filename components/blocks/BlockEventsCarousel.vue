@@ -1,9 +1,5 @@
 <template lang="html">
-
   <div class="bg-black text-white pt-12 pb-12  overflow-hidden" id="events" v-if="entries">
-
-    <!-- <pre>{{entries}}</pre> -->
-
     <div class="px-3 cap-max-w">
       <h2 class="uppercase max-w-2xl w-full">Events</h2>
     </div>
@@ -41,7 +37,6 @@
       </image-slideshow>
     </div>
   </div>
-
 </template>
 
 <script>
