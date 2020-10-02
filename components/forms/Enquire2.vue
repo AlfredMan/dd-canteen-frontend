@@ -660,7 +660,7 @@
       </div>
 
       <div v-show="step === 2" class="my-4">
-        <h5>Staying in touch</h5>
+        <h5>Keep in touch</h5>
         <div class="form-row">
           <div class="col-12 col-md-8">
             <!-- <div class="custom-control custom-checkbox">
@@ -690,8 +690,17 @@
                 required
                 :class="{'is-invalid': true, 'is-valid': true}"
               >
+              <input
+                id="enquireDesignOptIn"
+                ref="enquireDesignOptIn"
+                class="form-field-reset checkbox"
+                type="checkbox"
+                name="00N0O00000GRkIa"
+                value="1"
+                hidden
+              >
               <label class="cb" for="enquirePrivacyOptIn">
-                <span>I agree to the terms of your <a href="/privacy-notice/" target="_blank">Privacy Policy</a>*</span>
+                <span>I would like to sign-up to receive regular news and updates from Design District. See our <nuxt-link to="/privacy-notice/">Privacy Notice</nuxt-link> and <nuxt-link to="/cookies-policy/">Privacy Notice</nuxt-link>.</span>
               </label>
               <!-- <div class="invalid-feedback">
                 You must agree before submitting.
@@ -700,7 +709,7 @@
                 You must agree before submitting.
               </div> -->
             </div>
-            <div class="checkbox-wrapper">
+            <!-- <div class="checkbox-wrapper">
               <input
                 id="enquireDesignOptIn"
                 ref="enquireDesignOptIn"
@@ -712,10 +721,10 @@
               <label class="cb" for="enquireDesignOptIn">
                 <span>
                   I am happy to receive news from Design District
-                  <!-- I am happy to receive marketing communications on the Design&nbsp;District -->
                 </span>
               </label>
-            </div>
+            </div> -->
+
             <div class="checkbox-wrapper">
               <input
                 id="enquireMarketingOptIn"
@@ -727,7 +736,7 @@
               >
               <label class="cb" for="enquireMarketingOptIn">
                 <span>
-                  I am happy to receive news and events information from Greenwich Peninsula
+                  Keep me up to date about the latest news and events at Greenwich Peninsula
                   <!-- I am happy to receive marketing communications on the latest happenings on Greenwich Peninsula including cultural events and the latest news -->
                 </span>
               </label>

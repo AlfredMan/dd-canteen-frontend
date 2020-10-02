@@ -137,7 +137,7 @@ export const studios = {
     ],
     imagesPractice:[
       {
-        url: 'https://images.ctfassets.net/7p1ysxjarsp5/4FnpIUyeKNLkJnB35opltV/7444507404b1420c7e228838cafd6894/Barozzi-Veiga-1B-Architect.jpg?w=2000&h=2000&fm=jpg&q=80',
+        url: 'https://images.ctfassets.net/xsmgpzj6d8er/2o2GqTxiaMZIVZA3xcKtSE/10cfd20dc0452610802d0570076dc74d/cv-barozzi-veiga-2017-cut-2000x.jpg?w=2000&h=2000&fm=jpg&q=80',
         alt: 'Barozzi Veiga',
         type: 'practice',
         size: '3'

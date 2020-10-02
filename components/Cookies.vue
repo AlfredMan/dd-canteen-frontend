@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="cookies-prompt bg-dark text-white p-5"
+  <div class="cookies-prompt"
   v-if="!hasCookie&&!forceClose"
   >
     <div class="container">
@@ -8,7 +8,7 @@
 
       <p>We use cookies to ensure that we give you the best experience on our website. If you continue without opting out, we'll assume that you are happy to receive all cookies on the Design District website. You can change your cookie settings at any time through your browser settings, but you may receive a limited service through the website because of this.
         <br>View our <nuxt-link class="" to="/privacy-notice">
-        Privacy Policy
+        Privacy Notice
       </nuxt-link> and <nuxt-link class="" to="/cookies-policy">
         Cookies Policy
       </nuxt-link>. </p>
@@ -136,11 +136,19 @@ export default {
 
 <style lang="scss" scoped>
 .cookies-prompt {
+  @apply bg-black text-white;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 99999;
+
+  .container {
+    @apply cap-max-w py-8 px-4;
+    @screen lg {
+      @apply py-12;
+    }
+  }
 
   p {
     max-width: 60em;

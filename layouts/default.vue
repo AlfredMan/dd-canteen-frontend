@@ -17,7 +17,7 @@
 
     <!-- <app-map /> -->
 
-    <!-- <Cookies /> -->
+    <Cookies />
 
     <!-- <app-tool /> -->
     <!-- <div
