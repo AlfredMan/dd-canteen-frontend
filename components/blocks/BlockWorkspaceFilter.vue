@@ -17,7 +17,7 @@
                 <div
                 v-for="option in spaceFilters['options']" :key="option"
                 @click="toggleFilter('options', option); typeFilters = false"
-                :class="{'active': option == filter.options}"
+                :class="{'active': isActiveFilter(option)}"
                 class="btn btn-outline-dark tag mr-2 mb-2"
                 >
                   {{option}} <span v-if="option == filter.options">&times;</span>
@@ -129,7 +129,11 @@
             </div>
 
             <div class="px-2 pb-5" v-if="!filteredBuildings || filteredBuildings.length < 1">
-              <h4 class="my-5" style="opacity:0.5">No matching work space</h4>
+              <!-- <h4 class="my-5" style="opacity:0.5">No matching work space</h4> -->
+              <div class="max-w-4xl py-24">
+                <h3>Can't find what you are looking for?</h3>
+                <h4>Speak to our team to find a space and leasing model to suit your needs. Register your interest and tell us about your requirements, and we’ll be in touch.</h4>
+              </div>
             </div>
 
           </div>
@@ -170,7 +174,7 @@ export default {
       filter: {
         sizeBracket: null,
         sizeBracketMin: 100,
-        sizeBracketMax: 5000,
+        sizeBracketMax: 4000,
         architect: null,
         options: null
       },
@@ -287,7 +291,12 @@ export default {
           isChosen = 1
         }
         // if (+b.fields.minSize <= +filter.sizeBracketMax || +b.fields.maxSize >= +filter.sizeBracketMin) {
-        if (_.inRange(+b.fields.minSize, +filter.sizeBracketMin, +filter.sizeBracketMax) || _.inRange(+b.fields.maxSize, +filter.sizeBracketMin, +filter.sizeBracketMax)) {
+        if (
+          +b.fields.minSize !== +filter.sizeBracketMax && _.inRange(+b.fields.minSize, +filter.sizeBracketMin, +filter.sizeBracketMax) ||
+          +b.fields.maxSize !== +filter.sizeBracketMin && _.inRange(+b.fields.maxSize, +filter.sizeBracketMin, (+filter.sizeBracketMax + 1)) ||
+          +b.fields.minSize !== +filter.sizeBracketMax && _.inRange(+filter.sizeBracketMax, +b.fields.minSize, (+b.fields.maxSize+1)) ||
+          +b.fields.maxSize !== +filter.sizeBracketMin && _.inRange(+filter.sizeBracketMin, +b.fields.minSize, (+b.fields.maxSize+1))
+        ) {
           isChosen = isChosen+1
         }
 
@@ -297,71 +306,74 @@ export default {
       // show visibility = 'Work Space' only.
       return filtered
     },
-    filteredSpacesByBuilding () {
-      let group = _.groupBy(this.allSpaces, 'building')
-      // return group
-
-      group = _.mapValues(group, (building, key) => {
-        let options = _.uniq(_.map(building, (b) => b.options))
-        let sizeSqFtBracket = _.uniq(_.map(building, (b) => b.sizeSqFtBracket))
-        let sizeSqFt = _.map(building, (b) => b['sizeSqFt'])
-        let sizeSqFtMin = _.round(_.min(sizeSqFt))
-        let sizeSqFtMax = _.round(_.max(sizeSqFt))
-
-        return {
-          title: `Building ${key}`,
-          id: key,
-          building: this.getBuildingBySlug(key),
-          options: options,
-          sizeSqFtBracket: sizeSqFtBracket,
-          sizeSqFt: sizeSqFt,
-          sizeSqFtMin: sizeSqFtMin,
-          sizeSqFtMax: sizeSqFtMax,
-          units: building
-        }
-      })
-
-      return _.filter(group, (building) => {
-
-        // show all buildings if filter is at default state
-        if (!this.filter.options && !this.filter.sizeBracketMax) {
-          return true
-        }
-
-        let match = 0
-
-        if (this.filter.options && building.options) {
-          // match = space.options == this.filter.options ? match+1 : -100
-          match = _.includes(building.options, this.filter.options) ? match+1 : -100
-        }
-
-        // console.log(this.filter.sizeBracketMin , this.filter.sizeBracketMax, building.sizeSqFtMin, building.sizeSqFtMax>0)
-
-        if (this.filter.sizeBracketMin >=0 && this.filter.sizeBracketMax>0 && building.sizeSqFtMin>0 && building.sizeSqFtMax>0) {
-          // match = space.sizeSqFtBracket == this.filter.sizeBracket ? match+1 : -100
-          let filterMin = this.filter.sizeBracketMin == 0 ? 0 : this.filter.sizeBracketMin
-          let filterMax = this.filter.sizeBracketMax == 5000 ? 999999 : this.filter.sizeBracketMax
-
-          // console.log(building.sizeSqFtMin, filterMin, filterMax)
-          // console.log(building.sizeSqFtMax, filterMin, filterMax)
-
-          match = _.inRange(building.sizeSqFtMin, filterMin, filterMax) || _.inRange(building.sizeSqFtMax, filterMin, filterMax)
-                ? match + 1 : -100
-
-          // console.log(match)
-        }
-
-        return match > 0
-
-      })
-
-      // return _.filter(allBuildings, (building) => {
-      //   return filter
-      // })
-    }
+    // filteredSpacesByBuilding () {
+    //   let group = _.groupBy(this.allSpaces, 'building')
+    //   // return group
+    //
+    //   group = _.mapValues(group, (building, key) => {
+    //     let options = _.uniq(_.map(building, (b) => b.options))
+    //     let sizeSqFtBracket = _.uniq(_.map(building, (b) => b.sizeSqFtBracket))
+    //     let sizeSqFt = _.map(building, (b) => b['sizeSqFt'])
+    //     let sizeSqFtMin = _.round(_.min(sizeSqFt))
+    //     let sizeSqFtMax = _.round(_.max(sizeSqFt))
+    //
+    //     return {
+    //       title: `Building ${key}`,
+    //       id: key,
+    //       building: this.getBuildingBySlug(key),
+    //       options: options,
+    //       sizeSqFtBracket: sizeSqFtBracket,
+    //       sizeSqFt: sizeSqFt,
+    //       sizeSqFtMin: sizeSqFtMin,
+    //       sizeSqFtMax: sizeSqFtMax,
+    //       units: building
+    //     }
+    //   })
+    //
+    //   return _.filter(group, (building) => {
+    //
+    //     // show all buildings if filter is at default state
+    //     if (!this.filter.options && !this.filter.sizeBracketMax) {
+    //       return true
+    //     }
+    //
+    //     let match = 0
+    //
+    //     if (this.filter.options && building.options) {
+    //       // match = space.options == this.filter.options ? match+1 : -100
+    //       match = _.includes(building.options, this.filter.options) ? match+1 : -100
+    //     }
+    //
+    //     // console.log(this.filter.sizeBracketMin , this.filter.sizeBracketMax, building.sizeSqFtMin, building.sizeSqFtMax>0)
+    //
+    //     if (this.filter.sizeBracketMin >=0 && this.filter.sizeBracketMax>0 && building.sizeSqFtMin>0 && building.sizeSqFtMax>0) {
+    //       // match = space.sizeSqFtBracket == this.filter.sizeBracket ? match+1 : -100
+    //       let filterMin = this.filter.sizeBracketMin == 0 ? 0 : this.filter.sizeBracketMin
+    //       let filterMax = this.filter.sizeBracketMax == 4000 ? 999999 : this.filter.sizeBracketMax
+    //
+    //       // console.log(building.sizeSqFtMin, filterMin, filterMax)
+    //       // console.log(building.sizeSqFtMax, filterMin, filterMax)
+    //
+    //       match = (building.sizeSqFtMin!=filterMax && _.inRange(building.sizeSqFtMin, filterMin, filterMax)) || (building.sizeSqFtMax != filterMin && _.inRange(building.sizeSqFtMax, filterMin, filterMax))
+    //             ? match + 1 : -100
+    //
+    //       debugger
+    //     }
+    //
+    //     return match > 0
+    //
+    //   })
+    //
+    //   // return _.filter(allBuildings, (building) => {
+    //   //   return filter
+    //   // })
+    // }
   },
 
   methods: {
+    isActiveFilter (option) {
+      return option == this.filter.options
+    },
     getBuildingBySlug (slug) {
       return this.$store.getters.getBuildingBySlug(slug)
     },
@@ -400,7 +412,7 @@ export default {
       let max = _.max(sizes)
 
       if (min==max) {
-        return `${max}–5000+ sq ft`
+        return `${max}–4000+ sq ft`
       }
 
       return `${_.round(_.min(sizes),-1)}–${_.round(_.max(sizes),-1)} sq ft`

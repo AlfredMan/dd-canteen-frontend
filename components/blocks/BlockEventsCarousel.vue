@@ -34,6 +34,8 @@
             <h4 class="uppercase mb-3">{{entry.fields.title}}</h4>
           </div>
 
+          <h5 v-if="entry.fields.startDate">{{getDataTime(entry.fields.startDate)}}</h5>
+
           <p>{{entry.fields.description}}</p>
         </div>
       </image-slideshow>
@@ -43,6 +45,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 export default {
   name: 'BlockEventsCarousel',
 
@@ -83,6 +86,24 @@ export default {
       return this.$store.state.events
     }
   },
+
+  methods: {
+    getDataTime (date, endDate) {
+      // let default = '12:00:00'
+      let format = 'D MMM'
+      if (date && !endDate) {
+        return `${moment(date).format(format)}`
+      } else
+      if (!date && endDate) {
+        return `${moment(endDate).format(format)}`
+      } else
+      if (date && endDate) {
+        return `${moment(date).format(format)}—${moment(endDate).format(format)}`
+      } else {
+        return ``
+      }
+    }
+  }
 }
 </script>
 
