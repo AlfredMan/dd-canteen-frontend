@@ -16,7 +16,7 @@ export default ({ app, store }) => {
     }
 
     // if is map
-    if (from.path.indexOf('workspace')>=0 && to.path.indexOf('workspace')>=0) {
+    if ((from.path === to.path) && to.path.indexOf('/workspace')>=0) {
       // if ((from.query && from.query['space-type']) || (to.query && to.query['space-type'])) {
         next()
         return

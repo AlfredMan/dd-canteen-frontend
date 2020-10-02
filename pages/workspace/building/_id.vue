@@ -10,7 +10,7 @@
 
 
     <h1 class="px-3 mt-6 my-4 flex items-baseline building-title cap-max-w">
-      <span class="inline-block mr-6 building-name font-medium -ml-2">{{building.fields.title}}</span>
+      <span class="inline-block mr-6 building-name font-medium ">{{building.fields.title}}</span>
       <span class="inline-block text-green uppercase building-architect">{{building.fields.architecture[0].fields.title}}</span>
     </h1>
 
@@ -38,7 +38,7 @@
         <!-- </nuxt-link> -->
       </div>
 
-      <div class="w-full lg:w-1/3 bg-gray-100 p-6 pt-4">
+      <div class="w-full lg:w-1/3 bg-gray-100 px-3 lg:p-6 pt-4">
 
         <div class="relative w-full">
           <h4 class="inline-block font-medium text-6xl mb-4">{{building.fields.title}}</h4>
@@ -336,11 +336,21 @@ export default {
     // NewsletterForm,
     // SpaceForm
   },
+
   head () {
     return {
-      title: 'Work Space',
+      title: this.seoTitle,
       meta: [
-        { hid: 'description', name: 'description', content: 'Design District will provide 150,000 sq ft of permanent workspace for everyone for London’s designers makers and creators. A place for total focus, shared stories and resources, new connections and collaboration.' }
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'description', name: 'description', content: this.seoDescription },
+        { property: 'og:image', content: this.seoImage },
+        { property: 'og:url', content: `https://designdistrict.co.uk/workspace/building/${this.building.fields.slug}` },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:title', content: this.seoTitle },
+        { property: 'og:description', content: this.seoDescription },
+
+        { name: 'twitter:description', content: this.seoDescription },
+        { name: 'twitter:image', content: this.seoImage },
       ]
     }
   },
@@ -423,6 +433,16 @@ export default {
           return architect.sys.id == currentBuildingEntry.fields.architecture[0].sys.id
         })
       })
+    },
+
+    seoTitle () {
+      return this.building && this.building.fields.metaData ? this.building.fields.metaData.fields.seoTitle : 'Design District'
+    },
+    seoDescription () {
+      return this.building && this.building.fields.metaData ? this.building.fields.metaData.fields.seoDescription : 'A new permanent home for the creative industries. With purpose-designed workspaces, workshops, accessible rents and flexible leases. It comprises 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. Each is tailored to the needs of creative businesses to help them thrive.'
+    },
+    seoImage () {
+      return this.building && this.building.fields.metaData ? `${this.building.fields.metaData.fields.seoImage.fields.file.url}?w=2000&fm=jpg&q=80` : 'https://designdistrict.co.uk/DD_Banner.jpg'
     },
     // architect () {
     //   return this.slug && this.$store.getters.getStudioByBuilding(this.slug)

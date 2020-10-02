@@ -13,7 +13,7 @@
       :overflow="'visible'"
       :options="slideshowOptions"
       >
-        <div class="w-full md:w-1/3 lg:w-1/4 xl:w-1/4 px-4 my-4 item" v-for="entry in entries" :key="entry.sys.id">
+        <div class="w-10/12 md:w-1/3 lg:w-1/4 xl:w-1/4 pl-4 my-4 item" v-for="entry in entries" :key="entry.sys.id">
           <a v-if="entry.fields.link && entry.fields.link.length>1" :href="entry.fields.link"  target="_blank" rel="nofollow">
             <lazy-image
             :src="entry.fields.eventThumbnailAsset[0] && entry.fields.eventThumbnailAsset[0].fields.file.url"

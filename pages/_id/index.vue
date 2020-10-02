@@ -20,19 +20,18 @@ export default {
 
   head () {
     return {
-      title: this.entry && this.entry.fields.seoTitle || this.entry.fields.title,
+      title: this.seoTitle,
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'description', name: 'description', content: this.seoDescription },
+        { property: 'og:image', content: this.seoImage },
+        { property: 'og:url', content: `https://designdistrict.co.uk/${this.entry.fields.slug}` },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:title', content: this.seoTitle },
+        { property: 'og:description', content: this.seoDescription },
 
-        // { hid: 'description', name: 'description', content: this.entry.fields.seoDescription },
-        // { property: 'og:image', content: this.entry.fields.thumbnailImage && this.entry.fields.thumbnailImage.fields.file && this.entry.fields.thumbnailImage.fields.file.url },
-        // { property: 'og:url', content: `https://designdistrict.co.uk/journal/${this.entry.fields.slug}` },
-        // { property: 'og:type', content: 'website' },
-        // { property: 'og:title', content: this.entry.fields.seoTitle },
-        // { property: 'og:description', content: this.entry.fields.seoDescription },
-        //
-        // { name: 'twitter:description', content: this.entry.fields.seoDescription },
-        // { name: 'twitter:image', content: 'https://designdistrict.co.uk/DD_Banner.jpg" ' },
+        { name: 'twitter:description', content: this.seoDescription },
+        { name: 'twitter:image', content: this.seoImage },
       ]
     }
   },
@@ -40,6 +39,18 @@ export default {
   data () {
     return {
       entry: null
+    }
+  },
+
+  computed: {
+    seoTitle () {
+      return this.entry && this.entry.fields.metaData ? this.entry.fields.metaData.fields.seoTitle : 'Design District'
+    },
+    seoDescription () {
+      return this.entry && this.entry.fields.metaData ? this.entry.fields.metaData.fields.seoDescription : 'A new permanent home for the creative industries. With purpose-designed workspaces, workshops, accessible rents and flexible leases. It comprises 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. Each is tailored to the needs of creative businesses to help them thrive.'
+    },
+    seoImage () {
+      return this.entry && this.entry.fields.metaData ? `${this.entry.fields.metaData.fields.seoImage.fields.file.url}?w=2000&fm=jpg&q=80` : 'https://designdistrict.co.uk/DD_Banner.jpg'
     }
   },
 

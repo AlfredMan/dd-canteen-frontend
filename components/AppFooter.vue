@@ -9,7 +9,7 @@
             <a class="h6 underline" target="_blank" rel="noreferrer" href="https://goo.gl/maps/bNePBjngUXNPMr9P9">Plan my route</a><br><br>
             <email class="h6 underline" :address="'hello@designdistrict.co.uk'" /><br>
             <a class="h6 underline" href="tel:4402039812426">+44 (0)20 3981 2426</a><br>
-            <small class="d-block">
+            <small class="d-block mt-1">
               Copyright © 2020 Design District Limited
             </small>
           </div>
@@ -22,7 +22,7 @@
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london">LinkedIn</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCOE4WSM2KzYyItgaS6k4_eg">YouTube</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.pinterest.co.uk/designdistrictlondon/">Pinterest</a><br>
-                <a class="h6" target="_blank" rel="noreferrer" href="">Newsletter</a>
+                <nuxt-link class="h6" to="/contact#newsletter">Newsletter</nuxt-link>
                 <!-- <a class="h6" target="_blank" rel="noreferrer" href="https://twitter.com/Design_District">Twitter</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.facebook.com/DesignDistrictLondon/">Facebook</a><br> -->
               </div>
@@ -60,7 +60,7 @@
               <div class="col-4 col-md-2-col-lg-2 mb-5">
                 <h6 class=" font-medium uppercase">Legal</h6>
                 <nuxt-link class="h6" to="/privacy-notice">
-                  Privacy Policy
+                  Privacy Notice
                 </nuxt-link>
                 <br>
                 <nuxt-link class="h6" to="/cookies-policy">
@@ -100,7 +100,7 @@
 
         <div class="row">
           <div class="col-12">
-            <h6 class="">Design and build by Hato</h6>
+            <a href="https://hato.co" target="_blank" rel="nofollow noreferrer" class="h6 no-underline">Design and build by Hato</a>
           </div>
         </div>
 

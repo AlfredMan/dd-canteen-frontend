@@ -1,7 +1,7 @@
 <template>
   <div class="news" :class="getContentClass(entry.fields.contentType)">
     <!-- <pre>{{entry}}</pre> -->
-    <div class="" v-if="entry" :key="entry.sys.id">
+    <div class="overflow-x-hidden" v-if="entry" :key="entry.sys.id">
 
       <!-- <header class="event-header" v-if="entry.fields.contentType === 'Event'">
         <div class="event-info p-5">
@@ -292,77 +292,10 @@
       </header>
 
     </div>
-    <div class="" v-if="entry">
 
-      <!-- <aside class="row d-flex justify-content-center">
-        <div class="col-6">
-          <div class="my-5">
-            <div class="d-flex mt-3">
-              <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
-                {{entry.fields.contentType}}
-              </h6>
-              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
-                by {{entry.fields.author[0].fields.name}}
-              </h6>
-              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
-
-              </h6>
-            </div>
-          </div>
-        </div>
-      </aside> -->
+    <div class="overflow-x-hidden pt-12" v-if="entry">
 
       <article class="content mt-0" v-if="entry.fields.contentReferences">
-
-        <!-- <aside class="row row-flex justify-content-center mb-4" v-if="entry.fields.contentType === 'Article'">
-          <div class="col-12">
-            <div class="container">
-              <div class="row justify-content-center">
-                <div class="col-12 col-md-6 my-4">
-                  <div class="new-meta d-flex mb-3 flex-wrap" v-if="entry.fields.creditText">
-                    <h6 class="-text-uppercase my-0 mr-3" v-if="entry.fields.creditText">
-                      {{entry.fields.creditText}}
-                    </h6>
-                  </div>
-                  <div class="summary" v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </aside> -->
-
-        <!-- <aside class="row row-flex justify-content-center mb-4" v-if="entry.fields.contentType === 'Video'">
-          <div class="col-12">
-            <div class="container">
-              <div class="row justify-content-center">
-                <div class="col-12 col-md-6 my-4">
-                  <div class="mb-4">
-                    <h1 class=" mt-2 mb-4 h2" v-if="entry.fields.title">
-                      {{entry.fields.title}}
-                    </h1>
-                    <h3 class="mb-4" v-if="entry.fields.date">
-                      {{getDataTime(entry.fields.date, entry.fields.endDate)}}
-                    </h3>
-                    <div class="d-flex- mb-5 d-none">
-                      <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
-                        {{entry.fields.contentType}}
-                      </h6>
-                      <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
-                        by {{entry.fields.author[0].fields.name}}
-                      </h6>
-                    </div>
-                  </div>
-                  <div class="new-meta d-flex mb-3 flex-wrap" v-if="entry.fields.creditText">
-                    <h6 class="-text-uppercase my-0 mr-3" v-if="entry.fields.creditText">
-                      {{entry.fields.creditText}}
-                    </h6>
-                  </div>
-                  <div class="summary" v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </aside> -->
 
         <!-- <RichTextRenderer :document="entry.fields.richText" /> -->
         <div class="row row-flex justify-content-center" v-for="content in entry.fields.contentReferences">
@@ -394,7 +327,7 @@
           </div>
 
           <!-- gallery -->
-          <div class="col-12 col-lg-8 my-5 px-5 px-lg-0  type-gallery" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'gallery'">
+          <div class="col-12 col-lg-10 my-5 px-5 px-lg-0  type-gallery" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'gallery'">
             <div class="row row-flex flex-wrap justify-content-center align-items-center gallery">
               <div class="gallery-item mb-4" v-for="image in content.fields.image" :class="getGalleryImageClass(content.fields.image)">
                 <!-- <img :src="image.fields.file.url" alt="" class="image"> -->
@@ -462,7 +395,7 @@
             v-for="ent in entries"
             v-if="ent && ent.sys.id !== entry.sys.id"
             :key="ent.sys.id"
-            class="news-card col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
+            class="news-card col-12 col-md-6 col-lg-4 mb-6 lg:mb-6">
 
               <news-card :entry="ent"></news-card>
 
@@ -584,18 +517,18 @@ export default {
 
   head () {
     return {
-      title: this.entry.fields.seoTitle,
+      title: this.seoTitle,
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        { hid: 'description', name: 'description', content: this.entry.fields.seoDescription },
-        { property: 'og:image', content: this.entry.fields.thumbnailImage && this.entry.fields.thumbnailImage.fields.file && this.entry.fields.thumbnailImage.fields.file.url },
+        { hid: 'description', name: 'description', content: this.seoDescription },
+        { property: 'og:image', content: this.seoImage },
         { property: 'og:url', content: `https://designdistrict.co.uk/journal/${this.entry.fields.slug}` },
         { property: 'og:type', content: 'website' },
-        { property: 'og:title', content: this.entry.fields.seoTitle },
-        { property: 'og:description', content: this.entry.fields.seoDescription },
+        { property: 'og:title', content: this.seoTitle },
+        { property: 'og:description', content: this.seoDescription },
 
-        { name: 'twitter:description', content: this.entry.fields.seoDescription },
-        { name: 'twitter:image', content: 'https://designdistrict.co.uk/DD_Banner.jpg" ' },
+        { name: 'twitter:description', content: this.seoDescription },
+        { name: 'twitter:image', content: this.seoImage },
       ]
     }
   },
@@ -630,6 +563,15 @@ export default {
         return this.entry.fields.contentType
       }
       return ''
+    },
+    seoTitle () {
+      return this.entry && this.entry.fields.metaData ? this.entry.fields.metaData.fields.seoTitle : this.entry.fields.seoTitle
+    },
+    seoDescription () {
+      return this.entry && this.entry.fields.metaData ? this.entry.fields.metaData.fields.seoDescription : this.entry.fields.seoDescription
+    },
+    seoImage () {
+      return this.entry && this.entry.fields.metaData && this.entry.fields.metaData.fields.seoImage ? `${this.entry.fields.metaData.fields.seoImage.fields.file.url}?w=2000&fm=jpg&q=80` : this.entry.fields.thumbnailImage && this.entry.fields.thumbnailImage.fields.file && this.entry.fields.thumbnailImage.fields.file.url
     }
   },
 
