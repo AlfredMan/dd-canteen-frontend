@@ -15,7 +15,7 @@
     <div class="flex flex-wrap cap-max-w px-3" v-if="showPressInfo">
 
       <div class="w-full lg:w-5/12 mb-8 lg:mb-0">
-        <h2>Press Contact</h2>
+        <h2>Press<br>Contact</h2>
       </div>
       <div class="w-full lg:w-7/12">
         <h4>Zetteler PR</h4>
