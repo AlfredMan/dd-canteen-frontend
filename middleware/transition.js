@@ -1,4 +1,8 @@
 export default function ({ store }) {
+  // store.app.router.beforeEach((to, from, next) => {
+  //   console.log('middleware transition.js', to, from)
+  //   next()
+  // })
 //   store.app.router.beforeEach((to, from, next) => {
 //     console.log('beforeEach...', to.name, from.name)
 //     // if (confirm('Are you sure?')) {

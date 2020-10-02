@@ -19,6 +19,7 @@
 	height: auto;
 	letter-spacing: inherit;
 	line-height: inherit;
+	font-size: 1.25rem;
 
 	&[type="radio"],
 	&[type="checkbox"] {
@@ -30,6 +31,11 @@ form {
 	// margin-left: auto;
 	// margin-right: auto;
 	// padding-bottom: 10rem;
+
+	p, label, input {
+		font-size: 1.25rem;
+	}
+
 	&.disabled {
 		input,
 		label,
@@ -191,7 +197,7 @@ select {
 
 .input-text,
 [type="text"] {
-	font-size: 1.25rem;
+	// font-size: 1.25rem;
 	padding: .9rem .5rem;
 	width: 100%;
 	margin-bottom: 1rem;
@@ -285,8 +291,8 @@ select {
 	vertical-align: text-top;
 	width: 20px;
 	position: absolute;
-	top: 0;
-  border: 1px solid rgba(0,0,0,0.1);
+	top: 4px;
+  border: 1px solid rgba(0,0,0,0.2);
 }
 
 .checkbox:checked + label:after {
@@ -300,14 +306,16 @@ select {
 	// transform: rotate(45deg);
 	// width: 2px;
 	content: "✓";
-	height: 10px;
+	font-family: inherit;
+	height: 20px;
 	line-height: 20px;
 	position: absolute;
 	left: 0;
-	top: 2px;
-	width: 18px;
-	font-size: 1rem;
-  font-size: .875rem;
+	top: 3px;
+	width: 19px;
+	font-size: 1em;
+	font-weight: 500;
+  // font-size: .875rem;
 	text-align: center;
 }
 

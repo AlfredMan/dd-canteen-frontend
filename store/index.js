@@ -56,7 +56,8 @@ export const state = () => ({
   journals: [],
   spaceType: [],
   architects: [],
-  events: []
+  events: [],
+  routeHistory: {}
 })
 
 export const mutations = {
@@ -126,6 +127,9 @@ export const mutations = {
     // console.log('vuex setBuildings', payload)
     state.events = payload.events
   },
+  setRouteHistory (state, payload) {
+    state.routeHistory = payload.from
+  }
 }
 
 export const getters = {
@@ -205,78 +209,10 @@ export const actions = {
   resetRouteTransitionSourceRect ({ commit }) {
     commit('clearRouteTransitionSourceElementRect')
   },
-  // getMapSpaces ({ commit, getters }) {
-  //   console.log('getMapSpaces...')
-  //   return new Promise((resolve, reject) => {
-  //     setTimeout(() => {
-  //       const demoSpaces = _.map(units, (unit) => {
-  //         // console.log(unit.Building)
-  //         // console.log(getters, getters.getBuildingBySlug(unit.Building))
-  //         const newUnit = {
-  //           title: unit.Title,
-  //           slug: unit.Slug,
-  //           images: [
-  //             {
-  //               url: getters.getBuildingBySlug(unit.Building) ? getters.getBuildingBySlug(unit.Building).url : ''
-  //             }
-  //           ],
-  //           floorplan: [
-  //             {
-  //               url: 'https://images.ctfassets.net/xsmgpzj6d8er/74jLzbmZYiAqAIt5fi3tFc/519fed5fe663df6f83cea41a8dde94db/A2-1-1.png'
-  //             }
-  //           ],
-  //           uniqueUnitReference: unit['Unique Unit Reference'],
-  //           building: unit.Building,
-  //           architect: unit.Architect,
-  //           floor: unit.Floor,
-  //           unit: unit.Unit,
-  //           tenant: unit.Tenant,
-  //           spaceType: unit['Space Type'],
-  //           spaceOption: unit['Space option'],
-  //           sizeSqFt: unit['Size Sq Ft'],
-  //           sizeSqM: unit['Size Sq M'],
-  //           sizeSqFtBracket: unit['Size Sq Ft Bracket'],
-  //           explantion: unit.Explantion,
-  //           options: unit.Options
-  //         }
-  //         // console.log('newUnit', newUnit)
-  //         return newUnit
-  //       })
-  //       // console.log(demoSpaces)
-  //
-  //       // const filterSpaceOptions = _.uniq(_.map(demoSpaces, space => space.options))
-  //       // const filterSpaceSizeBracket = _.uniq(_.map(demoSpaces, space => space.sizeSqFtBracket))
-  //       // const filterSpaceArchitect = _.uniq(_.map(demoSpaces, space => space.architect))
-  //
-  //       commit('setSpaces', { spaces: demoSpaces })
-  //       // commit('setSpaceFilterOptions', { options: filterSpaceOptions })
-  //       // commit('setSpaceFilterSizeBracket', { sizeBracket: filterSpaceSizeBracket })
-  //       // commit('setSpaceFilterArchitect', { architect: filterSpaceArchitect })
-  //
-  //       resolve(demoSpaces)
-  //     }, 500)
-  //   })
-  // },
-  // getMapHire ({ commit }) {
-  //   console.log('getMapHire...')
-  //   return new Promise((resolve, reject) => {
-  //     setTimeout(() => {
-  //       const demoHire = hire
-  //       resolve(demoHire)
-  //       commit('setHire', { hire })
-  //     }, 500)
-  //   })
-  // },
-  // getMapBuildings ({ commit }) {
-  //   console.log('getMapBuildings...')
-  //   return new Promise((resolve, reject) => {
-  //     setTimeout(() => {
-  //       const demoBuildings = buildings
-  //       resolve(demoBuildings)
-  //       commit('setBuildings', { buildings })
-  //     }, 500)
-  //   })
-  // },
+  addRouteHistory ({ commit }, context) {
+    const from = context.from
+    commit('setRouteHistory', { from })
+  },
   getArchitectureStudios ({ commit }) {
     console.log('getArchitectureStudios...')
     return new Promise((resolve, reject) => {

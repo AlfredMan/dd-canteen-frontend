@@ -160,6 +160,7 @@
       <input id="privacyOptIn" ref="privacyOptIn" type="hidden" name="00N0O00000GRrXc" value="1">
       <input id="privacyOptInDate" ref="privacyOptInDate" type="hidden" name="00N0O00000GRrXh" value="">
       <input id="recordType" type="hidden" name="recordType" value="0123Y0000007v91">
+      <input id="00N3Y00000H1cZf" ref="Last_Page_Viewed" type="hidden" name="00N3Y00000H1cZf" value="">
     </form>
     <!-- <iframe
       v-if="!isSuccess && formState === 'loading'"
@@ -196,6 +197,12 @@ export default {
   computed: {
     isSuccess () {
       return this.$route.query.subscription && this.$route.query.subscription === 'success'
+    },
+    routeHistory () {
+      return this.$store.state.routeHistory || {}
+    },
+    previousPath () {
+      return this.routeHistory && this.routeHistory.path || ''
     }
   },
   watch: {
@@ -336,6 +343,8 @@ export default {
       if (this.$refs.subscribeMarketingOptIn.checked) {
         this.$refs.marketingOptInDate.value = now
       }
+
+      this.$refs.Last_Page_Viewed.value = this.previousPath || ''
 
       // document.getElementById('privacyOptInDate').value = now
       //

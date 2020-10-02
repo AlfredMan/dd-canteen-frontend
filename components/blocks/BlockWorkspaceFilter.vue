@@ -132,7 +132,7 @@
               <!-- <h4 class="my-5" style="opacity:0.5">No matching work space</h4> -->
               <div class="max-w-4xl py-24">
                 <h3>Can't find what you are looking for?</h3>
-                <h4>Speak to our team to find a space and leasing model to suit your needs. Register your interest and tell us about your requirements, and we’ll be in touch.</h4>
+                <h4>Speak to our team to find a space and leasing model to suit your needs. <nuxt-link :to="`/enquire`">Register your interest</nuxt-link> and tell us about your requirements, and we’ll be in touch.</h4>
               </div>
             </div>
 

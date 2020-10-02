@@ -7,6 +7,8 @@ export default ({ app, store }) => {
     // a
     console.log(from.query, to.query)
 
+    store.dispatch('addRouteHistory', { from: from })
+
     // if is map
     if ((from.query && from.query.building) || (to.query && to.query.building)) {
       next()

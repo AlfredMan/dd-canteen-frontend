@@ -659,10 +659,10 @@
         </div>
       </div>
 
-      <div v-show="step === 2" class="my-4">
+      <div v-show="step === 2" class="mb-4 mt-12">
         <h5>Keep in touch</h5>
         <div class="form-row">
-          <div class="col-12 col-md-8">
+          <div class="col-12 col-md-12">
             <!-- <div class="custom-control custom-checkbox">
               <input
                 id="customCheck1"
@@ -681,6 +681,15 @@
             </div> -->
             <div class="checkbox-wrapper">
               <input
+                id="enquireDesignOptIn"
+                ref="enquireDesignOptIn"
+                class="form-field-reset checkbox"
+                type="checkbox"
+                name="00N0O00000GRkIa"
+                value="1"
+                hidden
+              >
+              <input
                 id="enquirePrivacyOptIn"
                 ref="enquirePrivacyOptIn"
                 class="form-field-reset checkbox"
@@ -690,17 +699,8 @@
                 required
                 :class="{'is-invalid': true, 'is-valid': true}"
               >
-              <input
-                id="enquireDesignOptIn"
-                ref="enquireDesignOptIn"
-                class="form-field-reset checkbox"
-                type="checkbox"
-                name="00N0O00000GRkIa"
-                value="1"
-                hidden
-              >
               <label class="cb" for="enquirePrivacyOptIn">
-                <span>I would like to sign-up to receive regular news and updates from Design District. See our <nuxt-link to="/privacy-notice/">Privacy Notice</nuxt-link> and <nuxt-link to="/cookies-policy/">Privacy Notice</nuxt-link>.</span>
+                <span>I would like to sign-up to receive regular news and updates from Design District. See our <a target="_blank" href="/privacy-notice">Privacy Notice</a> and <a target="_blank" href="/cookies-policy/">Cookie Policy</a>.</span>
               </label>
               <!-- <div class="invalid-feedback">
                 You must agree before submitting.
@@ -857,7 +857,7 @@
       <input id="utm_content" ref="utm_content" type="hidden" name="00N0O00000AB5iP" value="">
 
       <input id="recordType" type="hidden" name="recordType" value="0123Y0000007v91">
-
+      <input id="00N3Y00000H1cZf" ref="Last_Page_Viewed" type="hidden" name="00N3Y00000H1cZf" value="">
       <input ref="tracking" type="hidden" name="tracking_default" value="tracking_default">
 
     </form>
@@ -917,6 +917,12 @@ export default {
   computed: {
     retURL () {
       return `https://designdistrict.co.uk/success?source=${this.source}`
+    },
+    routeHistory () {
+      return this.$store.state.routeHistory || {}
+    },
+    previousPath () {
+      return this.routeHistory && this.routeHistory.path || ''
     }
   },
   monuted () {
@@ -991,6 +997,8 @@ export default {
       this.$refs.enquireForm.oid.value = oid
       this.$refs.tracking.name = f
       this.$refs.tracking.value = v
+
+      this.$refs.Last_Page_Viewed.value = this.previousPath || ''
 
       // debugger
       // return;

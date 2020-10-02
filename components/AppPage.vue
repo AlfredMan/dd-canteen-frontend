@@ -30,7 +30,7 @@
 
         <BlockJournalFullList :block="block" v-else-if="isBlockType(block, 'blockJournalFullList')"/>
 
-        <div class="p-16 bg-red-100" v-else>
+        <div class="p-16 bg-red-100 hidden" v-else-if="block" style="visibility:hidden;display:none;">
           <p v-if="block.sys && block.sys.contentType">{{block.sys.contentType.sys.id}}</p>
           <pre>{{block.fields}}</pre>
         </div>
