@@ -9,6 +9,11 @@ import { createClient } from '~/plugins/contentful.js'
 const client = createClient()
 
 export const state = () => ({
+  seoDefault: {
+    image: 'https://images.ctfassets.net/xsmgpzj6d8er/5TyiTSFZiYTicI5pOIMlfy/baffbec0099fb75bd71f6cf1e816673c/Aerial_All_Buildings_Design_District.jpg?w=2000&fm=jpg&q=80',
+    title: 'Design District',
+    description: 'A new permanent home for the creative industries. With purpose-designed workspaces, workshops, accessible rents and flexible leases.'
+  },
   navigation: {
     theme: 'light'
   },

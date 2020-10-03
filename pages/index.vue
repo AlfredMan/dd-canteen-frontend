@@ -43,14 +43,17 @@ export default {
   },
 
   computed: {
+    seoDefault () {
+      return this.$store.state.seoDefault
+    },
     seoTitle () {
-      return this.entry && this.entry.fields.metaData ? this.entry.fields.metaData.fields.seoTitle : 'Design District'
+      return this.entry && this.entry.fields.metaData ? this.entry.fields.metaData.fields.seoTitle : this.seoDefault.title
     },
     seoDescription () {
-      return this.entry && this.entry.fields.metaData ? this.entry.fields.metaData.fields.seoDescription : 'A new permanent home for the creative industries. With purpose-designed workspaces, workshops, accessible rents and flexible leases. It comprises 16 buildings designed by eight architects, set in the heart of Greenwich Peninsula. Each is tailored to the needs of creative businesses to help them thrive.'
+      return this.entry && this.entry.fields.metaData ? this.entry.fields.metaData.fields.seoDescription : this.seoDefault.description
     },
     seoImage () {
-      return this.entry && this.entry.fields.metaData ? `${this.entry.fields.metaData.fields.seoImage.fields.file.url}?w=2000&fm=jpg&q=80` : 'https://designdistrict.co.uk/DD_Banner.jpg'
+      return this.entry && this.entry.fields.metaData ? `${this.entry.fields.metaData.fields.seoImage.fields.file.url}?w=2000&fm=jpg&q=80` : this.seoDefault.image
     }
   },
 
