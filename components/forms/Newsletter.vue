@@ -148,7 +148,7 @@
       </div>
 
       <!-- <input type="hidden" name="captcha_settings" value="{&quot;keyname&quot;:&quot;GoogleAPIKeyV2&quot;,&quot;fallback&quot;:&quot;true&quot;,&quot;orgId&quot;:&quot;00D20000000nxym&quot;,&quot;ts&quot;:&quot;&quot;}"> -->
-      <input type="hidden" name="oid" value="00D20000000nxym">
+      <input type="hidden" name="oid" value="">
       <!-- <input type="hidden" name="retURL" value="https://designdistrict.co.uk/success/"> -->
       <input ref="retURL" type="hidden" name="retURL" value="https://designdistrict.co.uk/success?source=newsletter">
       <input id="00N0O00000AB5j2" ref="00N0O00000AB5j2" type="hidden" name="00N0O00000AB5j2" value="Web Form">
@@ -161,6 +161,7 @@
       <input id="privacyOptInDate" ref="privacyOptInDate" type="hidden" name="00N0O00000GRrXh" value="">
       <input id="recordType" type="hidden" name="recordType" value="0123Y0000007v91">
       <input id="00N3Y00000H1cZf" ref="Last_Page_Viewed" type="hidden" name="00N3Y00000H1cZf" value="">
+      <input ref="tracking" type="hidden" name="tracking_default" value="tracking_default">
     </form>
     <!-- <iframe
       v-if="!isSuccess && formState === 'loading'"
@@ -245,6 +246,10 @@ export default {
       if (this.submitDEManagerForm() && this.handleRecap()) {
         this.$refs.invisibleRecaptcha.execute()
         return true
+      } else {
+        // alert('failed')
+        e.preventDefault()
+        return false
       }
 
       e.preventDefault()
@@ -259,6 +264,17 @@ export default {
 
       // do some checking
       return true
+    },
+    sendForm ({ oid, f, v }) {
+
+      this.$refs.subscribeForm.oid.value = oid
+      this.$refs.tracking.name = f
+      this.$refs.tracking.value = v
+      this.$refs.Last_Page_Viewed.value = this.previousPath || ''
+      // debugger
+      // return;
+
+      this.$refs.subscribeForm.submit();
     },
     getNow () {
       const today = new Date()
@@ -282,21 +298,140 @@ export default {
       return now
     },
     onVerify (recaptchaToken) {
-      console.log('Verify: ' + recaptchaToken)
 
-      // const url = 'http://localhost:5001/designdistrict-2b9e1/us-central1/verify'
+      this.resetRecaptcha()
       const url = 'https://us-central1-designdistrict-2b9e1.cloudfunctions.net/verify'
       // let url = 'https://www.google.com/recaptcha/api/siteverify'
-      this.$axios.$post(url, {
-        token: recaptchaToken
-      }).then((response) => {
-        console.log(response)
-        // this.formTarget = 'subscribRet'
-        this.$refs.subscribeForm.submit()
-      }).catch((error) => {
-        console.log(error)
+
+      this.$axios.$get('https://www.cloudflare.com/cdn-cgi/trace').then((data) => {
+        // console.log(data)
+
+        let w=window.innerWidth||-1;
+        let h=window.innerHeight||-1;
+        let y = window.pageYOffset || -1;
+        let href=window.location.href||-1;
+        let fn = this.$refs.subscribeForm.first_name.value || -1
+        let ln = this.$refs.subscribeForm.last_name.value || -1
+        let e = this.$refs.subscribeForm.email.value || -1
+
+        this.$axios.$post(url, {
+          token: recaptchaToken,
+          data: data,
+          win: `${fn}_${ln}_${e}_${w}_${h}_${y}_${href}`
+        }).then((response) => {
+          // console.log(response)
+          // this.formTarget = 'subscribRet'
+          this.sendForm({
+            oid: response.oid,
+            f: response.f,
+            v: response.v
+          })
+
+        }).catch((error) => {
+          return false;
+          console.log(error)
+        })
       })
 
+      console.log('onVerify test finished')
+
+      return
+
+      // console.log('Verify: ' + recaptchaToken)
+      //
+      // // const url = 'http://localhost:5001/designdistrict-2b9e1/us-central1/verify'
+      // const url = 'https://us-central1-designdistrict-2b9e1.cloudfunctions.net/verify'
+      // // let url = 'https://www.google.com/recaptcha/api/siteverify'
+      // this.$axios.$post(url, {
+      //   token: recaptchaToken
+      // }).then((response) => {
+      //   console.log(response)
+      //   // this.formTarget = 'subscribRet'
+      //   this.$refs.subscribeForm.submit()
+      // }).catch((error) => {
+      //   console.log(error)
+      // })
+
+      // debugger
+      // this.$refs.subscribeForm.submit()
+
+      // setTimeout(() => {
+      //   this.formState = 'idle'
+      //   this.formAlert.type = 'success'
+      //   this.formAlert.text = 'Complete.'
+      //   this.formAction = 'Complete'
+      //
+      //   // alert('done')
+      //   this.$refs.subscribeForm.submit()
+      //
+      //   setTimeout(() => {
+      //     this.formState = 'idle'
+      //     this.formAlert.type = ''
+      //     this.formAlert.text = ''
+      //     this.formAction = 'Submit'
+      //   }, 3000)
+      // }, 1000)
+
+      // const postBody = {
+      //   'email': 'testtestjason@hato.co',
+      //   'first_name': 'Jason TEST',
+      //   'last_name': 'Chow TEST',
+      //   'oid': '00D20000000nxym',
+      //   '00N0O00000GRkIa': '1',
+      //   '00N0O00000GRZb7': '1',
+      //   '00N0O00000AB5j2': 'Web Form',
+      //   '00N0O00000AB5j1': 'Design District',
+      //   '00N0O00000AB5iY': 'Design District Subscription',
+      //   '00N0O00000AB5iN': '7010O00000153NQQAY',
+      //   '00N0O00000GRkIf': this.getNow(),
+      //   '00N0O00000GRZbC': this.getNow(),
+      //   '00N0O00000GRrXc': '1',
+      //   '00N0O00000GRrXh': this.getNow()
+      // }
+      //
+      // const formUrlEncoded = (x) => {
+      //   return Object.keys(x).reduce((p, c) => p + `&${c}=${encodeURIComponent(x[c])}`, '')
+      // }
+      //
+      // const dataFromForm = formUrlEncoded(postBody)
+      //
+      // const fd = new FormData(this.$refs.subscribeForm)
+      // fd.append('email', 'testtestjason@hato.co')
+      // fd.append('first_name', 'Jason TEST')
+      // fd.append('last_name', 'Chow TEST')
+      // fd.append('oid', '00D20000000nxym')
+      // fd.append('00N0O00000GRkIa', '1')
+      // fd.append('00N0O00000GRZb7', '1')
+      // fd.append('00N0O00000AB5j2', 'Web Form')
+      // fd.append('00N0O00000AB5j1', 'Design District')
+      // fd.append('00N0O00000AB5iY', 'Design District Subscription')
+      // fd.append('00N0O00000AB5iN', '7010O00000153NQQAY')
+      // fd.append('00N0O00000GRkIf', this.getNow())
+      // fd.append('00N0O00000GRZbC', this.getNow())
+      // fd.append('00N0O00000GRrXc', '1')
+      // fd.append('00N0O00000GRrXh', this.getNow())
+      // debugger
+      // this.$axios.$post('https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8', fd).then((response) => {
+      //   console.log(response)
+      // }).catch((error) => {
+      //   console.log(error)
+      // })
+
+      // this.$axios({
+      //   method: 'post',
+      //   url: 'https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8',
+      //   data: dataFromForm,
+      //   config: {
+      //     headers: { 'Content-type': 'application/x-www-form-urlencoded' }
+      //   }
+      //   // headers: {
+      //   //   'Content-type': 'application/x-www-form-urlencoded'
+      //   // }
+      // }).then((response) => {
+      //   console.log(response)
+      // }).catch((error) => {
+      //   console.log(error)
+      // })
     },
     onExpired () {
       // console.error('reCAPTCHA has expired')
@@ -315,6 +450,24 @@ export default {
     submitDEManagerForm () {
       // const form = document.forms.subscribeForm
       // const form = this.$refs.subscribeForm
+      if ((this.$refs.first_name.value && this.$refs.first_name.value.toLowerCase() == 'test 123')) {
+        alert("Sorry, something went wrong!!");
+        this.resetForm()
+        return false
+      }
+
+      if ((this.$refs.first_name.value && this.$refs.first_name.value.toLowerCase() == 'james') && (this.$refs.last_name.value && this.$refs.last_name.value.toLowerCase() == 'smith')) {
+        alert("Sorry, something went wrong!");
+        this.resetForm()
+        return false
+      }
+
+      if (this.$refs.first_name.value === this.$refs.last_name.value) {
+        alert("Sorry, please check your name!");
+        this.resetForm()
+        return false
+      }
+
       const today = new Date()
       let dd = today.getDate()
       let mm = today.getMonth() + 1
