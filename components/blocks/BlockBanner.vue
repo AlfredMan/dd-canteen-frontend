@@ -2,9 +2,10 @@
   <section
   v-if="block"
   class="block-banner"
-  :class="[
-    `bannerStyle-${bannerStyle}`
-  ]"
+  :class="{
+    'bannerStyle-Default': bannerStyle=='Default',
+    'bannerStyle-Reverse': bannerStyle=='Reverse'
+  }"
   >
     <div class="cap-max-w w-full relative">
       <component
