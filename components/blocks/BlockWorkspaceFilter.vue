@@ -135,6 +135,10 @@
       </div>
     </div>
 
+    <div class="vue-slider-dot-handle hidden" style="visibility:hidden;display:none;">
+
+    </div>
+
   </div>
 </template>
 
