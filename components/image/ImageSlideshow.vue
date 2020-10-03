@@ -84,6 +84,7 @@ export default {
         autoPlay: 6000,
         selectedAttraction: 0.01,
         friction: 0.15,
+        resize: true,
         // adaptiveHeight: true,
         arrowShape: {
           x0: 10,

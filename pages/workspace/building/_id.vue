@@ -416,7 +416,7 @@ export default {
     // },
     building () {
       let b = this.slug && this.$store.getters.getBuildingBySlug(this.slug)
-      console.log(b)
+      // console.log(b)
       return b
     },
 

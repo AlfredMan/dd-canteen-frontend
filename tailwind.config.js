@@ -46,5 +46,12 @@ module.exports = {
       'plugins/**/*.js',
       'nuxt.config.js'
     ]
-  }
+  },
+  // purge: {
+  //   enabled: false,
+  //   content: [
+  //     './**/*.html',
+  //     './**/*.vue'
+  //   ]
+  // }
 }

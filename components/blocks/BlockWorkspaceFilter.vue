@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="BlockWorkspaceFilter">
+  <div class="BlockWorkspaceFilter" id="workspace-filter">
 
     <div class="my-16">
       <div class="cap-max-w">
@@ -123,7 +123,6 @@
             </div>
 
             <div class="px-2 pb-5" v-if="!filteredBuildings || filteredBuildings.length < 1">
-              <!-- <h4 class="my-5" style="opacity:0.5">No matching work space</h4> -->
               <div class="max-w-4xl py-24">
                 <h3>Can't find what you are looking for?</h3>
                 <h4>Speak to our team to find a space and leasing model to suit your needs. <nuxt-link :to="`/enquire`">Register your interest</nuxt-link> and tell us about your requirements, and we’ll be in touch.</h4>
@@ -206,6 +205,7 @@ export default {
 
   mounted () {
     this.setActiveFilterFromRoute()
+    this.skipToFilter()
   },
 
   watch: {
@@ -298,6 +298,18 @@ export default {
       if (this.$route.query) {
         if (this.$route.query['space-type']) {
           this.filter.options = this.$route.query['space-type']
+        }
+      }
+    },
+
+    skipToFilter () {
+      if (process.client) {
+        if (this.$route.query) {
+          if (this.$route.query['space-type']) {
+            setTimeout(()=>{
+              document.getElementById("workspace-filter").scrollIntoView();
+            },100)
+          }
         }
       }
     },

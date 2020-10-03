@@ -148,63 +148,9 @@
           </div>
         </div>
       </header>
-      <!-- <header class="container my-3 mt-4" v-else-if="entry.fields.contentType === 'Podcast'">
-        <div class="row d-flex justify-content-start">
-          <div class="col-12 col-md-6">
-            <h1 class=" mt-2 mb-4 h2" v-if="entry.fields.title">
-              {{entry.fields.title}}
-            </h1>
-            <h3 class="mb-4" v-if="entry.fields.date">
-              {{getDataTime(entry.fields.date, entry.fields.endDate)}}
-            </h3>
-            <div class="d-flex mb-5">
-              <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
-                {{entry.fields.contentType}}
-              </h6>
-              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
-                by {{entry.fields.author[0].fields.name}}
-              </h6>
-              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
-
-              </h6>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 d-flex px-5"  v-if="entry.fields.embedContent" :style="{ backgroundColor: entry.fields.colour}">
-            <div class="d-flex flex-column justify-content-center w-100 py-5" v-for="content in entry.fields.embedContent" v-if="content.sys.contentType.sys.id === 'embed'">
-                <div class=""  v-html="content.fields.embedCode.content[0].content[0].value">
-                </div>
-                <div class="">
-                  {{ content.fields.description}}
-                </div>
-            </div>
-          </div>
-        </div>
-      </header> -->
 
       <header class="container-fluid mb-0 mt-0 py-5 bg-dark text-white" v-else-if="entry.fields.contentType === 'Video'">
         <div class="row d-flex justify-content-start pt-5">
-          <!-- <div class="col-12 col-md-7 mb-4">
-            <h1 class=" mt-2 mb-4 h2" v-if="entry.fields.title">
-              {{entry.fields.title}}
-            </h1>
-            <h3 class="mb-4" v-if="entry.fields.date">
-              {{getDataTime(entry.fields.date, entry.fields.endDate)}}
-            </h3>
-            <div class="d-flex- mb-5 d-none">
-              <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
-                {{entry.fields.contentType}}
-              </h6>
-              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
-                by {{entry.fields.author[0].fields.name}}
-              </h6>
-              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
-
-              </h6>
-            </div>
-          </div>
-          <div class="col-12 col-md-6"  v-if="entry.fields.mainImage">
-            <img :src="entry.fields.mainImage.fields.file.url" alt="">
-          </div> -->
           <div class="container mb-5">
             <div class="row">
               <div class="col-12 col-lg-6">
@@ -293,7 +239,7 @@
 
     </div>
 
-    <div class="overflow-x-hidden pt-12" v-if="entry">
+    <div class="overflow-x-hidden pt-6 lg:pt-12" v-if="entry">
 
       <article class="content mt-0" v-if="entry.fields.contentReferences">
 
@@ -739,6 +685,10 @@ export default {
 </script>
 
 <style media="screen" scoped lang="sass">
+
+  .container
+    max-width: 1440px !important
+
   img
     display: block
     width: 100%

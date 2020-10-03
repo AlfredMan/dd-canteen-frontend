@@ -143,7 +143,7 @@ export const getters = {
     return state.spaces.length > 0 ? state.spaces.find(space => space.slug === slug) : null
   },
   getBuildingBySlug: state => (slug) => {
-    console.log(slug)
+    // console.log(slug)
     return state.buildings.length > 0 ? state.buildings.find(building => building.slug === slug) : null
   },
   getSpacesByBuilding: state => (slug) => {
@@ -214,7 +214,7 @@ export const actions = {
     commit('setRouteHistory', { from })
   },
   getArchitectureStudios ({ commit }) {
-    console.log('getArchitectureStudios...')
+    // console.log('getArchitectureStudios...')
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const demoStudios = studios
@@ -265,7 +265,7 @@ export const actions = {
       order: '-sys.createdAt'
     })
     if (response.items.length > 0) {
-      console.log('getBuildings response.items??..............', response.items.length)
+      // console.log('getBuildings response.items??..............', response.items.length)
       let buildings = response.items
       buildings = _.map(buildings, (b)=>{
         b.slug = b.fields.title
@@ -280,7 +280,7 @@ export const actions = {
       order: '-sys.createdAt'
     })
     if (response.items.length > 0) {
-      console.log('getBuildings response.items??..............', response.items.length)
+      // console.log('getBuildings response.items??..............', response.items.length)
       const spaceType = response.items
       commit('setSpaceType', { spaceType })
     }

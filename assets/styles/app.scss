@@ -144,7 +144,11 @@ img {
     transition-duration: .14s;
     transition-property: transform;
     transition-timing-function: ease;
-    width: 25px
+    width: 25px;
+
+    .dark & {
+      background-color: white;
+    }
 }
 
 .icon-burger__inner {

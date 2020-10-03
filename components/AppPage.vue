@@ -1,7 +1,7 @@
 <template>
   <main class="page-component">
 
-    <div class="">
+    <div class="" v-if="entry">
       <template
       v-if="entry && entry.fields.contentBlocks"
       v-for="block in entry.fields.contentBlocks">
@@ -83,7 +83,7 @@ export default {
   mounted () {
     this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
   },
-  
+
   methods: {
 
     getRichText (document) {

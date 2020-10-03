@@ -5,13 +5,13 @@ import { createClient } from './plugins/contentful.js'
 
 export default {
 
-  mode: 'universal',
-  // target: 'static',
+  // mode: 'universal',
+  target: 'static',
 
 
-  purgeCSS: {
-    enabled: false
-  },
+  // purgeCSS: {
+  //   enabled: false
+  // },
 
   server: {
     https: {
@@ -73,7 +73,7 @@ export default {
       '~/node_modules/bootstrap/scss/_functions.scss',
       '~/node_modules/bootstrap/scss/_variables.scss',
       '~/node_modules/bootstrap/scss/_mixins.scss',
-      '~/assets/styles/tailwind.scss',
+      '~/assets/styles/tailwind.scss'
       // '~/assets/styles/custom.scss',
       // './node_modules/bootstrap/scss/bootstrap.scss',
       // '~/assets/styles/reset.scss',
@@ -173,17 +173,17 @@ export default {
     //     }
     //   }
     // },
-    loaders: {
-      cssModules: {
-        modules: true,
-        localIdentName: '[local]_[hash:base64:5]'
-        // modules: {
-        //   localIdentName: '[local]--[Frida]_[hash:base64:4]',
-        //   modules: true,
-        //   hashPrefix: 'my-hash'
-        // }
-      }
-    },
+    // loaders: {
+    //   cssModules: {
+    //     modules: true,
+    //     localIdentName: '[local]_[hash:base64:5]'
+    //     // modules: {
+    //     //   localIdentName: '[local]--[Frida]_[hash:base64:4]',
+    //     //   modules: true,
+    //     //   hashPrefix: 'my-hash'
+    //     // }
+    //   }
+    // },
     terser: {
       terserOptions: {
         compress: {
@@ -191,9 +191,9 @@ export default {
         }
       }
     },
-    babel: {
-      compact: false
-    }
+    // babel: {
+    //   compact: false
+    // }
     // extend (config, { isDev, isClient, loaders: { vue } }) {
     //   if (isClient) {
     //     vue.transformAssetUrls.img = ['data-src', 'src']
@@ -320,25 +320,37 @@ export default {
     concurrency: 100,
     devtools: true,
     routes () {
-      const routes = [
-        '/architecture/hnna',
-        '/architecture/6a-architects',
-        '/architecture/adam-khan-architects',
-        '/architecture/architecture-00',
-        '/architecture/barozzi-veiga',
-        '/architecture/david-kohn-architects',
-        '/architecture/mole-architects',
-        '/architecture/schulze-grassov',
-        '/architecture/selgascano'
-      ]
+      // const routes = [
+      //   '/architecture/hnna',
+      //   '/architecture/6a-architects',
+      //   '/architecture/adam-khan-architects',
+      //   '/architecture/architecture-00',
+      //   '/architecture/barozzi-veiga',
+      //   '/architecture/david-kohn-architects',
+      //   '/architecture/mole-architects',
+      //   '/architecture/schulze-grassov',
+      //   '/architecture/selgascano'
+      // ]
       const client = createClient()
       return Promise.all([
         client.getEntries({
           'content_type': 'news'
+        }),
+        client.getEntries({
+          'content_type': 'pages'
+        }),
+        client.getEntries({
+          'content_type': 'buildings'
+        }),
+        client.getEntries({
+          'content_type': 'architect'
         })
-      ]).then(([entries]) => {
-        const journalRoutes = _.map(entries.items, entry => `/journal/${entry.fields.slug}`)
-        return [...journalRoutes, ...routes]
+      ]).then(([journal, pages, buildings, architect]) => {
+        const journalRoutes = _.map(journal.items, entry => `/journal/${entry.fields.slug}`)
+        const pagesRoutes = _.map(pages.items, entry => `/${entry.fields.slug}`)
+        const buildingsRoutes = _.map(buildings.items, entry => `/workspace/building/${entry.fields.slug}`)
+        const architectRoutes = _.map(architect.items, entry => `/architecture/${entry.fields.slug}`)
+        return [...journalRoutes, ...pagesRoutes, ...buildingsRoutes, ...architectRoutes]
       }).catch(console.error)
     },
     exclude: [

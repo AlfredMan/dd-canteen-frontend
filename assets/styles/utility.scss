@@ -462,3 +462,46 @@ select {
 }
 
 /*# sourceMappingURL=default.css.map */
+
+// .cta.format-button {
+// 	background: red;
+// }
+
+.cta {
+  @apply inline-block text-black transition duration-300 font-medium;
+  span.label {
+    @apply uppercase;
+  }
+
+  &.theme-default {
+    @apply text-white;
+    &:hover {
+      @apply text-green;
+    }
+  }
+
+  &.theme-black {
+    @apply text-white;
+    &:hover {
+      @apply text-green;
+    }
+  }
+
+  &.format-button {
+    @apply mt-4 px-4 py-3 rounded-sm;
+
+    &.theme-default {
+      @apply bg-green text-white;
+      &:hover {
+        @apply bg-green-darker;
+      }
+    }
+
+    &.theme-black {
+      @apply bg-black text-white;
+      &:hover {
+        @apply bg-black text-green;
+      }
+    }
+  }
+}
