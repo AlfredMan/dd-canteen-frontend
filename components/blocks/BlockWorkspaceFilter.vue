@@ -302,6 +302,8 @@ export default {
       if (this.$route.query) {
         if (this.$route.query['space-type']) {
           this.filter.options = this.$route.query['space-type']
+        } else {
+          this.filter.options = null
         }
       }
     },

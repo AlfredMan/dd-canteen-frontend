@@ -1,17 +1,35 @@
 <template lang="html">
-  <nuxt-link
-  class="cta"
-  :class="{
-    'theme-default': theme=='default',
-    'theme-black': theme=='black',
-    'format-button': format=='button',
-    'format-inline': format=='inline'
-    }"
-  v-if="callToAction && callToAction.fields.path && callToAction.fields.label"
-  :to="callToAction.fields.path"
-  >
-    <span class="label" v-html="callToAction.fields.label"></span>
-  </nuxt-link>
+  <div>
+    <nuxt-link
+    v-if="callToAction && callToAction.fields.path && callToAction.fields.label && isInternalLink"
+    class="cta"
+    :class="{
+      'theme-default': theme=='default',
+      'theme-black': theme=='black',
+      'format-button': format=='button',
+      'format-inline': format=='inline'
+      }"
+    :to="callToAction.fields.path"
+    >
+      <span class="label" v-html="callToAction.fields.label"></span>
+    </nuxt-link>
+
+    <a
+    v-else
+    class="cta"
+    :class="{
+      'theme-default': theme=='default',
+      'theme-black': theme=='black',
+      'format-button': format=='button',
+      'format-inline': format=='inline'
+      }"
+    :href="callToAction.fields.path"
+    target="_blank"
+    >
+      <span class="label" v-html="callToAction.fields.label"></span>
+    </a>
+
+  </div>
 </template>
 
 <script>
@@ -40,6 +58,9 @@ export default {
   computed: {
     ctaClass () {
       return `theme-${this.theme}`, `format-${this.format}`
+    },
+    isInternalLink () {
+      return this.callToAction && this.callToAction.fields.path && this.callToAction.fields.path.indexOf('http') < 0
     }
   }
 }
