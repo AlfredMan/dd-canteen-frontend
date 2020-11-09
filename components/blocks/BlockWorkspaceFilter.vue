@@ -170,7 +170,7 @@ export default {
       mapActive: false,
       filter: {
         sizeBracket: null,
-        sizeBracketMin: 100,
+        sizeBracketMin: 5,
         sizeBracketMax: 4000,
         architect: null,
         options: null
@@ -288,6 +288,10 @@ export default {
         ) {
           isChosen = isChosen+1
         }
+
+        console.log(b.fields.title);
+        console.log(+b.fields.minSize, +filter.sizeBracketMax, +b.fields.minSize !== +filter.sizeBracketMax);
+        console.log(+b.fields.minSize, +filter.sizeBracketMin, +filter.sizeBracketMax, _.inRange(+b.fields.minSize, +filter.sizeBracketMin, +filter.sizeBracketMax))
 
         return isChosen>=2
       })
