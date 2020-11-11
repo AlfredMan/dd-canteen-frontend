@@ -16,4 +16,6 @@ http://designdistrict.co.uk/* https://designdistrict.co.uk/:splat 301!
 /architects/*   /about-us
 /architects     /about-us
 /architecture   /about-us
+/workspace/building/Food%20space/ /workspace/building/food%20space/
+/workspace/building/Food%20hall/  /workspace/building/food%20space/
 /*              /index.html   200
