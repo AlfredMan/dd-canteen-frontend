@@ -100,6 +100,10 @@ export default {
         font-size: 1.2rem
         p
           font-size: 1.5rem
+          b
+            font-weight: 400
+    b
+      font-weight: 400
 
     .badge
       font-weight: 400

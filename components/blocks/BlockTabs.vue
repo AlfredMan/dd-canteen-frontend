@@ -6,11 +6,11 @@
       <div class="">
         <h4
         v-for="(tabs, index) in block.fields.tabs"
-        :key="tabs.fields.tabTitle"
+        :key="tabs.sys.id"
         :class="{
-          'active': activeTab==index
+          'active': activeTab == tabs.sys.id
           }"
-        @click="activeTab=index"
+        @click="activeTab=tabs.sys.id"
         >
           {{tabs.fields.tabTitle}}
         </h4>
@@ -20,16 +20,17 @@
       <div
       class="block-tab--tab-content"
       v-for="(tabs, index) in block.fields.tabs"
-      v-if="activeTab == index"
+      v-if="activeTab == tabs.sys.id"
       :key="tabs.sys.id">
-        <template
+
+        <!-- tabs.sys.id: {{tabs.sys.id}} -->
+        <div
         v-if="tabs && tabs.fields.tabContent"
         v-for="tab in tabs.fields.tabContent"
         >
-
           <BlockList class="block-tab--tab-list" :key="tab.sys.id" :block="tab" v-if="isBlockType(tab, 'blockList')"/>
           <BlockImage class="block-tab--tab-image" :key="tab.sys.id" :block="tab" v-else-if="isBlockType(tab, 'blockImage')"/>
-        </template>
+        </div>
       </div>
     </div>
   </section>
@@ -50,6 +51,12 @@ export default {
   components: {
     BlockList,
     BlockImage
+  },
+
+  mounted () {
+    if (this.block.fields && this.block.fields.tabs) {
+      this.activeTab = this.block.fields.tabs[0].sys.id
+    }
   },
 
   methods: {

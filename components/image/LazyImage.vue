@@ -52,7 +52,7 @@ export default {
         sm: 640,
         md: 900,
         lg: 1200,
-        xl: 1600
+        xl: 2400
       }
     }
   },

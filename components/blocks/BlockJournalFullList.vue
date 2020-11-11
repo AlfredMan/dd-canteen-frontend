@@ -80,7 +80,8 @@ ul {
       @apply px-2
     }
 
-    &:nth-of-type(2) {
+    &:nth-of-type(2),
+    &:nth-of-type(3) {
       .news-card {
         @screen lg {
           @apply sticky;

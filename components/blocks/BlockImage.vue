@@ -4,7 +4,7 @@
   >
     <lazy-image
     :src="block.fields.imageAsset[0].fields.file.url"
-    :w="2000"
+    :w="3000"
     />
   </section>
 </template>
