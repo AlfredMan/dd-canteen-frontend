@@ -19,11 +19,11 @@ const client = createClient()
 
 export default {
 
-  head () {
-    return {
-      title: 'Journal',
-    }
-  },
+  // head () {
+  //   return {
+  //     title: 'Journal',
+  //   }
+  // },
 
   components: {
     NewsCard

@@ -259,13 +259,34 @@ export default {
     //   '/architecture/selgascano'
     // ],
     routes () {
+      // const client = createClient()
+      // return Promise.all([
+      //   client.getEntries({
+      //     'content_type': 'news'
+      //   })
+      // ]).then(([entries]) => {
+      //   return _.map(entries.items, entry => `/journal/${entry.fields.slug}`)
+      // }).catch(console.error)
       const client = createClient()
       return Promise.all([
         client.getEntries({
           'content_type': 'news'
+        }),
+        client.getEntries({
+          'content_type': 'pages'
+        }),
+        client.getEntries({
+          'content_type': 'buildings'
+        }),
+        client.getEntries({
+          'content_type': 'architect'
         })
-      ]).then(([entries]) => {
-        return _.map(entries.items, entry => `/journal/${entry.fields.slug}`)
+      ]).then(([journal, pages, buildings, architect]) => {
+        const journalRoutes = _.map(journal.items, entry => `/journal/${entry.fields.slug}`)
+        const pagesRoutes = _.map(pages.items, entry => `/${entry.fields.slug}`)
+        const buildingsRoutes = _.map(buildings.items, entry => `/workspace/building/${entry.fields.slug}`)
+        const architectRoutes = _.map(architect.items, entry => `/architecture/${entry.fields.slug}`)
+        return [...journalRoutes, ...pagesRoutes, ...buildingsRoutes, ...architectRoutes]
       }).catch(console.error)
     }
   },
@@ -331,6 +352,7 @@ export default {
       //   '/architecture/schulze-grassov',
       //   '/architecture/selgascano'
       // ]
+
       const client = createClient()
       return Promise.all([
         client.getEntries({
