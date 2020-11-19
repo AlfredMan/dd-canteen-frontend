@@ -13,7 +13,7 @@
     <div class="block-journal--entries">
       <div
        class="block-journal--entries--entry"
-      :class="{'w-full lg:w-full xl:w-8/12': index==0, 'w-full xl:w-4/12': index>0}" v-for="(entry, index) in entries" :key="entry.sys.id">
+      :class="{'w-full lg:w-8/12': index==0, 'w-full lg:w-4/12': index>0}" v-for="(entry, index) in entries" :key="entry.sys.id">
         <news-card class="news-card" :entry="entry"></news-card>
       </div>
     </div>

@@ -38,10 +38,11 @@
 </template>
 
 <script>
+import _ from 'lodash'
 export default {
   computed: {
     studios () {
-      return this.$store.state.studios
+      return this.$store.state.studios && _.shuffle(this.$store.state.studios)
     }
   },
 }

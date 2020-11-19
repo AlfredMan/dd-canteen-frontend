@@ -35,6 +35,11 @@
   }
 
   &.carousel-uniform-height {
+    max-height: 65vh;
+    @include media-breakpoint-down(sm) {
+      max-height: 500px;
+      overflow: hidden;
+    }
     @include media-breakpoint-down(sm) {
       width: 100%;
     }

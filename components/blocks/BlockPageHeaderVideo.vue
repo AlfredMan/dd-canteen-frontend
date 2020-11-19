@@ -49,6 +49,12 @@ section {
 
   @include media-breakpoint-up(sm) {
     padding-bottom: 46.5%;
+    @media (min-aspect-ratio: 100/46) {
+      padding-bottom: 100vh;
+    }
+    @media (min-aspect-ratio: 100/35) {
+      padding-bottom: 35%;
+    }
   }
 
   .iframe-wrapper {
@@ -64,7 +70,10 @@ section {
       transform: scale(2.15);
 
       @include media-breakpoint-up(sm) {
-        transform: scale(1.01)
+        transform: scale(1.01);
+        @media (min-aspect-ratio: 100/46) {
+          transform: scale(1.75);
+        }
       }
     }
   }
