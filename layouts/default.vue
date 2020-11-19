@@ -47,6 +47,25 @@ import AppTool from '../components/AppTool.vue'
 import Cookies from '../components/Cookies.vue'
 
 export default {
+
+  head () {
+    return {
+      title: 'Design District',
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'description', name: 'description', content: this.seoDescription },
+        { property: 'og:image', content: this.seoImage },
+        { property: 'og:url', content: `https://designdistrict.co.uk` },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:title', content: this.seoTitle },
+        { property: 'og:description', content: this.seoDescription },
+
+        { name: 'twitter:description', content: this.seoDescription },
+        { name: 'twitter:image', content: this.seoImage },
+      ]
+    }
+  },
+
   components: {
     AppHeader,
     AppFooter,
@@ -78,6 +97,18 @@ export default {
     showNewsletterFooter () {
       return !this.showSalesFooter
     },
+    seoDefault () {
+      return this.$store.state.seoDefault
+    },
+    seoTitle () {
+      return this.seoDefault.title
+    },
+    seoDescription () {
+      return this.seoDefault.description
+    },
+    seoImage () {
+      return this.seoDefault.image
+    }
   }
 }
 </script>

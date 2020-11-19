@@ -20,12 +20,12 @@ export default {
 
   head () {
     return {
-      title: this.seoTitle,
+      title: 'Design District',
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         { hid: 'description', name: 'description', content: this.seoDescription },
         { property: 'og:image', content: this.seoImage },
-        { property: 'og:url', content: `https://designdistrict.co.uk/${this.entry.fields.slug}` },
+        { property: 'og:url', content: `https://designdistrict.co.uk` },
         { property: 'og:type', content: 'website' },
         { property: 'og:title', content: this.seoTitle },
         { property: 'og:description', content: this.seoDescription },
