@@ -30,6 +30,7 @@ export default {
         { property: 'og:title', content: this.seoTitle },
         { property: 'og:description', content: this.seoDescription },
 
+        { name: 'twitter:title', content: this.seoTitle },
         { name: 'twitter:description', content: this.seoDescription },
         { name: 'twitter:image', content: this.seoImage },
       ]

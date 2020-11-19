@@ -25,9 +25,6 @@ export default {
     meta: [
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' },
 
-      { property: 'twitter:card', content: 'summary_large_image' },
-      { property: 'twitter:site', content: '@design_district' },
-
       { property: 'og:site_name', content: 'https://designdistrict.co.uk' },
       { property: 'og:url', content: 'https://designdistrict.co.uk' },
       { property: 'og:type', content: 'website' },
