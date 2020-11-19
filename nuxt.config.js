@@ -5,8 +5,11 @@ import { createClient } from './plugins/contentful.js'
 
 export default {
 
+  env: {
+    target: process.env.NUXT_TARGET || 'static'
+  },
   // mode: 'universal',
-  target: 'static',
+  target: process.env.target,
 
 
   // purgeCSS: {
