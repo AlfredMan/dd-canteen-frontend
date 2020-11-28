@@ -673,15 +673,25 @@ export default {
 
     getDataTime (date, endDate) {
       // let default = '12:00:00'
-      let format = 'D MMM'
+      let format = 'dddd D MMM'
+      console.log(date)
       if (date && !endDate) {
-        return `${moment(date).format(format)}`
+        if (moment.parseZone(date).hours()>0) {
+          format = 'dddd D MMM, LT'
+        }
+        return `${moment.parseZone(date).format(format)}`
       } else
       if (!date && endDate) {
-        return `${moment(endDate).format(format)}`
+        if (moment.parseZone(endDate).hours()>0) {
+          format = 'dddd D MMM, LT'
+        }
+        return `${moment.parseZone(endDate).format(format)}`
       } else
       if (date && endDate) {
-        return `${moment(date).format(format)}—${moment(endDate).format(format)}`
+        if (moment.parseZone(date).hours()>0 || moment.parseZone(endDate).hours()>0) {
+          format = 'dddd D MMM, LT'
+        }
+        return `${moment.parseZone(date).format(format)}—${moment.parseZone(endDate).format(format)}`
       } else {
         return ``
       }
