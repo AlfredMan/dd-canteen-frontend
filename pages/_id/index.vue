@@ -18,6 +18,12 @@ export default {
     AppPage
   },
 
+  validate({ params, query }) {
+    if (query.preview) {
+      return true
+    }
+  },
+
   head () {
     return {
       title: this.seoTitle,
@@ -25,7 +31,7 @@ export default {
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         { hid: 'description', name: 'description', content: this.seoDescription },
         { property: 'og:image', content: this.seoImage },
-        { property: 'og:url', content: `https://designdistrict.co.uk/${this.entry.fields.slug}` },
+        { property: 'og:url', content: `https://designdistrict.co.uk/${this.seoUrl}` },
         { property: 'og:type', content: 'website' },
         { property: 'og:title', content: this.seoTitle },
         { property: 'og:description', content: this.seoDescription },
@@ -44,6 +50,9 @@ export default {
   },
 
   computed: {
+    seoUrl () {
+      return this.entry && this.entry.fields.slug ? this.entry.fields.slug : ''
+    },
     seoTitle () {
       return this.entry && this.entry.fields.metaData ? this.entry.fields.metaData.fields.seoTitle : this.seoDefault.title
     },
@@ -58,7 +67,29 @@ export default {
     },
   },
 
-  asyncData ({ route, store }) {
+  watchQuery: ['preview'],
+
+  mounted () {
+    console.log('mounted ', this.$route.params.id)
+  },
+
+  // async fetch({ route }) {
+  //   console.log('fetch  +++++++++++++++++')
+  //   try {
+  //      const response = await client.getEntries({
+  //        'content_type': 'pages',
+  //        'fields.slug': route.params.id,
+  //        'include': 4
+  //      })
+  //      this.entry = response.items[0]
+  //      console.log(this.entry)
+  //    } catch (err) {
+  //      console.error(err);
+  //    }
+  // },
+
+  async asyncData ({ route, store }) {
+    console.log('asyncData +++++++++++++++++')
     return Promise.all([
       // fetch the owner of the blog
       // client.getEntries({

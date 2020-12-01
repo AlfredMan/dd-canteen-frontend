@@ -10,6 +10,7 @@ export default {
   },
   // mode: 'universal',
   target: process.env.target,
+  // target: 'static',
 
 
   // purgeCSS: {
@@ -90,6 +91,9 @@ export default {
   },
 
   plugins: [
+    {
+      src: '~/plugins/preview.client.js'
+    },
     {
       src: '~/plugins/filters'
     },

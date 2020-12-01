@@ -21,11 +21,14 @@ if (process.client) {
     if (window.location.host !== 'designdistrict.co.uk' && preview) {
       isLive = false
     }
+    console.log('isLive?', isLive)
   }
 }
 
 const ACCESS_TOKEN = isLive ? c.CTF_CDA_ACCESS_TOKEN : c.CTF_CPA_ACCESS_TOKEN
 const HOST = isLive ? 'cdn.contentful.com' : 'preview.contentful.com'
+
+console.log(isLive, ACCESS_TOKEN, HOST)
 
 const contentfulConfig = {
   space: c.CTF_SPACE_ID,

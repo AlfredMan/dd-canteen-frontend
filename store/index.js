@@ -259,13 +259,13 @@ export const actions = {
       limit: 99
     })
     if (response.items.length > 0) {
-      console.log('getJournals response.items??..............', response.items[0])
+      // console.log('getJournals response.items??..............', response.items[0])
       const featured = _.filter(response.items, item => item.fields.featured)
       const featuredOrderedByDate = _.orderBy(featured, ['sys.createdAt'], ['desc'])
       const nonFeatured = _.filter(response.items, item => !item.fields.featured)
       const nonFeaturedOrderedByDate = _.orderBy(nonFeatured, ['sys.createdAt'], ['desc'])
-      console.log('featured', featuredOrderedByDate)
-      console.log('nonFeatured', nonFeaturedOrderedByDate)
+      // console.log('featured', featuredOrderedByDate)
+      // console.log('nonFeatured', nonFeaturedOrderedByDate)
       commit('setJournals', { journals: featuredOrderedByDate.concat(nonFeaturedOrderedByDate) })
     }
   },

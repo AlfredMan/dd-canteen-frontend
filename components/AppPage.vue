@@ -91,7 +91,11 @@ export default {
     },
 
     isBlockType (block, id) {
-      return block.sys && block.sys.contentType && block.sys.contentType.sys.id == id
+      let isType = block.sys && block.sys.contentType && block.sys.contentType.sys.id == id
+      if (isType) {
+        console.log(block, id)
+      }
+      return isType
     },
 
   }
