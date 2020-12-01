@@ -9,6 +9,7 @@ export default {
     target: process.env.NUXT_TARGET || 'static'
   },
   // mode: 'universal',
+  // mode: 'spa',
   // target: process.env.target,
   target: 'static',
 
@@ -133,6 +134,7 @@ export default {
     },
     {
       src: '~/plugins/preview.client.js',
+      mode: 'client'
     },
     // {
     //   src: '~/plugins/vue-range-slider.js',

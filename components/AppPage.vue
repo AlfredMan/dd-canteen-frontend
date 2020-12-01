@@ -82,6 +82,10 @@ export default {
 
   mounted () {
     this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
+
+    _.map(this.entry.fields.contentBlocks, (block)=>{
+      console.log(block.sys.contentType.sys.id)
+    })
   },
 
   methods: {

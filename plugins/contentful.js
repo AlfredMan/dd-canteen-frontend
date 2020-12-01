@@ -13,7 +13,10 @@ const c = {
 
 let isLive = true
 
+console.log('process.client?', process.client)
+
 if (process.client) {
+  console.log('process.client 1')
   console.log('contentfuljs window.location', window.location)
   if (window && window.location.host) {
     const urlParams = new URLSearchParams(window.location.search)
@@ -23,6 +26,8 @@ if (process.client) {
     }
     console.log('isLive?', isLive)
   }
+} else {
+  console.log('process.client false')
 }
 
 const ACCESS_TOKEN = isLive ? c.CTF_CDA_ACCESS_TOKEN : c.CTF_CPA_ACCESS_TOKEN
