@@ -9,8 +9,8 @@ export default {
     target: process.env.NUXT_TARGET || 'static'
   },
   // mode: 'universal',
-  target: process.env.target,
-  // target: 'static',
+  // target: process.env.target,
+  target: 'static',
 
 
   // purgeCSS: {
@@ -92,9 +92,6 @@ export default {
 
   plugins: [
     {
-      src: '~/plugins/preview.client.js'
-    },
-    {
       src: '~/plugins/filters'
     },
     {
@@ -133,7 +130,10 @@ export default {
     {
       src: '~/plugins/vue-slider-component.js',
       mode: 'client'
-    }
+    },
+    {
+      src: '~/plugins/preview.client.js',
+    },
     // {
     //   src: '~/plugins/vue-range-slider.js',
     //   mode: 'client'
