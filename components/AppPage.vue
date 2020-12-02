@@ -90,9 +90,9 @@ export default {
 
   mounted () {
 
-    _.map(this.entry.fields.contentBlocks, (block)=>{
-      console.log(block.sys.contentType.sys.id)
-    })
+    // _.map(this.entry.fields.contentBlocks, (block)=>{
+    //   console.log(block.sys.contentType.sys.id)
+    // })
 
     this.checkEntryTheme()
   },

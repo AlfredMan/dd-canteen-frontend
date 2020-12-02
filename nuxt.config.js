@@ -9,9 +9,9 @@ export default {
     target: process.env.NUXT_TARGET || 'static'
   },
   // mode: 'universal',
-  mode: 'spa',
+  // mode: 'spa',
   // target: process.env.target,
-  // target: 'static',
+  target: 'static',
 
 
   // purgeCSS: {
@@ -382,7 +382,10 @@ export default {
       }).catch(console.error)
     },
     exclude: [
-      /^(?=.*\bhelper|home\b).*$/
+      /^(?=.*\bhelper|home\b).*$/,
+      '/workspace/filter',
+      '/workspace/enquire',
+      '/home'
     ]
   },
   //
