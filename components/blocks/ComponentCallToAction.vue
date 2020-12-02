@@ -89,7 +89,7 @@ export default {
 .theme-black {
   @apply text-white;
   &:hover {
-    @apply text-green;
+    @apply text-white;
   }
 }
 
@@ -110,7 +110,7 @@ export default {
   &.theme-black {
     @apply bg-black text-white;
     &:hover {
-      @apply bg-black text-green;
+      @apply bg-black text-white;
     }
   }
 }
