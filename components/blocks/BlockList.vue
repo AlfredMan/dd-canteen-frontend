@@ -127,10 +127,10 @@ section {
 }
 .block-list {
   &.theme-light {
-    @apply bg-gray-100
+    @apply bg-gray-100;
   }
   &.theme-dark {
-    @apply bg-black
+    @apply bg-black;
   }
 }
 .block-list-header {

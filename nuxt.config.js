@@ -10,8 +10,9 @@ export default {
   },
   // mode: 'universal',
   // mode: 'spa',
-  // target: process.env.target,
-  target: 'static',
+  target: process.env.target,
+  // target: 'server',
+  // target: 'static',
 
 
   // purgeCSS: {
