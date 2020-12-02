@@ -136,9 +136,11 @@ section {
   .block-page-header-has-image & {
     @apply w-full;
     @screen lg {
+      @apply mt-0;
       @apply w-5/12
     };
     @screen mobile {
+      @apply mt-8;      
       @apply mb-8
     }
   }

@@ -6,6 +6,7 @@ export default ({ app, store }) => {
     // console.log('route plugin beforeEach')
     // a
     console.log(from.query, to.query)
+    console.log(from, to)
 
     store.dispatch('addRouteHistory', { from: from })
 
@@ -21,6 +22,13 @@ export default ({ app, store }) => {
         next()
         return
       // }
+    }
+
+    // if route changes on the same page
+    // disable transition effect
+    if ((from.path === to.path)) {
+      next()
+      return
     }
 
     store.dispatch('routeTransitionStart')

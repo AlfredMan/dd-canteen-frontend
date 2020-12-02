@@ -30,7 +30,7 @@ export default {
     },
     fm: {
       type: String,
-      default: 'jpg',
+      default: '',
     },
     q: {
       type: Number,
@@ -66,10 +66,10 @@ export default {
   },
   methods: {
     getSrc () {
-      return `${this.ctfSrc}?fm=jpg&q=10${this.getDimParam(10)}&${this.custom}`
+      return `${this.ctfSrc}?fm=&q=10${this.getDimParam(10)}&${this.custom}`
     },
     getLazySrc (size = 'sm') {
-      return `${this.ctfSrc}?fm=jpg&q=80${this.getDimParam(this['sizes'][size])}&${this.custom}`
+      return `${this.ctfSrc}?fm=&q=80${this.getDimParam(this['sizes'][size])}&${this.custom}`
     },
     getLazySrcSet () {
       return `
@@ -81,7 +81,7 @@ export default {
       `
     },
     getSrcForSet (size = 'xl') {
-      return `${this.ctfSrc}?fm=jpg&q=80${this.getDimParam(this['sizes'][size])}&${this.custom} ${this['sizes'][size]}w`
+      return `${this.ctfSrc}?fm=&q=80${this.getDimParam(this['sizes'][size])}&${this.custom} ${this['sizes'][size]}w`
     },
     getDimParam (width) {
       let dim = ''

@@ -3,6 +3,7 @@
   v-if="block"
   class="block-list"
   :class="[blockThemeClass]"
+  :id="blockId"
   >
     <div
     v-if="block.fields.heading || block.fields.subheading"
@@ -109,6 +110,9 @@ export default {
     },
     blockThemeClass () {
       return `theme-${this.blockTheme}`
+    },
+    blockId() {
+      return this.block.fields.heading ? _.kebabCase(this.block.fields.heading) : ''
     }
   }
 }
