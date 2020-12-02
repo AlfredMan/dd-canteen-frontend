@@ -9,8 +9,8 @@ export default {
     target: process.env.NUXT_TARGET || 'static'
   },
   // mode: 'universal',
-  // mode: 'spa',
-  target: process.env.target,
+  mode: 'spa',
+  // target: process.env.target,
   // target: 'static',
 
 
