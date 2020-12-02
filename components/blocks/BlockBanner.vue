@@ -3,20 +3,27 @@
   v-if="block"
   class="block-banner"
   :class="{
-    'bannerStyle-Default': bannerStyle=='Default',
-    'bannerStyle-Reverse': bannerStyle=='Reverse'
+    'bannerStyle-Default': bannerStyle=='Default' || !bannerStyle,
+    'bannerStyle-Reverse': bannerStyle=='Reverse',
+    'bannerStyle-Full': bannerStyle=='Full'
   }"
   >
-    <div class="cap-max-w w-full relative">
+    <div class="w-full relative">
+
       <component
       :is="bannerStyle=='Full'?'DIV':'DIV'"
-      :to="bannerStyle=='Full'&&block.fields.callToAction.fields.path?block.fields.callToAction.fields.path:undefined"
+      :to="bannerStyle=='Full'&& block.fields.callToAction && block.fields.callToAction.fields.path?block.fields.callToAction.fields.path:undefined"
       class="block-banner-header"
       >
-        <h2 v-if="block.fields.heading">{{block.fields.heading}}</h2>
-        <h4 v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
-        <callToAction v-if="block.fields.callToAction && bannerStyle=='Default'" :callToAction="block.fields.callToAction"/>
+        <div class="cap-max-w ">
+          <div class="block-banner-header-content">
+            <h2 v-if="block.fields.heading">{{block.fields.heading}}</h2>
+            <h4 v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
+            <callToAction v-if="block.fields.callToAction && bannerStyle=='Default'" :callToAction="block.fields.callToAction"/>
+          </div>
+        </div>
       </component>
+
       <div class="block-banner-media">
         <div class="block-banner-media-screen">
 
@@ -54,6 +61,16 @@ section {
 
   @apply relative;
 
+  .block-banner-header {
+    .block-banner-header-content {
+      max-width: 36rem;
+      h2,
+      h4 {
+        @apply text-white;
+      }
+    }
+  }
+
   &.bannerStyle-Default,
   &.bannerStyle-Reverse {
     @apply flex flex-wrap;
@@ -65,7 +82,7 @@ section {
       }
     }
 
-    .block-banner-header {
+    .block-banner-header-content {
       @apply px-4 py-12 mb-0;
 
       @media (min-width: 1024px) {
@@ -98,33 +115,37 @@ section {
     }
 
     .block-banner-header {
-      @apply bg-green bg-opacity-75 text-opacity-100 transition-all duration-300;
-      @apply px-4 py-12 mb-0;
-      @apply cursor-pointer;
-      // mix-blend-mode: multiply;
-      backdrop-filter: blur(12px) contrast(0.8);
+      // @apply bg-green bg-opacity-75 text-opacity-100 transition-all duration-300;
+      @apply bg-black bg-opacity-50 text-opacity-100 transition-all duration-300;
 
-      h2, h4 {
-        @apply transition duration-300;
-      }
+      .block-banner-header-content {
+        @apply px-4 py-12 mb-0;
+        // @apply cursor-pointer;
+        // mix-blend-mode: multiply;
+        // backdrop-filter: blur(12px) contrast(0.8);
 
-      @media (min-width: 1024px) {
-        @apply pt-8 pb-16;
-        min-height: 500px;
+        h2, h4 {
+          @apply transition duration-300;
+        }
+
+        @media (min-width: 1024px) {
+          @apply pt-8 pb-16;
+          min-height: 500px;
+        }
       }
 
       &:hover {
 
-        backdrop-filter: blur(0px) contrast(0.8);
+        // backdrop-filter: blur(0px) contrast(0.8);
         // @apply bg-opacity-0;
-        @apply bg-opacity-0;
+        @apply bg-opacity-25;
         //
         // + .block-banner-media {
         //   filter: blur(0);
         // }
-        h2, h4 {
-          @apply opacity-0;
-        }
+        // h2, h4 {
+        //   @apply opacity-0;
+        // }
       }
     }
 
@@ -148,7 +169,7 @@ section {
 }
 
 .block-banner-header {
-  @apply block mb-12 relative z-10;
+  @apply block relative z-10;
 
   h2 {
     @apply max-w-3xl;

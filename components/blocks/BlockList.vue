@@ -125,6 +125,9 @@ section {
   &.theme-light {
     @apply bg-gray-100
   }
+  &.theme-dark {
+    @apply bg-black
+  }
 }
 .block-list-header {
   @apply mb-8;
@@ -136,6 +139,12 @@ section {
   }
   h4 {
     @apply max-w-3xl font-thin;
+  }
+
+  h2, h4 {
+    .theme-dark & {
+      @apply text-white;
+    }
   }
 
 }

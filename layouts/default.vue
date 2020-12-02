@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="[`theme-${appTheme}`]">
 
     <!-- <test-cookies /> -->
 
@@ -10,6 +10,8 @@
     <app-newsletter v-if="showNewsletterFooter"/>
 
     <app-sales v-if="showSalesFooter"/>
+
+    <app-five-pound v-if="showFivePoundFooter"/>
 
     <app-footer />
 
@@ -42,6 +44,7 @@ import AppFooter from '../components/AppFooter.vue'
 import AppTransition from '../components/AppTransition.vue'
 import AppNewsletter from '../components/AppNewsletter.vue'
 import AppSales from '../components/AppSales.vue'
+import AppFivePound from '../components/AppFivePound.vue'
 import AppMap from '../components/map/Map.vue'
 import AppTool from '../components/AppTool.vue'
 import Cookies from '../components/Cookies.vue'
@@ -74,7 +77,8 @@ export default {
     AppSales,
     AppMap,
     AppTool,
-    Cookies
+    Cookies,
+    AppFivePound
   },
   mounted () {
     // From testing, without a brief timeout, it won't work.
@@ -91,11 +95,14 @@ export default {
   },
 
   computed: {
+    showFivePoundFooter () {
+      return this.$route.path.indexOf('space-to-create') >= 0
+    },
     showSalesFooter () {
-      return this.$route.path.indexOf('workspace') >= 0 || this.$route.path.indexOf('about') >= 0
+      return !this.showFivePoundFooter && (this.$route.path.indexOf('workspace') >= 0 || this.$route.path.indexOf('about') >= 0)
     },
     showNewsletterFooter () {
-      return !this.showSalesFooter
+      return !this.showFivePoundFooter && !this.showSalesFooter
     },
     seoDefault () {
       return this.$store.state.seoDefault
@@ -108,7 +115,10 @@ export default {
     },
     seoImage () {
       return this.seoDefault.image
-    }
+    },
+    appTheme () {
+      return this.$store.state.navigation.theme
+    },
   }
 }
 </script>
@@ -134,4 +144,6 @@ export default {
 @import '~/assets/styles/news.scss';
 @import '~/assets/styles/lazy.scss';
 @import '~/assets/styles/slider.scss';
+
+// @import '~/assets/styles/theme.scss';
 </style>

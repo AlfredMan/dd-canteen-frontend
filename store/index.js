@@ -69,6 +69,9 @@ export const mutations = {
   setNavigationTheme (state, payload) {
     state.navigation.theme = payload.theme
   },
+  setNavigationAccent (state, payload) {
+    state.navigation.accent = payload.accent
+  },
   setRouteTransitionStep (state, payload) {
     state.transition.step = payload.step
   },
@@ -185,6 +188,10 @@ export const actions = {
   updateNavigationTheme ({ commit }, context) {
     const theme = context.theme
     commit('setNavigationTheme', { theme })
+  },
+  updateNavigationAccent ({ commit }, context) {
+    const theme = context.theme
+    commit('setNavigationAccent', { theme })
   },
   routeTransitionStart ({ commit }) {
     commit('setRouteTransitionStep', { step: 1 })

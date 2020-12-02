@@ -163,6 +163,10 @@ export default {
   // background: $secondary;
   background: $primary;
   pointer-events: none;
+
+  #app.theme-orange & {
+    background: $secondary;
+  }
 }
 /*! purgecss start ignore */
 img {

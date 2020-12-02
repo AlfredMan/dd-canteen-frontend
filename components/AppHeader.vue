@@ -6,10 +6,10 @@
   ]">
     <div data-x="a" class="container-fluid px-0 -px-lg-0 transition duration-300"
     :class="{
-        'text-white': isDark && !menuActive,
-        'text-black': !isDark && !menuActive,
-        'bg-white': !isDark && scrolled && !menuActive,
-        'bg-black': isDark && scrolled && !menuActive
+        'text-white': (isDark) && !menuActive,
+        'text-black': !(isDark) && !menuActive,
+        'bg-white': !(isDark) && scrolled && !menuActive,
+        'bg-black': (isDark) && scrolled && !menuActive
       }"
     >
       <nav class="inner d-flex -flex-row align-items-center -row z-index-- cap-max-w" >
@@ -35,15 +35,24 @@
         </nuxt-link>
 
         <a href="tel:+4402039812426"
-        class="btn btn-lg- btn-dark- btn-primary-text-white text-primary m-2 pt-1 ml-auto -mr-0 d-sm-inline-block d-none "
-        :class="{'btn-outline-black': menuActive}">
+        class="btn btn-lg- btn-dark- btn-primary-text-white m-2 pt-1 ml-auto -mr-0 d-sm-inline-block d-none "
+        :class="{
+          'btn-outline-black': menuActive,
+          'text-primary': !(isOrange||isDark),
+          'text-black': (isOrange),
+          'text-white': isDark
+          }">
           <span class="d-inline d-xl-none">+44 (0)20 3981 2426</span>
           <span class="d-none d-xl-inline">+44 (0)20 3981 2426</span>
         </a>
 
         <nuxt-link :to="{ path: '/enquire' }"
-        class="btn btn-lg- btn-dark- btn-primary text-white -btn-outline-primary m-2 -pt-1 -mr-0 ml-auto ml-sm-0"
-        :class="{'btn-dark': menuActive}"
+        class="btn btn-lg- btn-dark- -btn-primary text-white -btn-outline-primary m-2 -pt-1 -mr-0 ml-auto ml-sm-0"
+        :class="{
+          'btn-dark': menuActive,
+          'btn-primary': !(isOrange||isDark),
+          'btn-dark': (isOrange||isDark)
+          }"
         >
           <span class="d-inline d-xl-none">Become a tenant</span>
           <span class="d-none d-xl-inline">Become a tenant</span>
@@ -109,8 +118,14 @@ export default {
     headerClass () {
       return this.$store.state.navigation.theme
     },
+    // headerAccent () {
+    //   return this.$store.state.navigation.accent
+    // },
     isDark () {
       return this.$store.state.navigation.theme == 'dark'
+    },
+    isOrange () {
+      return this.$store.state.navigation.theme == 'orange'
     }
   },
   watch: {
