@@ -47,6 +47,7 @@
 
 <script>
 // import ComponentCallToAction from '~/components/blocks/ComponentCallToAction'
+import _ from 'lodash'
 export default {
   props: ['block'],
 
@@ -140,7 +141,7 @@ section {
       @apply w-5/12
     };
     @screen mobile {
-      @apply mt-8;      
+      @apply mt-8;
       @apply mb-8
     }
   }
