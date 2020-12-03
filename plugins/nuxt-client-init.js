@@ -1,6 +1,6 @@
 export default async (ctx) => {
 
-  console.log('nuxt client init !!!!!!!!!!!!!!!!')
+  // console.log('nuxt client init !!!!!!!!!!!!!!!!')
 
   // await ctx.store.dispatch('getArchitectureStudios')
   // // await ctx.store.dispatch('getMapBuildings')

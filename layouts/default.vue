@@ -50,7 +50,7 @@ import AppNewsletter from '../components/AppNewsletter.vue'
 import AppSales from '../components/AppSales.vue'
 import AppFivePound from '../components/AppFivePound.vue'
 import AppMap from '../components/map/Map.vue'
-import AppTool from '../components/AppTool.vue'
+// import AppTool from '../components/AppTool.vue'
 import Cookies from '../components/Cookies.vue'
 
 export default {
@@ -80,7 +80,7 @@ export default {
     AppNewsletter,
     AppSales,
     AppMap,
-    AppTool,
+    // AppTool,
     Cookies,
     AppFivePound
   },

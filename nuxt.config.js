@@ -13,7 +13,7 @@ export default {
   // mode: 'universal',
   // mode: 'spa',
   // target: process.env.target,
-  target: 'static',
+  // target: 'static',
   // target: 'server',
   // target: 'static',
 
@@ -348,7 +348,7 @@ export default {
 
   generate: {
     interval: 200,
-    concurrency: 10,
+    concurrency: 5,
     devtools: true,
     routes () {
       // const routes = [
@@ -389,7 +389,8 @@ export default {
       /^(?=.*\bhelper|home\b).*$/,
       '/workspace/filter',
       '/workspace/enquire',
-      '/home'
+      '/home',
+      '/pages_archive/**/*'
     ]
   },
   //

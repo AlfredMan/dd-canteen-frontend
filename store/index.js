@@ -170,7 +170,7 @@ export const getters = {
 
 export const actions = {
   async nuxtServerInit ({ dispatch }) {
-    console.log('nuxtServerInit ++++++++++++++++++++++++++++++=')
+    // console.log('nuxtServerInit ++++++++++++++++++++++++++++++=')
     // await dispatch('getArchitectureStudios')
     // await dispatch('getMapHire')
     // await dispatch('getMapBuildings')
