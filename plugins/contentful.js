@@ -27,6 +27,8 @@ if (process.client) {
     console.log('isLive?', isLive)
   }
 }
+
+console.log('npm run dev. using cdn.contentful.com. works and preview ok locally.')
 // else {
 //   console.log('force contentful isLive?')
 //   isLive = process.env.IS_CONTENTFUL_LIVE || false
