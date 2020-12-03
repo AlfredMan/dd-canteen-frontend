@@ -27,12 +27,23 @@
           :theme="ctaTheme"
           />
         </div>
+
         <div
         class="block-page-header-image"
         >
+
+          <div class="" v-if="block.fields.embedAsset && block.fields.embedAsset[0]">
+            <div class="block-page-header-embed-code">
+              <div class="ratio-container">
+                <div class="iframe-wrapper" v-html="getEmbedCode">
+                </div>
+              </div>
+            </div>
+          </div>
+
           <lazy-image
             class="block-banner-media-image"
-            v-if="block.fields.imageAsset && block.fields.imageAsset[0]"
+            v-else-if="block.fields.imageAsset && block.fields.imageAsset[0]"
             :src="block.fields.imageAsset[0].fields.file.url"
             :w="2000"
             />
@@ -87,6 +98,17 @@ export default {
         }
       }
       return 'default'
+    },
+    getEmbedCode( ) {
+      if (this.block
+        && this.block.fields.embedAsset
+        && this.block.fields.embedAsset[0]
+        && this.block.fields.embedAsset[0].fields.embedCode
+        && this.block.fields.embedAsset[0].fields.embedCode.content[0].content[0].value
+      ) {
+        return this.block.fields.embedAsset[0].fields.embedCode.content[0].content[0].value
+      }
+      return ''
     }
   }
   // components: { ComponentCallToAction }
@@ -146,6 +168,28 @@ section {
     }
   }
 }
+
+
+.block-page-header-embed-code {
+  .ratio-container {
+    width: 100%;
+    padding-bottom: 66%;
+    position: relative;
+    // top: 50%;
+    // transform: translateY(-50%);
+  }
+  .iframe-wrapper {
+    display: block;
+    @apply absolute inset-0;
+    width: 100%;
+    iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
 h1 {
   @apply -mt-4;
 }
@@ -170,4 +214,5 @@ h5 {
     }
   }
 }
+
 </style>
