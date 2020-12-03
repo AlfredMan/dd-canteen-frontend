@@ -1,7 +1,8 @@
 <template lang="html">
-  <div class="news-card">
+  <div class="news-card" v-if="entry">
     <router-link :to="{ path: `/journal/${entry.fields.slug}` }">
       <lazy-image
+      v-if="entry.fields.thumbnailImage"
       class="news-thumbnail"
       :src="entry.fields.thumbnailImage.fields.file.url"
       :w="1000"

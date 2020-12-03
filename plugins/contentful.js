@@ -26,12 +26,13 @@ if (process.client) {
     }
     console.log('isLive?', isLive)
   }
-} else {
-  console.log('force contentful isLive?')
-  isLive = process.env.IS_CONTENTFUL_LIVE || false
 }
+// else {
+//   console.log('force contentful isLive?')
+//   isLive = process.env.IS_CONTENTFUL_LIVE || false
+// }
 
-isLive = false
+// isLive = false
 
 // if (process.env.NODE_ENV === 'production') {
 //   console.log('force contentful isLive')
