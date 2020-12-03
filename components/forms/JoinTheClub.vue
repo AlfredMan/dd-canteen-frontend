@@ -398,7 +398,7 @@ export default {
       return true
     },
     onVerify (response) {
-      console.log('Verify: ' + response)
+      // console.log('Verify: ' + response)
 
       // this.formState = 'idle'
       // this.formAlert.type = 'success'
@@ -430,13 +430,13 @@ export default {
       }
 
       this.$axios.$post('https://us-central1-designdistrict-2b9e1.cloudfunctions.net/sendMail', postBody).then((response) => {
-        console.log(response)
+        // console.log(response)
         this.formState = 'complete'
         this.formAlert.type = 'success'
         this.formAlert.text = 'Complete.'
         this.formAction = 'Complete'
       }).catch((error) => {
-        console.log(error)
+        // console.log(error)
         // this.formState = 'loading'
         // this.formAlert.type = 'error'
         // this.formAlert.text = 'Error'

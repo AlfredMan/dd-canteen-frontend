@@ -3,6 +3,8 @@ import fs from 'fs'
 import _ from 'lodash'
 import { createClient } from './plugins/contentful.js'
 
+// console.log('process.env.target', process.env.target)
+
 export default {
 
   env: {
@@ -11,7 +13,8 @@ export default {
   // mode: 'universal',
   // mode: 'spa',
   // target: process.env.target,
-  target: 'static',
+  // target: 'static',
+  target: 'server',
   // target: 'static',
 
 
@@ -198,9 +201,9 @@ export default {
         }
       }
     },
-    // babel: {
-    //   compact: false
-    // }
+    babel: {
+      compact: false
+    }
     // extend (config, { isDev, isClient, loaders: { vue } }) {
     //   if (isClient) {
     //     vue.transformAssetUrls.img = ['data-src', 'src']

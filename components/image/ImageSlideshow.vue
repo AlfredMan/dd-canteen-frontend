@@ -110,7 +110,7 @@ export default {
       if (process.client) {
         let flkty = this.$refs.flkty
         if (!flkty) {
-          console.log('flkty not found')
+          // console.log('flkty not found')
           return
         }
         // console.log('resize')

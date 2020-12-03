@@ -217,7 +217,7 @@ export default {
       return now
     },
     onVerify (recaptchaToken) {
-      console.log('Verify: ' + recaptchaToken)
+      // console.log('Verify: ' + recaptchaToken)
 
       // const url = 'http://localhost:5001/designdistrict-2b9e1/us-central1/verify'
       const url = 'https://us-central1-designdistrict-2b9e1.cloudfunctions.net/verify'
@@ -225,11 +225,11 @@ export default {
       this.$axios.$post(url, {
         token: recaptchaToken
       }).then((response) => {
-        console.log(response)
+        // console.log(response)
         // this.formTarget = 'subscribRet'
         this.$refs.subscribeForm.submit()
       }).catch((error) => {
-        console.log(error)
+        // console.log(error)
       })
     },
     onExpired () {

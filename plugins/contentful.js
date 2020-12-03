@@ -13,6 +13,7 @@ const c = {
 
 let isLive = true
 
+console.log('process.env.IS_CONTENTFUL_LIVE', process.env.IS_CONTENTFUL_LIVE)
 // console.log('process.client?', process.client)
 
 if (process.client) {
@@ -27,7 +28,7 @@ if (process.client) {
   }
 } else {
   console.log('force contentful isLive?')
-  isLive = process.env.IS_CONTENTFUL_LIVE || true
+  isLive = process.env.IS_CONTENTFUL_LIVE || false
 }
 
 // if (process.env.NODE_ENV === 'production') {

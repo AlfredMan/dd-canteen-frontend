@@ -467,7 +467,7 @@ export default {
 
   methods: {
     scrollTo (id) {
-      console.log(id)
+      // console.log(id)
       if (process.client) {
         // gsap.to(window, {duration: 2, scrollTo: 400});
         // gsap.to(window, {
@@ -477,7 +477,7 @@ export default {
         //     offsetY: 100
         //   }
         // });
-        console.log('id', id)
+        // console.log('id', id)
         // // gsap.to(window, {duration: 2, scrollTo: {y: "#photos", offsetY: 50}});
         gsap.to(window, {duration: 0.5, scrollTo: {y: id, offsetY: 100}});
       }

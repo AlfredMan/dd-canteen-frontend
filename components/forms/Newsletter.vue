@@ -329,11 +329,11 @@ export default {
 
         }).catch((error) => {
           return false;
-          console.log(error)
+          // console.log(error)
         })
       })
 
-      console.log('onVerify test finished')
+      // console.log('onVerify test finished')
 
       return
 

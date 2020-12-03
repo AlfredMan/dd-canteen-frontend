@@ -52,8 +52,8 @@ export default {
   props: ['block'],
 
   mounted () {
-    console.log('this.block: ', this.block)
-    console.log('this.blockTheme: ', this.blockTheme)
+    // console.log('this.block: ', this.block)
+    // console.log('this.blockTheme: ', this.blockTheme)
   },
 
   computed: {

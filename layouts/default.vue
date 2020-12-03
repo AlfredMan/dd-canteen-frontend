@@ -1,9 +1,9 @@
 <template>
-  <div id="app" :class="[
+  <div id="app" :class="{
    'theme-orange': appTheme=='orange',
    'theme-light': appTheme=='light',
    'theme-dark': appTheme=='dark'
-  ]">
+  }">
 
     <!-- <test-cookies /> -->
 
@@ -91,7 +91,7 @@ export default {
         this.$nextTick(() => {
           // This could be configured to use a smooth scroll, etc.
           // window.scrollTo(0, scrollBehavior(this.$route).y)
-          console.log(document.querySelector(this.$route.hash).offsetTop - 50)
+          // console.log(document.querySelector(this.$route.hash).offsetTop - 50)
           window.scrollTo({ top: document.querySelector(this.$route.hash).offsetTop - 50, behavior: 'smooth' })
         })
       }
