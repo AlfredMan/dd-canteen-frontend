@@ -31,6 +31,8 @@ if (process.client) {
   isLive = process.env.IS_CONTENTFUL_LIVE || false
 }
 
+isLive = false
+
 // if (process.env.NODE_ENV === 'production') {
 //   console.log('force contentful isLive')
 //   isLive = process.env.CONTENTFUL_PREVIEW || false
