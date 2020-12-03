@@ -1,5 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{
+   'theme-orange': appTheme=='orange',
+   'theme-light': appTheme=='light',
+   'theme-dark': appTheme=='dark'
+  }">
 
     <!-- <test-cookies /> -->
 
@@ -10,6 +14,8 @@
     <app-newsletter v-if="showNewsletterFooter"/>
 
     <app-sales v-if="showSalesFooter"/>
+
+    <app-five-pound v-if="showFivePoundFooter"/>
 
     <app-footer />
 
@@ -42,8 +48,9 @@ import AppFooter from '../components/AppFooter.vue'
 import AppTransition from '../components/AppTransition.vue'
 import AppNewsletter from '../components/AppNewsletter.vue'
 import AppSales from '../components/AppSales.vue'
+import AppFivePound from '../components/AppFivePound.vue'
 import AppMap from '../components/map/Map.vue'
-import AppTool from '../components/AppTool.vue'
+// import AppTool from '../components/AppTool.vue'
 import Cookies from '../components/Cookies.vue'
 
 export default {
@@ -73,8 +80,9 @@ export default {
     AppNewsletter,
     AppSales,
     AppMap,
-    AppTool,
-    Cookies
+    // AppTool,
+    Cookies,
+    AppFivePound
   },
   mounted () {
     // From testing, without a brief timeout, it won't work.
@@ -83,7 +91,7 @@ export default {
         this.$nextTick(() => {
           // This could be configured to use a smooth scroll, etc.
           // window.scrollTo(0, scrollBehavior(this.$route).y)
-          console.log(document.querySelector(this.$route.hash).offsetTop - 50)
+          // console.log(document.querySelector(this.$route.hash).offsetTop - 50)
           window.scrollTo({ top: document.querySelector(this.$route.hash).offsetTop - 50, behavior: 'smooth' })
         })
       }
@@ -91,11 +99,14 @@ export default {
   },
 
   computed: {
+    showFivePoundFooter () {
+      return this.$route.path.indexOf('space-to-create') >= 0
+    },
     showSalesFooter () {
-      return this.$route.path.indexOf('workspace') >= 0 || this.$route.path.indexOf('about') >= 0
+      return !this.showFivePoundFooter && (this.$route.path.indexOf('workspace') >= 0 || this.$route.path.indexOf('about') >= 0)
     },
     showNewsletterFooter () {
-      return !this.showSalesFooter
+      return !this.showFivePoundFooter && !this.showSalesFooter
     },
     seoDefault () {
       return this.$store.state.seoDefault
@@ -108,7 +119,10 @@ export default {
     },
     seoImage () {
       return this.seoDefault.image
-    }
+    },
+    appTheme () {
+      return this.$store.state.navigation.theme
+    },
   }
 }
 </script>
@@ -134,4 +148,6 @@ export default {
 @import '~/assets/styles/news.scss';
 @import '~/assets/styles/lazy.scss';
 @import '~/assets/styles/slider.scss';
+
+@import '~/assets/styles/theme.scss';
 </style>

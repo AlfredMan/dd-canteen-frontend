@@ -30,6 +30,10 @@
 
         <BlockJournalFullList :block="block" v-else-if="isBlockType(block, 'blockJournalFullList')"/>
 
+        <BlockVideo :block="block" v-else-if="isBlockType(block, 'blockVideo')"/>
+
+        <BlockGrid :block="block" v-else-if="isBlockType(block, 'blockImageTextGriddedList')"/>
+
         <div class="p-16 bg-red-100 hidden" v-else-if="block" style="visibility:hidden;display:none;">
           <p v-if="block.sys && block.sys.contentType">{{block.sys.contentType.sys.id}}</p>
           <pre>{{block.fields}}</pre>
@@ -55,6 +59,8 @@ import BlockTabs from '~/components/blocks/BlockTabs'
 import BlockWorkspaceFilter from '~/components/blocks/BlockWorkspaceFilter'
 import BlockArchitectureList from '~/components/blocks/BlockArchitectureList'
 import BlockJournalFullList from '~/components/blocks/BlockJournalFullList'
+import BlockVideo from '~/components/blocks/BlockVideo'
+import BlockGrid from '~/components/blocks/BlockGrid'
 
 export default {
   name: 'page',
@@ -71,7 +77,9 @@ export default {
     BlockTabs,
     BlockWorkspaceFilter,
     BlockArchitectureList,
-    BlockJournalFullList
+    BlockJournalFullList,
+    BlockVideo,
+    BlockGrid
   },
 
   props: {
@@ -81,7 +89,12 @@ export default {
   },
 
   mounted () {
-    this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
+
+    // _.map(this.entry.fields.contentBlocks, (block)=>{
+    //   console.log(block.sys.contentType.sys.id)
+    // })
+
+    this.checkEntryTheme()
   },
 
   methods: {
@@ -91,9 +104,31 @@ export default {
     },
 
     isBlockType (block, id) {
-      return block.sys && block.sys.contentType && block.sys.contentType.sys.id == id
+      let isType = block.sys && block.sys.contentType && block.sys.contentType.sys.id == id
+      // if (isType) {
+      //   console.log(block, id)
+      // }
+      return isType
     },
 
+    checkEntryTheme () {
+      let theme = 'default'
+
+      if (this.entry
+        && this.entry.fields.contentBlocks[0]
+        && this.entry.fields.contentBlocks[0].fields
+        && this.entry.fields.contentBlocks[0].fields.theme) {
+        theme = _.lowerCase(this.entry.fields.contentBlocks[0].fields.theme)
+      }
+
+      if (theme == 'dark') {
+        this.$store.dispatch('updateNavigationTheme', { theme: 'dark' })
+      } else if (theme == 'orange') {
+        this.$store.dispatch('updateNavigationTheme', { theme: 'orange' })
+      } else {
+        this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
+      }
+    }
   }
 }
 </script>

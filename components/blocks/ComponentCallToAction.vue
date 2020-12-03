@@ -1,7 +1,22 @@
 <template lang="html">
   <div>
+
+    <a
+    v-if="callToAction && isHash"
+    class="cta"
+    :class="{
+      'theme-default': theme=='default',
+      'theme-black': theme=='black',
+      'format-button': format=='button',
+      'format-inline': format=='inline'
+      }"
+    :href="callToAction.fields.path"
+    >
+      <span class="label" v-html="callToAction.fields.label"></span>
+    </a>
+
     <nuxt-link
-    v-if="callToAction && callToAction.fields.path && callToAction.fields.label && isInternalLink"
+    v-else-if="callToAction && callToAction.fields.path && callToAction.fields.label && isInternalLink"
     class="cta"
     :class="{
       'theme-default': theme=='default',
@@ -61,6 +76,9 @@ export default {
     },
     isInternalLink () {
       return this.callToAction && this.callToAction.fields.path && this.callToAction.fields.path.indexOf('http') < 0
+    },
+    isHash () {
+      return this.callToAction && this.callToAction.fields.path && this.callToAction.fields.path.indexOf('#') == 0
     }
   }
 }
@@ -89,7 +107,7 @@ export default {
 .theme-black {
   @apply text-white;
   &:hover {
-    @apply text-green;
+    @apply text-white;
   }
 }
 
@@ -110,7 +128,7 @@ export default {
   &.theme-black {
     @apply bg-black text-white;
     &:hover {
-      @apply bg-black text-green;
+      @apply bg-black text-white;
     }
   }
 }

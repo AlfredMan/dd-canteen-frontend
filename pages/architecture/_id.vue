@@ -5,7 +5,7 @@
         <div class="container-fluid">
           <div class="row d-flex align-items-baseline">
             <div class="col-12 col-md-6">
-              <h2>{{ studioData.title }}</h2>
+              <h2 v-if="studioData && studioData.title">{{ studioData.title }}</h2>
               <!-- <h4>{{studioData.buildings}}</h4> -->
             </div>
             <div class="col-12 col-md-3 mt-5">
@@ -15,14 +15,14 @@
               <h5 v-else class="mt-2 uppercase">
                 The buildings
               </h5>
-              <p>
+              <p v-if="studioData && studioData.buildingsCopy">
                 {{ studioData.buildingsCopy }}
               </p>
             </div>
 
             <div class="col-12 col-md-3 mt-5">
               <h5 class="mt-2 uppercase">The practice</h5>
-              <p>
+              <p v-if="studioData && studioData.practiceCopy">
                 {{ studioData.practiceCopy }}
               </p>
             </div>
@@ -47,10 +47,10 @@
 
             <div class="col-12 col-md-12 mt-md-n5 mt-5">
               <div class="row d-flex align-items-end justify-content-end">
-                <div v-for="img in studioData.images" :key="img.url" class="col-12 mb-3" :class="[`col-md-${img.size}`]">
+                <div v-for="img in studioData.images" :key="img.url" class="col-12 mb-3" :class="[`col-md-${img.size}`]" v-if="studioData.images">
                   <img class="lazyload" :data-src="img.url" :alt="img.alt">
                 </div>
-                <div v-for="img in studioData.imagesPractice" :key="img.url" class="col-12 mb-3" :class="[`col-md-${img.size}`]">
+                <div v-for="img in studioData.imagesPractice" :key="img.url" class="col-12 mb-3" :class="[`col-md-${img.size}`]" v-if="studioData.imagesPractice">
                   <img class="lazyload" :data-src="img.url" :alt="img.alt">
                 </div>
               </div>

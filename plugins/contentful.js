@@ -13,6 +13,9 @@ const c = {
 
 let isLive = true
 
+console.log('process.env.IS_CONTENTFUL_LIVE', process.env.IS_CONTENTFUL_LIVE)
+// console.log('process.client?', process.client)
+
 if (process.client) {
   console.log('contentfuljs window.location', window.location)
   if (window && window.location.host) {
@@ -21,11 +24,27 @@ if (process.client) {
     if (window.location.host !== 'designdistrict.co.uk' && preview) {
       isLive = false
     }
+    console.log('isLive?', isLive)
   }
 }
 
+console.log('npm run dev. using cdn.contentful.com. works and preview ok locally.')
+// else {
+//   console.log('force contentful isLive?')
+//   isLive = process.env.IS_CONTENTFUL_LIVE || false
+// }
+
+isLive = false
+
+// if (process.env.NODE_ENV === 'production') {
+//   console.log('force contentful isLive')
+//   isLive = process.env.CONTENTFUL_PREVIEW || false
+// }
+
 const ACCESS_TOKEN = isLive ? c.CTF_CDA_ACCESS_TOKEN : c.CTF_CPA_ACCESS_TOKEN
 const HOST = isLive ? 'cdn.contentful.com' : 'preview.contentful.com'
+
+console.log(isLive, ACCESS_TOKEN, HOST)
 
 const contentfulConfig = {
   space: c.CTF_SPACE_ID,

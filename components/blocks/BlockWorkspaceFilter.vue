@@ -289,9 +289,9 @@ export default {
           isChosen = isChosen+1
         }
 
-        console.log(b.fields.title);
-        console.log(+b.fields.minSize, +filter.sizeBracketMax, +b.fields.minSize !== +filter.sizeBracketMax);
-        console.log(+b.fields.minSize, +filter.sizeBracketMin, +filter.sizeBracketMax, _.inRange(+b.fields.minSize, +filter.sizeBracketMin, +filter.sizeBracketMax))
+        // console.log(b.fields.title);
+        // console.log(+b.fields.minSize, +filter.sizeBracketMax, +b.fields.minSize !== +filter.sizeBracketMax);
+        // console.log(+b.fields.minSize, +filter.sizeBracketMin, +filter.sizeBracketMax, _.inRange(+b.fields.minSize, +filter.sizeBracketMin, +filter.sizeBracketMax))
 
         return isChosen>=2
       })
@@ -364,7 +364,7 @@ export default {
       this.filter.sizeBracketMin = _.toNumber(filterMin)
       this.filter.sizeBracketMax = _.toNumber(filterMax)
 
-      console.log('onSliderChange', displayMin, displayMax, filterMin, filterMax)
+      // console.log('onSliderChange', displayMin, displayMax, filterMin, filterMax)
     },
     getSizeRangeFromBracket (sizeBrackets) {
       let sizes = _.map(_.flatten(_.map(sizeBrackets, (size) => _.split(size, '-'))), (v) => {

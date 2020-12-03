@@ -33,11 +33,11 @@ import { gsap } from "gsap";
 export default {
   watch: {
     '$route' (newVal, oldVal) {
-      console.log('trans', newVal, oldVal)
+      // console.log('trans', newVal, oldVal)
       // this.in()
     },
     transitionStep (newVal, oldVal) {
-      console.log('transitionStep', newVal, oldVal)
+      // console.log('transitionStep', newVal, oldVal)
       if (newVal == 1) {
         this.$nextTick(() => {
           this.playFull()
@@ -87,7 +87,7 @@ export default {
       // clear the store's
       this.$store.dispatch('resetRouteTransitionSourceRect')
 
-      console.log('srcRect', srcRect)
+      // console.log('srcRect', srcRect)
       // this.resetBoxStyle ()
       this.tl = gsap.timeline()
       this.tl.pause()

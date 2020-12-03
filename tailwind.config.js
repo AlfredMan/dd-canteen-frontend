@@ -37,17 +37,19 @@ module.exports = {
       // => @media (min-width: 1280px) { ... }
     }
   },
-  purge: {
-    enabled: process.env.NODE_ENV === 'production',
-    // enabled: false,
-    content: [
-      'components/**/*.vue',
-      'layouts/**/*.vue',
-      'pages/**/*.vue',
-      'plugins/**/*.js',
-      'nuxt.config.js'
-    ]
-  },
+
+  // purge: {
+  //   // enabled: process.env.NODE_ENV === 'production',
+  //   enabled: false,
+  //   content: [
+  //     'components/**/*.vue',
+  //     'layouts/**/*.vue',
+  //     'pages/**/*.vue',
+  //     'plugins/**/*.js',
+  //     'nuxt.config.js'
+  //   ]
+  // },
+
   // purge: {
   //   enabled: false,
   //   content: [

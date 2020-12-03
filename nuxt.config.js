@@ -3,13 +3,19 @@ import fs from 'fs'
 import _ from 'lodash'
 import { createClient } from './plugins/contentful.js'
 
+// console.log('process.env.target', process.env.target)
+
 export default {
 
   env: {
     target: process.env.NUXT_TARGET || 'static'
   },
   // mode: 'universal',
-  target: process.env.target,
+  // mode: 'spa',
+  // target: process.env.target,
+  // target: 'static',
+  // target: 'server',
+  // target: 'static',
 
 
   // purgeCSS: {
@@ -129,7 +135,11 @@ export default {
     {
       src: '~/plugins/vue-slider-component.js',
       mode: 'client'
-    }
+    },
+    // {
+    //   src: '~/plugins/preview.client.js',
+    //   mode: 'client'
+    // },
     // {
     //   src: '~/plugins/vue-range-slider.js',
     //   mode: 'client'
@@ -191,9 +201,9 @@ export default {
         }
       }
     },
-    // babel: {
-    //   compact: false
-    // }
+    babel: {
+      compact: false
+    }
     // extend (config, { isDev, isClient, loaders: { vue } }) {
     //   if (isClient) {
     //     vue.transformAssetUrls.img = ['data-src', 'src']
@@ -337,8 +347,8 @@ export default {
   // },
 
   generate: {
-    interval: 100,
-    concurrency: 100,
+    interval: 200,
+    concurrency: 5,
     devtools: true,
     routes () {
       // const routes = [
@@ -376,7 +386,11 @@ export default {
       }).catch(console.error)
     },
     exclude: [
-      /^(?=.*\bhelper|home\b).*$/
+      /^(?=.*\bhelper|home\b).*$/,
+      '/workspace/filter',
+      '/workspace/enquire',
+      '/home',
+      '/pages_archive/**/*'
     ]
   },
   //

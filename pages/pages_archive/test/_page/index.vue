@@ -41,10 +41,10 @@ export default {
 
   watch: {
     entry (newVal, oldVal) {
-      console.log('watch entry _page/index:', newVal, oldVal)
+      // console.log('watch entry _page/index:', newVal, oldVal)
     },
     '$route' (newVal, oldVal) {
-      console.log('watch $route _page/index:', newVal, oldVal)
+      // console.log('watch $route _page/index:', newVal, oldVal)
     }
   },
 
@@ -82,7 +82,7 @@ export default {
         'fields.slug': route.params.id
       })
     ]).then(([entry]) => {
-      console.log('contentful entry:', entry)
+      // console.log('contentful entry:', entry)
       return {
         entry: entry.item
       }

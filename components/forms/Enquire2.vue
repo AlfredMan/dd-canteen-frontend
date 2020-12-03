@@ -948,7 +948,7 @@ export default {
       // })(jQuery)
     },
     retOnload (e) {
-      console.log('retOnload', e)
+      // console.log('retOnload', e)
       // debugger
       // this.formState = 'complete'
       // this.formAlert.type = 'success'
@@ -965,7 +965,7 @@ export default {
       this.formAlert.text = 'Processing...'
       this.formAction = 'Loading'
 
-      console.log('onFormSubmit false')
+      // console.log('onFormSubmit false')
       // return false
       // debugger
       if (this.submitEnquireForm() && this.handleRecap()) {
@@ -1123,11 +1123,11 @@ export default {
 
         }).catch((error) => {
           return false;
-          console.log(error)
+          // console.log(error)
         })
       })
 
-      console.log('onVerify test finished')
+      // console.log('onVerify test finished')
 
       return
 

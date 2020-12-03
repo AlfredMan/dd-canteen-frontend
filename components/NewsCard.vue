@@ -1,7 +1,8 @@
 <template lang="html">
-  <div class="news-card">
+  <div class="news-card" v-if="entry">
     <router-link :to="{ path: `/journal/${entry.fields.slug}` }">
       <lazy-image
+      v-if="entry.fields.thumbnailImage"
       class="news-thumbnail"
       :src="entry.fields.thumbnailImage.fields.file.url"
       :w="1000"
@@ -75,7 +76,7 @@ export default {
     getDataTime (date, endDate) {
       // let default = '12:00:00'
       let format = 'dddd D MMM'
-      console.log(date)
+      // console.log(date)
       if (date && !endDate) {
         if (moment.parseZone(date).hours()>0) {
           format = 'D MMM, LT'

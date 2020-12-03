@@ -14,3 +14,4 @@ static/workbox-sw*.js*
 *.pem
 server.crt
 server.key
+dist

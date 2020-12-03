@@ -717,7 +717,7 @@ export default {
       return true
     },
     onVerify (response) {
-      console.log('Verify: ' + response)
+      // console.log('Verify: ' + response)
 
       // this.formState = 'idle'
       // this.formAlert.type = 'success'

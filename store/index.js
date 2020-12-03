@@ -69,6 +69,9 @@ export const mutations = {
   setNavigationTheme (state, payload) {
     state.navigation.theme = payload.theme
   },
+  setNavigationAccent (state, payload) {
+    state.navigation.accent = payload.accent
+  },
   setRouteTransitionStep (state, payload) {
     state.transition.step = payload.step
   },
@@ -167,7 +170,7 @@ export const getters = {
 
 export const actions = {
   async nuxtServerInit ({ dispatch }) {
-    console.log('nuxtServerInit ++++++++++++++++++++++++++++++=')
+    // console.log('nuxtServerInit ++++++++++++++++++++++++++++++=')
     // await dispatch('getArchitectureStudios')
     // await dispatch('getMapHire')
     // await dispatch('getMapBuildings')
@@ -185,6 +188,10 @@ export const actions = {
   updateNavigationTheme ({ commit }, context) {
     const theme = context.theme
     commit('setNavigationTheme', { theme })
+  },
+  updateNavigationAccent ({ commit }, context) {
+    const theme = context.theme
+    commit('setNavigationAccent', { theme })
   },
   routeTransitionStart ({ commit }) {
     commit('setRouteTransitionStep', { step: 1 })
@@ -259,13 +266,13 @@ export const actions = {
       limit: 99
     })
     if (response.items.length > 0) {
-      console.log('getJournals response.items??..............', response.items[0])
+      // console.log('getJournals response.items??..............', response.items[0])
       const featured = _.filter(response.items, item => item.fields.featured)
       const featuredOrderedByDate = _.orderBy(featured, ['sys.createdAt'], ['desc'])
       const nonFeatured = _.filter(response.items, item => !item.fields.featured)
       const nonFeaturedOrderedByDate = _.orderBy(nonFeatured, ['sys.createdAt'], ['desc'])
-      console.log('featured', featuredOrderedByDate)
-      console.log('nonFeatured', nonFeaturedOrderedByDate)
+      // console.log('featured', featuredOrderedByDate)
+      // console.log('nonFeatured', nonFeaturedOrderedByDate)
       commit('setJournals', { journals: featuredOrderedByDate.concat(nonFeaturedOrderedByDate) })
     }
   },

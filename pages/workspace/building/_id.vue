@@ -4,14 +4,14 @@
     <div class="px-3 flex align-center items-center cap-max-w">
       <nuxt-link class="monospace" :to="'/workspace'">Work Space</nuxt-link> <span class="mx-2">></span>
       <span class="underline monospace">
-        {{building.fields.title}}: {{building.fields.architecture[0].fields.title}}
+        {{building.fields.title}}<span v-if="building.fields.architecture[0]">: {{building.fields.architecture[0].fields.title}}</span>
       </span>
     </div>
 
 
     <h1 class="px-3 mt-6 my-4 flex items-baseline building-title cap-max-w">
       <span class="inline-block mr-6 building-name font-medium ">{{building.fields.title}}</span>
-      <span class="inline-block text-green uppercase building-architect">{{building.fields.architecture[0].fields.title}}</span>
+      <span class="inline-block text-green uppercase building-architect" v-if="building.fields.architecture[0]">{{building.fields.architecture[0].fields.title}}</span>
     </h1>
 
 
@@ -27,7 +27,7 @@
 
     <div class="flex flex-wrap cap-max-w">
 
-      <div class="w-full lg:w-2/3">
+      <div class="w-full lg:w-2/3" v-if="building.fields.thumbnailImageAsset[0]">
         <!-- <nuxt-link :to="`/workspace/building/${building.fields.title}`" > -->
           <lazy-image
           :src="building.fields.thumbnailImageAsset[0].fields.file.url"
@@ -344,7 +344,7 @@ export default {
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         { hid: 'description', name: 'description', content: this.seoDescription },
         { property: 'og:image', content: this.seoImage },
-        { property: 'og:url', content: `https://designdistrict.co.uk/workspace/building/${this.building.fields.slug}` },
+        { property: 'og:url', content: `https://designdistrict.co.uk/workspace/building/${this.seoUrl}` },
         { property: 'og:type', content: 'website' },
         { property: 'og:title', content: this.seoTitle },
         { property: 'og:description', content: this.seoDescription },
@@ -428,6 +428,7 @@ export default {
 
     architectRelatedJournalEntry () {
       let currentBuildingEntry = this.building;
+      if (!currentBuildingEntry) return null;
       return this.journalEntries && _.find(this.journalEntries, (entry) => {
         return entry.fields.architects && _.find(entry.fields.architects, (architect) => {
           return architect.sys.id == currentBuildingEntry.fields.architecture[0].sys.id
@@ -435,6 +436,9 @@ export default {
       })
     },
 
+    seoUrl () {
+      return this.building && this.building.fields.slug ? this.building.fields.slug : ''
+    },
     seoTitle () {
       return this.building && this.building.fields.metaData ? this.building.fields.metaData.fields.seoTitle : this.seoDefault.title
     },
@@ -467,7 +471,7 @@ export default {
 
   methods: {
     scrollTo (id) {
-      console.log(id)
+      // console.log(id)
       if (process.client) {
         // gsap.to(window, {duration: 2, scrollTo: 400});
         // gsap.to(window, {
@@ -477,7 +481,7 @@ export default {
         //     offsetY: 100
         //   }
         // });
-        console.log('id', id)
+        // console.log('id', id)
         // // gsap.to(window, {duration: 2, scrollTo: {y: "#photos", offsetY: 50}});
         gsap.to(window, {duration: 0.5, scrollTo: {y: id, offsetY: 100}});
       }

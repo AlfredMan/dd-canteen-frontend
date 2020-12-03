@@ -3,21 +3,39 @@
   v-if="block"
   class="block-banner"
   :class="{
-    'bannerStyle-Default': bannerStyle=='Default',
-    'bannerStyle-Reverse': bannerStyle=='Reverse'
+    'bannerStyle-Default': bannerStyle=='Default' || !bannerStyle,
+    'bannerStyle-Reverse': bannerStyle=='Reverse',
+    'bannerStyle-Full': bannerStyle=='Full',
+    'theme-plain': !hasBackground
   }"
   >
-    <div class="cap-max-w w-full relative">
+    <div class="w-full relative">
       <component
       :is="bannerStyle=='Full'?'DIV':'DIV'"
-      :to="bannerStyle=='Full'&&block.fields.callToAction.fields.path?block.fields.callToAction.fields.path:undefined"
+      :to="bannerTo"
+      @click="bannerStaticClick"
       class="block-banner-header"
+      :class="{
+        'has-popup': hasPopup
+      }"
       >
-        <h2 v-if="block.fields.heading">{{block.fields.heading}}</h2>
-        <h4 v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
-        <callToAction v-if="block.fields.callToAction && bannerStyle=='Default'" :callToAction="block.fields.callToAction"/>
+        <div class="cap-max-w w-full">
+          <div class="block-banner-header-content">
+            <h2 v-if="block.fields.heading">{{block.fields.heading}}</h2>
+            <h4 v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
+            <callToAction v-if="block.fields.callToAction && bannerStyle=='Default'" :callToAction="block.fields.callToAction"/>
+          </div>
+        </div>
       </component>
+
       <div class="block-banner-media">
+        <div class="popup-trigger" v-if="hasPopup">
+          <div class="icon" v-if="popUpOption == 'play'">
+            <div class="play-icon">
+
+            </div>
+          </div>
+        </div>
         <div class="block-banner-media-screen">
 
         </div>
@@ -30,6 +48,20 @@
           :fit="`cover`"
           />
       </div>
+
+      <div class="block-banner--popup" v-if="hasPopup && openPopup" @click="openPopup = false">
+        <div class="block-banner--popup-close" @click="openPopup = false">
+          &times;
+        </div>
+        <div class="block-banner--popup-content">
+          <div class="block-banner--popup-video">
+            <div class="ratio-container">
+              <div class="iframe-wrapper" v-html="popupValue">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -37,11 +69,69 @@
 <script>
 export default {
   props: ['block'],
+
+  data () {
+    return {
+      openPopup: false
+    }
+  },
+
   computed: {
     bannerStyle () {
       return this.block && this.block.fields.bannerStyle || 'Default'
     },
+    hasBackground () {
+      return this.block && this.block.fields.imageAsset && this.block.fields.imageAsset[0]
+    },
+    hasPopup () {
+      if (
+        this.block.fields.popUpOption
+        && this.block.fields.popUpOption == ("Play Video" || "Play")
+        && this.block.fields.popUp.fields.embedCode
+        && this.block.fields.popUp.fields.embedCode.content[0]
+        && this.block.fields.popUp.fields.embedCode.content[0].content[0]
+        && this.block.fields.popUp.fields.embedCode.content[0].content[0].value.length > 0
+      ) {
+        return true
+      }
+      return false
+    },
+    bannerTo () {
+      if (this.hasPopup) {
+        return undefined
+      }
+      if (this.bannerStyle=='Full') {
+        if (this.block.fields.callToAction && this.block.fields.callToAction.fields.path) {
+          return this.block.fields.callToAction.fields.path
+        }
+      }
+      return undefined
+    },
+    popUpOption () {
+      if (this.hasPopup) {
+        if (this.block.fields.popUpOption == ("Play Video" || "Play")) {
+          return 'play'
+        }
+      }
+      return false
+    },
+    popupValue () {
+      if (this.hasPopup) {
+        return this.block.fields.popUp.fields.embedCode.content[0].content[0].value
+      }
+      return ''
+    }
+  },
+
+  methods: {
+    bannerStaticClick () {
+      if (this.hasPopup) {
+        this.openPopup = true
+      }
+      return null
+    }
   }
+
 }
 </script>
 
@@ -57,7 +147,15 @@ section {
   &.bannerStyle-Default,
   &.bannerStyle-Reverse {
     @apply flex flex-wrap;
-    .block-banner-header,
+
+    // .block-banner-header,
+    // .block-banner-media {
+    //   @apply w-full;
+    //   @media (min-width: 1024px) {
+    //     @apply w-1/2;
+    //   }
+    // }
+    .block-banner-header-content,
     .block-banner-media {
       @apply w-full;
       @media (min-width: 1024px) {
@@ -65,7 +163,7 @@ section {
       }
     }
 
-    .block-banner-header {
+    .block-banner-header-content {
       @apply px-4 py-12 mb-0;
 
       @media (min-width: 1024px) {
@@ -98,32 +196,41 @@ section {
     }
 
     .block-banner-header {
-      @apply bg-green bg-opacity-75 text-opacity-100 transition-all duration-300;
-      @apply px-4 py-12 mb-0;
-      @apply cursor-pointer;
-      // mix-blend-mode: multiply;
-      backdrop-filter: blur(12px) contrast(0.8);
+      // @apply bg-green bg-opacity-75 text-opacity-100 transition-all duration-300;
+      @apply bg-black bg-opacity-50 text-opacity-100 transition-all duration-300;
 
-      h2, h4 {
-        @apply transition duration-300;
-      }
+      .block-banner-header-content {
+        @apply px-4 py-12 mb-0;
+        // @apply cursor-pointer;
+        // mix-blend-mode: multiply;
+        // backdrop-filter: blur(12px) contrast(0.8);
 
-      @media (min-width: 1024px) {
-        @apply pt-8 pb-16;
-        min-height: 500px;
-      }
-
-      &:hover {
-
-        backdrop-filter: blur(0px) contrast(0.8);
-        // @apply bg-opacity-0;
-        @apply bg-opacity-0;
-        //
-        // + .block-banner-media {
-        //   filter: blur(0);
-        // }
         h2, h4 {
-          @apply opacity-0;
+          @apply transition duration-300;
+        }
+
+        @media (min-width: 1024px) {
+          @apply pt-8 pb-16;
+          min-height: 500px;
+        }
+      }
+
+
+      &.has-popup {
+        @apply cursor-pointer;
+
+        &:hover {
+
+          // backdrop-filter: blur(0px) contrast(0.8);
+          // @apply bg-opacity-0;
+          @apply bg-opacity-25;
+          //
+          // + .block-banner-media {
+          //   filter: blur(0);
+          // }
+          // h2, h4 {
+          //   @apply opacity-0;
+          // }
         }
       }
     }
@@ -148,7 +255,7 @@ section {
 }
 
 .block-banner-header {
-  @apply block mb-12 relative z-10;
+  @apply block relative z-10;
 
   h2 {
     @apply max-w-3xl;
@@ -156,5 +263,83 @@ section {
   h4 {
     @apply max-w-3xl;
   }
+
+  .block-banner-header-content {
+    max-width: 36rem;
+    h2,
+    h4 {
+      @apply text-white;
+      .theme-plain & {
+        @apply text-black;
+      }
+    }
+  }
+}
+
+.popup-trigger {
+  @apply absolute;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.block-banner--popup {
+  @apply bg-black bg-opacity-75;
+  @apply fixed inset-0 cursor-pointer;
+  z-index: 99999;
+
+  // .block-banner--popup-close {
+  //   @apply aboslute;
+  // }
+
+  .block-banner--popup-content {
+
+    .block-banner--popup-video {
+      .ratio-container {
+        width: 90%;
+        // padding-bottom: 56.25%;
+        position: absolute;
+        height: 50vw;
+        max-height: 90vh;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+
+        @media (min-aspect-ratio: 3/2) {
+          height: 90vh;
+          width: 160vh;
+        }
+
+      }
+      .iframe-wrapper {
+        display: block;
+        @apply absolute inset-0;
+        width: 100%;
+        iframe {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+.icon {
+  width: 8rem;
+  height: 8rem;
+  padding: 2rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+}
+.play-icon {
+  transform: translateX(10%) scaleX(0.9);
+  box-sizing: border-box;
+  width: 4rem;
+  height: 4rem;
+  border-width: 2rem 0px 2rem 4rem;
+  border-width: 2rem 0px 2rem 4rem;
+  border-color: transparent transparent transparent white;
 }
 </style>

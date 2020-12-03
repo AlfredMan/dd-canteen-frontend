@@ -511,7 +511,7 @@ export default {
 
   watch: {
     'contentType' (newVal, oldVal) {
-      console.log('contentType', newVal, oldVal)
+      // console.log('contentType', newVal, oldVal)
       if (newVal == 'Video') {
         this.$store.dispatch('updateNavigationTheme', { theme: 'dark' })
       } else {
@@ -674,7 +674,7 @@ export default {
     getDataTime (date, endDate) {
       // let default = '12:00:00'
       let format = 'dddd D MMM'
-      console.log(date)
+      // console.log(date)
       if (date && !endDate) {
         if (moment.parseZone(date).hours()>0) {
           format = 'dddd D MMM, LT'
