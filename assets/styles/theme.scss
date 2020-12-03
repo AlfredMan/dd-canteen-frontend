@@ -1,3 +1,7 @@
+.theme-orange {
+	width: 100%;
+}
+
 .theme-orange *::-moz-selection { /* Code for Firefox */
   color: black;
   background: lighten($secondary, 20%);
@@ -9,7 +13,7 @@
 }
 
 .theme-orange section {
-	.block-list {
+	&.block-list {
 		&.theme-dark {
 			.format-button.theme-default.cta {
 				color: black;

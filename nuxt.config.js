@@ -10,8 +10,8 @@ export default {
   },
   // mode: 'universal',
   // mode: 'spa',
-  target: process.env.target,
-  // target: 'server',
+  // target: process.env.target,
+  target: 'static',
   // target: 'static',
 
 

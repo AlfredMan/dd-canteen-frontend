@@ -1,5 +1,9 @@
 <template>
-  <div id="app" :class="[`theme-${appTheme}`]">
+  <div id="app" :class="[
+   'theme-orange': appTheme=='orange',
+   'theme-light': appTheme=='light',
+   'theme-dark': appTheme=='dark'
+  ]">
 
     <!-- <test-cookies /> -->
 
@@ -145,5 +149,5 @@ export default {
 @import '~/assets/styles/lazy.scss';
 @import '~/assets/styles/slider.scss';
 
-// @import '~/assets/styles/theme.scss';
+@import '~/assets/styles/theme.scss';
 </style>
