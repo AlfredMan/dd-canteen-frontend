@@ -136,10 +136,10 @@ export default {
       src: '~/plugins/vue-slider-component.js',
       mode: 'client'
     },
-    {
-      src: '~/plugins/preview.client.js',
-      mode: 'client'
-    },
+    // {
+    //   src: '~/plugins/preview.client.js',
+    //   mode: 'client'
+    // },
     // {
     //   src: '~/plugins/vue-range-slider.js',
     //   mode: 'client'

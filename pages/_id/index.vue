@@ -18,11 +18,11 @@ export default {
     AppPage
   },
 
-  validate({ params, query }) {
-    if (query.preview) {
-      return true
-    }
-  },
+  // validate({ params, query }) {
+  //   if (query.preview) {
+  //     return true
+  //   }
+  // },
 
   head () {
     return {
@@ -67,7 +67,7 @@ export default {
     },
   },
 
-  watchQuery: ['preview'],
+  // watchQuery: ['preview'],
 
   mounted () {
     console.log('mounted ', this.$route.params.id)
