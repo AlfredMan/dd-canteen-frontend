@@ -34,9 +34,8 @@ console.log('npm run dev. using cdn.contentful.com. works and preview ok locally
 //   isLive = process.env.IS_CONTENTFUL_LIVE || false
 // }
 
-isLive = process.env.CONTENTFUL_PREVIEW && process.env.CONTENTFUL_PREVIEW == 'true' || process.env.CONTENTFUL_PREVIEW == true ? false : true
+isLive = (process.env.CONTENTFUL_PREVIEW && process.env.CONTENTFUL_PREVIEW == 'true' || process.env.CONTENTFUL_PREVIEW == true) || process.env.NODE_ENV === 'development' ? false : true
 
-// if (process.env.NODE_ENV === 'production') {
 //   console.log('force contentful isLive')
 //   isLive = process.env.CONTENTFUL_PREVIEW || false
 // }
