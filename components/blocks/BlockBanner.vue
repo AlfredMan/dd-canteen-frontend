@@ -5,7 +5,8 @@
   :class="{
     'bannerStyle-Default': bannerStyle=='Default' || !bannerStyle,
     'bannerStyle-Reverse': bannerStyle=='Reverse',
-    'bannerStyle-Full': bannerStyle=='Full'
+    'bannerStyle-Full': bannerStyle=='Full',
+    'theme-plain': !hasBackground
   }"
   >
     <div class="w-full relative">
@@ -18,7 +19,7 @@
         'has-popup': hasPopup
       }"
       >
-        <div class="cap-max-w ">
+        <div class="cap-max-w w-full">
           <div class="block-banner-header-content">
             <h2 v-if="block.fields.heading">{{block.fields.heading}}</h2>
             <h4 v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
@@ -78,6 +79,9 @@ export default {
   computed: {
     bannerStyle () {
       return this.block && this.block.fields.bannerStyle || 'Default'
+    },
+    hasBackground () {
+      return this.block && this.block.fields.imageAsset && this.block.fields.imageAsset[0]
     },
     hasPopup () {
       if (
@@ -140,20 +144,18 @@ section {
 
   @apply relative;
 
-  .block-banner-header {
-    .block-banner-header-content {
-      max-width: 36rem;
-      h2,
-      h4 {
-        @apply text-white;
-      }
-    }
-  }
-
   &.bannerStyle-Default,
   &.bannerStyle-Reverse {
     @apply flex flex-wrap;
-    .block-banner-header,
+
+    // .block-banner-header,
+    // .block-banner-media {
+    //   @apply w-full;
+    //   @media (min-width: 1024px) {
+    //     @apply w-1/2;
+    //   }
+    // }
+    .block-banner-header-content,
     .block-banner-media {
       @apply w-full;
       @media (min-width: 1024px) {
@@ -260,6 +262,17 @@ section {
   }
   h4 {
     @apply max-w-3xl;
+  }
+
+  .block-banner-header-content {
+    max-width: 36rem;
+    h2,
+    h4 {
+      @apply text-white;
+      .theme-plain & {
+        @apply text-black;
+      }
+    }
   }
 }
 
