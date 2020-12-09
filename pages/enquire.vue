@@ -9,7 +9,9 @@
           </div>
           <div class="col-12" />
           <div class="col-12 col-md-4 mb-5">
-            <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering accessible rent, flexible leases and workspace purpose-built for creative disciplines.</h4>
+            <!-- <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering accessible rent, flexible leases and workspace purpose-built for creative disciplines.</h4>
+            <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</p> -->
+            <h4>Design District will provide a new space for creatives of all kinds to work together. A thriving home for ideas, offering flexible leases, purpose-built work space and affordable rent: £5 per sqft for the first 12 months.</h4>
             <p>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch.</p>
           </div>
           <div class="col-12 col-lg-1" />
