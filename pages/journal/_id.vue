@@ -534,13 +534,13 @@ export default {
       return ''
     },
     seoTitle () {
-      return this.entry && this.entry.fields.metaData ? this.entry.fields.metaData.fields.seoTitle : this.seoDefault.title
+      return this.entry && this.entry.fields.metaData && this.entry.fields.metaData.fields.seoTitle ? this.entry.fields.metaData.fields.seoTitle : this.seoDefault.title
     },
     seoDescription () {
-      return this.entry && this.entry.fields.metaData ? this.entry.fields.metaData.fields.seoDescription : this.seoDefault.description
+      return this.entry && this.entry.fields.metaData && this.entry.fields.metaData.fields.seoDescription ? this.entry.fields.metaData.fields.seoDescription : this.seoDefault.description
     },
     seoImage () {
-      return this.entry && this.entry.fields.metaData && this.entry.fields.metaData.fields.seoImage ? `${this.entry.fields.metaData.fields.seoImage.fields.file.url}?w=2000&fm=jpg&q=80` : this.seoDefault.image
+      return this.entry && this.entry.fields.metaData && this.entry.fields.metaData.fields.seoImage && this.entry.fields.metaData.fields.seoImage.fields.file ? `${this.entry.fields.metaData.fields.seoImage.fields.file.url}?w=2000&fm=jpg&q=80` : this.seoDefault.image
     },
     seoDefault () {
       return this.$store.state.seoDefault
