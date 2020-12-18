@@ -39,6 +39,9 @@ export default {
         { name: 'twitter:title', content: this.seoTitle },
         { name: 'twitter:description', content: this.seoDescription },
         { name: 'twitter:image', content: this.seoImage },
+      ],
+      link: [
+        { rel: 'icon', type: 'image/png', href: this.iconUrl }
       ]
     }
   },
@@ -65,6 +68,12 @@ export default {
     seoDefault () {
       return this.$store.state.seoDefault
     },
+    iconUrl () {
+      if (this.entry && this.entry.fields.slug && this.entry.fields.slug == 'space-to-create') {
+        return '/icon-orange.png'
+      }
+      return '/icon.png'
+    }
   },
 
   // watchQuery: ['preview'],

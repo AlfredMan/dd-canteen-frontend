@@ -51,7 +51,7 @@ export default {
       { name: 'p:domain_verify', content: 'b5004249d0531cbc68a424d426ec9a6a' }
     ],
     link: [
-      { rel: 'icon', type: 'image/png', href: '/assets/images/icon-120.png' },
+      { rel: 'icon', type: 'image/png', href: '/icon.png' },
       // { rel: 'dns-prefetch', href: 'https://api.designdistrict.co.uk' },
       { rel: 'preconnect', href: 'https://images.ctfassets.net' }
     ]

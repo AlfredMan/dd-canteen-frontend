@@ -20,6 +20,7 @@
           <div class="flex flex-wrap items-baseline">
             <h4 class="" v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
             <h5 class="" v-if="block.fields.minorSubheading">{{block.fields.minorSubheading}}</h5>
+            <h6 class="mt-0" v-if="block.fields.disclaimer">{{block.fields.disclaimer}}</h6>
           </div>
           <callToAction
           v-if="block.fields.callToAction"

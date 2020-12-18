@@ -6,7 +6,13 @@
     'bannerStyle-Default': bannerStyle=='Default' || !bannerStyle,
     'bannerStyle-Reverse': bannerStyle=='Reverse',
     'bannerStyle-Full': bannerStyle=='Full',
-    'theme-plain': !hasBackground
+    'bannerStyle-Text': bannerStyle=='Text',
+    'theme-plain': !hasBackground,
+    'theme-Default': bannerTheme=='Default' || !bannerTheme,
+    'theme-Black': bannerTheme=='Black',
+    'theme-Orange': bannerTheme=='Orange',
+    'theme-Green': bannerTheme=='Green',
+    'theme-White': bannerTheme=='White',
   }"
   >
     <div class="w-full relative">
@@ -20,10 +26,25 @@
       }"
       >
         <div class="cap-max-w w-full">
-          <div class="block-banner-header-content">
+          <div class="block-banner-header-content" v-if="bannerStyle=='Text'">
+            <div class="block-banner-header-content-heading">
+              <h2 v-if="block.fields.heading">{{block.fields.heading}}</h2>
+            </div>
+            <div class="block-banner-header-content-text">
+              <h4 v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
+              <callToAction
+              v-if="block.fields.callToAction"
+              :callToAction="block.fields.callToAction"
+              />
+            </div>
+          </div>
+          <div class="block-banner-header-content" v-else>
             <h2 v-if="block.fields.heading">{{block.fields.heading}}</h2>
             <h4 v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
-            <callToAction v-if="block.fields.callToAction && bannerStyle=='Default'" :callToAction="block.fields.callToAction"/>
+            <callToAction
+            v-if="block.fields.callToAction && (bannerStyle=='Default')"
+            :callToAction="block.fields.callToAction"
+            />
           </div>
         </div>
       </component>
@@ -79,6 +100,9 @@ export default {
   computed: {
     bannerStyle () {
       return this.block && this.block.fields.bannerStyle || 'Default'
+    },
+    bannerTheme () {
+      return this.block && this.block.fields.theme || `Default`
     },
     hasBackground () {
       return this.block && this.block.fields.imageAsset && this.block.fields.imageAsset[0]
@@ -145,7 +169,8 @@ section {
   @apply relative;
 
   &.bannerStyle-Default,
-  &.bannerStyle-Reverse {
+  &.bannerStyle-Reverse,
+  &.bannerStyle-Text {
     @apply flex flex-wrap;
 
     // .block-banner-header,
@@ -168,6 +193,24 @@ section {
 
       @media (min-width: 1024px) {
         @apply pt-12 pb-16;
+      }
+    }
+  }
+
+  &.bannerStyle-Text {
+    .block-banner-header-content {
+      @media (min-width: 1024px) {
+        @apply pt-8 pb-12;
+      }
+      @media (min-width: 1024px) {
+        @apply flex flex-wrap w-full max-w-full;
+
+        .block-banner-header-content-heading {
+          @apply w-5/12;
+        }
+        .block-banner-header-content-text {
+          @apply w-7/12;
+        }
       }
     }
   }

@@ -27,3 +27,14 @@
 		background: $secondary;
 	}
 }
+
+
+.block-banner {
+	&.theme-Orange {
+		background: $secondary;
+		.format-button.theme-default.cta {
+			color: white;
+			background: black;
+		}
+	}
+}
