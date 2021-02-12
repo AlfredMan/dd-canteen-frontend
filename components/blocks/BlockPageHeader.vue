@@ -10,7 +10,9 @@
 
       <div
       class="cap-max-w-px-3 flex flex-wrap"
-      :class="{ 'block-page-header-has-image': block.fields.imageAsset && block.fields.imageAsset[0] }"
+      :class="{
+        'block-page-header-has-image': (block.fields.imageAsset && block.fields.imageAsset[0]) || (block.fields.embedAsset && block.fields.embedAsset[0])
+        }"
       >
 
         <div

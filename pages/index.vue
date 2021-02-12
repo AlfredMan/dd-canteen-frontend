@@ -1,12 +1,14 @@
 <template>
   <div class="page-component">
     <AppPage :entry="entry"/>
+    <AppPopup />
   </div>
 </template>
 
 <script>
 import _ from 'lodash'
 import AppPage from '~/components/AppPage'
+import AppPopup from '~/components/AppPopup'
 import { createClient } from '~/plugins/contentful.js'
 
 const client = createClient()
@@ -15,7 +17,8 @@ export default {
   name: 'index',
 
   components: {
-    AppPage
+    AppPage,
+    AppPopup
   },
 
   head () {

@@ -33,7 +33,11 @@ form {
 	// padding-bottom: 10rem;
 
 	p, label, input {
-		font-size: 1.25rem;
+		font-size: 1rem;
+
+		@media screen and (max-width: 768px) {
+			font-size: 0.8rem;
+		}
 	}
 
 	&.disabled {
@@ -197,7 +201,7 @@ select {
 
 .input-text,
 [type="text"] {
-	// font-size: 1.25rem;
+	font-size: inherit;
 	padding: .9rem .5rem;
 	width: 100%;
 	margin-bottom: 1rem;
