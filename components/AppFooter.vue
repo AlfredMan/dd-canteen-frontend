@@ -14,9 +14,9 @@
             </small>
           </div>
 
-          <div class="col-12 col-md-5">
+          <div class="col-12 col-md-6">
             <div class=" row">
-              <div class="col-4 col-md-2-col-lg-2 mb-5">
+              <div class="col-6 col-md-3 col-md-2-col-lg-2 mb-5">
                 <h6 class=" font-medium uppercase">Connect</h6>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.instagram.com/designdistrictlondon">Instagram</a><br>
                 <a class="h6" target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/design-district-london">LinkedIn</a><br>
@@ -25,7 +25,7 @@
                 <nuxt-link class="h6" to="/contact#newsletter">Newsletter</nuxt-link>
               </div>
 
-              <div class="col-4 col-md-2-col-lg-2 mb-5">
+              <div class="col-6 col-md-3 col-md-2-col-lg-2 mb-5">
                 <h6 class=" font-medium uppercase">Find your workspace</h6>
                 <nuxt-link class="h6" to="/workspace?space-type=multi-purpose-work-space">
                   Multi-Purpose
@@ -44,7 +44,23 @@
                 </nuxt-link>
               </div>
 
-              <div class="col-4 col-md-2-col-lg-2 mb-5">
+              <div class="col-6 col-md-3 col-md-2-col-lg-2 mb-5">
+                <h6 class=" font-medium uppercase">Our Partners</h6>
+                <a class="h6" href="https://bureau.club/" target="_blank" rel="nofollow">
+                  Bureau
+                </a>
+                <br>
+                <a class="h6" href="https://nowgallery.co.uk/" target="_blank" rel="nofollow">
+                  Now Gallery
+                </a>
+                <br>
+                <a class="h6" href="https://www.greenwichpeninsula.co.uk/whats-on/the-peninsulist/" target="_blank" rel="nofollow">
+                  The Peninsulist
+                </a>
+
+              </div>
+
+              <div class="col-6 col-md-3 col-md-2-col-lg-2 mb-5">
                 <h6 class=" font-medium uppercase">Legal</h6>
                 <nuxt-link class="h6" to="/privacy-notice">
                   Privacy Notice
@@ -61,7 +77,7 @@
             </div>
           </div>
 
-          <div class="col-12 col-md-4 mb-5 pl-0 pl-4 lg:pl-24">
+          <div class="col-12 col-md-3 mb-5 pl-0 pl-4 lg:pl-24">
             <div class="row mt-4">
               <div class="col-6 flex align-items-start lg:justify-content-end">
                 <img src="~/assets/images/logo-hor.svg" alt="Design District logo" style="" class="mb-5 w-full lg:w-75">
@@ -81,7 +97,7 @@
 
         <div class="row">
           <div class="col-12">
-            <a href="https://hato.co" target="_blank" rel="nofollow noreferrer" class="h6 no-underline">Design and build by Hato</a>
+            <a href="https://hato.co" target="_blank" rel="nofollow noreferrer" class="h6 no-underline">Design and build by HATO</a>
           </div>
         </div>
 

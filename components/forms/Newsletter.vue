@@ -78,6 +78,7 @@
             type="checkbox"
             name="00N0O00000GRkIa"
             value="1"
+            required
           >
           <label for="subscribeDesignOptIn">
             <span>
