@@ -279,13 +279,15 @@ export const actions = {
   async getBuildings ({ commit }) {
     const response = await client.getEntries({
       'content_type': 'buildings',
-      order: '-sys.createdAt'
+      order: '-sys.createdAt',
+      include: 5
     })
     if (response.items.length > 0) {
       // console.log('getBuildings response.items??..............', response.items.length)
       let buildings = response.items
       buildings = _.map(buildings, (b)=>{
-        b.slug = b.fields.title
+        // b.slug = b.fields.title
+        b.slug = b.fields.slug
         return b
       })
       commit('setBuildings', { buildings })

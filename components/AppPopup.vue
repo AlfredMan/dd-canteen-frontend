@@ -82,5 +82,12 @@ export default {
     padding: 2rem 3rem;
     width: 40rem;
   }
+
+  h4 {
+    font-size: 1.5rem;
+    @screen lg {
+      font-size: 2rem;
+    }
+  }
 }
 </style>

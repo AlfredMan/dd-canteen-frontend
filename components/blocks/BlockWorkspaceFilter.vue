@@ -92,7 +92,7 @@
             v-for="(building, index) in filteredBuildings"
             :key="building.sys.id">
 
-              <transition-link :to="`/workspace/building/${building.fields.title}`" >
+              <transition-link :to="`/workspace/building/${building.fields.slug}`" >
                 <lazy-image
                 class="transition-source"
                 :src="building.fields.thumbnailImageAsset[0].fields.file.url"
@@ -103,7 +103,7 @@
                 </lazy-image>
               </transition-link>
 
-              <nuxt-link :to="`/workspace/building/${building.fields.title}`" class="building-title block my-2 mt-3 text-xl lg:text-sm">
+              <nuxt-link :to="`/workspace/building/${building.fields.slug}`" class="building-title block my-2 mt-3 text-xl lg:text-sm">
                 <span class="inline-block font-medium text-green mr-2">{{building.fields.title}}</span>
                 <span class="inline-block font-medium">{{building.fields.architecture[0].fields.title}}</span>
               </nuxt-link>
