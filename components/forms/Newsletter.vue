@@ -134,7 +134,7 @@
           @expired="onExpired"
         />
       </div>
-      <div v-show="active" class="">
+      <div v-show="active&&false" class="">
         <h6>
           <!-- Our <a href="/privacy-notice/">Privacy Policy</a> outlines how we use and store your data. You can manage your preferences or opt out of communications at any time. -->
           <small>Our <a href="/privacy-notice/" target="_blank">Privacy Policy</a> outlines how we use and store your data. You can manage your preferences or opt out of communications at any time.</small>
