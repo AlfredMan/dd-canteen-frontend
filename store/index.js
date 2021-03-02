@@ -59,9 +59,9 @@ export const state = () => ({
   spaces: [],
   buildings: [],
   journals: [],
+  events: [],
   spaceType: [],
   architects: [],
-  events: [],
   routeHistory: {}
 })
 
@@ -183,6 +183,7 @@ export const actions = {
     await dispatch('getJournals')
     await dispatch('getBuildings')
     await dispatch('getSpaceTypes')
+    await dispatch('getJournals')
     await dispatch('getEvents')
   },
   updateNavigationTheme ({ commit }, context) {
@@ -235,18 +236,18 @@ export const actions = {
       }, 500)
     })
   },
-  async getEvents ({ commit }) {
-    const response = await client.getEntries({
-      'content_type': 'events',
-      order: '-sys.createdAt',
-      limit: 99
-    })
-    if (response.items.length > 0) {
-      // console.log('getJournals response.items??..............', response.items)
-      const events = _.orderBy(response.items, ['fields.title'], ['desc'])
-      commit('setEvents', { events })
-    }
-  },
+  // async getEvents ({ commit }) {
+  //   const response = await client.getEntries({
+  //     'content_type': 'events',
+  //     order: '-sys.createdAt',
+  //     limit: 99
+  //   })
+  //   if (response.items.length > 0) {
+  //     // console.log('getJournals response.items??..............', response.items)
+  //     const events = _.orderBy(response.items, ['fields.title'], ['desc'])
+  //     commit('setEvents', { events })
+  //   }
+  // },
   async getArchitects ({ commit }) {
     const response = await client.getEntries({
       'content_type': 'architect',
@@ -274,6 +275,19 @@ export const actions = {
       // console.log('featured', featuredOrderedByDate)
       // console.log('nonFeatured', nonFeaturedOrderedByDate)
       commit('setJournals', { journals: featuredOrderedByDate.concat(nonFeaturedOrderedByDate) })
+    }
+  },
+  async getEvents ({ commit }) {
+    const response = await client.getEntries({
+      'content_type': 'events',
+      order: '-sys.createdAt',
+      limit: 99
+    })
+    if (response.items.length > 0) {
+      // console.log('getEvents response.items??..............', response.items[0])
+      const featured = _.filter(response.items, item => item.fields.featured)
+      const featuredOrderedByDate = _.orderBy(featured, ['sys.createdAt'], ['desc'])
+      commit('setEvents', { events: featuredOrderedByDate })
     }
   },
   async getBuildings ({ commit }) {
