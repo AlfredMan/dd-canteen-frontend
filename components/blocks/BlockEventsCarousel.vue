@@ -15,7 +15,7 @@
             :src="entry.fields.eventThumbnailAsset[0] && entry.fields.eventThumbnailAsset[0].fields.file.url"
             :w="1000"
             :h="1000"
-            :custom="'fit=thumb&f=center'"
+            :custom="'f=center'"
             />
             <h4 class="uppercase mb-3">{{entry.fields.title}}</h4>
           </a>
@@ -25,7 +25,7 @@
             :src="entry.fields.eventThumbnailAsset[0] && entry.fields.eventThumbnailAsset[0].fields.file.url"
             :w="1000"
             :h="1000"
-            :custom="'fit=thumb&f=center'"
+            :custom="'f=center'"
             />
             <h4 class="uppercase mb-3">{{entry.fields.title}}</h4>
           </div>

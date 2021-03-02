@@ -115,6 +115,8 @@ export default {
       let theme = 'default'
 
       if (this.entry
+        && this.entry.fields
+        && this.entry.fields.contentBlocks
         && this.entry.fields.contentBlocks[0]
         && this.entry.fields.contentBlocks[0].fields
         && this.entry.fields.contentBlocks[0].fields.theme) {

@@ -305,6 +305,8 @@
       </div>
     </div>
 
+    <AppPage v-if="building" :entry="building"/>
+
     <BlockEventsCarousel id="events" v-if="building.fields.eventsActive"/>
 
   </div>
@@ -318,6 +320,7 @@ import BlockEventsCarousel from '~/components/blocks/BlockEventsCarousel.vue'
 import { mapGetters } from 'vuex'
 // import { buildings } from '~/common/buildings.js'
 import _ from 'lodash'
+import AppPage from '~/components/AppPage'
 
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin.js'
@@ -331,7 +334,8 @@ export default {
   name: 'Building',
   components: {
     BlockEventsCarousel,
-    NewsCard
+    NewsCard,
+    AppPage
     // EnquireForm,
     // NewsletterForm,
     // SpaceForm
