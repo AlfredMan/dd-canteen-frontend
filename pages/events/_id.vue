@@ -1,58 +1,28 @@
 <template>
   <div class="news" :class="getContentClass(entry.fields.contentType)">
     <!-- <pre>{{entry}}</pre> -->
-    <div class="overflow-x-hidden" v-if="entry" :key="entry.sys.id">
+    <div class="-overflow-x-hidden" v-if="entry" :key="entry.sys.id">
 
-      <!-- <header class="event-header" v-if="entry.fields.contentType === 'Event'">
-        <div class="event-info p-5">
-          <div class="d-flex flex-column justify-content-between ">
-            <div class="event-title">
-              <h1 class=" mt-2 mb-4 pl-0 h2 col-12 col-md-6" v-if="entry.fields.title">
-                {{entry.fields.title}}
-              </h1>
-              <h3 class="mb-4" v-if="entry.fields.date">
-                {{getDataTime(entry.fields.date, entry.fields.endDate)}}
-              </h3>
-              <div class="d-flex- mb-5 d-none">
-                <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
-                  {{entry.fields.contentType}}
-                </h6>
-                <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
-                  by {{entry.fields.author[0].fields.name}}
-                </h6>
-                <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
-
-                </h6>
-              </div>
-            </div>
-          </div>
-          </div>
-          <div class="event-action">
-            <div class="d-flex flex-column flex-lg-row justify-content-around" v-if="entry.fields.actionLabel && entry.fields.actionUrl">
-              <div class="">
-                <div class="event-action-title">{{entry.fields.actionTitle}}</div>
-                <div class="event-action-info">{{entry.fields.actionInfo}}</div>
-              </div>
-              <div class="mt-3 mt-lg-0 ml-lg-auto">
-                <a target="_blank" class="btn btn-lg btn-secondary" :href="entry.fields.actionUrl">{{entry.fields.actionLabel}}</a>
-              </div>
-            </div>
-        </div>
-        <img class="event-image" :src="entry.fields.mainImage.fields.file.url" alt="" v-if="entry.fields.mainImage">
-      </header> -->
-
-      <header class="container event-header my-3 mb-5 pt-5" v-if="entry.fields.contentType === 'Event'">
+      <header class="container event-header my-3 mb-5 pt-5">
         <div class="event-info">
           <div class="row row-flex justify-content-between ">
-            <div class="col-12 col-md-6 order-2 order-lg-1">
+            <div class="col-12 col-md-6 order-2 order-md-1">
               <div class="event-title order-sm-3">
-                <h1 class="mt-2 mb-4 pl-0 h2" v-if="entry.fields.title">
+
+                <h1 class="mt-2 mb-3 pl-0 h2" v-if="entry.fields.title">
                   {{entry.fields.title}}
                 </h1>
-                <h3 class="mb-4" v-if="entry.fields.date">
-                  {{getDataTime(entry.fields.date, entry.fields.endDate)}}
-                </h3>
-                <div class="d-flex- mb-5 d-none">
+
+                <h5 class="--event-secondary-info mb-1 mt-1" v-if="entry.fields.date">{{getDataTime(entry.fields.date, entry.fields.endDate)}}<br></h5>
+                <h5 class="--event-secondary-info mb-1 mt-1" v-if="entry.fields.locationTitle">
+                  {{entry.fields.locationTitle}}
+                </h5>
+
+                <!-- <h3 class="mb-4" v-if="entry.fields.date">
+
+                </h3> -->
+
+                <!-- <div class="d-flex- mb-5 d-none">
                   <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
                     {{entry.fields.contentType}}
                   </h6>
@@ -61,31 +31,33 @@
                   </h6>
                   <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
                   </h6>
-                </div>
+                </div> -->
               </div>
-              <div class="event-summary my-3">
-                <div class="new-meta d-flex mb-3 flex-wrap" v-if="entry.fields.creditText">
+
+              <!-- <div class="event-summary my-3"> -->
+                <!-- <div class="new-meta d-flex mb-3 flex-wrap" v-if="entry.fields.creditText">
                   <p class="-text-uppercase my-0 mr-3" v-if="entry.fields.creditText">
                     {{entry.fields.creditText}}
                   </p>
-                </div>
-                <div class="summary" v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)"></div>
-              </div>
-              <div class="event-action bg-light my-3">
-                <div class="d-flex flex-column flex-lg-row justify-content-around" v-if="entry.fields.actionLabel && entry.fields.actionUrl">
-                  <div class="">
+                </div> -->
+                <!-- <div class="summary" v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)"></div> -->
+              <!-- </div> -->
+              <div class="event-action my-4">
+                <div class="" v-if="entry.fields.actionLabel && entry.fields.actionUrl">
+                  <!-- <div class="">
                     <div class="event-action-title">{{entry.fields.actionTitle}}</div>
                     <div class="event-action-info">{{entry.fields.actionInfo}}</div>
                   </div>
                   <div class="mt-3 mt-lg-0 ml-lg-auto">
                     <a target="_blank" class="btn btn-lg btn-secondary" :href="entry.fields.actionUrl">{{entry.fields.actionLabel}}</a>
-                  </div>
+                  </div> -->
+                  <a target="_blank" class="btn btn-lg btn-secondary" :href="entry.fields.actionUrl">{{entry.fields.actionLabel}}</a>
                 </div>
               </div>
             </div>
 
             <div
-              class="col-12 col-md-6 order-1 order-lg-2 mb-4 mb-lg-0"
+              class="col-12 col-md-6 order-1 order-md-2 mb-4 mb-lg-0"
               v-if="entry.fields.mainImage && entry.fields.mainImage.fields && entry.fields.mainImage.fields.file"
               >
               <lazy-image
@@ -99,168 +71,52 @@
         <!-- <img class="event-image" :src="entry.fields.mainImage.fields.file.url" alt="" v-if="entry.fields.mainImage"> -->
       </header>
 
-      <header class="container my-3 mt-4 pt-5" v-else-if="entry.fields.contentType === 'Podcast'">
-        <div class="row d-flex justify-content-center">
-          <div class="col-12 col-md-6 mb-4  order-2 order-lg-1">
-            <h1 class=" mt-2 mb-4 h2" v-if="entry.fields.title">
-              {{entry.fields.title}}
-            </h1>
-            <h3 class="mb-4" v-if="entry.fields.date">
-              {{getDataTime(entry.fields.date, entry.fields.endDate)}}
-            </h3>
-            <div class="my-3">
-              <div class="new-meta d-flex mb-3 flex-wrap" v-if="entry.fields.creditText">
-                <p class="-text-uppercase my-0 mr-3" v-if="entry.fields.creditText">
-                  {{entry.fields.creditText}}
-                </p>
-              </div>
-              <div class="summary" v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)"></div>
-            </div>
-            <div class="d-flex- mb-5 d-none">
-              <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
-                {{entry.fields.contentType}}
-              </h6>
-              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
-                by {{entry.fields.author[0].fields.name}}
-              </h6>
-              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
-
-              </h6>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 order-1 order-lg-2 mb-4"  v-if="entry.fields.mainImage && entry.fields.mainImage.fields && entry.fields.mainImage.fields.file">
-            <!-- <img :src="entry.fields.mainImage.fields.file.url" alt=""> -->
-            <lazy-image
-              :src="entry.fields.mainImage.fields.file.url"
-              :w="2000"
-              :h="2000"
-              />
-          </div>
-          <div class="col-12 d-flex px-5 pt-2 order-3 order-lg-3 text-black-50"  v-if="entry.fields.embedContent" :class="{'col-md-6 bg-grey': !entry.fields.mainImage, 'col-md-8': entry.fields.mainImage}">
-            <div class="">
-
-            </div>
-            <div class="d-flex flex-column justify-content-center w-100 py-5"
-            v-for="content in entry.fields.embedContent"
-            v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'embed'">
-                <div class=""  v-html="content.fields.embedCode.content[0].content[0].value">
-                </div>
-                <div class="">
-                  {{ content.fields.description}}
-                </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <header class="container-fluid mb-0 mt-0 py-5 bg-dark text-white" v-else-if="entry.fields.contentType === 'Video'">
-        <div class="row d-flex justify-content-start pt-5">
-          <div class="container mb-5">
-            <div class="row">
-              <div class="col-12 col-lg-6">
-                <div class="mb-4">
-                  <h1 class=" mt-2 mb-4 h2 col-12 col-lg-8 px-0" v-if="entry.fields.title">
-                    {{entry.fields.title}}
-                  </h1>
-                  <h3 class="mb-4" v-if="entry.fields.date">
-                    {{getDataTime(entry.fields.date, entry.fields.endDate)}}
-                  </h3>
-                  <div class="d-flex- mb-5 d-none">
-                    <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
-                      {{entry.fields.contentType}}
-                    </h6>
-                    <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
-                      by {{entry.fields.author[0].fields.name}}
-                    </h6>
-                  </div>
-                </div>
-                <div class="new-meta d-flex mb-3 flex-wrap" v-if="entry.fields.creditText">
-                  <h6 class="-text-uppercase my-0 mr-3" v-if="entry.fields.creditText">
-                    {{entry.fields.creditText}}
-                  </h6>
-                </div>
-                <div class="summary" v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)"></div>
-              </div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="col-12 col-md-12 d-flex px-0 -px-lg-5"  v-if="entry.fields.embedContent" :style="{ backgroundColor: entry.fields.colour}">
-              <div class="">
-
-              </div>
-              <div class="d-flex flex-column justify-content-center w-100" v-for="content in entry.fields.embedContent"
-              v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'embed'">
-                  <div class="video-wrapper" >
-                    <div class="iframe-wrapper" v-html="content.fields.embedCode.content[0].content[0].value">
-
-                    </div>
-                  </div>
-                  <div class="mt-3">
-                    <div class="col-12 col-md-6 px-3 px-md-0">
-                      {{ content.fields.description}}
-                    </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <header class="container my-3 mt-4 pt-5" v-else>
-        <div class="row d-flex justify-content-start">
-          <div class="col-12 col-md-7 mb-4">
-            <h1 class=" mt-2 mb-4 h2" v-if="entry.fields.title">
-              {{entry.fields.title}}
-            </h1>
-            <h3 class="mb-4" v-if="entry.fields.date">
-              {{getDataTime(entry.fields.date, entry.fields.endDate)}}
-            </h3>
-            <div class="d-flex- mb-5 d-none">
-              <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
-                {{entry.fields.contentType}}
-              </h6>
-              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
-                by {{entry.fields.author[0].fields.name}}
-              </h6>
-              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
-
-              </h6>
-            </div>
-            <div class="summary h5" v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)"></div>
-          </div>
-        </div>
-        <div class="row d-flex justify-content-center"
-        v-if="entry.fields.mainImage && entry.fields.mainImage.fields && entry.fields.mainImage.fields.file">
-          <div
-          class="col-12"
-          :class="{
-            'col-md-10':getImageRatio(entry.fields.mainImage)>1.5,
-            'col-md-6':getImageRatio(entry.fields.mainImage)<=1.5
-            }"
-          >
-            <lazy-image
-                :src="entry.fields.mainImage.fields.file.url"
-                :w="2000"
-                :h="2000"
-                />
-          </div>
-        </div>
-      </header>
-
     </div>
 
-    <div class="overflow-x-hidden pt-6 lg:pt-12" v-if="entry">
+    <div class="-overflow-x-hidden pt-0 lg:pt-4" v-if="entry">
 
-      <article class="content mt-0" v-if="entry.fields.contentReferences">
+      <article class="content container mt-0" v-if="entry.fields.contentReferences">
+
+        <aside class="order-1 order-md-2 lg:sticky top-0 lg:pt-4">
+          <div id="sidebar" class="">
+            <div class="">
+              <div class="" v-if="entry.fields.actionLabel && entry.fields.actionUrl">
+                <div class="">
+                  <a target="_blank" class="btn btn-lg btn-secondary uppercase" :href="entry.fields.actionUrl">{{entry.fields.actionLabel}}</a>
+                </div>
+                <div class="">
+                  <a target="_blank" class="btn btn-lg btn-share uppercase">Add to calendar &rarr;</a>
+                </div>
+                <div class="">
+                  <a target="_blank" class="btn btn-lg btn-share uppercase">Share event &rarr;</a>
+                </div>
+              </div>
+
+              <div class="my-4">
+                <h6 class="text-sm mb-0">Date and time</h6>
+                <h5 class="mt-0" v-if="entry.fields.date">{{getDataTime(entry.fields.date, entry.fields.endDate)}}<br></h5>
+              </div>
+
+              <div class="my-4">
+                <h6 class="text-sm mb-0">Location</h6>
+                <h5 class="mt-0" v-if="entry.fields.locationTitle">
+                  <a v-if="entry.fields.locationUrl" Lhref="entry.fields.locationUrl">{{entry.fields.locationTitle}}</a>
+                  <span v-else>{{entry.fields.locationTitle}}</span>
+                </h5>
+              </div>
+
+            </div>
+          </div>
+        </aside>
 
         <!-- <RichTextRenderer :document="entry.fields.richText" /> -->
-        <div class="row row-flex justify-content-center" v-for="content in entry.fields.contentReferences">
+        <div class="blocks-container order-2 order-md-1 row row-flex justify-content-center" v-for="content in entry.fields.contentReferences">
 
           <!-- text -->
           <div class="col-12  type-text">
             <div class="container ">
-              <div class="row justify-content-center">
-                <div class="col-12 col-md-6 my-4 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
+              <div class="row justify-content-start">
+                <div class="col-12---col-md-10 mb-4 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
                 </div>
               </div>
             </div>
@@ -269,8 +125,8 @@
           <!-- embed -->
           <div class="col-12 type-embed">
             <div class="container ">
-              <div class="row justify-content-center">
-                <div class="col-12 col-md-7 my-5 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'embed'">
+              <div class="row justify-content-start">
+                <div class="col-12---col-md-10 my-5 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'embed'">
                   <div class=""  v-html="content.fields.embedCode.content[0].content[0].value">
 
                   </div>
@@ -284,10 +140,10 @@
 
           <!-- gallery -->
           <div
-          class="col-12 col-lg-10 my-5 px-5 px-lg-0 type-gallery"
+          class="col-12---col-md-10 my-5 px-5 px-lg-0 type-gallery"
           v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'gallery'"
           >
-            <div class="row row-flex flex-wrap justify-content-center align-items-center gallery">
+            <div class="row row-flex flex-wrap justify-content-start align-items-center gallery">
               <div
               class="gallery-item mb-4"
               v-for="image in content.fields.image"
@@ -338,7 +194,7 @@
       </footer>
     </div>
 
-    <BlockJournal />
+    <BlockEvents />
 
     <!-- <div class="container-fluid" v-if="entries">
       <div class="row bg-grey text-black pb-5-pt-3">
@@ -399,6 +255,13 @@ import BlockEvents from '~/components/blocks/BlockEvents'
 import { createClient } from '~/plugins/contentful.js'
 // import RichTextRenderer from 'contentful-rich-text-vue-renderer'
 
+import gsap from 'gsap'
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin.js'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js'
+if (process.client) {
+  gsap.registerPlugin(ScrollToPlugin)
+  gsap.registerPlugin(ScrollTrigger);
+}
 // how to rich text
 
 // https://github.com/contentful/rich-text/tree/master/packages/rich-text-html-renderer
@@ -438,7 +301,7 @@ import { createClient } from '~/plugins/contentful.js'
 
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import NewsCard from '~/components/NewsCard'
+import EventsCard from '~/components/EventsCard'
 
 const client = createClient()
 
@@ -468,19 +331,6 @@ const options = {
   },
 };
 
-// async getEntryWithId = function (id) {
-//   console.log('getEntryWithId', id)
-//   let entryWithId = null
-//   await client.getEntries({
-//     'content_type': 'news',
-//     'fields.id': id
-//   }).then((entry) => {
-//     console.log('id entry', id,  entry)
-//     entryWithId = entry
-//   })
-//   return entryWithId
-// }
-
 export default {
 
   head () {
@@ -506,7 +356,29 @@ export default {
     return {
       entries: null,
       entry: null,
-      tags: null
+      tags: null,
+      st: null,
+    }
+  },
+
+  mounted () {
+    console.log('mounted')
+    this.initScrollTrigger()
+    this.handleResize ()
+  },
+
+  created () {
+    if (process.client) {
+      console.log('created')
+      window.addEventListener('scroll', this.handleScroll, { capture: false, passive: true});
+      window.addEventListener('resize', this.handleResize, { capture: false, passive: true});
+    }
+  },
+
+  destroyed () {
+    if (process.client) {
+      window.removeEventListener('scroll', this.handleScroll);
+      window.removeEventListener('resize', this.handleResize);
     }
   },
 
@@ -522,7 +394,7 @@ export default {
   },
 
   components: {
-    NewsCard,
+    EventsCard,
     BlockEvents
     // RichTextRenderer
   },
@@ -602,7 +474,7 @@ export default {
       // }),
 
       client.getEntries({
-        'content_type': 'events',
+        'content_type': 'event',
         'fields.slug': route.params.id
       })
 
@@ -649,7 +521,71 @@ export default {
     }).catch(console.error)
   },
 
+  watch: {
+    entry (newVal, oldVal) {
+      if (newVal.fields.slug != oldVal.fields.slug || !oldVal.fields.slug) {
+        this.refreshTrigger()
+      }
+    }
+  },
+
+  beforeUpdate () {
+    console.log('beforeUpdate')
+    this.refreshTrigger()
+    this.handleResize ()
+  },
+
   methods: {
+
+    handleScroll () {
+      this.refreshTrigger()
+    },
+
+    handleResize () {
+      if (process.client) {
+        if (window.innerWidth > 768) {
+          if (this.st) {
+            this.st.enable()
+          } else {
+            this.initScrollTrigger()
+            this.st.enable()
+          }
+        } else {
+          if (this.st) {
+            this.st.disable()
+          }
+        }
+      }
+    },
+
+    initScrollTrigger() {
+      if (process.client) {
+        this.st = ScrollTrigger.create({
+          trigger: "#sidebar",
+          start: "top top+=50px",
+          pin: true,
+          endTrigger: ".block-journal",
+          end: "top 50%+=100px",
+          onToggle: self => {
+            // console.log("toggled, isActive:", self.isActive)
+          },
+          onUpdate: self => {
+            // console.log("progress:", self.progress.toFixed(3), "direction:", self.direction, "velocity", self.getVelocity());
+          }
+        });
+      }
+    },
+
+    refreshTrigger: _.throttle(function () {
+      console.log('refreshTrigger')
+      if (process.client) {
+        if (ScrollTrigger) {
+          if (this.st) {
+            this.st.refresh()
+          }
+        }
+      }
+    }, 200),
 
     getImageRatio (image) {
       if (!image||!image.fields.file) return 1.5;
@@ -678,19 +614,19 @@ export default {
       // console.log(date)
       if (date && !endDate) {
         if (moment.parseZone(date).hours()>0) {
-          format = 'dddd D MMM, LT'
+          format = 'dddd D MMM h:mma'
         }
         return `${moment.parseZone(date).format(format)}`
       } else
       if (!date && endDate) {
         if (moment.parseZone(endDate).hours()>0) {
-          format = 'dddd D MMM, LT'
+          format = 'dddd D MMM h:mma'
         }
         return `${moment.parseZone(endDate).format(format)}`
       } else
       if (date && endDate) {
         if (moment.parseZone(date).hours()>0 || moment.parseZone(endDate).hours()>0) {
-          format = 'dddd D MMM, LT'
+          format = 'dddd D MMM h:mma'
         }
         return `${moment.parseZone(date).format(format)}—${moment.parseZone(endDate).format(format)}`
       } else {
@@ -787,10 +723,21 @@ export default {
       // flex-direction: column
       // justify-content: space-between
 
+      .event-title
+        h1
+          font-weight: normal
+          text-transform: none
+          padding-right: 1rem
+
       .event-info
         position: relative
         z-index: 9
         height: 100%
+
+      .event-secondary-info
+        display: block
+        @media screen and (max-width: 768px)
+          display: none
 
       .event-image
         // top: 0
@@ -809,6 +756,10 @@ export default {
         // bottom: 2rem
         width: 30rem
 
+        display: block
+        @media screen and (max-width: 768px)
+          display: none
+
         @media screen and (max-width: 768px)
           position: relative
           right: 0
@@ -819,7 +770,7 @@ export default {
 
         z-index: 9
         // background: black
-        padding: 1.5rem
+        // padding: 1.5rem
         // color: white
 
         .event-action-title
@@ -834,4 +785,47 @@ export default {
           text-transform: uppercase
           // background: white
           // color: black
+
+  article.content
+    display: flex
+    @media screen and (max-width: 768px)
+      display: block
+
+    aside
+
+      #sidebar
+        padding-top: 2rem
+        .btn
+          margin-bottom: .5rem
+          min-width: 90%
+
+      width: 25%
+      max-width: 20rem
+      margin-left: auto
+
+      @media screen and (max-width: 768px)
+        width: 100%
+        max-width: 100%
+
+        #sidebar
+          .btn
+            margin-bottom: .5rem
+            min-width: 100%
+
+      .btn-share
+        background-color: rgba(255, 93, 56, 0.1)
+        color: black
+        &:hover
+          background-color: rgba(255, 93, 56, 0.4)
+
+    .blocks-container
+      width: 66%
+      @media screen and (max-width: 768px)
+        width: 100%
+        margin-right: 0
+        margin-left: 0
+        .col-12, .container
+          padding-left: 0
+          padding-right: 0
+
 </style>

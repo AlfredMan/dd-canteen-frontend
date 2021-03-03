@@ -3,8 +3,8 @@
     <div class="block-journal-header">
       <div class="flex items-baseline">
         <h2>Upcoming Events</h2>
-        <router-link :to="{ path:'/journal' }"
-        class="inline-block ml-4 text-green text-lg"
+        <router-link :to="{ path:'/events' }"
+        class="inline-block ml-4 text-orange text-lg"
         >
           View all &rarr;
         </router-link>
@@ -12,10 +12,10 @@
     </div>
     <div class="block-journal--entries">
       <div
-       class="block-journal--entries--entry 'w-full lg:w-4/12'"
+       class="block-journal--entries--entry w-full lg:w-4/12"
       :class="{
       }" v-for="(entry, index) in entries" :key="entry.sys.id">
-        <news-card class="news-card" :entry="entry"></news-card>
+        <events-card class="news-card" :entry="entry"></events-card>
       </div>
     </div>
   </section>
@@ -24,7 +24,7 @@
 <script>
 import _ from 'lodash'
 import { createClient } from '~/plugins/contentful.js'
-import NewsCard from '~/components/NewsCard'
+import EventsCard from '~/components/EventsCard'
 
 const client = createClient()
 
@@ -37,7 +37,7 @@ export default {
   // },
 
   components: {
-    NewsCard
+    EventsCard
   },
 
   // data () {

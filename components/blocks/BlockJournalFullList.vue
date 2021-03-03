@@ -4,7 +4,8 @@
       <div
        class="block-journal--entries--entry"
       :class="{'w-full lg:w-full xl:w-6/12': index==0, 'w-full xl:w-3/12': index>0}" v-for="(entry, index) in entries" :key="entry.sys.id">
-        <news-card class="news-card" :entry="entry"></news-card>
+        <events-card v-if="type=='event'" class="news-card" :entry="entry"></events-card>
+        <news-card v-else class="news-card" :entry="entry"></news-card>
       </div>
     </div>
   </section>
@@ -14,6 +15,7 @@
 import _ from 'lodash'
 import { createClient } from '~/plugins/contentful.js'
 import NewsCard from '~/components/NewsCard'
+import EventsCard from '~/components/EventsCard'
 
 const client = createClient()
 
@@ -25,13 +27,23 @@ export default {
   //   }
   // },
 
+  props: ['block'],
+
   components: {
-    NewsCard
+    NewsCard,
+    EventsCard
   },
 
   computed: {
+    type () {
+      return this.block && this.block.fields.contentType
+    },
     entries () {
-      return this.$store.state.journals
+      if (this.type && this.type == 'event') {
+        return this.$store.state.events
+      } else {
+        return this.$store.state.journals
+      }
     }
   },
 

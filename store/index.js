@@ -279,15 +279,15 @@ export const actions = {
   },
   async getEvents ({ commit }) {
     const response = await client.getEntries({
-      'content_type': 'events',
+      'content_type': 'event',
       order: '-sys.createdAt',
       limit: 99
     })
     if (response.items.length > 0) {
       // console.log('getEvents response.items??..............', response.items[0])
-      const featured = _.filter(response.items, item => item.fields.featured)
-      const featuredOrderedByDate = _.orderBy(featured, ['sys.createdAt'], ['desc'])
-      commit('setEvents', { events: featuredOrderedByDate })
+      // const featured = _.filter(response.items, item => item.fields)
+      const featuredOrderedByDate = _.orderBy(response.items, ['sys.createdAt'], ['desc'])
+      commit('setEvents', { events: response.items })
     }
   },
   async getBuildings ({ commit }) {
