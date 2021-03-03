@@ -47,6 +47,7 @@
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "@nuxtjs/style-resources": "^1.0.0",
     "@nuxtjs/tailwindcss": "^3.0.2",
+    "add-event-to-calendar": "^1.0.7",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.1.0",

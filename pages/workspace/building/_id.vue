@@ -307,7 +307,7 @@
 
     <AppPage v-if="building" :entry="building"/>
 
-    <BlockEventsCarousel id="events" v-if="building.fields.eventsActive"/>
+    <!-- <BlockEventsCarousel id="events" v-if="building.fields.eventsActive"/> -->
 
   </div>
 </template>

@@ -1,10 +1,14 @@
 <template>
-  <div class="news" :class="getContentClass(entry.fields.contentType)">
+  <div class="event" :class="getContentClass(entry.fields.contentType)">
     <!-- <pre>{{entry}}</pre> -->
     <div class="-overflow-x-hidden" v-if="entry" :key="entry.sys.id">
 
-      <header class="container event-header my-3 mb-5 pt-5">
-        <div class="event-info">
+      <header class="event-header mb-5 py-8 pt-16 lg:pt-24"
+      :style="{
+        backgroundColor: entry.fields.colour ? entry.fields.colour : 'none'
+        }"
+      >
+        <div class="event-info container">
           <div class="row row-flex justify-content-between ">
             <div class="col-12 col-md-6 order-2 order-md-1">
               <div class="event-title order-sm-3">
@@ -57,7 +61,7 @@
             </div>
 
             <div
-              class="col-12 col-md-6 order-1 order-md-2 mb-4 mb-lg-0"
+              class="col-12 col-md-6 order-1 order-md-2 mb-4 mb-lg-0 lg:pt-6"
               v-if="entry.fields.mainImage && entry.fields.mainImage.fields && entry.fields.mainImage.fields.file"
               >
               <lazy-image
@@ -85,11 +89,15 @@
                   <a target="_blank" class="btn btn-lg btn-secondary uppercase" :href="entry.fields.actionUrl">{{entry.fields.actionLabel}}</a>
                 </div>
                 <div class="">
-                  <a target="_blank" class="btn btn-lg btn-share uppercase">Add to calendar &rarr;</a>
+                  <a target="_blank" class="btn btn-lg btn-share uppercase" @click="showCalendarOptions">Add to calendar &rarr;</a>
                 </div>
                 <div class="">
-                  <a target="_blank" class="btn btn-lg btn-share uppercase">Share event &rarr;</a>
+                  <a target="_blank" class="btn btn-lg btn-share uppercase" @click="showShareOptions">Share event &rarr;</a>
                 </div>
+              </div>
+
+              <div class="my-4">
+                <h3>{{entry.fields.title}}</h3>
               </div>
 
               <div class="my-4">
@@ -537,6 +545,14 @@ export default {
 
   methods: {
 
+    showCalendarOptions () {
+      
+    },
+
+    showShareOptions () {
+
+    },
+
     handleScroll () {
       this.refreshTrigger()
     },
@@ -627,6 +643,9 @@ export default {
       if (date && endDate) {
         if (moment.parseZone(date).hours()>0 || moment.parseZone(endDate).hours()>0) {
           format = 'dddd D MMM h:mma'
+        }
+        if (moment.parseZone(endDate).isSame(moment.parseZone(endDate), 'day')) {
+          return `${moment.parseZone(date).format(format)}—${moment.parseZone(endDate).format('h:mma')}`
         }
         return `${moment.parseZone(date).format(format)}—${moment.parseZone(endDate).format(format)}`
       } else {
@@ -798,6 +817,7 @@ export default {
         .btn
           margin-bottom: .5rem
           min-width: 90%
+          text-align: left
 
       width: 25%
       max-width: 20rem
@@ -813,7 +833,7 @@ export default {
             min-width: 100%
 
       .btn-share
-        background-color: rgba(255, 93, 56, 0.1)
+        background-color: rgba(255, 93, 56, 0.05)
         color: black
         &:hover
           background-color: rgba(255, 93, 56, 0.4)
