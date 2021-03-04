@@ -24,6 +24,7 @@
               class="form-control input-text form-field-reset"
               type="email"
               name="email"
+              v-model="email"
               placeholder="Email Address"
               value=""
               required
@@ -45,6 +46,7 @@
           v-show="active"
           id="first_name"
           ref="first_name"
+          v-model="first_name"
           class="form-control input-text form-field-reset"
           type="text"
           name="first_name"
@@ -56,6 +58,7 @@
           v-show="active"
           id="last_name"
           ref="last_name"
+          v-model="last_name"
           class="form-control input-text form-field-reset"
           type="text"
           name="last_name"
@@ -72,15 +75,16 @@
 
         <div>
           <input
-            id="subscribeDesignOptIn"
+            :id="`subscribeDesignOptIn-${this.formId}`"
             ref="subscribeDesignOptIn"
+            v-model="subscribeDesignOptIn"
             class="form-field-reset checkbox"
             type="checkbox"
             name="00N0O00000GRkIa"
             value="1"
             required
           >
-          <label for="subscribeDesignOptIn">
+          <label :for="`subscribeDesignOptIn-${this.formId}`">
             <span>
               <!-- The Design District including information on work spaces, offices and commercial opportunities -->
               Design District news and information about work spaces, workshops and events
@@ -90,14 +94,15 @@
 
         <div>
           <input
-            id="subscribeMarketingOptIn"
+            :id="`subscribeMarketingOptIn-${this.formId}`"
             ref="subscribeMarketingOptIn"
+            v-model="subscribeMarketingOptIn"
             class="form-field-reset checkbox"
             type="checkbox"
             name="00N0O00000GRZb7"
             value="1"
           >
-          <label for="subscribeMarketingOptIn">
+          <label :for="`subscribeMarketingOptIn-${this.formId}`">
             <span>
               <!-- The latest happenings on Greenwich Peninsula including cultural events and the latest news -->
               News from Greenwich Peninsula including cultural events and announcements
@@ -120,10 +125,16 @@
         <button
           class="btn btn-dark btn-lg mt-0"
           type="submit"
-          :class="{disabled: formState === 'loading'}"
+          :class="{
+            disabled: formState === 'loading' || (!this.subscribeDesignOptIn || (this.email.length<1) || (this.first_name.length<1) || (this.last_name.length<1))
+          }"
+          :disable="formState === 'loading' || (!this.subscribeDesignOptIn || (this.email.length<1) || (this.first_name.length<1) || (this.last_name.length<1))"
+          @click="trySubmit"
         >
           {{ formAction }}
         </button>
+
+        <h6 class="text-sm" v-if="error">{{error}}</h6>
 
         <vue-recaptcha
           ref="invisibleRecaptcha"
@@ -193,7 +204,14 @@ export default {
       },
       formTarget: '',
       formAction: 'Submit',
-      formState: 'idle'
+      formState: 'idle',
+      first_name: '',
+      last_name: '',
+      email: '',
+      subscribeDesignOptIn: '',
+      subscribeMarketingOptIn: '',
+      error: '',
+      formId: '123456789'
     }
   },
   computed: {
@@ -214,13 +232,37 @@ export default {
       }
     }
   },
-  monuted () {
-    this.init()
+  mounted () {
+    this.createFormID()
   },
   updated () {
     // console.log(this.$route.path)
   },
   methods: {
+
+    createFormID () {
+      console.log('this.formId 1', this.formId)
+      this.formId = this._uid ||_.shuffle(_.split(this.formId,'')).join('')
+      console.log('this.formId 2', this.formId)
+    },
+
+    trySubmit () {
+      if (this.email.length<1) {
+        this.error = 'Please check your email'
+        return
+      }
+      if (this.first_name.length<1||this.last_name.length<1) {
+        this.error = 'Please check your name'
+        return
+      }
+      if (!this.subscribeDesignOptIn) {
+        this.error = 'Please agree to receive Design District news and information'
+        return
+      }
+      this.error = ''
+      return
+    },
+
     init () {
       // this.$refs.subscribeForm.setAttribute('target', 'ref')
     },
@@ -241,7 +283,6 @@ export default {
       this.formAlert.type = 'loading'
       this.formAlert.text = 'Processing...'
       this.formAction = 'Loading'
-
       // this.$refs.invisibleRecaptcha.execute()
 
       if (this.submitDEManagerForm() && this.handleRecap()) {

@@ -1,18 +1,18 @@
 <template lang="html">
   <div
+  v-show="hasInit"
   v-waypoint="{ active: true, callback: onWaypoint, options: intersectionOptions }"
   class="flickity-wrapper"
   :class="{
     'overflow-visible': overflow=='visible'
     }"
   >
-
-      <Flickity :options="flickityOptions" class="flickity" ref="flkty" :class="{
-        'dragging': isDragging
-        }">
-        <slot></slot>
-      </Flickity>
-
+    <Flickity
+    :options="flickityOptions" class="flickity" ref="flkty" :class="{
+      'dragging': isDragging
+      }">
+      <slot></slot>
+    </Flickity>
   </div>
 </template>
 
@@ -59,6 +59,7 @@ export default {
   },
   data () {
     return {
+      hasInit: false,
       isDragging: false,
       intersectionOptions: {
         root: null,
@@ -104,7 +105,9 @@ export default {
   },
   methods: {
     openCarousel (block, index) {
-      this.$store.dispatch('openCarousel', { block, index })
+      if (process.client) {
+        this.$store.dispatch('openCarousel', { block, index })
+      }
     },
     resize () {
       if (process.client) {
@@ -143,6 +146,7 @@ export default {
     },
     initFlickityControl () {
       if (process.client) {
+        this.hasInit = true
         let flkty = this.$refs.flkty
         if (!flkty) {
           console.log('flkty not found')
@@ -178,6 +182,7 @@ export default {
       // this.log(`#${el.getAttribute('id')} is ${this.wrapSpan(going)} viewport, direction: ${this.wrapSpan(direction)}`)
       el.classList.toggle('active', this.$waypointMap.GOING_IN === going)
 
+      this.resize()
       this.animate()
     },
     animate () {
