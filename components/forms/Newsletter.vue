@@ -24,6 +24,9 @@
               class="form-control input-text form-field-reset"
               type="email"
               name="email"
+              :class="{
+                'error': error_email
+                }"
               v-model="email"
               placeholder="Email Address"
               value=""
@@ -50,6 +53,9 @@
           class="form-control input-text form-field-reset"
           type="text"
           name="first_name"
+          :class="{
+            'error': error_first_name
+            }"
           placeholder="First Name"
           value=""
           required
@@ -62,6 +68,9 @@
           class="form-control input-text form-field-reset"
           type="text"
           name="last_name"
+          :class="{
+            'error': error_last_name
+            }"
           placeholder="Last Name"
           value=""
           required
@@ -81,7 +90,12 @@
             class="form-field-reset checkbox"
             type="checkbox"
             name="00N0O00000GRkIa"
+            :class="{
+              'error': error_subscribeDesignOptIn
+              }"
             value="1"
+            @update="trySubmit"
+            @change="trySubmit"
             required
           >
           <label :for="`subscribeDesignOptIn-${this.formId}`">
@@ -100,6 +114,9 @@
             class="form-field-reset checkbox"
             type="checkbox"
             name="00N0O00000GRZb7"
+            :class="{
+              'error': error_subscribeMarketingOptIn
+              }"
             value="1"
           >
           <label :for="`subscribeMarketingOptIn-${this.formId}`">
@@ -122,6 +139,8 @@
         <!-- <input id="submit" type="submit" value="Signup" style="display: none;"> -->
         <input id="subscribeSubmit" ref="subscribeSubmit" type="submit" value="Signup" style="display: none;">
 
+        <h6 class="text-sm my-6 text-red-700 bg-red-200__px-8__p-6 rounded-sm" v-if="error">{{error}}</h6>
+
         <button
           class="btn btn-dark btn-lg mt-0"
           type="submit"
@@ -133,8 +152,6 @@
         >
           {{ formAction }}
         </button>
-
-        <h6 class="text-sm" v-if="error">{{error}}</h6>
 
         <vue-recaptcha
           ref="invisibleRecaptcha"
@@ -211,6 +228,11 @@ export default {
       subscribeDesignOptIn: '',
       subscribeMarketingOptIn: '',
       error: '',
+      error_first_name: false,
+      error_last_name: false,
+      error_email: false,
+      error_subscribeDesignOptIn: false,
+      error_subscribeMarketingOptIn: false,
       formId: '123456789'
     }
   },
@@ -256,7 +278,7 @@ export default {
         return
       }
       if (!this.subscribeDesignOptIn) {
-        this.error = 'Please agree to receive Design District news and information'
+        this.error = 'You need to agree to receive Design District news and information'
         return
       }
       this.error = ''
