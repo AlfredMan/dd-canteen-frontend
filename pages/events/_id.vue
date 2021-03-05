@@ -16,7 +16,9 @@
                 <h1 class="mt-2 mb-3 pl-0 h2" v-if="entry.fields.title">
                   {{entry.fields.title}}
                 </h1>
-
+                <h5 class="text-orange mb-1 mt-1" v-if="entry.fields.creditText">
+                  {{entry.fields.creditText}}
+                </h5>
                 <h5 class="--event-secondary-info mb-1 mt-1" v-if="entry.fields.date">{{getDataTime(entry.fields.date, entry.fields.endDate)}}<br></h5>
                 <h5 class="--event-secondary-info mb-1 mt-1" v-if="entry.fields.locationTitle">
                   {{entry.fields.locationTitle}}
@@ -81,7 +83,7 @@
 
       <article class="content container mt-0" v-if="entry.fields.contentReferences">
 
-        <aside class="order-1 order-md-2 lg:sticky top-0 lg:pt-4">
+        <aside class="order-1 order-md-2 lg:sticky top-0 lg:pt-0">
           <div id="sidebar" class="">
             <div class="">
               <div class="" v-if="entry.fields.actionLabel && entry.fields.actionUrl">
@@ -97,18 +99,21 @@
               </div>
 
               <div class="my-4">
-                <h3>{{entry.fields.title}}</h3>
+                <h4>{{entry.fields.title}}</h4>
+                <h6 class="organiser" v-if="entry.fields.creditText">
+                  {{entry.fields.creditText}}
+                </h6>
               </div>
 
               <div class="my-4">
                 <h6 class="text-sm mb-0">Date and time</h6>
-                <h5 class="mt-0" v-if="entry.fields.date">{{getDataTime(entry.fields.date, entry.fields.endDate)}}<br></h5>
+                <h5 class="mt-0 font-500" v-if="entry.fields.date">{{getDataTime(entry.fields.date, entry.fields.endDate)}}<br></h5>
               </div>
 
               <div class="my-4">
                 <h6 class="text-sm mb-0">Location</h6>
-                <h5 class="mt-0" v-if="entry.fields.locationTitle">
-                  <a v-if="entry.fields.locationUrl" Lhref="entry.fields.locationUrl">{{entry.fields.locationTitle}}</a>
+                <h5 class="mt-0 font-500" v-if="entry.fields.locationTitle">
+                  <a v-if="entry.fields.locationUrl" :href="entry.fields.locationUrl">{{entry.fields.locationTitle}}</a>
                   <span v-else>{{entry.fields.locationTitle}}</span>
                 </h5>
               </div>
@@ -546,7 +551,7 @@ export default {
   methods: {
 
     showCalendarOptions () {
-      
+
     },
 
     showShareOptions () {
@@ -641,13 +646,22 @@ export default {
         return `${moment.parseZone(endDate).format(format)}`
       } else
       if (date && endDate) {
-        if (moment.parseZone(date).hours()>0 || moment.parseZone(endDate).hours()>0) {
+
+        let hasHour = moment.parseZone(date).hours()>0 || moment.parseZone(endDate).hours()>0
+        let isSameDay = moment.parseZone(date).isSame(moment.parseZone(endDate), 'day')
+        let isSameHour = moment.parseZone(date).isSame(moment.parseZone(endDate), 'hour')
+
+        if (isSameDay && isSameHour) {
+          format = 'dddd D MMM'
+          return `${moment.parseZone(date).format(format)}`
+        } else if (isSameDay) {
           format = 'dddd D MMM h:mma'
-        }
-        if (moment.parseZone(endDate).isSame(moment.parseZone(endDate), 'day')) {
           return `${moment.parseZone(date).format(format)}—${moment.parseZone(endDate).format('h:mma')}`
+        } else {
+          format = 'dddd D MMM'
+          return `${moment.parseZone(date).format(format)}—${moment.parseZone(endDate).format(format)}`
         }
-        return `${moment.parseZone(date).format(format)}—${moment.parseZone(endDate).format(format)}`
+
       } else {
         return ``
       }
@@ -832,11 +846,23 @@ export default {
             margin-bottom: .5rem
             min-width: 100%
 
+      h4
+        font-weight: 400
+        font-size: 1.75rem
+        line-height: 1.2
+        margin: 0 0 .2rem
+
+      h5
+        font-weight: 400
+
       .btn-share
         background-color: rgba(255, 93, 56, 0.05)
         color: black
         &:hover
           background-color: rgba(255, 93, 56, 0.4)
+
+      a
+        text-decoration: none
 
     .blocks-container
       width: 66%
@@ -847,5 +873,10 @@ export default {
         .col-12, .container
           padding-left: 0
           padding-right: 0
+
+  .organiser
+    @apply text-orange text-lg font-medium
+    font-weight: 400
+    margin: .2rem 0 .2rem
 
 </style>

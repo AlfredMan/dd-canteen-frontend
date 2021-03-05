@@ -76,7 +76,7 @@ export default {
       })
 
     ]).then(([entry]) => {
-
+      console.log(entry)
       return {
         entry: entry.items[0]
       }

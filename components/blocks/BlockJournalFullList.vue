@@ -40,7 +40,9 @@ export default {
     },
     entries () {
       if (this.type && this.type == 'event') {
-        return this.$store.state.events
+        let e = this.$store.state.events
+        console.log(e)
+        return e
       } else {
         return this.$store.state.journals
       }
