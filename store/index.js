@@ -284,10 +284,16 @@ export const actions = {
       limit: 99
     })
     if (response.items.length > 0) {
+
+      const featured = _.filter(response.items, item => item.fields.featured)
+      const featuredOrderedByDate = _.orderBy(featured, ['sys.createdAt'], ['desc'])
+      const nonFeatured = _.filter(response.items, item => !item.fields.featured)
+      const nonFeaturedOrderedByDate = _.orderBy(nonFeatured, ['sys.createdAt'], ['desc'])
+      commit('setEvents', { events: featuredOrderedByDate.concat(nonFeaturedOrderedByDate) })
       // console.log('getEvents response.items??..............', response.items[0])
       // const featured = _.filter(response.items, item => item.fields)
-      const featuredOrderedByDate = _.orderBy(response.items, ['sys.createdAt'], ['desc'])
-      commit('setEvents', { events: response.items })
+      // const featuredOrderedByDate = _.orderBy(response.items, ['sys.createdAt'], ['desc'])
+      // commit('setEvents', { events: response.items })
     }
   },
   async getBuildings ({ commit }) {
