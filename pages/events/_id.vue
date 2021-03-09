@@ -98,12 +98,12 @@
                 </div>
               </div>
 
-              <div class="my-4">
+              <!-- <div class="my-4">
                 <h4>{{entry.fields.title}}</h4>
                 <h6 class="organiser" v-if="entry.fields.creditText">
                   {{entry.fields.creditText}}
                 </h6>
-              </div>
+              </div> -->
 
               <div class="my-4">
                 <h6 class="text-sm mb-0">Date and time</h6>
@@ -123,60 +123,62 @@
         </aside>
 
         <!-- <RichTextRenderer :document="entry.fields.richText" /> -->
-        <div class="blocks-container order-2 order-md-1 row row-flex justify-content-center" v-for="content in entry.fields.contentReferences">
+        <div class="blocks-container order-2 order-md-1 px-3 pt-12">
+          <div class="row row-flex justify-content-center" v-for="content in entry.fields.contentReferences">
 
-          <!-- text -->
-          <div class="col-12  type-text">
-            <div class="container ">
-              <div class="row justify-content-start">
-                <div class="col-12---col-md-10 mb-4 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- embed -->
-          <div class="col-12 type-embed">
-            <div class="container ">
-              <div class="row justify-content-start">
-                <div class="col-12---col-md-10 my-5 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'embed'">
-                  <div class=""  v-html="content.fields.embedCode.content[0].content[0].value">
-
-                  </div>
-                  <div class="">
-                    {{ content.fields.description}}
+            <!-- text -->
+            <div class="col-12  type-text">
+              <div class="container ">
+                <div class="row justify-content-start">
+                  <div class="col-12---col-md-10 mb-4 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- gallery -->
-          <div
-          class="col-12---col-md-10 my-5 px-5 px-lg-0 type-gallery"
-          v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'gallery'"
-          >
-            <div class="row row-flex flex-wrap justify-content-start align-items-center gallery">
-              <div
-              class="gallery-item mb-4"
-              v-for="image in content.fields.image"
-              :class="getGalleryImageClass(content.fields.image)"
-              :style="getGalleryImageStyle(content.fields.image)"
-              >
-                <!-- <img :src="image.fields.file.url" alt="" class="image"> -->
-                <lazy-image
-                v-if="image.fields && image.fields.file"
-                :src="image.fields.file.url"
-                :w="2000"
-                :h="3000"
-                />
-                <div class="caption" v-if="image.fields.description">
-                  {{image.fields.description}}
+            <!-- embed -->
+            <div class="col-12 type-embed">
+              <div class="container ">
+                <div class="row justify-content-start">
+                  <div class="col-12---col-md-10 my-5 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'embed'">
+                    <div class=""  v-html="content.fields.embedCode.content[0].content[0].value">
+
+                    </div>
+                    <div class="">
+                      {{ content.fields.description}}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
+            <!-- gallery -->
+            <div
+            class="col-12---col-md-10 my-5 px-5 px-lg-0 type-gallery"
+            v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'gallery'"
+            >
+              <div class="row row-flex flex-wrap justify-content-start align-items-center gallery">
+                <div
+                class="gallery-item mb-4"
+                v-for="image in content.fields.image"
+                :class="getGalleryImageClass(content.fields.image)"
+                :style="getGalleryImageStyle(content.fields.image)"
+                >
+                  <!-- <img :src="image.fields.file.url" alt="" class="image"> -->
+                  <lazy-image
+                  v-if="image.fields && image.fields.file"
+                  :src="image.fields.file.url"
+                  :w="2000"
+                  :h="3000"
+                  />
+                  <div class="caption" v-if="image.fields.description">
+                    {{image.fields.description}}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
 
       </article>
@@ -380,6 +382,18 @@ export default {
     this.handleResize ()
   },
 
+  updated () {
+    if (process.client) {
+      console.log('updated')
+      // if (this.st) {
+      //   this.st.kill()
+      //   this.st=null
+      //   this.initScrollTrigger()
+      // }
+      this.refreshTrigger()
+    }
+  },
+
   created () {
     if (process.client) {
       console.log('created')
@@ -392,6 +406,9 @@ export default {
     if (process.client) {
       window.removeEventListener('scroll', this.handleScroll);
       window.removeEventListener('resize', this.handleResize);
+      if (this.st) {
+        this.st.kill()
+      }
     }
   },
 
@@ -542,11 +559,11 @@ export default {
     }
   },
 
-  beforeUpdate () {
-    console.log('beforeUpdate')
-    this.refreshTrigger()
-    this.handleResize ()
-  },
+  // beforeUpdate () {
+  //   console.log('beforeUpdate')
+  //   this.refreshTrigger()
+  //   this.handleResize ()
+  // },
 
   methods: {
 
@@ -600,10 +617,14 @@ export default {
     refreshTrigger: _.throttle(function () {
       console.log('refreshTrigger')
       if (process.client) {
-        if (ScrollTrigger) {
-          if (this.st) {
-            this.st.refresh()
-          }
+        window.dispatchEvent(new Event('resize'));
+        // if (ScrollTrigger) {
+        //   if (this.st) {
+        //     this.st.refresh()
+        //   }
+        // }
+        if (this.st) {
+          this.st.refresh()
         }
       }
     }, 200),
