@@ -6,6 +6,8 @@
       v-if="entry && entry.fields.contentBlocks"
       v-for="block in entry.fields.contentBlocks">
 
+        <!-- {{block.sys.contentType.sys.id}}<br> -->
+
         <BlockPageHeaderVideo :block="block" v-if="isBlockType(block, 'blockPageHeaderVideo')"/>
 
         <BlockPageHeader :block="block" v-else-if="isBlockType(block, 'blockPageHeader')"/>
@@ -34,6 +36,8 @@
 
         <BlockGrid :block="block" v-else-if="isBlockType(block, 'blockImageTextGriddedList')"/>
 
+        <BlockForm :block="block" v-else-if="isBlockType(block, 'blockFormNewsletter')"/>
+
         <div class="p-16 bg-red-100 hidden" v-else-if="block" style="visibility:hidden;display:none;">
           <p v-if="block.sys && block.sys.contentType">{{block.sys.contentType.sys.id}}</p>
           <pre>{{block.fields}}</pre>
@@ -61,6 +65,7 @@ import BlockArchitectureList from '~/components/blocks/BlockArchitectureList'
 import BlockJournalFullList from '~/components/blocks/BlockJournalFullList'
 import BlockVideo from '~/components/blocks/BlockVideo'
 import BlockGrid from '~/components/blocks/BlockGrid'
+import BlockForm from '~/components/blocks/BlockForm'
 
 export default {
   name: 'page',
@@ -79,7 +84,8 @@ export default {
     BlockArchitectureList,
     BlockJournalFullList,
     BlockVideo,
-    BlockGrid
+    BlockGrid,
+    BlockForm
   },
 
   props: {

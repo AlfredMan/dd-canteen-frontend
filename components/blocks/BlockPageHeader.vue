@@ -131,6 +131,9 @@ section {
   &.theme-orange {
     @apply bg-orange;
   }
+  &.theme-yellow {
+    @apply bg-yellow;
+  }
   .block-page-header-content {
     @apply px-4 pt-24 pb-12;
     @screen lg {
