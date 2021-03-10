@@ -1,17 +1,22 @@
 <template>
-  <div class="py-16 pb-16 bg-light">
+  <div class="py-16 pb-16"
+  :class="{
+    'bg-yellow': block.fields.theme && block.fields.theme=='Yellow',
+    'bg-light': block.fields.theme && block.fields.theme=='Light'
+    }"
+  >
 
 
 <div class="flex flex-wrap cap-max-w px-3 justify-content-start">
 
   <div class="md:w-5/12">
-    <h2 v-if="this.block.fields.heading">{{this.block.fields.heading}}</h2>
+    <h2 v-if="block.fields.heading">{{block.fields.heading}}</h2>
   </div>
 
   <div v-show="formState === 'complete'" class="md:w-7/12 block max-w-3xl pt-2">
 
-    <h4 class="" v-if="this.block.fields.successMessage">
-      <rich-text :richtext="this.block.fields.successMessage"/>
+    <h4 class="" v-if="block.fields.successMessage">
+      <rich-text :richtext="block.fields.successMessage"/>
     </h4>
     <h4 class="" v-else>
       Thank you for your interest!<br>
@@ -33,7 +38,7 @@
     <div class="">
       <!-- <label class="-accessible-hide" for="email">Email address<sup>*</sup></label> -->
 
-        <h4 class="mb-16" v-if="this.block.fields.subheading">{{this.block.fields.subheading}}</h4>
+        <h4 class="mb-16" v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
 
         <div class="mx-auto my-2">
           <h5 class="font-bold text-sm">About yourself</h5>
@@ -317,20 +322,18 @@
           </div>
 
         <button
-          class="inline-block border py-3 px-6 rounded-sm text-base md:text-lg w-auto bg-black text-white font-medium"
+          class="inline-block py-3 px-6 rounded-sm text-base md:text-lg w-auto bg-black text-white font-medium"
           type="submit"
           :class="{
             'pointer-events-none': formState === 'loading',
-            'border-white': theme === 'dark',
-            'border-black': theme === 'light'
             }"
         >
           {{ formAction }}
         </button>
 
 
-        <div class="pr-8 my-16" v-if="this.block.fields.terms">
-          <rich-text :richtext="this.block.fields.terms"/>
+        <div class="pr-8 my-16" v-if="block.fields.terms">
+          <rich-text :richtext="block.fields.terms"/>
         </div>
 
 
