@@ -133,6 +133,7 @@ section {
   }
   &.theme-yellow {
     @apply bg-yellow;
+    background: hsl(54, 100%, 50%);
   }
   .block-page-header-content {
     @apply px-4 pt-24 pb-12;
