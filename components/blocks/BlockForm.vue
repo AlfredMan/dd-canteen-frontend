@@ -3,10 +3,10 @@
   v-if="block && block.fields"
   >
     <div class="" v-if="form=='shesays'">
-      <SheSaysForm class="SheSaysForm" />
+      <SheSaysForm class="SheSaysForm" :block="block"/>
     </div>
     <div class="" v-else>
-      <NewsletterForm class="NewsletterForm" />
+      <NewsletterForm class="NewsletterForm" :block="block"/>
     </div>
   </section>
 </template>

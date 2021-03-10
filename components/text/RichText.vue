@@ -1,10 +1,9 @@
 <template>
-  <section class="block-text"
-  v-if="block && block.fields"
+  <div class="rich-text"
+  v-if="richtext"
+  v-html="getRichText(richtext)"
   >
-    <div class="col-12 col-md-6 my-4 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
-    </div>
-  </section>
+</div>
 </template>
 
 <script>
@@ -38,8 +37,7 @@ const options = {
 };
 
 export default {
-  props: ['block'],
-
+  props: ['richtext'],
   computed: {
   },
 

@@ -1,404 +1,410 @@
 <template>
   <div class="py-16 pb-16 bg-light">
-    <div v-show="formState === 'complete'" class="flex flex-wrap cap-max-w px-3">
-      <!-- <h5>Thank you for your interest!</h5> -->
-      <p class="monospace text-lg leading-8"
-      :class="{
-        'pointer-events-none': formState === 'loading',
-        'text-baby-blue': theme === 'dark',
-        'text-black': theme === 'light'
-        }"
-      >
-        Thank you for your interest!<br>
-        We will be in touch if your application is successful.<br>
-        For the latest news and updates, follow us on <a href="https://www.instagram.com/designdistrictlondon/" rel="nofollow noreferrer">Instagram</a>.
-      </p>
-    </div>
 
-    <form
-      v-show="formState !== 'complete'"
-      ref="subscribeForm"
-      name="subscribeForm"
-      method="post"
-      :class="{disabled: formState === 'loading'}"
-      class="flex flex-wrap cap-max-w px-3 justify-content-start"
-      @submit.prevent="onFormSubmit"
-    >
 
-      <div class="md:w-5/12">
-        <h2>Enter the competition</h2>
-        <div class="pr-8">
-          <p><strong>The small print</strong><br>The competition is open to women (binary and non-binary) working in the creative industries, with the exception of those employed by Knight Dragon Ltd. One entry per person only. Design District's decision as to the winners is final. No correspondence relating to the competition will be entered into. Design District reserves the right to cancel or alter or amend the competition at any stage, if deemed necessary in its opinion, or if
-          circumstances arise outside of its control. </p>
+<div class="flex flex-wrap cap-max-w px-3 justify-content-start">
+
+  <div class="md:w-5/12">
+    <h2 v-if="this.block.fields.heading">{{this.block.fields.heading}}</h2>
+  </div>
+
+  <div v-show="formState === 'complete'" class="md:w-7/12 block max-w-3xl pt-2">
+
+    <h4 class="" v-if="this.block.fields.successMessage">
+      <rich-text :richtext="this.block.fields.successMessage"/>
+    </h4>
+    <h4 class="" v-else>
+      Thank you for your interest!<br>
+      For the latest news and updates, follow us on <a href="https://www.instagram.com/designdistrictlondon/" rel="nofollow noreferrer">Instagram</a>.
+    </h4>
+
+  </div>
+
+  <form
+    v-show="formState !== 'complete'"
+    ref="subscribeForm"
+    name="subscribeForm"
+    method="post"
+    :class="{disabled: formState === 'loading'}"
+    class="md:w-7/12 block max-w-3xl pt-2"
+    @submit.prevent="onFormSubmit"
+  >
+
+    <div class="">
+      <!-- <label class="-accessible-hide" for="email">Email address<sup>*</sup></label> -->
+
+        <h4 class="mb-16" v-if="this.block.fields.subheading">{{this.block.fields.subheading}}</h4>
+
+        <div class="mx-auto my-2">
+          <h5 class="font-bold text-sm">About yourself</h5>
         </div>
-      </div>
 
-      <div class="md:w-7/12 block max-w-3xl pt-2">
-        <!-- <label class="-accessible-hide" for="email">Email address<sup>*</sup></label> -->
+        <input
+          id="userFirstName"
+          v-model="form.userFirstName"
+          type="text"
+          name="userFirstName"
+          placeholder="First name"
+          value=""
+          class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black"
+          :class="{
+            'pointer-events-none': formState === 'loading',
+            'opacity-50': formState === 'loading'
+          }"
+          required
+        >
+        <input
+          id="userLastName"
+          v-model="form.userLastName"
+          type="text"
+          name="userLastName"
+          placeholder="Last name"
+          value=""
+          class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black"
+          :class="{
+            'pointer-events-none': formState === 'loading',
+            'opacity-50': formState === 'loading'
+          }"
+          required
+        >
 
-          <div class="mx-auto my-2">
-            <h5 class="font-bold text-sm">About yourself</h5>
-          </div>
-
-          <input
-            id="userFirstName"
-            v-model="form.userFirstName"
-            type="text"
-            name="userFirstName"
-            placeholder="First name"
-            value=""
-            class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black"
-            :class="{
-              'pointer-events-none': formState === 'loading',
-              'opacity-50': formState === 'loading'
-            }"
-            required
-          >
-          <input
-            id="userLastName"
-            v-model="form.userLastName"
-            type="text"
-            name="userLastName"
-            placeholder="Last name"
-            value=""
-            class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black"
-            :class="{
-              'pointer-events-none': formState === 'loading',
-              'opacity-50': formState === 'loading'
-            }"
-            required
-          >
-
-          <input
-            id="email"
-            v-model="form.email"
-            type="email"
-            name="email"
-            placeholder="Email address"
-            value=""
-            class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black"
-            :class="{
-              'pointer-events-none': formState === 'loading',
-              'opacity-50': formState === 'loading'
-            }"
-            required
-          >
+        <input
+          id="email"
+          v-model="form.email"
+          type="email"
+          name="email"
+          placeholder="Email address"
+          value=""
+          class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black"
+          :class="{
+            'pointer-events-none': formState === 'loading',
+            'opacity-50': formState === 'loading'
+          }"
+          required
+        >
 
 
-          <div class="mx-auto mt-12 mb-2">
-            <h5 class="font-bold text-sm">Your work</h5>
-          </div>
+        <div class="mx-auto mt-12 mb-2">
+          <h5 class="font-bold text-sm">Your work</h5>
+        </div>
 
-          <input
-            id="userBusinessName"
-            v-model="form.userBusinessName"
-            type="text"
-            name="userBusinessName"
-            placeholder="Business Name"
-            value=""
-            class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black"
-            :class="{
-              'pointer-events-none': formState === 'loading',
-              'opacity-50': formState === 'loading'
-            }"
-            required
-          >
+        <input
+          id="userBusinessName"
+          v-model="form.userBusinessName"
+          type="text"
+          name="userBusinessName"
+          placeholder="Business Name"
+          value=""
+          class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black"
+          :class="{
+            'pointer-events-none': formState === 'loading',
+            'opacity-50': formState === 'loading'
+          }"
+          required
+        >
 
-          <input
-            id="userWebHandle"
-            v-model="form.userWebHandle"
-            type="text"
-            name="userWebHandle"
-            placeholder="Website or social media handle"
-            value=""
-            class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black"
-            :class="{
-              'pointer-events-none': formState === 'loading',
-              'opacity-50': formState === 'loading'
-            }"
-            required
-          >
+        <input
+          id="userWebHandle"
+          v-model="form.userWebHandle"
+          type="text"
+          name="userWebHandle"
+          placeholder="Website or social media handle"
+          value=""
+          class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black"
+          :class="{
+            'pointer-events-none': formState === 'loading',
+            'opacity-50': formState === 'loading'
+          }"
+          required
+        >
 
+        <div class="">
+          <!-- <h5>What industry are you in?</h5> -->
           <div class="">
-            <!-- <h5>What industry are you in?</h5> -->
             <div class="">
-              <div class="">
-                <select
-                  id=""
-                  ref=""
-                  v-model="form.userIndustry"
-                  class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black custom-select -form-control form-field-reset"
-                  name=""
-                >
+              <select
+                id=""
+                ref=""
+                v-model="form.userIndustry"
+                class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black custom-select -form-control form-field-reset"
+                name=""
+              >
 
-                <option value="" disabled selected>
-                  What industry are you in?
+              <option value="" disabled selected>
+                What industry are you in?
+              </option>
+                <option value="Advertising and marketing">
+                  Advertising and marketing
                 </option>
-                  <option value="Advertising and marketing">
-                    Advertising and marketing
-                  </option>
-                  <option value="Architecture">
-                    Architecture
-                  </option>
-                  <option value="Animation and VFX (visual effects)">
-                    Animation and VFX (visual effects)
-                  </option>
-                  <option value="Crafts">
-                    Crafts
-                  </option>
-                  <option value="Fashion">
-                    Fashion
-                  </option>
-                  <option value="Film, TV, video, radio, podcasts">
-                    Film, TV, video, radio, podcasts
-                  </option>
-                  <option value="Graphic Design">
-                    Graphic Design
-                  </option>
-                  <option value="IT, software, computer services and UX Design(‘creative tech’)">
-                    IT, software, computer services and UX Design(‘creative tech’)
-                  </option>
-                  <option value="Museums, galleries, libraries, and heritage">
-                    Museums, galleries, libraries, and heritage
-                  </option>
-                  <option value="Music, performing and visual arts">
-                    Music, performing and visual arts
-                  </option>
-                  <option value="Photography">
-                    Photography
-                  </option>
-                  <option value="Product Design">
-                    Product Design
-                  </option>
-                  <option value="Publishing">
-                    Publishing
-                  </option>
-                  <option value="Video games">
-                    Video games
-                  </option>
-                  <option value="Other">
-                    Other
-                  </option>
-                </select>
-              </div>
-              <!-- <div v-show="arrayIncludesString(form.userIndustry,'Other')" class="col-12 col-md-6">
-                <input
-                  id="industryOther"
-                  ref="industryOther"
-                  class=" form-field-reset"
-                  type="text"
-                  name=""
-                  placeholder="Please specify"
-                  maxlength="254"
-                >
-              </div> -->
+                <option value="Architecture">
+                  Architecture
+                </option>
+                <option value="Animation and VFX (visual effects)">
+                  Animation and VFX (visual effects)
+                </option>
+                <option value="Crafts">
+                  Crafts
+                </option>
+                <option value="Fashion">
+                  Fashion
+                </option>
+                <option value="Film, TV, video, radio, podcasts">
+                  Film, TV, video, radio, podcasts
+                </option>
+                <option value="Graphic Design">
+                  Graphic Design
+                </option>
+                <option value="IT, software, computer services and UX Design(‘creative tech’)">
+                  IT, software, computer services and UX Design(‘creative tech’)
+                </option>
+                <option value="Museums, galleries, libraries, and heritage">
+                  Museums, galleries, libraries, and heritage
+                </option>
+                <option value="Music, performing and visual arts">
+                  Music, performing and visual arts
+                </option>
+                <option value="Photography">
+                  Photography
+                </option>
+                <option value="Product Design">
+                  Product Design
+                </option>
+                <option value="Publishing">
+                  Publishing
+                </option>
+                <option value="Video games">
+                  Video games
+                </option>
+                <option value="Other">
+                  Other
+                </option>
+              </select>
             </div>
-            <!-- <h5>What is your role?</h5> -->
-            <div class="">
-              <div class="">
-                <select
-                  id=""
-                  ref=""
-                  v-model="form.userRoleType"
-                  class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black custom-select -form-control form-field-reset"
-                  name=""
-                >
-                  <option value="" disabled selected>
-                    What is your role?
-                  </option>
-                  <option value="Freelancer">
-                    Freelancer
-                  </option>
-                  <option value="Digital nomad">
-                    Digital nomad
-                  </option>
-                  <option value="Entrepreneur">
-                    Entrepreneur
-                  </option>
-                  <option value="Business owner">
-                    Business owner
-                  </option>
-                  <option value="Employee">
-                    Employee
-                  </option>
-                  <option value="Other">
-                    Other
-                  </option>
-                </select>
-              </div>
-              <!-- <div v-show="arrayIncludesString(form.userRoleType,'Other')" class="col-12 col-md-6">
-                <input
-                  id="roleTypeOther"
-                  ref="roleTypeOther"
-                  class="input-text form-field-reset"
-                  type="text"
-                  name=""
-                  placeholder="Please specify"
-                  maxlength="254"
-                >
-              </div> -->
-            </div>
-            </div>
-
-            <div class="">
-              <textarea
-                id="userWhyApply"
-                ref="userWhyApply"
-                class="input-text form-field-reset p-4"
+            <!-- <div v-show="arrayIncludesString(form.userIndustry,'Other')" class="col-12 col-md-6">
+              <input
+                id="industryOther"
+                ref="industryOther"
+                class=" form-field-reset"
                 type="text"
                 name=""
-                rows="1"
-                placeholder="Describe why you are applying for mentorship in 150 words"
-                maxlength="1000"
+                placeholder="Please specify"
+                maxlength="254"
               >
-              </textarea>
+            </div> -->
+          </div>
+          <!-- <h5>What is your role?</h5> -->
+          <div class="">
+            <div class="">
+              <select
+                id=""
+                ref=""
+                v-model="form.userRoleType"
+                class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black custom-select -form-control form-field-reset"
+                name=""
+              >
+                <option value="" disabled selected>
+                  What is your role?
+                </option>
+                <option value="Freelancer">
+                  Freelancer
+                </option>
+                <option value="Digital nomad">
+                  Digital nomad
+                </option>
+                <option value="Entrepreneur">
+                  Entrepreneur
+                </option>
+                <option value="Business owner">
+                  Business owner
+                </option>
+                <option value="Employee">
+                  Employee
+                </option>
+                <option value="Other">
+                  Other
+                </option>
+              </select>
+            </div>
+            <!-- <div v-show="arrayIncludesString(form.userRoleType,'Other')" class="col-12 col-md-6">
+              <input
+                id="roleTypeOther"
+                ref="roleTypeOther"
+                class="input-text form-field-reset"
+                type="text"
+                name=""
+                placeholder="Please specify"
+                maxlength="254"
+              >
+            </div> -->
+          </div>
+          </div>
+
+          <div class="">
+            <textarea
+              id="userWhyApply"
+              ref="userWhyApply"
+              class="input-text form-field-reset p-4"
+              type="text"
+              name=""
+              rows="1"
+              placeholder="Describe why you are applying for mentorship in 150 words"
+              maxlength="1000"
+            >
+            </textarea>
+          </div>
+
+          <div class="py-4 mx-auto block">
+
+            <div class="mx-auto my-4">
+              <h5 class="font-bold text-sm">Keep in touch</h5>
             </div>
 
-            <div class="py-4 mx-auto block">
-
-              <div class="mx-auto my-4">
-                <h5 class="font-bold text-sm">Keep in touch</h5>
-              </div>
-
+            <div class="">
               <div class="">
-                <div class="">
-                  <div>
-                    <input
-                      id="designOptIn"
-                      ref="designOptIn"
-                      v-model="form.userDesignOptIn"
-                      class="form-field-reset checkbox"
-                      type="checkbox"
-                      name=""
-                      value="1"
-                      hidden
-                    >
-                    <label class="text-base" for="designOptIn" v-if="false">
-                      <span>
-                        I am happy to receive news from Design District
-                      </span>
-                    </label>
-                  </div>
+                <div>
+                  <input
+                    id="designOptIn"
+                    ref="designOptIn"
+                    v-model="form.userDesignOptIn"
+                    class="form-field-reset checkbox"
+                    type="checkbox"
+                    name=""
+                    value="1"
+                    hidden
+                  >
+                  <label class="text-base" for="designOptIn" v-if="false">
+                    <span>
+                      I am happy to receive news from Design District
+                    </span>
+                  </label>
+                </div>
 
-                  <div>
-                    <input
-                      id="marketingOptIn"
-                      ref="marketingOptIn"
-                      v-model="form.userMarketingOptIn"
-                      class="form-field-reset checkbox"
-                      type="checkbox"
-                      name=""
-                      value="1"
-                      hidden
-                    >
-                    <label class="text-base" for="marketingOptIn" v-if="false">
-                      <span>
-                        I am happy to receive news and events information from Greenwich Peninsula
-                      </span>
-                    </label>
-                  </div>
+                <div>
+                  <input
+                    id="marketingOptIn"
+                    ref="marketingOptIn"
+                    v-model="form.userMarketingOptIn"
+                    class="form-field-reset checkbox"
+                    type="checkbox"
+                    name=""
+                    value="1"
+                    hidden
+                  >
+                  <label class="text-base" for="marketingOptIn" v-if="false">
+                    <span>
+                      I am happy to receive news and events information from Greenwich Peninsula
+                    </span>
+                  </label>
+                </div>
 
-                  <div class="mx-auto text-sm mt-0 leading-2 md:text-base md:leading-6 md:mt-4">
-                    <input
-                      id="agreePolicy"
-                      ref="agreePolicy"
-                      v-model="form.userAgreePolicy"
-                      class="form-field-reset checkbox"
-                      type="checkbox"
-                      name=""
-                      value="1"
-                      required
-                    >
-                    <label class="opacity-50" for="agreePolicy">
-                      <span>By submitting your email address, you agree to our <a href="/privacy-notice" target="_blank">Privacy Notice</a> and <a href="/terms-and-conditions" target="_blank">Terms & Conditions</a> and agree to receive news and happenings from Design District into your inbox.</span>
-                    </label>
-                  </div>
+                <div class="mx-auto text-sm mt-0 leading-2 md:text-base md:leading-6 md:mt-4">
+                  <input
+                    id="agreePolicy"
+                    ref="agreePolicy"
+                    v-model="form.userAgreePolicy"
+                    class="form-field-reset checkbox"
+                    type="checkbox"
+                    name=""
+                    value="1"
+                    required
+                  >
+                  <label class="opacity-50" for="agreePolicy">
+                    <span>By submitting your email address, you agree to our <a href="/privacy-notice" target="_blank">Privacy Notice</a> and <a href="/terms-and-conditions" target="_blank">Terms & Conditions</a> and agree to receive news and happenings from Design District into your inbox.</span>
+                  </label>
                 </div>
               </div>
             </div>
+          </div>
 
-          <button
-            class="inline-block border py-3 px-6 rounded-sm text-base md:text-lg w-auto bg-black text-white font-medium"
-            type="submit"
-            :class="{
-              'pointer-events-none': formState === 'loading',
-              'border-white': theme === 'dark',
-              'border-black': theme === 'light'
-              }"
-          >
-            {{ formAction }}
-          </button>
-
-
-      </div>
-
-
-
-
-      <!-- <div>
-        <input
-          class="form-control input-text form-field-reset"
-          type="email"
-          name="email"
-          placeholder="Email Address"
-          value=""
-          required
+        <button
+          class="inline-block border py-3 px-6 rounded-sm text-base md:text-lg w-auto bg-black text-white font-medium"
+          type="submit"
+          :class="{
+            'pointer-events-none': formState === 'loading',
+            'border-white': theme === 'dark',
+            'border-black': theme === 'light'
+            }"
         >
+          {{ formAction }}
+        </button>
 
-        <input
-          v-show="true"
-          id="first_name"
-          ref="first_name"
-          class="form-control input-text form-field-reset"
-          type="text"
-          name="first_name"
-          placeholder="First Name"
-          value=""
-          required
-        >
-        <input
-          v-show="true"
-          id="last_name"
-          ref="last_name"
-          class="form-control input-text form-field-reset"
-          type="text"
-          name="last_name"
-          placeholder="Last Name"
-          value=""
-          required
-        >
-      </div> -->
 
-      <!-- <div class="py-12">
+        <div class="pr-8 my-16" v-if="this.block.fields.terms">
+          <rich-text :richtext="this.block.fields.terms"/>
+        </div>
 
-      </div> -->
 
-      <div class="g-recaptcha" data-sitekey="6LdPFNEUAAAAAKdvqOAD4Dq1MeL0WoGWzxZFj92t" />
+    </div>
 
-      <div v-show="true" class="form-group form-submit my-4">
-        <!-- <button onclick="submitDEManagerForm(); return false;" class="btn btn-primary btn-lg">
-          Signup
-        </button> -->
-        <!-- <button class="btn btn-primary btn-lg mt-0" type="submit">
-          Signup
-        </button> -->
-        <!-- <input id="submit" type="submit" value="Signup" style="display: none;"> -->
-        <input id="submit" type="submit" value="Signup" style="display: none;">
-        <vue-recaptcha
-          ref="invisibleRecaptcha"
-          :sitekey="recaptchaKey"
-          :load-recaptcha-script="true"
-          size="invisible"
-          @verify="onVerify"
-          @expired="onExpired"
-        />
-      </div>
 
-      <input id="recordType" type="hidden" name="recordType" value="0123Y0000007v91">
-      <input id="designOptInDate" ref="designOptInDate" type="hidden" name="" value="">
-      <input id="marketingOptInDate" ref="marketingOptInDate" type="hidden" name="" value="">
-      <input id="privacyOptInDate" ref="privacyOptInDate" type="hidden" name="" value="">
-    </form>
+
+
+    <!-- <div>
+      <input
+        class="form-control input-text form-field-reset"
+        type="email"
+        name="email"
+        placeholder="Email Address"
+        value=""
+        required
+      >
+
+      <input
+        v-show="true"
+        id="first_name"
+        ref="first_name"
+        class="form-control input-text form-field-reset"
+        type="text"
+        name="first_name"
+        placeholder="First Name"
+        value=""
+        required
+      >
+      <input
+        v-show="true"
+        id="last_name"
+        ref="last_name"
+        class="form-control input-text form-field-reset"
+        type="text"
+        name="last_name"
+        placeholder="Last Name"
+        value=""
+        required
+      >
+    </div> -->
+
+    <!-- <div class="py-12">
+
+    </div> -->
+
+    <div class="g-recaptcha" data-sitekey="6LdPFNEUAAAAAKdvqOAD4Dq1MeL0WoGWzxZFj92t" />
+
+    <div v-show="true" class="form-group form-submit my-4">
+      <!-- <button onclick="submitDEManagerForm(); return false;" class="btn btn-primary btn-lg">
+        Signup
+      </button> -->
+      <!-- <button class="btn btn-primary btn-lg mt-0" type="submit">
+        Signup
+      </button> -->
+      <!-- <input id="submit" type="submit" value="Signup" style="display: none;"> -->
+      <input id="submit" type="submit" value="Signup" style="display: none;">
+      <vue-recaptcha
+        ref="invisibleRecaptcha"
+        :sitekey="recaptchaKey"
+        :load-recaptcha-script="true"
+        size="invisible"
+        @verify="onVerify"
+        @expired="onExpired"
+      />
+    </div>
+
+    <input id="recordType" type="hidden" name="recordType" value="0123Y0000007v91">
+    <input id="designOptInDate" ref="designOptInDate" type="hidden" name="" value="">
+    <input id="marketingOptInDate" ref="marketingOptInDate" type="hidden" name="" value="">
+    <input id="privacyOptInDate" ref="privacyOptInDate" type="hidden" name="" value="">
+  </form>
+</div>
+
   </div>
 </template>
 
@@ -412,12 +418,7 @@ export default {
   name: 'WaitlistForm',
   components: { VueRecaptcha },
 
-  props: {
-    theme: {
-      type: String,
-      default: 'light'
-    }
-  },
+  props: ['block'],
 
   data () {
     return {
@@ -458,6 +459,9 @@ export default {
     }
   },
   computed: {
+    theme () {
+      return this.block && this.block.theme || 'default'
+    },
     formDD () {
       return _.range(1, 32)
     },
