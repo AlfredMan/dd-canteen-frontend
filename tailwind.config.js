@@ -15,6 +15,12 @@ module.exports = {
           base: 'hsl(11,100%,61%)',
           darker: 'hsl(11,100%,58%)',
           lighter: 'hsl(11,100%,64%)'
+        },
+        yellow: {
+          default: 'hsl(54, 100%, 50%)',
+          base: 'hsl(54, 100%, 50%)',
+          darker: 'hsl(54, 71%, 50%)',
+          lighter: 'hsl(54, 100%, 61%)'
         }
       }
     },

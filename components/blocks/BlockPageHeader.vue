@@ -87,7 +87,7 @@ export default {
       return this.block && _.lowerCase(this.block.fields.theme) || 'default'
     },
     blockThemeClass () {
-      return `theme-${this.blockTheme}`
+      return `theme-${this.blockTheme} bg-${this.blockTheme}`
     },
     ctaTheme () {
       if (this.block) {
@@ -130,6 +130,10 @@ section {
 .block-page-header {
   &.theme-orange {
     @apply bg-orange;
+  }
+  &.theme-yellow {
+    background: hsl(54, 100%, 50%);
+    @apply bg-yellow;
   }
   .block-page-header-content {
     @apply px-4 pt-24 pb-12;

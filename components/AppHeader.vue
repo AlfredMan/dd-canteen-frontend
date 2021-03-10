@@ -125,7 +125,7 @@ export default {
       return this.$store.state.navigation.theme == 'dark'
     },
     isOrange () {
-      return this.$store.state.navigation.theme == 'orange'
+      return this.$store.state.navigation.theme == 'orange' || this.$store.state.navigation.theme == 'yellow'
     }
   },
   watch: {

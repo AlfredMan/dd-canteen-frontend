@@ -38,3 +38,46 @@
 		}
 	}
 }
+
+
+
+.theme-yellow {
+	width: 100%;
+}
+
+.theme-yellow *::-moz-selection { /* Code for Firefox */
+  color: black;
+  background: lighten($yellow, 20%);
+}
+
+.theme-yellow *::selection {
+  color: black;
+  background: lighten($yellow, 20%);
+}
+
+.theme-yellow section {
+	&.block-list {
+		&.theme-dark {
+			.format-button.theme-default.cta {
+				color: black;
+				background: $yellow;
+			}
+		}
+	}
+
+	&.app-newsletter {
+		color: black;
+		background: $yellow;
+	}
+}
+
+
+.block-banner {
+	&.theme-yellow {
+		background: $yellow;
+		.format-button.theme-default.cta {
+			color: white;
+			background: black;
+		}
+	}
+}

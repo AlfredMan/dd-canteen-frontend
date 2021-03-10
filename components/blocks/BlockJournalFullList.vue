@@ -1,10 +1,39 @@
 <template>
-  <section class="BlockJournalFullList">
+  <section
+  v-if="block"
+  class="BlockJournalFullList"
+  :class="[blockThemeClass]"
+  :id="blockId"
+  >
+    <div
+    v-if="block.fields.heading || block.fields.subheading"
+    class="block-list-header"
+    :class="{
+      'headingDisplay--Right': headingDisplay=='Right',
+      'flex flex-wrap items-baseline':headingDisplay=='Right'
+      }"
+    >
+      <div v-if="block.fields.heading" :class="{'w-full lg:w-5/12':headingDisplay=='Right'}">
+        <h2>
+          {{block.fields.heading}}
+        </h2>
+      </div>
+      <div v-if="block.fields.subheading" :class="{'w-full lg:w-7/12':headingDisplay=='Right'}">
+        <h4 class="font-medium max-w-3xl">
+          {{block.fields.subheading}}
+        </h4>
+        <callToAction v-if="block.fields.callToAction" :callToAction="block.fields.callToAction"/>
+      </div>
+    </div>
     <div class="block-journal--entries">
       <div
-       class="block-journal--entries--entry"
-      :class="{'w-full lg:w-full xl:w-6/12': index==0, 'w-full xl:w-3/12': index>0}" v-for="(entry, index) in entries" :key="entry.sys.id">
-        <events-card v-if="type=='event'" class="news-card" :entry="entry"></events-card>
+      v-for="(entry, index) in filteredEntries" :key="entry.sys.id"
+      class="block-journal--entries--entry"
+      :class="{
+        'w-full lg:w-full xl:w-6/12': formatEnlargeFirstEntry ? index==0 : false,
+        'w-full xl:w-3/12': formatEnlargeFirstEntry ? index>0 : true
+        }">
+        <events-card v-if="entry.sys.contentType.sys.id=='event'" class="news-card" :entry="entry"></events-card>
         <news-card v-else class="news-card" :entry="entry"></news-card>
       </div>
     </div>
@@ -38,12 +67,40 @@ export default {
     type () {
       return this.block && this.block.fields.contentType
     },
+    formatManualSelection () {
+      return this.block && this.block.fields.format && _.kebabCase(this.block.fields.format) == 'manual-selection'
+    },
+    formatShowAll () {
+      return !this.formatManualSelection
+    },
+    formatEnlargeFirstEntry () {
+      return this.block.fields.formatEnlargeFirstEntry && this.block.fields.formatEnlargeFirstEntry != false
+    },
     entries () {
       if (this.type && this.type == 'event') {
         return this.$store.state.events
       } else {
         return this.$store.state.journals
       }
+    },
+    filteredEntries () {
+      if (this.formatShowAll) {
+        return this.entries
+      } else {
+        return this.block.fields.manualSelection
+      }
+    },
+    headingDisplay () {
+      return this.block && this.block.fields.headingDisplay || 'Default'
+    },
+    blockTheme () {
+      return this.block && _.lowerCase(this.block.fields.theme) || 'default'
+    },
+    blockThemeClass () {
+      return `theme-${this.blockTheme}`
+    },
+    blockId() {
+      return this.block.fields.heading ? _.kebabCase(this.block.fields.heading) : ''
     }
   },
 

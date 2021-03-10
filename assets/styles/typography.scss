@@ -18,7 +18,7 @@ $h5_size:               $base_size * 1.333;
 $h6_size:               $base_size * 1.166;
 $p_size:                $base_size * 1;
 
-$h1_size_responsive:    15vw;
+$h1_size_responsive:    13vw;
 $h2_size_responsive:    10.5vw;
 $h3_size_responsive:    4.5vw;
 $h4_size_responsive:    4.5vw;
@@ -573,6 +573,16 @@ p,
 	&:last-child {
     margin-bottom: 0
   }
+}
+
+h2,
+h3,
+h4,
+h5 {
+	.rich-text p {
+		font-size: inherit;
+		line-height: inherit;
+	}
 }
 
 footer {

@@ -1,8 +1,10 @@
 <template>
   <div id="app" :class="{
-   'theme-orange': appTheme=='orange',
-   'theme-light': appTheme=='light',
-   'theme-dark': appTheme=='dark'
+    'theme-yellow': appTheme=='yellow',
+    'theme-green': appTheme=='green',
+    'theme-orange': appTheme=='orange',
+    'theme-light': appTheme=='light',
+    'theme-dark': appTheme=='dark'
   }">
 
     <!-- <test-cookies /> -->

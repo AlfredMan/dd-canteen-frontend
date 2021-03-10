@@ -90,10 +90,22 @@ export default {
         return `${moment.parseZone(endDate).format(format)}`
       } else
       if (date && endDate) {
-        if (moment.parseZone(date).hours()>0 || moment.parseZone(endDate).hours()>0) {
+
+        let hasHour = moment.parseZone(date).hours()>0 || moment.parseZone(endDate).hours()>0
+        let isSameDay = moment.parseZone(date).isSame(moment.parseZone(endDate), 'day')
+        let isSameHour = moment.parseZone(date).isSame(moment.parseZone(endDate), 'hour')
+
+        if (isSameDay && isSameHour) {
           format = 'dddd D MMM'
+          return `${moment.parseZone(date).format(format)}`
+        } else if (isSameDay) {
+          format = 'dddd D MMM h:mma'
+          return `${moment.parseZone(date).format(format)}—${moment.parseZone(endDate).format('h:mma')}`
+        } else {
+          format = 'dddd D MMM'
+          return `${moment.parseZone(date).format(format)}—${moment.parseZone(endDate).format(format)}`
         }
-        return `${moment.parseZone(date).format(format)}—${moment.parseZone(endDate).format(format)}`
+
       } else {
         return ``
       }

@@ -3,7 +3,7 @@
     <!-- <pre>{{entry}}</pre> -->
     <div class="-overflow-x-hidden" v-if="entry" :key="entry.sys.id">
 
-      <header class="event-header mb-5 py-8 pt-16 lg:pt-24"
+      <header class="event-header py-8 pt-16 lg:pt-24"
       :style="{
         backgroundColor: entry.fields.colour ? entry.fields.colour : 'none'
         }"
@@ -16,7 +16,9 @@
                 <h1 class="mt-2 mb-3 pl-0 h2" v-if="entry.fields.title">
                   {{entry.fields.title}}
                 </h1>
-
+                <h5 class="text-orange mb-1 mt-1" v-if="entry.fields.creditText">
+                  {{entry.fields.creditText}}
+                </h5>
                 <h5 class="--event-secondary-info mb-1 mt-1" v-if="entry.fields.date">{{getDataTime(entry.fields.date, entry.fields.endDate)}}<br></h5>
                 <h5 class="--event-secondary-info mb-1 mt-1" v-if="entry.fields.locationTitle">
                   {{entry.fields.locationTitle}}
@@ -81,7 +83,7 @@
 
       <article class="content container mt-0" v-if="entry.fields.contentReferences">
 
-        <aside class="order-1 order-md-2 lg:sticky top-0 lg:pt-4">
+        <aside class="order-1 order-md-2 lg:sticky top-0 lg:pt-0">
           <div id="sidebar" class="">
             <div class="">
               <div class="" v-if="entry.fields.actionLabel && entry.fields.actionUrl">
@@ -96,82 +98,91 @@
                 </div>
               </div>
 
-              <div class="my-4">
-                <h3>{{entry.fields.title}}</h3>
-              </div>
+              <!-- <div class="my-4">
+                <h4>{{entry.fields.title}}</h4>
+                <h6 class="organiser" v-if="entry.fields.creditText">
+                  {{entry.fields.creditText}}
+                </h6>
+              </div> -->
 
               <div class="my-4">
                 <h6 class="text-sm mb-0">Date and time</h6>
-                <h5 class="mt-0" v-if="entry.fields.date">{{getDataTime(entry.fields.date, entry.fields.endDate)}}<br></h5>
+                <h5 class="mt-0 font-500" v-if="entry.fields.date">{{getDataTime(entry.fields.date, entry.fields.endDate)}}<br></h5>
               </div>
 
               <div class="my-4">
                 <h6 class="text-sm mb-0">Location</h6>
-                <h5 class="mt-0" v-if="entry.fields.locationTitle">
-                  <a v-if="entry.fields.locationUrl" Lhref="entry.fields.locationUrl">{{entry.fields.locationTitle}}</a>
+                <h5 class="mt-0 font-500" v-if="entry.fields.locationTitle">
+                  <a v-if="entry.fields.locationUrl" :href="entry.fields.locationUrl">{{entry.fields.locationTitle}}</a>
                   <span v-else>{{entry.fields.locationTitle}}</span>
                 </h5>
               </div>
 
             </div>
           </div>
+
+          <!-- <EventsAddToCalendar/> -->
         </aside>
 
         <!-- <RichTextRenderer :document="entry.fields.richText" /> -->
-        <div class="blocks-container order-2 order-md-1 row row-flex justify-content-center" v-for="content in entry.fields.contentReferences">
+        <div class="blocks-container order-2 order-md-1 px-3 lg:px-0 pt-8">
+          <div class="row row-flex justify-content-center" v-for="content in entry.fields.contentReferences">
 
-          <!-- text -->
-          <div class="col-12  type-text">
-            <div class="container ">
-              <div class="row justify-content-start">
-                <div class="col-12---col-md-10 mb-4 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- embed -->
-          <div class="col-12 type-embed">
-            <div class="container ">
-              <div class="row justify-content-start">
-                <div class="col-12---col-md-10 my-5 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'embed'">
-                  <div class=""  v-html="content.fields.embedCode.content[0].content[0].value">
-
-                  </div>
-                  <div class="">
-                    {{ content.fields.description}}
+            <!-- text -->
+            <!-- <div class="col-12 type-text">
+              <div class="container ">
+                <div class="row justify-content-start">
+                  <div class="mb-4" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
                   </div>
                 </div>
               </div>
+            </div> -->
+            <div class="mb-4" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
             </div>
-          </div>
 
-          <!-- gallery -->
-          <div
-          class="col-12---col-md-10 my-5 px-5 px-lg-0 type-gallery"
-          v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'gallery'"
-          >
-            <div class="row row-flex flex-wrap justify-content-start align-items-center gallery">
-              <div
-              class="gallery-item mb-4"
-              v-for="image in content.fields.image"
-              :class="getGalleryImageClass(content.fields.image)"
-              :style="getGalleryImageStyle(content.fields.image)"
-              >
-                <!-- <img :src="image.fields.file.url" alt="" class="image"> -->
-                <lazy-image
-                v-if="image.fields && image.fields.file"
-                :src="image.fields.file.url"
-                :w="2000"
-                :h="3000"
-                />
-                <div class="caption" v-if="image.fields.description">
-                  {{image.fields.description}}
+            <!-- embed -->
+            <div class="col-12 type-embed">
+              <div class="container ">
+                <div class="row justify-content-start">
+                  <div class="my-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'embed'">
+                    <div class=""  v-html="content.fields.embedCode.content[0].content[0].value">
+
+                    </div>
+                    <div class="">
+                      {{ content.fields.description}}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
+            <!-- gallery -->
+            <div
+            class="my-5 px-5 px-lg-0 type-gallery"
+            v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'gallery'"
+            >
+              <div class="row row-flex flex-wrap justify-content-start align-items-center gallery">
+                <div
+                class="gallery-item mb-4"
+                v-for="image in content.fields.image"
+                :class="getGalleryImageClass(content.fields.image)"
+                :style="getGalleryImageStyle(content.fields.image)"
+                >
+                  <!-- <img :src="image.fields.file.url" alt="" class="image"> -->
+                  <lazy-image
+                  v-if="image.fields && image.fields.file"
+                  :src="image.fields.file.url"
+                  :w="2000"
+                  :h="3000"
+                  />
+                  <div class="caption" v-if="image.fields.description">
+                    {{image.fields.description}}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
 
       </article>
@@ -310,6 +321,7 @@ if (process.client) {
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import EventsCard from '~/components/EventsCard'
+import EventsAddToCalendar from '~/components/EventsAddToCalendar'
 
 const client = createClient()
 
@@ -375,6 +387,18 @@ export default {
     this.handleResize ()
   },
 
+  updated () {
+    if (process.client) {
+      console.log('updated')
+      // if (this.st) {
+      //   this.st.kill()
+      //   this.st=null
+      //   this.initScrollTrigger()
+      // }
+      this.refreshTrigger()
+    }
+  },
+
   created () {
     if (process.client) {
       console.log('created')
@@ -387,6 +411,9 @@ export default {
     if (process.client) {
       window.removeEventListener('scroll', this.handleScroll);
       window.removeEventListener('resize', this.handleResize);
+      if (this.st) {
+        this.st.kill()
+      }
     }
   },
 
@@ -403,7 +430,8 @@ export default {
 
   components: {
     EventsCard,
-    BlockEvents
+    BlockEvents,
+    EventsAddToCalendar
     // RichTextRenderer
   },
 
@@ -537,16 +565,16 @@ export default {
     }
   },
 
-  beforeUpdate () {
-    console.log('beforeUpdate')
-    this.refreshTrigger()
-    this.handleResize ()
-  },
+  // beforeUpdate () {
+  //   console.log('beforeUpdate')
+  //   this.refreshTrigger()
+  //   this.handleResize ()
+  // },
 
   methods: {
 
     showCalendarOptions () {
-      
+
     },
 
     showShareOptions () {
@@ -570,6 +598,7 @@ export default {
           if (this.st) {
             this.st.disable()
           }
+          gsap.set("#sidebar",{autoAlpha:1})
         }
       }
     },
@@ -582,6 +611,14 @@ export default {
           pin: true,
           endTrigger: ".block-journal",
           end: "top 50%+=100px",
+          animation: gsap.timeline()
+            .fromTo("#sidebar", {
+              autoAlpha: 0
+            },{
+              autoAlpha: 1,
+              duration: 0.5
+            }),
+          toggleActions: "play pause resume reverse",
           onToggle: self => {
             // console.log("toggled, isActive:", self.isActive)
           },
@@ -595,10 +632,14 @@ export default {
     refreshTrigger: _.throttle(function () {
       console.log('refreshTrigger')
       if (process.client) {
-        if (ScrollTrigger) {
-          if (this.st) {
-            this.st.refresh()
-          }
+        window.dispatchEvent(new Event('resize'));
+        // if (ScrollTrigger) {
+        //   if (this.st) {
+        //     this.st.refresh()
+        //   }
+        // }
+        if (this.st) {
+          this.st.refresh()
         }
       }
     }, 200),
@@ -641,13 +682,22 @@ export default {
         return `${moment.parseZone(endDate).format(format)}`
       } else
       if (date && endDate) {
-        if (moment.parseZone(date).hours()>0 || moment.parseZone(endDate).hours()>0) {
+
+        let hasHour = moment.parseZone(date).hours()>0 || moment.parseZone(endDate).hours()>0
+        let isSameDay = moment.parseZone(date).isSame(moment.parseZone(endDate), 'day')
+        let isSameHour = moment.parseZone(date).isSame(moment.parseZone(endDate), 'hour')
+
+        if (isSameDay && isSameHour) {
+          format = 'dddd D MMM'
+          return `${moment.parseZone(date).format(format)}`
+        } else if (isSameDay) {
           format = 'dddd D MMM h:mma'
-        }
-        if (moment.parseZone(endDate).isSame(moment.parseZone(endDate), 'day')) {
           return `${moment.parseZone(date).format(format)}—${moment.parseZone(endDate).format('h:mma')}`
+        } else {
+          format = 'dddd D MMM'
+          return `${moment.parseZone(date).format(format)}—${moment.parseZone(endDate).format(format)}`
         }
-        return `${moment.parseZone(date).format(format)}—${moment.parseZone(endDate).format(format)}`
+
       } else {
         return ``
       }
@@ -832,11 +882,23 @@ export default {
             margin-bottom: .5rem
             min-width: 100%
 
+      h4
+        font-weight: 400
+        font-size: 1.75rem
+        line-height: 1.2
+        margin: 0 0 .2rem
+
+      h5
+        font-weight: 400
+
       .btn-share
         background-color: rgba(255, 93, 56, 0.05)
         color: black
         &:hover
           background-color: rgba(255, 93, 56, 0.4)
+
+      a
+        text-decoration: none
 
     .blocks-container
       width: 66%
@@ -847,5 +909,10 @@ export default {
         .col-12, .container
           padding-left: 0
           padding-right: 0
+
+  .organiser
+    @apply text-orange text-lg font-medium
+    font-weight: 400
+    margin: .2rem 0 .2rem
 
 </style>

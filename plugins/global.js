@@ -11,6 +11,7 @@ import IconPerson from '~/components/icons/IconPerson.vue'
 import IconBox from '~/components/icons/IconBox.vue'
 import IconX from '~/components/icons/IconX.vue'
 
+import RichText from '~/components/text/RichText.vue'
 // import ResponsiveLine from '~/components/visual/ResponsiveLine.vue'
 // import BlockPageBanner from '~/components/blocks/BlockPageBanner.vue'
 
@@ -25,5 +26,6 @@ Vue.component('IconFloorplan', IconFloorplan)
 Vue.component('IconBox', IconBox)
 Vue.component('IconX', IconX)
 
+Vue.component('richText', RichText)
 // Vue.component('responsiveLine', ResponsiveLine)
 // Vue.component('blockPageBanner', BlockPageBanner)
