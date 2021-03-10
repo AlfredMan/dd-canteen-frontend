@@ -54,6 +54,18 @@ export default {
     end: {
       type: String,
       default: '' //20291231T210000Z
+    },
+    summary: {
+      type: String,
+      default: '' //summary
+    },
+    description: {
+      type: String,
+      default: '' //description
+    },
+    location: {
+      type: String,
+      default: '' //location
     }
   }
 }

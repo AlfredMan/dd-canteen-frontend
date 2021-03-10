@@ -3,7 +3,7 @@
     <!-- <pre>{{entry}}</pre> -->
     <div class="-overflow-x-hidden" v-if="entry" :key="entry.sys.id">
 
-      <header class="event-header mb-5 py-8 pt-16 lg:pt-24"
+      <header class="event-header py-8 pt-16 lg:pt-24"
       :style="{
         backgroundColor: entry.fields.colour ? entry.fields.colour : 'none'
         }"
@@ -120,27 +120,31 @@
 
             </div>
           </div>
+
+          <!-- <EventsAddToCalendar/> -->
         </aside>
 
         <!-- <RichTextRenderer :document="entry.fields.richText" /> -->
-        <div class="blocks-container order-2 order-md-1 px-3 pt-12">
+        <div class="blocks-container order-2 order-md-1 px-3 lg:px-0 pt-8">
           <div class="row row-flex justify-content-center" v-for="content in entry.fields.contentReferences">
 
             <!-- text -->
-            <div class="col-12  type-text">
+            <!-- <div class="col-12 type-text">
               <div class="container ">
                 <div class="row justify-content-start">
-                  <div class="col-12---col-md-10 mb-4 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
+                  <div class="mb-4" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
                   </div>
                 </div>
               </div>
+            </div> -->
+            <div class="mb-4" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
             </div>
 
             <!-- embed -->
             <div class="col-12 type-embed">
               <div class="container ">
                 <div class="row justify-content-start">
-                  <div class="col-12---col-md-10 my-5 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'embed'">
+                  <div class="my-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'embed'">
                     <div class=""  v-html="content.fields.embedCode.content[0].content[0].value">
 
                     </div>
@@ -154,7 +158,7 @@
 
             <!-- gallery -->
             <div
-            class="col-12---col-md-10 my-5 px-5 px-lg-0 type-gallery"
+            class="my-5 px-5 px-lg-0 type-gallery"
             v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'gallery'"
             >
               <div class="row row-flex flex-wrap justify-content-start align-items-center gallery">
@@ -317,6 +321,7 @@ if (process.client) {
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import EventsCard from '~/components/EventsCard'
+import EventsAddToCalendar from '~/components/EventsAddToCalendar'
 
 const client = createClient()
 
@@ -425,7 +430,8 @@ export default {
 
   components: {
     EventsCard,
-    BlockEvents
+    BlockEvents,
+    EventsAddToCalendar
     // RichTextRenderer
   },
 
@@ -592,6 +598,7 @@ export default {
           if (this.st) {
             this.st.disable()
           }
+          gsap.set("#sidebar",{autoAlpha:1})
         }
       }
     },
@@ -604,6 +611,14 @@ export default {
           pin: true,
           endTrigger: ".block-journal",
           end: "top 50%+=100px",
+          animation: gsap.timeline()
+            .fromTo("#sidebar", {
+              autoAlpha: 0
+            },{
+              autoAlpha: 1,
+              duration: 0.5
+            }),
+          toggleActions: "play pause resume reverse",
           onToggle: self => {
             // console.log("toggled, isActive:", self.isActive)
           },
