@@ -133,6 +133,8 @@ export default {
         this.$store.dispatch('updateNavigationTheme', { theme: 'dark' })
       } else if (theme == 'orange') {
         this.$store.dispatch('updateNavigationTheme', { theme: 'orange' })
+      } else if (theme == 'yellow') {
+        this.$store.dispatch('updateNavigationTheme', { theme: 'yellow' })
       } else {
         this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
       }
