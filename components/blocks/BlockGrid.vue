@@ -23,7 +23,7 @@
 
           <div
           v-if="grid.fields.heading || grid.fields.subheading"
-          class="lg:w-1/2 grid-header px-3"
+          class="lg:w-1/2 grid-header"
           >
 
             <div v-if="grid.fields.heading">
@@ -40,7 +40,7 @@
 
           </div>
 
-          <div class="lg:w-1/2 grid-image px-3" v-if="grid.fields.image && grid.fields.image[0]">
+          <div class="lg:w-1/2 grid-image" v-if="grid.fields.image && grid.fields.image[0]">
             <lazy-image
             :src="grid.fields.image[0].fields.file.url"
             :w="1000"
@@ -126,20 +126,38 @@ section {
 .grid-unit {
   @apply py-2 mt-4 mb-8;
 
+  .grid-header {
+    @apply px-3 mb-6;
+  }
+  .grid-image {
+    @apply px-3;
+  }
+
   &.grid-order-odd {
     .grid-header {
       @screen lg {
-        @apply order-2
+        @apply order-2;
+        @apply pl-8
       }
     }
     .grid-image {
       @screen lg {
-        @apply order-1
+        @apply order-1;
+        @apply pr-8
       }
     }
   }
   &.grid-order-even {
-
+    .grid-header {
+      @screen lg {
+        @apply pr-8
+      }
+    }
+    .grid-image {
+      @screen lg {
+        @apply pl-8
+      }
+    }
   }
 }
 

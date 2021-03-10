@@ -1,143 +1,89 @@
 <template>
-  <div class="py-16 pb-16"
+<div
+  :id="id"
+  class="py-16 pb-16"
   :class="{
-    'bg-yellow': block.fields.theme && block.fields.theme=='Yellow',
-    'bg-light': block.fields.theme && block.fields.theme=='Light'
-    }"
-  >
+  'bg-yellow': block.fields.theme && block.fields.theme=='Yellow',
+  'bg-light': block.fields.theme && block.fields.theme=='Light'
+  }">
 
 
-<div class="flex flex-wrap cap-max-w px-3 justify-content-start">
+  <div class="flex flex-wrap cap-max-w px-3 justify-content-start">
 
-  <div class="md:w-5/12">
-    <h2 v-if="block.fields.heading">{{block.fields.heading}}</h2>
-  </div>
+    <div class="md:w-5/12">
+      <h2 v-if="block.fields.heading">{{block.fields.heading}}</h2>
+    </div>
 
-  <div v-show="formState === 'complete'" class="md:w-7/12 block max-w-3xl pt-2">
+    <div v-show="formState === 'complete'" class="md:w-7/12 block max-w-3xl pt-2">
 
-    <h4 class="" v-if="block.fields.successMessage">
-      <rich-text :richtext="block.fields.successMessage"/>
-    </h4>
-    <h4 class="" v-else>
-      Thank you for your interest!<br>
-      For the latest news and updates, follow us on <a href="https://www.instagram.com/designdistrictlondon/" rel="nofollow noreferrer">Instagram</a>.
-    </h4>
+      <h4 class="" v-if="block.fields.successMessage">
+        <rich-text :richtext="block.fields.successMessage" />
+      </h4>
+      <h4 class="" v-else>
+        Thank you for your interest!<br>
+        For the latest news and updates, follow us on <a href="https://www.instagram.com/designdistrictlondon/" target="_blank" rel="nofollow noreferrer">Instagram</a>.
+      </h4>
 
-  </div>
+    </div>
 
-  <form
+    <form
     v-show="formState !== 'complete'"
-    ref="subscribeForm"
-    name="subscribeForm"
-    method="post"
+    ref="subscribeForm" name="subscribeForm" method="post"
     :class="{disabled: formState === 'loading'}"
     class="md:w-7/12 block max-w-3xl pt-2"
-    @submit.prevent="onFormSubmit"
-  >
+    @submit.prevent="onFormSubmit">
 
-    <div class="">
-      <!-- <label class="-accessible-hide" for="email">Email address<sup>*</sup></label> -->
+      <div class="">
+        <!-- <label class="-accessible-hide" for="email">Email address<sup>*</sup></label> -->
 
         <h4 class="mb-16" v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
+
+        <div class="mx-auto my-4">
+          <h5 class="text-sm">* Required fields</h5>
+        </div>
 
         <div class="mx-auto my-2">
           <h5 class="font-bold text-sm">About yourself</h5>
         </div>
 
-        <input
-          id="userFirstName"
-          v-model="form.userFirstName"
-          type="text"
-          name="userFirstName"
-          placeholder="First name"
-          value=""
-          class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black"
-          :class="{
+        <input :id="`${id}-userFirstName`" v-model="form.userFirstName" type="text" name="userFirstName" placeholder="First name*" value="" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black" :class="{
             'pointer-events-none': formState === 'loading',
             'opacity-50': formState === 'loading'
-          }"
-          required
-        >
-        <input
-          id="userLastName"
-          v-model="form.userLastName"
-          type="text"
-          name="userLastName"
-          placeholder="Last name"
-          value=""
-          class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black"
-          :class="{
+          }" required>
+        <input :id="`${id}-userLastName`" v-model="form.userLastName" type="text" name="userLastName" placeholder="Last name*" value="" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black" :class="{
             'pointer-events-none': formState === 'loading',
             'opacity-50': formState === 'loading'
-          }"
-          required
-        >
+          }" required>
 
-        <input
-          id="email"
-          v-model="form.email"
-          type="email"
-          name="email"
-          placeholder="Email address"
-          value=""
-          class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black"
-          :class="{
+        <input :id="`${id}-email`" v-model="form.email" type="email" name="email" placeholder="Email address*" value="" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black" :class="{
             'pointer-events-none': formState === 'loading',
             'opacity-50': formState === 'loading'
-          }"
-          required
-        >
+          }" required>
 
 
         <div class="mx-auto mt-12 mb-2">
           <h5 class="font-bold text-sm">Your work</h5>
         </div>
 
-        <input
-          id="userBusinessName"
-          v-model="form.userBusinessName"
-          type="text"
-          name="userBusinessName"
-          placeholder="Business Name"
-          value=""
-          class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black"
-          :class="{
+        <input :id="`${id}-userBusinessName`" v-model="form.userBusinessName" type="text" name="userBusinessName" placeholder="Business Name*" value="" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black" :class="{
             'pointer-events-none': formState === 'loading',
             'opacity-50': formState === 'loading'
-          }"
-          required
-        >
+          }" required>
 
-        <input
-          id="userWebHandle"
-          v-model="form.userWebHandle"
-          type="text"
-          name="userWebHandle"
-          placeholder="Website or social media handle"
-          value=""
-          class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black"
-          :class="{
+        <input :id="`${id}-userWebHandle`" v-model="form.userWebHandle" type="text" name="userWebHandle" placeholder="Website or social media handle*" value="" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black" :class="{
             'pointer-events-none': formState === 'loading',
             'opacity-50': formState === 'loading'
-          }"
-          required
-        >
+          }" required>
 
         <div class="">
           <!-- <h5>What industry are you in?</h5> -->
           <div class="">
             <div class="">
-              <select
-                id=""
-                ref=""
-                v-model="form.userIndustry"
-                class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black custom-select -form-control form-field-reset"
-                name=""
-              >
+              <select required :id="`${id}-userIndustry`" ref="" v-model="form.userIndustry" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black custom-select -form-control form-field-reset" name="">
 
-              <option value="" disabled selected>
-                What industry are you in?
-              </option>
+                <option value="" disabled selected>
+                  What industry are you in?*
+                </option>
                 <option value="Advertising and marketing">
                   Advertising and marketing
                 </option>
@@ -187,7 +133,7 @@
             </div>
             <!-- <div v-show="arrayIncludesString(form.userIndustry,'Other')" class="col-12 col-md-6">
               <input
-                id="industryOther"
+                :id="`${id}-industryOther`"
                 ref="industryOther"
                 class=" form-field-reset"
                 type="text"
@@ -200,15 +146,9 @@
           <!-- <h5>What is your role?</h5> -->
           <div class="">
             <div class="">
-              <select
-                id=""
-                ref=""
-                v-model="form.userRoleType"
-                class="input-text p-4 mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black custom-select -form-control form-field-reset"
-                name=""
-              >
+              <select required :id="`${id}-userRoleType`" ref="" v-model="form.userRoleType" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black custom-select -form-control form-field-reset" name="">
                 <option value="" disabled selected>
-                  What is your role?
+                  What is your role?*
                 </option>
                 <option value="Freelancer">
                   Freelancer
@@ -232,7 +172,7 @@
             </div>
             <!-- <div v-show="arrayIncludesString(form.userRoleType,'Other')" class="col-12 col-md-6">
               <input
-                id="roleTypeOther"
+                :id="`${id}-roleTypeOther`"
                 ref="roleTypeOther"
                 class="input-text form-field-reset"
                 type="text"
@@ -242,107 +182,76 @@
               >
             </div> -->
           </div>
+        </div>
+
+        <div class="">
+          <textarea required :id="`${id}-userWhyApply`" ref="userWhyApply" v-model="form.userWhyApply" class="input-text form-field-reset p-" type="text" name="" rows="1" placeholder="Describe why you are applying for mentorship in 150 words*" maxlength="1000">
+            </textarea>
+        </div>
+
+        <div class="py-4 mx-auto block">
+
+          <div class="mx-auto my-4">
+            <h5 class="font-bold text-sm">Keep in touch*</h5>
           </div>
 
           <div class="">
-            <textarea
-              id="userWhyApply"
-              ref="userWhyApply"
-              class="input-text form-field-reset p-4"
-              type="text"
-              name=""
-              rows="1"
-              placeholder="Describe why you are applying for mentorship in 150 words"
-              maxlength="1000"
-            >
-            </textarea>
-          </div>
-
-          <div class="py-4 mx-auto block">
-
-            <div class="mx-auto my-4">
-              <h5 class="font-bold text-sm">Keep in touch</h5>
-            </div>
-
             <div class="">
-              <div class="">
-                <div>
-                  <input
-                    id="designOptIn"
-                    ref="designOptIn"
-                    v-model="form.userDesignOptIn"
-                    class="form-field-reset checkbox"
-                    type="checkbox"
-                    name=""
-                    value="1"
-                    hidden
-                  >
-                  <label class="text-base" for="designOptIn" v-if="false">
-                    <span>
-                      I am happy to receive news from Design District
-                    </span>
-                  </label>
-                </div>
+              <div>
+                <input id="designOptIn" ref="designOptIn" v-model="form.userDesignOptIn" class="form-field-reset checkbox" type="checkbox" name="" value="1" hidden>
+                <label class="text-base" for="designOptIn" v-if="false">
+                  <span>
+                    I am happy to receive news from Design District
+                  </span>
+                </label>
+              </div>
 
-                <div>
-                  <input
-                    id="marketingOptIn"
-                    ref="marketingOptIn"
-                    v-model="form.userMarketingOptIn"
-                    class="form-field-reset checkbox"
-                    type="checkbox"
-                    name=""
-                    value="1"
-                    hidden
-                  >
-                  <label class="text-base" for="marketingOptIn" v-if="false">
-                    <span>
-                      I am happy to receive news and events information from Greenwich Peninsula
-                    </span>
-                  </label>
-                </div>
+              <div>
+                <input id="marketingOptIn" ref="marketingOptIn" v-model="form.userMarketingOptIn" class="form-field-reset checkbox" type="checkbox" name="" value="1" hidden>
+                <label class="text-base" for="marketingOptIn" v-if="false">
+                  <span>
+                    I am happy to receive news and events information from Greenwich Peninsula
+                  </span>
+                </label>
+              </div>
 
-                <div class="mx-auto text-sm mt-0 leading-2 md:text-base md:leading-6 md:mt-4">
-                  <input
-                    id="agreePolicy"
-                    ref="agreePolicy"
-                    v-model="form.userAgreePolicy"
-                    class="form-field-reset checkbox"
-                    type="checkbox"
-                    name=""
-                    value="1"
-                    required
-                  >
-                  <label class="opacity-50" for="agreePolicy">
-                    <span>By submitting your email address, you agree to our <a href="/privacy-notice" target="_blank">Privacy Notice</a> and <a href="/terms-and-conditions" target="_blank">Terms & Conditions</a> and agree to receive news and happenings from Design District into your inbox.</span>
-                  </label>
-                </div>
+              <div class="mx-auto text-sm mt-0 leading-2 md:text-base md:leading-6 md:mt-4">
+                <input @change="trySubmit" :id="`${id}-agreePolicy`" ref="agreePolicy" v-model="form.userAgreePolicy" class="form-field-reset checkbox" type="checkbox" name="" value="1" required>
+                <label class="opacity-50" :for="`${id}-agreePolicy`">
+                  <span>By submitting your email address, you agree to our <a href="/privacy-notice" target="_blank">Privacy Notice</a> and <a href="/terms-and-conditions" target="_blank">Terms & Conditions</a> and agree to receive news and
+                    happenings from Design District into your inbox.</span>
+                </label>
               </div>
             </div>
           </div>
+        </div>
 
         <button
-          class="inline-block py-3 px-6 rounded-sm text-base md:text-lg w-auto bg-black text-white font-medium"
-          type="submit"
-          :class="{
-            'pointer-events-none': formState === 'loading',
-            }"
-        >
+        class="inline-block py-3 px-6 rounded-sm text-base md:text-lg w-auto bg-black text-white font-medium"
+        type="submit"
+        :class="{
+          'disabled': formState === 'loading' || formVerificationFailed,
+        }"
+        :xdisabled="formState === 'loading' || formVerificationFailed"
+        @click="trySubmit"
+            >
           {{ formAction }}
         </button>
 
+        <h6 class="text-sm text-red-600" v-if="error">{{error}}</h6>
+
 
         <div class="pr-8 my-16" v-if="block.fields.terms">
-          <rich-text :richtext="block.fields.terms"/>
+          <rich-text :richtext="block.fields.terms" />
         </div>
 
 
-    </div>
+      </div>
 
 
 
 
-    <!-- <div>
+      <!-- <div>
       <input
         class="form-control input-text form-field-reset"
         type="email"
@@ -376,39 +285,32 @@
       >
     </div> -->
 
-    <!-- <div class="py-12">
+      <!-- <div class="py-12">
 
     </div> -->
 
-    <div class="g-recaptcha" data-sitekey="6LdPFNEUAAAAAKdvqOAD4Dq1MeL0WoGWzxZFj92t" />
+      <div class="g-recaptcha" data-sitekey="6LdPFNEUAAAAAKdvqOAD4Dq1MeL0WoGWzxZFj92t" />
 
-    <div v-show="true" class="form-group form-submit my-4">
-      <!-- <button onclick="submitDEManagerForm(); return false;" class="btn btn-primary btn-lg">
+      <div v-show="true" class="form-group form-submit my-4">
+        <!-- <button onclick="submitDEManagerForm(); return false;" class="btn btn-primary btn-lg">
         Signup
       </button> -->
-      <!-- <button class="btn btn-primary btn-lg mt-0" type="submit">
+        <!-- <button class="btn btn-primary btn-lg mt-0" type="submit">
         Signup
       </button> -->
-      <!-- <input id="submit" type="submit" value="Signup" style="display: none;"> -->
-      <input id="submit" type="submit" value="Signup" style="display: none;">
-      <vue-recaptcha
-        ref="invisibleRecaptcha"
-        :sitekey="recaptchaKey"
-        :load-recaptcha-script="true"
-        size="invisible"
-        @verify="onVerify"
-        @expired="onExpired"
-      />
-    </div>
+        <!-- <input id="submit" type="submit" value="Signup" style="display: none;"> -->
+        <input id="submit" type="submit" value="Signup" style="display: none;">
+        <vue-recaptcha ref="invisibleRecaptcha" :sitekey="recaptchaKey" :load-recaptcha-script="true" size="invisible" @verify="onVerify" @expired="onExpired" />
+      </div>
 
-    <input id="recordType" type="hidden" name="recordType" value="0123Y0000007v91">
-    <input id="designOptInDate" ref="designOptInDate" type="hidden" name="" value="">
-    <input id="marketingOptInDate" ref="marketingOptInDate" type="hidden" name="" value="">
-    <input id="privacyOptInDate" ref="privacyOptInDate" type="hidden" name="" value="">
-  </form>
-</div>
-
+      <input id="recordType" type="hidden" name="recordType" value="0123Y0000007v91">
+      <input id="designOptInDate" ref="designOptInDate" type="hidden" name="" value="">
+      <input id="marketingOptInDate" ref="marketingOptInDate" type="hidden" name="" value="">
+      <input id="privacyOptInDate" ref="privacyOptInDate" type="hidden" name="" value="">
+    </form>
   </div>
+
+</div>
 </template>
 
 <script>
@@ -419,14 +321,17 @@ const KEY = '6LeyatwUAAAAAHWHaZuq8aq0GAZj21SxmI4fCgPk'
 
 export default {
   name: 'WaitlistForm',
-  components: { VueRecaptcha },
+  components: {
+    VueRecaptcha
+  },
 
   props: ['block'],
 
-  data () {
+  data() {
     return {
       recaptchaKey: KEY,
       active: false,
+      error: '',
       form: {
         email: '',
 
@@ -462,23 +367,27 @@ export default {
     }
   },
   computed: {
-    theme () {
+    id () {
+      return this.block && this.block.sys.id || ''
+    },
+    theme() {
       return this.block && this.block.theme || 'default'
     },
-    formDD () {
+    formDD() {
       return _.range(1, 32)
     },
-    formMMM () {
-      const monthNames = [ 'January', 'February', 'March', 'April', 'May', 'June',
-        'July', 'August', 'September', 'October', 'November', 'December' ]
+    formMMM() {
+      const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+      ]
       return _.map(monthNames, (m) => {
         return _.join(_.take(m, 3), '')
       })
     },
-    formYYYY () {
+    formYYYY() {
       return _.range(2020, 1900)
     },
-    formEmailMatched () {
+    formEmailMatched() {
       if (!this.form.email) {
         return true
       } else if (this.form.email.length > 0 && this.form.emailConfirm === this.form.email) {
@@ -486,34 +395,71 @@ export default {
       } else {
         return false
       }
+    },
+    formVerificationFailed () {
+      let form = this.form;
+      if (!form.userAgreePolicy) return true
+      if (form.email.length<1) return true
+      if (form.userFirstName.length<1) return true
+      if (form.userLastName.length<1) return true
+      if (form.userRoleType.length<1) return true
+      if (form.userIndustry.length<1) return true
+      if (form.userBusinessName.length<1) return true
+      if (form.userWebHandle.length<1) return true
+      if (form.userWhyApply.length<1) return true
+      return false
     }
   },
   watch: {
-    '$route' (to, from) {
+    '$route'(to, from) {
       if (to.fullPath !== from.fullPath) {
         this.active = false
       }
     }
   },
-  monuted () {
+  monuted() {
     this.init()
   },
   methods: {
-    init () {
+    trySubmit () {
+      let errs = []
+      let form = this.form;
+      if (form.email.length<1) { errs.push('email') }
+      if (form.userFirstName.length<1) { errs.push('first name') }
+      if (form.userLastName.length<1) { errs.push('last name') }
+      if (form.userRoleType.length<1) { errs.push('role') }
+      if (form.userIndustry.length<1) { errs.push('industry') }
+      if (form.userBusinessName.length<1) { errs.push('business name') }
+      if (form.userWebHandle.length<1) { errs.push('website or social media handle') }
+      if (form.userWhyApply.length<1) { errs.push('reason to apply') }
+      if (!form.userAgreePolicy) { errs.push('policy and agree to receive Design District news and information') }
+
+      if (errs.length>0) {
+        let errorMessage = _.join(errs, ', ')
+        this.error = `Please check the ${errorMessage}`
+        return false
+      }
+
+      this.error = ''
+      return true
+    },
+    init() {
 
     },
-    arrayIncludesString (arr, string) {
+    arrayIncludesString(arr, string) {
       return _.includes(arr, string)
     },
-    onFormSubmit (e) {
+    onFormSubmit(e) {
       this.formState = 'loading'
       this.formAlert.type = 'loading'
       this.formAlert.text = 'Processing...'
       this.formAction = 'Loading'
 
+      if (!this.trySubmit()) return;
+
       try {
         this.$refs.invisibleRecaptcha.execute()
-      } catch(e) {
+      } catch (e) {
         console.log(e);
       }
 
@@ -525,7 +471,7 @@ export default {
 
       e.preventDefault()
     },
-    handleRecap () {
+    handleRecap() {
       // if (grecaptcha.getResponse().length <= 0) {
       //   alert('Please click the reCAPTCHA checkbox')
       //   return false
@@ -536,7 +482,7 @@ export default {
       // do some checking
       return true
     },
-    onVerify (response) {
+    onVerify(response) {
       // console.log('Verify: ' + response)
 
       // this.formState = 'idle'
@@ -563,15 +509,15 @@ export default {
         'userIndustry': _.take(_.escape(this.form.userIndustry), 64).join(''),
         'userBusinessName': _.take(_.escape(this.form.userBusinessName), 64).join(''),
         'userWebHandle': _.take(_.escape(this.form.userWebHandle), 64).join(''),
-        'userWhyApply': _.take(_.escape(this.form.userWhyApply), 64).join(''),
+        'userWhyApply': _.take(_.escape(this.form.userWhyApply), 1000).join(''),
         'userRoleType': _.take(_.escape(this.form.userRoleType), 64).join(''),
 
         // 'userWebsite': _.take(_.escape(this.form.userWebsite), 64).join(''),
         // 'userIndustry': _.take(_.escape(this.form.userIndustry), 64).join(''),
         // 'userIndustryOther': _.take(_.escape(this.form.userIndustryOther), 64).join(''),
 
-        'userDesignOptIn': _.take(_.escape(this.form.userDesignOptIn), 64).join(''),
-        'userMarketingOptIn': _.take(_.escape(this.form.userMarketingOptIn), 64).join(''),
+        'userDesignOptIn': _.take(_.escape(this.form.userAgreePolicy), 64).join(''),
+        'userMarketingOptIn': _.take(_.escape(this.form.userAgreePolicy), 64).join(''),
         'userAgreePolicy': _.take(_.escape(this.form.userAgreePolicy), 64).join(''),
         'userUrl': url
       }
@@ -607,7 +553,7 @@ export default {
       // }, 3000)
       // }, 500)
     },
-    onExpired () {
+    onExpired() {
       console.error('reCAPTCHA has expired')
       // this.formState = 'idle'
       // this.formAlert.type = 'error'
@@ -616,12 +562,12 @@ export default {
         this.resetRecaptcha()
       }, 2000)
     },
-    resetRecaptcha () {
+    resetRecaptcha() {
       if (this.$refs.invisibleRecaptcha) {
         this.$refs.invisibleRecaptcha.reset() // Direct call reset method
       }
     },
-    submitDEManagerForm () {
+    submitDEManagerForm() {
       // const form = document.forms.subscribeForm
       // const form = this.$refs.subscribeForm
       const today = new Date()

@@ -128,7 +128,7 @@
           :class="{
             disabled: formState === 'loading' || (!this.subscribeDesignOptIn || (this.email.length<1) || (this.first_name.length<1) || (this.last_name.length<1))
           }"
-          :disable="formState === 'loading' || (!this.subscribeDesignOptIn || (this.email.length<1) || (this.first_name.length<1) || (this.last_name.length<1))"
+          :disabled="formState === 'loading' || (!this.subscribeDesignOptIn || (this.email.length<1) || (this.first_name.length<1) || (this.last_name.length<1))"
           @click="trySubmit"
         >
           {{ formAction }}
