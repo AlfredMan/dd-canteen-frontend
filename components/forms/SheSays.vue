@@ -1,5 +1,5 @@
 <template>
-  <div class="py-6 pb-16">
+  <div class="py-16 pb-16 bg-light">
     <div v-show="formState === 'complete'" class="flex flex-wrap cap-max-w px-3">
       <!-- <h5>Thank you for your interest!</h5> -->
       <p class="monospace text-lg leading-8"
@@ -21,13 +21,17 @@
       name="subscribeForm"
       method="post"
       :class="{disabled: formState === 'loading'}"
-      class="flex flex-wrap cap-max-w px-3 justify-content-center"
+      class="flex flex-wrap cap-max-w px-3 justify-content-start"
       @submit.prevent="onFormSubmit"
     >
 
-      <!-- <div class="md:w-5/12">
-        <h2>Fill out the form to enter</h2>
-      </div> -->
+      <div class="md:w-5/12">
+        <h2>Enter the competition</h2>
+        <div class="pr-8">
+          <p><strong>The small print</strong><br>The competition is open to women (binary and non-binary) working in the creative industries, with the exception of those employed by Knight Dragon Ltd. One entry per person only. Design District's decision as to the winners is final. No correspondence relating to the competition will be entered into. Design District reserves the right to cancel or alter or amend the competition at any stage, if deemed necessary in its opinion, or if
+          circumstances arise outside of its control. </p>
+        </div>
+      </div>
 
       <div class="md:w-7/12 block max-w-3xl pt-2">
         <!-- <label class="-accessible-hide" for="email">Email address<sup>*</sup></label> -->
