@@ -162,6 +162,10 @@ export default {
 
   components: false,
 
+
+  // https://www.voorhoede.nl/en/blog/10x-faster-nuxt-builds-on-netlify/
+
+
   build: {
     // analyze: false,
     // extractCSS: process.env.NODE_ENV === 'production',
@@ -203,6 +207,22 @@ export default {
     },
     babel: {
       compact: false
+    },
+
+    html: {
+      minify: {
+        collapseBooleanAttributes: true,
+        decodeEntities: true,
+        // minifyCSS: true,
+        minifyCSS: false,
+        // minifyJS: true,
+        minifyJS: false,
+        processConditionalComments: true,
+        removeEmptyAttributes: true,
+        removeRedundantAttributes: true,
+        trimCustomFragments: true,
+        useShortDoctype: true
+      }
     }
     // extend (config, { isDev, isClient, loaders: { vue } }) {
     //   if (isClient) {
@@ -348,7 +368,7 @@ export default {
 
   generate: {
     interval: 200,
-    concurrency: 5,
+    concurrency: 20,
     devtools: true,
     routes () {
       // const routes = [
@@ -387,6 +407,7 @@ export default {
     },
     exclude: [
       /^(?=.*\bhelper|home\b).*$/,
+      /^\/pages_archive/,
       '/workspace/filter',
       '/workspace/enquire',
       '/home',

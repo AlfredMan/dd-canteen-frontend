@@ -9,6 +9,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "generate-quiet": "nuxt generate --quiet",
     "dev-spa": "nuxt dev --spa",
     "build-spa": "nuxt build --spa",
     "start-spa": "nuxt start --spa",
