@@ -90,12 +90,12 @@
                 <div class="">
                   <a target="_blank" class="btn btn-lg btn-secondary uppercase" :href="entry.fields.actionUrl">{{entry.fields.actionLabel}}</a>
                 </div>
-                <div class="">
+                <!-- <div class="">
                   <a target="_blank" class="btn btn-lg btn-share uppercase" @click="showCalendarOptions">Add to calendar &rarr;</a>
-                </div>
-                <div class="">
+                </div> -->
+                <!-- <div class="">
                   <a target="_blank" class="btn btn-lg btn-share uppercase" @click="showShareOptions">Share event &rarr;</a>
-                </div>
+                </div> -->
               </div>
 
               <!-- <div class="my-4">
