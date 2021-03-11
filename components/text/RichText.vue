@@ -24,6 +24,10 @@ const options = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, next) =>
       `<p>${next(node.content)}</p>`,
+    // [BLOCKS.EMBEDDED_ASSET]: (node, next) =>
+    //   `<p>${next(node.content)}</p>`,
+    [BLOCKS.EMBEDDED_ASSET]: ({ data: { target: { fields }}}) =>
+      `<img src="${fields.file.url}" height="${fields.file.details.image.height}" width="${fields.file.details.image.width}" alt="${fields.description}"/>`
   },
   renderNode: {
     [INLINES.HYPERLINK]: (node, next) => {
@@ -43,6 +47,7 @@ export default {
 
   methods: {
     getRichText (document) {
+      console.log(document)
       return documentToHtmlString(document, options);
     },
   }

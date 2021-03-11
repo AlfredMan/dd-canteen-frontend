@@ -10,8 +10,19 @@
 
   <div class="flex flex-wrap cap-max-w px-3 justify-content-start">
 
-    <div class="md:w-5/12">
+    <div class="md:w-5/12" v-if="formState !== 'complete'" >
       <h2 v-if="block.fields.heading">{{block.fields.heading}}</h2>
+    </div>
+    <div class="md:w-5/12" v-else >
+      <rich-text v-if="block.fields.successHeading" :richtext="block.fields.successHeading" />
+      <div class="w-48 pt-2" v-else-if="block.fields.successImage">
+        <lazy-image
+        :src="block.fields.successImage.fields.file.url"
+        :w="300"
+        />
+      </div>
+      <h2 v-else>Thank you</h2>
+
     </div>
 
     <div v-show="formState === 'complete'" class="md:w-7/12 block max-w-3xl pt-2">
@@ -431,6 +442,8 @@ export default {
   },
   methods: {
     trySubmit () {
+      // this.successCallback()
+
       let errs = []
       let form = this.form;
       if (form.email.length<1) { errs.push('email') }
@@ -491,6 +504,39 @@ export default {
       // do some checking
       return true
     },
+    successCallback () {
+
+      // this.formState = 'complete'
+      // this.formAlert.type = 'success'
+      // this.formAlert.text = 'Complete.'
+      // this.formAction = 'Complete'
+      // this.$emit('completed')
+
+      if (process.client) {
+        let successPath = this.$route.path ? `${this.$route.path}/success` : '/shesays-mentorship/success'
+        let successGtagObj = {
+          page_title: 'SheSays Mentorship Success',
+          page_location: `${window.location.href}/success`,
+          page_path: successPath,
+          send_to: 'GTM-5PF87Z8'
+        }
+
+        console.log(successGtagObj)
+        document.getElementById(this.id).scrollIntoView();
+
+        // let element = document.getElementById(this.id);
+        // let headerOffset = 60;
+        // let elementPosition = element.getBoundingClientRect().top;
+        // let offsetPosition = elementPosition - headerOffset;
+        // window.scrollTo({
+        //    top: offsetPosition
+        // });
+        const GA_MEASUREMENT_ID = 'GTM-5PF87Z8'
+        this.$gtag('event', 'page_view', successGtagObj)
+        this.$gtag('config', GA_MEASUREMENT_ID, {'page_path': successPath});
+        // this.$router.
+      }
+    },
     onVerify(response) {
       // console.log('Verify: ' + response)
 
@@ -539,6 +585,12 @@ export default {
         this.formAlert.text = 'Complete.'
         this.formAction = 'Complete'
         this.$emit('completed')
+
+        //
+        // success
+        // ${}
+
+        this.successCallback()
 
       }).catch((error) => {
         // console.log(error)
