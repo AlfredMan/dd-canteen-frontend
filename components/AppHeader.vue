@@ -39,6 +39,9 @@
         <nuxt-link class="menu-link d-none d-sm-inline" to="/contact">
           Contact Us
         </nuxt-link>
+        <!-- <nuxt-link class="menu-link d-none d-sm-inline" to="/shesays-mentorship">
+          Mentorship
+        </nuxt-link> -->
 
         <a href="tel:+4402039812426"
         class="btn btn-lg- btn-dark- btn-primary-text-white m-2 pt-1 ml-auto -mr-0 d-sm-inline-block d-none "

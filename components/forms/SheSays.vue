@@ -523,7 +523,11 @@ export default {
         }
         console.log(successGtagObj)
         // this.$router.push(`#success`);
-        document.getElementById(this.id).scrollIntoView();
+        this.$router.push({ query: { 'form': 'success' } });
+
+        this.$nextTick(() => {
+          document.getElementById(this.id).scrollIntoView();
+        })
 
         // let element = document.getElementById(this.id);
         // let headerOffset = 60;
