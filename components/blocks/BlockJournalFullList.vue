@@ -7,7 +7,7 @@
   >
     <div
     v-if="block.fields.heading || block.fields.subheading"
-    class="block-list-header"
+    class="block-list-header px-2"
     :class="{
       'headingDisplay--Right': headingDisplay=='Right',
       'flex flex-wrap items-baseline':headingDisplay=='Right'

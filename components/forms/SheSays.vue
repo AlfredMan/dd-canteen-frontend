@@ -15,7 +15,7 @@
     </div>
     <div class="md:w-5/12" v-else >
       <rich-text v-if="block.fields.successHeading" :richtext="block.fields.successHeading" />
-      <div class="w-48 pt-2" v-else-if="block.fields.successImage">
+      <div class="w-48 pt-2 mb-8" v-else-if="block.fields.successImage">
         <lazy-image
         :src="block.fields.successImage.fields.file.url"
         :w="300"
@@ -382,7 +382,8 @@ export default {
         text: ''
       },
       formAction: 'Enter',
-      formState: 'idle'
+      // formState: 'idle'
+      formState: 'complete'
     }
   },
   computed: {
