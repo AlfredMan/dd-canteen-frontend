@@ -382,8 +382,8 @@ export default {
         text: ''
       },
       formAction: 'Enter',
-      // formState: 'idle'
-      formState: 'complete'
+      formState: 'idle'
+      // formState: 'complete'
     }
   },
   computed: {
@@ -521,8 +521,8 @@ export default {
           page_path: successPath,
           send_to: 'GTM-5PF87Z8'
         }
-
         console.log(successGtagObj)
+        // this.$router.push(`#success`);
         document.getElementById(this.id).scrollIntoView();
 
         // let element = document.getElementById(this.id);
@@ -532,9 +532,9 @@ export default {
         // window.scrollTo({
         //    top: offsetPosition
         // });
-        const GA_MEASUREMENT_ID = 'GTM-5PF87Z8'
+        // const GA_MEASUREMENT_ID = 'GTM-5PF87Z8'
         this.$gtag('event', 'page_view', successGtagObj)
-        this.$gtag('config', GA_MEASUREMENT_ID, {'page_path': successPath});
+        // this.$gtag('config', GA_MEASUREMENT_ID, {'page_path': successPath});
         // this.$router.
       }
     },
