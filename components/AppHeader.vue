@@ -27,6 +27,12 @@
         <nuxt-link class="menu-link d-none d-sm-inline" to="/journal">
           Journal
         </nuxt-link>
+        <nuxt-link class="menu-link d-none d-sm-inline" to="/events">
+          Events
+        </nuxt-link>
+        <a class="menu-link d-none d-sm-inline" href="https://bureau.club" target="_blank">
+          Bureau
+        </a>
         <nuxt-link class="menu-link d-none d-sm-inline" to="/about-us">
           About
         </nuxt-link>
@@ -82,6 +88,12 @@
           <nuxt-link class="d-block mobile-menu-link" to="/journal">
             Journal
           </nuxt-link>
+          <nuxt-link class="d-block mobile-menu-link" to="/events">
+            Events
+          </nuxt-link>
+          <a class="d-block mobile-menu-link" href="https://bureau.club" target="_blank">
+            Bureau
+          </a>
           <nuxt-link class="d-block mobile-menu-link" to="/about-us">
             About
           </nuxt-link>
