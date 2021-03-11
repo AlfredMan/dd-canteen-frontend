@@ -92,8 +92,8 @@
                 </div>
                 <!-- <div class="">
                   <a target="_blank" class="btn btn-lg btn-share uppercase" @click="showCalendarOptions">Add to calendar &rarr;</a>
-                </div>
-                <div class="">
+                </div> -->
+                <!-- <div class="">
                   <a target="_blank" class="btn btn-lg btn-share uppercase" @click="showShareOptions">Share event &rarr;</a>
                 </div> -->
               </div>

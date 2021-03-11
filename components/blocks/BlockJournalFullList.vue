@@ -30,8 +30,8 @@
       v-for="(entry, index) in filteredEntries" :key="entry.sys.id"
       class="block-journal--entries--entry"
       :class="{
-        'w-full lg:w-full xl:w-6/12': formatEnlargeFirstEntry ? index==0 : false,
-        'w-full xl:w-3/12': formatEnlargeFirstEntry ? index>0 : true
+        'w-full md:w-6/12': formatEnlargeFirstEntry ? index==0 : false,
+        'w-full md:w-3/12': formatEnlargeFirstEntry ? index>0 : true
         }">
         <events-card v-if="entry.sys.contentType.sys.id=='event'" class="news-card" :entry="entry"></events-card>
         <news-card v-else class="news-card" :entry="entry"></news-card>

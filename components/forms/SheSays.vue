@@ -45,7 +45,7 @@
         </div>
 
         <div class="mx-auto mb-2 lg:-mt-3">
-          <h5 class="font-bold text-sm">About yourself</h5>
+          <h5 class="font-bold text-lg">About yourself</h5>
         </div>
 
         <input :id="`${id}-userFirstName`" v-model="form.userFirstName" type="text" name="userFirstName" placeholder="First name*" value="" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black" :class="{
@@ -64,7 +64,7 @@
 
 
         <div class="mx-auto mt-12 mb-2">
-          <h5 class="font-bold text-sm">Your work</h5>
+          <h5 class="font-bold text-lg">Your work</h5>
         </div>
 
         <input :id="`${id}-userBusinessName`" v-model="form.userBusinessName" type="text" name="userBusinessName" placeholder="Company*" value="" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black" :class="{
@@ -200,7 +200,7 @@
         <div class="py-4 mx-auto block">
 
           <div class="mx-auto my-4">
-            <h5 class="font-bold text-sm">Keep in touch*</h5>
+            <h5 class="font-bold text-lg">Keep in touch*</h5>
           </div>
 
           <div class="">
@@ -370,7 +370,7 @@ export default {
         type: '',
         text: ''
       },
-      formAction: 'Enter competition',
+      formAction: 'Enter',
       formState: 'idle'
     }
   },
