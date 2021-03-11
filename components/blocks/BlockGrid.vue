@@ -32,8 +32,8 @@
               </h2>
             </div>
             <div v-if="grid.fields.subheading">
-              <h4 class="font-normal max-w-3xl">
-                {{grid.fields.subheading}}
+              <h4 class="font-normal text-2xl max-w-3xl markdown" v-html="markdown(grid.fields.subheading)">
+                <!-- <rich-text :richtext="block.fields.formDescription" /> -->
               </h4>
               <callToAction v-if="grid.fields.callToAction" :callToAction="grid.fields.callToAction"/>
             </div>

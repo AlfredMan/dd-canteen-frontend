@@ -36,13 +36,15 @@
       <div class="">
         <!-- <label class="-accessible-hide" for="email">Email address<sup>*</sup></label> -->
 
-        <h4 class="mb-16" v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
+        <h4 class="mb-16" v-if="block.fields.formDescription">
+          <rich-text :richtext="block.fields.formDescription" />
+        </h4>
 
-        <div class="mx-auto my-4">
+        <div class="mx-auto my-8 lg:my-0 lg:text-right">
           <h5 class="text-sm">* Required fields</h5>
         </div>
 
-        <div class="mx-auto my-2">
+        <div class="mx-auto mb-2 lg:-mt-3">
           <h5 class="font-bold text-sm">About yourself</h5>
         </div>
 
@@ -50,7 +52,7 @@
             'pointer-events-none': formState === 'loading',
             'opacity-50': formState === 'loading'
           }" required>
-        <input :id="`${id}-userLastName`" v-model="form.userLastName" type="text" name="userLastName" placeholder="Last name*" value="" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black" :class="{
+        <input :id="`${id}-userLastName`" v-model="form.userLastName" type="text" name="userLastName" placeholder="Surname*" value="" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black" :class="{
             'pointer-events-none': formState === 'loading',
             'opacity-50': formState === 'loading'
           }" required>
@@ -65,127 +67,133 @@
           <h5 class="font-bold text-sm">Your work</h5>
         </div>
 
-        <input :id="`${id}-userBusinessName`" v-model="form.userBusinessName" type="text" name="userBusinessName" placeholder="Business Name*" value="" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black" :class="{
+        <input :id="`${id}-userBusinessName`" v-model="form.userBusinessName" type="text" name="userBusinessName" placeholder="Company*" value="" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black" :class="{
             'pointer-events-none': formState === 'loading',
             'opacity-50': formState === 'loading'
           }" required>
 
-        <input :id="`${id}-userWebHandle`" v-model="form.userWebHandle" type="text" name="userWebHandle" placeholder="Website or social media handle*" value="" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black" :class="{
-            'pointer-events-none': formState === 'loading',
-            'opacity-50': formState === 'loading'
-          }" required>
-
+      <div class="">
+        <!-- <h5>What industry are you in?</h5> -->
         <div class="">
-          <!-- <h5>What industry are you in?</h5> -->
           <div class="">
-            <div class="">
-              <select required :id="`${id}-userIndustry`" ref="" v-model="form.userIndustry" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black custom-select -form-control form-field-reset" name="">
+            <select required :id="`${id}-userIndustry`" ref="" v-model="form.userIndustry" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black custom-select -form-control form-field-reset" name="">
 
-                <option value="" disabled selected>
-                  What industry are you in?*
-                </option>
-                <option value="Advertising and marketing">
-                  Advertising and marketing
-                </option>
-                <option value="Architecture">
-                  Architecture
-                </option>
-                <option value="Animation and VFX (visual effects)">
-                  Animation and VFX (visual effects)
-                </option>
-                <option value="Crafts">
-                  Crafts
-                </option>
-                <option value="Fashion">
-                  Fashion
-                </option>
-                <option value="Film, TV, video, radio, podcasts">
-                  Film, TV, video, radio, podcasts
-                </option>
-                <option value="Graphic Design">
-                  Graphic Design
-                </option>
-                <option value="IT, software, computer services and UX Design(‘creative tech’)">
-                  IT, software, computer services and UX Design(‘creative tech’)
-                </option>
-                <option value="Museums, galleries, libraries, and heritage">
-                  Museums, galleries, libraries, and heritage
-                </option>
-                <option value="Music, performing and visual arts">
-                  Music, performing and visual arts
-                </option>
-                <option value="Photography">
-                  Photography
-                </option>
-                <option value="Product Design">
-                  Product Design
-                </option>
-                <option value="Publishing">
-                  Publishing
-                </option>
-                <option value="Video games">
-                  Video games
-                </option>
-                <option value="Other">
-                  Other
-                </option>
-              </select>
-            </div>
-            <!-- <div v-show="arrayIncludesString(form.userIndustry,'Other')" class="col-12 col-md-6">
-              <input
-                :id="`${id}-industryOther`"
-                ref="industryOther"
-                class=" form-field-reset"
-                type="text"
-                name=""
-                placeholder="Please specify"
-                maxlength="254"
-              >
-            </div> -->
+              <option value="" disabled selected>
+                Creative sector*
+              </option>
+              <option value="Advertising and marketing">
+                Advertising and marketing
+              </option>
+              <option value="Architecture">
+                Architecture
+              </option>
+              <option value="Animation and VFX (visual effects)">
+                Animation and VFX (visual effects)
+              </option>
+              <option value="Crafts">
+                Crafts
+              </option>
+              <option value="Fashion">
+                Fashion
+              </option>
+              <option value="Film, TV, video, radio, podcasts">
+                Film, TV, video, radio, podcasts
+              </option>
+              <option value="Graphic Design">
+                Graphic Design
+              </option>
+              <option value="IT, software, computer services and UX Design(‘creative tech’)">
+                IT, software, computer services and UX Design(‘creative tech’)
+              </option>
+              <option value="Museums, galleries, libraries, and heritage">
+                Museums, galleries, libraries, and heritage
+              </option>
+              <option value="Music, performing and visual arts">
+                Music, performing and visual arts
+              </option>
+              <option value="Photography">
+                Photography
+              </option>
+              <option value="Product Design">
+                Product Design
+              </option>
+              <option value="Publishing">
+                Publishing
+              </option>
+              <option value="Video games">
+                Video games
+              </option>
+              <option value="Other">
+                Other
+              </option>
+            </select>
           </div>
-          <!-- <h5>What is your role?</h5> -->
+          <!-- <div v-show="arrayIncludesString(form.userIndustry,'Other')" class="col-12 col-md-6">
+            <input
+              :id="`${id}-industryOther`"
+              ref="industryOther"
+              class=" form-field-reset"
+              type="text"
+              name=""
+              placeholder="Please specify"
+              maxlength="254"
+            >
+          </div> -->
+        </div>
+        <!-- <h5>What is your role?</h5> -->
+        <!-- <div class="">
           <div class="">
-            <div class="">
-              <select required :id="`${id}-userRoleType`" ref="" v-model="form.userRoleType" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black custom-select -form-control form-field-reset" name="">
-                <option value="" disabled selected>
-                  What is your role?*
-                </option>
-                <option value="Freelancer">
-                  Freelancer
-                </option>
-                <option value="Digital nomad">
-                  Digital nomad
-                </option>
-                <option value="Entrepreneur">
-                  Entrepreneur
-                </option>
-                <option value="Business owner">
-                  Business owner
-                </option>
-                <option value="Employee">
-                  Employee
-                </option>
-                <option value="Other">
-                  Other
-                </option>
-              </select>
-            </div>
-            <!-- <div v-show="arrayIncludesString(form.userRoleType,'Other')" class="col-12 col-md-6">
-              <input
-                :id="`${id}-roleTypeOther`"
-                ref="roleTypeOther"
-                class="input-text form-field-reset"
-                type="text"
-                name=""
-                placeholder="Please specify"
-                maxlength="254"
-              >
-            </div> -->
-          </div>
+            <select required :id="`${id}-userRoleType`" ref="" v-model="form.userRoleType" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full text-black custom-select -form-control form-field-reset" name="">
+              <option value="" disabled selected>
+                What is your role?*
+              </option>
+              <option value="Freelancer">
+                Freelancer
+              </option>
+              <option value="Digital nomad">
+                Digital nomad
+              </option>
+              <option value="Entrepreneur">
+                Entrepreneur
+              </option>
+              <option value="Business owner">
+                Business owner
+              </option>
+              <option value="Employee">
+                Employee
+              </option>
+              <option value="Other">
+                Other
+              </option>
+            </select>
+          </div> -->
+          <!-- <div v-show="arrayIncludesString(form.userRoleType,'Other')" class="col-12 col-md-6">
+            <input
+              :id="`${id}-roleTypeOther`"
+              ref="roleTypeOther"
+              class="input-text form-field-reset"
+              type="text"
+              name=""
+              placeholder="Please specify"
+              maxlength="254"
+            >
+          </div> -->
+        </div>
+
+        <input :id="`${id}-userWebsite`" v-model="form.userWebsite" type="text" name="userWebsite" placeholder="Website" value="" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black" :class="{
+            'pointer-events-none': formState === 'loading',
+            'opacity-50': formState === 'loading'
+          }" >
+
+        <input :id="`${id}-userSocialHandle`" v-model="form.userSocialHandle" type="text" name="userSocialHandle" placeholder="Social media handle" value="" class="input-text p- mb-2 lg:p-4 lg:mb-4 text-base md:text-xl w-full  text-black" :class="{
+            'pointer-events-none': formState === 'loading',
+            'opacity-50': formState === 'loading'
+          }" >
+
         </div>
 
         <div class="">
-          <textarea required :id="`${id}-userWhyApply`" ref="userWhyApply" v-model="form.userWhyApply" class="input-text form-field-reset p-" type="text" name="" rows="1" placeholder="Describe why you are applying for mentorship in 150 words*" maxlength="1000">
+          <textarea :id="`${id}-userWhyApply`" ref="userWhyApply" v-model="form.userWhyApply" class="input-text form-field-reset p-" type="text" name="" rows="1" placeholder="Please tell us about a professional challenge you would like to focus on" maxlength="1000">
             </textarea>
         </div>
 
@@ -246,7 +254,6 @@
         </div>
 
 
-      </div>
 
 
 
@@ -337,10 +344,11 @@ export default {
 
         userFirstName: '',
         userLastName: '',
-        userRoleType: '',
+        // userRoleType: '',
         userIndustry: '',
         userBusinessName: '',
-        userWebHandle: '',
+        userWebsite: '',
+        userSocialHandle: '',
         userWhyApply: '',
         userDesignOptIn: '',
         userMarketingOptIn: '',
@@ -402,11 +410,12 @@ export default {
       if (form.email.length<1) return true
       if (form.userFirstName.length<1) return true
       if (form.userLastName.length<1) return true
-      if (form.userRoleType.length<1) return true
+      // if (form.userRoleType.length<1) return true
       if (form.userIndustry.length<1) return true
       if (form.userBusinessName.length<1) return true
-      if (form.userWebHandle.length<1) return true
-      if (form.userWhyApply.length<1) return true
+      // if (form.userWebsite.length<1) return true
+      // if (form.userSocialHandle.length<1) return true
+      // if (form.userWhyApply.length<1) return true
       return false
     }
   },
@@ -426,12 +435,12 @@ export default {
       let form = this.form;
       if (form.email.length<1) { errs.push('email') }
       if (form.userFirstName.length<1) { errs.push('first name') }
-      if (form.userLastName.length<1) { errs.push('last name') }
-      if (form.userRoleType.length<1) { errs.push('role') }
-      if (form.userIndustry.length<1) { errs.push('industry') }
-      if (form.userBusinessName.length<1) { errs.push('business name') }
-      if (form.userWebHandle.length<1) { errs.push('website or social media handle') }
-      if (form.userWhyApply.length<1) { errs.push('reason to apply') }
+      if (form.userLastName.length<1) { errs.push('surname') }
+      // if (form.userRoleType.length<1) { errs.push('role') }
+      if (form.userIndustry.length<1) { errs.push('creative sector') }
+      if (form.userBusinessName.length<1) { errs.push('company') }
+      // if (form.userWebsite.length<1) { errs.push('website or social media handle') }
+      // if (form.userWhyApply.length<1) { errs.push('reason to apply') }
       if (!form.userAgreePolicy) { errs.push('policy and agree to receive Design District news and information') }
 
       if (errs.length>0) {
@@ -508,9 +517,10 @@ export default {
 
         'userIndustry': _.take(_.escape(this.form.userIndustry), 64).join(''),
         'userBusinessName': _.take(_.escape(this.form.userBusinessName), 64).join(''),
-        'userWebHandle': _.take(_.escape(this.form.userWebHandle), 64).join(''),
+        'userWebsite': _.take(_.escape(this.form.userWebsite), 64).join(''),
+        'userSocialHandle': _.take(_.escape(this.form.userSocialHandle), 64).join(''),
         'userWhyApply': _.take(_.escape(this.form.userWhyApply), 1000).join(''),
-        'userRoleType': _.take(_.escape(this.form.userRoleType), 64).join(''),
+        // 'userRoleType': _.take(_.escape(this.form.userRoleType), 64).join(''),
 
         // 'userWebsite': _.take(_.escape(this.form.userWebsite), 64).join(''),
         // 'userIndustry': _.take(_.escape(this.form.userIndustry), 64).join(''),

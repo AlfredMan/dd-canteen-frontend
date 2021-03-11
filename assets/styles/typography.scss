@@ -579,6 +579,7 @@ h2,
 h3,
 h4,
 h5 {
+	&.markdown p,
 	.rich-text p {
 		font-size: inherit;
 		line-height: inherit;
