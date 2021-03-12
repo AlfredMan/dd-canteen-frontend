@@ -1,5 +1,6 @@
 <template>
-  <section class="block-video"
+  <section class="block-form"
+  id="form"
   v-if="block && block.fields"
   >
     <div class="" v-if="form=='shesays'">
