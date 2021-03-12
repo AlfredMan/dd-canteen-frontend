@@ -37,6 +37,20 @@
 			background: black;
 		}
 	}
+	&.theme-Yellow {
+		background: $yellow;
+		.format-button.theme-default.cta {
+			color: white;
+			background: black;
+		}
+	}
+	&.theme-Green {
+		background: $green;
+		.format-button.theme-default.cta {
+			color: white;
+			background: black;
+		}
+	}
 }
 
 

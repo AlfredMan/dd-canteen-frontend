@@ -4,7 +4,7 @@
   class="block-banner"
   :class="{
     'bannerStyle-Default': bannerStyle=='Default' || !bannerStyle,
-    'bannerStyle-Reverse': bannerStyle=='Reverse',
+    'bannerStyle-Reverse': bannerStyle=='Reversed',
     'bannerStyle-Full': bannerStyle=='Full',
     'bannerStyle-Text': bannerStyle=='Text',
     'theme-plain': !hasBackground,
@@ -13,9 +13,10 @@
     'theme-Orange': bannerTheme=='Orange',
     'theme-Green': bannerTheme=='Green',
     'theme-White': bannerTheme=='White',
+    'theme-Yellow': bannerTheme=='Yellow',
   }"
   >
-    <div class="w-full relative">
+    <div class="block-banner-header-content-container w-full relative">
       <component
       :is="bannerStyle=='Full'?'DIV':'DIV'"
       :to="bannerTo"
@@ -171,7 +172,18 @@ section {
   &.bannerStyle-Default,
   &.bannerStyle-Reverse,
   &.bannerStyle-Text {
-    @apply flex flex-wrap;
+
+    .block-banner-header-content-container {
+      @extend .cap-max-w;
+      @apply flex flex-wrap;
+    }
+
+    .block-banner-header {
+      @apply w-full;
+      // @media (min-width: 1024px) {
+      //   @apply w-1/2;
+      // }
+    }
 
     // .block-banner-header,
     // .block-banner-media {
@@ -180,7 +192,7 @@ section {
     //     @apply w-1/2;
     //   }
     // }
-    .block-banner-header-content,
+    // .block-banner-header-content,
     .block-banner-media {
       @apply w-full;
       @media (min-width: 1024px) {
@@ -308,10 +320,14 @@ section {
   }
 
   .block-banner-header-content {
-    max-width: 36rem;
+
+    max-width: 40rem;
+
     h2,
     h4 {
       @apply text-white;
+      .theme-Yellow &,
+      .theme-Orange &,
       .theme-plain & {
         @apply text-black;
       }

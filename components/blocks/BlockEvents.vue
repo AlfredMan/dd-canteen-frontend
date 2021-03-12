@@ -14,7 +14,7 @@
       <div
        class="block-journal--entries--entry w-full lg:w-4/12"
       :class="{
-      }" v-for="(entry, index) in entries" :key="entry.sys.id">
+      }" v-for="(entry, index) in upcomingEntries" :key="entry.sys.id">
         <events-card class="news-card" :entry="entry"></events-card>
       </div>
     </div>
@@ -25,6 +25,7 @@
 import _ from 'lodash'
 import { createClient } from '~/plugins/contentful.js'
 import EventsCard from '~/components/EventsCard'
+import moment from 'moment'
 
 const client = createClient()
 
@@ -48,7 +49,17 @@ export default {
 
   computed: {
     entries () {
-      return _.take(this.$store.state.events, 4)
+      return _.take(this.$store.state.events, 99)
+    },
+    upcomingEntries () {
+      return _.filter(this.entries, (entry) => {
+        let date = entry.fields.endDate || entry.fields.startDate
+        if (moment.parseZone().diff(moment.parseZone(date)) < 0) {
+          return true
+        } else {
+          return false
+        }
+      })
     }
   }
 }
