@@ -1,6 +1,16 @@
 <template>
   <main class="page-component">
 
+    <div @click="go" class="full-screen-banner-action fixed inset-x-0 bottom-0 m-4 text-center uppercase text-white z-50 transition transition-all duration-200 ease-in-out cursor-pointer transform hover:-translate-y-1" style="font-weight:500; letter-spacing:1px;">
+      View Offer <br>
+      ↓
+    </div>
+    <div class="full-screen-banner fixed z-50 inset-0 bg-green text-white leading-none text-center">
+      <div class="absolute" style="font-size:10vw; font-weight:400; top: 50%; left:50%; transform: translate(-50%, -50%); width:100%;">
+        YES. Take me to<br>Design District ☺
+      </div>
+    </div>
+
     <div class="" v-if="entry">
       <template
       v-if="entry && entry.fields.contentBlocks"
@@ -67,6 +77,10 @@ import BlockVideo from '~/components/blocks/BlockVideo'
 import BlockGrid from '~/components/blocks/BlockGrid'
 import BlockForm from '~/components/blocks/BlockForm'
 
+import gsap from 'gsap'
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin.js'
+gsap.registerPlugin(ScrollToPlugin)
+
 export default {
   name: 'page',
 
@@ -99,11 +113,19 @@ export default {
     // _.map(this.entry.fields.contentBlocks, (block)=>{
     //   console.log(block.sys.contentType.sys.id)
     // })
-
     this.checkEntryTheme()
+    gsap.set('.block-page-header', {display: 'none'})
+    gsap.to('.full-screen-banner', {
+      autoAlpha: 0, duration: 0.5, delay: 2
+    });
   },
 
   methods: {
+
+    go() {
+      gsap.to(window, {duration: 0.5, scrollTo:"#the-offer", ease: 'power2.inOut'});
+      gsap.to('.full-screen-banner-action', {autoAlpha: 0, duration: 0.2});
+    },
 
     getRichText (document) {
       return documentToHtmlString(document, options);
