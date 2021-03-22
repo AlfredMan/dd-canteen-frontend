@@ -12,8 +12,8 @@
       <div class="">
         {{selectID}}
       </div>
-      <button class="p-2 bg-white m-2" @click="initScene">Init Scene</button>
-      <button class="p-2 bg-white m-2" @click="destroyScene">Destroy Scene</button>
+      <button class="p-2 bg-white m-2 bg-yellow-300" v-if="!this.scene" @click="initScene">Init Scene</button>
+      <button class="p-2 bg-white m-2 bg-red-300" v-if="this.scene" @click="destroyScene">Destroy Scene</button>
     </div>
   </div>
 </template>
@@ -25,7 +25,8 @@ export default {
   data () {
     return {
       hoverID: '',
-      selectID: ''
+      selectID: '',
+      scene: {}
     }
   },
 
@@ -57,13 +58,14 @@ export default {
     destroyScene () {
       if (this.scene && this.scene.destroy) {
         this.scene.destroy()
+        this.scene=null
       }
     },
     onBuildingHover (target) {
-      console.log('calling onBuildingHover', target)
+      // console.log('vue component onBuildingHover', target)
     },
     onBuildingSelect (target) {
-      console.log('calling onBuildingSelect', target)
+      // console.log('vue component onBuildingSelect', target)
       if (target&&target.userData&&target.userData.building) {
         this.$router.push({ query: { building: target.userData.building }})
       } else {

@@ -40,9 +40,10 @@ class Scene {
     for (let i = 0; i < this.objects.length; i++) {
       let box = this.objects[i]
       if (buildingId && box.userData.building==buildingId) {
-        box.material.color.setHex( 0xff0000 );
+        box.material.color.setHex( 0xff0000 ); // make it red
+        this.hoverTarget=box // set internal reference the box that matches ID
       } else {
-        box.material.color.setHex( 0xffffff );
+        box.material.color.setHex( 0xffffff ); // make rest white
       }
     }
 
@@ -156,7 +157,7 @@ class Scene {
 
       for ( let i = 0; i < intersects.length; i ++ ) {
         if (intersects[ i ].object && intersects[ i ].object.material) {
-          intersects[ i ].object.material.color.setHex( Math.random() * 0xffffff );
+          intersects[ i ].object.material.color.setHex( Math.random() * 0xffffff ); // set a random color so we know its constantly updating
         }
       }
     }
