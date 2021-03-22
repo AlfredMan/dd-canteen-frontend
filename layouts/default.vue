@@ -51,7 +51,7 @@ import AppTransition from '../components/AppTransition.vue'
 import AppNewsletter from '../components/AppNewsletter.vue'
 import AppSales from '../components/AppSales.vue'
 import AppFivePound from '../components/AppFivePound.vue'
-import AppMap from '../components/map/Map.vue'
+// import AppMap from '../components/map/Map.vue'
 // import AppTool from '../components/AppTool.vue'
 import Cookies from '../components/Cookies.vue'
 
@@ -81,7 +81,7 @@ export default {
     AppTransition,
     AppNewsletter,
     AppSales,
-    AppMap,
+    // AppMap,
     // AppTool,
     Cookies,
     AppFivePound

@@ -1,4 +1,4 @@
-<template>
+<template lang="html">
   <section
   v-if="block"
   class="block-banner"
