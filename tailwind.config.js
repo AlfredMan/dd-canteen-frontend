@@ -5,18 +5,21 @@ module.exports = {
     extend: {
       colors: {
         green: {
+          DEFAULT: 'hsl(142, 61%, 50%)',
           default: 'hsl(142, 61%, 50%)',
           base: 'hsl(142, 61%, 50%)',
           darker: 'hsl(142, 61%, 47%)',
           lighter: 'hsl(142, 61%, 55%)'
         },
         orange: {
+          DEFAULT: 'hsl(11,100%,61%)',
           default: 'hsl(11,100%,61%)',
           base: 'hsl(11,100%,61%)',
           darker: 'hsl(11,100%,58%)',
           lighter: 'hsl(11,100%,64%)'
         },
         yellow: {
+          DEFAULT: 'hsl(54, 100%, 50%)',
           default: 'hsl(54, 100%, 50%)',
           base: 'hsl(54, 100%, 50%)',
           darker: 'hsl(54, 71%, 50%)',
@@ -25,7 +28,10 @@ module.exports = {
       }
     },
     screens: {
-      'mobile': {'min': '0px', 'max': '640px'},
+      'mobile': {
+        'min': '0px',
+        'max': '640px '
+      },
 
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
@@ -39,10 +45,15 @@ module.exports = {
       'xl': '1280px',
       // => @media (min-width: 1280px) { ... }
 
-      '2xl': '1440px',
+      '2xl': '1440px'
       // => @media (min-width: 1280px) { ... }
     }
   },
+
+  purge: [
+    './public/**/*.html',
+    './src/**/*.{js,jsx,ts,tsx,vue}',
+  ],
 
   // purge: {
   //   // enabled: process.env.NODE_ENV === 'production',

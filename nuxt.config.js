@@ -75,7 +75,7 @@ export default {
       '~/assets/fonts/fonts.css'
     ],
     scss: [
-      '~/assets/styles/tailwind.scss',      
+      '~/assets/styles/tailwind.scss',
       '~/assets/styles/custom.scss',
       '~/node_modules/bootstrap/scss/_functions.scss',
       '~/node_modules/bootstrap/scss/_variables.scss',
@@ -245,6 +245,14 @@ export default {
     '@nuxtjs/google-gtag',
     '@nuxtjs/style-resources'
   ],
+
+  tailwindcss: {
+    cssPath: '~/assets/css/tailwind.css',
+    configPath: 'tailwind.config.js',
+    jit: true,
+    exposeConfig: false,
+    config: {}
+  },
 
   'google-gtag': {
     id: 'GTM-5PF87Z8',
