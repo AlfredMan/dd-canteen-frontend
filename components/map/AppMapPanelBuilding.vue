@@ -85,8 +85,8 @@ export default {
     }
   },
   computed: {
-    slug () {
-      return this.$route.query.building
+    buildingSlug () {
+      return this.$route.params.building || this.$route.query.building // get URL param
     },
     allSpaces () {
       return this.$store.state.spaces
@@ -98,10 +98,10 @@ export default {
       return this.$store.state.buildings
     },
     building () {
-      return this.$store.getters.getBuildingBySlug(this.slug)
+      return this.$store.getters.getBuildingBySlug(this.buildingSlug)
     },
     allSpacesByBuilding () {
-      return this.$store.getters.getSpacesByBuilding(this.slug)
+      return this.$store.getters.getSpacesByBuilding(this.buildingSlug)
     },
   }
 }

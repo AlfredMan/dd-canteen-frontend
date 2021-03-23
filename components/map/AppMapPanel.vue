@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     buildingSlug () {
-      return this.$route.query.building
+      return this.$route.params.building || this.$route.query.building
     },
     building () {
       return this.$route.query.building && this.$store.getters.getBuildingBySlug(this.buildingSlug)
@@ -26,8 +26,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.app-map-panel {
-  @apply fixed top-0 left-0 bottom-0 overflow-y-auto w-96 p-4;
-  z-index: 999;
-}
+// .app-map-panel {
+//   @apply fixed top-0 left-0 bottom-0 overflow-y-auto w-96 p-4;
+//   z-index: 999;
+// }
 </style>

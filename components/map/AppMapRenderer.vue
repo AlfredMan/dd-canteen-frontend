@@ -5,7 +5,7 @@
       <!-- WebGL goes here -->
     </div>
 
-    <div class="helpers fixed z-50 right-0 top-0 p-0">
+    <div class="helpers absolute z-10 right-0 top-0 p-0">
       <div class="">
         {{hoverID}}
       </div>
@@ -83,9 +83,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.app-map-renderer {
-  @apply fixed inset-0 pl-96
-}
+// .app-map-renderer {
+//   @apply fixed inset-0 pl-96
+// }
 .app-map-scene {
   @apply w-full h-full bg-gray-100
 }

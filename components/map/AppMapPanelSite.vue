@@ -87,15 +87,6 @@
           v-for="(building, index) in filteredBuildings"
           :key="building.sys.id">
 
-            <!-- <lazy-image
-            class="transition-source"
-            :src="building.fields.thumbnailImageAsset[0].fields.file.url"
-            :w="1000"
-            :h="1000"
-            :custom="'fit=thumb&f=center'"
-            >
-            </lazy-image> -->
-
             <nuxt-link
             :to="{ query: {
               building: building.fields.title,
@@ -105,26 +96,11 @@
               <span class="inline-block font-medium text-green text-xl">{{building.fields.architecture[0].fields.title}}</span>
             </nuxt-link>
 
-            <!-- <div>{{building.fields.shortDescription}}</div> -->
-
-            <!-- <div class="flex my-2 monospace">
-              <div class="mr-3">Sqft {{numberWithCommas(building.fields.minSize)}}–{{numberWithCommas(building.fields.maxSize)}}</div>
-            </div>
-
-            <div class="tags mt-4">
-              <div class="tag tag-sm tag-display" v-for="spaceType in building.fields.spaceType" :key="spaceType.sys.id">
-                {{spaceType.fields.title}}
-              </div>
-            </div> -->
-
           </div>
-
-          <!-- <div class="px-2 pb-5" v-if="!filteredBuildings || filteredBuildings.length < 1">
-            <h4 class="my-5" style="opacity:0.5">No matching work space</h4>
-          </div> -->
 
         </div>
       </div>
+
       <!-- <h4>Welcome to the Design District. London’s new work space for the creative industries. Opening autumn 2020.</h4> -->
       <!-- <div class="tags mt-4">
         <div class="tag">
