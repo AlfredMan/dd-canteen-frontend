@@ -2,8 +2,8 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
-// import { PMREMGenerator } from "three/examples/jsm/loaders/PMREMGenerator.js";
-// import { PMREMGenerator } from "three/src/extras/PMREMGenerator.js";
+import _ from "lodash";
+// import { Reflector } from "three/examples/js/objects/Reflector.js";
 
 const MY_CONST = 2;
 
@@ -22,7 +22,8 @@ class Scene {
     this.width = rootEl.clientWidth;
     this.height = rootEl.clientHeight;
 
-    this.background = "#0000ff";
+    // this.background = "#0000ff";
+    this.background = "#ffffff";
 
     this.objects = [];
     this.rayTarget = [];
@@ -34,6 +35,13 @@ class Scene {
       x: 25,
       y: 30,
       z: 25
+    };
+    this.light = {
+      lightProbeIntensity: 1.0,
+      directionalLightIntensity: 2,
+      directionalLightIntensity2: 0.5,
+      spotLightIntensity: 1,
+      envMapIntensity: 1
     };
 
     this.init();
@@ -74,6 +82,7 @@ class Scene {
   }
 
   init() {
+    const self = this;
     this.initScene();
     this.initLights();
     this.initCamera();
@@ -82,8 +91,11 @@ class Scene {
     this.initRaycaster();
 
     this.textureCube = this.initTextureCube();
+    this.initEnv();
+    // this.initMirrorGround();
     this.initMapObjects();
 
+    this.throttledMouseMove = _.throttle(self.onDocumentMouseMove, 500);
     this.root.appendChild(this.canvas);
   }
 
@@ -93,13 +105,40 @@ class Scene {
   }
 
   initLights() {
-    const hlights = new THREE.AmbientLight("#666666");
-    const directionalLight = new THREE.DirectionalLight("#dfebff", 1);
-    directionalLight.position.set(0, 10, 10);
-    directionalLight.position.multiplyScalar(1.3);
+    // const hlights = new THREE.AmbientLight("#666666");
+    // const directionalLight = new THREE.DirectionalLight("#dfebff", 1);
+    // directionalLight.position.set(0, 10, 10);
+    // directionalLight.position.multiplyScalar(1.3);
 
-    this.scene.add(hlights);
+    // this.scene.add(hlights);
+    // this.scene.add(directionalLight);
+
+    const directionalLight = new THREE.DirectionalLight(
+      0xffffff,
+      this.light.directionalLightIntensity
+    );
+    directionalLight.position.x = -10;
+    directionalLight.position.y = 2;
+    directionalLight.position.z = -10;
     this.scene.add(directionalLight);
+
+    const directionalLight2 = new THREE.DirectionalLight(
+      0xeeeeff,
+      this.light.directionalLightIntensity2
+    );
+    directionalLight2.position.x = 10;
+    directionalLight2.position.y = 2;
+    directionalLight2.position.z = -10;
+    this.scene.add(directionalLight2);
+
+    const spotLight = new THREE.SpotLight(
+      0xffffee,
+      this.light.spotLightIntensity
+    );
+    spotLight.position.x = 5;
+    spotLight.position.y = -2;
+    spotLight.position.z = 5;
+    this.scene.add(spotLight);
   }
 
   initCamera() {
@@ -167,107 +206,115 @@ class Scene {
     textureCube.encoding = THREE.sRGBEncoding;
     return textureCube;
   }
+  // Jason: Why this doesn't seems to do anything?
+  initEnv() {
+    const self = this;
+    const pmremGenerator = new THREE.PMREMGenerator(this.renderer);
+    pmremGenerator.compileEquirectangularShader();
+    new THREE.TextureLoader().load("/model/gradient5.png", function(texture) {
+      const envMap = pmremGenerator.fromEquirectangular(texture).texture;
+
+      // scene.background = envMap;
+      self.scene.environment = envMap;
+
+      texture.dispose();
+      pmremGenerator.dispose();
+    });
+  }
+  // Jason: What is mirrorFromGeom?
+  // initMirrorGround() {
+  //   const self = this;
+  //   let mirrorFromGeom = function(child) {
+  //     // let geometry = new THREE.CircleGeometry( 2, 64 );
+  //     let geometry = child.geometry;
+  //     const groundMirror = new THREE.Reflector(geometry, {
+  //       // const groundMirror = new Reflector(geometry, {
+  //       // clipBias: 0.003,
+  //       textureWidth: WIDTH * window.devicePixelRatio,
+  //       textureHeight: HEIGHT * window.devicePixelRatio,
+  //       color: 0x777777
+  //     });
+  //     groundMirror.position.x = child.position.x;
+  //     groundMirror.position.y = child.position.y;
+  //     groundMirror.position.z = child.position.z;
+
+  //     groundMirror.position.y = 0.1;
+  //     // groundMirror.rotateX( - Math.PI / 2 );
+  //     self.scene.add(groundMirror);
+  //   };
+  // }
   initMapObjects() {
-    let self = this;
+    const self = this;
 
-    // const pmremGenerator = new THREE.PMREMGenerator(renderer);
-    // pmremGenerator.compileEquirectangularShader();
-    // new THREE.TextureLoader().load("/model/gradient5.png", function(texture) {
-    //   const envMap = pmremGenerator.fromEquirectangular(texture).texture;
+    // render();
 
-    //   // scene.background = envMap;
-    //   scene.environment = envMap;
+    // model
 
-    //   texture.dispose();
-    //   pmremGenerator.dispose();
+    const model = "./model/DD-all-baked-tex-11-compressed.draco.gltf";
+    const loader = new GLTFLoader();
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("/draco/");
+    loader.setDRACOLoader(dracoLoader);
 
-      // render();
+    // # todo: remove this if successful
+    // const loader = new THREE.GLTFLoader()
+    loader
+      // .setPath('models/gltf/DamagedHelmet/glTF/')
+      .load(model, function(gltf) {
+        let target;
 
-      // model
-      // let mirrorFromGeom = function(child) {
-      //   // let geometry = new THREE.CircleGeometry( 2, 64 );
-      //   let geometry = child.geometry;
-      //   const groundMirror = new THREE.Reflector(geometry, {
-      //     // clipBias: 0.003,
-      //     textureWidth: WIDTH * window.devicePixelRatio,
-      //     textureHeight: HEIGHT * window.devicePixelRatio,
-      //     color: 0x777777
-      //   });
-      //   groundMirror.position.x = child.position.x;
-      //   groundMirror.position.y = child.position.y;
-      //   groundMirror.position.z = child.position.z;
-
-      //   groundMirror.position.y = 0.1;
-      //   // groundMirror.rotateX( - Math.PI / 2 );
-      //   scene.add(groundMirror);
-      // };
-
-      // dummy geom for testing
-      const model = "./model/DD-all-baked-tex-11-compressed.draco.gltf";
-      const loader = new GLTFLoader();
-      const dracoLoader = new DRACOLoader();
-      dracoLoader.setDecoderPath("/draco/");
-      loader.setDRACOLoader(dracoLoader);
-
-      // # todo: remove this if successful
-      // const loader = new THREE.GLTFLoader()
-      loader
-        // .setPath('models/gltf/DamagedHelmet/glTF/')
-        .load(model, function(gltf) {
-          let target;
-
-          gltf.scene.traverse(function(child) {
-            console.log(child.name);
-            // if (child.name.indexOf('B1Glass')>=0) {
-            // 	child.material.opacity=0.3
-            // 	child.material.roughness=0.1
-            // 	child.material.metalness=0.9
-            // }
-            if (child.isMesh) {
-              if (child.name == "GROUND1") {
-                target = child;
-              }
-              if (child.name.indexOf("A1Steel") >= 0) {
-                // mirrorFromGeom(child)
-                // child.material.envMap=textureCube
-                // child.material.roughness=0.1
-                // child.material.metalness=1
-              }
-              if (child.name == "A2" || child.name == "B2") {
-                child.material.roughness = 0.1;
-                child.material.metalness = 0.8;
-              }
-              if (child.name.indexOf("Glass") >= 0) {
-                console.log("C4Glass", child);
-                child.material.opacity = 0.5;
-                child.material.envMap = self.textureCube;
-                child.material.roughness = 0;
-                child.material.metalness = 0;
-                child.material.color.set(0xeeeeff);
-                child.material.side = THREE.doubleSide;
-              }
-              // child.material.side = THREE.doubleSide
-              // child.material.roughness=1
-              // child.material.metalness=1
-              // child.envMap = envMap
-              // child.material.castShadow = true
-              // child.material.receiveShadow = true
-              // TOFIX RoughnessMipmapper seems to be broken with WebGL 2.0
-              // roughnessMipmapper.generateMipmaps( child.material );
-
-              self.rayTarget.push(child);
-              self.objects.push(child);
+        gltf.scene.traverse(function(child) {
+          // console.log(child.name);
+          // if (child.name.indexOf('B1Glass')>=0) {
+          // 	child.material.opacity=0.3
+          // 	child.material.roughness=0.1
+          // 	child.material.metalness=0.9
+          // }
+          if (child.isMesh) {
+            if (child.name == "GROUND1") {
+              target = child;
             }
-          });
+            if (child.name.indexOf("A1Steel") >= 0) {
+              // mirrorFromGeom(child)
+              // child.material.envMap=textureCube
+              // child.material.roughness=0.1
+              // child.material.metalness=1
+            }
+            if (child.name == "A2" || child.name == "B2") {
+              child.material.roughness = 0.1;
+              child.material.metalness = 0.8;
+            }
+            if (child.name.indexOf("Glass") >= 0) {
+              // console.log("C4Glass", child);
+              child.material.opacity = 0.5;
+              child.material.envMap = self.textureCube;
+              child.material.roughness = 0;
+              child.material.metalness = 0;
+              child.material.color.set(0xeeeeff);
+              child.material.side = THREE.DoubleSide;
+            }
+            // child.material.side = THREE.doubleSide
+            // child.material.roughness=1
+            // child.material.metalness=1
+            // child.envMap = envMap
+            // child.material.castShadow = true
+            // child.material.receiveShadow = true
+            // TOFIX RoughnessMipmapper seems to be broken with WebGL 2.0
+            // roughnessMipmapper.generateMipmaps( child.material );
 
-          // gltf.scene.position.x = 0.05
-          gltf.scene.translateX(-0.15);
-          gltf.scene.translateZ(0.4);
-
-          self.scene.add(gltf.scene);
+            self.rayTarget.push(child);
+            self.objects.push(child);
+          }
         });
 
-      // dummy geom for testing
+        // gltf.scene.position.x = 0.05
+        gltf.scene.translateX(-0.15);
+        gltf.scene.translateZ(0.4);
+
+        self.scene.add(gltf.scene);
+      });
+
+    // dummy geom for testing
     // });
   }
 
@@ -277,19 +324,30 @@ class Scene {
   }
 
   ray() {
-    this.raycaster.setFromCamera(this.mouse, this.camera);
-    const intersects = this.raycaster.intersectObjects([...this.objects], true);
+    const self = this;
+    // _.debounce(
+    //   function() {
+    self.raycaster.setFromCamera(self.mouse, self.camera);
+    const intersects = self.raycaster.intersectObjects([...self.objects], true);
 
     if (intersects.length > 0) {
-      this.hoverTarget = intersects[0].object;
-      this.onHoverCallback(this.hoverTarget);
+      self.hoverTarget = intersects[0].object;
+      self.onHoverCallback(self.hoverTarget);
 
-      for (let i = 0; i < intersects.length; i++) {
-        if (intersects[i].object && intersects[i].object.material) {
-          // intersects[i].object.material.color.setHex(Math.random() * 0xffffff); // set a random color so we know its constantly updating
-        }
-      }
+      // for (let i = 0; i < intersects.length; i++) {
+      //   if (intersects[i].object && intersects[i].object.material) {
+      //     // console.log(intersects[i].object.name);
+      //     // intersects[i].object.material.color.setHex(Math.random() * 0xffffff); // set a random color so we know its constantly updating
+      //   }
+      // }
     }
+    // },
+    // 1000,
+    // {
+    //   leading: true
+    // }
+    // );
+
     // if (intersects.length > 0) {
     //   console.log(intersects[0].object.userData&&intersects[0].object.userData.building)
     // } else {
@@ -302,8 +360,9 @@ class Scene {
   }
 
   update() {
+    const self = this;
     this.raf = requestAnimationFrame(() => this.update());
-    this.ray();
+
     this.orbitControls.update();
     this.render();
   }
@@ -326,6 +385,8 @@ class Scene {
     let y = event.offsetY || event.clientY;
     this.mouse.x = (x / this.width) * 2 - 1;
     this.mouse.y = -(y / this.height) * 2 + 1;
+
+    this.ray();
   };
 
   onDocumentMouseDown = event => {
@@ -340,7 +401,11 @@ class Scene {
 
   bindEvents() {
     window.addEventListener("resize", this.onResize);
-    this.canvas.addEventListener("mousemove", this.onDocumentMouseMove, false);
+    this.canvas.addEventListener(
+      "mousemove",
+      this.throttledMouseMove,
+      false
+    );
     this.canvas.addEventListener("mousedown", this.onDocumentMouseDown, false);
   }
 
@@ -348,7 +413,8 @@ class Scene {
     window.removeEventListener("resize", this.onResize);
     this.canvas.removeEventListener(
       "mousemove",
-      this.onDocumentMouseMove,
+      // this.onDocumentMouseMove,
+      this.throttledMouseMove,
       false
     );
     this.canvas.removeEventListener(
