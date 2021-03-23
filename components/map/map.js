@@ -58,11 +58,12 @@ class Scene {
 
     for (let i = 0; i < this.objects.length; i++) {
       let box = this.objects[i];
-      if (buildingId && box.userData.building == buildingId) {
-        box.material.color.setHex(0xff0000); // make it red
+      // if (buildingId && box.userData.building == buildingId) {
+      if (buildingId && box.userData.name == buildingId) {
+        // box.material.color.setHex(0xff0000); // make it red
         this.hoverTarget = box; // set internal reference the box that matches ID
       } else {
-        box.material.color.setHex(0xffffff); // make rest white
+        // box.material.color.setHex(0xffffff); // make rest white
       }
     }
 
@@ -369,9 +370,7 @@ class Scene {
   }
 
   update() {
-    const self = this;
     this.raf = requestAnimationFrame(() => this.update());
-
     this.orbitControls.update();
     this.render();
   }
@@ -396,6 +395,7 @@ class Scene {
     this.mouse.y = -(y / this.height) * 2 + 1;
 
     this.ray();
+
   };
 
   onDocumentMouseDown = event => {
