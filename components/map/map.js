@@ -308,14 +308,22 @@ class Scene {
         });
 
         // gltf.scene.position.x = 0.05
-        gltf.scene.translateX(-0.15);
-        gltf.scene.translateZ(0.4);
+        // gltf.scene.translateX(-0.15);
+        // gltf.scene.translateZ(0.4);
+
+        self.autoCenter(gltf.scene)
 
         self.scene.add(gltf.scene);
       });
 
     // dummy geom for testing
     // });
+  }
+
+  autoCenter(obj){
+    const box = new THREE.Box3().setFromObject( obj );
+    box.center( obj.position ); // this re-sets the mesh position
+    obj.position.multiplyScalar( - 1 )
   }
 
   initRaycaster() {
