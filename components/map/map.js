@@ -1,3 +1,4 @@
+// https://localhost:3000/map?building=food-space
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
@@ -322,7 +323,7 @@ class Scene {
 
   autoCenter(obj){
     const box = new THREE.Box3().setFromObject( obj );
-    box.center( obj.position ); // this re-sets the mesh position
+    box.getCenter( obj.position ); // this re-sets the mesh position
     obj.position.multiplyScalar( - 1 )
   }
 
