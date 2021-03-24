@@ -37,7 +37,7 @@ class Scene {
       y: 30,
       z: 25
     };
-    this.light = {
+    this.lightSetting = {
       lightProbeIntensity: 1.0,
       directionalLightIntensity: 2,
       directionalLightIntensity2: 0.5,
@@ -117,7 +117,7 @@ class Scene {
 
     const directionalLight = new THREE.DirectionalLight(
       0xffffff,
-      this.light.directionalLightIntensity
+      this.lightSetting.directionalLightIntensity
     );
     directionalLight.position.x = -10;
     directionalLight.position.y = 2;
@@ -126,7 +126,7 @@ class Scene {
 
     const directionalLight2 = new THREE.DirectionalLight(
       0xeeeeff,
-      this.light.directionalLightIntensity2
+      this.lightSetting.directionalLightIntensity2
     );
     directionalLight2.position.x = 10;
     directionalLight2.position.y = 2;
@@ -135,7 +135,7 @@ class Scene {
 
     const spotLight = new THREE.SpotLight(
       0xffffee,
-      this.light.spotLightIntensity
+      this.lightSetting.spotLightIntensity
     );
     spotLight.position.x = 5;
     spotLight.position.y = -2;
@@ -153,9 +153,28 @@ class Scene {
   }
 
   initRenderer() {
-    this.renderer = new THREE.WebGLRenderer({ antialias: true });
-    this.renderer.setSize(this.width, this.height);
-    this.renderer.setClearColor(this.background, 1);
+    // this.renderer = new THREE.WebGLRenderer({ antialias: true });
+    // this.renderer.setSize(this.width, this.height);
+    // this.renderer.setClearColor(this.background, 1);
+
+
+
+
+    this.renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true,
+    });
+    let pixelRatio = window.devicePixelRatio || 2;
+    this.renderer.setPixelRatio(pixelRatio);
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
+
+    // // this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    this.renderer.toneMappingExposure = 1;
+    this.renderer.outputEncoding = THREE.sRGBEncoding;
+    this.renderer.gammaOutput = true;
+    // this.renderer.gammaFactor = 2.2
+
+
 
     this.canvas = this.renderer.domElement;
   }
