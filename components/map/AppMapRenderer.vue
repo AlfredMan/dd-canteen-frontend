@@ -1,6 +1,10 @@
 <template lang="html">
   <div class="app-map-renderer">
-    <div class="app-map-scene" ref="container">
+    <div
+      class="app-map-scene"
+      ref="container"
+      v-bind:style="{ cursor: selectedCursor }"
+    >
       <!-- WebGL goes here -->
     </div>
 
@@ -30,13 +34,16 @@
 </template>
 
 <script>
+import { getInteractiveBuildingIndexName } from "./util.js";
+// import getInteractiveBuildingIndexName from "./util.js";
 import SceneConstructor from "./Map.js";
 export default {
   data() {
     return {
       hoverID: "",
       selectID: "",
-      scene: {}
+      scene: {},
+      selectedCursor: "default"
     };
   },
 
@@ -72,29 +79,45 @@ export default {
       }
     },
     onBuildingHover(target) {
-      const buildingIndexName = this.getBuildingIndexName(target);
-      console.log(target.name, buildingIndexName);
-      // if (target && target.userData && target.userData.building) {
+      const buildingIndexName = getInteractiveBuildingIndexName(target);
+      if (buildingIndexName) {
+        console.log(`Hovering ${buildingIndexName}`);
+        this.selectedCursor = "pointer";
+      } else {
+        this.selectedCursor = "default";
+      }
+    },
+    // getInteractiveBuildingIndexName(obj) {
+    //   if (
+    //     !obj ||
+    //     !obj.name ||
+    //     obj.name === "ground" ||
+    //     obj.name === "GROUND1"
+    //   ) {
+    //     return null;
+    //   }
+    //   if (obj.name.startsWith("C4")) {
+    //     return "food-space";
+    //   }
+    //   return obj.name.slice(0, 2);
+    // },
+
+    // onBuildingSelect(target) {
+    //   // console.log('vue component onBuildingSelect', target)
+    //   if (target && target.userData && target.userData.building) {
+    //     this.$router.push({ query: { building: target.userData.building } });
+    //   } else {
+    //     this.$router.push({ query: { building: null } });
+    //   }
+    // },
+    onBuildingSelect(target) {
+      const buildingIndexName = getInteractiveBuildingIndexName(target);
+      if (!buildingIndexName) {
+        return;
+      }
+      console.log(target?.name, buildingIndexName);
       if (buildingIndexName) {
         this.$router.push({ query: { building: buildingIndexName } });
-      } else {
-        this.$router.push({ query: { building: null } });
-      }
-    },
-    getBuildingIndexName(obj) {
-      if (!obj || !obj.name || obj.name === "ground") {
-        return null;
-      }
-      if (obj.name === "C4Glass") {
-        return "food-space";
-      }
-      return obj.name.slice(0, 2);
-    },
-
-    onBuildingSelect(target) {
-      // console.log('vue component onBuildingSelect', target)
-      if (target && target.userData && target.userData.building) {
-        this.$router.push({ query: { building: target.userData.building } });
       } else {
         this.$router.push({ query: { building: null } });
       }

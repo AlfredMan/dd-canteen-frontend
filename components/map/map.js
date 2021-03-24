@@ -1,8 +1,14 @@
 // https://localhost:3000/map?building=food-space
+import gsap from "gsap";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
+import {
+  getInteractiveBuildingIndexName,
+  getBuildingIndexName
+} from "./util.js";
+
 import _ from "lodash";
 // import { Reflector } from "three/examples/js/objects/Reflector.js";
 
@@ -14,10 +20,12 @@ class Scene {
 
     this.canvas = document.createElement("canvas");
 
+    this.isDragging = false;
     this.onHoverCallback = onHover;
     this.onSelectCallback = onSelect;
 
     this.hoverTarget = null;
+    this.selectedTarget = null;
 
     this.root = rootEl;
     this.width = rootEl.clientWidth;
@@ -26,17 +34,51 @@ class Scene {
     // this.background = "#0000ff";
     this.background = "#ffffff";
 
-    this.objects = [];
+    // this.objects = [];
+    this.objectDict = {};
+    this.uuidToIndexNameDict = {};
+    this.parentObjectDict = {};
     this.rayTarget = [];
     this.textureCube = null;
 
     this.isAddObjectMode = false;
 
-    this.cameraDefaultPosition = {
+    this.defaultCameraFov = 10;
+    this.defaultLookAtPosition = {
+      x: 0,
+      y: 0,
+      z: 0
+    };
+    this.defaultLookAt = new THREE.Vector3(
+      this.defaultLookAtPosition.x,
+      this.defaultLookAtPosition.y,
+      this.defaultLookAtPosition.z
+    );
+    this.defaultOrbitSetting = {
+      // maxPolarAngle: Math.PI * 0.45,
+      target: this.defaultLookAt,
+
+      enableDamping: true,
+      dampingFactor: 0.05,
+      screenSpacePanning: false,
+
+      // minPolarAngle: Math.PI * 0.5 - 0.5,
+      // maxPolarAngle: Math.PI * 0.5 - 0.5,
+      // minPolarAngle: Math.PI * 0.5 - 0.1,
+      // maxPolarAngle: Math.PI * 0.5 - 0.1,
+
+      minPolarAngle: -Math.PI / 2,
+      maxPolarAngle: Math.PI / 2,
+
+      maxDistance: 10,
+      minDistance: 3
+    };
+    this.defaultCameraPosition = {
       x: 25,
       y: 30,
       z: 25
     };
+    // this.defaultLookAt = new THREE.Vector3(0, 10, 0);
     this.lightSetting = {
       lightProbeIntensity: 1.0,
       directionalLightIntensity: 2,
@@ -52,22 +94,298 @@ class Scene {
 
   triggerUpdate(options) {
     // dummy proof of concept
-    let buildingId = (options && options.id) || "";
-
+    // let buildingId = (options && options.id) || "";
     console.log("triggerUpdate", options);
-
-    for (let i = 0; i < this.objects.length; i++) {
-      let box = this.objects[i];
-      // if (buildingId && box.userData.building == buildingId) {
-      if (buildingId && box.userData.name == buildingId) {
-        // box.material.color.setHex(0xff0000); // make it red
-        this.hoverTarget = box; // set internal reference the box that matches ID
-      } else {
-        // box.material.color.setHex(0xffffff); // make rest white
-      }
+    if (!!options && Object.keys(options).includes("id")) {
+      let buildingId = options.id ?? "";
+      this.triggerUpdateFromSelectedId(buildingId);
     }
 
     // dummy proof of concept
+  }
+  triggerUpdateFromSelectedId(buildingId) {
+    // for (let i = 0; i < this.objects.length; i++) {
+    //   let object = this.objects[i];
+    //   // if (buildingId && object.userData.building == buildingId) {
+    //   const objectIndexName = getInteractiveBuildingIndexName(object);
+    //   if (buildingId && objectIndexName === buildingId) {
+    //     object.material.color.setHex(0xff0000); // make it red
+    //     this.hoverTarget = object; // set internal reference the object that matches ID
+    //     this.selectedTarget = this.hoverTarget;
+
+    //   } else {
+    //     // object.material.color.setHex(0xffffff); // make rest white
+    //   }
+    // }
+
+    if (!buildingId) {
+      this.deselectAllBuilindgs();
+      return;
+    }
+    // this.selectedTarget = this.objects.find(
+    //   object => getInteractiveBuildingIndexName(object) === buildingId
+    // );
+    this.selectedTarget = this.objectDict[buildingId];
+
+    this.hoverTarget = this.selectedTarget;
+    if (this.selectedTarget) {
+      const selectedBuildingRootObject = this.parentObjectDict[buildingId];
+
+      if (selectedBuildingRootObject) {
+        Object.entries(this.parentObjectDict).forEach(([k, building]) => {
+          if (k === buildingId) {
+            building.traverse(node => {
+              this.setMaterialBasedOnSelectedState({
+                node,
+                selected: "highlight"
+              });
+            });
+          } else {
+            building.traverse(node => {
+              this.setMaterialBasedOnSelectedState({
+                node,
+                selected: "dim"
+              });
+            });
+          }
+        });
+
+        this.zoomToBuilding({
+          node: selectedBuildingRootObject,
+          zoomScale: 0.5
+        });
+
+        // this.orbitControls.update();
+      }
+      // this.selectedTarget?.material.color.setHex(0xff0000); // make it red
+    } else {
+      this.deselectAllBuilindgs();
+      // this.camera.lookAt(this.defaultLookAt);
+    }
+  }
+
+  // //zoomScale is (0=>1), 0.1 is more zoom in, 1 is capped at defaultOrbitSetting.maxDisctance
+  // zoomToBuilding({ node, zoomScale, y = 0 }) {
+  //   const newX = node.getWorldPosition(new THREE.Vector3()).x;
+  //   const newZ = node.getWorldPosition(new THREE.Vector3()).z;
+  //   this.orbitControls.target.set(newX, y, newZ);
+  //   this.orbitControls.maxDistance =
+  //     this.defaultOrbitSetting.maxDistance * zoomScale;
+  //   this.orbitControls.minDistance =
+  //     this.defaultOrbitSetting.maxDistance * zoomScale;
+  // }
+  //zoomScale is (0=>1), 0.1 is more zoom in, 1 is capped at defaultOrbitSetting.maxDisctance
+  zoomToBuilding({ node, zoomScale, y = 0 }) {
+    // const newX = node.getWorldPosition(new THREE.Vector3()).x;
+    // const newZ = node.getWorldPosition(new THREE.Vector3()).z;
+    // this.orbitControls.target.set(newX, y, newZ);
+    // this.orbitControls.maxDistance =
+    //   this.defaultOrbitSetting.maxDistance * zoomScale;
+    // this.orbitControls.minDistance =
+    //   this.defaultOrbitSetting.maxDistance * zoomScale;
+    let self = this;
+    const tl = gsap.timeline();
+
+    const currentDistance = self.orbitControls.target.distanceTo(
+      self.orbitControls.object.position
+    );
+    const orbitAnimatedValue = {
+      limit: currentDistance,
+      minPolarAngle: this.defaultOrbitSetting.minPolarAngle,
+      maxPolarAngle: this.defaultOrbitSetting.maxPolarAngle
+    };
+    const orbitTo = {
+      limit: this.defaultOrbitSetting.maxDistance * zoomScale,
+      minPolarAngle: Math.PI * 0.5 - 0.1,
+      maxPolarAngle: Math.PI * 0.5 - 0.1
+    };
+
+    const positionAnimatedValue = {
+      x: self.defaultLookAtPosition.x,
+      y: self.defaultLookAtPosition.y,
+      z: self.defaultLookAtPosition.z
+    };
+    const positionTo = {
+      x: node.getWorldPosition(new THREE.Vector3()).x,
+      y: node.getWorldPosition(new THREE.Vector3()).y,
+      z: node.getWorldPosition(new THREE.Vector3()).z
+    };
+
+    tl.to(orbitAnimatedValue, {
+      limit: orbitTo.limit,
+      minPolarAngle: orbitTo.minPolarAngle,
+      maxPolarAngle: orbitTo.maxPolarAngle,
+      duration: 0.5,
+      ease: "power2.inOut",
+      onUpdate: () => {
+        if (self.orbitControls) {
+          self.orbitControls.minDistance = orbitAnimatedValue.limit;
+          self.orbitControls.maxDistance = orbitAnimatedValue.limit;
+          // self.orbitControls.minPolarAngle = orbitAnimatedValue.minPolarAngle;
+          // self.orbitControls.maxPolarAngle = orbitAnimatedValue.maxPolarAngle;
+          // self.orbitControls.enablePan = false;
+          self.orbitControls.update();
+        }
+      }
+    }).to(
+      positionAnimatedValue,
+      {
+        x: positionTo.x,
+        y: positionTo.y,
+        z: positionTo.z,
+        duration: 0.5,
+        ease: "power2.inOut",
+        onUpdate: () => {
+          if (self.orbitControls) {
+            self.orbitControls.target.set(
+              positionAnimatedValue.x,
+              positionAnimatedValue.y,
+              positionAnimatedValue.z
+            );
+            // self.orbitControls.minPolarAngle = Math.PI * 0.5 - 0.1;
+            // self.orbitControls.maxPolarAngle = Math.PI * 0.5 - 0.1;
+            // self.orbitControls.enablePan = false;
+            self.orbitControls.update();
+          }
+        }
+      },
+      0
+    );
+  }
+  resetOrbit() {
+    let self = this;
+    const tl = gsap.timeline({
+      onComplete: function() {
+        if (self.orbitControls) {
+          self.orbitControls.minDistance = self.defaultOrbitSetting.minDistance;
+          self.orbitControls.maxDistance = self.defaultOrbitSetting.maxDistance;
+          self.orbitControls.update();
+        }
+      }
+    });
+
+    const currentDistance = self.orbitControls.target.distanceTo(
+      self.orbitControls.object.position
+    );
+    const orbitAnimatedValue = {
+      limit: currentDistance,
+      minPolarAngle: self.orbitControls.minPolarAngle,
+      maxPolarAngle: self.orbitControls.maxPolarAngle
+    };
+    const orbitTo = {
+      limit: self.defaultOrbitSetting.maxDistance,
+      minPolarAngle: self.defaultOrbitSetting.minPolarAngle,
+      maxPolarAngle: self.defaultOrbitSetting.maxPolarAngle
+    };
+
+    const positionAnimatedValue = {
+      x: self.orbitControls.target.x,
+      y: self.orbitControls.target.y,
+      z: self.orbitControls.target.z
+    };
+    const positionTo = {
+      x: self.defaultLookAtPosition.x,
+      y: self.defaultLookAtPosition.y,
+      z: self.defaultLookAtPosition.z
+    };
+
+    tl.to(orbitAnimatedValue, {
+      limit: orbitTo.limit,
+      minPolarAngle: orbitTo.minPolarAngle,
+      maxPolarAngle: orbitTo.maxPolarAngle,
+      duration: 0.5,
+      ease: "power2.inOut",
+      onUpdate: () => {
+        if (self.orbitControls) {
+          self.orbitControls.minDistance = orbitAnimatedValue.limit;
+          self.orbitControls.maxDistance = orbitAnimatedValue.limit;
+          // self.orbitControls.minPolarAngle = orbitAnimatedValue.minPolarAngle;
+          // self.orbitControls.maxPolarAngle = orbitAnimatedValue.maxPolarAngle;
+          // self.orbitControls.enablePan = false;
+          self.orbitControls.update();
+        }
+      }
+    }).to(
+      positionAnimatedValue,
+      {
+        x: positionTo.x,
+        y: positionTo.y,
+        z: positionTo.z,
+        duration: 0.5,
+        ease: "power2.inOut",
+        onUpdate: () => {
+          if (self.orbitControls) {
+            console.log(
+              positionAnimatedValue.x,
+              positionAnimatedValue.y,
+              positionAnimatedValue.z
+            );
+            self.orbitControls.target.set(
+              positionAnimatedValue.x,
+              positionAnimatedValue.y,
+              positionAnimatedValue.z
+            );
+            // self.orbitControls.minPolarAngle = Math.PI * 0.5 - 0.1;
+            // self.orbitControls.maxPolarAngle = Math.PI * 0.5 - 0.1;
+            // self.orbitControls.enablePan = false;
+            self.orbitControls.update();
+          }
+        }
+      },
+      0
+    );
+  }
+
+  resetOrbit0() {
+    this.orbitControls.target = this.defaultLookAt;
+    this.orbitControls.minDistance = this.defaultOrbitSetting.maxDistance;
+    this.orbitControls.update();
+    Object.entries(this.defaultOrbitSetting).forEach(([k, v]) => {
+      this.orbitControls[k] = v;
+    });
+    this.orbitControls.update();
+  }
+  setMaterialBasedOnSelectedState({
+    node,
+    selected = "highlight" | "dim" | "default"
+  }) {
+    if (!node || !node.isMesh) {
+      return;
+    }
+    const material = node.material;
+    if (!material) {
+      return;
+    }
+    if (selected === "highlight" || selected === "default") {
+      material.opacity = 1;
+      // material.wireframe = false;
+      // // material.color.setHex(0xff0000);
+    } else {
+      material.opacity = 0.7;
+      // material.wireframe = true;
+      // // material.color.setHex(0xff0000);
+    }
+  }
+  deselectAllBuilindgs() {
+    // if (Object.values(this.parentObjectDict).length===0) {
+    //   return;
+    // }
+    Object.entries(this.parentObjectDict).forEach(([_, building]) => {
+      building.traverse(node => {
+        this.setMaterialBasedOnSelectedState({
+          node,
+          selected: "default"
+        });
+      });
+    });
+    // this.orbitControls.target = this.defaultLookAt;
+    // this.camera.fov = this.defaultCameraFov;
+    // this.orbitControls.maxDistance = this.defaultOrbitSetting.maxDistance;
+    // this.orbitControls.maxDistance = this.defaultOrbitSetting.maxDistance;
+    this.resetOrbit();
+
+    // this.update();
+    // this.camera.focus=
   }
 
   destroy() {
@@ -97,7 +415,7 @@ class Scene {
     // this.initMirrorGround();
     this.initMapObjects();
 
-    this.throttledMouseMove = _.throttle(self.onDocumentMouseMove, 500);
+    this.throttledMouseMove = _.throttle(self.onDocumentMouseMove, 200);
     this.root.appendChild(this.canvas);
   }
 
@@ -145,11 +463,16 @@ class Scene {
 
   initCamera() {
     const aspect = this.width / this.height;
-    this.camera = new THREE.PerspectiveCamera(10, aspect, 1, 1000);
-    this.camera.position.x = this.cameraDefaultPosition.x;
-    this.camera.position.z = this.cameraDefaultPosition.z;
-    this.camera.position.y = this.cameraDefaultPosition.y;
-    this.camera.lookAt(new THREE.Vector3(0, 10, 0));
+    this.camera = new THREE.PerspectiveCamera(
+      this.defaultCameraFov,
+      aspect,
+      1,
+      1000
+    );
+    this.camera.position.x = this.defaultCameraPosition.x;
+    this.camera.position.z = this.defaultCameraPosition.z;
+    this.camera.position.y = this.defaultCameraPosition.y;
+    // this.camera.lookAt(this.defaultLookAt);
   }
 
   initRenderer() {
@@ -157,24 +480,19 @@ class Scene {
     // this.renderer.setSize(this.width, this.height);
     // this.renderer.setClearColor(this.background, 1);
 
-
-
-
     this.renderer = new THREE.WebGLRenderer({
       antialias: true,
-      alpha: true,
+      alpha: true
     });
     let pixelRatio = window.devicePixelRatio || 2;
     this.renderer.setPixelRatio(pixelRatio);
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setSize(this.width, this.height);
 
     // // this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1;
     this.renderer.outputEncoding = THREE.sRGBEncoding;
     this.renderer.gammaOutput = true;
-    // this.renderer.gammaFactor = 2.2
-
-
+    // // this.renderer.gammaFactor = 2.2
 
     this.canvas = this.renderer.domElement;
   }
@@ -182,14 +500,18 @@ class Scene {
   initOrbitControls() {
     this.orbitControls = new OrbitControls(this.camera, this.canvas);
 
-    this.orbitControls.maxPolarAngle = Math.PI * 0.45;
+    Object.entries(this.defaultOrbitSetting).forEach(
+      ([k, v]) => (this.orbitControls[k] = v)
+    );
+    // this.orbitControls.maxPolarAngle = Math.PI * 0.45;
+    // this.orbitControls.target = this.defaultLookAt;
 
-    this.orbitControls.enableDamping = true;
-    this.orbitControls.dampingFactor = 0.05;
-    this.orbitControls.screenSpacePanning = false;
+    // this.orbitControls.enableDamping = true;
+    // this.orbitControls.dampingFactor = 0.05;
+    // this.orbitControls.screenSpacePanning = false;
 
-    this.orbitControls.maxDistance = 10; // 15;
-    this.orbitControls.minDistance = 3;
+    // this.orbitControls.maxDistance = 10; //15;
+    // this.orbitControls.minDistance = 3;
 
     this.orbitControls.update();
   }
@@ -285,6 +607,18 @@ class Scene {
         let target;
 
         gltf.scene.traverse(function(child) {
+          console.log(child);
+          // if child's parent isn't "Object3D" then its the root of the building object
+          if (child?.parent?.type !== "Object3D") {
+            const indexName = getBuildingIndexName(child);
+            if (indexName) {
+              self.uuidToIndexNameDict[child.uuid] = indexName;
+              self.parentObjectDict[indexName] = child;
+              console.log(
+                `Group ${child.name} has ${child.children.length} children`
+              );
+            }
+          }
           // console.log(child.name);
           // if (child.name.indexOf('B1Glass')>=0) {
           // 	child.material.opacity=0.3
@@ -324,15 +658,28 @@ class Scene {
             // roughnessMipmapper.generateMipmaps( child.material );
 
             self.rayTarget.push(child);
-            self.objects.push(child);
+            // self.objects.push(child);
+            // self.objectDict[child.uuid] = child;
+            const indexName = getBuildingIndexName(child);
+            self.objectDict[indexName] = child;
+            console.log("uuid", child.uuid);
+            console.log("parent", child?.parent?.uuid);
+            if (!child.parent) {
+              self.uuidToIndexNameDict[child.uuid] = indexName;
+            }
           }
         });
+        console.log(`uuid to indexName dictionary:`);
+        console.log(
+          Object.entries(self.uuidToIndexNameDict).map(([k, v]) => `${k}:${v}`)
+        );
 
+        // gltf.scene.position.x = 0.05
         // gltf.scene.position.x = 0.05
         // gltf.scene.translateX(-0.15);
         // gltf.scene.translateZ(0.4);
 
-        self.autoCenter(gltf.scene)
+        self.autoCenter(gltf.scene);
 
         self.scene.add(gltf.scene);
       });
@@ -341,10 +688,10 @@ class Scene {
     // });
   }
 
-  autoCenter(obj){
-    const box = new THREE.Box3().setFromObject( obj );
-    box.getCenter( obj.position ); // this re-sets the mesh position
-    obj.position.multiplyScalar( - 1 )
+  autoCenter(obj) {
+    const box = new THREE.Box3().setFromObject(obj);
+    box.getCenter(obj.position); // this re-sets the mesh position
+    obj.position.multiplyScalar(-1);
   }
 
   initRaycaster() {
@@ -354,34 +701,47 @@ class Scene {
 
   ray() {
     const self = this;
-    // _.debounce(
-    //   function() {
     self.raycaster.setFromCamera(self.mouse, self.camera);
-    const intersects = self.raycaster.intersectObjects([...self.objects], true);
+    // const intersects = self.raycaster.intersectObjects([...self.objects], true);
+    const intersects = self.raycaster.intersectObjects(
+      [...Object.values(self.objectDict)],
+      true
+    );
 
-    if (intersects.length > 0) {
-      self.hoverTarget = intersects[0].object;
-      self.onHoverCallback(self.hoverTarget);
-
-      // for (let i = 0; i < intersects.length; i++) {
-      //   if (intersects[i].object && intersects[i].object.material) {
-      //     // console.log(intersects[i].object.name);
-      //     // intersects[i].object.material.color.setHex(Math.random() * 0xffffff); // set a random color so we know its constantly updating
-      //   }
-      // }
+    let noIntersectOrOnlyIntersectGround = true;
+    const hasIntersection = intersects.length > 0;
+    let intersectIsRelevantBuilding = false;
+    if (hasIntersection) {
+      const buildingName = getInteractiveBuildingIndexName(
+        intersects[0].object
+      );
+      if (buildingName) {
+        intersectIsRelevantBuilding = true;
+        console.log(
+          intersects[0].object?.id,
+          intersects[0].object?.name,
+          intersects[0].object?.userData.name
+        );
+        if (
+          !self.hoverTarget ||
+          getInteractiveBuildingIndexName(self.hoverTarget) !==
+            getInteractiveBuildingIndexName(intersects[0]?.object)
+        ) {
+          self.hoverTarget = intersects[0].object;
+          self.onHoverCallback(self.hoverTarget);
+        }
+        // for (let i = 0; i < intersects.length; i++) {
+        //   if (intersects[i].object && intersects[i].object.material) {
+        //     // console.log(intersects[i].object.name);
+        //     // intersects[i].object.material.color.setHex(Math.random() * 0xffffff); // set a random color so we know its constantly updating
+        //   }
+        // }
+      }
     }
-    // },
-    // 1000,
-    // {
-    //   leading: true
-    // }
-    // );
-
-    // if (intersects.length > 0) {
-    //   console.log(intersects[0].object.userData&&intersects[0].object.userData.building)
-    // } else {
-    //   //
-    // }
+    if (!hasIntersection || !intersectIsRelevantBuilding) {
+      self.hoverTarget = null;
+      self.onHoverCallback(null);
+    }
   }
 
   render() {
@@ -407,34 +767,47 @@ class Scene {
   };
 
   onDocumentMouseMove = event => {
+    this.isDragging = true;
     event.preventDefault();
     let x = event.offsetX || event.clientX;
     let y = event.offsetY || event.clientY;
     this.mouse.x = (x / this.width) * 2 - 1;
     this.mouse.y = -(y / this.height) * 2 + 1;
-
     this.ray();
-
+  };
+  onDocumentMouseDown = event => {
+    event.preventDefault();
+    this.isDragging = false;
   };
 
-  onDocumentMouseDown = event => {
-    // return
+  onDocumentMouseUp = event => {
     event.preventDefault();
-    if (this.hoverTarget) {
-      this.onSelectCallback(this.hoverTarget);
-    } else {
-      this.onSelectCallback();
+    if (this.isDragging) {
+      return;
     }
+    if (this.hoverTarget) {
+      this.selectedTarget = this.hoverTarget;
+    } else {
+      this.selectedTarget = null;
+    }
+    this.onSelectCallback(this.selectedTarget);
+    const buildingIndexName = getInteractiveBuildingIndexName(
+      this.selectedTarget
+    );
+    // if (buildingIndexName) {
+    this.triggerUpdate({ id: buildingIndexName });
+    // }
   };
 
   bindEvents() {
     window.addEventListener("resize", this.onResize);
+    this.canvas.addEventListener("mousemove", this.throttledMouseMove, false);
     this.canvas.addEventListener(
-      "mousemove",
-      this.throttledMouseMove,
+      "pointerdown",
+      this.onDocumentMouseDown,
       false
     );
-    this.canvas.addEventListener("mousedown", this.onDocumentMouseDown, false);
+    this.canvas.addEventListener("pointerup", this.onDocumentMouseUp, false);
   }
 
   unbindEvents() {
@@ -446,10 +819,11 @@ class Scene {
       false
     );
     this.canvas.removeEventListener(
-      "mousedown",
+      "pointerdown",
       this.onDocumentMouseDown,
       false
     );
+    this.canvas.removeEventListener("pointerup", this.onDocumentMouseUp, false);
   }
 }
 
