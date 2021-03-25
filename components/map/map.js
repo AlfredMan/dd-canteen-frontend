@@ -35,15 +35,17 @@ class Scene {
     this.background = "#ffffff";
 
     // this.objects = [];
-    this.objectDict = {};
-    this.uuidToIndexNameDict = {};
     this.parentObjectDict = {};
+    this.meshDict = {};
+    this.parentRelevantBuildingDict = {};
+    this.uuidToIndexNameDict = {};
     this.rayTarget = [];
     this.textureCube = null;
 
     this.isAddObjectMode = false;
 
     this.defaultCameraFov = 10;
+    this.defaultMaterialOpacityDict = {};
     this.defaultLookAtPosition = {
       x: 0,
       y: 0,
@@ -125,38 +127,42 @@ class Scene {
     // this.selectedTarget = this.objects.find(
     //   object => getInteractiveBuildingIndexName(object) === buildingId
     // );
-    this.selectedTarget = this.objectDict[buildingId];
+    this.selectedTarget = this.parentObjectDict[buildingId];
 
     this.hoverTarget = this.selectedTarget;
     if (this.selectedTarget) {
-      const selectedBuildingRootObject = this.parentObjectDict[buildingId];
+      const selectedBuildingRootObject = this.parentRelevantBuildingDict[
+        buildingId
+      ];
 
       if (selectedBuildingRootObject) {
-        Object.entries(this.parentObjectDict).forEach(([k, building]) => {
-          if (k === buildingId) {
-            // building.traverse(node => {
-            //   this.setMaterialBasedOnSelectedState({
-            //     node,
-            //     selected: "highlight"
-            //   });
-            // });
-            this.setBuildingMaterialBasedOnSelectedState({
-              building,
-              selected: "highlight"
-            });
-          } else {
-            // building.traverse(node => {
-            //   this.setMaterialBasedOnSelectedState({
-            //     node,
-            //     selected: "dim"
-            //   });
-            // });
-            this.setBuildingMaterialBasedOnSelectedState({
-              building,
-              selected: "dim"
-            });
+        Object.entries(this.parentRelevantBuildingDict).forEach(
+          ([k, building]) => {
+            if (k === buildingId) {
+              // building.traverse(node => {
+              //   this.setMaterialBasedOnSelectedState({
+              //     node,
+              //     selected: "highlight"
+              //   });
+              // });
+              this.setBuildingMaterialBasedOnSelectedState({
+                building,
+                selected: "highlight"
+              });
+            } else {
+              // building.traverse(node => {
+              //   this.setMaterialBasedOnSelectedState({
+              //     node,
+              //     selected: "dim"
+              //   });
+              // });
+              this.setBuildingMaterialBasedOnSelectedState({
+                building,
+                selected: "dim"
+              });
+            }
           }
-        });
+        );
 
         this.zoomToBuilding({
           node: selectedBuildingRootObject,
@@ -399,25 +405,40 @@ class Scene {
 
     if (selected === "dim") {
       // material.opacity = 0.7;
-      if (node.name.indexOf("Glass") >= 0) {
-        material.opacity = 0.1;
-      } else {
-        material.opacity = 0.2;
+      // if (node.name.indexOf("Glass") >= 0) {
+      //   material.opacity = 0.1;
+      // } else {
+      //   material.opacity = 0.2;
+      //   material.transparent = true;
+      // }
+      const defaultMaterialOpacity = this.defaultMaterialOpacityDict[
+        material.uuid
+      ];
+      material.opacity = defaultMaterialOpacity * 0.3;
+      if (defaultMaterialOpacity >= 1) {
         material.transparent = true;
       }
       // material.wireframe = true;
       // // material.color.setHex(0xff0000);
     } else {
       // 'hightlight' or 'default' for now share same material setup
-      if (node.name.indexOf("Glass") >= 0) {
-        material.opacity = 0.5;
-        // child.material.envMap = self.textureCube;
-        // child.material.roughness = 0;
-        // child.material.metalness = 0;
-        // child.material.color.set(0xeeeeff);
-        // child.material.side = THREE.DoubleSide
-      } else {
-        material.opacity = 1;
+      // if (node.name.indexOf("Glass") >= 0) {
+      //   material.opacity = 0.5;
+      //   // child.material.envMap = self.textureCube;
+      //   // child.material.roughness = 0;
+      //   // child.material.metalness = 0;
+      //   // child.material.color.set(0xeeeeff);
+      //   // child.material.side = THREE.DoubleSide
+      // } else {
+      //   material.opacity = 1;
+      //   material.transparent = false;
+      // }
+
+      const defaultMaterialOpacity = this.defaultMaterialOpacityDict[
+        material.uuid
+      ];
+      material.opacity = defaultMaterialOpacity;
+      if (defaultMaterialOpacity >= 1) {
         material.transparent = false;
       }
       // material.wireframe = false;
@@ -425,10 +446,10 @@ class Scene {
     }
   }
   deselectAllBuilindgs() {
-    // if (Object.values(this.parentObjectDict).length===0) {
+    // if (Object.values(this.parentRelevantBuildingDict).length===0) {
     //   return;
     // }
-    Object.entries(this.parentObjectDict).forEach(([_, building]) => {
+    Object.entries(this.parentRelevantBuildingDict).forEach(([_, building]) => {
       // building.traverse(node => {
       //   this.setMaterialBasedOnSelectedState({
       //     node,
@@ -678,7 +699,7 @@ class Scene {
             const indexName = getBuildingIndexName(child);
             if (indexName) {
               self.uuidToIndexNameDict[child.uuid] = indexName;
-              self.parentObjectDict[indexName] = child;
+              self.parentRelevantBuildingDict[indexName] = child;
               console.log(
                 `Group ${child.name} has ${child.children.length} children`
               );
@@ -724,9 +745,12 @@ class Scene {
 
             self.rayTarget.push(child);
             // self.objects.push(child);
-            // self.objectDict[child.uuid] = child;
+            // self.parentObjectDict[child.uuid] = child;
             const indexName = getBuildingIndexName(child);
-            self.objectDict[indexName] = child;
+            self.defaultMaterialOpacityDict[child.material.uuid] =
+              child.material.opacity;
+            self.parentObjectDict[indexName] = child;
+            self.meshDict[child.uuid] = child;
             console.log("uuid", child.uuid);
             console.log("parent", child?.parent?.uuid);
             if (!child.parent) {
@@ -769,7 +793,8 @@ class Scene {
     self.raycaster.setFromCamera(self.mouse, self.camera);
     // const intersects = self.raycaster.intersectObjects([...self.objects], true);
     const intersects = self.raycaster.intersectObjects(
-      [...Object.values(self.objectDict)],
+      // [...Object.values(self.parentObjectDict)],
+      [...Object.values(self.meshDict)],
       true
     );
 
@@ -777,6 +802,7 @@ class Scene {
     const hasIntersection = intersects.length > 0;
     let intersectIsRelevantBuilding = false;
     if (hasIntersection) {
+      console.log("intersecting: ", intersects[0].object?.name);
       const buildingName = getInteractiveBuildingIndexName(
         intersects[0].object
       );
