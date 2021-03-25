@@ -188,6 +188,8 @@ class Scene {
   //   this.orbitControls.minDistance =
   //     this.defaultOrbitSetting.maxDistance * zoomScale;
   // }
+
+
   //zoomScale is (0=>1), 0.1 is more zoom in, 1 is capped at defaultOrbitSetting.maxDisctance
   zoomToBuilding({ node, zoomScale, y = 0 }) {
     // const newX = node.getWorldPosition(new THREE.Vector3()).x;
@@ -358,15 +360,15 @@ class Scene {
     );
   }
 
-  resetOrbit0() {
-    this.orbitControls.target = this.defaultLookAt;
-    this.orbitControls.minDistance = this.defaultOrbitSetting.maxDistance;
-    this.orbitControls.update();
-    Object.entries(this.defaultOrbitSetting).forEach(([k, v]) => {
-      this.orbitControls[k] = v;
-    });
-    this.orbitControls.update();
-  }
+  // resetOrbit0() {
+  //   this.orbitControls.target = this.defaultLookAt;
+  //   this.orbitControls.minDistance = this.defaultOrbitSetting.maxDistance;
+  //   this.orbitControls.update();
+  //   Object.entries(this.defaultOrbitSetting).forEach(([k, v]) => {
+  //     this.orbitControls[k] = v;
+  //   });
+  //   this.orbitControls.update();
+  // }
   setBuildingMaterialBasedOnSelectedState({
     building,
     selected = "highlight" | "dim" | "default"
@@ -404,13 +406,6 @@ class Scene {
     }
 
     if (selected === "dim") {
-      // material.opacity = 0.7;
-      // if (node.name.indexOf("Glass") >= 0) {
-      //   material.opacity = 0.1;
-      // } else {
-      //   material.opacity = 0.2;
-      //   material.transparent = true;
-      // }
       const defaultMaterialOpacity = this.defaultMaterialOpacityDict[
         material.uuid
       ];
@@ -422,18 +417,6 @@ class Scene {
       // // material.color.setHex(0xff0000);
     } else {
       // 'hightlight' or 'default' for now share same material setup
-      // if (node.name.indexOf("Glass") >= 0) {
-      //   material.opacity = 0.5;
-      //   // child.material.envMap = self.textureCube;
-      //   // child.material.roughness = 0;
-      //   // child.material.metalness = 0;
-      //   // child.material.color.set(0xeeeeff);
-      //   // child.material.side = THREE.DoubleSide
-      // } else {
-      //   material.opacity = 1;
-      //   material.transparent = false;
-      // }
-
       const defaultMaterialOpacity = this.defaultMaterialOpacityDict[
         material.uuid
       ];
