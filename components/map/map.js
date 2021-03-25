@@ -860,7 +860,7 @@ class Scene {
       console.log("mouse up but mouse moved");
       return;
     }
-    console.log("mouse up, has hover target" + this.hoverTarget);
+    console.log("mouse up, has hover target" , this.hoverTarget);
     if (this.hoverTarget) {
       this.selectedTarget = this.hoverTarget;
     } else {
