@@ -194,13 +194,18 @@ class Scene {
     let self = this;
     const tl = gsap.timeline();
 
-    const currentDistance = self.orbitControls.target.distanceTo(
-      self.orbitControls.object.position
-    );
+    const currentDistance =
+      self.orbitControls.minDistance === self.orbitControls.maxDistance
+        ? self.orbitControls.maxDistance
+        : self.orbitControls.target.distanceTo(
+            self.orbitControls.object.position
+          );
     const orbitAnimatedValue = {
       limit: currentDistance,
-      minPolarAngle: this.defaultOrbitSetting.minPolarAngle,
-      maxPolarAngle: this.defaultOrbitSetting.maxPolarAngle
+      minPolarAngle: self.orbitControls.minPolarAngle,
+      maxPolarAngle: self.orbitControls.maxPolarAngle
+      // minPolarAngle: this.defaultOrbitSetting.minPolarAngle,
+      // maxPolarAngle: this.defaultOrbitSetting.maxPolarAngle
     };
     const orbitTo = {
       limit: this.defaultOrbitSetting.maxDistance * zoomScale,
@@ -209,9 +214,12 @@ class Scene {
     };
 
     const positionAnimatedValue = {
-      x: self.defaultLookAtPosition.x,
-      y: self.defaultLookAtPosition.y,
-      z: self.defaultLookAtPosition.z
+      // x: self.defaultLookAtPosition.x,
+      // y: self.defaultLookAtPosition.y,
+      // z: self.defaultLookAtPosition.z
+      x: self.orbitControls.target.x,
+      y: self.orbitControls.target.y,
+      z: self.orbitControls.target.z
     };
     const positionTo = {
       x: node.getWorldPosition(new THREE.Vector3()).x,
@@ -389,7 +397,18 @@ class Scene {
       return;
     }
 
-    if (selected === "highlight" || selected === "default") {
+    if (selected === "dim") {
+      // material.opacity = 0.7;
+      if (node.name.indexOf("Glass") >= 0) {
+        material.opacity = 0.1;
+      } else {
+        material.opacity = 0.2;
+        material.transparent = true;
+      }
+      // material.wireframe = true;
+      // // material.color.setHex(0xff0000);
+    } else {
+      // 'hightlight' or 'default' for now share same material setup
       if (node.name.indexOf("Glass") >= 0) {
         material.opacity = 0.5;
         // child.material.envMap = self.textureCube;
@@ -402,16 +421,6 @@ class Scene {
         material.transparent = false;
       }
       // material.wireframe = false;
-      // // material.color.setHex(0xff0000);
-    } else {
-      // material.opacity = 0.7;
-      if (node.name.indexOf("Glass") >= 0) {
-        material.opacity = 0.1;
-      } else {
-        material.opacity = 0.2;
-        material.transparent = true;
-      }
-      // material.wireframe = true;
       // // material.color.setHex(0xff0000);
     }
   }
