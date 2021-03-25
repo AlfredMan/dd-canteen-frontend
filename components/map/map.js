@@ -134,18 +134,26 @@ class Scene {
       if (selectedBuildingRootObject) {
         Object.entries(this.parentObjectDict).forEach(([k, building]) => {
           if (k === buildingId) {
-            building.traverse(node => {
-              this.setMaterialBasedOnSelectedState({
-                node,
-                selected: "highlight"
-              });
+            // building.traverse(node => {
+            //   this.setMaterialBasedOnSelectedState({
+            //     node,
+            //     selected: "highlight"
+            //   });
+            // });
+            this.setBuildingMaterialBasedOnSelectedState({
+              building,
+              selected: "highlight"
             });
           } else {
-            building.traverse(node => {
-              this.setMaterialBasedOnSelectedState({
-                node,
-                selected: "dim"
-              });
+            // building.traverse(node => {
+            //   this.setMaterialBasedOnSelectedState({
+            //     node,
+            //     selected: "dim"
+            //   });
+            // });
+            this.setBuildingMaterialBasedOnSelectedState({
+              building,
+              selected: "dim"
             });
           }
         });
@@ -345,6 +353,30 @@ class Scene {
     });
     this.orbitControls.update();
   }
+  setBuildingMaterialBasedOnSelectedState({
+    building,
+    selected = "highlight" | "dim" | "default"
+  }) {
+    // if (selected === "default") {
+    //   console.log("object reset to default", building);
+    // }
+    // if (selected === "highlight") {
+    //   console.log("object being highlight", building);
+    // }
+    // if (selected === "dim") {
+    //   console.log("object being dimmed", building);
+    // }
+    // if (selected === "dim") {
+    //   // building.parent.remove(building)
+    //   return;
+    // }
+    building.traverse(node => {
+      this.setMaterialBasedOnSelectedState({
+        node,
+        selected
+      });
+    });
+  }
   setMaterialBasedOnSelectedState({
     node,
     selected = "highlight" | "dim" | "default"
@@ -361,7 +393,9 @@ class Scene {
       // material.wireframe = false;
       // // material.color.setHex(0xff0000);
     } else {
-      material.opacity = 0.7;
+      // material.opacity = 0.7;
+      material.opacity = 0.2;
+      material.transparent=true
       // material.wireframe = true;
       // // material.color.setHex(0xff0000);
     }
@@ -371,11 +405,15 @@ class Scene {
     //   return;
     // }
     Object.entries(this.parentObjectDict).forEach(([_, building]) => {
-      building.traverse(node => {
-        this.setMaterialBasedOnSelectedState({
-          node,
-          selected: "default"
-        });
+      // building.traverse(node => {
+      //   this.setMaterialBasedOnSelectedState({
+      //     node,
+      //     selected: "default"
+      //   });
+      // });
+      this.setBuildingMaterialBasedOnSelectedState({
+        building,
+        selected: "default"
       });
     });
     // this.orbitControls.target = this.defaultLookAt;
@@ -416,7 +454,10 @@ class Scene {
     this.initMapObjects();
 
     this.throttledMouseMove = _.throttle(self.onDocumentMouseMove, 200);
-    this.root.appendChild(this.canvas);
+    (this.debouncedMouseMove = _.debounce(self.onDocumentMouseMove, 200, {
+      leading: true
+    })),
+      this.root.appendChild(this.canvas);
   }
 
   initScene() {
@@ -783,12 +824,15 @@ class Scene {
   onDocumentMouseUp = event => {
     event.preventDefault();
     if (this.isDragging) {
+      console.log("mouse up but mouse moved");
       return;
     }
+    console.log("mouse up, has hover target" + this.hoverTarget);
     if (this.hoverTarget) {
       this.selectedTarget = this.hoverTarget;
     } else {
       this.selectedTarget = null;
+      console.log("mouse up, no hover target");
     }
     this.onSelectCallback(this.selectedTarget);
     const buildingIndexName = getInteractiveBuildingIndexName(
@@ -801,7 +845,8 @@ class Scene {
 
   bindEvents() {
     window.addEventListener("resize", this.onResize);
-    this.canvas.addEventListener("mousemove", this.throttledMouseMove, false);
+    // this.canvas.addEventListener("mousemove", this.throttledMouseMove, false);
+    this.canvas.addEventListener("mousemove", this.debouncedMouseMove, false);
     this.canvas.addEventListener(
       "pointerdown",
       this.onDocumentMouseDown,
@@ -815,7 +860,8 @@ class Scene {
     this.canvas.removeEventListener(
       "mousemove",
       // this.onDocumentMouseMove,
-      this.throttledMouseMove,
+      // this.throttledMouseMove,
+      this.debouncedMouseMove,
       false
     );
     this.canvas.removeEventListener(
