@@ -388,14 +388,29 @@ class Scene {
     if (!material) {
       return;
     }
+
     if (selected === "highlight" || selected === "default") {
-      material.opacity = 1;
+      if (node.name.indexOf("Glass") >= 0) {
+        material.opacity = 0.5;
+        // child.material.envMap = self.textureCube;
+        // child.material.roughness = 0;
+        // child.material.metalness = 0;
+        // child.material.color.set(0xeeeeff);
+        // child.material.side = THREE.DoubleSide
+      } else {
+        material.opacity = 1;
+        material.transparent = false;
+      }
       // material.wireframe = false;
       // // material.color.setHex(0xff0000);
     } else {
       // material.opacity = 0.7;
-      material.opacity = 0.2;
-      material.transparent=true
+      if (node.name.indexOf("Glass") >= 0) {
+        material.opacity = 0.1;
+      } else {
+        material.opacity = 0.2;
+        material.transparent = true;
+      }
       // material.wireframe = true;
       // // material.color.setHex(0xff0000);
     }
