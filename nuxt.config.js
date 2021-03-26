@@ -48,7 +48,9 @@ export default {
       { name: 'twitter:description', content: 'London\'s permanent home for the creative industries — Rent a desk or an entire building and find a new way of working. With affordable spaces, comprehensive facilities and flexible leases, everything is designed to help creative Londoners thrive.' },
       // { name: 'twitter:image', content: 'https://designdistrict.co.uk/DD_Banner_2.png" ' },
 
-      { name: 'p:domain_verify', content: 'b5004249d0531cbc68a424d426ec9a6a' }
+      { name: 'p:domain_verify', content: 'b5004249d0531cbc68a424d426ec9a6a' },
+
+      { name: 'facebook-domain-verification', content: '614c2k2scnq9kskjkj7x3oc61kx43t' }
     ],
     link: [
       { rel: 'icon', type: 'image/png', href: '/icon.png' },
@@ -75,7 +77,7 @@ export default {
       '~/assets/fonts/fonts.css'
     ],
     scss: [
-      '~/assets/styles/tailwind.scss',      
+      '~/assets/styles/tailwind.scss',
       '~/assets/styles/custom.scss',
       '~/node_modules/bootstrap/scss/_functions.scss',
       '~/node_modules/bootstrap/scss/_variables.scss',
