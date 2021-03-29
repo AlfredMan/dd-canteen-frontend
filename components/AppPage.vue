@@ -1,12 +1,7 @@
 <template>
   <main class="page-component">
 
-
-    <div class="full-screen-banner fixed z-50 inset-0 bg-green text-white leading-none text-center" v-if="$route.path.indexOf('welcome-to-design-district')>=0">
-      <div class="absolute" style="font-size:10vw; font-weight:400; top: 50%; left:50%; transform: translate(-50%, -50%); width:100%;">
-        Welcome to<br>Design District ☺
-      </div>
-    </div>
+    <WelcomeBanner v-if="$route.path.indexOf('welcome')>=0" />
 
     <div class="" v-if="entry">
       <template
@@ -76,6 +71,7 @@ import BlockVideo from '~/components/blocks/BlockVideo'
 import BlockGrid from '~/components/blocks/BlockGrid'
 import BlockForm from '~/components/blocks/BlockForm'
 import AppPopup from '~/components/AppPopup'
+import WelcomeBanner from '~/components/campaigns/WelcomeBanner'
 
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin.js'
@@ -100,7 +96,8 @@ export default {
     BlockVideo,
     BlockGrid,
     BlockForm,
-    AppPopup
+    AppPopup,
+    WelcomeBanner
   },
 
   props: {
@@ -115,10 +112,6 @@ export default {
     //   console.log(block.sys.contentType.sys.id)
     // })
     this.checkEntryTheme()
-    gsap.set('.block-page-header', {display: 'none'})
-    gsap.to('.full-screen-banner', {
-      autoAlpha: 0, duration: 0.5, delay: 0
-    });
   },
 
   methods: {
