@@ -53,6 +53,8 @@
       </template>
     </div>
 
+    <AppPopup v-if="$route.path.indexOf('welcome-to-design-district')>=0"/>
+
   </main>
 </template>
 
@@ -73,6 +75,7 @@ import BlockJournalFullList from '~/components/blocks/BlockJournalFullList'
 import BlockVideo from '~/components/blocks/BlockVideo'
 import BlockGrid from '~/components/blocks/BlockGrid'
 import BlockForm from '~/components/blocks/BlockForm'
+import AppPopup from '~/components/AppPopup'
 
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin.js'
@@ -96,7 +99,8 @@ export default {
     BlockJournalFullList,
     BlockVideo,
     BlockGrid,
-    BlockForm
+    BlockForm,
+    AppPopup
   },
 
   props: {
