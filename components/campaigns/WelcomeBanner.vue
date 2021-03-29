@@ -9,11 +9,14 @@
 </template>
 
 <script>
+import gsap from 'gsap'
 export default {
   mounted () {
-    gsap.to('.full-screen-banner', {
-      autoAlpha: 0, duration: 0.5, delay: 0
-    });
+    if (process.client) {
+      gsap.to('.full-screen-banner', {
+        autoAlpha: 0, duration: 0.5, delay: 0
+      });  
+    }
   }
 }
 </script>
