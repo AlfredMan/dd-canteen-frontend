@@ -6,7 +6,7 @@
       </div>
       <div class="w-full lg:w-7/12">
         <h4>Whether you’re a team of 50 or a first-time founder, there’s space for you at Design District. Register your interest to become a tenant. Tell us about your requirements, and we’ll be in touch</h4>
-        <callToAction :callToAction="{fields:{path:'/enquire',label:'Become a Tenant &rarr;'}}" theme="black"/>
+        <callToAction :callToAction="{fields:{path:'/enquire',label:'Get in touch &rarr;'}}" theme="black"/>
       </div>
     </div>
   </section>
