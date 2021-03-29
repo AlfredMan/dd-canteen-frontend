@@ -37,14 +37,14 @@ export default {
       { property: 'og:site_name', content: 'https://designdistrict.co.uk' },
       { property: 'og:url', content: 'https://designdistrict.co.uk' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:title', content: 'Welcome to London\'s new Design District - Launching Spring 2021' },
+      { property: 'og:title', content: 'Welcome to London\'s new Design District - Launching Summer 2021' },
       { property: 'og:description', content: 'London\'s permanent home for the creative industries — Rent a desk or an entire building and find a new way of working. With affordable spaces, comprehensive facilities and flexible leases, everything is designed to help creative Londoners thrive.' },
       // { property: 'og:image', content: 'https://designdistrict.co.uk/DD_Banner.jpg' },
 
       { name: 'twitter:card', content: 'Design District' },
       { name: 'twitter:site', content: '@Design_District' },
       { name: 'twitter:creator', content: '@Design_District' },
-      { name: 'twitter:title', content: 'Welcome to London\'s new Design District - Launching Spring 2021' },
+      { name: 'twitter:title', content: 'Welcome to London\'s new Design District - Launching Summer 2021' },
       { name: 'twitter:description', content: 'London\'s permanent home for the creative industries — Rent a desk or an entire building and find a new way of working. With affordable spaces, comprehensive facilities and flexible leases, everything is designed to help creative Londoners thrive.' },
       // { name: 'twitter:image', content: 'https://designdistrict.co.uk/DD_Banner_2.png" ' },
 

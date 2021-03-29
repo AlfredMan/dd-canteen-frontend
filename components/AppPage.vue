@@ -1,6 +1,13 @@
 <template>
   <main class="page-component">
 
+
+    <div class="full-screen-banner fixed z-50 inset-0 bg-green text-white leading-none text-center" v-if="$route.path.indexOf('welcome-to-design-district')>=0">
+      <div class="absolute" style="font-size:10vw; font-weight:400; top: 50%; left:50%; transform: translate(-50%, -50%); width:100%;">
+        Welcome to<br>Design District ☺
+      </div>
+    </div>
+
     <div class="" v-if="entry">
       <template
       v-if="entry && entry.fields.contentBlocks"
@@ -46,6 +53,8 @@
       </template>
     </div>
 
+    <!-- <AppPopup v-if="$route.path.indexOf('welcome-to-design-district')>=0"/> -->
+
   </main>
 </template>
 
@@ -66,6 +75,11 @@ import BlockJournalFullList from '~/components/blocks/BlockJournalFullList'
 import BlockVideo from '~/components/blocks/BlockVideo'
 import BlockGrid from '~/components/blocks/BlockGrid'
 import BlockForm from '~/components/blocks/BlockForm'
+import AppPopup from '~/components/AppPopup'
+
+import gsap from 'gsap'
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin.js'
+gsap.registerPlugin(ScrollToPlugin)
 
 export default {
   name: 'page',
@@ -85,7 +99,8 @@ export default {
     BlockJournalFullList,
     BlockVideo,
     BlockGrid,
-    BlockForm
+    BlockForm,
+    AppPopup
   },
 
   props: {
@@ -99,11 +114,16 @@ export default {
     // _.map(this.entry.fields.contentBlocks, (block)=>{
     //   console.log(block.sys.contentType.sys.id)
     // })
-
     this.checkEntryTheme()
+    gsap.set('.block-page-header', {display: 'none'})
+    gsap.to('.full-screen-banner', {
+      autoAlpha: 0, duration: 0.5, delay: 0
+    });
   },
 
   methods: {
+
+
 
     getRichText (document) {
       return documentToHtmlString(document, options);
