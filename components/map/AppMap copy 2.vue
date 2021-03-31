@@ -142,7 +142,7 @@ export default {
         // }
       },
       onDrag: function() {
-        self.resetPanelHeight(this.y);
+        self.resetPanelHeightAndBound(this.y);
       }
       // autoScroll: 2
       // liveSnap: {
@@ -187,7 +187,7 @@ export default {
     isDraggableInfoPanelCollapsed(newVal, oldVal) {
       console.log("new is collapsed", newVal, "old is collapsed", oldVal);
       if (newVal === true) {
-        this.resetPanelHeight(0);
+        this.resetPanelHeightAndBound(0);
         gsap.set(".app-map-panel", { y: 0 });
         // this.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
         //   isCollapsed: false
@@ -213,7 +213,7 @@ export default {
     isMobilePortrait() {
       return this.windowWidth < 700;
     },
-    resetPanelHeight(currentPanelY) {
+    resetPanelHeightAndBound(currentPanelY) {
       // const currentY = this.y;
       console.log(currentPanelY);
       const newInfoPanelHeight = this.initialPanelHeight - currentPanelY;

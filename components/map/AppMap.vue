@@ -151,11 +151,11 @@ export default {
         // }
       },
       onDrag: function() {
-        self.resetPanelHeight(this.y);
+        self.resetPanelHeightAndBound(this.y);
       }
       // autoScroll: 2
       // liveSnap: {
-      //   // points: [{ x: containerWidth / 2, y: -(clientHeight / 2) }],
+      //   // points: [{ x: containerWidth / 2, y: -(clientHeight / 2) resetPanelHeightAndBound,
       //   points: [
       //     { x: containerWidth / 2, y: 0 },
       //     { x: containerWidth / 2, y: -self.containerHeight / 2 }
@@ -199,7 +199,7 @@ export default {
     isDraggableInfoPanelCollapsed(newVal, oldVal) {
       console.log("new is collapsed", newVal, "old is collapsed", oldVal);
       if (newVal === true) {
-        this.resetPanelHeight(0);
+        this.resetPanelHeightAndBound(0);
         gsap.set(".app-map-panel", { y: 0 });
 
         // this.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
@@ -210,7 +210,7 @@ export default {
     isDraggableInfoPanelExpanded(newVal, oldVal) {
       console.log("new is expanded", newVal, "old is expanded", oldVal);
       if (newVal === true) {
-        this.resetPanelHeight(-this.initialPanelHeight);
+        this.resetPanelHeightAndBound(-this.initialPanelHeight);
         gsap.set(".app-map-panel", { y: -this.initialPanelHeight });
 
         // this.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
@@ -253,7 +253,7 @@ export default {
       return check;
       // return this.windowWidth < 700;
     },
-    resetPanelHeight(currentPanelY) {
+    resetPanelHeightAndBound(currentPanelY) {
       // const currentY = this.y;
       console.log(currentPanelY);
       const newInfoPanelHeight = this.initialPanelHeight - currentPanelY;

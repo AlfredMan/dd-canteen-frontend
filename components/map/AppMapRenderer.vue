@@ -68,7 +68,8 @@ export default {
       this.scene = SceneConstructor({
         rootEl: this.$refs.container,
         onHover: this.onBuildingHover,
-        onSelect: this.onBuildingSelect
+        onSelect: this.onBuildingSelect,
+        store: this.$store
       });
       this.onRouteChange();
     },
@@ -113,7 +114,7 @@ export default {
     onBuildingSelect(target) {
       const buildingIndexName = getInteractiveBuildingIndexName(target);
       if (!buildingIndexName) {
-        this.$router.push({ query: { } });
+        this.$router.push({ query: {} });
         return;
       }
       console.log(target?.name, buildingIndexName);

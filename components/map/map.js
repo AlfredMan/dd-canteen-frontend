@@ -13,9 +13,9 @@ import _ from "lodash";
 // import { Reflector } from "three/examples/js/objects/Reflector.js";
 
 const MY_CONST = 2;
-
+// import store from "../../store";
 class Scene {
-  constructor({ rootEl, onHover, onSelect }) {
+  constructor({ rootEl, onHover, onSelect, store }) {
     console.log("Scene construtor called.");
 
     this.canvas = document.createElement("canvas");
@@ -23,6 +23,7 @@ class Scene {
     this.lastDraggingTimestamp = null;
     this.onHoverCallback = onHover;
     this.onSelectCallback = onSelect;
+    this.store = store;
 
     this.hoverTarget = null;
     this.selectedTarget = null;
@@ -583,9 +584,10 @@ class Scene {
     // this.orbitControls.minDistance = 3;
 
     this.orbitControls.update();
-    this.orbitControls.addEventListener("end", function() {
-      debugger;
+    this.orbitControls.addEventListener("start", function() {
+      // debugger;
       self.lastDraggingTimestamp = new Date();
+      console.log("orbit start", self.lastDraggingTimestamp);
     });
   }
 
@@ -855,8 +857,8 @@ class Scene {
     this.ray();
   };
   onDocumentMouseDown = event => {
-    event.preventDefault();
     console.log("mouse down");
+    event.preventDefault();
     this.lastDraggingTimestamp = null;
   };
 
@@ -903,13 +905,21 @@ class Scene {
     );
     this.canvas.addEventListener(
       "pointerdown",
-      this.onDocumentMouseDown,
+      this.onPointerDown.bind(self),
       false
     );
     this.canvas.addEventListener("pointerup", this.onDocumentMouseUp, false);
   }
 
+  onPointerDown = event => {
+    if (this.store.state.map.isMobilePortrait) {
+      return;
+    }
+    console.log("on pointer down");
+    this.onDocumentMouseDown(event);
+  };
   onTouchStart = event => {
+    console.log("touch start");
     this.onDocumentMouseMove(event);
     this.ray();
     this.onDocumentMouseDown(event);
