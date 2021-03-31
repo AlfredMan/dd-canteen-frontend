@@ -10,6 +10,8 @@ import IconFloorplan from '~/components/icons/IconFloorplan.vue'
 import IconPerson from '~/components/icons/IconPerson.vue'
 import IconBox from '~/components/icons/IconBox.vue'
 import IconX from '~/components/icons/IconX.vue'
+import IconAngleUp from '~/components/icons/IconAngleUp.vue'
+import IconAngleDown from '~/components/icons/IconAngleDown.vue'
 
 import RichText from '~/components/text/RichText.vue'
 // import ResponsiveLine from '~/components/visual/ResponsiveLine.vue'
@@ -25,6 +27,8 @@ Vue.component('IconPerson', IconPerson)
 Vue.component('IconFloorplan', IconFloorplan)
 Vue.component('IconBox', IconBox)
 Vue.component('IconX', IconX)
+Vue.component('IconAngleUp', IconAngleUp)
+Vue.component('IconAngleDown', IconAngleDown)
 
 Vue.component('richText', RichText)
 // Vue.component('responsiveLine', ResponsiveLine)

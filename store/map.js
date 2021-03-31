@@ -1,6 +1,7 @@
 export const state = () => ({
   isMobilePortrait: false,
-  isDraggableInfoPanelDisabled: false
+  isDraggableInfoPanelDisabled: false,
+  isDraggableInfoPanelCollapsed: true
 });
 
 export const mutations = {
@@ -9,14 +10,20 @@ export const mutations = {
   },
   setIsDraggableInfoPanelDisabled(state, { isDisabled }) {
     state.isDraggableInfoPanelDisabled = isDisabled;
+  },
+  setIsDraggableInfoPanelCollapsed(state, { isCollapsed }) {
+    state.isDraggableInfoPanelCollapsed = isCollapsed;
   }
 };
 
 export const actions = {
   setIsMobilePortrait({ commit }, { isMobilePortrait }) {
-    commit("setIsMobilePortrait", {isMobilePortrait});
+    commit("setIsMobilePortrait", { isMobilePortrait });
   },
   setIsDraggableInfoPanelDisabled({ commit }, { isDisabled }) {
-    commit("setIsDraggableInfoPanelDisabled", {isDisabled});
+    commit("setIsDraggableInfoPanelDisabled", { isDisabled });
+  },
+  setIsDraggableInfoPanelCollapsed({ commit }, { isCollapsed }) {
+    commit("setIsDraggableInfoPanelCollapsed", { isCollapsed });
   }
 };

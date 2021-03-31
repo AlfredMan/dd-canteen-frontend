@@ -123,16 +123,31 @@ export default {
       onDragEnd: function() {
         const currentY = this.y;
         console.log(currentY);
-        if (currentY <= (-1 * containerHeight) / 2) {
-          // this.draggable[0].disable();
-          self.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
-            isDisabled: true
+
+        if (currentY < 0) {
+          self.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
+            isCollapsed: false
           });
-          // const isDisabled = this.$store.state.setIsDraggableInfoPanelDisabled;
-          // console.log(isDisabled);
         }
+        // if (currentY <= (-1 * containerHeight) / 2) {
+        //   self.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
+        //     isExpanded: true
+        //   });
+        // }
       },
-      autoScroll: 2
+      onDrag: function() {
+        const currentY = this.y;
+        console.log(currentY);
+
+        const newInfoPanelHeight = containerHeight + currentY;
+        // self.$refs.infoPanel.el$.height = newInfoPanelHeight;
+        // if (currentY < 0) {
+        //   self.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
+        //     isCollapsed: false
+        //   });
+        // }
+      }
+      // autoScroll: 2
       // liveSnap: {
       //   // points: [{ x: containerWidth / 2, y: -(clientHeight / 2) }],
       //   points: [
@@ -142,7 +157,9 @@ export default {
       //   radius: 250
       // }
     });
-
+    // this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
+    //   isDisabled: true
+    // });
     // this.$store.dispatch("setAppMapDraggable", { draggable });
     this.$store.dispatch("map/setIsMobilePortrait", {
       isMobilePortrait: this.isMobilePortrait()
@@ -154,6 +171,9 @@ export default {
   computed: {
     isDraggableInfoPanelDisabled() {
       return this.$store.state.map.isDraggableInfoPanelDisabled;
+    },
+    isDraggableInfoPanelCollapsed() {
+      return this.$store.state.map.isDraggableInfoPanelCollapsed;
     }
   },
 
@@ -165,6 +185,15 @@ export default {
         this?.draggable[0].disable();
       } else {
         this?.draggable[0].enable();
+      }
+    },
+    isDraggableInfoPanelCollapsed(newVal, oldVal) {
+      console.log("new is collapsed", newVal, "old is collapsed", oldVal);
+      if (newVal === true) {
+        gsap.set(".app-map-panel", { y: 0 });
+        // this.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
+        //   isCollapsed: false
+        // });
       }
     }
   },
@@ -201,7 +230,7 @@ export default {
   scrollbar-width: none; /* Firefox */
 }
 .app-map-panel {
-  @apply fixed top-0 left-0 bottom-0 overflow-y-auto w-full p-4;
+  @apply fixed top-0 left-0 bottom-0 overflow-y-auto w-full;
   @apply bg-white;
   z-index: 999;
 }
@@ -211,7 +240,7 @@ export default {
 
 @screen md {
   .app-map-panel {
-    @apply fixed top-0 left-0 bottom-0 overflow-y-auto w-96 p-4;
+    @apply fixed top-0 left-0 bottom-0 overflow-y-auto w-96;
     z-index: 999;
   }
   .app-map-renderer {
@@ -223,7 +252,7 @@ export default {
   height: 150vh;
 }
 .app-map-panel.mobile-portrait {
-  @apply relative overflow-y-auto w-full h-screen p-4;
+  @apply relative overflow-y-auto w-full h-screen;
   @apply bg-white;
   z-index: 999;
 }
