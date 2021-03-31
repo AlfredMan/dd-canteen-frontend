@@ -3,28 +3,21 @@
   <div
     class="app-container fixed top-0 left-0 bottom-0 bg-red-200 h-full w-full"
     style="z-index:999;"
-    ref="container"
-  >
-    <!-- <div
-    class="app-container fixed top-0 left-0 bottom-0 bg-red-200 h-full w-full"
-    style="z-index:999;"
     :class="{ 'mobile-portrait': isMobilePortrait() }"
-  > -->
+  >
     <!-- <AppMapPanel class="app-map-panel" :class="{'mobile-portrait':isMobilePortrait()}"/> -->
     <AppMapRenderer
       class="app-map-renderer"
       :class="{ 'mobile-portrait': isMobilePortrait() }"
     />
     <AppMapPanel
-      ref="infoPanel"
-      class="app-map-panel shadow-lg"
+      class="app-map-panel"
       :class="{ 'mobile-portrait': isMobilePortrait() }"
     />
     <!-- <div class="app-map-panel flex flex-col">
       <div class="drag-handle w-full h-16 bg-pink-500"></div>
       <AppMapPanel :class="{ 'mobile-portrait': isMobilePortrait() }" />
     </div> -->
-
     <!-- <div class="box w-full h-48 w-64 bg-red-500">
       .BOX
     </div> -->
@@ -52,8 +45,7 @@ export default {
   },
   data() {
     return {
-      windowWidth: typeof window === "undefined" ? 0 : window.innerWidth,
-      draggable: null
+      windowWidth: typeof window === "undefined" ? 0 : window.innerWidth
     };
   },
   watch: {
@@ -63,7 +55,6 @@ export default {
   },
 
   mounted() {
-    const self = this;
     this.$nextTick(() => {
       if (typeof window === "undefined") {
         return;
@@ -101,73 +92,17 @@ export default {
     //   bounds: "#container",
     //   inertia: true
     // });
-
-    const containerHeight = this.$refs.container.clientHeight;
-    const containerWidth = this.$refs.container.clientWidth;
-    const panelHeight = this.$refs.infoPanel.$el.clientHeight;
-    console.log("container height", containerHeight);
-    console.log("panel height", panelHeight);
-    this.draggable = Draggable.create(".app-map-panel", {
+    Draggable.create(".app-map-panel", {
       type: "y",
       // trigger: ".drag-handle  ",
-      // bounds: ".app-container",
-      // bounds: { top: 50, height: panelHeight },
-      bounds: {
-        top: 0,
-        left: 0,
-        width: containerWidth,
-        height: containerHeight * 1.5
-      },
-      // allowNativeTouchScrolling: false,
-      onDragStart: function() {},
-      onDragEnd: function() {
-        const currentY = this.y;
-        console.log(currentY);
-        if (currentY <= (-1 * containerHeight) / 2) {
-          // this.draggable[0].disable();
-          self.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
-            isDisabled: true
-          });
-          // const isDisabled = this.$store.state.setIsDraggableInfoPanelDisabled;
-          // console.log(isDisabled);
-        }
-      },
-      autoScroll: 2
-      // liveSnap: {
-      //   // points: [{ x: containerWidth / 2, y: -(clientHeight / 2) }],
-      //   points: [
-      //     { x: containerWidth / 2, y: 0 },
-      //     { x: containerWidth / 2, y: -containerHeight / 2 }
-      //   ],
-      //   radius: 250
-      // }
-    });
-
-    // this.$store.dispatch("setAppMapDraggable", { draggable });
-    this.$store.dispatch("map/setIsMobilePortrait", {
-      isMobilePortrait: this.isMobilePortrait()
+      bounds: ".app-container",
+      allowNativeTouchScrolling: false
     });
     // edgeResistance: 0.65,
     // inertia: true,
     // bounds: ".app-container",
   },
-  computed: {
-    isDraggableInfoPanelDisabled() {
-      return this.$store.state.map.isDraggableInfoPanelDisabled;
-    }
-  },
 
-  watch: {
-    isDraggableInfoPanelDisabled(newVal, oldVal) {
-      // console.log('contentType', newVal, oldVal)
-      console.log("newVal", newVal, "oldVal", oldVal);
-      if (newVal === true) {
-        this?.draggable[0].disable();
-      } else {
-        this?.draggable[0].enable();
-      }
-    }
-  },
   beforeDestroy() {
     if (typeof window === "undefined") {
       return;
@@ -228,6 +163,6 @@ export default {
   z-index: 999;
 }
 .app-map-renderer.mobile-portrait {
-  @apply relative w-full h-1/2;
+  @apply relative w-full h-1/3;
 }
 </style>

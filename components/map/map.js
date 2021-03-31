@@ -189,7 +189,6 @@ class Scene {
   //     this.defaultOrbitSetting.maxDistance * zoomScale;
   // }
 
-
   //zoomScale is (0=>1), 0.1 is more zoom in, 1 is capped at defaultOrbitSetting.maxDisctance
   zoomToBuilding({ node, zoomScale, y = 0 }) {
     // const newX = node.getWorldPosition(new THREE.Vector3()).x;
@@ -659,7 +658,6 @@ class Scene {
     const self = this;
 
     // render();
-
     // model
 
     const model = "./model/DD-all-baked-tex-11-compressed.draco.gltf";
@@ -843,8 +841,8 @@ class Scene {
   onDocumentMouseMove = event => {
     this.isDragging = true;
     event.preventDefault();
-    let x = event.offsetX || event.clientX;
-    let y = event.offsetY || event.clientY;
+    let x = event.offsetX || event.clientX || event.changedTouches[0].clientX;
+    let y = event.offsetY || event.clientY || event.changedTouches[0].clientY;
     this.mouse.x = (x / this.width) * 2 - 1;
     this.mouse.y = -(y / this.height) * 2 + 1;
     this.ray();
@@ -860,7 +858,7 @@ class Scene {
       console.log("mouse up but mouse moved");
       return;
     }
-    console.log("mouse up, has hover target" , this.hoverTarget);
+    console.log("mouse up, has hover target", this.hoverTarget);
     if (this.hoverTarget) {
       this.selectedTarget = this.hoverTarget;
     } else {
@@ -877,9 +875,15 @@ class Scene {
   };
 
   bindEvents() {
+    const self = this;
     window.addEventListener("resize", this.onResize);
     // this.canvas.addEventListener("mousemove", this.throttledMouseMove, false);
     this.canvas.addEventListener("mousemove", this.debouncedMouseMove, false);
+    this.canvas.addEventListener(
+      "touchstart",
+      this.onTouchStart.bind(self),
+      false
+    );
     this.canvas.addEventListener(
       "pointerdown",
       this.onDocumentMouseDown,
@@ -887,6 +891,12 @@ class Scene {
     );
     this.canvas.addEventListener("pointerup", this.onDocumentMouseUp, false);
   }
+
+  onTouchStart = event => {
+    this.onDocumentMouseMove(event);
+    this.ray();
+    this.onDocumentMouseDown(event);
+  };
 
   unbindEvents() {
     window.removeEventListener("resize", this.onResize);
@@ -903,6 +913,7 @@ class Scene {
       false
     );
     this.canvas.removeEventListener("pointerup", this.onDocumentMouseUp, false);
+    this.canvas.removeEventListener("touchstart", this.onTouchStart, false);
   }
 }
 

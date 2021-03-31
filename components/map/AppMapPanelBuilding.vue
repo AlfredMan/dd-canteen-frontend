@@ -5,12 +5,7 @@
       <nuxt-link class="back mb-8" :to="{query:null}">&larr; Back</nuxt-link>
 
       <!-- <nuxt-link :to="`/workspace/building/${building.fields.title}`" > -->
-        <lazy-image
-        :src="building.fields && building.fields.thumbnailImageAsset[0].fields.file.url"
-        :w="1000"
-        :h="1000"
-        :custom="'fit=thumb&f=center'"
-        />
+
       <!-- </nuxt-link> -->
 
       <!-- <h1 style="font-size:6rem" class="mt-2">{{building.slug}}</h1> -->
@@ -25,7 +20,12 @@
           {{spaceType.fields.title}}
         </div>
       </div>
-
+        <lazy-image
+        :src="building.fields && building.fields.thumbnailImageAsset[0].fields.file.url"
+        :w="1000"
+        :h="1000"
+        :custom="'fit=thumb&f=center'"
+        />
       <div>{{building.fields.shortDescription}}</div>
 
       <!-- <div><IconFloorplan class="inline" /> {{building.fields.minSize}}–{{building.fields.maxSize}} Sqft</div>

@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="map-content map-site-content">
     <div class="content">
-      <div class="map-site-title">
+      <div class="map-site-title" @touchstart="dragTriggerTouchStart" @touchend="dragTriggeTouchEnd">
         <div class="leading-none text-6xl font-400">Design<br>District</div>
         <h3 class="font-200">Map</h3>
       </div>
@@ -206,6 +206,12 @@ export default {
     }
   },
   methods: {
+    dragTriggerTouchStart(){
+
+    },
+    dragTriggerTouchEnd(){
+
+    },
     numberWithCommas(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },

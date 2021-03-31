@@ -113,6 +113,7 @@ export default {
     onBuildingSelect(target) {
       const buildingIndexName = getInteractiveBuildingIndexName(target);
       if (!buildingIndexName) {
+        this.$router.push({ query: { } });
         return;
       }
       console.log(target?.name, buildingIndexName);
