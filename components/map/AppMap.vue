@@ -56,7 +56,8 @@ export default {
       draggable: null,
       containerHeight: 0,
       containerWidth: 0,
-      initialPanelHeight: 0
+      initialPanelHeight: 0,
+      dragStartPos: 0
     };
   },
   watch: {
@@ -125,30 +126,38 @@ export default {
         // bottom:0,
       },
       // allowNativeTouchScrolling: false,
-      onDragStart: function() {},
+      onDragStart: function() {
+        self.dragStartPos = this.y;
+      },
       onDragEnd: function() {
         const currentY = this.y;
         console.log("dragEnd y", currentY);
 
-        // if (currentY <= 0) {
+        // if (currentY > -50) {
+        //   self.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
+        //     isCollapsed: true
+        //   });
+        // } else {
         //   self.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
         //     isCollapsed: false
         //   });
         // }
-        if (currentY > -50) {
-          self.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
-            isCollapsed: true
+        // if (currentY > -1 * self.initialPanelHeight * 0.5) {
+        if (self.dragStartPos > -1 * self.initialPanelHeight * 0.5) {
+          self.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
+            isExpanded: true
           });
-        } else {
           self.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
             isCollapsed: false
           });
+        } else {
+          self.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
+            isCollapsed: true
+          });
+          self.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
+            isExpanded: false
+          });
         }
-        // if (currentY <= (-1 * self.containerHeight) / 2) {
-        //   self.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
-        //     isExpanded: true
-        //   });
-        // }
       },
       onDrag: function() {
         self.resetPanelHeightAndBound(this.y);
