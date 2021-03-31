@@ -209,7 +209,7 @@ export default {
       console.log("new is collapsed", newVal, "old is collapsed", oldVal);
       if (newVal === true) {
         this.resetPanelHeightAndBound(0);
-        gsap.set(".app-map-panel", { y: 0 });
+        gsap.to(".app-map-panel", { y: 0, duration: 0.3 });
 
         // this.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
         //   isCollapsed: false
@@ -220,7 +220,10 @@ export default {
       console.log("new is expanded", newVal, "old is expanded", oldVal);
       if (newVal === true) {
         this.resetPanelHeightAndBound(-this.initialPanelHeight);
-        gsap.set(".app-map-panel", { y: -this.initialPanelHeight });
+        gsap.to(".app-map-panel", {
+          y: -this.initialPanelHeight,
+          duration: 0.3
+        });
 
         // this.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
         //   isCollapsed: false

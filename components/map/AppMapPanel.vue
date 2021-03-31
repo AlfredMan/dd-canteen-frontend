@@ -29,6 +29,7 @@
         @touchstart="collapseDraggablePanel"
       >
         <IconAngleDown />
+        <!-- <IconX /> -->
       </div>
       <div
         v-if="isDraggableInfoPanelCollapsed"
@@ -37,6 +38,7 @@
       >
         <IconAngleUp />
       </div>
+
     </div>
     <!-- <div>
       isDraggableInfoPanelDisabled:
