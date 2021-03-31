@@ -20,7 +20,7 @@ class Scene {
 
     this.canvas = document.createElement("canvas");
 
-    this.lastDraggingTimestamp = null;
+    this.isDragging = false;
     this.onHoverCallback = onHover;
     this.onSelectCallback = onSelect;
 
@@ -566,7 +566,6 @@ class Scene {
   }
 
   initOrbitControls() {
-    const self = this;
     this.orbitControls = new OrbitControls(this.camera, this.canvas);
 
     Object.entries(this.defaultOrbitSetting).forEach(
@@ -583,10 +582,6 @@ class Scene {
     // this.orbitControls.minDistance = 3;
 
     this.orbitControls.update();
-    this.orbitControls.addEventListener("end", function() {
-      debugger;
-      self.lastDraggingTimestamp = new Date();
-    });
   }
 
   // initMapObjects() {
@@ -844,9 +839,7 @@ class Scene {
   };
 
   onDocumentMouseMove = event => {
-    this.lastDraggingTimestamp = new Date();
-
-    console.log("moved", this.lastDraggingTimestamp);
+    this.isDragging = true;
     event.preventDefault();
     let x = event.offsetX || event.clientX || event.changedTouches[0].clientX;
     let y = event.offsetY || event.clientY || event.changedTouches[0].clientY;
@@ -856,24 +849,14 @@ class Scene {
   };
   onDocumentMouseDown = event => {
     event.preventDefault();
-    console.log("mouse down");
-    this.lastDraggingTimestamp = null;
+    this.isDragging = false;
   };
 
   onDocumentMouseUp = event => {
     event.preventDefault();
-    const now = new Date();
-    // if (this.lastDraggingTimestamp) {
-    console.log("mouse up");
-    if (
-      !!this.lastDraggingTimestamp &&
-      now.getTime() - this.lastDraggingTimestamp.getTime() > 100
-    ) {
+    if (this.isDragging) {
       console.log("mouse up but mouse moved");
-      this.lastDraggingTimestamp = null;
       return;
-    } else {
-      console.log(this.lastDraggingTimestamp, now);
     }
     console.log("mouse up, has hover target", this.hoverTarget);
     if (this.hoverTarget) {

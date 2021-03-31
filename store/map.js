@@ -1,7 +1,8 @@
 export const state = () => ({
   isMobilePortrait: false,
   isDraggableInfoPanelDisabled: false,
-  isDraggableInfoPanelCollapsed: true
+  isDraggableInfoPanelCollapsed: true,
+  isDraggableInfoPanelExpanded: false
 });
 
 export const mutations = {
@@ -13,6 +14,13 @@ export const mutations = {
   },
   setIsDraggableInfoPanelCollapsed(state, { isCollapsed }) {
     state.isDraggableInfoPanelCollapsed = isCollapsed;
+    // state.isDraggableInfoPanelExpanded = isCollapsed
+    //   ? true
+    //   : state.isDraggableInfoPanelDisabled;
+  },
+  setIsDraggableInfoPanelExpanded(state, { isExpanded }) {
+    state.isDraggableInfoPanelExpanded = isExpanded;
+    state.isDraggableInfoPanelCollapsed = !isExpanded;
   }
 };
 
@@ -25,5 +33,8 @@ export const actions = {
   },
   setIsDraggableInfoPanelCollapsed({ commit }, { isCollapsed }) {
     commit("setIsDraggableInfoPanelCollapsed", { isCollapsed });
+  },
+  setIsDraggableInfoPanelExpanded({ commit }, { isExpanded }) {
+    commit("setIsDraggableInfoPanelExpanded", { isExpanded });
   }
 };

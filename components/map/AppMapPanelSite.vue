@@ -1,8 +1,9 @@
 <template lang="html">
   <div class="map-content map-site-content">
     <div class="content">
-      <div class="map-site-title" @touchstart="dragTriggerTouchStart" @touchend="dragTriggerTouchEnd">
-        <div class="leading-none text-6xl font-400">Design<br>District</div>
+      <!-- <div class="map-site-title" @touchstart="dragTriggerTouchStart" @touchend="dragTriggerTouchEnd"> -->
+      <div class="map-site-title">
+        <div class="leading-none text-6xl font-400">Design<br />District</div>
         <h3 class="font-200">Map</h3>
       </div>
       <div class="my-0 py-1">
@@ -16,12 +17,16 @@
 
           <div class="tags">
             <div
-            v-for="option in spaceFilters['options']" :key="option"
-            @click="toggleFilter('options', option); typeFilters = false"
-            :class="{'active': option == filter.options}"
-            class="btn btn-outline-dark tag tag-sm mr-1 mb-1"
+              v-for="option in spaceFilters['options']"
+              :key="option"
+              @click="
+                toggleFilter('options', option);
+                typeFilters = false;
+              "
+              :class="{ active: option == filter.options }"
+              class="btn btn-outline-dark tag tag-sm mr-1 mb-1"
             >
-              {{option}} <span v-if="option == filter.options">&times;</span>
+              {{ option }} <span v-if="option == filter.options">&times;</span>
             </div>
           </div>
           <!-- <div class="clear-filter" @click="toggleFilter('options', null); typeFilters = false">
@@ -38,19 +43,18 @@
 
           <div class="px-2 w-full max-w-md mb-12">
             <vue-slider
-            class="slider-component"
-            v-model="sliderModel"
-            :absorb="true"
-            :marks="sliderMarks"
-            :tooltip="'none'"
-            :min="0"
-            :max="7"
-            :min-range="1"
-            :interval="1"
-            :contained="false"
-
-            @change="onSliderChange"
-            @drag-end="onSliderDragEnd"
+              class="slider-component"
+              v-model="sliderModel"
+              :absorb="true"
+              :marks="sliderMarks"
+              :tooltip="'none'"
+              :min="0"
+              :max="7"
+              :min-range="1"
+              :interval="1"
+              :contained="false"
+              @change="onSliderChange"
+              @drag-end="onSliderDragEnd"
             >
               <template v-slot:mark="{ pos, label }">
                 <div class="custom-mark" :style="{ left: `${pos}%` }">
@@ -71,33 +75,41 @@
       </div>
 
       <div class="mt-4 pb-16">
-
-        <div class="uppercase mb-2 text-sm" v-if="!filteredBuildings || filteredBuildings.length < 1">
+        <div
+          class="uppercase mb-2 text-sm"
+          v-if="!filteredBuildings || filteredBuildings.length < 1"
+        >
           No matching results
         </div>
         <div class="uppercase mb-2 text-sm" v-else>
-          Listing {{filteredBuildings.length}} <span v-if="filteredBuildings.length>1">buildings</span><span v-else>building</span>
+          Listing {{ filteredBuildings.length }}
+          <span v-if="filteredBuildings.length > 1">buildings</span
+          ><span v-else>building</span>
         </div>
 
         <div class="flex flex-wrap mt-0 -mx-2" v-if="allBuildings">
-
           <div
-          class="w-full px-2 my-0 building text-sm"
-          v-if="filteredBuildings && filteredBuildings.length>0"
-          v-for="(building, index) in filteredBuildings"
-          :key="building.sys.id">
-
+            class="w-full px-2 my-0 building text-sm flex"
+            v-if="filteredBuildings && filteredBuildings.length > 0"
+            v-for="(building, index) in filteredBuildings"
+            :key="building.sys.id"
+          >
             <nuxt-link
-            :to="{ query: {
-              building: building.fields.title,
-            } }"
-            class="building-title block hover:text-green">
-              <span class="inline-block font-medium mr-2 text-4xl w-12">{{building.fields.title}}</span>
-              <span class="inline-block font-medium text-green text-xl">{{building.fields.architecture[0].fields.title}}</span>
+              :to="{
+                query: {
+                  building: building.fields.title
+                }
+              }"
+              class="building-title block hover:text-green"
+            >
+              <span class="inline-block font-medium mr-2 text-4xl w-12">{{
+                building.fields.title
+              }}</span>
+              <span class="inline-block font-medium text-green text-xl">{{
+                building.fields.architecture[0].fields.title
+              }}</span>
             </nuxt-link>
-
           </div>
-
         </div>
       </div>
 
@@ -130,53 +142,68 @@
 
 <script>
 // import MapListing from './MapListing.vue'
-import _ from 'lodash'
+import _ from "lodash";
 
 export default {
   computed: {
-    spaceFilters () {
-      return this.$store.state.filters
+    spaceFilters() {
+      return this.$store.state.filters;
     },
-    allBuildings () {
-      return this.$store.state.buildings
+    allBuildings() {
+      return this.$store.state.buildings;
     },
-    filteredBuildings () {
-      let visibleInWorkSpaceOnly = _.filter(this.allBuildings, (building) => {
-        return _.includes(building.fields.visibility, "Map")
-      })
+    filteredBuildings() {
+      let visibleInWorkSpaceOnly = _.filter(this.allBuildings, building => {
+        return _.includes(building.fields.visibility, "Map");
+      });
 
-      let filter = this.filter
+      let filter = this.filter;
 
-      let filtered = _.filter(visibleInWorkSpaceOnly, (building) => {
-        let b = building
-        let isChosen = -1
+      let filtered = _.filter(visibleInWorkSpaceOnly, building => {
+        let b = building;
+        let isChosen = -1;
         if (filter.options) {
-          let matchingSpaceType = _.find(b.fields.spaceType, (type)=>_.kebabCase(type.fields.title)==_.kebabCase(filter.options))
+          let matchingSpaceType = _.find(
+            b.fields.spaceType,
+            type =>
+              _.kebabCase(type.fields.title) == _.kebabCase(filter.options)
+          );
           if (matchingSpaceType) {
-            isChosen = 1
+            isChosen = 1;
           }
         } else {
-          isChosen = 1
+          isChosen = 1;
         }
         // if (+b.fields.minSize <= +filter.sizeBracketMax || +b.fields.maxSize >= +filter.sizeBracketMin) {
-        if (_.inRange(+b.fields.minSize, +filter.sizeBracketMin, +filter.sizeBracketMax) || _.inRange(+b.fields.maxSize, +filter.sizeBracketMin, +filter.sizeBracketMax)) {
-          isChosen = isChosen+1
+        if (
+          _.inRange(
+            +b.fields.minSize,
+            +filter.sizeBracketMin,
+            +filter.sizeBracketMax
+          ) ||
+          _.inRange(
+            +b.fields.maxSize,
+            +filter.sizeBracketMin,
+            +filter.sizeBracketMax
+          )
+        ) {
+          isChosen = isChosen + 1;
         }
 
-        return isChosen>=2
-      })
+        return isChosen >= 2;
+      });
 
-      filtered = _.orderBy(filtered, ['fields.title'])
+      filtered = _.orderBy(filtered, ["fields.title"]);
 
       // show visibility = 'Work Space' only.
-      return filtered
-    },
+      return filtered;
+    }
   },
   components: {
     // MapListing,
     // MapSpaceTypes
   },
-  data () {
+  data() {
     return {
       filter: {
         sizeBracket: null,
@@ -187,89 +214,116 @@ export default {
       },
       sizeFilters: false,
       typeFilters: false,
-      sliderModel: [0,7],
-      sliderData: [1,2,3,4,5,6,7],
+      sliderModel: [0, 7],
+      sliderData: [1, 2, 3, 4, 5, 6, 7],
       sliderMarks: {
-        '0': { label: '5' },
-        '1': { label: '100' },
-        '2': { label: '200' },
-        '3': { label: '500' },
-        '4': { label: '1000' },
-        '5': { label: '2000' },
-        '6': { label: '3000' },
-        '7': { label: '4000+' }
+        "0": { label: "5" },
+        "1": { label: "100" },
+        "2": { label: "200" },
+        "3": { label: "500" },
+        "4": { label: "1000" },
+        "5": { label: "2000" },
+        "6": { label: "3000" },
+        "7": { label: "4000+" }
       },
       filterDisplay: {
-        sizeBracketMin: '5',
-        sizeBracketMax: '4000+'
+        sizeBracketMin: "5",
+        sizeBracketMax: "4000+"
       }
-    }
+    };
   },
   methods: {
-    dragTriggerTouchStart(){
-          this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
-            isDisabled: false
-          });
-    },
-    dragTriggerTouchEnd(){
-          this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
-            isDisabled: true
-          });
-    },
+    // dragTriggerTouchStart(){
+    //       this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
+    //         isDisabled: false
+    //       });
+    // },
+    // dragTriggerTouchEnd(){
+    //       this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
+    //         isDisabled: true
+    //       });
+    // },
     numberWithCommas(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
-    toggleFilter (filterOption, value) {
+    toggleFilter(filterOption, value) {
       if (this.filter[filterOption] == value) {
-        this.filter[filterOption] = null
+        this.filter[filterOption] = null;
       } else {
-        this.filter[filterOption] = value
+        this.filter[filterOption] = value;
       }
     },
-    onSliderChange (val, a) {
+    onSliderChange(val, a) {
       // console.log('onSliderChange', ev, a)
-      let displayValues=['5', '100', '200', '500', '1000', '2000', '3000', '4000+']
-      let displayMin = displayValues[val[0]]
-      let displayMax = displayValues[val[1]]
-      this.filterDisplay.sizeBracketMin = displayMin
-      this.filterDisplay.sizeBracketMax = displayMax
+      let displayValues = [
+        "5",
+        "100",
+        "200",
+        "500",
+        "1000",
+        "2000",
+        "3000",
+        "4000+"
+      ];
+      let displayMin = displayValues[val[0]];
+      let displayMax = displayValues[val[1]];
+      this.filterDisplay.sizeBracketMin = displayMin;
+      this.filterDisplay.sizeBracketMax = displayMax;
 
-      let filterValues=['5', '100', '200', '500', '1000', '2000', '3000', '4000']
-      let filterMin = filterValues[val[0]]
-      let filterMax = filterValues[val[1]]
-      this.filter.sizeBracketMin = _.toNumber(filterMin)
-      this.filter.sizeBracketMax = _.toNumber(filterMax)
+      let filterValues = [
+        "5",
+        "100",
+        "200",
+        "500",
+        "1000",
+        "2000",
+        "3000",
+        "4000"
+      ];
+      let filterMin = filterValues[val[0]];
+      let filterMax = filterValues[val[1]];
+      this.filter.sizeBracketMin = _.toNumber(filterMin);
+      this.filter.sizeBracketMax = _.toNumber(filterMax);
 
-      console.log('onSliderChange', displayMin, displayMax, filterMin, filterMax)
+      console.log(
+        "onSliderChange",
+        displayMin,
+        displayMax,
+        filterMin,
+        filterMax
+      );
     },
-    getSizeRangeFromBracket (sizeBrackets) {
-      let sizes = _.map(_.flatten(_.map(sizeBrackets, (size) => _.split(size, '-'))), (v) => {
-          v = _.replace(v, ',', '')
-          v = _.replace(v, '<', '')
-          v = _.replace(v, '>', '')
-          return _.round(v)
-      })
+    getSizeRangeFromBracket(sizeBrackets) {
+      let sizes = _.map(
+        _.flatten(_.map(sizeBrackets, size => _.split(size, "-"))),
+        v => {
+          v = _.replace(v, ",", "");
+          v = _.replace(v, "<", "");
+          v = _.replace(v, ">", "");
+          return _.round(v);
+        }
+      );
 
-      let min = _.min(sizes)
-      let max = _.max(sizes)
+      let min = _.min(sizes);
+      let max = _.max(sizes);
 
-      if (min==max) {
-        return `${max}–5000+ sq ft`
+      if (min == max) {
+        return `${max}–5000+ sq ft`;
       }
 
-      return `${_.round(_.min(sizes),-1)}–${_.round(_.max(sizes),-1)} sq ft`
+      return `${_.round(_.min(sizes), -1)}–${_.round(_.max(sizes), -1)} sq ft`;
     },
-    onSliderDragEnd (val, a) {
+    onSliderDragEnd(val, a) {
       // console.log('onSliderDragEnd', ev, a)
     },
-    getTitleCase (string) {
-      return _.startCase(string)
+    getTitleCase(string) {
+      return _.startCase(string);
     },
-    getSlug (string) {
-      return _.kebabCase(string)
-    },
+    getSlug(string) {
+      return _.kebabCase(string);
+    }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -287,7 +341,6 @@ h1 {
 }
 
 .slider-component {
-
   height: 2px !important;
 
   .custom-mark {
@@ -297,7 +350,7 @@ h1 {
     white-space: nowrap;
     width: 50px;
     text-align: center;
-    font-size: .75rem;
+    font-size: 0.75rem;
     // position: absolute;
     // left: 20px;
     // transform: translateY(-50%);

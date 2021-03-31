@@ -16,6 +16,8 @@
       class="sticky top-0 panel-draggable-handle-container w-full h-8 bg-gray-200 flex justify-center items-center"
       @touchstart="dragTriggerTouchStart"
       @touchend="dragTriggerTouchEnd"
+      @mousedown="dragTriggerTouchStart"
+      @mouseup="dragTriggerTouchEnd"
     >
       <div class="w-1/4 rounded-full h-1 bg-gray-800"></div>
       <div v-if="canGoBack" class="absolute left-0 h-8 flex items-center ml-2">
@@ -36,11 +38,12 @@
         <IconAngleUp />
       </div>
     </div>
-    <!-- <div>is mobile portrait: {{ isMobilePortrait ? "true" : "false" }}</div>
-    <div>
+    <!-- <div>
       isDraggableInfoPanelDisabled:
       {{ isDraggableInfoPanelDisabled ? "true" : "false" }}
     </div> -->
+    <!-- <div>is mobile portrait: {{ isMobilePortrait ? "true" : "false" }}</div>
+    -->
     <!-- <div>
       isDraggableInfoPanelCollapsed:
       {{ isDraggableInfoPanelCollapsed ? "true" : "false" }}
@@ -127,14 +130,27 @@ export default {
       this.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
         isCollapsed: true
       });
+      setTimeout(() => {
+        this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
+          isDisabled: true
+        });
+      });
       // }, 0);
     },
     expandDraggablePanel() {
-      // setTimeout(() => {
-      this.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
-        isCollapsed: false
+      this.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
+        isExpanded: false
       });
-      // }, 0);
+      setTimeout(() => {
+        this.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
+          isExpanded: true
+        });
+      }, 0);
+      setTimeout(() => {
+        this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
+          isDisabled: true
+        });
+      });
     }
     // onWindowScroll(event) {
     //   if (process.client) {
