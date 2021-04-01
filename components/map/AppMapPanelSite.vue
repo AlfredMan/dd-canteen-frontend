@@ -106,7 +106,7 @@
           <div v-else>
             {{ filteredBuildings.length }}
             <span v-if="filteredBuildings.length > 1">buildings</span
-            ><span v-else>building</span> matches your criteria
+            ><span v-else>building</span> matching your criteria
           </div>
         </div>
 

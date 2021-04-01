@@ -80,7 +80,7 @@ export default {
     // this.$store.dispatch("setAppMapDraggable", { draggable });
     this.detectDevice()
 
-    if (this.isMobilePortrait) {
+    if (this.isMobilePortrait()) {
       this.initDrag()
     }
     // edgeResistance: 0.65,
