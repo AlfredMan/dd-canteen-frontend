@@ -3,10 +3,27 @@
     <div class="content">
       <!-- <div class="map-site-title" @touchstart="dragTriggerTouchStart" @touchend="dragTriggerTouchEnd"> -->
       <div class="map-site-title">
-        <div class="leading-none text-6xl font-400">Design<br />District</div>
-        <h3 class="font-200">Map</h3>
+        <!-- <div class="leading-none text-5xl font-400" style="margin-left:-2px;">Design<br />District</div> -->
+        <!-- <div class="font-normal text-2xl mt-1 mb-4">Map</div> -->
+        <div class="">
+          <img class="logo" src="~/assets/images/logo-hor.svg" alt="logo">
+        </div>
       </div>
-      <div class="my-0 py-1">
+
+      <div class="mt-4 text-lg">
+        Find your work space. Immerse yourself in a community of creatives, one minute from North Greenwich Underground station. Opening 2021.
+      </div>
+
+      <div class="my-4 tags">
+        <div class="tag tag-sm" style="border-color:#eee; background:#eee" v-if="showBuildingFilters" @click="showBuildingFilters=!showBuildingFilters">
+          Hide filter options
+        </div>
+        <div class="tag tag-sm" v-else @click="showBuildingFilters=!showBuildingFilters">
+          Show filter options
+        </div>
+      </div>
+
+      <div class="my-0 py-1" v-show="showBuildingFilters">
         <div class="my-0">
           <!-- <div class="d-flex justify-content-between align-items-baseline">
             <div class="h5 font-weight-normal">
@@ -33,6 +50,7 @@
             Clear
           </div> -->
         </div>
+
         <div class="my-8">
           <div class="uppercase mb-2  text-sm">Size (sq ft)</div>
           <!-- <div class="d-flex justify-content-between align-items-baseline">
@@ -82,9 +100,14 @@
           No matching results
         </div>
         <div class="uppercase mb-2 text-sm" v-else>
-          Listing {{ filteredBuildings.length }}
-          <span v-if="filteredBuildings.length > 1">buildings</span
-          ><span v-else>building</span>
+          <div v-if="filteredBuildings.length==16">
+            Listing all 16 buildings
+          </div>
+          <div v-else>
+            {{ filteredBuildings.length }}
+            <span v-if="filteredBuildings.length > 1">buildings</span
+            ><span v-else>building</span> matches your criteria
+          </div>
         </div>
 
         <div class="flex flex-wrap mt-0 -mx-2" v-if="allBuildings">
@@ -102,10 +125,13 @@
               }"
               class="building-title block hover:text-green"
             >
-              <span class="inline-block font-medium mr-2 text-4xl w-12">{{
+              <span class="inline-block font-medium mr-2 text-base w-12 leading-none uppercase mt-1" v-if="building.fields.title=='Food space'">{{
                 building.fields.title
               }}</span>
-              <span class="inline-block font-medium text-green text-xl">{{
+              <span class="inline-block font-medium mr-2 text-4xl w-12" v-else>{{
+                building.fields.title
+              }}</span>
+              <span class="inline-block font-medium text-green text-xl ml-2">{{
                 building.fields.architecture[0].fields.title
               }}</span>
             </nuxt-link>
@@ -205,6 +231,7 @@ export default {
   },
   data() {
     return {
+      showBuildingFilters: false,
       filter: {
         sizeBracket: null,
         sizeBracketMin: 100,

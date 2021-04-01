@@ -1,5 +1,5 @@
 export function getBuildingIndexName(obj) {
-  if (!obj || !obj.name || obj.name === "ground" || obj.name === "GROUND1") {
+  if (!obj || !obj.name || obj.name === "ground" || obj.name === "GROUND1" || obj.name === "Null") {
     return null;
   }
   if (obj.name.startsWith("C4")) {

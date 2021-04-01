@@ -17,7 +17,7 @@
     />
     <AppMapPanel
       ref="infoPanel"
-      class="app-map-panel shadow-lg"
+      class="app-map-panel shadow-sm"
       :class="{ 'mobile-portrait': isMobilePortrait() }"
     />
     <!-- <div class="app-map-panel flex flex-col">
@@ -74,111 +74,15 @@ export default {
       }
       window.addEventListener("resize", this.onResize);
     });
-
-    // function snapX(x) {
-    //   return Math.round(x / cellWidth) * cellWidth;
-    // }
-
-    // function updateProgress() {
-    //   // let newProg = this.x / wrapWidth;
-    //   // newProg = newProg - Math.floor(newProg);
-    //   // animation.progress(newProg);
-    // }
-    // var draggable = new Draggable(proxy, {
-    //   allowContextMenu: true,
-    //   type: "y",
-    //   trigger: ".app-map-panel",
-    //   inertia: true,
-    //   onDrag: updateProgress,
-    //   onThrowUpdate: updateProgress,
-    //   // snap: {
-    //   //   x: snapX
-    //   // },
-    //   onDragEnd: function() {
-    //     // const i = wrapIndex((-this.endX / wrapWidth) * cells.length - 5);
-    //     // console.log(i);
-    //   }
-    // });
-    // Draggable.create(".app-map-panel", {
-    //   type: "y",
-    //   edgeResistance: 0.65,
-    //   bounds: "#container",
-    //   inertia: true
-    // });
-
-    self.containerHeight = this.$refs.container.clientHeight;
-    self.containerWidth = this.$refs.container.clientWidth;
-    self.initialPanelHeight = this.$refs.infoPanel.$el.clientHeight;
-    console.log("container height", self.containerHeight);
-    console.log("panel height", self.initialPanelHeight);
-    this.draggable = Draggable.create(".app-map-panel", {
-      type: "y",
-      // trigger: ".drag-handle  ",
-      // bounds: ".app-container",
-      // bounds: { top: 50, height: initialPanelHeight },
-      bounds: {
-        top: 0,
-        left: 0,
-        width: self.containerWidth,
-        // height: self.containerHeight * 1.5
-        // height: self.containerHeight * 1,
-        height: self.initialPanelHeight * 2
-        // bottom:0,
-      },
-      // allowNativeTouchScrolling: false,
-      onDragStart: function() {
-        self.dragStartPos = this.y;
-      },
-      onDragEnd: function() {
-        const currentY = this.y;
-        console.log("dragEnd y", currentY);
-
-        // if (currentY > -50) {
-        //   self.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
-        //     isCollapsed: true
-        //   });
-        // } else {
-        //   self.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
-        //     isCollapsed: false
-        //   });
-        // }
-        // if (currentY > -1 * self.initialPanelHeight * 0.5) {
-        if (self.dragStartPos > -1 * self.initialPanelHeight * 0.5) {
-          self.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
-            isExpanded: true
-          });
-          self.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
-            isCollapsed: false
-          });
-        } else {
-          self.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
-            isCollapsed: true
-          });
-          self.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
-            isExpanded: false
-          });
-        }
-      },
-      onDrag: function() {
-        self.resetPanelHeightAndBound(this.y);
-      }
-      // autoScroll: 2
-      // liveSnap: {
-      //   // points: [{ x: containerWidth / 2, y: -(clientHeight / 2) resetPanelHeightAndBound,
-      //   points: [
-      //     { x: containerWidth / 2, y: 0 },
-      //     { x: containerWidth / 2, y: -self.containerHeight / 2 }
-      //   ],
-      //   radius: 250
-      // }
-    });
     // this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
     //   isDisabled: true
     // });
     // this.$store.dispatch("setAppMapDraggable", { draggable });
-    this.$store.dispatch("map/setIsMobilePortrait", {
-      isMobilePortrait: this.isMobilePortrait()
-    });
+    this.detectDevice()
+
+    if (this.isMobilePortrait) {
+      this.initDrag()
+    }
     // edgeResistance: 0.65,
     // inertia: true,
     // bounds: ".app-container",
@@ -239,6 +143,114 @@ export default {
   },
 
   methods: {
+
+    initDrag() {
+
+      // function snapX(x) {
+      //   return Math.round(x / cellWidth) * cellWidth;
+      // }
+
+      // function updateProgress() {
+      //   // let newProg = this.x / wrapWidth;
+      //   // newProg = newProg - Math.floor(newProg);
+      //   // animation.progress(newProg);
+      // }
+      // var draggable = new Draggable(proxy, {
+      //   allowContextMenu: true,
+      //   type: "y",
+      //   trigger: ".app-map-panel",
+      //   inertia: true,
+      //   onDrag: updateProgress,
+      //   onThrowUpdate: updateProgress,
+      //   // snap: {
+      //   //   x: snapX
+      //   // },
+      //   onDragEnd: function() {
+      //     // const i = wrapIndex((-this.endX / wrapWidth) * cells.length - 5);
+      //     // console.log(i);
+      //   }
+      // });
+      // Draggable.create(".app-map-panel", {
+      //   type: "y",
+      //   edgeResistance: 0.65,
+      //   bounds: "#container",
+      //   inertia: true
+      // });
+
+      self.containerHeight = this.$refs.container.clientHeight;
+      self.containerWidth = this.$refs.container.clientWidth;
+      self.initialPanelHeight = this.$refs.infoPanel.$el.clientHeight;
+      console.log("container height", self.containerHeight);
+      console.log("panel height", self.initialPanelHeight);
+      this.draggable = Draggable.create(".app-map-panel", {
+        type: "y",
+        // trigger: ".drag-handle  ",
+        // bounds: ".app-container",
+        // bounds: { top: 50, height: initialPanelHeight },
+        bounds: {
+          top: 0,
+          left: 0,
+          width: self.containerWidth,
+          // height: self.containerHeight * 1.5
+          // height: self.containerHeight * 1,
+          height: self.initialPanelHeight * 2
+          // bottom:0,
+        },
+        // allowNativeTouchScrolling: false,
+        onDragStart: function() {
+          self.dragStartPos = this.y;
+        },
+        onDragEnd: function() {
+          const currentY = this.y;
+          console.log("dragEnd y", currentY);
+
+          // if (currentY > -50) {
+          //   self.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
+          //     isCollapsed: true
+          //   });
+          // } else {
+          //   self.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
+          //     isCollapsed: false
+          //   });
+          // }
+          // if (currentY > -1 * self.initialPanelHeight * 0.5) {
+          if (self.dragStartPos > -1 * self.initialPanelHeight * 0.5) {
+            self.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
+              isExpanded: true
+            });
+            self.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
+              isCollapsed: false
+            });
+          } else {
+            self.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
+              isCollapsed: true
+            });
+            self.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
+              isExpanded: false
+            });
+          }
+        },
+        onDrag: function() {
+          self.resetPanelHeightAndBound(this.y);
+        }
+        // autoScroll: 2
+        // liveSnap: {
+        //   // points: [{ x: containerWidth / 2, y: -(clientHeight / 2) resetPanelHeightAndBound,
+        //   points: [
+        //     { x: containerWidth / 2, y: 0 },
+        //     { x: containerWidth / 2, y: -self.containerHeight / 2 }
+        //   ],
+        //   radius: 250
+        // }
+      });
+    },
+
+    detectDevice() {
+      this.$store.dispatch("map/setIsMobilePortrait", {
+        isMobilePortrait: this.isMobilePortrait()
+      });
+    },
+
     onResize() {
       if (typeof window === "undefined") {
         return;

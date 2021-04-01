@@ -15,7 +15,7 @@
       <div class="">
         {{ selectID }}
       </div>
-      <button
+      <!-- <button
         class="p-2 bg-white m-2 bg-yellow-300"
         v-if="!this.scene"
         @click="initScene"
@@ -28,7 +28,7 @@
         @click="destroyScene"
       >
         Destroy Scene
-      </button>
+      </button> -->
     </div>
   </div>
 </template>

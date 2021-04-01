@@ -62,7 +62,7 @@ class Scene {
       target: this.defaultLookAt,
 
       enableDamping: true,
-      dampingFactor: 0.05,
+      dampingFactor: 0.04,
       screenSpacePanning: false,
 
       // minPolarAngle: Math.PI * 0.5 - 0.5,
@@ -73,8 +73,8 @@ class Scene {
       minPolarAngle: -Math.PI / 2,
       maxPolarAngle: Math.PI / 2,
 
-      maxDistance: 10,
-      minDistance: 3
+      maxDistance: 7,
+      minDistance: 4
     };
     this.defaultCameraPosition = {
       x: 25,
@@ -128,6 +128,8 @@ class Scene {
     // this.selectedTarget = this.objects.find(
     //   object => getInteractiveBuildingIndexName(object) === buildingId
     // );
+    // debugger
+
     this.selectedTarget = this.parentObjectDict[buildingId];
 
     this.hoverTarget = this.selectedTarget;
@@ -405,28 +407,30 @@ class Scene {
       return;
     }
 
-    if (selected === "dim") {
-      const defaultMaterialOpacity = this.defaultMaterialOpacityDict[
-        material.uuid
-      ];
-      material.opacity = defaultMaterialOpacity * 0.3;
-      if (defaultMaterialOpacity >= 1) {
-        material.transparent = true;
-      }
-      // material.wireframe = true;
-      // // material.color.setHex(0xff0000);
-    } else {
-      // 'hightlight' or 'default' for now share same material setup
-      const defaultMaterialOpacity = this.defaultMaterialOpacityDict[
-        material.uuid
-      ];
-      material.opacity = defaultMaterialOpacity;
-      if (defaultMaterialOpacity >= 1) {
-        material.transparent = false;
-      }
-      // material.wireframe = false;
-      // // material.color.setHex(0xff0000);
-    }
+    // temporary commented due to visual bug for all glasses
+
+    // if (selected === "dim") {
+    //   const defaultMaterialOpacity = this.defaultMaterialOpacityDict[
+    //     material.uuid
+    //   ];
+    //   material.opacity = defaultMaterialOpacity * 1; // was 0.3
+    //   if (defaultMaterialOpacity >= 1) {
+    //     material.transparent = true;
+    //   }
+    //   // material.wireframe = true;
+    //   // // material.color.setHex(0xff0000);
+    // } else {
+    //   // 'hightlight' or 'default' for now share same material setup
+    //   const defaultMaterialOpacity = this.defaultMaterialOpacityDict[
+    //     material.uuid
+    //   ];
+    //   material.opacity = defaultMaterialOpacity;
+    //   if (defaultMaterialOpacity >= 1) {
+    //     material.transparent = false;
+    //   }
+    //   // material.wireframe = false;
+    //   // // material.color.setHex(0xff0000);
+    // }
   }
   deselectAllBuilindgs() {
     // if (Object.values(this.parentRelevantBuildingDict).length===0) {
@@ -476,13 +480,13 @@ class Scene {
     this.initOrbitControls();
     this.initRaycaster();
 
-    this.textureCube = this.initTextureCube();
+    // this.textureCube = this.initTextureCube();
     this.initEnv();
     // this.initMirrorGround();
     this.initMapObjects();
 
-    this.throttledMouseMove = _.throttle(self.onDocumentMouseMove, 200);
-    (this.debouncedMouseMove = _.debounce(self.onDocumentMouseMove, 200, {
+    this.throttledMouseMove = _.throttle(self.onDocumentMouseMove, 50);
+    (this.debouncedMouseMove = _.debounce(self.onDocumentMouseMove, 50, {
       leading: true
     })),
       this.root.appendChild(this.canvas);
@@ -667,11 +671,14 @@ class Scene {
     // render();
     // model
 
-    const model = "./model/DD-all-baked-tex-11-compressed.draco.gltf";
+    // const model = "./model/DD-all-baked-tex-11-compressed.draco.gltf"; // temp disabled because colour not latest. require matching https://design-district-map-preview.netlify.app/ pw:dd
+
+    const model = 'https://design-district-map.s3.eu-west-2.amazonaws.com/glb/DD-all-baked-tex-11-compressed-5.glb'
+
     const loader = new GLTFLoader();
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath("/draco/");
-    loader.setDRACOLoader(dracoLoader);
+    // const dracoLoader = new DRACOLoader();
+    // dracoLoader.setDecoderPath("/draco/");
+    // loader.setDRACOLoader(dracoLoader);
 
     // # todo: remove this if successful
     // const loader = new THREE.GLTFLoader()
@@ -682,8 +689,12 @@ class Scene {
 
         gltf.scene.traverse(function(child) {
           console.log(child);
+
           // if child's parent isn't "Object3D" then its the root of the building object
-          if (child?.parent?.type !== "Object3D") {
+
+          // if (child?.parent?.type !== "Object3D") { // condition for ./model/DD-all-baked-tex-11-compressed.draco.gltf. doesn't work with S3 glb bcoz different structure.
+
+          if (child?.parent?.children.length == 18 && child?.parent?.name == "Null") { // condition for the s3 GLB file.
             const indexName = getBuildingIndexName(child);
             if (indexName) {
               self.uuidToIndexNameDict[child.uuid] = indexName;
@@ -716,7 +727,8 @@ class Scene {
             if (child.name.indexOf("Glass") >= 0) {
               // console.log("C4Glass", child);
               child.material.opacity = 0.5;
-              child.material.envMap = self.textureCube;
+              // child.material.envMap = self.textureCube;
+              child.material.envMap = self.scene.environment
               child.material.roughness = 0;
               child.material.metalness = 0;
               child.material.color.set(0xeeeeff);

@@ -5,15 +5,26 @@
     :key="building.slug"
   >
     <div class="content">
-      <nuxt-link v-if="!isMobilePortrait" class="back mb-8" :to="{ query: null }">&larr; Back</nuxt-link>
 
+      <!-- <nuxt-link
+      v-if="!isMobilePortrait"
+      class="back mb-8"
+      :to="{ query: null }"
+      >&larr; Back</nuxt-link> -->
+
+      <nuxt-link
+      v-if="!isMobilePortrait"
+      class="back block absolute top-0 right-0 text-center text-3xl m-4 font-200 w-8 h-8 text-gray-700 text-center bg-gray-100 rounded-full block"
+      style="line-height:1.8rem"
+      :to="{ query: null }"
+      >&times;</nuxt-link>
       <!-- <nuxt-link :to="`/workspace/building/${building.fields.title}`" > -->
 
       <!-- </nuxt-link> -->
 
       <!-- <h1 style="font-size:6rem" class="mt-2">{{building.slug}}</h1> -->
 
-      <nuxt-link
+      <!-- <nuxt-link
         :to="`/workspace/building/${building.fields.title}`"
         class="block my-3 mt-0"
       >
@@ -23,7 +34,19 @@
         <span class="inline-block font-medium text-green text-md uppercase">{{
           building.fields.architecture[0].fields.title
         }}</span>
-      </nuxt-link>
+      </nuxt-link> -->
+
+      <div
+        :to="`/workspace/building/${building.fields.title}`"
+        class="block my-3 mt-0"
+      >
+        <span class="inline-block font-medium mr-2 text-4xl">{{
+          building.fields.title
+        }}</span>
+        <span class="inline-block font-medium text-green text-md uppercase">{{
+          building.fields.architecture[0].fields.title
+        }}</span>
+      </div>
 
       <div class="tags my-2">
         <div
@@ -34,6 +57,7 @@
           {{ spaceType.fields.title }}
         </div>
       </div>
+
       <lazy-image
         :src="
           building.fields &&
@@ -42,7 +66,9 @@
         :w="1000"
         :h="1000"
         :custom="'fit=thumb&f=center'"
+        class="my-3"
       />
+
       <div>{{ building.fields.shortDescription }}</div>
 
       <!-- <div><IconFloorplan class="inline" /> {{building.fields.minSize}}–{{building.fields.maxSize}} Sqft</div>
@@ -126,4 +152,8 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.tags {
+  @apply pointer-events-none
+}
+</style>

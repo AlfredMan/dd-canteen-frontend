@@ -10,8 +10,11 @@
     @touchend="dragTriggerTouchEnd"
   > -->
   <!-- <div class="app-map-panel" ref="appMapPanel" v-on:scroll="onWindowScroll"> -->
-  <div class="app-map-panel" ref="appMapPanel">
-    <div
+  <div class="app-map-panel" ref="appMapPanel" style="transform:none!important">
+
+    <!-- force disabled as below dragging is triggered by unknown reasons -->
+
+    <!-- <div
       v-if="isMobilePortrait"
       class="sticky top-0 panel-draggable-handle-container w-full h-8 bg-gray-200 flex justify-center items-center"
       @touchstart="dragTriggerTouchStart"
@@ -29,7 +32,6 @@
         @touchstart="collapseDraggablePanel"
       >
         <IconAngleDown />
-        <!-- <IconX /> -->
       </div>
       <div
         v-if="isDraggableInfoPanelCollapsed"
@@ -39,7 +41,12 @@
         <IconAngleUp />
       </div>
 
-    </div>
+    </div> -->
+
+    <!-- force disabled as above dragging is triggered by unknown reasons -->
+
+
+
     <!-- <div>
       isDraggableInfoPanelDisabled:
       {{ isDraggableInfoPanelDisabled ? "true" : "false" }}
@@ -50,8 +57,8 @@
       isDraggableInfoPanelCollapsed:
       {{ isDraggableInfoPanelCollapsed ? "true" : "false" }}
     </div> -->
-    <AppMapPanelSite class="p-4" v-if="!building" :key="'site'" />
-    <AppMapPanelBuilding class="p-4" v-if="building" :key="building.id" />
+    <AppMapPanelSite class="absolute inset-0 z-10 p-4 bg-white" v-if="!building||true" :key="'site'" />
+    <AppMapPanelBuilding class="absolute inset-0 z-20 p-4 bg-white" v-if="building" :key="building.id" />
   </div>
 </template>
 
