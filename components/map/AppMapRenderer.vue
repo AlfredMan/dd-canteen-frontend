@@ -36,7 +36,7 @@
 <script>
 import { getInteractiveBuildingIndexName } from "./util.js";
 // import getInteractiveBuildingIndexName from "./util.js";
-import SceneConstructor from "./Map.js";
+import SceneConstructor from "./map.js";
 export default {
   data() {
     return {

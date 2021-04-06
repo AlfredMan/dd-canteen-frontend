@@ -78,10 +78,12 @@ export default {
     //   isDisabled: true
     // });
     // this.$store.dispatch("setAppMapDraggable", { draggable });
-    this.detectDevice()
-
+    this.detectDevice();
+    this.$store.dispatch("map/setIsMobilePortrait", {
+      isMobilePortrait: this.isMobilePortrait()
+    });
     if (this.isMobilePortrait()) {
-      this.initDrag()
+      this.initDrag();
     }
     // edgeResistance: 0.65,
     // inertia: true,
@@ -143,9 +145,7 @@ export default {
   },
 
   methods: {
-
     initDrag() {
-
       // function snapX(x) {
       //   return Math.round(x / cellWidth) * cellWidth;
       // }
@@ -176,6 +176,7 @@ export default {
       //   bounds: "#container",
       //   inertia: true
       // });
+      const self = this;
 
       self.containerHeight = this.$refs.container.clientHeight;
       self.containerWidth = this.$refs.container.clientWidth;
