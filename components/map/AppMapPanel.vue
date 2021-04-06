@@ -13,13 +13,14 @@
   <div class="app-map-panel" ref="appMapPanel" style="transform:none!important">
     <!-- force disabled as below dragging is triggered by unknown reasons -->
 
-        <!-- 'h-14': !isDraggableInfoPanelCollapsed -->
+    <!-- 'h-14': !isDraggableInfoPanelCollapsed -->
+        <!-- 'h-8': !isDraggableInfoPanelCollapsed -->
     <div
       v-if="isMobilePortrait"
       class="sticky z-30 top-0 panel-draggable-handle-container w-full  bg-opacity-0 bg-gray-200 flex justify-center "
       v-bind:class="{
         'h-full': isDraggableInfoPanelCollapsed,
-        'h-8': !isDraggableInfoPanelCollapsed
+        'h-32': !isDraggableInfoPanelCollapsed
       }"
       @touchstart="dragTriggerTouchStart"
       @touchend="dragTriggerTouchEnd"
@@ -27,6 +28,16 @@
       @mouseup="dragTriggerTouchEnd"
     >
       <div class="absolute top-2 w-1/4 rounded-full h-1 bg-gray-800"></div>
+
+      <div v-if="isMobilePortrait && canGoBack" class="absolute top-1 right-1">
+        <button
+          class="back z-50 block absolute top-0 right-0 text-center text-3xl m-4 font-200 w-8 h-8 text-gray-700 text-center bg-gray-100 rounded-full block"
+          style="line-height:1.8rem"
+          @click="toSite()"
+        >
+          &times;
+        </button>
+      </div>
     </div>
 
     <!-- force disabled as above dragging is triggered by unknown reasons -->
@@ -111,6 +122,9 @@ export default {
   //   this.unbindEvents();
   // },
   methods: {
+    toSite() {
+      this.$router.push({ query: null });
+    },
     dragTriggerTouchStart() {
       this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
         isDisabled: false

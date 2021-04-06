@@ -13,10 +13,12 @@
       >&larr; Back</nuxt-link> -->
 
       <nuxt-link
+      v-if="!isMobilePortrait"
       class="back z-50 block absolute top-0 right-0 text-center text-3xl m-4 font-200 w-8 h-8 text-gray-700 text-center bg-gray-100 rounded-full block"
       style="line-height:1.8rem"
       :to="{ query: null }"
       >&times;</nuxt-link>
+
       <!-- <nuxt-link :to="`/workspace/building/${building.fields.title}`" > -->
 
       <!-- </nuxt-link> -->
@@ -77,6 +79,9 @@
         <div class="mr-3">Sqft. {{building.fields.minSize}}–{{building.fields.maxSize}}</div>
         <div class="mr-3 flex"><IconPerson class="inline text-xs self-center mr-2" /><span>{{building.fields.people}} people</span></div>
       </div> -->
+
+
+
       <div class="flex justify-between items-end">
         <nuxt-link
           @click="toggleMapActive(false)"
@@ -97,6 +102,11 @@
           View next
         </nuxt-link>
       </div>
+
+
+
+
+
     </div>
   </div>
 </template>
