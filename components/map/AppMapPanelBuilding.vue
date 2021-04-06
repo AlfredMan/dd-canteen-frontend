@@ -13,7 +13,6 @@
       >&larr; Back</nuxt-link> -->
 
       <nuxt-link
-      v-if="!isMobilePortrait"
       class="back block absolute top-0 right-0 text-center text-3xl m-4 font-200 w-8 h-8 text-gray-700 text-center bg-gray-100 rounded-full block"
       style="line-height:1.8rem"
       :to="{ query: null }"
