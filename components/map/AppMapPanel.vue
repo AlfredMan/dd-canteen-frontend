@@ -16,7 +16,7 @@
         <!-- 'h-14': !isDraggableInfoPanelCollapsed -->
     <div
       v-if="isMobilePortrait"
-      class="sticky z-30 top-0 panel-draggable-handle-container w-full  bg-opacity-50 bg-gray-200 flex justify-center "
+      class="sticky z-30 top-0 panel-draggable-handle-container w-full  bg-opacity-0 bg-gray-200 flex justify-center "
       v-bind:class="{
         'h-full': isDraggableInfoPanelCollapsed,
         'h-8': !isDraggableInfoPanelCollapsed
