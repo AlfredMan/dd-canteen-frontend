@@ -14,16 +14,18 @@
 
     <!-- force disabled as below dragging is triggered by unknown reasons -->
 
-    <!-- <div
+    <div
       v-if="isMobilePortrait"
-      class="sticky top-0 panel-draggable-handle-container w-full h-8 bg-gray-200 flex justify-center items-center"
+      class="sticky z-30 top-0 panel-draggable-handle-container w-full  bg-opacity-0 bg-gray-200 flex justify-center "
+       v-bind:class="{'h-full': isDraggableInfoPanelCollapsed, 'h-14': !isDraggableInfoPanelCollapsed }"
       @touchstart="dragTriggerTouchStart"
       @touchend="dragTriggerTouchEnd"
       @mousedown="dragTriggerTouchStart"
       @mouseup="dragTriggerTouchEnd"
     >
-      <div class="w-1/4 rounded-full h-1 bg-gray-800"></div>
-      <div v-if="canGoBack" class="absolute left-0 h-8 flex items-center ml-2">
+
+      <div class="absolute top-2 w-1/4 rounded-full h-1 bg-gray-800"></div>
+      <!-- <div v-if="canGoBack" class="absolute left-0 h-8 flex items-center ml-2">
         <nuxt-link class="back" :to="{ query: null }">&larr; Back</nuxt-link>
       </div>
       <div
@@ -39,26 +41,31 @@
         @touchstart="expandDraggablePanel"
       >
         <IconAngleUp />
-      </div>
+      </div> -->
 
-    </div> -->
+    </div>
 
     <!-- force disabled as above dragging is triggered by unknown reasons -->
 
 
 
-    <!-- <div>
+    <!-- <div
+      class="absolute top-0 right-0 z-20 p-4 text-pink-500"
+      >
       isDraggableInfoPanelDisabled:
       {{ isDraggableInfoPanelDisabled ? "true" : "false" }}
     </div> -->
+
+
+
     <!-- <div>is mobile portrait: {{ isMobilePortrait ? "true" : "false" }}</div>
     -->
     <!-- <div>
       isDraggableInfoPanelCollapsed:
       {{ isDraggableInfoPanelCollapsed ? "true" : "false" }}
     </div> -->
-    <AppMapPanelSite class="absolute inset-0 z-10 p-4 bg-white" v-if="!building||true" :key="'site'" />
-    <AppMapPanelBuilding class="absolute inset-0 z-20 p-4 bg-white" v-if="building" :key="building.id" />
+    <AppMapPanelSite class="absolute inset-0 top-8 z-10 p-4 bg-white" v-if="!building||true" :key="'site'" />
+    <AppMapPanelBuilding class="absolute inset-0 top-8 z-20 p-4 bg-white" v-if="building" :key="building.id" />
   </div>
 </template>
 
@@ -139,28 +146,28 @@ export default {
       this.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
         isCollapsed: true
       });
-      setTimeout(() => {
-        this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
-          isDisabled: true
-        });
-      });
+      // setTimeout(() => {
+      //   this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
+      //     isDisabled: true
+      //   });
+      // });
       // }, 0);
     },
-    expandDraggablePanel() {
-      this.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
-        isExpanded: false
-      });
-      setTimeout(() => {
-        this.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
-          isExpanded: true
-        });
-      }, 0);
-      setTimeout(() => {
-        this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
-          isDisabled: true
-        });
-      });
-    }
+    // expandDraggablePanel() {
+    //   this.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
+    //     isExpanded: false
+    //   });
+    //   setTimeout(() => {
+    //     this.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
+    //       isExpanded: true
+    //     });
+    //   }, 0);
+    //   // setTimeout(() => {
+    //   //   this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
+    //   //     isDisabled: true
+    //   //   });
+    //   // });
+    // }
     // onWindowScroll(event) {
     //   if (process.client) {
     //     const self = this;

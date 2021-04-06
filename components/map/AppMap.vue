@@ -1,7 +1,7 @@
 <template lang="html">
   <!-- <div > -->
   <div
-    class="app-container fixed top-0 left-0 bottom-0 bg-red-200 h-full w-full"
+    class="app-container fixed top-0 left-0 bottom-0 bg-white h-full w-full"
     style="z-index:999;"
     ref="container"
   >
@@ -20,6 +20,17 @@
       class="app-map-panel shadow-sm"
       :class="{ 'mobile-portrait': isMobilePortrait() }"
     />
+    <!-- <div class="absolute top-0 left-0">
+      enabled: {{ draggable ? draggable[0].enabled() : false }} number:
+      {{ draggable ? draggable.length : 0 }}
+    </div>
+    <div class="absolute top-10 left-0">
+      collapsed: {{ isDraggableInfoPanelCollapsed }}
+    </div> -->
+
+
+
+
     <!-- <div class="app-map-panel flex flex-col">
       <div class="drag-handle w-full h-16 bg-pink-500"></div>
       <AppMapPanel :class="{ 'mobile-portrait': isMobilePortrait() }" />
@@ -79,9 +90,6 @@ export default {
     // });
     // this.$store.dispatch("setAppMapDraggable", { draggable });
     this.detectDevice();
-    this.$store.dispatch("map/setIsMobilePortrait", {
-      isMobilePortrait: this.isMobilePortrait()
-    });
     if (this.isMobilePortrait()) {
       this.initDrag();
     }
@@ -95,16 +103,22 @@ export default {
     },
     isDraggableInfoPanelCollapsed() {
       return this.$store.state.map.isDraggableInfoPanelCollapsed;
-    },
-    isDraggableInfoPanelExpanded() {
-      return this.$store.state.map.isDraggableInfoPanelExpanded;
     }
+    // isDraggableInfoPanelExpanded() {
+    //   return this.$store.state.map.isDraggableInfoPanelExpanded;
+    // }
   },
 
   watch: {
     isDraggableInfoPanelDisabled(newVal, oldVal) {
       // console.log('contentType', newVal, oldVal)
-      console.log("newVal", newVal, "oldVal", oldVal);
+      console.log(
+        "is Draggable info panel disabled?",
+        "newVal",
+        newVal,
+        "oldVal",
+        oldVal
+      );
       if (newVal === true) {
         this?.draggable[0].disable();
       } else {
@@ -116,26 +130,41 @@ export default {
       if (newVal === true) {
         this.resetPanelHeightAndBound(0);
         gsap.to(".app-map-panel", { y: 0, duration: 0.3 });
-
+        // this.draggable[0].enable();
+        this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
+          isDisabled: false
+        });
+        // this.draggable[0].enable()
+        // window.alert('collapsed')
         // this.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
         //   isCollapsed: false
         // });
-      }
-    },
-    isDraggableInfoPanelExpanded(newVal, oldVal) {
-      console.log("new is expanded", newVal, "old is expanded", oldVal);
-      if (newVal === true) {
+      } else {
         this.resetPanelHeightAndBound(-this.initialPanelHeight);
         gsap.to(".app-map-panel", {
           y: -this.initialPanelHeight,
           duration: 0.3
         });
-
-        // this.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
-        //   isCollapsed: false
-        // });
+        this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
+          isDisabled: true
+        });
+        // this.draggable[0].disable()
       }
     }
+    // isDraggableInfoPanelExpanded(newVal, oldVal) {
+    //   // console.log("new is expanded", newVal, "old is expanded", oldVal);
+    //   if (newVal === true) {
+    //     this.resetPanelHeightAndBound(-this.initialPanelHeight);
+    //     gsap.to(".app-map-panel", {
+    //       y: -this.initialPanelHeight,
+    //       duration: 0.3
+    //     });
+
+    //     // this.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
+    //     //   isCollapsed: false
+    //     // });
+    //   }
+    // }
   },
   beforeDestroy() {
     if (typeof window === "undefined") {
@@ -216,19 +245,27 @@ export default {
           // }
           // if (currentY > -1 * self.initialPanelHeight * 0.5) {
           if (self.dragStartPos > -1 * self.initialPanelHeight * 0.5) {
-            self.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
-              isExpanded: true
-            });
+            // self.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
+            //   isExpanded: true
+            // });
             self.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
               isCollapsed: false
             });
+            // self.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
+            //   isDisabled: true
+            // });
+            // self.draggable[0].disable();
           } else {
             self.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
               isCollapsed: true
             });
-            self.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
-              isExpanded: false
-            });
+            // self.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
+            //   isDisabled: false
+            // });
+            // self.draggable[0].enable();
+            // self.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
+            //   isExpanded: false
+            // });
           }
         },
         onDrag: function() {
@@ -244,6 +281,7 @@ export default {
         //   radius: 250
         // }
       });
+      // this.draggable[0].disable();
     },
 
     detectDevice() {
@@ -281,11 +319,27 @@ export default {
     resetPanelHeightAndBound(currentPanelY) {
       // const currentY = this.y;
       console.log(currentPanelY);
+      // // // this.draggable[0].bounds.height = newInfoPanelHeight * 2;
+      // if (isDraggableInfoPanelCollapsed){
+      // }else{
+
+      // }
+
       const newInfoPanelHeight = this.initialPanelHeight - currentPanelY;
-      // this.draggable[0].bounds.height = newInfoPanelHeight * 2;
+      // const newInfoPanelHeight =
+      //   currentPanelY !== newInfoPanelHeight ||
+      //   currentY !== newInfoPanelHeight * 2
+      //     ? this.initialPanelHeight - currentPanelY
+      //     : currentPanelY == newInfoPanelHeight
+      //     ? newInfoPanelHeight
+      //     : newInfoPanelHeight * 2;
 
       console.log("new info panel height", newInfoPanelHeight);
-      gsap.set(".app-map-panel", { height: newInfoPanelHeight });
+      // gsap.set(".app-map-panel", { height: newInfoPanelHeight });
+      document.querySelector(
+        ".app-map-panel"
+      ).style.height = newInfoPanelHeight+'px';
+
       const newBounds = {
         top: 0,
         left: 0,
@@ -295,6 +349,11 @@ export default {
 
       const draggable = this.draggable[0];
       draggable.applyBounds(newBounds);
+      if (this.isDraggableInfoPanelDisabled) {
+        draggable.disable();
+      } else {
+        draggable.enable();
+      }
     }
   }
 };
