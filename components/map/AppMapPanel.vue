@@ -127,25 +127,6 @@ export default {
   //   this.unbindEvents();
   // },
   methods: {
-    // bindEvents() {
-    //   if (process.client) {
-    //     const self = this;
-    //     window.addEventListener("scroll", self.onWindowScroll, false);
-    //   }
-    // },
-    // unbindEvents() {
-    //   if (process.client) {
-    //     const self = this;
-    //     window.removeEventListener("scroll", self.onWindowScroll, false);
-    //   }
-    // },
-    scrollTo(y) {
-      // console.log(id)
-      if (process.client) {
-        // gsap.to(window, { duration: 0.5, scrollTo: { y: id, offsetY } });
-        gsap.to(window, { duration: 0.5, scrollTo: { y } });
-      }
-    },
     dragTriggerTouchStart() {
       this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
         isDisabled: false
@@ -157,83 +138,18 @@ export default {
       });
     },
     collapseDraggablePanel() {
-      // this.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
-      //   isCollapsed: false
-      // });
-      // setTimeout(() => {
       this.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
         isCollapsed: true
       });
-      // setTimeout(() => {
-      //   this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
-      //     isDisabled: true
-      //   });
-      // });
-      // }, 0);
     }
-    // expandDraggablePanel() {
-    //   this.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
-    //     isExpanded: false
-    //   });
-    //   setTimeout(() => {
-    //     this.$store.dispatch("map/setIsDraggableInfoPanelExpanded", {
-    //       isExpanded: true
-    //     });
-    //   }, 0);
-    //   // setTimeout(() => {
-    //   //   this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
-    //   //     isDisabled: true
-    //   //   });
-    //   // });
-    // }
-    // onWindowScroll(event) {
-    //   if (process.client) {
-    //     const self = this;
-    //     let y = window.scrollY;
-    //     console.log(y);
-    //     if (y > 0) {
-    //       this.$store.dispatch("map/setIsDraggableInfoPanelCollapsed", {
-    //         isCollapsed: false
-    //       });
-    //     }
-    //     // if (
-    //     //   this.isDraggableInfoPanelDisabled &&
-    //     //   this.lastPanelScrollTop === 0 &&
-    //     //   y === 0
-    //     // ) {
-    //     //   // self.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
-    //     //   //   isDisabled: false
-    //     //   // });
-    //     // }
-    //     const scrollTop = this.$refs.appMapPanel.scrollTop;
-    //     console.log(scrollTop);
-    //     this.lastPanelScrollTop = scrollTop;
-    //   }
-    // }
   },
   watch: {
     isDraggableInfoPanelCollapsed(newVal, oldVal) {
       console.log("new is collapsed", newVal, "old is collapsed", oldVal);
       if (newVal === true) {
-        // this.resetPanelHeightAndBound(0);
-        // gsap.to(".app-map-panel", { y: 0, duration: 0.3 });
-        // // this.draggable[0].enable();
-        // this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
-        //   isDisabled: false
-        // });
-        // this.scrollTo('.map-content',0)
-        // this.scrollTo(0)
-        // document.querySelector('.map-content').scrollTop=0
         gsap.to(".map-content", { scrollTop: 0 });
       } else {
-        // this.resetPanelHeightAndBound(-this.initialPanelHeight);
-        // gsap.to(".app-map-panel", {
-        //   y: -this.initialPanelHeight,
-        //   duration: 0.3
-        // });
-        // this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
-        //   isDisabled: true
-        // });
+
       }
     }
   }
