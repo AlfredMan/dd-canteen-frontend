@@ -26,23 +26,6 @@
       @mouseup="dragTriggerTouchEnd"
     >
       <div class="absolute top-2 w-1/4 rounded-full h-1 bg-gray-800"></div>
-      <!-- <div v-if="canGoBack" class="absolute left-0 h-8 flex items-center ml-2">
-        <nuxt-link class="back" :to="{ query: null }">&larr; Back</nuxt-link>
-      </div>
-      <div
-        v-if="!isDraggableInfoPanelCollapsed"
-        class="absolute right-0 h-8 flex items-center mr-2"
-        @touchstart="collapseDraggablePanel"
-      >
-        <IconAngleDown />
-      </div>
-      <div
-        v-if="isDraggableInfoPanelCollapsed"
-        class="absolute right-0 h-8 flex items-center mr-2"
-        @touchstart="expandDraggablePanel"
-      >
-        <IconAngleUp />
-      </div> -->
     </div>
 
     <!-- force disabled as above dragging is triggered by unknown reasons -->
