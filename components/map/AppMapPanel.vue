@@ -13,12 +13,13 @@
   <div class="app-map-panel" ref="appMapPanel" style="transform:none!important">
     <!-- force disabled as below dragging is triggered by unknown reasons -->
 
+        <!-- 'h-14': !isDraggableInfoPanelCollapsed -->
     <div
       v-if="isMobilePortrait"
-      class="sticky z-30 top-0 panel-draggable-handle-container w-full  bg-opacity-0 bg-gray-200 flex justify-center "
+      class="sticky z-30 top-0 panel-draggable-handle-container w-full  bg-opacity-50 bg-gray-200 flex justify-center "
       v-bind:class="{
         'h-full': isDraggableInfoPanelCollapsed,
-        'h-14': !isDraggableInfoPanelCollapsed
+        'h-8': !isDraggableInfoPanelCollapsed
       }"
       @touchstart="dragTriggerTouchStart"
       @touchend="dragTriggerTouchEnd"
@@ -44,12 +45,12 @@
       {{ isDraggableInfoPanelCollapsed ? "true" : "false" }}
     </div> -->
     <AppMapPanelSite
-      class="absolute inset-0 top-8 z-10 p-4 bg-white"
+      class="absolute inset-0 top-0 z-10 p-4 bg-white"
       v-if="!building || true"
       :key="'site'"
     />
     <AppMapPanelBuilding
-      class="absolute inset-0 top-8 z-20 p-4 bg-white"
+      class="absolute inset-0 top-0 z-20 p-4 bg-white"
       v-if="building"
       :key="building.id"
     />
@@ -132,7 +133,6 @@ export default {
       if (newVal === true) {
         gsap.to(".map-content", { scrollTop: 0 });
       } else {
-
       }
     }
   }
