@@ -145,6 +145,7 @@ export default {
           y: -this.initialPanelHeight,
           duration: 0.3
         });
+        document.querySelector('.app-map-panel').style.transform=`translate3d(0px, ${-this.initialPanelHeight}px, 0px)`;
         this.$store.dispatch("map/setIsDraggableInfoPanelDisabled", {
           isDisabled: true
         });
