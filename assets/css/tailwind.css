@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .cap-max-w {
+    @apply max-w-screen-2xl mx-auto overflow-x-hidden overflow-x-hidden;
+  }
+}
