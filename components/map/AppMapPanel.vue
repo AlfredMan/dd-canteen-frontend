@@ -10,7 +10,7 @@
     @touchend="dragTriggerTouchEnd"
   > -->
   <!-- <div class="app-map-panel" ref="appMapPanel" v-on:scroll="onWindowScroll"> -->
-  <div class="app-map-panel" ref="appMapPanel" style="transform:none!important">
+  <div class="app-map-panel shadow-lg lg:shadow-none" ref="appMapPanel" style="transform:none!important">
     <!-- force disabled as below dragging is triggered by unknown reasons -->
 
     <!-- 'h-14': !isDraggableInfoPanelCollapsed -->
@@ -27,15 +27,17 @@
       @mousedown="dragTriggerTouchStart"
       @mouseup="dragTriggerTouchEnd"
     >
-      <div class="absolute top-2 w-1/4 rounded-full h-1 bg-gray-800"></div>
+      <div class="absolute top-2 w-1/5 rounded-full h-1 bg-gray-500 pt-1"></div>
 
       <div v-if="isMobilePortrait && canGoBack" class="absolute top-1 right-1">
         <button
           class="back z-50 block absolute top-0 right-0 text-center text-3xl m-4 font-200 w-8 h-8 text-gray-700 text-center bg-gray-100 rounded-full block"
-          style="line-height:1.8rem"
+          style="line-height:0"
           @click="toSite()"
         >
-          &times;
+          <div class="" style="margin-top:-1px;">
+            &times;
+          </div>
         </button>
       </div>
     </div>

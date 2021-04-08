@@ -5,7 +5,7 @@
       <div class="map-site-title">
         <!-- <div class="leading-none text-5xl font-400" style="margin-left:-2px;">Design<br />District</div> -->
         <!-- <div class="font-normal text-2xl mt-1 mb-4">Map</div> -->
-        <div class="">
+        <div class="mt-3">
           <img class="logo" src="~/assets/images/logo-hor.svg" alt="logo">
         </div>
       </div>
