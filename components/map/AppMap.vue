@@ -112,6 +112,9 @@ export default {
   watch: {
     isDraggableInfoPanelDisabled(newVal, oldVal) {
       // console.log('contentType', newVal, oldVal)
+      // if (!this.draggable) {
+      //   this.initDrag()
+      // }
       console.log(
         "is Draggable info panel disabled?",
         "newVal",
@@ -208,6 +211,8 @@ export default {
       // });
       const self = this;
 
+      if (this.draggable) return;
+
       self.containerHeight = this.$refs.container.clientHeight;
       self.containerWidth = this.$refs.container.clientWidth;
       self.initialPanelHeight = this.$refs.infoPanel.$el.clientHeight;
@@ -297,10 +302,18 @@ export default {
       }
       this.windowWidth = window.innerWidth;
       console.log(this.windowWidth);
+
+      this.detectDevice();
+      if (this.isMobilePortrait()) {
+        this.initDrag();
+      }
     },
     isMobilePortrait() {
       if (typeof window === "undefined" || typeof navigator === "undefined") {
         return false;
+      }
+      if (window.innerWidth < 768) {
+        return true
       }
       let check = false;
       (function(a) {
