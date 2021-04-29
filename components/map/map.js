@@ -781,8 +781,8 @@ class Scene {
   initSignModel () {
     console.log('scene')
     const bike = '/images/sign-bike.png';
-    const tfl = '/images/sign-tfl.png';
-    const tfl2 = '/images/sign-tfl2.png';
+    const tfl2 = '/images/sign-tfl.png';
+    const tfl = '/images/sign-tfl2.png';
 
 
     console.log('initSignModel')
@@ -834,7 +834,7 @@ class Scene {
     plane2.rotateX(-Math.PI/2)
     // plane2.rotateY(Math.PI)
     this.scene.add( plane2 );
-    plane2.position.x = -0.6
+    plane2.position.x = -0.75
     plane2.position.z = 0.6
     plane2.position.y = -0.105
 
