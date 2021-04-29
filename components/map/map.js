@@ -767,7 +767,8 @@ class Scene {
         // gltf.scene.position.x = 0.05
         // gltf.scene.translateX(-0.15);
         // gltf.scene.translateZ(0.4);
-
+        self.initSignModel()
+        
         self.autoCenter(gltf.scene);
 
         self.scene.add(gltf.scene);
@@ -775,6 +776,82 @@ class Scene {
 
     // dummy geom for testing
     // });
+  }
+
+  initSignModel () {
+    console.log('scene')
+    const bike = '/images/sign-bike.png';
+    const tfl = '/images/sign-tfl.png';
+    const tfl2 = '/images/sign-tfl2.png';
+
+
+    console.log('initSignModel')
+    const texture1 = new THREE.TextureLoader().load(bike, (texture)=>{
+      texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+      texture.offset.set( 0, 0 );
+      texture.repeat.set( 1, 1 );
+    });
+
+    const texture2 = new THREE.TextureLoader().load(tfl, (texture)=>{
+      texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+      texture.offset.set( 0, 0 );
+      texture.repeat.set( 1, 1 );
+    });
+
+    const texture3 = new THREE.TextureLoader().load(tfl2, (texture)=>{
+      texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+      texture.offset.set( 0, 0 );
+      texture.repeat.set( 1, 1 );
+    });
+
+
+
+    const geometry1 = new THREE.PlaneGeometry( 0.2, 0.2 );
+    const material1 = new THREE.MeshBasicMaterial( {
+      // color: 0xff0000,
+      color: 0xffffff,
+      side: THREE.DoubleSide,
+      map: texture1
+    } );
+    const plane1 = new THREE.Mesh( geometry1, material1 );
+    plane1.rotateX(Math.PI/2)
+    this.scene.add( plane1 );
+    plane1.position.x = -0.45
+    plane1.position.z = -0.65
+    plane1.position.y = -0.105
+    // plane1.position.y = 0
+    console.log('initSignModel 1 ++++++++++++++++++++++++')
+
+    const geometry2 = new THREE.PlaneGeometry( 0.2, 0.2 );
+    const material2 = new THREE.MeshBasicMaterial( {
+      // color: 0xffff00,
+      color: 0xffffff,
+      side: THREE.DoubleSide,
+      map: texture2
+    } );
+
+    const plane2 = new THREE.Mesh( geometry2, material2 );
+    plane2.rotateX(-Math.PI/2)
+    // plane2.rotateY(Math.PI)
+    this.scene.add( plane2 );
+    plane2.position.x = -0.6
+    plane2.position.z = 0.6
+    plane2.position.y = -0.105
+
+    const geometry3 = new THREE.PlaneGeometry( 0.2, 0.2 );
+    const material3 = new THREE.MeshBasicMaterial( {
+      // color: 0x0000ff,
+      color: 0xffffff,
+      side: THREE.DoubleSide,
+      map: texture3
+    } );
+    const plane3 = new THREE.Mesh( geometry3, material3 );
+    plane3.rotateX(Math.PI/2)
+    plane3.rotateY(Math.PI)
+    this.scene.add( plane3 );
+    plane3.position.x = 0.7
+    plane3.position.z = -0.6
+    plane3.position.y= -0.105
   }
 
   autoCenter(obj) {
