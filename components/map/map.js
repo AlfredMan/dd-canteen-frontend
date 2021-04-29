@@ -67,11 +67,11 @@ class Scene {
 
       // minPolarAngle: Math.PI * 0.5 - 0.5,
       // maxPolarAngle: Math.PI * 0.5 - 0.5,
-      // minPolarAngle: Math.PI * 0.5 - 0.1,
-      // maxPolarAngle: Math.PI * 0.5 - 0.1,
+      minPolarAngle: Math.PI / 180 * 60,
+      maxPolarAngle: Math.PI / 180 * 60,
 
-      minPolarAngle: -Math.PI / 2,
-      maxPolarAngle: Math.PI / 2,
+      // minPolarAngle: -Math.PI / 2,
+      // maxPolarAngle: Math.PI / 2,
 
       maxDistance: 7,
       minDistance: 4
@@ -768,7 +768,7 @@ class Scene {
         // gltf.scene.translateX(-0.15);
         // gltf.scene.translateZ(0.4);
         self.initSignModel()
-        
+
         self.autoCenter(gltf.scene);
 
         self.scene.add(gltf.scene);
