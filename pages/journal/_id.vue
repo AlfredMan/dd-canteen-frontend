@@ -56,10 +56,10 @@
                   <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
                     {{entry.fields.contentType}}
                   </h6>
-                  <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+                  <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author && entry.fields.author[0] && entry.fields.author[0].fields && entry.fields.author[0].fields.name">
                     by {{entry.fields.author[0].fields.name}}
                   </h6>
-                  <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+                  <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author && entry.fields.author[0] && entry.fields.author[0].fields && entry.fields.author[0].fields.name">
                   </h6>
                 </div>
               </div>
