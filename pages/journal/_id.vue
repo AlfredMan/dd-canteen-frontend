@@ -315,8 +315,8 @@
       <footer class="mt-5 mb-5 py-5 container" v-if="entry.fields.author">
         <div class="row justify-content-center">
 
-          <div class="col-10 col-md-6 p-5 author" v-for="author in entry.fields.author">
-            <div class="row align-items-center no-gutters px-2">
+          <div class="col-10 col-md-6 p-5 author" v-for="author in entry.fields.author" v-if="author && author.fields">
+            <div class="row align-items-center no-gutters px-2" >
               <!-- <div class="col-3">
                 <div class="thumb">
                   <img :src="author.fields.profilePicture.fields.file.url" alt="">
