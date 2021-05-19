@@ -106,6 +106,9 @@
           <nuxt-link class="d-block mobile-menu-link" to="/contact">
             Contact Us
           </nuxt-link>
+          <nuxt-link class="d-block mobile-menu-link" to="/map">
+            Map
+          </nuxt-link>
         </div>
       </div>
       <div class="row p-4 mobile-footer">
