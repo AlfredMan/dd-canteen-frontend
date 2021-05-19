@@ -56,10 +56,10 @@
                   <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
                     {{entry.fields.contentType}}
                   </h6>
-                  <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+                  <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author && entry.fields.author[0] && entry.fields.author[0].fields && entry.fields.author[0].fields.name">
                     by {{entry.fields.author[0].fields.name}}
                   </h6>
-                  <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+                  <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author && entry.fields.author[0] && entry.fields.author[0].fields && entry.fields.author[0].fields.name">
                   </h6>
                 </div>
               </div>
@@ -120,10 +120,10 @@
               <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
                 {{entry.fields.contentType}}
               </h6>
-              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author && entry.fields.author[0] && entry.fields.author[0].fields && entry.fields.author[0].fields.name">
                 by {{entry.fields.author[0].fields.name}}
               </h6>
-              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author && entry.fields.author[0] && entry.fields.author[0].fields && entry.fields.author[0].fields.name">
 
               </h6>
             </div>
@@ -169,7 +169,7 @@
                     <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
                       {{entry.fields.contentType}}
                     </h6>
-                    <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+                    <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author && entry.fields.author[0] && entry.fields.author[0].fields && entry.fields.author[0].fields.name">
                       by {{entry.fields.author[0].fields.name}}
                     </h6>
                   </div>
@@ -219,10 +219,10 @@
               <h6 class="text-uppercase my-0 mr-2" v-if="entry.fields.contentType">
                 {{entry.fields.contentType}}
               </h6>
-              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author && entry.fields.author[0] && entry.fields.author[0].fields && entry.fields.author[0].fields.name">
                 by {{entry.fields.author[0].fields.name}}
               </h6>
-              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author">
+              <h6 class="text-uppercase my-0 mr-3" v-if="entry.fields.author && entry.fields.author[0] && entry.fields.author[0].fields && entry.fields.author[0].fields.name">
 
               </h6>
             </div>
@@ -315,8 +315,8 @@
       <footer class="mt-5 mb-5 py-5 container" v-if="entry.fields.author">
         <div class="row justify-content-center">
 
-          <div class="col-10 col-md-6 p-5 author" v-for="author in entry.fields.author">
-            <div class="row align-items-center no-gutters px-2">
+          <div class="col-10 col-md-6 p-5 author" v-for="author in entry.fields.author" v-if="author && author.fields">
+            <div class="row align-items-center no-gutters px-2" >
               <!-- <div class="col-3">
                 <div class="thumb">
                   <img :src="author.fields.profilePicture.fields.file.url" alt="">
@@ -326,7 +326,7 @@
 
                 <h6>About the <span v-if="!author.fields.role">author</span><span v-if="author.fields.role">{{author.fields.role}}</span></h6>
 
-                <h4 class="name mb-5">
+                <h4 class="name mb-5" v-if="author.fields.name">
                   {{author.fields.name}}
                 </h4>
                 <div class="bio" v-html="getRichText(author.fields.bio)"></div>

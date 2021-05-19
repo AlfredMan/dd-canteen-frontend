@@ -568,6 +568,9 @@ class Scene {
     // // this.renderer.gammaFactor = 2.2
 
     this.canvas = this.renderer.domElement;
+
+    this.renderer.domElement.style.zIndex = 20
+    this.renderer.domElement.style.position = 'relative'
   }
 
   initOrbitControls() {

@@ -26,7 +26,7 @@
         <h5 class="mt-2" v-if="entry.fields.summary" v-html="getRichText(entry.fields.summary)">
         </h5>
         <div class="new-meta d-flex mt-3 flex-wrap monospace">
-          <h6 class="-text-uppercase my-0 mr-3" v-if="entry.fields.author">
+          <h6 class="-text-uppercase my-0 mr-3" v-if="entry.fields.author && entry.fields.author[0] && entry.fields.author[0].fields && entry.fields.author[0].fields.name">
             By {{entry.fields.author[0].fields.name}}
           </h6>
           <h6 class="-text-uppercase my-0 mr-3" v-if="entry.fields.creditText">

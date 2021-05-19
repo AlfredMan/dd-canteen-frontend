@@ -133,7 +133,7 @@
                 <p>
                   Rent a studio, a floor, or an entire building. Spaces kitted out to suit your industry and flexible tenancies for growing teams.
                   <nuxt-link :to="{ path: '/workspace'}">
-                    Become a tenant
+                    Get in touch
                   </nuxt-link>
                 </p>
               </div>

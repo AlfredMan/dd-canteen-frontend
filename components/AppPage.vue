@@ -1,6 +1,8 @@
 <template>
   <main class="page-component">
 
+    <WelcomeBanner v-if="$route.path.indexOf('welcome')>=0" />
+
     <div class="" v-if="entry">
       <template
       v-if="entry && entry.fields.contentBlocks"
@@ -46,6 +48,8 @@
       </template>
     </div>
 
+    <!-- <AppPopup v-if="$route.path.indexOf('welcome-to-design-district')>=0"/> -->
+
   </main>
 </template>
 
@@ -66,6 +70,12 @@ import BlockJournalFullList from '~/components/blocks/BlockJournalFullList'
 import BlockVideo from '~/components/blocks/BlockVideo'
 import BlockGrid from '~/components/blocks/BlockGrid'
 import BlockForm from '~/components/blocks/BlockForm'
+import AppPopup from '~/components/AppPopup'
+import WelcomeBanner from '~/components/campaigns/WelcomeBanner'
+
+import gsap from 'gsap'
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin.js'
+gsap.registerPlugin(ScrollToPlugin)
 
 export default {
   name: 'page',
@@ -85,7 +95,9 @@ export default {
     BlockJournalFullList,
     BlockVideo,
     BlockGrid,
-    BlockForm
+    BlockForm,
+    AppPopup,
+    WelcomeBanner
   },
 
   props: {
@@ -99,11 +111,12 @@ export default {
     // _.map(this.entry.fields.contentBlocks, (block)=>{
     //   console.log(block.sys.contentType.sys.id)
     // })
-
     this.checkEntryTheme()
   },
 
   methods: {
+
+
 
     getRichText (document) {
       return documentToHtmlString(document, options);

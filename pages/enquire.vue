@@ -5,7 +5,7 @@
       <div class="container-fluid -my-5 pt-5 px-3">
         <div class="row">
           <div class="col-12 col-md-12">
-            <h1>Become a tenant</h1>
+            <h1>Get in touch</h1>
           </div>
           <div class="col-12" />
           <div class="col-12 col-md-4 mb-5">

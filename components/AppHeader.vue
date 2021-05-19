@@ -39,6 +39,9 @@
         <nuxt-link class="menu-link d-none d-sm-inline" to="/contact">
           Contact Us
         </nuxt-link>
+        <nuxt-link class="menu-link d-none d-sm-inline" to="/map">
+          Map
+        </nuxt-link>
         <!-- <nuxt-link class="menu-link d-none d-sm-inline" to="/shesays-mentorship">
           Mentorship
         </nuxt-link> -->
@@ -63,8 +66,8 @@
           'btn-dark': (isOrange||isDark)
           }"
         >
-          <span class="d-inline d-xl-none">Become a tenant</span>
-          <span class="d-none d-xl-inline">Become a tenant</span>
+          <span class="d-inline d-xl-none">Get in touch</span>
+          <span class="d-none d-xl-inline">Get in touch</span>
         </nuxt-link>
 
         <div class="d-block d-sm-none pl-0 -bg-white">

@@ -5,8 +5,16 @@
       ref="container"
       v-bind:style="{ cursor: selectedCursor }"
     >
+      <div class="loading">
+        Loading
+      </div>
       <!-- WebGL goes here -->
+      <div class="absolute z-10 top-0 right-0 md:top-auto md:right-auto md:left-0 md:bottom-0 p-0 text-black text-opacity-30 p-3 leading-none text-xs z-50">
+        Design and build by <a href="https://hato.co" target="_blank">HATO</a>
+      </div>
     </div>
+
+    <AppMapAR class="absolute right-0 bottom-0 z-30"/>
 
     <div class="helpers absolute z-10 right-0 top-0 p-0">
       <div class="">
@@ -37,7 +45,11 @@
 import { getInteractiveBuildingIndexName } from "./util.js";
 // import getInteractiveBuildingIndexName from "./util.js";
 import SceneConstructor from "./map.js";
+import AppMapAR from "./AppMapAR.vue"
 export default {
+
+  components: {AppMapAR},
+
   data() {
     return {
       hoverID: "",
@@ -117,7 +129,7 @@ export default {
         this.$router.push({ query: {} });
         return;
       }
-      console.log(target?.name, buildingIndexName);
+      console.log(target&&target.name, buildingIndexName);
       if (buildingIndexName) {
         this.$router.push({ query: { building: buildingIndexName } });
       } else {
@@ -138,7 +150,16 @@ export default {
 // .app-map-renderer {
 //   @apply fixed inset-0 pl-96
 // }
+.app-map-renderer {
+  @apply relative;
+}
 .app-map-scene {
-  @apply w-full h-full bg-gray-100;
+  @apply w-full h-full bg-gray-100 relative;
+  .loading {
+    @apply absolute left-1/2 top-1/2 m-auto transform translate-x-1/2 translate-y-1/2 z-10;
+  }
+  canvas {
+    @apply relative z-20;
+  }
 }
 </style>

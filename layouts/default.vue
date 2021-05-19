@@ -102,7 +102,7 @@ export default {
 
   computed: {
     showFivePoundFooter () {
-      return this.$route.path.indexOf('space-to-create') >= 0
+      return this.$route.path.indexOf('space-to-create') >= 0 || this.$route.path.indexOf('welcome') >= 0
     },
     showSalesFooter () {
       return !this.showFivePoundFooter && (this.$route.path.indexOf('workspace') >= 0 || this.$route.path.indexOf('about') >= 0)
