@@ -10,7 +10,7 @@ export function getBuildingIndexName(obj) {
     return null;
   }
   if (obj.name.startsWith("C4")) {
-    return "Food space";
+    return "canteen";
   }
   return obj.name.slice(0, 2);
 }

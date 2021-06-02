@@ -122,14 +122,15 @@
             <nuxt-link
               :to="{
                 query: {
-                  building: building.fields.title
+                  building: building.fields.slug
                 }
               }"
               class="building-title block hover:text-green"
             >
-              <span class="inline-block font-medium mr-2 text-base w-12 leading-none uppercase mt-1" v-if="building.fields.title=='Food space'">{{
-                building.fields.title
-              }}</span>
+              <span class="inline-block font-medium mr-2 text-base w-12 leading-none uppercase mt-1" v-if="building.fields.title=='Canteen'">
+                Can-<br>
+                teen
+              </span>
               <span class="inline-block font-medium mr-2 text-4xl w-12" v-else>{{
                 building.fields.title
               }}</span>
