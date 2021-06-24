@@ -64,15 +64,27 @@
         </h4>
 
         <div class="my-8 mt-12">
-          <h3>Interested in this building?</h3>
-          <p class="mb-2">Tell us about your requirements, and we’ll be in touch.<br>Or call us on <a href="tel:+4402039812426">+44 (0)20 3981 2426</a></p>
+
+          <div
+          v-if="building.fields.callToActionDescription"
+          class="font-normal mb-2 markdown" v-html="markdown(building.fields.callToActionDescription)"></div>
+
+          <div v-else>
+            <h3>Interested in this building?</h3>
+            <p class="mb-2">Tell us about your requirements, and we’ll be in touch.<br>Or call us on <a href="tel:+4402039812426">+44 (0)20 3981 2426</a></p>
+          </div>
 
           <!-- <nuxt-link
           to="/enquire"
           class="inline-block mt-2 px-2 py-2 leading-5 bg-green text-white uppercase font-base"
           >Book a visit</nuxt-link> -->
 
-          <callToAction :callToAction="{
+          <callToAction
+          v-if="building.fields.callToAction"
+          :callToAction="building.fields.callToAction"
+          />
+
+          <callToAction v-else :callToAction="{
             fields:{
               path:'/enquire',
               label:'Book a visit'
@@ -277,9 +289,9 @@
 
     <div class="px-3 my-16 cap-max-w" id="architecture">
       <h2 class="uppercase max-w-2xl w-full">Architecture</h2>
-      <h4 class="max-w-xl w-full mb-4">
+      <!-- <h4 class="max-w-xl w-full mb-4">
         The heart and soul of our locations, these lounges are living room-style spaces designed for creativity, comfort and productivity.
-      </h4>
+      </h4> -->
       <div class="flex flex-wrap -mx-6">
         <div class="w-full lg:w-2/3 px-6">
           <lazy-image

@@ -206,6 +206,7 @@ export const actions = {
     await dispatch("getArchitectureStudios");
     await dispatch("getJournals");
     await dispatch("getBuildings");
+    await dispatch("getWorkspaceFilter");
     await dispatch("getSpaceTypes");
     await dispatch("getJournals");
     await dispatch("getEvents");
@@ -367,6 +368,23 @@ export const actions = {
         return b;
       });
       commit("setBuildings", { buildings });
+    }
+  },
+  async getWorkspaceFilter({ commit }) {
+    const response = await client.getEntries({
+      'content_type': 'pages',
+      'fields.slug': 'workspace',
+      'include': 5
+    });
+    if (response.items.length > 0) {
+      let workspacePageObject = response.items&&response.items[0]
+      const blockWorkspaceFilter = workspacePageObject.fields.contentBlocks.find((block)=>{
+        return block.sys.contentType && block.sys.contentType.sys.id=='blockWorkspaceFilter'
+      })
+      const filterSpaceOptions = _.map(blockWorkspaceFilter.fields.spaceTypes, b => {
+        return b.fields.title
+      });
+      commit("setSpaceFilterOptions", { filterSpaceOptions });
     }
   },
   async getSpaceTypes({ commit }) {
