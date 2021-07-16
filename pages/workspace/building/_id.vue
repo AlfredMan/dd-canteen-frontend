@@ -123,7 +123,9 @@
           v-if="building.fields.floorplanDownload && building.fields.floorplanDownload[0]"
           @click.prevent="scrollTo('#floorplans')" href="#floorplans">Floorplans</a>
 
-          <a @click.prevent="scrollTo('#services-facilities')" href="#services-facilities">Services & Facilities</a>
+          <a
+          v-if="building.fields.servicesFacilities && building.fields.servicesFacilities.length > 0"
+          @click.prevent="scrollTo('#services-facilities')" href="#services-facilities">Services & Facilities</a>
 
           <a @click.prevent="scrollTo('#architecture')" href="#architecture">Architecture</a>
 
@@ -277,7 +279,9 @@
 
     </div>
 
-    <div class="px-3 my-16 overflow-hidden  cap-max-w" id="services-facilities">
+    <div class="px-3 my-16 overflow-hidden  cap-max-w" id="services-facilities"
+    v-if="building.fields.servicesFacilities && building.fields.servicesFacilities.length > 0"
+    >
       <h2 class="uppercase max-w-2xl w-full">Services & facilities</h2>
       <div class="flex flex-wrap -mx-6">
         <div class="w-full lg:w-1/3 px-6 mb-4" v-for="sf in building.fields.servicesFacilities">
@@ -317,7 +321,7 @@
       </div>
     </div>
 
-    <AppPage v-if="building" :entry="building"/>
+    <AppPage v-if="entry && entry.fields.contentBlocks" :entry="building"/>
 
     <!-- <BlockEventsCarousel id="events" v-if="building.fields.eventsActive"/> -->
 
