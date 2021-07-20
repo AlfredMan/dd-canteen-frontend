@@ -120,10 +120,10 @@ export default {
       return `guideline-${this.blockTheme}`;
     },
     isGuidelineCanteen() {
-      return this.blockGuideline && this.blockGuideline=='Canteen'
+      return this.blockGuideline && this.blockGuideline=='canteen'
     },
     isGuidelineDefault() {
-      return !this.blockGuideline || this.blockGuideline=='default' || this.blockGuideline=='DesignDistrict'
+      return !this.blockGuideline || this.blockGuideline=='default' || this.blockGuideline=='designdistrict'
     },
     ctaTheme() {
       if (this.block) {
