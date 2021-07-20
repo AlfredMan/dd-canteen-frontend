@@ -8,15 +8,19 @@
     ]"
   >
     <!-- <lazy-image :src="stickerUrl(stickerId)" :w="50" width="50px" /> -->
-    <img :src="stickerUrl(stickerId)" class="w-32"/>
+    <img :src="stickerUrl(stickerId)" class="w-32" />
   </section>
 </template>
 
 <script>
 export default {
   name: "BlockSticker",
-  props: ["block", "stickerId", "parentRef","index"],
+  props: ["block", "stickerId", "parentRef", "index"],
+  mounted() {
+    console.log(this.parentRef);
+  },
   methods: {
+    position() {},
     stickerUrl(stickerId) {
       switch (this.stickerId) {
         case "sticker1":
