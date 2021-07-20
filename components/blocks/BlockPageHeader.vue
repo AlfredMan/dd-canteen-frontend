@@ -1,5 +1,12 @@
 <template>
-  <section v-if="block" class="block-page-header" :class="[blockThemeClass]">
+  <section
+  v-if="block"
+  class="block-page-header"
+  :class="[
+    blockThemeClass,
+    blockGuidelineClass
+  ]"
+  >
     <div class="block-page-header-content">
       <div
         class="cap-max-w-px-3 flex flex-wrap"
@@ -11,7 +18,15 @@
       >
         <div class="block-page-header-text">
           <div class="header-sticker-group relative" >
-            <h1 class="hyphens lg:w-10/12 inline-block relative" v-if="block.fields.heading">
+            <h1
+            :class="[
+              `hyphens inline-block relative`,
+              {
+                'lg:w-10/12': isGuidelineDefault,
+                'lg:w-6/12': isGuidelineCanteen
+              }
+            ]"
+            v-if="block.fields.heading">
               {{ formattedHeading }}
               <BlockSticker
                 v-for="(stickerId, index) in block.fields.stickers"
@@ -97,6 +112,18 @@ export default {
     },
     blockThemeClass() {
       return `theme-${this.blockTheme} bg-${this.blockTheme}`;
+    },
+    blockGuideline() {
+      return (this.block && _.lowerCase(this.block.fields.guideline)) || "default";
+    },
+    blockGuidelineClass() {
+      return `guideline-${this.blockTheme}`;
+    },
+    isGuidelineCanteen() {
+      return this.blockGuideline && this.blockGuideline=='Canteen'
+    },
+    isGuidelineDefault() {
+      return !this.blockGuideline || this.blockGuideline=='default' || this.blockGuideline=='DesignDistrict'
     },
     ctaTheme() {
       if (this.block) {
