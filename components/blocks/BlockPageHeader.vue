@@ -11,16 +11,16 @@
       >
         <div class="block-page-header-text">
           <div class="header-sticker-group relative" >
-            <h1 class="hyphens lg:w-10/12" v-if="block.fields.heading">
+            <h1 class="hyphens lg:w-10/12 inline-block relative" v-if="block.fields.heading">
               {{ formattedHeading }}
+              <BlockSticker
+                v-for="(stickerId, index) in block.fields.stickers"
+                :key="stickerId"
+                :stickerId="stickerId"
+                :block="block"
+                :index="index"
+              />
             </h1>
-            <BlockSticker
-              v-for="(stickerId, index) in block.fields.stickers"
-              :key="stickerId"
-              :stickerId="stickerId"
-              :block="block"
-              :index="index"
-            />
           </div>
           <div class="flex flex-wrap items-baseline">
             <h4 class="" v-if="block.fields.subheading">

@@ -3,8 +3,8 @@
     ref="stickerRef"
     v-if="stickerId && block"
     :class="[
-      `block-sticker absolute ${
-        +index === 0 ? 'top-0 right-0 ' : 'transform -translate-x-1/2 translate-y-1/2'
+      `block-sticker absolute z-50 ${
+        +index === 0 ? 'top-0 right-0 ' : 'bottom-0 left-0 transform -translate-x-1/2 translate-y-1/2'
       }`
     ]"
   >
