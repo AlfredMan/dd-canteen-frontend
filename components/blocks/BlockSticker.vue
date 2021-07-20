@@ -6,10 +6,11 @@
       `block-sticker absolute z-50 ${
         +index === 0
           ? 'top-0 right-0 '
-          : 'bottom-0 left-0 transform -translate-x-1/2 translate-y-1/2'
+          : 'bottom-0 left-0 transform -translate-x-1/2 translate-y-1/2 scale-12'
       }`
     ]"
   >
+    <!-- :style="{'tansform':""}" -->
     <!-- <lazy-image :src="stickerUrl(stickerId)" :w="50" width="50px" /> -->
     <img
       :src="sticker(stickerId).uri"
