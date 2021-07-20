@@ -79,35 +79,35 @@ body {
 
 
 
-.theme-orange {
-	width: auto;
-}
-
-.theme-orange *::-moz-selection { /* Code for Firefox */
-  color: black;
-  background: lighten($secondary, 20%);
-}
-
-.theme-orange *::selection {
-  color: black;
-  background: lighten($secondary, 20%);
-}
-
-.theme-orange section {
-	&.block-list {
-		&.theme-dark {
-			.format-button.theme-default.cta {
-				color: black;
-				background: $secondary;
-			}
-		}
-	}
-
-	&.app-newsletter {
-		color: black;
-		background: $secondary;
-	}
-}
+// .theme-orange {
+// 	width: auto;
+// }
+//
+// .theme-orange *::-moz-selection { /* Code for Firefox */
+//   color: black;
+//   background: lighten($secondary, 20%);
+// }
+//
+// .theme-orange *::selection {
+//   color: black;
+//   background: lighten($secondary, 20%);
+// }
+//
+// .theme-orange section {
+// 	&.block-list {
+// 		&.theme-dark {
+// 			.format-button.theme-default.cta {
+// 				color: black;
+// 				background: $secondary;
+// 			}
+// 		}
+// 	}
+//
+// 	&.app-newsletter {
+// 		color: black;
+// 		background: $secondary;
+// 	}
+// }
 
 
 
