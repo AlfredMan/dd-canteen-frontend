@@ -151,7 +151,7 @@ section {
     @screen lg {
       @apply pb-12;
       @apply cap-max-w px-4;
-      // overflow-x: hidden;
+      // overflow-x: hidden; // Jason: Alfred updated this to visible for Sticker
       overflow:visible;
     }
   }
