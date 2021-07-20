@@ -19,7 +19,6 @@
               :key="stickerId"
               :stickerId="stickerId"
               :block="block"
-              :parentRef="stickerParentRef"
               :index="index"
             />
           </div>
@@ -152,7 +151,8 @@ section {
     @screen lg {
       @apply pb-12;
       @apply cap-max-w px-4;
-      overflow-x: hidden;
+      // overflow-x: hidden;
+      overflow:visible;
     }
   }
 }
