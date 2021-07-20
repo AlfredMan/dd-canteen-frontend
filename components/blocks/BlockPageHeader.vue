@@ -27,7 +27,16 @@
               }
             ]"
             v-if="block.fields.heading">
-              {{ formattedHeading }}
+
+              <!-- force inject -->
+              <span v-if="formattedHeading=='Design District Canteen'"
+              class="inline-block w-10/12 lg:w-8/12"
+              >
+                <LogoCanteen />
+              </span>
+
+              <span v-else>{{ formattedHeading }}</span>
+
               <BlockSticker
                 v-for="(stickerId, index) in block.fields.stickers"
                 :key="stickerId"
@@ -82,6 +91,7 @@
 <script>
 // import ComponentCallToAction from '~/components/blocks/ComponentCallToAction'
 import BlockSticker from "~/components/blocks/BlockSticker";
+import LogoCanteen from "~/components/logo/Canteen"
 import _ from "lodash";
 export default {
   props: ["block"],
@@ -92,7 +102,8 @@ export default {
   },
 
   components: {
-    BlockSticker
+    BlockSticker,
+    LogoCanteen
   },
   computed: {
     formattedHeading() {
@@ -105,7 +116,7 @@ export default {
       //     }
       //   }
       // }
-      return heading;
+      return _.trim(heading);
     },
     blockTheme() {
       return (this.block && _.lowerCase(this.block.fields.theme)) || "default";
@@ -117,13 +128,13 @@ export default {
       return (this.block && _.lowerCase(this.block.fields.guideline)) || "default";
     },
     blockGuidelineClass() {
-      return `guideline-${this.blockTheme}`;
+      return `guideline-${this.blockGuideline}`;
     },
     isGuidelineCanteen() {
-      return this.blockGuideline && this.blockGuideline=='Canteen'
+      return this.blockGuideline && this.blockGuideline=='canteen'
     },
     isGuidelineDefault() {
-      return !this.blockGuideline || this.blockGuideline=='default' || this.blockGuideline=='DesignDistrict'
+      return !this.blockGuideline || this.blockGuideline=='default' || this.blockGuideline=='designdistrict'
     },
     ctaTheme() {
       if (this.block) {

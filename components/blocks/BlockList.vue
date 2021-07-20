@@ -2,7 +2,10 @@
   <section
   v-if="block"
   class="block-list relative"
-  :class="[blockThemeClass]"
+  :class="[
+    blockThemeClass,
+    blockGuidelineClass
+  ]"
   :id="blockId"
   >
     <div
@@ -117,8 +120,20 @@ export default {
     blockTheme () {
       return this.block && _.lowerCase(this.block.fields.theme) || 'default'
     },
-    blockThemeClass () {
-      return `theme-${this.blockTheme}`
+    blockThemeClass() {
+      return `theme-${this.blockTheme} bg-${this.blockTheme}`;
+    },
+    blockGuideline() {
+      return (this.block && _.lowerCase(this.block.fields.guideline)) || "default";
+    },
+    blockGuidelineClass() {
+      return `guideline-${this.blockGuideline}`;
+    },
+    isGuidelineCanteen() {
+      return this.blockGuideline && this.blockGuideline=='canteen'
+    },
+    isGuidelineDefault() {
+      return !this.blockGuideline || this.blockGuideline=='default' || this.blockGuideline=='designdistrict'
     },
     blockId() {
       return this.block.fields.heading ? _.kebabCase(this.block.fields.heading) : ''

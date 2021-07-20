@@ -79,35 +79,35 @@ body {
 
 
 
-.theme-orange {
-	width: auto;
-}
-
-.theme-orange *::-moz-selection { /* Code for Firefox */
-  color: black;
-  background: lighten($secondary, 20%);
-}
-
-.theme-orange *::selection {
-  color: black;
-  background: lighten($secondary, 20%);
-}
-
-.theme-orange section {
-	&.block-list {
-		&.theme-dark {
-			.format-button.theme-default.cta {
-				color: black;
-				background: $secondary;
-			}
-		}
-	}
-
-	&.app-newsletter {
-		color: black;
-		background: $secondary;
-	}
-}
+// .theme-orange {
+// 	width: auto;
+// }
+//
+// .theme-orange *::-moz-selection { /* Code for Firefox */
+//   color: black;
+//   background: lighten($secondary, 20%);
+// }
+//
+// .theme-orange *::selection {
+//   color: black;
+//   background: lighten($secondary, 20%);
+// }
+//
+// .theme-orange section {
+// 	&.block-list {
+// 		&.theme-dark {
+// 			.format-button.theme-default.cta {
+// 				color: black;
+// 				background: $secondary;
+// 			}
+// 		}
+// 	}
+//
+// 	&.app-newsletter {
+// 		color: black;
+// 		background: $secondary;
+// 	}
+// }
 
 
 
@@ -631,4 +631,15 @@ footer {
   &.column-count-xl-4 { @include media-breakpoint-up(xl) { column-count: 4; } }
   &.column-count-xl-5 { @include media-breakpoint-up(xl) { column-count: 5; } }
   &.column-count-xl-6 { @include media-breakpoint-up(xl) { column-count: 6; } }
+}
+
+
+
+.guideline-canteen {
+	h1,h2,h3 {
+		text-transform: none;
+	}
+	h1 {
+		font-weight: 300;
+	}
 }

@@ -1,3 +1,54 @@
+// graphite
+
+.theme-graphite {
+	width: 100%;
+
+	h1,
+	.h1,
+	h2,
+	.h2,
+	h3,
+	.h3,
+	h4,
+	.h4,
+	h5,
+	.h5,
+	h6,
+	.h6,
+	p, li, ul {
+		color: white;
+	}
+}
+
+.theme-graphite *::-moz-selection { /* Code for Firefox */
+  color: white;
+  background: lighten($graphite, 20%);
+}
+
+.theme-graphite *::selection {
+  color: white;
+  background: lighten($graphite, 20%);
+}
+
+.theme-graphite section {
+	&.block-list {
+		&.theme-dark {
+			.format-button.theme-default.cta {
+				color: white;
+				background: $graphite;
+			}
+		}
+	}
+
+	&.app-newsletter {
+		color: white;
+		background: $graphite;
+	}
+}
+
+
+// orange
+
 .theme-orange {
 	width: 100%;
 }
