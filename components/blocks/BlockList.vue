@@ -14,8 +14,16 @@
       }"
     >
       <div v-if="block.fields.heading" :class="{'w-full lg:w-5/12':headingDisplay=='Right'}">
-        <h2>
+        <h2 class="inline-block relative">
           {{block.fields.heading}}
+
+          <BlockSticker
+            v-for="(stickerId, index) in block.fields.stickers"
+            :key="stickerId"
+            :stickerId="stickerId"
+            :block="block"
+            :index="index"
+          />
         </h2>
       </div>
       <div v-if="block.fields.subheading" :class="{'w-full lg:w-7/12':headingDisplay=='Right'}">
@@ -89,13 +97,6 @@
 
       </div>
     </div>
-            <BlockSticker
-              v-for="(stickerId, index) in block.fields.stickers"
-              :key="stickerId"
-              :stickerId="stickerId"
-              :block="block"
-              :index="index"
-            />
   </section>
 </template>
 
@@ -145,6 +146,8 @@ section {
   @apply mb-8;
   // @apply pb-4;
   @apply cap-max-w px-3;
+
+  @apply overflow-x-visible;
 
   h2 {
     @apply max-w-2xl
