@@ -89,7 +89,7 @@ export default {
         case 4:
           return {
             positionClass: this.spreadAcross
-              ? "-top-10 left-10 transform -translate-x-1/2 translate-y-1/2 scale-125 rotate-12"
+              ? "top-1/5 right-10 transform -translate-x-1/2 translate-y-1/2 scale-125 rotate-12"
               : "bottom-1/10 -right-0 transform -translate-x-1/2 translate-y-1/2 scale-125 rotate-12",
             sizeClass: "w-24",
             uri: "/images/stickers/sticker5.svg"
