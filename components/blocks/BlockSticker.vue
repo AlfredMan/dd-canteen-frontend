@@ -3,7 +3,7 @@
     ref="stickerRef"
     v-if="stickerId && block"
     :class="[
-      `block-sticker absolute ${
+      `block-sticker absolute z-50 ${
         +index === 0
           ? 'top-0 right-0 '
           : 'bottom-0 left-0 transform -translate-x-1/2 translate-y-1/2'
@@ -11,7 +11,7 @@
     ]"
   >
     <!-- <lazy-image :src="stickerUrl(stickerId)" :w="50" width="50px" /> -->
-    <img :src="stickerUrl(stickerId)" :class="[`w-32  ${positionClass}`]" />
+    <img :src="sticker(stickerId).uri" :class="[`${sticker(stickeId).sizeClass}  ${positionClass}`]" />
   </section>
 </template>
 
@@ -62,34 +62,73 @@ export default {
     }
   },
   methods: {
-    stickerUrl(stickerId) {
+    sticker(stickerId) {
       switch (this.stickerId) {
         case "sticker1":
-          return "/images/stickers/sticker1.svg";
+          return {
+            sizeClass: "w-20",
+            uri: "/images/stickers/sticker1.svg"
+          }
         case "sticker2":
-          return "/images/stickers/sticker2.svg";
+          return {
+            sizeClass: "w-28",
+            uri: "/images/stickers/sticker2.svg"
+          }
         case "sticker3":
-          return "/images/stickers/sticker3.svg";
+          return {
+            sizeClass: "w-24",
+            uri: "/images/stickers/sticker3.svg"
+          }
         case "sticker4":
-          return "/images/stickers/sticker4.svg";
+          return {
+            sizeClass: "w-20",
+            uri: "/images/stickers/sticker4.svg"
+          }
         case "sticker5":
-          return "/images/stickers/sticker5.svg";
+          return {
+            sizeClass: "w-24",
+            uri: "/images/stickers/sticker5.svg"
+          }
         case "sticker6":
-          return "/images/stickers/sticker6.svg";
+          return {
+            sizeClass: "w-11",
+            uri: "/images/stickers/sticker6.svg"
+          }
         case "sticker7":
-          return "/images/stickers/sticker7.svg";
+          return {
+            sizeClass: "w-24",
+            uri: "/images/stickers/sticker7.svg"
+          }
         case "sticker8":
-          return "/images/stickers/sticker8.svg";
+          return {
+            sizeClass: "w-20",
+            uri: "/images/stickers/sticker8.svg"
+          }
         case "sticker9":
-          return "/images/stickers/sticker9.svg";
+          return {
+            sizeClass: "w-24",
+            uri: "/images/stickers/sticker9.svg"
+          }
         case "sticker10":
-          return "/images/stickers/sticker10.svg";
+          return {
+            sizeClass: "w-24",
+            uri: "/images/stickers/sticker10.svg"
+          }
         case "sticker11":
-          return "/images/stickers/sticker11.svg";
+          return {
+            sizeClass: "w-16",
+            uri: "/images/stickers/sticker11.svg"
+          }
         case "sticker12":
-          return "/images/stickers/sticker12.svg";
+          return {
+            sizeClass: "w-24",
+            uri: "/images/stickers/sticker12.svg"
+          }
         default:
-          return "";
+          return {
+            sizeClass: "w-24",
+            uri: "/images/stickers/sticker1.svg"
+          }
       }
     }
   }
