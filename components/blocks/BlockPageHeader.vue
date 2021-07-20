@@ -1,9 +1,5 @@
 <template>
-  <section
-    v-if="block"
-    class="block-page-header relative"
-    :class="[blockThemeClass]"
-  >
+  <section v-if="block" class="block-page-header" :class="[blockThemeClass]">
     <div class="block-page-header-content">
       <div
         class="cap-max-w-px-3 flex flex-wrap"
@@ -14,10 +10,17 @@
         }"
       >
         <div class="block-page-header-text">
-          <div ref="stickerParentRef" class="header-sticker-group relative">
+          <div class="header-sticker-group relative" ref="stickerParentRef">
             <h1 class="hyphens lg:w-10/12" v-if="block.fields.heading">
               {{ formattedHeading }}
             </h1>
+            <BlockSticker
+              v-for="(stickerId, index) in block.fields.stickers"
+              :key="stickerId"
+              :stickerId="stickerId"
+              :block="block"
+              :index="index"
+            />
           </div>
           <div class="flex flex-wrap items-baseline">
             <h4 class="" v-if="block.fields.subheading">
@@ -58,16 +61,6 @@
         </div>
       </div>
     </div>
-    <div v-if="stickerParentRef" class="absolute inset-0">
-      <BlockSticker
-        v-for="(stickerId, index) in block.fields.stickers"
-        :key="stickerId"
-        :stickerId="stickerId"
-        :parentRef="stickerParentRef"
-        :block="block"
-        :index="index"
-      />
-    </div>
   </section>
 </template>
 
@@ -77,15 +70,9 @@ import BlockSticker from "~/components/blocks/BlockSticker";
 import _ from "lodash";
 export default {
   props: ["block"],
-  data() {
-    return {
-      stickerParentRef: null
-    };
-  },
 
   mounted() {
     console.log("this.block: ", this.block);
-    this.stickerParentRef = this.$refs.stickerParentRef;
     // console.log('this.blockTheme: ', this.blockTheme)
   },
 
@@ -164,7 +151,8 @@ section {
     @screen lg {
       @apply pb-12;
       @apply cap-max-w px-4;
-      overflow-x: hidden;
+      // overflow-x: hidden;
+      overflow:visible;
     }
   }
 }

@@ -3,12 +3,15 @@
     v-if="stickerId && block"
     :class="[
       `block-sticker absolute ${
-        +index === 0 ? 'top-0 right-0' : 'bottom-0 left-0'
+        +index === 0 ? 'top-0 right-0 ' : '-bottom-16 -left-16'
       }`
     ]"
   >
     <!-- <lazy-image :src="stickerUrl(stickerId)" :w="50" width="50px" /> -->
-    <img :src="stickerUrl(stickerId)" class="w-32" />
+    <img
+      :src="stickerUrl(stickerId)"
+      :class="[`w-32  ${positionClass}`]"
+    />
   </section>
 </template>
 
@@ -16,11 +19,19 @@
 export default {
   name: "BlockSticker",
   props: ["block", "stickerId", "parentRef", "index"],
-  mounted() {
-    console.log(this.parentRef);
+  computed: {
+    positionClass() {
+      switch (this.index) {
+        case 0:
+          return `top-0 right-0`;
+        case 1:
+          return `bottom-0 left-0`;
+        default:
+          return `top-0 right-0`;
+      }
+    }
   },
   methods: {
-    position() {},
     stickerUrl(stickerId) {
       switch (this.stickerId) {
         case "sticker1":
