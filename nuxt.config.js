@@ -490,28 +490,28 @@ export default {
   //   // }
   // }
   // Alfred's http tunnel. **** REMOVE BEFORE DEPLOY *****
-  // server: {
-  //   port: 3000, // default: 3000
-  //   // host: '0.0.0.0',
-  //   // host: "127.0.0.1",
-  //   host: "192.168.1.138"
-  //   // https:{
-  //   //   key:
-  //   //   cert:process.env.
-  //   // }
-  // }
   server: {
-    https: {
-      key:
-        process.env.NODE_ENV === "production"
-          ? undefined
-          : fs.readFileSync(path.resolve(__dirname, "localhost-key.pem")),
-      cert:
-        process.env.NODE_ENV === "production"
-          ? undefined
-          : fs.readFileSync(path.resolve(__dirname, "localhost.pem"))
-    }
-  },
+    port: 3000, // default: 3000
+    // host: '0.0.0.0',
+    // host: "127.0.0.1",
+    host: "192.168.1.138"
+    // https:{
+    //   key:
+    //   cert:process.env.
+    // }
+  }
+  // server: {
+  //   https: {
+  //     key:
+  //       process.env.NODE_ENV === "production"
+  //         ? undefined
+  //         : fs.readFileSync(path.resolve(__dirname, "localhost-key.pem")),
+  //     cert:
+  //       process.env.NODE_ENV === "production"
+  //         ? undefined
+  //         : fs.readFileSync(path.resolve(__dirname, "localhost.pem"))
+  //   }
+  // },
 
 };
 
