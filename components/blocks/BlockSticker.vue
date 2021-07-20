@@ -4,7 +4,7 @@
     v-if="stickerId && block"
     :class="[
       `block-sticker absolute ${
-        +index === 0 ? 'top-0 right-0 ' : '-bottom-16 -left-16'
+        +index === 0 ? 'top-0 right-0 ' : 'transform -translate-x-1/2 translate-y-1/2'
       }`
     ]"
   >
