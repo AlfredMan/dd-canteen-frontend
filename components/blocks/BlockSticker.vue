@@ -7,7 +7,7 @@
 <script>
 export default {
   props: ["block", "stickerId"],
-  computed: {
+  methods: {
     stickerUrl (stickerId) {
       switch (this.stickerId) {
         case "sticker1":
