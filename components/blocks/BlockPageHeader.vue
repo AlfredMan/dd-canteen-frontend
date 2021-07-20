@@ -10,7 +10,7 @@
         }"
       >
         <div class="block-page-header-text">
-          <div class="header-sticker-group relative" ref="stickerParentRef">
+          <div class="header-sticker-group relative" >
             <h1 class="hyphens lg:w-10/12" v-if="block.fields.heading">
               {{ formattedHeading }}
             </h1>
