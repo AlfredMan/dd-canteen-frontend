@@ -50,7 +50,7 @@
 // wood
 
 .bg-lightwood{
-  background: '/images/textures/lightwood'
+  background: url('/images/textures/canteen-light-wood.png');
 }
 .theme-lightwood {
 	width: 100%;
@@ -74,12 +74,10 @@
 
 .theme-lightwood *::-moz-selection { /* Code for Firefox */
   color: white;
-  background: lighten($wood, 20%);
 }
 
 .theme-lightwood *::selection {
   color: white;
-  background: lighten($wood, 20%);
 }
 
 .theme-lightwood section {
@@ -87,14 +85,12 @@
 		&.theme-dark {
 			.format-button.theme-default.cta {
 				color: white;
-				background: $wood;
 			}
 		}
 	}
 
 	&.app-newsletter {
 		color: white;
-		background: $wood;
 	}
 }
 
