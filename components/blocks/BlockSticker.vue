@@ -11,7 +11,12 @@
     ]"
   >
     <!-- <lazy-image :src="stickerUrl(stickerId)" :w="50" width="50px" /> -->
-    <img :src="sticker(stickerId).uri" :class="[`${sticker(stickeId).sizeClass}  ${positionClass}`]" />
+    <img
+      :src="sticker(stickerId).uri"
+      :class="[
+        `${sticker(stickeId).sizeClass}  ${positionClass}`
+      ]"
+    />
   </section>
 </template>
 
@@ -33,7 +38,12 @@ if (process.client) {
 }
 export default {
   name: "BlockSticker",
-  props: ["block", "stickerId", "parentRef", "index"],
+  props: [
+    "block",
+    "stickerId",
+    "parentRef",
+    "index"
+  ],
   mounted() {
     // if (process.browser) {
     //   const DraggableModule = require("gsap/Draggable");

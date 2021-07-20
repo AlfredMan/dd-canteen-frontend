@@ -632,3 +632,14 @@ footer {
   &.column-count-xl-5 { @include media-breakpoint-up(xl) { column-count: 5; } }
   &.column-count-xl-6 { @include media-breakpoint-up(xl) { column-count: 6; } }
 }
+
+
+
+.guideline-canteen {
+	h1,h2,h3 {
+		text-transform: none;
+	}
+	h1 {
+		font-weight: 300;
+	}
+}
