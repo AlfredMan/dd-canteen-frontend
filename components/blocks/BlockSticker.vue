@@ -1,14 +1,23 @@
 <template>
-  <section v-if="stickerId && block" class="block-image">
-    <lazy-image :src="stickerUrl(stickerId)" :w="3000" />
+  <section
+    v-if="stickerId && block"
+    :class="[
+      `block-sticker absolute ${
+        +index === 0 ? 'top-0 right-0' : 'bottom-0 left-0'
+      }`
+    ]"
+  >
+    <!-- <lazy-image :src="stickerUrl(stickerId)" :w="50" width="50px" /> -->
+    <img :src="stickerUrl(stickerId)" class="w-32"/>
   </section>
 </template>
 
 <script>
 export default {
-  props: ["block", "stickerId"],
+  name: "BlockSticker",
+  props: ["block", "stickerId", "parentRef","index"],
   methods: {
-    stickerUrl (stickerId) {
+    stickerUrl(stickerId) {
       switch (this.stickerId) {
         case "sticker1":
           return "/images/stickers/sticker1.svg";

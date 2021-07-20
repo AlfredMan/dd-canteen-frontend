@@ -1,45 +1,54 @@
 <template>
-  <section
-  v-if="block"
-  class="block-page-header"
-  :class="[blockThemeClass]"
-  >
-
-    <div
-    class="block-page-header-content">
-
+  <section v-if="block" class="block-page-header" :class="[blockThemeClass]">
+    <div class="block-page-header-content">
       <div
-      class="cap-max-w-px-3 flex flex-wrap"
-      :class="{
-        'block-page-header-has-image': (block.fields.imageAsset && block.fields.imageAsset[0]) || (block.fields.embedAsset && block.fields.embedAsset[0])
+        class="cap-max-w-px-3 flex flex-wrap"
+        :class="{
+          'block-page-header-has-image':
+            (block.fields.imageAsset && block.fields.imageAsset[0]) ||
+            (block.fields.embedAsset && block.fields.embedAsset[0])
         }"
       >
-
-        <div
-        class="block-page-header-text"
-        >
-          <h1 class="hyphens lg:w-10/12" v-if="block.fields.heading">{{formattedHeading}}</h1>
+        <div class="block-page-header-text">
+          <div class="header-sticker-group relative" ref="stickerParentRef">
+            <h1 class="hyphens lg:w-10/12" v-if="block.fields.heading">
+              {{ formattedHeading }}
+            </h1>
+            <BlockSticker
+              v-for="(stickerId, index) in block.fields.stickers"
+              :key="stickerId"
+              :stickerId="stickerId"
+              :block="block"
+              :parentRef="stickerParentRef"
+              :index="index"
+            />
+          </div>
           <div class="flex flex-wrap items-baseline">
-            <h4 class="" v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
-            <h5 class="" v-if="block.fields.minorSubheading">{{block.fields.minorSubheading}}</h5>
-            <h6 class="mt-0" v-if="block.fields.disclaimer">{{block.fields.disclaimer}}</h6>
+            <h4 class="" v-if="block.fields.subheading">
+              {{ block.fields.subheading }}
+            </h4>
+            <h5 class="" v-if="block.fields.minorSubheading">
+              {{ block.fields.minorSubheading }}
+            </h5>
+            <h6 class="mt-0" v-if="block.fields.disclaimer">
+              {{ block.fields.disclaimer }}
+            </h6>
           </div>
           <callToAction
-          v-if="block.fields.callToAction"
-          :callToAction="block.fields.callToAction"
-          :theme="ctaTheme"
+            v-if="block.fields.callToAction"
+            :callToAction="block.fields.callToAction"
+            :theme="ctaTheme"
           />
         </div>
 
-        <div
-        class="block-page-header-image"
-        >
-
-          <div class="" v-if="block.fields.embedAsset && block.fields.embedAsset[0]">
+        <div class="block-page-header-image">
+          <div
+            class=""
+            v-if="block.fields.embedAsset && block.fields.embedAsset[0]"
+          >
             <div class="block-page-header-embed-code">
               <div class="ratio-container">
-                <div class="iframe-wrapper" v-html="getEmbedCode">
-                </div>
+                <div class="iframe-wrapper" v-html="getEmbedCode"></div>
               </div>
             </div>
           </div>
@@ -49,31 +58,32 @@
             v-else-if="block.fields.imageAsset && block.fields.imageAsset[0]"
             :src="block.fields.imageAsset[0].fields.file.url"
             :w="2000"
-            />
+          />
         </div>
-
       </div>
-
     </div>
-
   </section>
 </template>
 
 <script>
 // import ComponentCallToAction from '~/components/blocks/ComponentCallToAction'
-import _ from 'lodash'
+import BlockSticker from "~/components/blocks/BlockSticker";
+import _ from "lodash";
 export default {
-  props: ['block'],
+  props: ["block"],
 
-  mounted () {
-    // console.log('this.block: ', this.block)
+  mounted() {
+    console.log("this.block: ", this.block);
     // console.log('this.blockTheme: ', this.blockTheme)
   },
 
+  components: {
+    BlockSticker
+  },
   computed: {
-    formattedHeading () {
+    formattedHeading() {
       if (!this.block) return;
-      let heading = this.block && this.block.fields.heading
+      let heading = this.block && this.block.fields.heading;
       // if (heading=='Architecture') {
       //   if (process.client) {
       //     if (window.innerWidth < 400) {
@@ -81,41 +91,44 @@ export default {
       //     }
       //   }
       // }
-      return heading
+      return heading;
     },
-    blockTheme () {
-      return this.block && _.lowerCase(this.block.fields.theme) || 'default'
+    blockTheme() {
+      return (this.block && _.lowerCase(this.block.fields.theme)) || "default";
     },
-    blockThemeClass () {
-      return `theme-${this.blockTheme} bg-${this.blockTheme}`
+    blockThemeClass() {
+      return `theme-${this.blockTheme} bg-${this.blockTheme}`;
     },
-    ctaTheme () {
+    ctaTheme() {
       if (this.block) {
         switch (this.blockTheme) {
-          case 'yellow':
-          case 'green':
-          case 'orange':
-            return 'black'
+          case "yellow":
+          case "green":
+          case "orange":
+            return "black";
           default:
-            return 'default'
+            return "default";
         }
       }
-      return 'default'
+      return "default";
     },
-    getEmbedCode( ) {
-      if (this.block
-        && this.block.fields.embedAsset
-        && this.block.fields.embedAsset[0]
-        && this.block.fields.embedAsset[0].fields.embedCode
-        && this.block.fields.embedAsset[0].fields.embedCode.content[0].content[0].value
+    getEmbedCode() {
+      if (
+        this.block &&
+        this.block.fields.embedAsset &&
+        this.block.fields.embedAsset[0] &&
+        this.block.fields.embedAsset[0].fields.embedCode &&
+        this.block.fields.embedAsset[0].fields.embedCode.content[0].content[0]
+          .value
       ) {
-        return this.block.fields.embedAsset[0].fields.embedCode.content[0].content[0].value
+        return this.block.fields.embedAsset[0].fields.embedCode.content[0]
+          .content[0].value;
       }
-      return ''
+      return "";
     }
   }
   // components: { ComponentCallToAction }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -138,7 +151,7 @@ section {
     @apply px-4 pt-24 pb-12;
     @screen lg {
       @apply pb-12;
-      @apply cap-max-w px-4 ;
+      @apply cap-max-w px-4;
       overflow-x: hidden;
     }
   }
@@ -154,10 +167,10 @@ section {
   .block-page-header-has-image & {
     @apply w-full;
     @screen lg {
-      @apply w-7/12
-    };
+      @apply w-7/12;
+    }
     @screen mobile {
-      @apply mb-8
+      @apply mb-8;
     }
   }
 }
@@ -166,15 +179,14 @@ section {
     @apply w-full;
     @screen lg {
       @apply mt-0;
-      @apply w-5/12
-    };
+      @apply w-5/12;
+    }
     @screen mobile {
       @apply mt-8;
-      @apply mb-8
+      @apply mb-8;
     }
   }
 }
-
 
 .block-page-header-embed-code {
   .ratio-container {
@@ -220,5 +232,4 @@ h5 {
     }
   }
 }
-
 </style>
