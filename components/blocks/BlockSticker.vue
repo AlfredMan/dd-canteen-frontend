@@ -11,7 +11,7 @@
     ]"
   >
     <!-- <lazy-image :src="stickerUrl(stickerId)" :w="50" width="50px" /> -->
-    <img :src="sticker(stickerId).uri" :class="[`${sticker(stickeId).sizeClass}  ${positionClass}`]" />
+    <img :src="sticker(stickerId).uri" :class="[`${sticker(stickerId).sizeClass}  ${positionClass}`]" />
   </section>
 </template>
 
