@@ -185,7 +185,7 @@ export default {
     // parallel: true,
     // cache: true,
     // optimizeCSS: process.env.NODE_ENV === 'production',
-    transpile: ["three"],
+    transpile: ["three", 'gsap'],
     // optimization: {
     //   splitChunks: {
     //     cacheGroups: {
@@ -514,3 +514,7 @@ export default {
   },
 
 };
+
+// if (isClient) {
+//   config.entry.app.push('gsap','gsap/DrawSVGPlugin');
+// }

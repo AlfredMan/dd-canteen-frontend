@@ -1,7 +1,7 @@
 <template>
   <section
   v-if="block"
-  class="block-list"
+  class="block-list relative"
   :class="[blockThemeClass]"
   :id="blockId"
   >
@@ -89,14 +89,22 @@
 
       </div>
     </div>
-
+            <BlockSticker
+              v-for="(stickerId, index) in block.fields.stickers"
+              :key="stickerId"
+              :stickerId="stickerId"
+              :block="block"
+              :index="index"
+            />
   </section>
 </template>
 
 <script>
 import _ from 'lodash'
+import BlockSticker from "~/components/blocks/BlockSticker";
 export default {
   props: ['block'],
+  components:{BlockSticker},
 
   computed: {
     headingDisplay () {

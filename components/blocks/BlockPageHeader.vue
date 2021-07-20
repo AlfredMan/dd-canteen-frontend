@@ -10,7 +10,7 @@
         }"
       >
         <div class="block-page-header-text">
-          <div class="header-sticker-group relative" ref="stickerParentRef">
+          <div class="header-sticker-group relative" >
             <h1 class="hyphens lg:w-10/12" v-if="block.fields.heading">
               {{ formattedHeading }}
             </h1>
@@ -19,7 +19,6 @@
               :key="stickerId"
               :stickerId="stickerId"
               :block="block"
-              :parentRef="stickerParentRef"
               :index="index"
             />
           </div>
@@ -152,7 +151,8 @@ section {
     @screen lg {
       @apply pb-12;
       @apply cap-max-w px-4;
-      overflow-x: hidden;
+      // overflow-x: hidden;
+      overflow:visible;
     }
   }
 }
