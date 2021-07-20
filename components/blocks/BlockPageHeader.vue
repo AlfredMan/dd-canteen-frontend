@@ -1,11 +1,8 @@
 <template>
   <section
-  v-if="block"
-  class="block-page-header"
-  :class="[
-    blockThemeClass,
-    blockGuidelineClass
-  ]"
+    v-if="block"
+    class="block-page-header"
+    :class="[blockThemeClass, blockGuidelineClass]"
   >
     <div class="block-page-header-content">
       <div
@@ -17,20 +14,21 @@
         }"
       >
         <div class="block-page-header-text">
-          <div class="header-sticker-group relative" >
+          <div class="header-sticker-group relative">
             <h1
-            :class="[
-              `hyphens inline-block relative`,
-              {
-                'lg:w-10/12': isGuidelineDefault,
-                'lg:w-6/12': isGuidelineCanteen
-              }
-            ]"
-            v-if="block.fields.heading">
-
+              :class="[
+                `hyphens inline-block relative`,
+                {
+                  'lg:w-10/12': isGuidelineDefault,
+                  'lg:w-6/12': isGuidelineCanteen
+                }
+              ]"
+              v-if="block.fields.heading"
+            >
               <!-- force inject -->
-              <span v-if="formattedHeading=='Design District Canteen'"
-              class="inline-block w-10/12 lg:w-8/12"
+              <span
+                v-if="formattedHeading == 'Design District Canteen'"
+                class="inline-block w-10/12 lg:w-8/12"
               >
                 <LogoCanteen />
               </span>
@@ -38,7 +36,7 @@
               <span v-else>{{ formattedHeading }}</span>
 
               <BlockSticker
-                v-for="(stickerId, index) in block.fields.stickers"
+                v-for="(stickerId, index) in stickers"
                 :key="stickerId"
                 :stickerId="stickerId"
                 :block="block"
@@ -91,8 +89,10 @@
 <script>
 // import ComponentCallToAction from '~/components/blocks/ComponentCallToAction'
 import BlockSticker from "~/components/blocks/BlockSticker";
-import LogoCanteen from "~/components/logo/Canteen"
+import LogoCanteen from "~/components/logo/Canteen";
 import _ from "lodash";
+
+import { shuffleArray } from "~/common/utils";
 export default {
   props: ["block"],
 
@@ -106,6 +106,10 @@ export default {
     LogoCanteen
   },
   computed: {
+    stickers() {
+      if (!this.block) return [];
+      return shuffleArray(this.block.fields?.stickers || []);
+    },
     formattedHeading() {
       if (!this.block) return;
       let heading = this.block && this.block.fields.heading;
@@ -125,16 +129,22 @@ export default {
       return `theme-${this.blockTheme} bg-${this.blockTheme}`;
     },
     blockGuideline() {
-      return (this.block && _.lowerCase(this.block.fields.guideline)) || "default";
+      return (
+        (this.block && _.lowerCase(this.block.fields.guideline)) || "default"
+      );
     },
     blockGuidelineClass() {
       return `guideline-${this.blockGuideline}`;
     },
     isGuidelineCanteen() {
-      return this.blockGuideline && this.blockGuideline=='canteen'
+      return this.blockGuideline && this.blockGuideline == "canteen";
     },
     isGuidelineDefault() {
-      return !this.blockGuideline || this.blockGuideline=='default' || this.blockGuideline=='designdistrict'
+      return (
+        !this.blockGuideline ||
+        this.blockGuideline == "default" ||
+        this.blockGuideline == "designdistrict"
+      );
     },
     ctaTheme() {
       if (this.block) {
@@ -190,7 +200,7 @@ section {
       @apply pb-12;
       @apply cap-max-w px-4;
       // overflow-x: hidden; // Jason: Alfred updated this to visible for Sticker
-      overflow:visible;
+      overflow: visible;
     }
   }
 }
