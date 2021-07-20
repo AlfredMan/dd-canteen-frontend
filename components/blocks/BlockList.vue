@@ -120,8 +120,8 @@ export default {
     blockTheme () {
       return this.block && _.lowerCase(this.block.fields.theme) || 'default'
     },
-    blockThemeClass () {
-      return `theme-${this.blockTheme}`
+    blockThemeClass() {
+      return `theme-${this.blockTheme} bg-${this.blockTheme}`;
     },
     blockGuideline() {
       return (this.block && _.lowerCase(this.block.fields.guideline)) || "default";
