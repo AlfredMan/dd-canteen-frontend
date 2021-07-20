@@ -60,13 +60,12 @@ export default {
     // }
   },
   methods: {
-
     attributesAtIndex(i) {
       switch (i) {
         case 0:
           return {
             positionClass:
-              "top-0 -right-10 transform -translate-x-1/2 translate-y-1/2 scale-125 rotate-12"
+              "-top-10 -right-10 transform -translate-x-1/2 translate-y-1/2 scale-125 rotate-12"
           };
         case 1:
           return {
@@ -239,7 +238,7 @@ export default {
             uri: "/images/stickers/sticker1.svg"
           };
       }
-    },
+    }
   }
 };
 </script>
