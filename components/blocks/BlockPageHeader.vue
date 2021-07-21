@@ -4,7 +4,7 @@
     class="block-page-header"
     :class="[blockThemeClass, blockGuidelineClass]"
   >
-    <div class="block-page-header-content">
+    <div class="block-page-header-content relative">
       <div
         class="cap-max-w-px-3 flex flex-wrap"
         :class="{
@@ -35,13 +35,16 @@
 
               <span v-else>{{ formattedHeading }}</span>
 
-              <BlockSticker
-                v-for="(stickerId, index) in stickers"
-                :key="stickerId"
-                :stickerId="stickerId"
-                :block="block"
-                :index="index"
-              />
+              <div v-if="!stickerSpreadAcross" class="sticker-group">
+                <BlockSticker
+                  v-for="(stickerId, index) in stickers"
+                  :key="stickerId"
+                  :stickerId="stickerId"
+                  :block="block"
+                  :index="index"
+                  :stickerSpreadAcross="stickerSpreadAcross"
+                />
+              </div>
             </h1>
           </div>
           <div class="flex flex-wrap items-baseline">
@@ -82,6 +85,16 @@
           />
         </div>
       </div>
+      <div v-if="stickerSpreadAcross" class="sticker-group">
+        <BlockSticker
+          v-for="(stickerId, index) in stickers"
+          :key="stickerId"
+          :stickerId="stickerId"
+          :block="block"
+          :index="index"
+          :spreadAcross="stickerSpreadAcross"
+        />
+      </div>
     </div>
   </section>
 </template>
@@ -106,6 +119,9 @@ export default {
     LogoCanteen
   },
   computed: {
+    stickerSpreadAcross() {
+      return this.block.fields?.stickerDisplay?.includes("SpreadAcross");
+    },
     stickers() {
       if (!this.block) return [];
       return shuffleArray(this.block.fields?.stickers || []);

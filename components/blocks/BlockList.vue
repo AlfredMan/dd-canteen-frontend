@@ -1,24 +1,24 @@
 <template>
   <section
-  v-if="block"
-  class="block-list relative"
-  :class="[
-    blockThemeClass,
-    blockGuidelineClass
-  ]"
-  :id="blockId"
+    v-if="block"
+    class="block-list relative"
+    :class="[blockThemeClass, blockGuidelineClass]"
+    :id="blockId"
   >
     <div
-    v-if="block.fields.heading || block.fields.subheading"
-    class="block-list-header"
-    :class="{
-      'headingDisplay--Right': headingDisplay=='Right',
-      'flex flex-wrap items-baseline':headingDisplay=='Right'
+      v-if="block.fields.heading || block.fields.subheading"
+      class="block-list-header"
+      :class="{
+        'headingDisplay--Right': headingDisplay == 'Right',
+        'flex flex-wrap items-baseline': headingDisplay == 'Right'
       }"
     >
-      <div v-if="block.fields.heading" :class="{'w-full lg:w-5/12':headingDisplay=='Right'}">
+      <div
+        v-if="block.fields.heading"
+        :class="{ 'w-full lg:w-5/12': headingDisplay == 'Right' }"
+      >
         <h2 class="inline-block relative">
-          {{block.fields.heading}}
+          {{ block.fields.heading }}
 
           <BlockSticker
             v-for="(stickerId, index) in block.fields.stickers"
@@ -26,120 +26,152 @@
             :stickerId="stickerId"
             :block="block"
             :index="index"
+            :spreadAcross="stickerSpreadAcross"
           />
         </h2>
       </div>
-      <div v-if="block.fields.subheading" :class="{'w-full lg:w-7/12':headingDisplay=='Right'}">
+      <div
+        v-if="block.fields.subheading"
+        :class="{ 'w-full lg:w-7/12': headingDisplay == 'Right' }"
+      >
         <h4 class="font-medium max-w-3xl">
-          {{block.fields.subheading}}
+          {{ block.fields.subheading }}
         </h4>
-        <callToAction v-if="block.fields.callToAction" :callToAction="block.fields.callToAction"/>
+        <callToAction
+          v-if="block.fields.callToAction"
+          :callToAction="block.fields.callToAction"
+        />
       </div>
     </div>
 
     <div
-    class="block-list--contentList"
-    :class="{
-      'flex flex-wrap': contentDisplay=='4-column'
-    }"
+      class="block-list--contentList"
+      :class="{
+        'flex flex-wrap': contentDisplay == '4-column'
+      }"
     >
       <div
-      v-for="content in block.fields.contentList"
-      :key="content.sys.id"
-      class="block-list--contentList--content"
-      :class="[
-      `contentDisplay-${contentDisplay}`,
-      {
-        'w-full lg:w-1/4 xl:w-1/4': contentDisplay=='4-column'
-      },
-      {
-        'w-full lg:w-1/3 xl:w-1/3': contentDisplay=='3-column'
-      },
-      {
-        'w-full lg:w-1/2 xl:w-1/2': contentDisplay=='2-column'
-      }]"
+        v-for="content in block.fields.contentList"
+        :key="content.sys.id"
+        class="block-list--contentList--content"
+        :class="[
+          `contentDisplay-${contentDisplay}`,
+          {
+            'w-full lg:w-1/4 xl:w-1/4': contentDisplay == '4-column'
+          },
+          {
+            'w-full lg:w-1/3 xl:w-1/3': contentDisplay == '3-column'
+          },
+          {
+            'w-full lg:w-1/2 xl:w-1/2': contentDisplay == '2-column'
+          }
+        ]"
       >
-
-        <template v-if="content.fields.imageAsset && content.fields.imageAsset[0]">
-
+        <template
+          v-if="content.fields.imageAsset && content.fields.imageAsset[0]"
+        >
           <transition-link
-          v-if="content.fields.callToAction && content.fields.callToAction.fields.path"
-          class="block-list--contentList--content--image"
-          :to="content.fields.callToAction.fields.path">
+            v-if="
+              content.fields.callToAction &&
+                content.fields.callToAction.fields.path
+            "
+            class="block-list--contentList--content--image"
+            :to="content.fields.callToAction.fields.path"
+          >
             <lazy-image
-            class="transition-source"
-            :src="content.fields.imageAsset[0].fields.file.url"
-            :w="1000"
+              class="transition-source"
+              :src="content.fields.imageAsset[0].fields.file.url"
+              :w="1000"
             />
           </transition-link>
 
           <div class="block-list--contentList--content--image" v-else>
             <lazy-image
-            :src="content.fields.imageAsset[0].fields.file.url"
-            :w="1000"
+              :src="content.fields.imageAsset[0].fields.file.url"
+              :w="1000"
             />
           </div>
-
         </template>
 
-        <template v-if="content.fields.callToAction && content.fields.callToAction.fields.path">
+        <template
+          v-if="
+            content.fields.callToAction &&
+              content.fields.callToAction.fields.path
+          "
+        >
           <nuxt-link :to="content.fields.callToAction.fields.path">
             <h4 v-if="content.fields.heading" class="">
-              {{content.fields.heading}}
+              {{ content.fields.heading }}
             </h4>
           </nuxt-link>
         </template>
         <template v-else>
           <h4 v-if="content.fields.heading" class="">
-            {{content.fields.heading}}
+            {{ content.fields.heading }}
           </h4>
         </template>
 
-        <div v-if="content.fields.description" class="content-fields-description" v-html="markdown(content.fields.description)">
-        </div>
-
+        <div
+          v-if="content.fields.description"
+          class="content-fields-description"
+          v-html="markdown(content.fields.description)"
+        ></div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import _ from 'lodash'
+import _ from "lodash";
 import BlockSticker from "~/components/blocks/BlockSticker";
 export default {
-  props: ['block'],
-  components:{BlockSticker},
+  props: ["block"],
+  components: { BlockSticker },
 
   computed: {
-    headingDisplay () {
-      return this.block && this.block.fields.headingDisplay || 'Default'
+    stickerSpreadAcross() {
+      return this.block.fields?.stickerDisplay?.includes("SpreadAcross");
     },
-    contentDisplay () {
-      return this.block && this.block.fields.columns || '4-column'
+    headingDisplay() {
+      return (this.block && this.block.fields.headingDisplay) || "Default";
     },
-    blockTheme () {
-      return this.block && _.lowerCase(this.block.fields.theme) || 'default'
+    contentDisplay() {
+      return (this.block && this.block.fields.columns) || "4-column";
+    },
+    blockTheme() {
+      // return this.block && _.lowerCase(this.block.fields.theme) || 'default'
+      return (
+        (this.block && this.block?.fields?.theme?.toLowerCase()) || "default"
+      );
     },
     blockThemeClass() {
       return `theme-${this.blockTheme} bg-${this.blockTheme}`;
     },
     blockGuideline() {
-      return (this.block && _.lowerCase(this.block.fields.guideline)) || "default";
+      return (
+        (this.block && _.lowerCase(this.block.fields.guideline)) || "default"
+      );
     },
     blockGuidelineClass() {
       return `guideline-${this.blockGuideline}`;
     },
     isGuidelineCanteen() {
-      return this.blockGuideline && this.blockGuideline=='canteen'
+      return this.blockGuideline && this.blockGuideline == "canteen";
     },
     isGuidelineDefault() {
-      return !this.blockGuideline || this.blockGuideline=='default' || this.blockGuideline=='designdistrict'
+      return (
+        !this.blockGuideline ||
+        this.blockGuideline == "default" ||
+        this.blockGuideline == "designdistrict"
+      );
     },
     blockId() {
-      return this.block.fields.heading ? _.kebabCase(this.block.fields.heading) : ''
+      return this.block.fields.heading
+        ? _.kebabCase(this.block.fields.heading)
+        : "";
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -165,18 +197,18 @@ section {
   @apply overflow-x-visible;
 
   h2 {
-    @apply max-w-2xl
+    @apply max-w-2xl;
   }
   h4 {
     @apply max-w-3xl font-thin;
   }
 
-  h2, h4 {
+  h2,
+  h4 {
     .theme-dark & {
       @apply text-white;
     }
   }
-
 }
 
 .block-list--contentList {
@@ -193,7 +225,7 @@ section {
     }
 
     .block-list--contentList--content--image {
-      @apply mb-4
+      @apply mb-4;
     }
 
     h4 {
