@@ -7,12 +7,23 @@
   >
     <div
       v-if="block.fields.heading || block.fields.subheading"
-      class="block-list-header"
+      class="block-list-header relative"
       :class="{
         'headingDisplay--Right': headingDisplay == 'Right',
         'flex flex-wrap items-baseline': headingDisplay == 'Right'
       }"
     >
+      <div v-if="!isStickerAroundHeadingWidthOnly" class="absolute inset-0">
+        <BlockSticker
+          v-for="(stickerId, index) in block.fields.stickers"
+          :key="stickerId"
+          :stickerId="stickerId"
+          :block="block"
+          :index="index"
+          :spreadAcross="stickerSpreadAcross"
+          :stickersPosition="stickersPosition"
+        />
+      </div>
       <div
         v-if="block.fields.heading"
         :class="{ 'w-full lg:w-5/12': headingDisplay == 'Right' }"
@@ -20,14 +31,17 @@
         <h2 class="inline-block relative">
           {{ block.fields.heading }}
 
-          <BlockSticker
-            v-for="(stickerId, index) in block.fields.stickers"
-            :key="stickerId"
-            :stickerId="stickerId"
-            :block="block"
-            :index="index"
-            :spreadAcross="stickerSpreadAcross"
-          />
+          <div v-if="isStickerAroundHeadingWidthOnly" class="absolute inset-0">
+            <BlockSticker
+              v-for="(stickerId, index) in block.fields.stickers"
+              :key="stickerId"
+              :stickerId="stickerId"
+              :block="block"
+              :index="index"
+              :spreadAcross="stickerSpreadAcross"
+              :stickersPosition="stickersPosition"
+            />
+          </div>
         </h2>
       </div>
       <div
@@ -53,7 +67,7 @@
       <div
         v-for="content in block.fields.contentList"
         :key="content.sys.id"
-        class="block-list--contentList--content"
+        class="block-list--contentList--content relative"
         :class="[
           `contentDisplay-${contentDisplay}`,
           {
@@ -67,6 +81,19 @@
           }
         ]"
       >
+        <div v-if="content && content.fields.stickers" class="absolute inset-0">
+          <BlockSticker
+            v-for="(stickerId, index) in content.fields.stickers"
+            :key="stickerId"
+            :stickerId="stickerId"
+            :block="block"
+            :index="index"
+            :spreadAcross="false"
+            :stickersPosition="contentStickersPosition(content)"
+          />
+        </div>
+
+        <!-- <div v-if="content.fields.callToAction&&content.fields.callToAction.fields.path">{{content.fields.callToAction.fields.path}}</div> -->
         <template
           v-if="content.fields.imageAsset && content.fields.imageAsset[0]"
         >
@@ -75,7 +102,7 @@
               content.fields.callToAction &&
                 content.fields.callToAction.fields.path
             "
-            class="block-list--contentList--content--image"
+            class="block-list--contentList--content--image "
             :to="content.fields.callToAction.fields.path"
           >
             <lazy-image
@@ -85,7 +112,7 @@
             />
           </transition-link>
 
-          <div class="block-list--contentList--content--image" v-else>
+          <div class="block-list--contentList--content--image " v-else>
             <lazy-image
               :src="content.fields.imageAsset[0].fields.file.url"
               :w="1000"
@@ -127,10 +154,17 @@ import BlockSticker from "~/components/blocks/BlockSticker";
 export default {
   props: ["block"],
   components: { BlockSticker },
-
+  methods: {
+    contentStickersPosition(content) {
+      return content?.fields?.stickersPosition ?? "AroundHeader";
+    }
+  },
   computed: {
     stickerSpreadAcross() {
       return this.block.fields?.stickerDisplay?.includes("SpreadAcross");
+    },
+    stickersPosition() {
+      return this.block.fields?.stickersPosition ?? "AroundHeader";
     },
     headingDisplay() {
       return (this.block && this.block.fields.headingDisplay) || "Default";
@@ -169,6 +203,9 @@ export default {
       return this.block.fields.heading
         ? _.kebabCase(this.block.fields.heading)
         : "";
+    },
+    isStickerAroundHeadingWidthOnly() {
+      return !this.stickersPosition || this.stickersPosition === "AroundHeader";
     }
   }
 };
@@ -217,6 +254,9 @@ section {
   @apply -mx-2;
   @apply px-3;
   @apply cap-max-w;
+  // start: Jason:: Alfred added overflow-x-visible here for stickers to be visible around image parent container
+  @apply overflow-x-visible;
+  // end: Alfred added overflow-x-visible here for stickers to be visible around image parent container
 
   .block-list--contentList--content {
     @apply mb-8 pr-0;
