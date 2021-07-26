@@ -172,7 +172,7 @@ h1 {
   // font-size: $h1_size;
   font-size: $h1_size_responsive;
   text-transform: uppercase;
-  &.default-case{
+  &.default-case {
     text-transform: none;
   }
 
@@ -235,7 +235,7 @@ h2 {
   margin: 2rem 0;
   margin-left: -0.035em;
   text-transform: uppercase;
-  &.default-case{
+  &.default-case {
     text-transform: none;
   }
 
@@ -766,5 +766,8 @@ footer {
   }
   h1 {
     font-weight: 300;
+  }
+  a {
+    color: limegreen;
   }
 }

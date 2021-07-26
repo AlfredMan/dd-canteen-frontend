@@ -28,7 +28,14 @@ if (process.client) {
 }
 export default {
   name: "BlockSticker",
-  props: ["block", "stickerId", "parentRef", "index", "spreadAcross"],
+  props: [
+    "block",
+    "stickerId",
+    "parentRef",
+    "index",
+    "spreadAcross",
+    "stickersPosition"
+  ],
   mounted() {
     // if (process.browser) {
     //   const DraggableModule = require("gsap/Draggable");
@@ -43,11 +50,12 @@ export default {
       type: "x,y",
       bounds: ".page-component"
     });
+    console.log("position:", this.stickersPosition);
   },
   computed: {
     sticker() {
       return this.stickerWithId(this.stickerId);
-    }
+    },
     // positionClass() {
     //   switch (this.index) {
     //     case 0:
@@ -58,9 +66,206 @@ export default {
     //       return `top-0 right-0`;
     //   }
     // }
+
+    isStickerScatterAcross() {
+      return !this.stickersPosition || this.stickersPosition === "AroundHeader";
+    },
+    isStickerTopLeft(position) {
+      return this.stickersPosition === "TopLeft";
+    },
+    isStickerTopCenter(position) {
+      return this.stickersPosition === "TopCenter";
+    },
+    isStickerTopRight(position) {
+      return this.stickersPosition === "TopRight";
+    },
+    isStickerCenterRight(position) {
+      return this.stickersPosition === "CenterRight";
+    },
+    isStickerBottomRight(position) {
+      return this.stickersPosition === "BottomRight";
+    },
+    isStickerBottomCenter(position) {
+      return this.stickersPosition === "BottomCenter";
+    },
+    isStickerBottomLeft(position) {
+      return this.stickersPosition === "BottomLeft";
+    },
+    isStickerCenterLeft(position) {
+      return this.stickersPosition === "CenterLeft";
+    }
   },
+
   methods: {
-    attributesAtIndex(i) {
+    attributesAtIndexPositionTopLeft(i) {
+      switch (i) {
+        case 0:
+          return {
+            positionClass:
+              "p-0 -top-10 -left-10 transform -translate-x-1/2 -translate-y-0 scale-125 rotate-12"
+          };
+        case 1:
+          return {
+            positionClass:
+              "p-0 -top-16 -left-16 transform -translate-x-1/2 -translate-y-1/2 scale-125 rotate-30"
+          };
+        case 2:
+          return {
+            positionClass:
+              "p-0 -top-12 -left-12 transform -translate-x-1/2 translate-y-0 scale-125 rotate-6"
+          };
+        default:
+          return {
+            positionClass:
+              "p-0 -top-10 -left-10 transform -translate-x-1/2 translate-y-0 scale-125 rotate-12"
+          };
+      }
+    },
+    attributesAtIndexPositionCenterLeft(i) {
+      switch (i) {
+        case 0:
+          return {
+            positionClass:
+              "p-0 top-1/2 -left-10 transform -translate-x-1/2 -translate-y-1/2 scale-125 rotate-12"
+          };
+        case 1:
+          return {
+            positionClass:
+              "p-0 top-1/2 -left-16 transform -translate-x-1/2 translate-y-0 scale-125 rotate-30"
+          };
+        case 2:
+          return {
+            positionClass:
+              "p-0 top-1/2 -left-12 transform -translate-x-1/2 translate-y-1/2 scale-125 rotate-6"
+          };
+        default:
+          return {
+            positionClass:
+              "p-0 top-1/2 -left-10 transform -translate-x-1/2 translate-y-0 scale-125 rotate-12"
+          };
+      }
+    },
+    attributesAtIndexPositionBottomCenter(i) {
+      switch (i) {
+        case 0:
+          return {
+            positionClass:
+              "p-0 -bottom-0 right-1/2 transform -translate-x-0 translate-y-1/2 scale-125 rotate-12"
+          };
+        case 1:
+          return {
+            positionClass:
+              "p-0 bottom-0 right-1/2 transform -translate-x-1/2 translate-y-1/3 scale-125 rotate-30"
+          };
+        case 2:
+          return {
+            positionClass:
+              "p-0 bottom-0 right-1/2 transform translate-x-1/2 translate-y-0 scale-125 rotate-6"
+          };
+        default:
+          return {
+            positionClass:
+              "p-0 -bottom-0 right-1/2 transform -translate-x-0 translate-y-0 scale-125 rotate-12"
+          };
+      }
+    },
+    attributesAtIndexPositionTopCenter(i) {
+      switch (i) {
+        case 0:
+          return {
+            positionClass:
+              "p-0 -top-12 right-1/2 transform -translate-x-0 translate-y-0 scale-125 rotate-12"
+          };
+        case 1:
+          return {
+            positionClass:
+              "p-0 top-016 right-1/2 transform -translate-x-1/2 -translate-y-1/2 scale-125 rotate-30"
+          };
+        case 2:
+          return {
+            positionClass:
+              "p-0 -top-10 right-1/2 transform translate-x-1/2 translate-y-1/2 scale-125 rotate-6"
+          };
+        default:
+          return {
+            positionClass:
+              "p-0 -top-12 right-1/2 transform -translate-x-0 translate-y-0 scale-125 rotate-12"
+          };
+      }
+    },
+    attributesAtIndexPositionTopRight(i) {
+      switch (i) {
+        case 0:
+          return {
+            positionClass:
+              "p-0 -top-12 -right-10 transform -translate-x-1/2 translate-y-0 scale-125 rotate-12"
+          };
+        case 1:
+          return {
+            positionClass:
+              "p-0 -top-16 -right-16 transform -translate-x-1/2 translate-y-1/2 scale-125 rotate-30"
+          };
+        case 2:
+          return {
+            positionClass:
+              "p-0 -top-10 -right-12 transform -translate-x-1/2 -translate-y-1/2 scale-125 rotate-6"
+          };
+        default:
+          return {
+            positionClass:
+              "p-0 -top-12 r-ight-10 transform -translate-x-1/2 translate-y-0 scale-125 rotate-12"
+          };
+      }
+    },
+    attributesAtIndexPositionCenterRight(i) {
+      switch (i) {
+        case 0:
+          return {
+            positionClass:
+              "p-0 top-1/2 -right-10 transform -translate-x-1/2 -translate-y-1/2 scale-125 rotate-12"
+          };
+        case 1:
+          return {
+            positionClass:
+              "p-0 top-1/2 -right-16 transform -translate-x-1/2 translate-y-0 scale-125 rotate-30"
+          };
+        case 2:
+          return {
+            positionClass:
+              "p-0 top-1/2 -right-12 transform -translate-x-1/2 translate-y-1/2 scale-125 rotate-6"
+          };
+        default:
+          return {
+            positionClass:
+              "p-0 top-1/2 -right-10 transform -translate-x-1/2 translate-y-0 scale-125 rotate-12"
+          };
+      }
+    },
+    attributesAtIndexPositionBottomRight(i) {
+      switch (i) {
+        case 0:
+          return {
+            positionClass:
+              "p-0 bottom-0 -right-10 transform -translate-x-1/2 -translate-y-0 scale-125 rotate-12"
+          };
+        case 1:
+          return {
+            positionClass:
+              "p-0 bottom-0 -right-16 transform -translate-x-1/2 -translate-y-1/2 scale-125 rotate-30"
+          };
+        case 2:
+          return {
+            positionClass:
+              "p-0 bottom-0 -right-12 transform -translate-x-1/2 translate-y-1/2 scale-125 rotate-6"
+          };
+        default:
+          return {
+            positionClass:
+              "p-0 bottom-0 -right-10 transform -translate-x-1/2 translate-y-0 scale-125 rotate-12"
+          };
+      }
+    },
+    attributesAtIndexPositionScatterAcross(i) {
       switch (i) {
         case 0:
           return {
@@ -145,6 +350,24 @@ export default {
               : "top-0 -right-10 transform -translate-x-1/2 translate-y-1/2 scale-125 rotate-12"
           };
       }
+    },
+    attributesAtIndex(i) {
+      if (this.isStickerCenterRight) {
+        return this.attributesAtIndexPositionCenterRight(i);
+      } else if (this.isStickerTopRight) {
+        return this.attributesAtIndexPositionTopRight(i);
+      } else if (this.isStickerBottomRight) {
+        return this.attributesAtIndexPositionBottomRight(i);
+      } else if (this.isStickerTopCenter) {
+        return this.attributesAtIndexPositionTopCenter(i);
+      } else if (this.isStickerBottomCenter) {
+        return this.attributesAtIndexPositionBottomCenter(i);
+      } else if (this.isStickerCenterLeft) {
+        return this.attributesAtIndexPositionCenterLeft(i);
+      } else if (this.isStickerTopLeft) {
+        return this.attributesAtIndexPositionTopLeft(i);
+      }
+      return this.attributesAtIndexPositionScatterAcross(i);
     },
     stickerWithId(stickerId) {
       switch (this.stickerId) {
