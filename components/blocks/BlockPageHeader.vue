@@ -43,6 +43,7 @@
                   :block="block"
                   :index="index"
                   :stickerSpreadAcross="stickerSpreadAcross"
+                  :stickersPosition="stickersPosition"
                 />
               </div>
             </h1>
@@ -93,6 +94,7 @@
           :block="block"
           :index="index"
           :spreadAcross="stickerSpreadAcross"
+          :stickersPosition="stickersPosition"
         />
       </div>
     </div>
@@ -121,6 +123,9 @@ export default {
   computed: {
     stickerSpreadAcross() {
       return this.block.fields?.stickerDisplay?.includes("SpreadAcross");
+    },
+    stickersPosition() {
+      return this.block.fields?.stickersPosition ?? "AroundHeader";
     },
     stickers() {
       if (!this.block) return [];
