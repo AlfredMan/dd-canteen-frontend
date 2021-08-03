@@ -1333,6 +1333,15 @@ export default {
       this.$refs.utm_term.value = parseGET('utm_term')
       this.$refs.utm_content.value = parseGET('utm_content')
 
+      if (window.ga) {
+        let clientId = window.ga.getAll()[0].get('clientId');
+        // window.ga(function(tracker) {
+        //   clientId = tracker.get('clientId');
+        //   console.log(clientId)
+        // });
+        document.getElementById('00N3Y00000GOwR7').value=clientId;
+        console.log('clientId', clientId)
+      }
       // console.log('testing finished')
       // this.resetForm()
       // return false
