@@ -20,32 +20,46 @@
                 `hyphens inline-block relative`,
                 {
                   'lg:w-10/12': isGuidelineDefault,
-                  'lg:w-6/12': isGuidelineCanteen
+                  'lg:w-10/12': isGuidelineCanteen
                 }
               ]"
               v-if="block.fields.heading"
             >
-              <!-- force inject -->
+              <!-- force heading for CANTEEN -->
               <span
                 v-if="formattedHeading == 'Design District Canteen'"
-                class="inline-block w-10/12 lg:w-8/12"
+                class="inline-block w-10/12 lg:w-7/12 relative"
               >
+                <span v-if="block.fields.subheading" class="hidden w-0 h-0 inline-block overflow-hidden">{{block.fields.subheading}}</span>
                 <LogoCanteen />
+                <span class="sticker-group" 
+                v-if="block.fields.stickers"
+                >
+                  <BlockStickers
+                    v-for="(sticker) in block.fields.stickers"
+                    :key="sticker.sys.id"
+                    :sticker="sticker"
+                  />
+                </span>
               </span>
 
-              <span v-else>{{ formattedHeading }}</span>
+              <!-- default -->
+              <span 
+              v-else
+              class="inline-block relative"
+              >
+                {{ formattedHeading }}
+                <span class="sticker-group"
+                v-if="block.fields.stickers"
+                >
+                  <BlockStickers
+                    v-for="(sticker) in block.fields.stickers"
+                    :key="sticker.sys.id"
+                    :sticker="sticker"
+                  />
+                </span>
+              </span>
 
-              <div v-if="!stickerSpreadAcross" class="sticker-group">
-                <BlockSticker
-                  v-for="(stickerId, index) in stickers"
-                  :key="stickerId"
-                  :stickerId="stickerId"
-                  :block="block"
-                  :index="index"
-                  :stickerSpreadAcross="stickerSpreadAcross"
-                  :stickersPosition="stickersPosition"
-                />
-              </div>
             </h1>
           </div>
           <div class="flex flex-wrap items-baseline">
@@ -86,7 +100,7 @@
           />
         </div>
       </div>
-      <div v-if="stickerSpreadAcross" class="sticker-group">
+      <!-- <div v-if="stickerSpreadAcross" class="sticker-group">
         <BlockSticker
           v-for="(stickerId, index) in stickers"
           :key="stickerId"
@@ -96,7 +110,7 @@
           :spreadAcross="stickerSpreadAcross"
           :stickersPosition="stickersPosition"
         />
-      </div>
+      </div> -->
     </div>
   </section>
 </template>
@@ -104,6 +118,7 @@
 <script>
 // import ComponentCallToAction from '~/components/blocks/ComponentCallToAction'
 import BlockSticker from "~/components/blocks/BlockSticker";
+import BlockStickers from "~/components/blocks/BlockStickers";
 import LogoCanteen from "~/components/logo/Canteen";
 import _ from "lodash";
 
@@ -118,15 +133,16 @@ export default {
 
   components: {
     BlockSticker,
+    BlockStickers,
     LogoCanteen
   },
   computed: {
-    stickerSpreadAcross() {
-      return this.block.fields?.stickerDisplay?.includes("SpreadAcross");
-    },
-    stickersPosition() {
-      return this.block.fields?.stickersPosition ?? "AroundHeader";
-    },
+    // stickerSpreadAcross() {
+    //   return this.block.fields?.stickerDisplay?.includes("SpreadAcross");
+    // },
+    // stickersPosition() {
+    //   return this.block.fields?.stickersPosition ?? "AroundHeader";
+    // },
     stickers() {
       if (!this.block) return [];
       return shuffleArray(this.block.fields?.stickers || []);
@@ -281,10 +297,10 @@ h1 {
   @apply -mt-4;
 }
 h4 {
-  @apply max-w-2xl w-full mt-0 pr-0 font-light;
+  @apply max-w-3xl w-full mt-0 pr-0 font-light;
 
   @screen lg {
-    @apply w-5/12 pr-6 #{!important};
+    @apply w-6/12 pr-6 #{!important};
 
     .block-page-header-has-image & {
       @apply w-full #{!important};

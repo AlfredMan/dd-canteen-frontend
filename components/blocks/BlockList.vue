@@ -1,159 +1,135 @@
 <template>
   <section
     v-if="block"
-    class="block-list relative"
-    :class="[blockThemeClass, blockGuidelineClass]"
+    class="block-list relative overflow-x-hidden"
+    :class="[
+      blockThemeClass, 
+      blockGuidelineClass,
+    ]"
     :id="blockId"
   >
-    <div
-      v-if="block.fields.heading || block.fields.subheading"
-      class="block-list-header relative"
-      :class="{
-        'headingDisplay--Right': headingDisplay == 'Right',
-        'flex flex-wrap items-baseline': headingDisplay == 'Right'
-      }"
-    >
-      <div v-if="!isStickerAroundHeadingWidthOnly" class="absolute inset-0">
-        <BlockSticker
-          v-for="(stickerId, index) in block.fields.stickers"
-          :key="stickerId"
-          :stickerId="stickerId"
-          :block="block"
-          :index="index"
-          :spreadAcross="stickerSpreadAcross"
-          :stickersPosition="stickersPosition"
-        />
-      </div>
-      <div
-        v-if="block.fields.heading"
-        :class="{ 'w-full lg:w-5/12': headingDisplay == 'Right' }"
-      >
-        <h2 class="inline-block relative">
-          {{ block.fields.heading }}
+    
+    <div :class="[
+        {
+          'lg:flex cap-max-w': contentDisplay == 'vertical'
+        }
+      ]">
 
-          <div v-if="isStickerAroundHeadingWidthOnly" class="absolute inset-0">
-            <BlockSticker
-              v-for="(stickerId, index) in block.fields.stickers"
-              :key="stickerId"
-              :stickerId="stickerId"
-              :block="block"
-              :index="index"
-              :spreadAcross="stickerSpreadAcross"
-              :stickersPosition="stickersPosition"
+      <div
+        v-if="block.fields.heading || block.fields.subheading"
+        class="block-list-header relative"
+        :class="{
+          'headingDisplay--Right': headingDisplay == 'Right',
+          'flex flex-wrap': headingDisplay == 'Right',
+          'items-baseline': headingDisplay == 'Right' && (block.fields.heading && block.fields.heading.length < 30),
+          'items-start': headingDisplay == 'Right' && !(block.fields.heading && block.fields.heading.length < 30),
+          'lg:w-5/12': contentDisplay == 'vertical'
+        }"
+      >
+        <span class="absolute inset-y-24 inset-x-8 sticker-group" 
+          v-if="block.fields.stickers"
+          >
+          <BlockStickers
+            v-for="(sticker) in block.fields.stickers"
+            :key="sticker.sys.id"
+            :sticker="sticker"
+          />
+        </span>
+        <div
+          v-if="block.fields.heading"
+          :class="{ 'w-full lg:w-5/12 lg:pr-4': headingDisplay == 'Right' }"
+        >
+          <h2 class="inline-block relative">
+            {{ block.fields.heading }}
+
+            <!-- <span class="absolute inset-0 sticker-group" 
+              v-if="block.fields.stickers"
+              >
+              <BlockStickers
+                v-for="(sticker) in block.fields.stickers"
+                :key="sticker.sys.id"
+                :sticker="sticker"
+              />
+            </span> -->
+          </h2>
+        </div>
+        <div
+          v-if="block.fields.subheading"
+          :class="{ 
+            'w-full lg:w-7/12': headingDisplay == 'Right',
+            'lg:pr-8': contentDisplay == 'vertical',
+            'lg:mt-20 lg:pt-2 xl:pt-5 xl:mt-20': headingDisplay == 'Right' && !(block.fields.heading && block.fields.heading.length < 30),
+            }"
+        >
+          <h4 class="font-medium max-w-3xl">
+            {{ block.fields.subheading }}
+          </h4>
+          <callToAction
+            v-if="block.fields.callToAction"
+            :callToAction="block.fields.callToAction"
+          />
+        </div>
+      </div>
+
+      <div
+        v-if="block.fields.contentList && block.fields.contentList.length > 0 && contentDisplay == 'carousel'" 
+      >
+        <div 
+        class="row d-flex align-items-end pt-5">
+          <image-slideshow 
+          class="w-100 my-5 carousel"
+          >
+            <BlockListCard
+              v-for="content in block.fields.contentList"
+              :key="content.sys.id"
+              :content="content"
+              :contentDisplay="contentDisplay"
+              :class="[`item my-8 lg:my-12 lg:px-3 w-8/12 lg:w-1/4`]"
             />
-          </div>
-        </h2>
+          </image-slideshow>
+        </div>
       </div>
       <div
-        v-if="block.fields.subheading"
-        :class="{ 'w-full lg:w-7/12': headingDisplay == 'Right' }"
-      >
-        <h4 class="font-medium max-w-3xl">
-          {{ block.fields.subheading }}
-        </h4>
-        <callToAction
-          v-if="block.fields.callToAction"
-          :callToAction="block.fields.callToAction"
-        />
-      </div>
-    </div>
-
-    <div
-      class="block-list--contentList"
-      :class="{
-        'flex flex-wrap': contentDisplay == '4-column'
-      }"
-    >
-      <div
-        v-for="content in block.fields.contentList"
-        :key="content.sys.id"
-        class="block-list--contentList--content relative"
+        v-else
         :class="[
-          `contentDisplay-${contentDisplay}`,
+          `block-list--contentList`,
           {
-            'w-full lg:w-1/4 xl:w-1/4': contentDisplay == '4-column'
-          },
-          {
-            'w-full lg:w-1/3 xl:w-1/3': contentDisplay == '3-column'
-          },
-          {
-            'w-full lg:w-1/2 xl:w-1/2': contentDisplay == '2-column'
+            'lg:w-7/12 lg:pt-0 xl:pt-0': contentDisplay == 'vertical',
           }
         ]"
       >
-        <div v-if="content && content.fields.stickers" class="absolute inset-0">
-          <BlockSticker
-            v-for="(stickerId, index) in content.fields.stickers"
-            :key="stickerId"
-            :stickerId="stickerId"
-            :block="block"
-            :index="index"
-            :spreadAcross="false"
-            :stickersPosition="contentStickersPosition(content)"
-          />
-        </div>
-
-        <!-- <div v-if="content.fields.callToAction&&content.fields.callToAction.fields.path">{{content.fields.callToAction.fields.path}}</div> -->
-        <template
-          v-if="content.fields.imageAsset && content.fields.imageAsset[0]"
-        >
-          <transition-link
-            v-if="
-              content.fields.callToAction &&
-                content.fields.callToAction.fields.path
-            "
-            class="block-list--contentList--content--image "
-            :to="content.fields.callToAction.fields.path"
+        <div class=" w-full">
+          <div
+          :class="[
+          {
+            'flex flex-wrap items-baseline lg:-mx-3': contentDisplay !== 'vertical',
+            'lg:-mx-3': contentDisplay == 'vertical',
+            'flex flex-wrap': contentDisplay == '4-column'
+          }]"
           >
-            <lazy-image
-              class="transition-source"
-              :src="content.fields.imageAsset[0].fields.file.url"
-              :w="1000"
-            />
-          </transition-link>
-
-          <div class="block-list--contentList--content--image " v-else>
-            <lazy-image
-              :src="content.fields.imageAsset[0].fields.file.url"
-              :w="1000"
-            />
+            <BlockListCard
+            v-for="content in block.fields.contentList"
+            :key="content.sys.id"
+            :content="content"
+            :contentDisplay="contentDisplay"
+            :class="[`mb-8 lg:mb-12 lg:px-3`]"
+          />
           </div>
-        </template>
-
-        <template
-          v-if="
-            content.fields.callToAction &&
-              content.fields.callToAction.fields.path
-          "
-        >
-          <nuxt-link :to="content.fields.callToAction.fields.path">
-            <h4 v-if="content.fields.heading" class="">
-              {{ content.fields.heading }}
-            </h4>
-          </nuxt-link>
-        </template>
-        <template v-else>
-          <h4 v-if="content.fields.heading" class="">
-            {{ content.fields.heading }}
-          </h4>
-        </template>
-
-        <div
-          v-if="content.fields.description"
-          class="content-fields-description"
-          v-html="markdown(content.fields.description)"
-        ></div>
+        </div>
       </div>
+
     </div>
+
   </section>
 </template>
 
 <script>
 import _ from "lodash";
-import BlockSticker from "~/components/blocks/BlockSticker";
+import BlockStickers from "~/components/blocks/BlockStickers";
+import BlockListCard from "~/components/blocks/BlockListCard"
 export default {
   props: ["block"],
-  components: { BlockSticker },
+  components: { BlockStickers, BlockListCard },
   methods: {
     contentStickersPosition(content) {
       return content?.fields?.stickersPosition ?? "AroundHeader";
@@ -234,10 +210,10 @@ section {
   @apply overflow-x-visible;
 
   h2 {
-    @apply max-w-2xl;
+    @apply max-w-4xl;
   }
   h4 {
-    @apply max-w-3xl font-thin;
+    @apply max-w-4xl font-thin;
   }
 
   h2,
@@ -249,39 +225,38 @@ section {
 }
 
 .block-list--contentList {
-  @apply flex flex-wrap items-baseline;
   @apply mb-4;
-  @apply -mx-2;
   @apply px-3;
   @apply cap-max-w;
   // start: Jason:: Alfred added overflow-x-visible here for stickers to be visible around image parent container
   @apply overflow-x-visible;
   // end: Alfred added overflow-x-visible here for stickers to be visible around image parent container
+  // @apply overflow-x-hidden;
 
-  .block-list--contentList--content {
-    @apply mb-8 pr-0;
-    @screen lg {
-      @apply px-2;
-    }
+  // .block-list--contentList--content {
+  //   @apply mb-8 pr-0;
+  //   @screen lg {
+  //     @apply px-2;
+  //   }
 
-    .block-list--contentList--content--image {
-      @apply mb-4;
-    }
+  //   .block-list--contentList--content--image {
+  //     @apply mb-4;
+  //   }
 
-    h4 {
-      @apply uppercase mb-2 font-normal max-w-2xl;
-    }
-    a:hover h4 {
-      @apply text-green;
-    }
+  //   h4 {
+  //     @apply uppercase mb-2 font-normal max-w-2xl;
+  //   }
+  //   a:hover h4 {
+  //     @apply text-green;
+  //   }
 
-    .content-fields-description {
-      // white-space: pre;
-      @apply my-2 max-w-2xl;
-      p {
-        // @apply my-2 max-w-2xl;
-      }
-    }
-  }
+  //   .content-fields-description {
+  //     // white-space: pre;
+  //     @apply my-2 max-w-2xl;
+  //     p {
+  //       // @apply my-2 max-w-2xl;
+  //     }
+  //   }
+  // }
 }
 </style>

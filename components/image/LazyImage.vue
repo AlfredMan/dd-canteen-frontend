@@ -6,7 +6,7 @@
         :data-srcset="getLazySrcSet()"
         :data-src="getLazySrc()"
         class="lazyload" />
-    <div class="curtain">
+    <div class="curtain" v-if="effect!='none'">
 
     </div>
   </div>
@@ -43,6 +43,10 @@ export default {
     fit: {
       type: String,
       default: '',
+    },
+    effect: {
+      type: String,
+      default: 'fade'
     }
   },
   data () {

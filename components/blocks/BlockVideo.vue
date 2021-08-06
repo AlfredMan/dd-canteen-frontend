@@ -8,7 +8,10 @@
       </div>
     </div>
 
-    <div @click="go" class="full-screen-banner-action inset-x-0 bottom-0 m-4 text-center uppercase text-white z-10 transition transition-all duration-200 ease-in-out cursor-pointer transform hover:-translate-y-1" style="font-weight:500; letter-spacing:1px;">
+    <div 
+    v-if="$route.path.indexOf('space-to-create')>0"
+    @click="go" 
+    class="full-screen-banner-action inset-x-0 bottom-0 m-4 text-center uppercase text-white z-10 transition transition-all duration-200 ease-in-out cursor-pointer transform hover:-translate-y-1" style="font-weight:500; letter-spacing:1px;">
       View Offer <br>
       ↓
     </div>
