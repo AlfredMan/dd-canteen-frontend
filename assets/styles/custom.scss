@@ -18,6 +18,7 @@ $leather: #FDE3CC;
 $paper: #ECE8E0;
 $paper-light: #ECE8E0;
 // $paper: #f6f6f6;
+$mint: #C8F7C8;
 
 $black: #000000;
 
@@ -46,7 +47,8 @@ $theme-colors: (
   "graphite": $graphite,
   "blueprint": $blueprint,
   "leather": $leather,
-  "paper":$paper,
+  "paper": $paper,
+  "mint": $mint,
 );
 
 $grid-breakpoints: (

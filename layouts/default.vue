@@ -13,11 +13,10 @@
 
     <nuxt nuxt-child-key="none" role="main" />
 
-    <app-newsletter v-if="showNewsletterFooter"/>
-
     <app-sales v-if="showSalesFooter"/>
-
-    <app-five-pound v-if="showFivePoundFooter"/>
+    <app-five-pound v-else-if="showFivePoundFooter"/>
+    <app-newsletter-canteen v-else-if="showNewsletterCanteenFooter"/>    
+    <app-newsletter v-else/>
 
     <app-footer />
 
@@ -52,6 +51,7 @@ import AppHeader from '../components/AppHeader.vue'
 import AppFooter from '../components/AppFooter.vue'
 import AppTransition from '../components/AppTransition.vue'
 import AppNewsletter from '../components/AppNewsletter.vue'
+import AppNewsletterCanteen from '../components/AppNewsletterCanteen.vue'
 import AppSales from '../components/AppSales.vue'
 import AppFivePound from '../components/AppFivePound.vue'
 // import AppTool from '../components/AppTool.vue'
@@ -82,6 +82,7 @@ export default {
     AppFooter,
     AppTransition,
     AppNewsletter,
+    AppNewsletterCanteen,
     AppSales,
     // AppMap,
     // AppTool,
@@ -107,10 +108,10 @@ export default {
       return this.$route.path.indexOf('space-to-create') >= 0 || this.$route.path.indexOf('welcome') >= 0
     },
     showSalesFooter () {
-      return !this.showFivePoundFooter && (this.$route.path.indexOf('workspace') >= 0 || this.$route.path.indexOf('about') >= 0)
+      return (this.$route.path.indexOf('workspace') >= 0 || this.$route.path.indexOf('about') >= 0)
     },
-    showNewsletterFooter () {
-      return !this.showFivePoundFooter && !this.showSalesFooter
+    showNewsletterCanteenFooter () {
+      return this.$route.path.indexOf('canteen') >= 0
     },
     seoDefault () {
       return this.$store.state.seoDefault

@@ -1,45 +1,93 @@
 <template>
   <section
-  v-if="block"
-  class="block-page-header"
-  :class="[blockThemeClass]"
+    v-if="block"
+    class="block-page-header"
+    :class="[blockThemeClass, blockGuidelineClass]"
   >
-
-    <div
-    class="block-page-header-content">
-
+    <div class="block-page-header-content relative">
       <div
-      class="cap-max-w-px-3 flex flex-wrap"
-      :class="{
-        'block-page-header-has-image': (block.fields.imageAsset && block.fields.imageAsset[0]) || (block.fields.embedAsset && block.fields.embedAsset[0])
+        class="cap-max-w-px-3 flex flex-wrap"
+        :class="{
+          'block-page-header-has-image':
+            (block.fields.imageAsset && block.fields.imageAsset[0]) ||
+            (block.fields.embedAsset && block.fields.embedAsset[0])
         }"
       >
+        <div class="block-page-header-text">
+          <div class="header-sticker-group relative">
+            <h1
+              :class="[
+                `hyphens inline-block relative`,
+                {
+                  'lg:w-10/12': isGuidelineDefault,
+                  'lg:w-10/12': isGuidelineCanteen
+                }
+              ]"
+              v-if="block.fields.heading"
+            >
+              <!-- force heading for CANTEEN -->
+              <span
+                v-if="formattedHeading == 'Design District Canteen'"
+                class="inline-block w-10/12 lg:w-7/12 relative"
+              >
+                <span v-if="block.fields.subheading" class="hidden w-0 h-0 inline-block overflow-hidden">{{block.fields.subheading}}</span>
+                <LogoCanteen />
+                <span class="sticker-group" 
+                v-if="block.fields.stickers"
+                >
+                  <BlockStickers
+                    v-for="(sticker) in block.fields.stickers"
+                    :key="sticker.sys.id"
+                    :sticker="sticker"
+                  />
+                </span>
+              </span>
 
-        <div
-        class="block-page-header-text"
-        >
-          <h1 class="hyphens lg:w-10/12" v-if="block.fields.heading">{{formattedHeading}}</h1>
+              <!-- default -->
+              <span 
+              v-else
+              class="inline-block relative"
+              >
+                {{ formattedHeading }}
+                <span class="sticker-group"
+                v-if="block.fields.stickers"
+                >
+                  <BlockStickers
+                    v-for="(sticker) in block.fields.stickers"
+                    :key="sticker.sys.id"
+                    :sticker="sticker"
+                  />
+                </span>
+              </span>
+
+            </h1>
+          </div>
           <div class="flex flex-wrap items-baseline">
-            <h4 class="" v-if="block.fields.subheading">{{block.fields.subheading}}</h4>
-            <h5 class="" v-if="block.fields.minorSubheading">{{block.fields.minorSubheading}}</h5>
-            <h6 class="mt-0" v-if="block.fields.disclaimer">{{block.fields.disclaimer}}</h6>
+            <h4 class="" v-if="block.fields.subheading">
+              {{ block.fields.subheading }}
+            </h4>
+            <h5 class="" v-if="block.fields.minorSubheading">
+              {{ block.fields.minorSubheading }}
+            </h5>
+            <h6 class="mt-0" v-if="block.fields.disclaimer">
+              {{ block.fields.disclaimer }}
+            </h6>
           </div>
           <callToAction
-          v-if="block.fields.callToAction"
-          :callToAction="block.fields.callToAction"
-          :theme="ctaTheme"
+            v-if="block.fields.callToAction"
+            :callToAction="block.fields.callToAction"
+            :theme="ctaTheme"
           />
         </div>
 
-        <div
-        class="block-page-header-image"
-        >
-
-          <div class="" v-if="block.fields.embedAsset && block.fields.embedAsset[0]">
+        <div class="block-page-header-image">
+          <div
+            class=""
+            v-if="block.fields.embedAsset && block.fields.embedAsset[0]"
+          >
             <div class="block-page-header-embed-code">
               <div class="ratio-container">
-                <div class="iframe-wrapper" v-html="getEmbedCode">
-                </div>
+                <div class="iframe-wrapper" v-html="getEmbedCode"></div>
               </div>
             </div>
           </div>
@@ -49,31 +97,59 @@
             v-else-if="block.fields.imageAsset && block.fields.imageAsset[0]"
             :src="block.fields.imageAsset[0].fields.file.url"
             :w="2000"
-            />
+          />
         </div>
-
       </div>
-
+      <!-- <div v-if="stickerSpreadAcross" class="sticker-group">
+        <BlockSticker
+          v-for="(stickerId, index) in stickers"
+          :key="stickerId"
+          :stickerId="stickerId"
+          :block="block"
+          :index="index"
+          :spreadAcross="stickerSpreadAcross"
+          :stickersPosition="stickersPosition"
+        />
+      </div> -->
     </div>
-
   </section>
 </template>
 
 <script>
 // import ComponentCallToAction from '~/components/blocks/ComponentCallToAction'
-import _ from 'lodash'
-export default {
-  props: ['block'],
+import BlockSticker from "~/components/blocks/BlockSticker";
+import BlockStickers from "~/components/blocks/BlockStickers";
+import LogoCanteen from "~/components/logo/Canteen";
+import _ from "lodash";
 
-  mounted () {
-    // console.log('this.block: ', this.block)
+import { shuffleArray } from "~/common/utils";
+export default {
+  props: ["block"],
+
+  mounted() {
+    console.log("this.block: ", this.block);
     // console.log('this.blockTheme: ', this.blockTheme)
   },
 
+  components: {
+    BlockSticker,
+    BlockStickers,
+    LogoCanteen
+  },
   computed: {
-    formattedHeading () {
+    // stickerSpreadAcross() {
+    //   return this.block.fields?.stickerDisplay?.includes("SpreadAcross");
+    // },
+    // stickersPosition() {
+    //   return this.block.fields?.stickersPosition ?? "AroundHeader";
+    // },
+    stickers() {
+      if (!this.block) return [];
+      return shuffleArray(this.block.fields?.stickers || []);
+    },
+    formattedHeading() {
       if (!this.block) return;
-      let heading = this.block && this.block.fields.heading
+      let heading = this.block && this.block.fields.heading;
       // if (heading=='Architecture') {
       //   if (process.client) {
       //     if (window.innerWidth < 400) {
@@ -81,41 +157,62 @@ export default {
       //     }
       //   }
       // }
-      return heading
+      return _.trim(heading);
     },
-    blockTheme () {
-      return this.block && _.lowerCase(this.block.fields.theme) || 'default'
+    blockTheme() {
+      return (this.block && _.lowerCase(this.block.fields.theme)) || "default";
     },
-    blockThemeClass () {
-      return `theme-${this.blockTheme} bg-${this.blockTheme}`
+    blockThemeClass() {
+      return `theme-${this.blockTheme} bg-${this.blockTheme}`;
     },
-    ctaTheme () {
+    blockGuideline() {
+      return (
+        (this.block && _.lowerCase(this.block.fields.guideline)) || "default"
+      );
+    },
+    blockGuidelineClass() {
+      return `guideline-${this.blockGuideline}`;
+    },
+    isGuidelineCanteen() {
+      return this.blockGuideline && this.blockGuideline == "canteen";
+    },
+    isGuidelineDefault() {
+      return (
+        !this.blockGuideline ||
+        this.blockGuideline == "default" ||
+        this.blockGuideline == "designdistrict"
+      );
+    },
+    ctaTheme() {
       if (this.block) {
         switch (this.blockTheme) {
-          case 'yellow':
-          case 'green':
-          case 'orange':
-            return 'black'
+          case "yellow":
+          case "green":
+          case "orange":
+            return "black";
           default:
-            return 'default'
+            return "default";
         }
       }
-      return 'default'
+      return "default";
     },
-    getEmbedCode( ) {
-      if (this.block
-        && this.block.fields.embedAsset
-        && this.block.fields.embedAsset[0]
-        && this.block.fields.embedAsset[0].fields.embedCode
-        && this.block.fields.embedAsset[0].fields.embedCode.content[0].content[0].value
+    getEmbedCode() {
+      if (
+        this.block &&
+        this.block.fields.embedAsset &&
+        this.block.fields.embedAsset[0] &&
+        this.block.fields.embedAsset[0].fields.embedCode &&
+        this.block.fields.embedAsset[0].fields.embedCode.content[0].content[0]
+          .value
       ) {
-        return this.block.fields.embedAsset[0].fields.embedCode.content[0].content[0].value
+        return this.block.fields.embedAsset[0].fields.embedCode.content[0]
+          .content[0].value;
       }
-      return ''
+      return "";
     }
   }
   // components: { ComponentCallToAction }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -138,8 +235,9 @@ section {
     @apply px-4 pt-24 pb-12;
     @screen lg {
       @apply pb-12;
-      @apply cap-max-w px-4 ;
-      overflow-x: hidden;
+      @apply cap-max-w px-4;
+      // overflow-x: hidden; // Jason: Alfred updated this to visible for Sticker
+      overflow: visible;
     }
   }
 }
@@ -154,10 +252,10 @@ section {
   .block-page-header-has-image & {
     @apply w-full;
     @screen lg {
-      @apply w-7/12
-    };
+      @apply w-7/12;
+    }
     @screen mobile {
-      @apply mb-8
+      @apply mb-8;
     }
   }
 }
@@ -166,15 +264,14 @@ section {
     @apply w-full;
     @screen lg {
       @apply mt-0;
-      @apply w-5/12
-    };
+      @apply w-5/12;
+    }
     @screen mobile {
       @apply mt-8;
-      @apply mb-8
+      @apply mb-8;
     }
   }
 }
-
 
 .block-page-header-embed-code {
   .ratio-container {
@@ -200,10 +297,10 @@ h1 {
   @apply -mt-4;
 }
 h4 {
-  @apply max-w-2xl w-full mt-0 pr-0 font-light;
+  @apply max-w-3xl w-full mt-0 pr-0 font-light;
 
   @screen lg {
-    @apply w-5/12 pr-6 #{!important};
+    @apply w-6/12 pr-6 #{!important};
 
     .block-page-header-has-image & {
       @apply w-full #{!important};
@@ -220,5 +317,4 @@ h5 {
     }
   }
 }
-
 </style>

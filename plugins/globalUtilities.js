@@ -3,7 +3,9 @@ import Vue from 'vue'
 
 // node.js, "classic" way:
 import MarkdownIt from 'markdown-it'
-const md = new MarkdownIt()
+const md = new MarkdownIt({
+  breaks: true
+})
 // import moment from 'moment'
 
 const markdown = (markdownInput) => {
