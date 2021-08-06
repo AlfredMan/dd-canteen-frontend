@@ -43,6 +43,17 @@
       </div>
     </nuxt-link>
 
+    <div class="bg-blueprint
+      text-blueprint
+      bg-leather
+      text-leather
+      bg-paper
+      text-paper
+      bg-paper-light
+      text-paper-light
+      bg-mint
+      text-mint"></div>
+
   </div>
 </template>
 
