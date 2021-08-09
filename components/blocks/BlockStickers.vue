@@ -45,9 +45,11 @@ if (process.client) {
 }
 export default {
   name: "BlockStickers",
+  
   props: [
     'sticker'
   ],
+
   mounted() {
     // if (process.browser) {
     //   const DraggableModule = require("gsap/Draggable");

@@ -43,8 +43,11 @@
       </div>
     </nuxt-link>
 
-    <div class="bg-blueprint
+    <div class="
+      bg-blueprint
       text-blueprint
+      bg-graphite
+      text-graphite
       bg-leather
       text-leather
       bg-paper
