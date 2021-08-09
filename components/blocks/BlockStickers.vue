@@ -10,7 +10,7 @@
       `lg:top-${!!sticker.fields.top&&Number(sticker.fields.top)||90}/100`,
       `lg:left-${!!sticker.fields.left&&Number(sticker.fields.left)||90}/100`,
     ]"
-    :style="[
+    :xxxstyle="[
       {
         top: !!sticker.fields.top&&`${Number(sticker.fields.top)}%` || `0%`,
         left: !!sticker.fields.left&&`${Number(sticker.fields.left)}%` || `0%`,

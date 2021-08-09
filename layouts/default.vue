@@ -43,6 +43,42 @@
       </div>
     </nuxt-link>
 
+    <div class="
+      bg-blueprint
+      text-blueprint
+      bg-graphite
+      text-graphite
+      bg-leather
+      text-leather
+      bg-paper
+      text-paper
+      bg-paper-light
+      text-paper-light
+      bg-mint
+      text-mint
+      top-0/100 right-0/100 bottom-0/100 left-0/100
+      top-5/100 right-5/100 bottom-5/100 left-5/100
+      top-10/100 right-10/100 bottom-10/100 left-10/100
+      top-15/100 right-15/100 bottom-15/100 left-15/100
+      top-20/100 right-20/100 bottom-20/100 left-20/100
+      top-25/100 right-25/100 bottom-25/100 left-25/100
+      top-30/100 right-30/100 bottom-30/100 left-30/100
+      top-35/100 right-35/100 bottom-35/100 left-35/100
+      top-40/100 right-40/100 bottom-40/100 left-40/100
+      top-45/100 right-45/100 bottom-45/100 left-45/100
+      top-50/100 right-50/100 bottom-50/100 left-50/100
+      top-55/100 right-55/100 bottom-55/100 left-55/100
+      top-60/100 right-60/100 bottom-60/100 left-60/100
+      top-65/100 right-65/100 bottom-65/100 left-65/100
+      top-70/100 right-70/100 bottom-70/100 left-70/100
+      top-75/100 right-75/100 bottom-75/100 left-75/100
+      top-80/100 right-80/100 bottom-80/100 left-80/100
+      top-85/100 right-85/100 bottom-85/100 left-85/100
+      top-90/100 right-90/100 bottom-90/100 left-90/100
+      top-95/100 right-95/100 bottom-95/100 left-95/100
+      top-100/100 right-100/100 bottom-100/100 left-100/100
+      "></div>
+
   </div>
 </template>
 
