@@ -4,8 +4,14 @@
       &times;
     </div>
     <div class="">
-      <h4>Enjoy 10% off your first Canteen order</h4>
-      <p>Sign-up for our regular newsletter and we’ll send you a discount code (along with a few other tasty morsels).</p>
+      <h4>
+        <!-- Enjoy 10% off your first Canteen order -->
+        Add flavour to your inbox
+        </h4>
+      <p>
+        <!-- Sign-up for our regular newsletter and we’ll send you a discount code (along with a few other tasty morsels). -->
+        Join our newsletter for updates, offers and other tasty morsels.
+        </p>
       <NewsletterCanteen />
     </div>
   </div>
@@ -48,6 +54,7 @@ export default {
         scrollTrigger: {
           trigger: "#app .block-image",
           start: "top center",
+          once: "once"
         }
       })
       tl.to(this.$refs.popup, {

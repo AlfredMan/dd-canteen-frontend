@@ -47,6 +47,7 @@ export default {
         scrollTrigger: {
           trigger: "#app .block-image",
           start: "top center",
+          once: "once"
         }
       })
       tl.to(this.$refs.popup, {
