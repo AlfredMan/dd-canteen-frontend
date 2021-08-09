@@ -44,9 +44,9 @@ export default {
 
   watch: {
     '$route' (newVal, oldVal) {
-      if (newVal.hash && newVal.hash=='#popup-canteen') {
-        this.show()
-      }
+      // if (newVal.hash && newVal.hash=='#popup-canteen') {
+      //   // this.show()
+      // }
     }
   },
 
@@ -94,26 +94,35 @@ export default {
           onToggle: () => {
             console.log('onToggle')
             if (popup.classList.contains('popup-has-triggered')) return;
-            this.show()
+            // this.show()
+            gsap.to(popup, {
+              duration: 0.5,
+              autoAlpha: 1,
+              delay: 0.5,
+              onStart: () => {
+                console.log('onStart', popup)
+                popup.classList.add('popup-has-triggered')
+              }
+            })
           }
         })
       }
     },
-    show () {
-      if (!process.client) return;
-      let popup=this.$refs.popup
-      if (popup) {
-        gsap.to(popup, {
-          duration: 1,
-          autoAlpha: 1,
-          delay: 0.5,
-          onStart: () => {
-            console.log('onStart', popup)
-            popup.classList.add('popup-has-triggered')
-          }
-        })
-      }
-    },
+    // show () {
+    //   if (!process.client) return;
+    //   let popup=this.$refs.popup
+    //   if (popup) {
+    //     gsap.to(popup, {
+    //       duration: 1,
+    //       autoAlpha: 1,
+    //       delay: 0.5,
+    //       onStart: () => {
+    //         console.log('onStart', popup)
+    //         popup.classList.add('popup-has-triggered')
+    //       }
+    //     })
+    //   }
+    // },
     hide () {
       if (!process.client) return;
       gsap.set(this.$refs.popup, {

@@ -117,12 +117,14 @@ export default {
   methods: {
     openCanteenPopup () {
       gsap.to('#canteen-popup', {
-        duration: 1,
+        duration: 0.5,
         autoAlpha: 1,
         delay: 0.5,
         onStart: (el) => {
           console.log('onStart', el)
-          document.getElementById('#canteen-popup')&&document.getElementById('#canteen-popup').classList.add('popup-has-triggered')
+          if (document.getElementById('#canteen-popup')) {
+            document.getElementById('#canteen-popup').classList.add('popup-has-triggered')
+          }
           // popup.classList.add('popup-has-triggered')
         }
       })
