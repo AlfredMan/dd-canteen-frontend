@@ -44,6 +44,7 @@
     </nuxt-link>
 
     <div class="
+      theme-graphite
       bg-blueprint
       text-blueprint
       bg-graphite

@@ -87,6 +87,7 @@ module.exports = {
   purge: {
     content: ["./public/**/*.html", "./src/**/*.{js,jsx,ts,tsx,vue}"],
     safelist: [
+      'theme-graphite',
       'bg-blueprint',
       'text-blueprint',
       'bg-graphite',

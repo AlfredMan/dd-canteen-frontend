@@ -28,10 +28,10 @@
               <!-- force heading for CANTEEN -->
               <span
                 v-if="formattedHeading == 'Design District Canteen'"
-                class="inline-block w-10/12 lg:w-7/12 relative"
+                class="inline-block w-10/12 lg:w-7/12"
               >
                 
-                <span class="block relative h-16 w-full lg:mt-0 lg:h-0 lg:absolute sticker-group" 
+                <span class="block absolute left-16 right-16 inset-y-16 lg:left-4 lg:right-4 lg:inset-y-4 lg:absolute sticker-group" 
                   v-if="block.fields.stickers"
                   >
                   <BlockStickers
@@ -40,6 +40,8 @@
                     :sticker="sticker"
                   />
                 </span>
+                <span v-if="block.fields.stickers" class="inline-block h-32 lg:hidden"></span>
+
                 <span v-if="block.fields.subheading" class="hidden w-0 h-0 inline-block overflow-hidden">{{block.fields.subheading}}</span>
                 <LogoCanteen />
               </span>
