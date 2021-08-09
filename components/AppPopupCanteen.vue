@@ -1,11 +1,12 @@
 <template lang="html">
-  <div id="popup" ref="popup" class="app-pop-up" style="visibility:hidden;opacity:0">
+  <div id="canteen-popup" ref="popup" class="app-pop-up bg-mint" style="visibility:hidden;opacity:0">
     <div class="absolute top-0 right-0 py-2 px-4 text-2xl cursor-pointer" @click="hide">
       &times;
     </div>
     <div class="">
-      <h4>Sign-up for the latest Design District news, developments and events.</h4>
-      <Newsletter />
+      <h4>Enjoy 10% off your first Canteen order</h4>
+      <p>Sign-up for our regular newsletter and we’ll send you a discount code (along with a few other tasty morsels).</p>
+      <NewsletterCanteen />
     </div>
   </div>
 </template>
@@ -19,10 +20,10 @@ if (process.client) {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-import Newsletter from '~/components/forms/Newsletter'
+import NewsletterCanteen from '~/components/forms/NewsletterCanteen'
 export default {
   components: {
-    Newsletter
+    NewsletterCanteen
   },
 
   data () {
@@ -69,7 +70,7 @@ export default {
 
 <style lang="scss" scoped>
 .app-pop-up {
-  @apply fixed shadow-xl m-auto bg-green;
+  @apply fixed shadow-xl m-auto;
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
