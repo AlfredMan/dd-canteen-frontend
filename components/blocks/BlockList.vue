@@ -234,8 +234,8 @@ section {
   @apply px-3;
   @apply cap-max-w;
   // start: Jason:: Alfred added overflow-x-visible here for stickers to be visible around image parent container
-  // @apply overflow-x-visible;
-  @apply overflow-hidden;
+  @apply overflow-x-visible;
+  // @apply overflow-hidden;
   // end: Alfred added overflow-x-visible here for stickers to be visible around image parent container
   // @apply overflow-x-hidden;
 
