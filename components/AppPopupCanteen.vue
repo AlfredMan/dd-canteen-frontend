@@ -11,7 +11,7 @@
       <p>
         <!-- Sign-up for our regular newsletter and we’ll send you a discount code (along with a few other tasty morsels). -->
         Join our newsletter for updates, offers and other tasty morsels.
-        </p>
+      </p>
       <NewsletterCanteen />
     </div>
   </div>
@@ -42,13 +42,13 @@ export default {
     this.init()
   },
 
-  watch: {
-    '$route' (newVal, oldVal) {
-      // if (newVal.hash && newVal.hash=='#popup-canteen') {
-      //   // this.show()
-      // }
-    }
-  },
+  // watch: {
+  //   // '$route' (newVal, oldVal) {
+  //     // if (newVal.hash && newVal.hash=='#popup-canteen') {
+  //     //   // this.show()
+  //     // }
+  //   // }
+  // },
 
   methods: {
     init () {

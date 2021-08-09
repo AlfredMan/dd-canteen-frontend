@@ -1,7 +1,7 @@
 <template>
   <section
     v-if="block"
-    class="block-list relative overflow-x-hidden"
+    class="block-list relative overflow-x-hidden overflow-y-visible"
     :class="[
       blockThemeClass, 
       blockGuidelineClass,
@@ -11,7 +11,7 @@
     
     <div :class="[
         {
-          'lg:flex cap-max-w': contentDisplay == 'vertical'
+          'lg:flex cap-max-w': contentDisplay == 'vertical',
         }
       ]">
 
@@ -26,7 +26,8 @@
           'lg:w-5/12': contentDisplay == 'vertical'
         }"
       >
-        <span class="absolute inset-y-24 inset-x-8 sticker-group" 
+        <span></span>
+        <span class="absolute block inset-x-16 inset-y-12 lg:inset-y-24 lg:inset-x-8 sticker-group" 
           v-if="block.fields.stickers"
           >
           <BlockStickers
@@ -35,6 +36,10 @@
             :sticker="sticker"
           />
         </span>
+        <div v-if="block.fields.stickers" class="block h-64 lg:hidden">
+
+        </div>
+
         <div
           v-if="block.fields.heading"
           :class="{ 'w-full lg:w-5/12 lg:pr-4': headingDisplay == 'Right' }"
@@ -112,7 +117,7 @@
             :key="content.sys.id"
             :content="content"
             :contentDisplay="contentDisplay"
-            :class="[`mb-8 lg:mb-12 lg:px-3`]"
+            :class="[`mb-12 lg:mb-12 lg:px-3`]"
           />
           </div>
         </div>
@@ -229,7 +234,8 @@ section {
   @apply px-3;
   @apply cap-max-w;
   // start: Jason:: Alfred added overflow-x-visible here for stickers to be visible around image parent container
-  @apply overflow-x-visible;
+  // @apply overflow-x-visible;
+  @apply overflow-hidden;
   // end: Alfred added overflow-x-visible here for stickers to be visible around image parent container
   // @apply overflow-x-hidden;
 

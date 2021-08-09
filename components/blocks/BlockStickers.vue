@@ -3,7 +3,12 @@
     ref="stickerRef"
     v-if="sticker"
     :class="[
-      `block-sticker absolute z-50 transform -translate-x-1/2 -translate-y-1/2`
+      `block-sticker absolute z-50 transform -translate-x-1/2 -translate-y-1/2`,
+      `right-[762px]___right-10___right-10/100___right-4___p-1`,
+      `top-[${!!sticker.fields.topMobile&&Number(sticker.fields.topMobile)}%]`,
+      `left-[${!!sticker.fields.leftMobile&&Number(sticker.fields.leftMobile)}%]`,
+      `lg:top-[${!!sticker.fields.top&&Number(sticker.fields.top)}%]`,
+      `lg:left-[${!!sticker.fields.left&&Number(sticker.fields.left)}%]`,
     ]"
     :style="[
       {

@@ -46,7 +46,7 @@
           :src="content.fields.imageAsset[0].fields.file.url"
           :w="1000"
         />
-        <span class="absolute inset-0 sticker-group" 
+        <span class="hidden lg:block absolute inset-0 sticker-group" 
         v-if="content.fields.stickers"
         >
           <BlockStickers

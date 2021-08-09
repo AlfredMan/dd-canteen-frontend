@@ -30,17 +30,18 @@
                 v-if="formattedHeading == 'Design District Canteen'"
                 class="inline-block w-10/12 lg:w-7/12 relative"
               >
-                <span v-if="block.fields.subheading" class="hidden w-0 h-0 inline-block overflow-hidden">{{block.fields.subheading}}</span>
-                <LogoCanteen />
-                <span class="sticker-group" 
-                v-if="block.fields.stickers"
-                >
+                
+                <span class="block relative h-16 w-full lg:mt-0 lg:h-0 lg:absolute sticker-group" 
+                  v-if="block.fields.stickers"
+                  >
                   <BlockStickers
                     v-for="(sticker) in block.fields.stickers"
                     :key="sticker.sys.id"
                     :sticker="sticker"
                   />
                 </span>
+                <span v-if="block.fields.subheading" class="hidden w-0 h-0 inline-block overflow-hidden">{{block.fields.subheading}}</span>
+                <LogoCanteen />
               </span>
 
               <!-- default -->
