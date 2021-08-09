@@ -108,7 +108,9 @@ export default {
           // This could be configured to use a smooth scroll, etc.
           // window.scrollTo(0, scrollBehavior(this.$route).y)
           // console.log(document.querySelector(this.$route.hash).offsetTop - 50)
-          window.scrollTo({ top: document.querySelector(this.$route.hash).offsetTop - 50, behavior: 'smooth' })
+          if (document.querySelector(this.$route.hash)) {
+            window.scrollTo({ top: document.querySelector(this.$route.hash).offsetTop - 50, behavior: 'smooth' })
+          }
         })
       }
     }

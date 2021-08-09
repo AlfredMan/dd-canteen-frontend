@@ -1,7 +1,7 @@
 <template>
   <div class="page-component">
     <AppPage :entry="entry"/>
-    <AppPopupCanteen v-if="$route.path=='/design-district-canteen'" />
+    <AppPopupCanteen v-if="$route.path=='/canteen'" />
   </div>
 </template>
 

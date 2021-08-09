@@ -42,6 +42,14 @@ export default {
     this.init()
   },
 
+  watch: {
+    '$route' (newVal, oldVal) {
+      if (newVal.hash && newVal.hash=='#popup-canteen') {
+        this.show()
+      }
+    }
+  },
+
   methods: {
     init () {
       if (!process.client) return;
@@ -50,18 +58,61 @@ export default {
         autoAlpha: 0
       })
 
-      let tl = gsap.timeline({
-        scrollTrigger: {
+      // let tl = gsap.timeline({
+      //   scrollTrigger: {
+      //     trigger: "#app .block-image",
+      //     start: "top center",
+      //     once: "once",
+      //     onUpdate: () => {
+
+      //     }
+      //   }
+      // })
+
+      // tl.to({}, {
+      //   duration: 1,
+      //   // autoAlpha: 1,
+      //   // delay: 1,
+      //   onUpdate: () => {
+          
+      //     gsap.to(this.$refs.popup, {
+      //       duration: 1,
+      //       autoAlpha: 1,
+      //       delay: 1,
+      //       onStart: () => {
+      //         this.$refs.popup.classList.add('popup-has-triggered')
+      //       }
+      //     })          
+      //   }
+      // });
+      let popup=this.$refs.popup
+      if (popup) {
+        ScrollTrigger.create({
           trigger: "#app .block-image",
           start: "top center",
-          once: "once"
-        }
-      })
-      tl.to(this.$refs.popup, {
-        duration: 1,
-        autoAlpha: 1,
-        delay: 1
-      });
+          once: "once",
+          onToggle: () => {
+            console.log('onToggle')
+            if (popup.classList.contains('popup-has-triggered')) return;
+            this.show()
+          }
+        })
+      }
+    },
+    show () {
+      if (!process.client) return;
+      let popup=this.$refs.popup
+      if (popup) {
+        gsap.to(popup, {
+          duration: 1,
+          autoAlpha: 1,
+          delay: 0.5,
+          onStart: () => {
+            console.log('onStart', popup)
+            popup.classList.add('popup-has-triggered')
+          }
+        })
+      }
     },
     hide () {
       if (!process.client) return;
@@ -69,6 +120,7 @@ export default {
         // y: '100%',
         autoAlpha: 0
       })
+      // this.$router.replace({ hash: '#' })
 
     },
   }

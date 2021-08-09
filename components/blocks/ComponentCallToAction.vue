@@ -2,7 +2,35 @@
   <div>
 
     <a
-    v-if="callToAction && isHash"
+    v-if="callToAction && isHash && callToAction.fields.path == '#popup-canteen'"
+    class="cta"
+    :class="{
+      'theme-default': theme=='default',
+      'theme-black': theme=='black',
+      'format-button': format=='button',
+      'format-inline': format=='inline'
+      }"
+    @click="openCanteenPopup"
+    >
+      <span class="label" v-html="callToAction.fields.label"></span>
+    </a>
+
+    <a
+    v-else-if="callToAction && isHash"
+    class="cta"
+    :class="{
+      'theme-default': theme=='default',
+      'theme-black': theme=='black',
+      'format-button': format=='button',
+      'format-inline': format=='inline'
+      }"
+    :href="callToAction.fields.path"
+    >
+      <span class="label" v-html="callToAction.fields.label"></span>
+    </a>
+
+    <a
+    v-else-if="callToAction && isMailto" 
     class="cta"
     :class="{
       'theme-default': theme=='default',
@@ -48,6 +76,7 @@
 </template>
 
 <script>
+import gsap from 'gsap'
 export default {
   props: {
     callToAction: {
@@ -79,6 +108,24 @@ export default {
     },
     isHash () {
       return this.callToAction && this.callToAction.fields.path && this.callToAction.fields.path.indexOf('#') == 0
+    },
+    isMailto () {
+      return this.callToAction && this.callToAction.fields.path && this.callToAction.fields.path.indexOf('mailto') == 0
+    }
+  },
+
+  methods: {
+    openCanteenPopup () {
+      gsap.to('#canteen-popup', {
+        duration: 1,
+        autoAlpha: 1,
+        delay: 0.5,
+        onStart: (el) => {
+          console.log('onStart', el)
+          document.getElementById('#canteen-popup')&&document.getElementById('#canteen-popup').classList.add('popup-has-triggered')
+          // popup.classList.add('popup-has-triggered')
+        }
+      })
     }
   }
 }
