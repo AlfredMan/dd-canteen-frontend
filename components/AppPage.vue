@@ -49,6 +49,7 @@
     </div>
 
     <!-- <AppPopup v-if="$route.path.indexOf('welcome-to-design-district')>=0"/> -->
+    <AppPopupCanteen v-if="$route.path.indexOf('canteen')>=0" />
 
   </main>
 </template>
@@ -72,6 +73,7 @@ import BlockGrid from '~/components/blocks/BlockGrid'
 import BlockForm from '~/components/blocks/BlockForm'
 import AppPopup from '~/components/AppPopup'
 import WelcomeBanner from '~/components/campaigns/WelcomeBanner'
+import AppPopupCanteen from '~/components/AppPopupCanteen'
 
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin.js'
@@ -97,7 +99,8 @@ export default {
     BlockGrid,
     BlockForm,
     AppPopup,
-    WelcomeBanner
+    WelcomeBanner,
+    AppPopupCanteen
   },
 
   props: {

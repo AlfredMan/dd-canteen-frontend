@@ -21,15 +21,18 @@
         <nuxt-link class="menu-link d-none d-sm-inline" to="/workspace">
           Work space
         </nuxt-link>
-        <nuxt-link class="menu-link d-none d-sm-inline" to="/architecture">
+        <!-- <nuxt-link class="menu-link d-none d-sm-inline" to="/architecture">
           Architecture
-        </nuxt-link>
+        </nuxt-link> -->
         <nuxt-link class="menu-link d-none d-sm-inline" to="/journal">
           Journal
         </nuxt-link>
         <nuxt-link class="menu-link d-none d-sm-inline" to="/events">
           Events
         </nuxt-link>
+        <nuxt-link class="menu-link d-none d-sm-inline" to="/canteen">
+          Canteen
+        </nuxt-link>        
         <a class="menu-link d-none d-sm-inline" href="https://bureau.club" target="_blank">
           Bureau
         </a>

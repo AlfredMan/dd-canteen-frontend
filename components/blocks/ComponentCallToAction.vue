@@ -135,7 +135,7 @@ export default {
 
 <style lang="scss" scoped>
 .cta {
-  @apply inline-block text-black transition duration-300 font-medium;
+  @apply inline-block text-black transition duration-300 font-medium cursor-pointer;
   span.label {
     @apply uppercase;
   }

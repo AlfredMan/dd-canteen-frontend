@@ -1,14 +1,14 @@
 <template>
   <div class="page-component">
     <AppPage :entry="entry"/>
-    <AppPopupCanteen v-if="$route.path=='/canteen'" />
+    <!-- <AppPopupCanteen v-if="$route.path=='/canteen'" /> -->
   </div>
 </template>
 
 <script>
 import _ from 'lodash'
 import AppPage from '~/components/AppPage'
-import AppPopupCanteen from '~/components/AppPopupCanteen'
+// import AppPopupCanteen from '~/components/AppPopupCanteen'
 import { createClient } from '~/plugins/contentful.js'
 
 const client = createClient()
@@ -18,7 +18,7 @@ export default {
 
   components: {
     AppPage,
-    AppPopupCanteen
+    // AppPopupCanteen
   },
 
   // validate({ params, query }) {

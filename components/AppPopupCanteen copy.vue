@@ -1,5 +1,5 @@
 <template lang="html">
-  <div id="canteen-popup" ref="popup" class="app-pop-up bg-mint fixed shadow-xl m-auto" style="visibility:hidden;opacity:0">
+  <div id="canteen-popup" ref="popup" class="app-pop-up bg-mint" style="visibility:hidden;opacity:0">
     <div class="absolute top-0 right-0 py-2 px-4 text-2xl cursor-pointer" @click="hide">
       &times;
     </div>
@@ -138,6 +138,7 @@ export default {
 
 <style lang="scss" scoped>
 .app-pop-up {
+  @apply fixed shadow-xl m-auto;
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
