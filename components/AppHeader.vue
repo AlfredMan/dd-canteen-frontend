@@ -91,14 +91,17 @@
           <nuxt-link class="d-block mobile-menu-link" to="/workspace">
             Work space
           </nuxt-link>
-          <nuxt-link class="d-block mobile-menu-link" to="/architecture">
+          <!-- <nuxt-link class="d-block mobile-menu-link" to="/architecture">
             Architecture
-          </nuxt-link>
+          </nuxt-link> -->
           <nuxt-link class="d-block mobile-menu-link" to="/journal">
             Journal
           </nuxt-link>
           <nuxt-link class="d-block mobile-menu-link" to="/events">
             Events
+          </nuxt-link>
+          <nuxt-link class="d-block mobile-menu-link" to="/canteen">
+            Canteen
           </nuxt-link>
           <a class="d-block mobile-menu-link" href="https://bureau.club" target="_blank">
             Bureau
