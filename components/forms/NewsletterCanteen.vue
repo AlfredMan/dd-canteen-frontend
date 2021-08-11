@@ -310,6 +310,7 @@ export default {
         return true
       } else {
         // alert('failed')
+        console.error('something went wrong.')
         e.preventDefault()
         return false
       }
@@ -555,9 +556,9 @@ export default {
         this.$refs.designOptInDate.value = now
       }
 
-      if (this.$refs.subscribeMarketingOptIn.checked) {
-        this.$refs.marketingOptInDate.value = now
-      }
+      // if (this.$refs.subscribeMarketingOptIn.checked) {
+      //   this.$refs.marketingOptInDate.value = now
+      // }
 
       this.$refs.Last_Page_Viewed.value = this.previousPath || ''
 
