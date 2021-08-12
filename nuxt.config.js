@@ -459,7 +459,7 @@ export default {
             ...buildingsRoutes,
             ...architectRoutes,
             '/success',
-            '/success/?source=canteen'
+            '/success?source=canteen'
           ];
         })
         .catch(console.error);
