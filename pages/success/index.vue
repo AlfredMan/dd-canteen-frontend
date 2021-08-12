@@ -13,7 +13,7 @@
           We'll be in touch soon. Meanwhile, follow our <a href="https://www.instagram.com/designdistrictcanteen/" target="_blank" rel="noreferrer">Instagram</a> for more news and updates.</p>
         <p class="text-xl" v-else>We'll be in touch soon. Meanwhile, follow our <a href="https://www.instagram.com/designdistrictlondon/" target="_blank" rel="noreferrer">Instagram</a> for more news and updates.</p>
       </div>
-      <div class="hidden">{{$route.query}},{{$route.query.source}},{{source}}</div>>
+      <div class="hidden">{{$route.query}},{{$route.query.source}},{{source}}</div>
     </div>
   </div>
 </template>
