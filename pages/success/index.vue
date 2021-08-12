@@ -40,18 +40,30 @@ export default {
   },
   data () {
     return {
-      source: ''
+      source: this.$route.query.source || 'nosource',
+      log: []
     }
   },
   mounted () {
     if (process.client) {
       this.source = this.$route.query.source || 'nosource'
+      this.log.push('1')
       this.$nextTick(()=>{
         this.source = this.$route.query.source || 'nosource'
+        this.log.push('2')
       })
+      setTimeout(()=>{
+        this.source = this.$route.query.source || 'nosource'
+        this.log.push('3')
+      },500)
     }
   },
   computed: {
+  },
+
+  asyncData({route, params}) {
+    const source = route.query.source || 'nosource'
+    return { source }
   }
 }
 </script>
