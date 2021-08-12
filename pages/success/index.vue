@@ -1,21 +1,17 @@
 <template lang="html">
-  <div class="">
-    <div class="container pb-5  pt-5">
-      <div class="row">
-        <div class="my-5 py-5" />
+  <div class=""
+  :class="{
+    'guideline-canteen':source=='canteen'
+    }"
+  >
+    <div class="cap-max-w px-3 pt-32 pb-32 lg:py-64">
+      <div class="w-full lg:w-7/12">
+        <h2>Thank you for your&nbsp;interest!</h2>
       </div>
-      <div class="row">
-        <div class="col-12 col-md-7">
-          <h3>Thank you for your&nbsp;interest!</h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-md-12">
-          <p>We'll be in touch soon. Meanwhile, follow our <a href="https://www.instagram.com/designdistrictlondon/" target="_blank" rel="noreferrer">Instagram</a> for more news and updates.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="my-5 py-5" />
+      <div class="w-full">
+        <p class="text-xl guideline-canteen" v-if="source=='canteen'">
+          We'll be in touch soon. Meanwhile, follow our <a href="https://www.instagram.com/designdistrictcanteen/" target="_blank" rel="noreferrer">Instagram</a> for more news and updates.</p>
+        <p class="text-xl" v-else>We'll be in touch soon. Meanwhile, follow our <a href="https://www.instagram.com/designdistrictlondon/" target="_blank" rel="noreferrer">Instagram</a> for more news and updates.</p>
       </div>
     </div>
   </div>
@@ -42,6 +38,9 @@ export default {
   computed: {
     studios () {
       return studios
+    },
+    source () {
+      return this.$route.query.source || ''
     }
   }
 }
