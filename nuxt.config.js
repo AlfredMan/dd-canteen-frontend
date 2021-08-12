@@ -458,8 +458,7 @@ export default {
             ...pagesRoutes,
             ...buildingsRoutes,
             ...architectRoutes,
-            '/success',
-            '/success?source=canteen'
+            '/success'
           ];
         })
         .catch(console.error);
