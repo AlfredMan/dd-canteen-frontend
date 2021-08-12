@@ -46,6 +46,9 @@ export default {
   mounted () {
     if (process.client) {
       this.source = this.$route.query.source || 'nosource'
+      this.$nextTick(()=>{
+        this.source = this.$route.query.source || 'nosource'
+      })
     }
   },
   computed: {
