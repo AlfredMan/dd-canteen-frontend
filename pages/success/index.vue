@@ -13,7 +13,9 @@
           We'll be in touch soon. Meanwhile, follow our <a href="https://www.instagram.com/designdistrictcanteen/" target="_blank" rel="noreferrer">Instagram</a> for more news and updates.</p>
         <p class="text-xl" v-else>We'll be in touch soon. Meanwhile, follow our <a href="https://www.instagram.com/designdistrictlondon/" target="_blank" rel="noreferrer">Instagram</a> for more news and updates.</p>
       </div>
-      <div class="hidden">{{$route.query}},{{$route.query.source}},{{source}}</div>
+      <div class="hidden" :class="{
+    'guideline-canteen':$route.query.source=='canteen'||source=='canteen'
+    }">{{$route.query}},{{$route.query.source}},{{source}},{{source=='canteen'}}</div>
     </div>
   </div>
 </template>
@@ -36,13 +38,17 @@ export default {
     EnquireForm,
     NewsletterForm
   },
-  computed: {
-    // studios () {
-      // return studios
-    // },
-    source () {
-      return this.$route.query.source || ''
+  data () {
+    return {
+      source: ''
     }
+  },
+  mounted () {
+    if (process.client) {
+      this.source = this.$route.query.source || 'nosource'
+    }
+  },
+  computed: {
   }
 }
 </script>
