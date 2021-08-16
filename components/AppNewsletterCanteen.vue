@@ -8,7 +8,8 @@
 
       <div class="w-full lg:w-7/12">
         <h4>Offers, events and tasty treats — sign-up for all the latest from Canteen.</h4>
-        <NewsletterCanteenMailchimp class="NewsletterFormCanteen" />
+        <NewsletterCanteenMailchimp v-if="$route.query.form&&$route.query.form=='canteen'" class="NewsletterFormCanteen" />
+        <NewsletterCanteen v-else class="NewsletterFormCanteen" />      
       </div>
     </div>
   </section>
@@ -16,8 +17,10 @@
 
 <script>
 import NewsletterCanteenMailchimp from '../components/forms/NewsletterCanteenMailchimp'
+import NewsletterCanteen from '../components/forms/NewsletterCanteen'
 export default {
   components: {
+    NewsletterCanteen,
     NewsletterCanteenMailchimp
   },
 }
