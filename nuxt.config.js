@@ -209,13 +209,13 @@ export default {
     //     // }
     //   }
     // },
-    terser: {
-      terserOptions: {
-        compress: {
-          drop_console: true
-        }
-      }
-    },
+    // terser: {
+    //   terserOptions: {
+    //     compress: {
+    //       drop_console: true
+    //     }
+    //   }
+    // },
     babel: {
       compact: false
     },
