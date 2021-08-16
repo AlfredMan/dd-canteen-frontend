@@ -11,6 +11,7 @@
       v-if="!isSuccess"
       ref="subscribeForm"
       name="subscribeForm"
+      action="https://designdistrict.us5.list-manage.com/subscribe/post?u=1cab880060e0600e8a967db10&amp;id=c2a335f361"
       method="post"
       :target="formTarget"
       :class="{disabled: formState === 'loading'}"
