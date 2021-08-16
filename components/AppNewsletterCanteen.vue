@@ -8,17 +8,17 @@
 
       <div class="w-full lg:w-7/12">
         <h4>Offers, events and tasty treats — sign-up for all the latest from Canteen.</h4>
-        <NewsletterFormCanteen class="NewsletterFormCanteen" />
+        <NewsletterCanteenMailchimp class="NewsletterFormCanteen" />
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import NewsletterFormCanteen from '../components/forms/NewsletterCanteen'
+import NewsletterCanteenMailchimp from '../components/forms/NewsletterCanteenMailchimp'
 export default {
   components: {
-    NewsletterFormCanteen
+    NewsletterCanteenMailchimp
   },
 }
 </script>

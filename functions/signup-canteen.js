@@ -58,12 +58,39 @@ const mailchimp_signup_form_action_url = 'https://designdistrict.us5.list-manage
 //   }
 // });
 
+// const querystring = require("querystring");
 
 exports.handler = async function(event, context) {
   // your server-side functionality
   // event.queryStringParameters.email
+  switch (event.httpMethod) {
+    case 'OPTIONS':
+      // To enable CORS
+      const headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+      };
+      return {
+        statusCode: 200, // <-- Must be 200 otherwise pre-flight call fails
+        headers,
+        body: 'preflight'
+      };
+    case 'POST':
+      // e.g. POST /.netlify/functions/customers with a body of key value pair objects, NOT strings
+      // return require('./customers/create').handler(event, context);
+
+      // const params = event.queryStringParameters;
+      // console.log(event)
+      console.log(event.body)
+
+      return {
+        statusCode: 200, // <-- Must be 200 otherwise pre-flight call fails
+        body: event.body
+      };
+  }
   return {
-    statusCode: 200,
-    body: JSON.stringify({message: "Hello World"})
-  };
+    statusCode: 500,
+    body: 'unrecognized HTTP Method'
+  };  
 }

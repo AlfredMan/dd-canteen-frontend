@@ -367,24 +367,28 @@ export default {
     onVerify (recaptchaToken) {
 
       this.resetRecaptcha()
-      const url = 'https://us-central1-designdistrict-2b9e1.cloudfunctions.net/verify'
+      // const url = 'https://us-central1-designdistrict-2b9e1.cloudfunctions.net/verify'
+      const url = '/.netlify/functions/signup-canteen'
       // let url = 'https://www.google.com/recaptcha/api/siteverify'
+
+      const form = this.$refs.subscribeForm
+      const data = new FormData(form)
+
       this.$axios.$post(url, {
         token: recaptchaToken,
-        data: data,
-        win: `${fn}_${ln}_${e}_${w}_${h}_${y}_${href}`
+        data: data
       }).then((response) => {
-        // console.log(response)
+        console.log('response', response)
         // this.formTarget = 'subscribRet'
-        this.sendForm({
-          oid: response.oid,
-          f: response.f,
-          v: response.v
-        })
+        // this.sendForm({
+        //   oid: response.oid,
+        //   f: response.f,
+        //   v: response.v
+        // })
 
       }).catch((error) => {
+        console.log('error', error)
         return false;
-        // console.log(error)
       })
       // this.$axios.$get('https://www.cloudflare.com/cdn-cgi/trace').then((data) => {
       //   // console.log(data)

@@ -12,7 +12,7 @@
         <!-- Sign-up for our regular newsletter and we’ll send you a discount code (along with a few other tasty morsels). -->
         Join our newsletter for updates, offers and other tasty morsels.
       </p>
-      <NewsletterCanteen />
+      <NewsletterCanteenMailchimp />
     </div>
   </div>
 </template>
@@ -26,10 +26,10 @@ if (process.client) {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-import NewsletterCanteen from '~/components/forms/NewsletterCanteen'
+import NewsletterCanteenMailchimp from '~/components/forms/NewsletterCanteenMailchimp'
 export default {
   components: {
-    NewsletterCanteen
+    NewsletterCanteenMailchimp
   },
 
   data () {
