@@ -1,8 +1,8 @@
 <template>
   <div class="">
-    <div v-if="isSuccess" class="">
-      <h5>Thank you for your interest!</h5>
-      <p>We'll be in touch soon. Meanwhile, follow our <a href="https://www.instagram.com/designdistrictcanteen/" target="_blank" rel="noreferrer">Instagram</a> for more news and updates.</p>
+    <div v-if="isSuccess" class="pb-16">
+      <h5 class="text-xl">Thank you for your interest!</h5>
+      <p class="text-xl">We'll be in touch soon. Meanwhile, follow our <a href="https://www.instagram.com/designdistrictcanteen/" target="_blank" rel="noreferrer">Instagram</a> for more news and updates.</p>
     </div>
     <!-- <p v-if="!isSuccess">
       Sign-up today for the latest Design District news, updates and&nbsp;events.
@@ -143,7 +143,7 @@
         <!-- <input id="submit" type="submit" value="Signup" style="display: none;"> -->
         <input id="subscribeSubmit" ref="subscribeSubmit" type="submit" value="Signup" style="display: none;">
 
-        <h6 class="text-sm my-6 text-red-700 bg-red-200__px-8__p-6 rounded-sm" v-if="error">{{error}}</h6>
+        <h6 class="text-sm my-6 text-red-700 bg-red-200__px-8__p-6 rounded-sm" v-if="error" v-html="error"></h6>
 
         <button
           class="cta theme-default format-button text-base uppercase"
@@ -232,19 +232,21 @@ export default {
       email: '',
       subscribeDesignOptIn: '',
       subscribeMarketingOptIn: '',
+      success: '',
       error: '',
       error_first_name: false,
       error_last_name: false,
       error_email: false,
       error_subscribeDesignOptIn: false,
       error_subscribeMarketingOptIn: false,
-      formId: '123456789'
+      formId: '123456789',
+      isSuccess: false
     }
   },
   computed: {
-    isSuccess () {
-      return this.$route.query.subscription && this.$route.query.subscription === 'success'
-    },
+    // isSuccess () {
+    //   return this.$route.query.subscription && this.$route.query.subscription === 'success'
+    // },
     routeHistory () {
       return this.$store.state.routeHistory || {}
     },
@@ -377,8 +379,8 @@ export default {
       for (let [key, val] of formData.entries()) {
         Object.assign(formDataObject, { [key]: val })
       }
-      console.log(formDataObject);        
-      console.log('response', response)
+      console.log(formDataObject);
+      // console.log('response', response)
 
       function toQueryString(params) {
         return Object.keys(params)
@@ -394,23 +396,38 @@ export default {
       //   f: response.f,
       //   v: response.v
       // })
-      jsonp(newUrl, null, (err, data) => {
-      
-        this.formState = 'complete'
-        this.formAlert.type = 'success'
-        this.formAlert.text = 'Complete.'
-        this.formAction = 'Complete'
-
+      jsonp(newUrl, { param: 'c' }, (err, data) => {
         if (err) {
           console.log(err)
-        } else if (data.result !== 'sucess') {
+          this.formState = 'error'          
+          this.formAction = 'Submit'
+          this.formAlert.type = 'error'
+          this.formAlert.text = err
+          this.error = err
+          
+        } else if (data.result !== 'success') {
           console.log(data.msg)
+          this.formState = 'error'          
+          this.formAction = 'Submit'
+          this.formAlert.type = 'error'
+          this.formAlert.text = data.msg
+          this.error = data.msg
+
         } else {
           console.log(data.msg)
+          this.formState = 'complete'          
+          this.formAction = 'Submit'
+          this.formAlert.type = 'complete'
+          this.formAlert.text = data.msg
+          this.error = ''
+          this.success = data.msg
+          this.isSuccess = true
         }
       })
     },
     onVerify (recaptchaToken) {
+
+      console.log('onVerify', recaptchaToken)
 
       this.resetRecaptcha()
       const url = 'https://us-central1-designdistrict-2b9e1.cloudfunctions.net/verify'
@@ -424,7 +441,8 @@ export default {
         token: recaptchaToken,
         data: data
       }).then((response) => {
-
+        
+        console.log('response', response)
         // this.sendForm()
         this.submitForm()
 
