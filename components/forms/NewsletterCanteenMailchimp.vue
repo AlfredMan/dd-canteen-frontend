@@ -209,9 +209,11 @@
 <script>
 import VueRecaptcha from 'vue-recaptcha'
 const KEY = '6LeyatwUAAAAAHWHaZuq8aq0GAZj21SxmI4fCgPk'
+import jsonp from 'jsonp';
+
 
 export default {
-  name: 'NewsletterForm',
+  name: 'NewsletterFormMailchimp',
   components: { VueRecaptcha },
   data () {
     return {
@@ -367,8 +369,8 @@ export default {
     onVerify (recaptchaToken) {
 
       this.resetRecaptcha()
-      // const url = 'https://us-central1-designdistrict-2b9e1.cloudfunctions.net/verify'
-      const url = '/.netlify/functions/signup-canteen'
+      const url = 'https://us-central1-designdistrict-2b9e1.cloudfunctions.net/verify'
+      // const url = '/.netlify/functions/signup-canteen'
       // let url = 'https://www.google.com/recaptcha/api/siteverify'
 
       const form = this.$refs.subscribeForm
@@ -378,13 +380,37 @@ export default {
         token: recaptchaToken,
         data: data
       }).then((response) => {
+        const formData = new FormData(form); // reference to form element
+        const formDataObject = {}; // need to convert it before using not with XMLHttpRequest
+        for (let [key, val] of formData.entries()) {
+          Object.assign(formDataObject, { [key]: val })
+        }
+        console.log(formDataObject);        
         console.log('response', response)
+
+        function toQueryString(params) {
+          return Object.keys(params)
+            .map((key) => key + "=" + params[key])
+            .join("&");
+        }
+
+        const params = toQueryString(formDataObject);
+        const newUrl = 'https://designdistrict.us5.list-manage.com/subscribe/post-json?u=1cab880060e0600e8a967db10&amp;id=c2a335f361' + "&" + params;
         // this.formTarget = 'subscribRet'
         // this.sendForm({
         //   oid: response.oid,
         //   f: response.f,
         //   v: response.v
         // })
+        jsonp(newUrl, null, (err, data) => {
+          if (err) {
+            console.log(err)
+          } else if (data.result !== 'sucess') {
+            console.log(data.msg)
+          } else {
+            console.log(data.msg)
+          }
+        })
 
       }).catch((error) => {
         console.log('error', error)
