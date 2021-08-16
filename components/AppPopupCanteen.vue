@@ -4,15 +4,15 @@
       &times;
     </div>
     <div class="">
-      <h4>
+      <h4 v-if="!signupSuccess">
         <!-- Enjoy 10% off your first Canteen order -->
         Add flavour to your inbox
         </h4>
-      <p>
+      <p v-if="!signupSuccess">
         <!-- Sign-up for our regular newsletter and we’ll send you a discount code (along with a few other tasty morsels). -->
         Join our newsletter for updates, offers and other tasty morsels.
       </p>
-      <NewsletterCanteenMailchimp v-if="$route.query.form&&$route.query.form=='canteen'"/>
+      <NewsletterCanteenMailchimp v-if="$route.query.form&&$route.query.form=='canteen'" @success="onSuccess"/>
       <NewsletterCanteen v-else />      
     </div>
   </div>
@@ -37,6 +37,7 @@ export default {
 
   data () {
     return {
+      signupSuccess: false
       // userHasSignedUp: false
     }
   },
@@ -54,6 +55,11 @@ export default {
   // },
 
   methods: {
+
+    onSuccess () {
+      this.signupSuccess = true
+    },
+
     init () {
       if (!process.client) return;
 

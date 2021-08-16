@@ -422,6 +422,7 @@ export default {
           this.error = ''
           this.success = data.msg
           this.isSuccess = true
+          this.$emit('onSuccess')
         }
       })
     },

@@ -7,9 +7,9 @@
       </div>
 
       <div class="w-full lg:w-7/12">
-        <h4>Offers, events and tasty treats — sign-up for all the latest from Canteen.</h4>
-        <NewsletterCanteenMailchimp v-if="$route.query.form&&$route.query.form=='canteen'" class="NewsletterFormCanteen" />
-        <NewsletterCanteen v-else class="NewsletterFormCanteen" />      
+        <h4 v-if="!signupSuccess">Offers, events and tasty treats — sign-up for all the latest from Canteen.</h4>
+        <NewsletterCanteenMailchimp v-if="$route.query.form&&$route.query.form=='canteen'" class="NewsletterFormCanteen" @success="onSuccess" />
+        <NewsletterCanteen v-else class="NewsletterFormCanteen" />
       </div>
     </div>
   </section>
@@ -23,7 +23,21 @@ export default {
     NewsletterCanteen,
     NewsletterCanteenMailchimp
   },
+
+  data () {
+    return {
+      signupSuccess: false
+      // userHasSignedUp: false
+    }
+  },
+
+  methods: {
+    onSuccess () {
+      this.signupSuccess = true
+    }
+  }
 }
+
 </script>
 
 <style lang="scss" scoped>
