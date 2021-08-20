@@ -8,20 +8,27 @@
 
       <div class="w-full lg:w-7/12">
         <h4 v-if="!signupSuccess">Offers, events and tasty treats — sign-up for all the latest from Canteen.</h4>
-        <NewsletterCanteenMailchimp v-if="$route.query.form&&$route.query.form=='canteen'" class="NewsletterFormCanteen" @success="onSuccess" />
-        <NewsletterCanteen v-else class="NewsletterFormCanteen" />
+        <!-- <NewsletterCanteenMailchimp v-if="$route.query.form&&$route.query.form=='canteen'" class="NewsletterFormCanteen" @success="onSuccess" /> -->
+        <!-- <NewsletterCanteenFirebase v-if="$route.query.form&&$route.query.form=='canteen'" class="NewsletterFormCanteen" @success="onSuccess" />
+        <NewsletterCanteen v-else class="NewsletterFormCanteen" /> -->
+        <!-- <NewsletterCanteenMailchimp v-if="$route.query.form&&$route.query.form=='canteen'" @success="onSuccess"/> -->
+        <!-- <NewsletterCanteenFirebase v-if="$route.query.form&&$route.query.form=='canteen'" @success="onSuccess"/> -->
+        <!-- <NewsletterCanteen v-else />       -->
+        <NewsletterCanteenFirebase  class="NewsletterFormCanteen" @success="onSuccess"/>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import NewsletterCanteenMailchimp from '../components/forms/NewsletterCanteenMailchimp'
+// import NewsletterCanteenMailchimp from '../components/forms/NewsletterCanteenMailchimp'
+import NewsletterCanteenFirebase from '../components/forms/NewsletterCanteenFirebase'
 import NewsletterCanteen from '../components/forms/NewsletterCanteen'
 export default {
   components: {
     NewsletterCanteen,
-    NewsletterCanteenMailchimp
+    // NewsletterCanteenMailchimp,
+    NewsletterCanteenFirebase
   },
 
   data () {

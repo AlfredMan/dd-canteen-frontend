@@ -91,7 +91,7 @@ export default {
 
   methods: {
     stickerUrl (sticker) {
-      let url = !!sticker && sticker.fields.assets[0].fields.file.url || ''
+      let url = !!sticker && !!sticker.fields.assets && sticker.fields.assets.length>0 && sticker.fields.assets[0].fields.file.url || ''
       return url
     },
 

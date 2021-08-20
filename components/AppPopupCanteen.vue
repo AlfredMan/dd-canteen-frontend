@@ -12,8 +12,10 @@
         <!-- Sign-up for our regular newsletter and we’ll send you a discount code (along with a few other tasty morsels). -->
         Join our newsletter for updates, offers and other tasty morsels.
       </p>
-      <NewsletterCanteenMailchimp v-if="$route.query.form&&$route.query.form=='canteen'" @success="onSuccess"/>
-      <NewsletterCanteen v-else />      
+      <!-- <NewsletterCanteenMailchimp v-if="$route.query.form&&$route.query.form=='canteen'" @success="onSuccess"/> -->
+      <!-- <NewsletterCanteenFirebase v-if="$route.query.form&&$route.query.form=='canteen'" @success="onSuccess"/> -->
+      <!-- <NewsletterCanteen v-else />       -->
+      <NewsletterCanteenFirebase @success="onSuccess"/>
     </div>
   </div>
 </template>
@@ -28,11 +30,13 @@ if (process.client) {
 }
 
 import NewsletterCanteenMailchimp from '~/components/forms/NewsletterCanteenMailchimp'
+import NewsletterCanteenFirebase from '~/components/forms/NewsletterCanteenFirebase'
 import NewsletterCanteen from '~/components/forms/NewsletterCanteen'
 export default {
   components: {
     NewsletterCanteen,
-    NewsletterCanteenMailchimp
+    NewsletterCanteenMailchimp,
+    NewsletterCanteenFirebase
   },
 
   data () {
