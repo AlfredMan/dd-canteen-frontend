@@ -180,7 +180,7 @@
                 class="mx-auto max-w-2xl text-sm mt-0 leading-2 md:text-xs md:leading-5 md:mt-2 text-black"
               >
                 <input
-                  :id="`agreePolicy${uuid}`"
+                  :id="`agreePolicy${formid}`"
                   ref="agreePolicy"
                   v-model="form.userAgreePolicy"
                   @change="onUserAgreePolicyChange"
@@ -198,7 +198,7 @@
                 />
                 <label
                   class="opacity-80 cursor-pointer"
-                  :for="`agreePolicy${uuid}`"
+                  :for="`agreePolicy${formid}`"
                 >
                   <span>By submitting my email address, I agree to your <a href="/privacy-notice/" target="_blank">Privacy Policy</a> and terms & conditions, and agree to receive news from Bureau, Design District and Canteen into my inbox.            </span>
                 </label>
@@ -354,6 +354,10 @@ export default {
       type: String,
       default: "dark",
     },
+    formid: {
+      type: String,
+      default: "00",
+    }
   },
 
   beforeCreate() {

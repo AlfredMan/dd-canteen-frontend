@@ -15,7 +15,7 @@
       <!-- <NewsletterCanteenMailchimp v-if="$route.query.form&&$route.query.form=='canteen'" @success="onSuccess"/> -->
       <!-- <NewsletterCanteenFirebase v-if="$route.query.form&&$route.query.form=='canteen'" @success="onSuccess"/> -->
       <!-- <NewsletterCanteen v-else />       -->
-      <NewsletterCanteenFirebase @success="onSuccess"/>
+      <NewsletterCanteenFirebase :formid="'popup'"@success="onSuccess"/>
     </div>
   </div>
 </template>

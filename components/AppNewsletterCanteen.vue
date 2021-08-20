@@ -14,7 +14,7 @@
         <!-- <NewsletterCanteenMailchimp v-if="$route.query.form&&$route.query.form=='canteen'" @success="onSuccess"/> -->
         <!-- <NewsletterCanteenFirebase v-if="$route.query.form&&$route.query.form=='canteen'" @success="onSuccess"/> -->
         <!-- <NewsletterCanteen v-else />       -->
-        <NewsletterCanteenFirebase  class="NewsletterFormCanteen" @success="onSuccess"/>
+        <NewsletterCanteenFirebase  class="NewsletterFormCanteen" :formid="'footer'" @success="onSuccess"/>
       </div>
     </div>
   </section>
