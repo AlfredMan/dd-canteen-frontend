@@ -545,13 +545,6 @@ export default {
         userUrl: url
       };
 
-      // this.formState = "complete";
-      //     this.formAlert.type = "success";
-      //     this.formAlert.text = "Complete.";
-      //     this.formAction = "Complete";
-      //     // this.$emit("completed");
-      //     this.$emit('success')  
-          // return;
       this.$axios
         .$post(
           "https://us-central1-designdistrict-2b9e1.cloudfunctions.net/sendMailCanteen",
