@@ -16,17 +16,17 @@ let isLive = true
 // console.log('process.env.IS_CONTENTFUL_LIVE', process.env.IS_CONTENTFUL_LIVE)
 // console.log('process.client?', process.client)
 
-if (process.client) {
-  // console.log('contentfuljs window.location', window.location)
-  if (window && window.location.host) {
-    const urlParams = new URLSearchParams(window.location.search)
-    const preview = urlParams.get('preview')
-    if (window.location.host !== 'designdistrict.co.uk' && preview) {
-      isLive = false
-    }
-    // console.log('isLive?', isLive)
-  }
-}
+// if (process.client) {
+//   // console.log('contentfuljs window.location', window.location)
+//   if (window && window.location.host) {
+//     const urlParams = new URLSearchParams(window.location.search)
+//     const preview = urlParams.get('preview')
+//     if (window.location.host !== 'designdistrict.co.uk' && preview) {
+//       isLive = false
+//     }
+//     // console.log('isLive?', isLive)
+//   }
+// }
 
 // console.log('npm run dev. using cdn.contentful.com. works and preview ok locally.')
 // else {
@@ -34,11 +34,23 @@ if (process.client) {
 //   isLive = process.env.IS_CONTENTFUL_LIVE || false
 // }
 
-isLive = (process.env.CONTENTFUL_PREVIEW && process.env.CONTENTFUL_PREVIEW == 'true' || process.env.CONTENTFUL_PREVIEW == true) || process.env.NODE_ENV === 'development' ? false : true
+console.log('checking process.env.CONTENTFUL_PREVIEW... ', process.env.CONTENTFUL_PREVIEW)
+isLive = (process.env.CONTENTFUL_PREVIEW == 'true' || process.env.CONTENTFUL_PREVIEW == true) || process.env.NODE_ENV === 'development' ? false : true
+console.log('"isLive" is now:', isLive)
 
-console.log('force contentful preview via process.env.CONTENTFUL_PREVIEW', (process.env.CONTENTFUL_PREVIEW == 'true' || process.env.CONTENTFUL_PREVIEW == true))
-isLive = (process.env.CONTENTFUL_PREVIEW == 'true' || process.env.CONTENTFUL_PREVIEW == true) ? false : isLive
-// }
+// console.log('force contentful preview via process.env.CONTENTFUL_PREVIEW', (process.env.CONTENTFUL_PREVIEW == 'true' || process.env.CONTENTFUL_PREVIEW == true))
+// isLive = (process.env.CONTENTFUL_PREVIEW == 'true' || process.env.CONTENTFUL_PREVIEW == true) ? false : isLive
+
+if (process.client) {
+  if (window && window.location.host) {
+    const urlParams = new URLSearchParams(window.location.search)
+    const preview = urlParams.get('preview')
+    if (window.location.host !== 'designdistrict.co.uk' && preview) {
+      isLive = false
+      console.info('succesfully enabled preview mode on client side')
+    }
+  }
+}
 
 const ACCESS_TOKEN = isLive ? c.CTF_CDA_ACCESS_TOKEN : c.CTF_CPA_ACCESS_TOKEN
 const HOST = isLive ? 'cdn.contentful.com' : 'preview.contentful.com'
