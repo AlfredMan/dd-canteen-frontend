@@ -212,7 +212,7 @@ export default {
     terser: {
       terserOptions: {
         compress: {
-          drop_console: true
+          drop_console: false
         }
       }
     },
