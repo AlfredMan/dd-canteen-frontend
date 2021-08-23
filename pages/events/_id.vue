@@ -1,5 +1,5 @@
 <template>
-  <div class="event" :class="getContentClass(entry.fields.contentType)">
+  <div class="event" :class="getContentClass(contentType)">
     <!-- <pre>{{entry}}</pre> -->
     <div class="-overflow-x-hidden" v-if="entry" :key="entry.sys.id">
 
@@ -360,7 +360,7 @@ export default {
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         { hid: 'description', name: 'description', content: this.seoDescription },
         { property: 'og:image', content: this.seoImage },
-        { property: 'og:url', content: `https://designdistrict.co.uk/journal/${this.entry.fields.slug}` },
+        { property: 'og:url', content: `https://designdistrict.co.uk/events/${this.seoSlug}` },
         { property: 'og:type', content: 'website' },
         { property: 'og:title', content: this.seoTitle },
         { property: 'og:description', content: this.seoDescription },
@@ -444,6 +444,9 @@ export default {
     },
     seoTitle () {
       return this.entry && this.entry.fields.metaData && this.entry.fields.metaData.fields.seoTitle ? this.entry.fields.metaData.fields.seoTitle : this.seoDefault.title
+    },
+    seoSlug () {
+      return this.entry && this.entry.fields.slug ? this.entry.fields.slug : '';
     },
     seoDescription () {
       return this.entry && this.entry.fields.metaData && this.entry.fields.metaData.fields.seoDescription ? this.entry.fields.metaData.fields.seoDescription : this.seoDefault.description

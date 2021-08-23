@@ -36,8 +36,8 @@ if (process.client) {
 
 isLive = (process.env.CONTENTFUL_PREVIEW && process.env.CONTENTFUL_PREVIEW == 'true' || process.env.CONTENTFUL_PREVIEW == true) || process.env.NODE_ENV === 'development' ? false : true
 
-//   console.log('force contentful isLive')
-//   isLive = process.env.CONTENTFUL_PREVIEW || false
+console.log('force contentful preview via process.env.CONTENTFUL_PREVIEW', (process.env.CONTENTFUL_PREVIEW == 'true' || process.env.CONTENTFUL_PREVIEW == true))
+isLive = (process.env.CONTENTFUL_PREVIEW == 'true' || process.env.CONTENTFUL_PREVIEW == true) ? false : isLive
 // }
 
 const ACCESS_TOKEN = isLive ? c.CTF_CDA_ACCESS_TOKEN : c.CTF_CPA_ACCESS_TOKEN
