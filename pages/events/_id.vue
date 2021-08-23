@@ -498,6 +498,7 @@ export default {
   // },
   // `env` is available in the context object
   asyncData ({ route, store }) {
+    console.log('asnycData:', route.params.id)
     return Promise.all([
       // fetch the owner of the blog
       // client.getEntries({
@@ -513,7 +514,6 @@ export default {
         'content_type': 'event',
         'fields.slug': route.params.id
       })
-
       // client.getAssets()
 
       ]).then(([entry]) => {
@@ -546,6 +546,8 @@ export default {
       } else {
         store.dispatch('updateNavigationTheme', { theme: 'light' })
       }
+
+      console.log('asnycData client getEntries then:', route.params.id, entry.items[0])
 
       return {
         // person: entries.items[0],
@@ -630,7 +632,7 @@ export default {
     },
 
     refreshTrigger: _.throttle(function () {
-      console.log('refreshTrigger')
+      // console.log('refreshTrigger')
       if (process.client) {
         window.dispatchEvent(new Event('resize'));
         // if (ScrollTrigger) {
