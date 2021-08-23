@@ -41,13 +41,19 @@ console.log('"isLive" is now:', isLive)
 // console.log('force contentful preview via process.env.CONTENTFUL_PREVIEW', (process.env.CONTENTFUL_PREVIEW == 'true' || process.env.CONTENTFUL_PREVIEW == true))
 // isLive = (process.env.CONTENTFUL_PREVIEW == 'true' || process.env.CONTENTFUL_PREVIEW == true) ? false : isLive
 
+console.info('step 0: is process client?')
 if (process.client) {
+  console.info('step 1: is process client')
   if (window && window.location.host) {
+    console.info('step 2: has window and host')
     const urlParams = new URLSearchParams(window.location.search)
     const preview = urlParams.get('preview')
+    console.info('step 3: check host and url params', urlParams, preview)
     if (window.location.host !== 'designdistrict.co.uk' && preview) {
       isLive = false
-      console.info('succesfully enabled preview mode on client side')
+      console.info('step 4: succesfully enabled preview mode on client side. isLive:', isLive)
+    } else {
+      console.info('step 4: check failed. isLive:', isLive)
     }
   }
 }
