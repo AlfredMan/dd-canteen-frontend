@@ -122,8 +122,8 @@ export default {
     // })
     this.checkEntryTheme()
 
-    if (!!window) {
-      console.log('app apge creates function')
+    console.log('app apge creates function')
+    if (process.client) {
       gsap.to('#full-screen-banner-creates', {
         autoAlpha: 0, duration: 0.5, delay: 1.5
       });
