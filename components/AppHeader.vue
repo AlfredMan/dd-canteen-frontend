@@ -97,7 +97,10 @@
           <nuxt-link class="d-block mobile-menu-link" to="/journal">
             Journal
           </nuxt-link>
-          <nuxt-link class="d-block mobile-menu-link" to="/events">
+          <!-- <nuxt-link class="d-block mobile-menu-link" to="/events">
+            Events
+          </nuxt-link> -->
+          <nuxt-link class="d-block mobile-menu-link" to="/creates">
             Events
           </nuxt-link>
           <nuxt-link class="d-block mobile-menu-link" to="/canteen">
