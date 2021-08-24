@@ -100,7 +100,7 @@
           <!-- <nuxt-link class="d-block mobile-menu-link" to="/events">
             Events
           </nuxt-link> -->
-          <nuxt-link class="d-block mobile-menu-link" to="/creates">
+          <nuxt-link class="d-block mobile-menu-link" to="/events">
             Events
           </nuxt-link>
           <nuxt-link class="d-block mobile-menu-link" to="/canteen">
