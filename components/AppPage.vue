@@ -2,7 +2,8 @@
   <main class="page-component">
 
     <WelcomeBanner v-if="$route.path.indexOf('welcome')>=0" />
-    <CreatesWelcomeBanner v-if="$route.path.indexOf('/creates')>=0" />
+    <!-- <CreatesWelcomeBanner v-if="$route.path.indexOf('/creates')>=0" /> -->
+      <CreatesWelcomeBanner2 v-if="$route.path.indexOf('creates')>=0 && $route.path.length < 10" />
     <CreatesVideo v-if="$route.path.indexOf('/creates')>=0" />
 
     <div class="" v-if="entry">
@@ -76,6 +77,7 @@ import BlockForm from '~/components/blocks/BlockForm'
 import AppPopup from '~/components/AppPopup'
 import WelcomeBanner from '~/components/campaigns/WelcomeBanner'
 import CreatesWelcomeBanner from '~/components/campaigns/CreatesWelcomeBanner'
+import CreatesWelcomeBanner2 from '~/components/campaigns/CreatesWelcomeBanner2'
 import CreatesVideo from '~/components/campaigns/CreatesVideo'
 import AppPopupCanteen from '~/components/AppPopupCanteen'
 
@@ -105,6 +107,7 @@ export default {
     AppPopup,
     WelcomeBanner,
     CreatesWelcomeBanner,
+    CreatesWelcomeBanner2,
     CreatesVideo,
     AppPopupCanteen
   },
