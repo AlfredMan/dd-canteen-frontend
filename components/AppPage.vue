@@ -2,9 +2,9 @@
   <main class="page-component">
 
     <WelcomeBanner v-if="$route.path.indexOf('welcome')>=0" />
-    <CreatesWelcomeBanner v-if="$route.path.indexOf('/creates')>=0" />
+    <CreatesWelcomeBanner v-if="$route.path.indexOf('/creates')>=0||$route.path.indexOf('/events')>=0" />
       <!-- <CreatesWelcomeBanner2 v-if="$route.path.indexOf('creates')>=0 && $route.path.length < 10" /> -->
-    <CreatesVideo v-if="$route.path.indexOf('/creates')>=0" />
+    <CreatesVideo v-if="$route.path.indexOf('/creates')>=0||$route.path.indexOf('/events')>=0" />
 
     <div class="" v-if="entry">
       <template
