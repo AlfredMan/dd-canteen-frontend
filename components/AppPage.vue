@@ -2,8 +2,8 @@
   <main class="page-component">
 
     <WelcomeBanner v-if="$route.path.indexOf('welcome')>=0" />
-    <CreatesWelcomeBanner v-if="$route.path == '/creates'" />
-    <CreatesVideo v-if="$route.path == '/creates'" />
+    <CreatesWelcomeBanner v-if="$route.path.indexOf('/creates')>=0" />
+    <CreatesVideo v-if="$route.path.indexOf('/creates')>=0" />
 
     <div class="" v-if="entry">
       <template
@@ -104,7 +104,6 @@ export default {
     BlockForm,
     AppPopup,
     WelcomeBanner,
-    WelcomeBanner,
     CreatesWelcomeBanner,
     CreatesVideo,
     AppPopupCanteen
@@ -122,6 +121,13 @@ export default {
     //   console.log(block.sys.contentType.sys.id)
     // })
     this.checkEntryTheme()
+
+    if (!!window) {
+      console.log('app apge creates function')
+      gsap.to('#full-screen-banner-creates', {
+        autoAlpha: 0, duration: 0.5, delay: 1.5
+      });
+    }
   },
 
   methods: {

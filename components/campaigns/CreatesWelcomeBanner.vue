@@ -16,13 +16,11 @@
 <script>
 // import gsap from 'gsap'
 export default {
-
   data () {
     return {
       hide: false
     }
   },
-
   mounted () {
     console.log('create banner a', this.hide)
     setTimeout(()=>{
@@ -34,7 +32,7 @@ export default {
       //     autoAlpha: 0, duration: 0.5, delay: 0
       //   });
       // }
-    },1000)
+    },500)
     // if (process.client) {
     //   gsap.to('#full-screen-banner-creates', {
     //     autoAlpha: 0, duration: 0.5, delay: 0
