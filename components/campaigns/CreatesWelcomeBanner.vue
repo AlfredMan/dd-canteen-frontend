@@ -1,6 +1,6 @@
 <template lang="html">
 
-  <div id="full-screen-banner-creates fixed z-50 inset-0 bg-green text-white leading-none text-center" >
+  <div id="full-screen-banner-creates" class="full-screen-banner-creates fixed z-50 inset-0 bg-green text-white leading-none text-center" >
     <div class="absolute" style="font-size:8vw; font-weight:400; top: 50%; left:50%; transform: translate(-50%, -50%); width:100%;">
       Creativity takes off —<br>join us for&nbsp;the&nbsp;launch. 
     </div>
