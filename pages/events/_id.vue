@@ -213,7 +213,7 @@
       </footer>
     </div>
 
-    <BlockEvents />
+    <!-- <BlockEvents /> -->
 
     <!-- <div class="container-fluid" v-if="entries">
       <div class="row bg-grey text-black pb-5-pt-3">
