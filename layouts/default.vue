@@ -45,6 +45,7 @@
 
     <div class="
       theme-graphite
+      bg-lightblue
       bg-blueprint
       text-blueprint
       bg-graphite

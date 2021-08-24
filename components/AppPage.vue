@@ -2,6 +2,8 @@
   <main class="page-component">
 
     <WelcomeBanner v-if="$route.path.indexOf('welcome')>=0" />
+    <CreatesWelcomeBanner v-if="$route.path == '/creates'" />
+    <CreatesVideo v-if="$route.path == '/creates'" />
 
     <div class="" v-if="entry">
       <template
@@ -73,6 +75,8 @@ import BlockGrid from '~/components/blocks/BlockGrid'
 import BlockForm from '~/components/blocks/BlockForm'
 import AppPopup from '~/components/AppPopup'
 import WelcomeBanner from '~/components/campaigns/WelcomeBanner'
+import CreatesWelcomeBanner from '~/components/campaigns/CreatesWelcomeBanner'
+import CreatesVideo from '~/components/campaigns/CreatesVideo'
 import AppPopupCanteen from '~/components/AppPopupCanteen'
 
 import gsap from 'gsap'
@@ -100,6 +104,9 @@ export default {
     BlockForm,
     AppPopup,
     WelcomeBanner,
+    WelcomeBanner,
+    CreatesWelcomeBanner,
+    CreatesVideo,
     AppPopupCanteen
   },
 
