@@ -591,6 +591,7 @@ export default {
     },
 
     handleResize () {
+      return;
       if (process.client) {
         if (window.innerWidth > 768) {
           if (this.st) {
@@ -609,6 +610,7 @@ export default {
     },
 
     initScrollTrigger() {
+      return;
       if (process.client) {
         this.st = ScrollTrigger.create({
           trigger: "#sidebar",
@@ -635,6 +637,7 @@ export default {
     },
 
     refreshTrigger: _.throttle(function () {
+      return;
       // console.log('refreshTrigger')
       if (process.client) {
         window.dispatchEvent(new Event('resize'));
