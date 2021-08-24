@@ -39,6 +39,7 @@ isLive = (process.env.CONTENTFUL_PREVIEW && process.env.CONTENTFUL_PREVIEW == 't
 //   console.log('force contentful isLive')
 //   isLive = process.env.CONTENTFUL_PREVIEW || false
 // }
+// test push
 
 const ACCESS_TOKEN = isLive ? c.CTF_CDA_ACCESS_TOKEN : c.CTF_CPA_ACCESS_TOKEN
 const HOST = isLive ? 'cdn.contentful.com' : 'preview.contentful.com'
