@@ -32,7 +32,7 @@ export default {
       //     autoAlpha: 0, duration: 0.5, delay: 0
       //   });
       // }
-    },500)
+    },2500)
     // if (process.client) {
     //   gsap.to('#full-screen-banner-creates', {
     //     autoAlpha: 0, duration: 0.5, delay: 0
