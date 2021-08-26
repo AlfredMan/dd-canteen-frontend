@@ -2,7 +2,7 @@
   <section class="block-text"
   v-if="block && block.fields"
   >
-    <div class="col-12 col-md-6 my-4 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
+    <div class="mx-auto px-3 my-16 w-full max-w-screen-sm rich-text" v-if="block && block.sys && block.sys.contentType && block.sys.contentType.sys.id === 'blockText'" v-html="getRichText(block.fields.richText)">
     </div>
   </section>
 </template>
@@ -39,6 +39,10 @@ const options = {
 
 export default {
   props: ['block'],
+
+  mounted () {
+    // console.log(this.block)
+  },
 
   computed: {
   },

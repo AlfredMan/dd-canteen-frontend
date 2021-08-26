@@ -43,6 +43,8 @@
 
         <BlockForm :block="block" v-else-if="isBlockType(block, 'blockFormNewsletter')"/>
 
+        <BlockText :block="block" v-else-if="isBlockType(block, 'blockText')"/>
+
         <div class="p-16 bg-red-100 hidden" v-else-if="block" style="visibility:hidden;display:none;">
           <p v-if="block.sys && block.sys.contentType">{{block.sys.contentType.sys.id}}</p>
           <pre>{{block.fields}}</pre>
@@ -74,6 +76,7 @@ import BlockJournalFullList from '~/components/blocks/BlockJournalFullList'
 import BlockVideo from '~/components/blocks/BlockVideo'
 import BlockGrid from '~/components/blocks/BlockGrid'
 import BlockForm from '~/components/blocks/BlockForm'
+import BlockText from '~/components/blocks/BlockText'
 import AppPopup from '~/components/AppPopup'
 import WelcomeBanner from '~/components/campaigns/WelcomeBanner'
 import CreatesWelcomeBanner from '~/components/campaigns/CreatesWelcomeBanner'
@@ -104,6 +107,7 @@ export default {
     BlockVideo,
     BlockGrid,
     BlockForm,
+    BlockText,
     AppPopup,
     WelcomeBanner,
     CreatesWelcomeBanner,
