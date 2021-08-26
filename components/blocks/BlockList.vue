@@ -43,7 +43,7 @@
           v-if="block.fields.heading"
           :class="{ 'w-full lg:w-5/12 lg:pr-4': headingDisplay == 'Right' }"
         >
-          <h2 class="inline-block relative" v-html="markdown(block.fields.heading)">
+          <h2 class="inline-block relative hyphen" lang="en" v-html="markdown(block.fields.heading)">
             <!-- {{ block.fields.heading }} -->
           </h2>
         </div>
@@ -55,7 +55,7 @@
             'lg:mt-20 lg:pt-2 xl:pt-5 xl:mt-20': headingDisplay == 'Right' && !(block.fields.heading && block.fields.heading.length < 30),
             }"
         >
-          <h4 class="font-medium max-w-3xl" v-html="markdown(block.fields.subheading)">
+          <h4 class="font-medium max-w-3xl hyphen" lang="en" v-html="markdown(block.fields.subheading)">
             <!-- {{ block.fields.subheading }} -->
           </h4>
           <callToAction

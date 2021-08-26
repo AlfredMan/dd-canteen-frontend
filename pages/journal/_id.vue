@@ -46,7 +46,7 @@
           <div class="row row-flex justify-content-between ">
             <div class="col-12 col-md-6 order-2 order-lg-1">
               <div class="event-title order-sm-3">
-                <h1 class="mt-2 mb-4 pl-0 h2" v-if="entry.fields.title">
+                <h1 class="mt-2 mb-4 pl-0 h2 hyphen" lang="en" v-if="entry.fields.title">
                   {{entry.fields.title}}
                 </h1>
                 <h3 class="mb-4" v-if="entry.fields.date">

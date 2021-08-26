@@ -49,7 +49,8 @@
               <!-- default -->
               <span 
               v-else
-              class="inline-block relative"
+              lang="en"
+              class="inline-block relative hyphen"
               >
                 {{ formattedHeading }}
                 <span class="sticker-group"
@@ -66,10 +67,10 @@
             </h1>
           </div>
           <div class="flex flex-wrap items-baseline">
-            <h4 class="" v-if="block.fields.subheading">
+            <h4 class="hyphen" v-if="block.fields.subheading" lang="en">
               {{ block.fields.subheading }}
             </h4>
-            <h5 class="" v-if="block.fields.minorSubheading">
+            <h5 class="hyphen" v-if="block.fields.minorSubheading" lang="en">
               {{ block.fields.minorSubheading }}
             </h5>
             <h6 class="mt-0" v-if="block.fields.disclaimer">

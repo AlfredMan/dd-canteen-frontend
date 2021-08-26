@@ -13,7 +13,7 @@
             <div class="col-12 col-md-6 order-2 order-md-1">
               <div class="event-title order-sm-3">
 
-                <h1 class="mt-2 mb-3 pl-0 h2" v-if="entry.fields.title">
+                <h1 class="mt-2 mb-3 pl-0 h2 hyphen" lang="en" v-if="entry.fields.title">
                   {{entry.fields.title}}
                 </h1>
                 <h5 class="text-orange mb-1 mt-1" v-if="entry.fields.creditText">

@@ -772,3 +772,9 @@ footer {
     color: inherit;
   }
 }
+
+.hyphen {
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
