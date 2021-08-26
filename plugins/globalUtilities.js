@@ -9,7 +9,7 @@ const md = new MarkdownIt({
 // import moment from 'moment'
 
 const markdown = (markdownInput, options) => {
-  if (options.renderInline) {
+  if (!!options&&options.renderInline) {
     return md.renderInline(markdownInput)  
   }
   return md.render(markdownInput)
