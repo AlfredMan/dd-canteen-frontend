@@ -8,9 +8,11 @@ const md = new MarkdownIt({
 })
 // import moment from 'moment'
 
-const markdown = (markdownInput) => {
-  const result = md.render(markdownInput)
-  return result
+const markdown = (markdownInput, options) => {
+  if (options.renderInline) {
+    return md.renderInline(markdownInput)  
+  }
+  return md.render(markdownInput)
 }
 
 Vue.mixin({
