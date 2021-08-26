@@ -26,7 +26,6 @@
           'lg:w-5/12': contentDisplay == 'vertical'
         }"
       >
-        <span></span>
         <span class="absolute block inset-x-16 inset-y-12 lg:inset-y-24 lg:inset-x-8 sticker-group" 
           v-if="block.fields.stickers"
           >
@@ -44,18 +43,8 @@
           v-if="block.fields.heading"
           :class="{ 'w-full lg:w-5/12 lg:pr-4': headingDisplay == 'Right' }"
         >
-          <h2 class="inline-block relative">
-            {{ block.fields.heading }}
-
-            <!-- <span class="absolute inset-0 sticker-group" 
-              v-if="block.fields.stickers"
-              >
-              <BlockStickers
-                v-for="(sticker) in block.fields.stickers"
-                :key="sticker.sys.id"
-                :sticker="sticker"
-              />
-            </span> -->
+          <h2 class="inline-block relative" v-html="markdown(block.fields.heading)">
+            <!-- {{ block.fields.heading }} -->
           </h2>
         </div>
         <div
@@ -66,8 +55,8 @@
             'lg:mt-20 lg:pt-2 xl:pt-5 xl:mt-20': headingDisplay == 'Right' && !(block.fields.heading && block.fields.heading.length < 30),
             }"
         >
-          <h4 class="font-medium max-w-3xl">
-            {{ block.fields.subheading }}
+          <h4 class="font-medium max-w-3xl" v-html="markdown(block.fields.subheading)">
+            <!-- {{ block.fields.subheading }} -->
           </h4>
           <callToAction
             v-if="block.fields.callToAction"
