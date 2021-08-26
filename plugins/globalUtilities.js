@@ -17,8 +17,6 @@ const markdown = (markdownInput, options) => {
 
 Vue.mixin({
   methods: {
-    markdown (elem) {
-      return markdown(elem)
-    }
+    markdown
   }
 })
