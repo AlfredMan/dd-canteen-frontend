@@ -550,7 +550,7 @@ export default {
         store.dispatch('updateNavigationTheme', { theme: 'light' })
       }
 
-      console.log('asnycData client getEntries then:', route.params.id, entry.items[0])
+      // console.log('asnycData client getEntries then:', route.params.id, entry.items[0])
 
       return {
         // person: entries.items[0],

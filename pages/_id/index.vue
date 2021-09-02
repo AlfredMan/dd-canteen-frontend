@@ -101,7 +101,7 @@ export default {
   // },
 
   async asyncData ({ route, store }) {
-    console.log('asyncData +++++++++++++++++')
+    // console.log('asyncData +++++++++++++++++')
     return Promise.all([
       // fetch the owner of the blog
       // client.getEntries({
@@ -116,7 +116,7 @@ export default {
       })
 
     ]).then(([entry]) => {
-      console.log('entry')
+      // console.log('entry')
       return {
         entry: entry.items[0]
       }
