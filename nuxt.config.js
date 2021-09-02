@@ -503,10 +503,10 @@ export default {
   //   //   cert:process.env.
   //   // }
   // }
-  server: {
-    port: "3000",
-    host: "192.168.8.135"
-  }
+  // server: {
+  //   port: "3000",
+  //   host: "192.168.8.135"
+  // }
   // server: {
   //   https: {
   //     key:
