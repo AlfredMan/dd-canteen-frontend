@@ -16,7 +16,15 @@
 #  from = "/events"
 #  to = "/creates"
 
-#[[redirects]]
-#  from = "/*"
-#  to = "/index.html"
-#  status = 200
+[[redirects]]
+  from = "/workspace/building/canteen/*"
+  to = "/creates"
+
+[[redirects]]
+  from = "/workspace/building/canteen"
+  to = "/creates"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
