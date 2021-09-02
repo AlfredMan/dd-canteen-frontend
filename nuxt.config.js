@@ -412,6 +412,7 @@ export default {
     routes: ['/'],
     exclude: [
       /^\/events/,
+      /^\/enquire/,
       /^\/architecture/,
       /^\/success/,
       /^\/workspace/,

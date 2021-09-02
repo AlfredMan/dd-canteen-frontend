@@ -1,2 +1,2 @@
 # ignore page inside ignore folder
-pages/*.vue
+# pages/*.vue
