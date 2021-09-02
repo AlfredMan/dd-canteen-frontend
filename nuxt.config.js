@@ -409,9 +409,8 @@ export default {
     concurrency: 20,
     devtools: true,
     crawler: false,
-    routes: [],
+    routes: ['/'],
     exclude: [
-      '/',
       /^\/events/,
       /^\/architecture/,
       /^\/success/,
