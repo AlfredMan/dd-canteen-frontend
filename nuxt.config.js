@@ -503,18 +503,22 @@ export default {
   //   //   cert:process.env.
   //   // }
   // }
-  server: {
-    https: {
-      key:
-        process.env.NODE_ENV === "production"
-          ? undefined
-          : fs.readFileSync(path.resolve(__dirname, "localhost-key.pem")),
-      cert:
-        process.env.NODE_ENV === "production"
-          ? undefined
-          : fs.readFileSync(path.resolve(__dirname, "localhost.pem"))
-    }
-  },
+  // server: {
+  //   port: "3000",
+  //   host: "192.168.8.135"
+  // }
+  // server: {
+  //   https: {
+  //     key:
+  //       process.env.NODE_ENV === "production"
+  //         ? undefined
+  //         : fs.readFileSync(path.resolve(__dirname, "localhost-key.pem")),
+  //     cert:
+  //       process.env.NODE_ENV === "production"
+  //         ? undefined
+  //         : fs.readFileSync(path.resolve(__dirname, "localhost.pem"))
+  //   }
+  // },
 
 };
 

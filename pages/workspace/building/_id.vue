@@ -377,6 +377,7 @@ export default {
 
   data () {
     return {
+      entry: null,
       photosFullscreen:false,
       floorplanFullscreen:false,
       spaceActive: false,
@@ -423,7 +424,18 @@ export default {
     }
   },
 
+  mounted () {
+    if (this.$route && this.$route.path.indexOf('/workspace/building/canteen')>=0) {
+      console.log('this is canteen')
+      this.$router.replace('/canteen')
+    }
+  },
+
   created () {
+    if (this.$route && this.$route.path.indexOf('/workspace/building/canteen')>=0) {
+      console.log('this is canteen')
+      this.$router.replace('/canteen')
+    }
     this.$store.dispatch('updateNavigationTheme', { theme: 'light' })
   },
 

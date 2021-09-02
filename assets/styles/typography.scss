@@ -596,6 +596,25 @@ h5 {
   }
 }
 
+.rich-text h1 {
+  @apply text-6xl mt-32 mb-12
+}
+.rich-text h2 {
+  @apply text-4xl mt-24 mb-8
+}
+.rich-text h3 {
+  @apply text-3xl mt-16 mb-8
+}
+.rich-text h4 {
+  @apply text-2xl mt-16 mb-8
+}
+.rich-text h5 {
+  @apply text-xl mt-16 mb-8
+}
+.rich-text h6 {
+  @apply text-xl mt-16 mb-8
+}
+
 footer {
   a,
   h4,

@@ -116,7 +116,7 @@
 
               <div class="tags mt-2 pt-1">
                 <div class=" tag tag-sm tag-display" v-for="spaceType in building.fields.spaceType" :key="spaceType.sys.id">
-                  {{spaceType.fields.title}}
+                  {{spaceType&&spaceType.fields&&spaceType.fields.title}}
                 </div>
               </div>
 
