@@ -16,9 +16,10 @@ http://designdistrict.co.uk/* https://designdistrict.co.uk/:splat 301!
 /architects/*   /about-us
 /architects     /about-us
 /architecture   /about-us
-/workspace/building/Food%20space/ /workspace/building/food%20space/
-/workspace/building/Food%20hall/  /workspace/building/food%20space/
-/workspace/building/food%20hall/  /workspace/building/food%20space/
-/workspace/building/food%20space/ /workspace/building/canteen/
-# /events         /creates
+/workspace/building/Food%20space/ /canteen
+/workspace/building/Food%20hall/  /canteen
+/workspace/building/food%20hall/  /canteen
+/workspace/building/food%20space/ /canteen
+/workspace/building/canteen/      /canteen
+/workspace/building/canteen      /canteen
 /*              /index.html   200

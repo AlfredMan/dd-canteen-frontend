@@ -377,6 +377,7 @@ export default {
 
   data () {
     return {
+      entry: null,
       photosFullscreen:false,
       floorplanFullscreen:false,
       spaceActive: false,
@@ -420,6 +421,12 @@ export default {
       //     url: require('~/assets/images/floorplans/A1-3-1.png')
       //   }
       // ]
+    }
+  },
+
+  mounted () {
+    if (this.$route && this.$route.path=='/workspace/building/canteen') {
+      console.log('this is canteen')
     }
   },
 
