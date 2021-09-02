@@ -475,9 +475,9 @@ export default {
     ]
   },
   //
-  // router: {
-  //   middleware: ['redirect']
-  // }
+  router: {
+    middleware: ['redirect']
+  },
 
   // server: {
   //   port: 3333, // default: 3000
