@@ -10,7 +10,7 @@
       >
         <div class="event-info container">
           <div class="row row-flex justify-content-between ">
-            <div class="col-12 col-md-6 order-2 order-md-1">
+            <div class="w-full col-12 col-md-6 lg:w-6/12 order-2 order-md-1">
               <div class="event-title order-sm-3">
 
                 <h1 class="mt-2 mb-3 pl-0 h2 hyphen" lang="en" v-if="entry.fields.title">
@@ -63,7 +63,7 @@
             </div>
 
             <div
-              class="col-12 col-md-6 order-1 order-md-2 mb-4 mb-lg-0 lg:pt-6"
+              class="w-full col-12 col-md-6 lg:w-6/12 order-1 order-md-2 mb-4 mb-lg-0 lg:pt-6"
               v-if="entry.fields.mainImage && entry.fields.mainImage.fields && entry.fields.mainImage.fields.file"
               >
               <lazy-image
@@ -129,7 +129,7 @@
           <div class="row row-flex justify-content-center" v-for="content in entry.fields.contentReferences">
 
             <!-- text -->
-            <!-- <div class="col-12 type-text">
+            <!-- <div class="w-full col-12 type-text">
               <div class="container ">
                 <div class="row justify-content-start">
                   <div class="mb-4" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
@@ -141,7 +141,7 @@
             </div>
 
             <!-- embed -->
-            <div class="col-12 type-embed">
+            <div class="w-full col-12 type-embed">
               <div class="container ">
                 <div class="row justify-content-start">
                   <div class="my-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'embed'">
@@ -190,14 +190,14 @@
       <footer class="mt-5 mb-5 py-5 container" v-if="entry.fields.author">
         <div class="row justify-content-center">
 
-          <div class="col-10 col-md-6 p-5 author" v-for="author in entry.fields.author">
+          <div class="col-10 col-md-6 lg:w-6/12 p-5 author" v-for="author in entry.fields.author">
             <div class="row align-items-center no-gutters px-2">
               <!-- <div class="col-3">
                 <div class="thumb">
                   <img :src="author.fields.profilePicture.fields.file.url" alt="">
                 </div>
               </div> -->
-              <div class="col-12">
+              <div class="w-full col-12">
 
                 <h6>About the <span v-if="!author.fields.role">author</span><span v-if="author.fields.role">{{author.fields.role}}</span></h6>
 
@@ -219,12 +219,12 @@
       <div class="row bg-grey text-black pb-5-pt-3">
         <div class="container py-5">
           <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="w-full col-12 col-md-6 lg:w-6/12">
               <h2>Journal</h2>
             </div>
           </div>
           <div class="row">
-            <div class="col-12 col-md-5">
+            <div class="w-full col-12 col-md-5 lg:w-5/12">
               <router-link :to="{ path:'/journal' }" class="h5 text-black">
                 View all &rarr;
               </router-link>
@@ -236,7 +236,7 @@
             v-for="ent in entries"
             v-if="ent && ent.sys.id !== entry.sys.id"
             :key="ent.sys.id"
-            class="news-card col-12 col-md-6 col-lg-4 mb-6 lg:mb-6">
+            class="news-card w-full col-12 col-md-6 lg:w-6/12 col-lg-4 mb-6 lg:mb-6">
 
               <news-card :entry="ent"></news-card>
 
@@ -716,22 +716,22 @@ export default {
 
       if (images.length == 1) {
         if (images[0] && this.getImageRatio(images[0]) <= 1.5) {
-          return "col-12 col-md-6"
+          return "w-full col-12 col-md-6 lg:w-6/12"
         } else {
-          return "col-12"
+          return "w-full col-12"
         }
       } else if (images.length == 2) {
-        return "col-12 col-md-6"
+        return "w-full col-12 col-md-6 lg:w-6/12"
       } else if (images.length == 3) {
-        return "col-12 col-md-4"
+        return "w-full col-12 col-md-4 lg:w-4/12"
       } else if (images.length == 4) {
-        return "col-12 col-md-3"
+        return "w-full col-12 col-md-3 lg:w-3/12"
       } else if (images.length == 5) {
-        return "col-12 col-md-4"
+        return "w-full col-12 col-md-4 lg:w-4/12"
       } else if (images.length == 6) {
-        return "col-12 col-md-3"
+        return "w-full col-12 col-md-3 lg:w-3/12"
       } else {
-        return "col-12 col-md-3"
+        return "w-full col-12 col-md-3 lg:w-3/12"
       }
     },
 
@@ -914,7 +914,7 @@ export default {
         width: 100%
         margin-right: 0
         margin-left: 0
-        .col-12, .container
+        .w-full col-12, .container
           padding-left: 0
           padding-right: 0
 

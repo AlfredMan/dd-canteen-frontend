@@ -7,7 +7,7 @@
         <div class="event-info p-5">
           <div class="d-flex flex-column justify-content-between ">
             <div class="event-title">
-              <h1 class=" mt-2 mb-4 pl-0 h2 col-12 col-md-6" v-if="entry.fields.title">
+              <h1 class=" mt-2 mb-4 pl-0 h2 col-12 w-full col-md-6 lg:w-6/12" v-if="entry.fields.title">
                 {{entry.fields.title}}
               </h1>
               <h3 class="mb-4" v-if="entry.fields.date">
@@ -44,7 +44,7 @@
       <header class="container event-header my-3 mb-5 pt-5" v-if="entry.fields.contentType === 'Event'">
         <div class="event-info">
           <div class="row row-flex justify-content-between ">
-            <div class="col-12 col-md-6 order-2 order-lg-1">
+            <div class="col-12 w-full col-md-6 lg:w-6/12 order-2 order-lg-1">
               <div class="event-title order-sm-3">
                 <h1 class="mt-2 mb-4 pl-0 h2 hyphen" lang="en" v-if="entry.fields.title">
                   {{entry.fields.title}}
@@ -85,7 +85,7 @@
             </div>
 
             <div
-              class="col-12 col-md-6 order-1 order-lg-2 mb-4 mb-lg-0"
+              class="col-12 w-full col-md-6 lg:w-6/12 order-1 order-lg-2 mb-4 mb-lg-0"
               v-if="entry.fields.mainImage && entry.fields.mainImage.fields && entry.fields.mainImage.fields.file"
               >
               <lazy-image
@@ -101,7 +101,7 @@
 
       <header class="container my-3 mt-4 pt-5" v-else-if="entry.fields.contentType === 'Podcast'">
         <div class="row d-flex justify-content-center">
-          <div class="col-12 col-md-6 mb-4  order-2 order-lg-1">
+          <div class="col-12 w-full col-md-6 lg:w-6/12 mb-4  order-2 order-lg-1">
             <h1 class=" mt-2 mb-4 h2" v-if="entry.fields.title">
               {{entry.fields.title}}
             </h1>
@@ -128,7 +128,7 @@
               </h6>
             </div>
           </div>
-          <div class="col-12 col-md-6 order-1 order-lg-2 mb-4"  v-if="entry.fields.mainImage && entry.fields.mainImage.fields && entry.fields.mainImage.fields.file">
+          <div class="col-12 w-full col-md-6 lg:w-6/12 order-1 order-lg-2 mb-4"  v-if="entry.fields.mainImage && entry.fields.mainImage.fields && entry.fields.mainImage.fields.file">
             <!-- <img :src="entry.fields.mainImage.fields.file.url" alt=""> -->
             <lazy-image
               :src="entry.fields.mainImage.fields.file.url"
@@ -136,7 +136,7 @@
               :h="2000"
               />
           </div>
-          <div class="col-12 d-flex px-5 pt-2 order-3 order-lg-3 text-black-50"  v-if="entry.fields.embedContent" :class="{'col-md-6 bg-grey': !entry.fields.mainImage, 'col-md-8': entry.fields.mainImage}">
+          <div class="col-12 w-full d-flex px-5 pt-2 order-3 order-lg-3 text-black-50"  v-if="entry.fields.embedContent" :class="{'col-md-6 lg:w-6/12 bg-grey': !entry.fields.mainImage, 'col-md-8 lg:w-8/12': entry.fields.mainImage}">
             <div class="">
 
             </div>
@@ -157,9 +157,9 @@
         <div class="row d-flex justify-content-start pt-5">
           <div class="container mb-5">
             <div class="row">
-              <div class="col-12 col-lg-6">
+              <div class="col-12 w-full col-lg-6">
                 <div class="mb-4">
-                  <h1 class=" mt-2 mb-4 h2 col-12 col-lg-8 px-0" v-if="entry.fields.title">
+                  <h1 class=" mt-2 mb-4 h2 col-12 w-full col-lg-8 px-0" v-if="entry.fields.title">
                     {{entry.fields.title}}
                   </h1>
                   <h3 class="mb-4" v-if="entry.fields.date">
@@ -184,7 +184,7 @@
             </div>
           </div>
           <div class="container">
-            <div class="col-12 col-md-12 d-flex px-0 -px-lg-5"  v-if="entry.fields.embedContent" :style="{ backgroundColor: entry.fields.colour}">
+            <div class="col-12 w-full col-md-1 lg:w-1/122 d-flex px-0 -px-lg-5"  v-if="entry.fields.embedContent" :style="{ backgroundColor: entry.fields.colour}">
               <div class="">
 
               </div>
@@ -196,7 +196,7 @@
                     </div>
                   </div>
                   <div class="mt-3">
-                    <div class="col-12 col-md-6 px-3 px-md-0">
+                    <div class="col-12 w-full col-md-6 lg:w-6/12 px-3 px-md-0">
                       {{ content.fields.description}}
                     </div>
                   </div>
@@ -208,7 +208,7 @@
 
       <header class="container my-3 mt-4 pt-5" v-else>
         <div class="row d-flex justify-content-start">
-          <div class="col-12 col-md-7 mb-4">
+          <div class="col-12 w-full col-md-7 lg:w-7/12 mb-4">
             <h1 class=" mt-2 mb-4 h2" v-if="entry.fields.title">
               {{entry.fields.title}}
             </h1>
@@ -232,10 +232,10 @@
         <div class="row d-flex justify-content-center"
         v-if="entry.fields.mainImage && entry.fields.mainImage.fields && entry.fields.mainImage.fields.file">
           <div
-          class="col-12"
+          class="col-12 w-full"
           :class="{
-            'col-md-10':getImageRatio(entry.fields.mainImage)>1.5,
-            'col-md-6':getImageRatio(entry.fields.mainImage)<=1.5
+            'col-md-1 lg:w-1/120':getImageRatio(entry.fields.mainImage)>1.5,
+            'col-md-6 lg:w-6/12':getImageRatio(entry.fields.mainImage)<=1.5
             }"
           >
             <lazy-image
@@ -257,20 +257,20 @@
         <div class="row row-flex justify-content-center" v-for="content in entry.fields.contentReferences">
 
           <!-- text -->
-          <div class="col-12  type-text">
+          <div class="col-12 w-full  type-text">
             <div class="container ">
               <div class="row justify-content-center">
-                <div class="col-12 col-md-6 my-4 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
+                <div class="col-12 w-full col-md-6 lg:w-6/12 my-4 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'text'" v-html="getRichText(content.fields.text)">
                 </div>
               </div>
             </div>
           </div>
 
           <!-- embed -->
-          <div class="col-12 type-embed">
+          <div class="col-12 w-full type-embed">
             <div class="container ">
               <div class="row justify-content-center">
-                <div class="col-12 col-md-7 my-5 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'embed'">
+                <div class="col-12 w-full col-md-7 lg:w-7/12 my-5 -px-lg-5" v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'embed'">
                   <div class=""  v-html="content.fields.embedCode.content[0].content[0].value">
 
                   </div>
@@ -284,7 +284,7 @@
 
           <!-- gallery -->
           <div
-          class="col-12 col-lg-10 my-5 px-5 px-lg-0 type-gallery"
+          class="col-12 w-full col-lg-10 w-full lg:w-10/12 my-5 px-5 px-lg-0 type-gallery"
           v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'gallery'"
           >
             <div class="row row-flex flex-wrap justify-content-center align-items-center gallery">
@@ -315,14 +315,14 @@
       <footer class="mt-5 mb-5 py-5 container" v-if="entry.fields.author">
         <div class="row justify-content-center">
 
-          <div class="col-10 col-md-6 p-5 author" v-for="author in entry.fields.author" v-if="author && author.fields">
+          <div class="col-10 col-md-6 lg:w-6/12 p-5 author" v-for="author in entry.fields.author" v-if="author && author.fields">
             <div class="row align-items-center no-gutters px-2" >
               <!-- <div class="col-3">
                 <div class="thumb">
                   <img :src="author.fields.profilePicture.fields.file.url" alt="">
                 </div>
               </div> -->
-              <div class="col-12">
+              <div class="col-12 w-full">
 
                 <h6>About the <span v-if="!author.fields.role">author</span><span v-if="author.fields.role">{{author.fields.role}}</span></h6>
 
@@ -344,12 +344,12 @@
       <div class="row bg-grey text-black pb-5-pt-3">
         <div class="container py-5">
           <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 w-full col-md-6 lg:w-6/12">
               <h2>Journal</h2>
             </div>
           </div>
           <div class="row">
-            <div class="col-12 col-md-5">
+            <div class="col-12 w-full col-md-5 lg:w-5/12">
               <router-link :to="{ path:'/journal' }" class="h5 text-black">
                 View all &rarr;
               </router-link>
@@ -361,7 +361,7 @@
             v-for="ent in entries"
             v-if="ent && ent.sys.id !== entry.sys.id"
             :key="ent.sys.id"
-            class="news-card col-12 col-md-6 col-lg-4 mb-6 lg:mb-6">
+            class="news-card col-12 w-full col-md-6 lg:w-6/12 col-lg-4 mb-6 lg:mb-6">
 
               <news-card :entry="ent"></news-card>
 
@@ -702,22 +702,22 @@ export default {
 
       if (images.length == 1) {
         if (images[0] && this.getImageRatio(images[0]) <= 1.5) {
-          return "col-12 col-md-6"
+          return "col-12 w-full col-md-6 lg:w-6/12"
         } else {
-          return "col-12"
+          return "col-12 w-full"
         }
       } else if (images.length == 2) {
-        return "col-12 col-md-6"
+        return "col-12 w-full col-md-6 lg:w-6/12"
       } else if (images.length == 3) {
-        return "col-12 col-md-4"
+        return "col-12 w-full col-md-4 lg:w-4/12"
       } else if (images.length == 4) {
-        return "col-12 col-md-3"
+        return "col-12 w-full col-md-3 lg:w-3/12"
       } else if (images.length == 5) {
-        return "col-12 col-md-4"
+        return "col-12 w-full col-md-4 lg:w-4/12"
       } else if (images.length == 6) {
-        return "col-12 col-md-3"
+        return "col-12 w-full col-md-3 lg:w-3/12"
       } else {
-        return "col-12 col-md-3"
+        return "col-12 w-full col-md-3 lg:w-3/12"
       }
     },
 
