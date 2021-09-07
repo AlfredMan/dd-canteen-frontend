@@ -158,7 +158,7 @@
 
             <!-- gallery -->
             <div
-            class="my-5 px-5 px-lg-0 type-gallery"
+            class="w-full lg:w-10/12 my-5 px-5 px-lg-0 type-gallery"
             v-if="content && content.sys && content.sys.contentType && content.sys.contentType.sys.id === 'gallery'"
             >
               <div class="row row-flex flex-wrap justify-content-start align-items-center gallery">
