@@ -874,7 +874,7 @@ export default {
         padding-top: 2rem
         .btn
           margin-bottom: .5rem
-          min-width: 90%
+          // min-width: 90%
           text-align: left
 
       width: 25%
