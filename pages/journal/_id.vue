@@ -184,7 +184,7 @@
             </div>
           </div>
           <div class="container">
-            <div class="col-12 w-full col-md-1 lg:w-1/122 d-flex px-0 -px-lg-5"  v-if="entry.fields.embedContent" :style="{ backgroundColor: entry.fields.colour}">
+            <div class="col-12 w-full //col-md-1 lg:w-full d-flex px-0 -px-lg-5"  v-if="entry.fields.embedContent" :style="{ backgroundColor: entry.fields.colour}">
               <div class="">
 
               </div>
@@ -234,7 +234,7 @@
           <div
           class="col-12 w-full"
           :class="{
-            'col-md-1 lg:w-1/120':getImageRatio(entry.fields.mainImage)>1.5,
+            'col-md-12 lg:w-12/12':getImageRatio(entry.fields.mainImage)>1.5,
             'col-md-6 lg:w-6/12':getImageRatio(entry.fields.mainImage)<=1.5
             }"
           >
