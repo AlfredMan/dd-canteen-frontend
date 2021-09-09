@@ -157,9 +157,9 @@
         <div class="row d-flex justify-content-start pt-5">
           <div class="container mb-5">
             <div class="row">
-              <div class="col-12 w-full col-lg-6">
+              <div class="//col-12 w-full //col-lg-6 lg:w-6/12">
                 <div class="mb-4">
-                  <h1 class=" mt-2 mb-4 h2 col-12 w-full col-lg-8 px-0" v-if="entry.fields.title">
+                  <h1 class=" mt-2 mb-4 h2 //col-12 w-full //col-lg-8 px-0" v-if="entry.fields.title">
                     {{entry.fields.title}}
                   </h1>
                   <h3 class="mb-4" v-if="entry.fields.date">
