@@ -9,6 +9,10 @@ export default {
   env: {
     target: process.env.NUXT_TARGET || "static"
   },
+
+  // mode: 'universal', // deprecated
+  ssr: false,
+  
   // mode: 'universal',
   // mode: 'spa',
   // target: process.env.target,
