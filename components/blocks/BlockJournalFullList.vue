@@ -25,7 +25,7 @@
         <callToAction v-if="block.fields.callToAction" :callToAction="block.fields.callToAction"/>
       </div>
     </div>
-    <div class="flex tags" v-if="block.fields.showFilters">
+    <div class="flex tags px-3 lg:px-0" v-if="block.fields.showFilters">
       <div 
       @click="filteredTag = ''"
       class="mr-2 cursor-pointer btn btn-outline-dark tag">
