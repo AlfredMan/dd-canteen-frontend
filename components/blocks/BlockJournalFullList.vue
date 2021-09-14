@@ -25,6 +25,24 @@
         <callToAction v-if="block.fields.callToAction" :callToAction="block.fields.callToAction"/>
       </div>
     </div>
+    <div class="flex tags" v-if="block.fields.showFilters">
+      <div 
+      @click="filteredTag = ''"
+      class="mr-2 cursor-pointer btn btn-outline-dark tag">
+        All
+      </div>
+      <div 
+      v-for="filter in block.fields.filters"
+      :key="filter.sys.id"
+      @click="filteredTag = filter.fields.tagSlug"
+      class="cursor-pointer btn btn-outline-dark tag"
+      :class="{
+        'active' : filteredTag==filter.fields.tagSlug
+      }"
+      >
+        {{filter.fields.tagName}}
+      </div>
+    </div>
     <div class="block-journal--entries">
       <div
       v-for="(entry, index) in filteredEntries" :key="entry.sys.id"
@@ -76,20 +94,45 @@ export default {
     formatEnlargeFirstEntry () {
       return this.block.fields.formatEnlargeFirstEntry && this.block.fields.formatEnlargeFirstEntry != false
     },
-    entries () {
+    entriesFromStateByType () {
       if (this.type && this.type == 'event') {
         return this.$store.state.events
       } else {
         return this.$store.state.journals
       }
     },
-    filteredEntries () {
+    allEntries () {
       if (this.formatShowAll) {
-        return this.entries
+        return this.entriesFromStateByType
       } else {
         return this.block.fields.manualSelection
       }
     },
+    filteredEntriesByTag () {
+      return this.allEntries.filter((entry) => {
+        if (this.filteredTag=='') {
+          return true
+        } else {
+          if (entry.fields.tags && entry.fields.tags.length > 0) {
+            // debugger
+            return entry.fields.tags.some((tag) => {
+              // console.log(tag.fields, tag.fields.tagSlug, this.filteredTag)
+              return tag.fields && tag.fields.tagSlug == this.filteredTag || false
+            })
+          } else {
+            return false
+          }
+        }
+          
+      })
+    },
+    filteredEntries () {
+      if (this.block.fields.showFilters) {
+        return this.filteredEntriesByTag
+      } else {
+        return this.allEntries
+      }
+    },    
     headingDisplay () {
       return this.block && this.block.fields.headingDisplay || 'Default'
     },
@@ -106,7 +149,8 @@ export default {
 
   data () {
     return {
-      tags: null
+      tags: null,
+      filteredTag: ''
     }
   }
 

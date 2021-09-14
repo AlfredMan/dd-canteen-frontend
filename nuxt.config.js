@@ -9,6 +9,10 @@ export default {
   env: {
     target: process.env.NUXT_TARGET || "static"
   },
+
+  // mode: 'universal', // deprecated
+  ssr: false,
+  
   // mode: 'universal',
   // mode: 'spa',
   // target: process.env.target,
@@ -404,76 +408,93 @@ export default {
   //     /^(?=.*\bhelper\b).*$/
   //   ]
   // },
-
   generate: {
     interval: 200,
     concurrency: 20,
     devtools: true,
-    routes() {
-      // const routes = [
-      //   '/architecture/hnna',
-      //   '/architecture/6a-architects',
-      //   '/architecture/adam-khan-architects',
-      //   '/architecture/architecture-00',
-      //   '/architecture/barozzi-veiga',
-      //   '/architecture/david-kohn-architects',
-      //   '/architecture/mole-architects',
-      //   '/architecture/schulze-grassov',
-      //   '/architecture/selgascano'
-      // ]
-
-      const client = createClient();
-      return Promise.all([
-        client.getEntries({
-          content_type: "news"
-        }),
-        client.getEntries({
-          content_type: "pages"
-        }),
-        client.getEntries({
-          content_type: "buildings"
-        }),
-        client.getEntries({
-          content_type: "architect"
-        })
-      ])
-        .then(([journal, pages, buildings, architect]) => {
-          const journalRoutes = _.map(
-            journal.items,
-            entry => `/journal/${entry.fields.slug}`
-          );
-          const pagesRoutes = _.map(
-            pages.items,
-            entry => `/${entry.fields.slug}`
-          );
-          const buildingsRoutes = _.map(
-            buildings.items,
-            entry => `/workspace/building/${entry.fields.slug}`
-          );
-          const architectRoutes = _.map(
-            architect.items,
-            entry => `/architecture/${entry.fields.slug}`
-          );
-          return [
-            ...journalRoutes,
-            ...pagesRoutes,
-            ...buildingsRoutes,
-            ...architectRoutes,
-            '/success',
-            '/success/canteen'
-          ];
-        })
-        .catch(console.error);
-    },
+    crawler: false,
+    routes: ['/'],
     exclude: [
+      /^\/events/,
+      /^\/enquire/,
+      /^\/architecture/,
+      /^\/success/,
+      /^\/workspace/,
+      /^\/journal/,
+      /^\/map/,
       /^(?=.*\bhelper|home\b).*$/,
       /^\/pages_archive/,
-      "/workspace/filter",
-      "/workspace/enquire",
-      "/home",
-      "/pages_archive/**/*"
     ]
   },
+  // generate: {
+  //   interval: 200,
+  //   concurrency: 20,
+  //   devtools: true,
+  //   routes() {
+  //     // const routes = [
+  //     //   '/architecture/hnna',
+  //     //   '/architecture/6a-architects',
+  //     //   '/architecture/adam-khan-architects',
+  //     //   '/architecture/architecture-00',
+  //     //   '/architecture/barozzi-veiga',
+  //     //   '/architecture/david-kohn-architects',
+  //     //   '/architecture/mole-architects',
+  //     //   '/architecture/schulze-grassov',
+  //     //   '/architecture/selgascano'
+  //     // ]
+
+  //     const client = createClient();
+  //     return Promise.all([
+  //       client.getEntries({
+  //         content_type: "news"
+  //       }),
+  //       client.getEntries({
+  //         content_type: "pages"
+  //       }),
+  //       client.getEntries({
+  //         content_type: "buildings"
+  //       }),
+  //       client.getEntries({
+  //         content_type: "architect"
+  //       })
+  //     ])
+  //       .then(([journal, pages, buildings, architect]) => {
+  //         const journalRoutes = _.map(
+  //           journal.items,
+  //           entry => `/journal/${entry.fields.slug}`
+  //         );
+  //         const pagesRoutes = _.map(
+  //           pages.items,
+  //           entry => `/${entry.fields.slug}`
+  //         );
+  //         const buildingsRoutes = _.map(
+  //           buildings.items,
+  //           entry => `/workspace/building/${entry.fields.slug}`
+  //         );
+  //         const architectRoutes = _.map(
+  //           architect.items,
+  //           entry => `/architecture/${entry.fields.slug}`
+  //         );
+  //         return [
+  //           ...journalRoutes,
+  //           ...pagesRoutes,
+  //           ...buildingsRoutes,
+  //           ...architectRoutes,
+  //           '/success',
+  //           '/success/canteen'
+  //         ];
+  //       })
+  //       .catch(console.error);
+  //   },
+  //   exclude: [
+  //     /^(?=.*\bhelper|home\b).*$/,
+  //     /^\/pages_archive/,
+  //     "/workspace/filter",
+  //     "/workspace/enquire",
+  //     "/home",
+  //     "/pages_archive/**/*"
+  //   ]
+  // },
   //
   router: {
     middleware: ['redirect']
