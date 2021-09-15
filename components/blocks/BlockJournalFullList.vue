@@ -25,7 +25,7 @@
         <callToAction v-if="block.fields.callToAction" :callToAction="block.fields.callToAction"/>
       </div>
     </div>
-    <div class="flex tags px-3 lg:px-0" v-if="block.fields.showFilters">
+    <div class="flex tags block-filter" v-if="block.fields.showFilters">
       <div 
       @click="filteredTag = ''"
       class="mr-2 cursor-pointer btn btn-outline-dark tag">
@@ -174,6 +174,14 @@ img {
 ul {
   li {
     list-style: none;
+  }
+}
+
+.block-filter {
+  @apply px-4;
+  @screen lg {
+    @apply cap-max-w px-0;
+    overflow-x: inherit;
   }
 }
 
